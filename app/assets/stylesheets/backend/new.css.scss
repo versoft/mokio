@@ -1,0 +1,16 @@
+#article_lang_id {
+	width: 140px;
+}
+
+#menusList li .sortable_true {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+#menusList li .ui-sortable-helper {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}

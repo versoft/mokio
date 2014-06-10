@@ -1,0 +1,681 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+pl:
+  time:
+    formats:
+      default: "%d-%m-%Y"
+  date:
+    formats:
+      default: "%d-%m-%Y"
+  article: Artykuł
+  pic_gallery: galeria zdjęć
+  mov_gallery: galeria filmów
+  contact: Strona kontaktowa
+  external_link: Url
+  backend:
+    site_preview: Twoja Strona
+    no_records_found: Nie znaleziono żadnej treści
+    dashboard: Biurko
+    cancel: Anuluj
+    save: Zapisz
+    save_and_create_new: Zapisz i utwórz nowy
+    edit: Edytuj
+    delete: Usuń
+    copy: Kopiuj
+    clear: wyczyść
+    confirm: Czy na pewno chcesz usunąć wybrany element?
+    no_init_image: "Nie wybrano miniaturki"
+    required_field: "Pole nie może być puste"
+    gallery: "Galeria"
+    edit_photo: Edytuj zdjęcie
+    file_upload: Załączanie plików
+    add_files: Dodaj pliki
+    add_file: Dodaj plik
+    add: Dodaj
+    start_upload: Załącz wszystkie
+    cancel_upload: Anuluj wszystkie
+    content_home_page: Ten artykuł znajduje się na stronie głównej
+    close: Zamknij
+    name: Nazwa
+    intro: Opis
+    active: Włączony
+    external_link: Link zewnętrzny
+    data_file: Plik
+    thumb: Miniaturka
+    you_are_here: Jesteś tutaj
+    actions: Akcje
+    display_from_out_of_range: Przekracza datę do której ma być wyświetlany
+    search: Szukaj
+    table_first: Pierwsza
+    table_last: Ostatnia
+    table_previous: Poprzednia
+    table_next: Następna
+    table_positions_from: Pozycje od
+    table_to: do
+    table_all: łącznie
+    table_no_records: Pozycji 0 z 0 dostępnych
+    table_filtring_from: "(filtrowanie spośród"
+    table_available_positions: "dostępnych pozycji)"
+    no_matching_indexes: "Nie znaleziono żadnych pasujących rekordów"
+    please_wait: "Proszę czekać..."
+    table_positions: pozycji
+    show: Pokaż
+    language: język
+    english: angielski
+    polish: polski
+    all: wszystkie
+    size: Rozmiar
+    wait: Proszę czekać
+    content_not_in_menu: "Treści nie podpięte pod żadne menu"
+    all_dashboard: "Wszystkich:"
+    back: "Wróć"
+    menu_with_invisible: "Menu bez wyświetlanej treści"
+    more: "więcej"
+    last_created_content: "Ostatnio dodana treść"
+    last_created: "Ostatnio dodany:"
+    last_updated_content: "Ostatnio zmieniana treść"
+    last_updated: "Ostatnio zmieniany:"
+    all: Wszystkie
+    content_now: "Istniejące treści"
+    mov_galleries_now: Galerii filmów
+    pic_galleries_now: Galerii zdjęć
+    articles_now: Artykułów
+    contacts_now: Strony kontaktowe
+    find_in_backend: Szukaj w backendzie
+    continue: Kontynuuj
+    back_to_edit: "<a href='%{url}'>Wróć do edycji.</a>"
+    slider: Slider
+    sign_up: Zarejestruj się
+    sign_in: Zaloguj
+    logout: Wyloguj
+    change_password: Zmień hasło
+    
+    sidebars:
+      sidebar_title: Nawigacja
+      content_management: Zarządzanie treścią
+      add_content: Dodaj Treść
+      article: Artykuł
+      pic_galery: Galeria Zdjęć
+      mov_galery: Galeria Filmów
+      contact: Strona Kontaktowa
+      menu: Menu
+      modules: Moduły
+      comments: Komentarze
+      users: Użytkownicy
+
+    breadcrumbs:
+      only_loose: Treści nie podpięte pod menu
+      contents: Zarządzanie treścią
+      add_content: Dodaj Treść
+      menus: Zarządzanie menu
+      menus_edit: Edycja elementu menu
+      menus_new: Nowy element menu
+      static_modules: Moduły statyczne
+      static_modules_edit: Edycja modułu statycznego
+      static_modules_new: Nowy moduł statyczny
+      articles_new: Nowy artykuł
+      articles_edit: Edycja artykułu
+      pic_galleries_new: Nowa galeria zdjęć
+      pic_galleries_edit: Edycja galerii zdjęć
+      mov_galleries_new: Nowa galeria filmów
+      mov_galleries_edit: Edycja galerii filmów
+      contacts_new: Nowa strona kontaktowa
+      contacts_edit: Edycja strony kontatkowej
+      sliders_new: Nowy slider
+      sliders_edit: Edycja slidera
+      comments: Komentarze
+      users: Użytkownicy
+      users_new: Nowy użytkownik
+      users_edit: Edycja danych użytkownika
+
+  static_modules:
+    actions: Akcje
+    active: Włączony
+    edit_title: Edytuj moduł statyczny
+    index_title: Moduły Statyczne
+    index_add_new: Dodaj nowy moduł
+    lang_id: Język
+    new_title: Nowy moduł statyczny
+    position: Pozycja
+    title: Tytuł
+    module_position_ids: Pozycje Modułu
+    updated_at: Uaktualniono
+    edit_title: Edytuj moduł statyczny
+    created: "Moduł <strong>'%{title}'</strong> został utworzony."
+    updated: "Moduł <strong>'%{title}'</strong> został poprawnie edytowany."
+    deleted: "Moduł <strong>'%{title}'</strong> został usunięty."
+    update_active_true: "Moduł <strong>'%{title}'</strong> jest teraz aktywny."
+    update_active_false: "Moduł <strong>'%{title}'</strong> jest teraz nieaktywny."
+
+  articles:
+    active: Włączony
+    actions: Akcje
+    edit_title: Edytuj artykuł
+    article_type: Typ
+    home_page: Strona startowa
+    index_title: Artykuły
+    index_add_new: Dodaj nowy artykuł
+    lang_id: Język
+    title: Tytuł
+    updated_at: Uaktualniono
+    intro: wstęp
+    content: treść
+    display_from: "wyświetlany od"
+    display_to: "wyświetlany do"
+    main_pic: miniaturka
+    no_init_image: "Nie wybrano miniaturki"
+    created: "Artykuł <strong>'%{title}'</strong> został utworzony."
+    updated: "Artykuł <strong>'%{title}'</strong> został poprawnie edytowany."
+    deleted: "Artykuł <strong>'%{title}'</strong> został usunięty."
+    new_title: "Nowy artykuł"
+    edit_title: "Edytuj artykuł"
+    update_active_true: "Artykuł <strong>'%{title}'</strong> jest teraz aktywny."
+    update_active_false: "Artykuł <strong>'%{title}'</strong> jest teraz nieaktywny."
+
+  menus:
+    name: "nazwa"
+    external_link: "url"
+    active: "włączony"
+    visible: "widoczny"
+    description: "opis"
+    parent_menu: "element nadrzędny"
+    target: "target"
+    current_window_inside: "bieżące okno"
+    current_window_whole: "bieżące okno - cały ekran"
+    new_window: "nowe okno"
+    created: "Menu <strong>'%{title}'</strong> zostało utworzone."
+    updated: "Menu <strong>'%{title}'</strong> zostało poprawnie zapisane."
+    deleted: "Menu <strong>'%{title}'</strong> zostało usunięte."
+    not_created: "Menu <strong>'%{title}'</strong> nie zostało utworzone."
+    not_updated: "Menu <strong>'%{title}'</strong> nie zostało poprawnie zapisane."
+    not_deleted: "Menu <strong>'%{title}'</strong> nie zostało usunięte." 
+    index_title: Zarządzanie menu
+    index_add_new: Dodaj menu
+    new_title: "Nowy element menu"
+    edit_title: "Edytuj element menu"
+    save: Zapisz
+    save_and_create_new: "Zapisz i utwórz nowy"
+    content: treść
+    sort_true: Struktura menu została poprawnie zapisana
+    sort_false: Nie wszystkie zmiany w strukturze menu były dozwolone. Odśwież stronę.
+    list: Lista
+    content_remove_confirm: Czy chcesz odłączyć od menu wszystkie treści z innego języka niż nowowybrany?
+    modules_remove_confirm: Czy chcesz odłączyć wszystkie moduły statyczne z innego języka niż nowowybrany?
+    confirm: Czy na pewno chcesz skasować ten element menu?
+    menu_active_legend: "Aktywna pozycja menu - link działa"
+    menu_non_active_legend: "Nieaktywna pozycja menu - link nie działa"
+    menu_visible_legend: "Wyświetlana pozycja menu"
+    menu_non_visible_legend: "Niewyświetlana pozycja menu"
+    exclamation_legend: "Menu bez podłączonej treści"
+    path: Ścieżka
+    legend: Legenda
+    type: Typ
+
+  pic_galleries:
+    cannot_add_files_now: Dodawanie zdjęć do galerii będzie możliwe dopiero po jej zapisaniu
+    created: "Galeria <strong>'%{title}'</strong> została utworzona. Dodawanie zdjęć jest już możliwe."
+    created_and_new: "Galeria <strong>'%{title}'</strong> została utworzona."
+    updated: "Galeria <strong>'%{title}'</strong> została poprawnie zapisana."
+    deleted: "Galeria <strong>'%{title}'</strong> została usunięta."
+    not_created: "Galeria <strong>'%{title}'</strong> nie została utworzona."
+    not_updated: "Galeria <strong>'%{title}'</strong> nie została poprawnie zapisana."
+    not_deleted: "Galeria <strong>'%{title}'</strong> nie została usunięta."
+    active: Włączony
+    intro: wstęp
+    content: treść
+    display_from: "wyświetlany od"
+    display_to: "wyświetlany do"
+    new_title: "Nowa galeria zdjęć"
+    edit_title: "Edytuj galerię zdjęć"
+    update_active_true: "Galeria <strong>'%{title}'</strong> jest teraz aktywna"
+    update_active_false: "Galeria <strong>'%{title}'</strong> jest teraz nieaktywna"
+  
+  sliders:
+    cannot_add_files_now: Dodawanie zdjęć do slidera będzie możliwe dopiero po jego zapisaniu
+    created: "Slider <strong>'%{title}'</strong> został utworzony. Dodawanie zdjęć jest już możliwe."
+    created_and_new: "Slider <strong>'%{title}'</strong> został utworzony."
+    updated: "Slider <strong>'%{title}'</strong> został poprawnie zapisany."
+    deleted: "Slider <strong>'%{title}'</strong> został usunięty."
+    not_created: "Slider <strong>'%{title}'</strong> nie został utworzony."
+    not_updated: "Slider <strong>'%{title}'</strong> nie został poprawnie zapisany."
+    not_deleted: "Slider <strong>'%{title}'</strong> nie został usunięty."
+    active: Włączony
+    intro: wstęp
+    content: treść
+    display_from: "wyświetlany od"
+    display_to: "wyświetlany do"
+    new_title: "Nowy slider"
+    edit_title: "Edytuj Slider"
+    update_active_true: "Slider <strong>'%{title}'</strong> jest teraz aktywny"
+    update_active_false: "Slider <strong>'%{title}'</strong> jest teraz nieaktywny"
+
+  mov_galleries:
+    cannot_add_files_now: "Dodawanie filmów do galerii będzie możliwe dopiero po jej zapisaniu."
+    created: "Galeria <strong>'%{title}'</strong> została utworzona. Dodawanie filmów jest już możliwe."
+    created_and_new: "Galeria <strong>'%{title}'</strong> została utworzona."
+    updated: "Galeria <strong>'%{title}'</strong> została poprawnie zapisana."
+    deleted: "Galeria <strong>'%{title}'</strong> została usunięta."
+    not_created: "Galeria <strong>'%{title}'</strong> nie została utworzona."
+    not_updated: "Galeria <strong>'%{title}'</strong> nie została poprawnie zapisana."
+    not_deleted: "Galeria <strong>'%{title}'</strong> nie została usunięta."
+    active: Włączony
+    intro: wstęp
+    content: treść
+    display_from: "wyświetlany od"
+    display_to: "wyświetlany do"
+    new_title: "Nowa galeria filmów"
+    edit_title: "Edytuj galerię filmów"
+    update_active_true: "Galeria <strong>'%{title}'</strong> jest teraz aktywna"
+    update_active_false: "Galeria <strong>'%{title}'</strong> jest teraz nieaktywna"
+
+  contacts:
+    active: Włączony
+    actions: Akcje
+    edit_title: Edytuj stronę kontaktową
+    article_type: Typ
+    title: Tytuł
+    updated_at: Uaktualniono
+    main_pic: miniaturka
+    no_init_image: "Nie wybrano miniaturki"
+    created: "Strona kontaktowa <strong>'%{title}'</strong> została utworzona."
+    updated: "Strona kontaktowa <strong>'%{title}'</strong> została poprawnie edytowana."
+    deleted: "Strona kontaktowa <strong>'%{title}'</strong> została usunięta."
+    new_title: "Nowa strona kontaktowa"
+    update_active_true: "Strona kontaktowa <strong>'%{title}'</strong> jest teraz aktywna."
+    update_active_false: "Strona kontaktowa <strong>'%{title}'</strong> jest teraz nieaktywna."
+    tpl: Szablon wiadomości
+    form_data: Dane z formularza
+
+  contents:
+    edit_gallery_content: Edytuj treść
+    edit_slider_content: Edytuj treść
+    edit_title: Edycja
+    add_photos: Dodaj Zdjęcia
+    add_slider_photos: Dodaj Zdjęcia
+    add_youtubes: Dodaj Film
+    created: "Treść <strong>'%{title}'</strong> została utworzona"
+    updated: "Treść <strong>'%{title}'</strong> została poprawnie zapisana"
+    deleted: "Treść <strong>'%{title}'</strong> została usunięta"
+    not_created: "Treść <strong>'%{title}'</strong> nie została utworzona"
+    not_updated: "Treść <strong>'%{title}'</strong> nie została poprawnie zapisana"
+    not_deleted: "Treść <strong>'%{title}'</strong> nie została usunięta"
+    add_external_link: "Dodaj zdjęcia przez link"
+    active: Włączony
+    intro: Wstęp
+    content: Treść
+    display_from: Wyświetlany od
+    display_to: Wyświetlany do
+    title: Tytuł
+    index_title: Zarządzanie treścią
+    index_add_new: Dodaj treść
+    update_active_true: "Treść <strong>'%{title}'</strong> jest teraz aktywna"
+    update_active_false: "Treść <strong>'%{title}'</strong> jest teraz nieaktywna"
+    updated_at: Ostatnio edytowany
+    lang_id: Język
+    type: Typ Treści
+    add_tag: Dodaj
+    tags: Tagi
+    comma_separated: "oddzielone przecinkami"
+    types:
+      PicGallery: Galeria zdjęć
+      Article: Artykuł
+      MovGallery: Galeria filmów
+      Contact: Strona kontaktowa
+      Slider: Slider
+
+  data_files:
+    larger_image: powiększ
+    sorted: Kolejność została poprawnie edytowana.
+
+  photos:
+    edit_photo: Edytuj
+    updated: "Zdjęcie <strong>'%{title}'</strong> zostało poprawnie edytowane"
+    created: "Zdjęcie <strong>'%{title}'</strong> zostało dodane"
+    deleted: "Zdjęcie <strong>'%{title}'</strong> zostało usunięte"
+    not_deleted: "Zdjęcie <strong>'%{title}'</strong> nie zostało usunięte"
+    not_created: "Zdjęcie <strong>'%{title}'</strong> nie zostało utworzone"
+    not_updated: "Zdjęcie <strong>'%{title}'</strong> nie zostało poprawnie edytowane"
+    edit_main_photo: Edycja zdjęcia
+    edit_thumb: Edycja miniaturki
+    thumb_updated: Miniaturka została poprawnie edytowana
+    thumb_not_updated: Miniaturka nie została poprawnie edytowana
+    thumb_deleted: "Miniaturka zdjęcia <strong>'%{name}'</strong> została usunięta"
+    thumb_not_deleted: "Miniaturka zdjęcia <strong>'%{name}'</strong> nie została usunięta"
+    add_or_drop_file: Naciśnij i wybierz lub upuść zdjęcie
+    add_file: Dodaj zdjęcie
+    mark_on_photo: Zaznacz obszar na zdjęciu
+    crop_success: Miniaturka została poprawnie przycięta
+    rotate_photo: Obróć zdjęcie
+    rotated: "Obracanie zdjęcia <strong>'%{name}'</strong> przebiegło pomyślnie"
+    not_rotated: "Obracanie zdjęcia <strong>'%{name}'</strong> nie przebiegło pomyślnie"
+    crop: "Miniaturka do zdjęcia <strong>'%{name}'</strong> poprawnie wycięta"
+    not_crop: "Miniaturka do zdjęcia <strong>'%{name}'</strong> nie została poprawnie wycięta"
+    rotated_thumb: "Obracanie miniaturki zdjęcia <strong>'%{name}'</strong> przebiegło pomyślnie"
+    not_rotated_thumb: "Obracanie miniaturki zdjęcia <strong>'%{name}'</strong> nie przebiegło pomyślnie"
+    thumb: Miniaturka
+    show_photo: Pokaż zdjęcie
+    add_own_thumb: Dodaj własną miniaturkę
+    thumb_upload_info: "Domyślnie miniaturka tworzona jest z oryginalnego zdjęcia"
+    photos_from_external_links_error: "Zdjęcia z następujących linków nie zostały zapisane:"
+    links_upload_info: "linki w oddzielnych wierszach (max 10)"
+
+  slider_photos:
+    edit_photo: Edytuj
+    updated: "Zdjęcie <strong>'%{title}'</strong> zostało poprawnie edytowane"
+    created: "Zdjęcie <strong>'%{title}'</strong> zostało dodane"
+    deleted: "Zdjęcie <strong>'%{title}'</strong> zostało usunięte"
+    not_deleted: "Zdjęcie <strong>'%{title}'</strong> nie zostało usunięte"
+    not_created: "Zdjęcie <strong>'%{title}'</strong> nie zostało utworzone"
+    not_updated: "Zdjęcie <strong>'%{title}'</strong> nie zostało poprawnie edytowane"
+    edit_main_photo: Edycja zdjęcia
+    edit_thumb: Edycja miniaturki
+    thumb_updated: Miniaturka została poprawnie edytowana
+    thumb_not_updated: Miniaturka nie została poprawnie edytowana
+    thumb_deleted: "Miniaturka zdjęcia <strong>'%{name}'</strong> została usunięta"
+    thumb_not_deleted: "Miniaturka zdjęcia <strong>'%{name}'</strong> nie została usunięta"
+    add_or_drop_file: Naciśnij i wybierz lub upuść zdjęcie
+    add_file: Dodaj zdjęcie
+    mark_on_photo: Zaznacz obszar na zdjęciu
+    crop_success: Miniaturka została poprawnie przycięta
+    rotate_photo: Obróć zdjęcie
+    rotated: "Obracanie zdjęcia <strong>'%{name}'</strong> przebiegło pomyślnie"
+    not_rotated: "Obracanie zdjęcia <strong>'%{name}'</strong> nie przebiegło pomyślnie"
+    crop: "Miniaturka do zdjęcia <strong>'%{name}'</strong> poprawnie wycięta"
+    not_crop: "Miniaturka do zdjęcia <strong>'%{name}'</strong> nie została poprawnie wycięta"
+    rotated_thumb: "Obracanie miniaturki zdjęcia <strong>'%{name}'</strong> przebiegło pomyślnie"
+    not_rotated_thumb: "Obracanie miniaturki zdjęcia <strong>'%{name}'</strong> nie przebiegło pomyślnie"
+    thumb: Miniaturka
+    show_photo: Pokaż zdjęcie
+    add_own_thumb: Dodaj własną miniaturkę
+    thumb_upload_info: "Domyślnie miniaturka tworzona jest z oryginalnego zdjęcia"
+    photos_from_external_links_error: "Zdjęcia z następujących linków nie zostały zapisane:"
+    links_upload_info: "linki w oddzielnych wierszach (max 10)"
+
+  youtubes:
+    edit_youtube: Edytuj film
+    updated: "Film <strong>'%{title}'</strong> został poprawnie zapisany"
+    created: "Film <strong>'%{title}'</strong> został dodany"
+    deleted: "Film <strong>'%{title}'</strong> został usunięty"
+    no_movie_found: 'Nie znaleziono filmu o podanym ID'
+    add_youtube: Dodaj Film
+    preview: Podgląd
+    search_movie_url: Url do filmu
+    add_file: Dodaj zdjęcie
+    add_own_thumb: Dodaj własną miniaturkę
+    thumb_from_net: Miniaturka z internetu
+    thumb_own: Miniaturka z dysku
+    change_thumb: Zmień miniaturkę
+    subtitle: Podtytuł
+    movie_url_desc: "Podaj url do filmu z Youtube, Vimeo lub DailyMotion"
+
+  meta:
+    meta_google: Google meta tagi
+    meta_google_desc: meta tagi mają wpływ na wyniki wyświetlania w google
+    meta_facebook: Facebook meta tagi
+    meta_facebook_desc: meta tagi wykorzystywane są przy udostępnianiu i wyświetlaniu witryny w Facebook
+    auto_completed: Meta tagi zostały uzupełnione automatycznie.
+
+  gmaps:
+    gmap: Mapa google
+
+  comments:
+    title: Tytuł
+    comment: Komentarz
+    commentable: Komentowana treść
+    status: Status
+    user_id: Użytkownik
+    created_at: Utworzony
+    update_accept_true: Komentarz został zaakceptowany
+    update_accept_false: Komentarz został odrzucony
+    deleted: Komentarz został usunięty
+    created: Komoentarz został utworzony
+    index_title: Zarządzanie komentarzami
+    accept_all: Zaakceptuj wszystkie
+    reject_all: Odrzuć wszystkie
+    delete_rejected: Usuń odrzucone
+    accept_all_true: Wszystkie komentarze zostały zakceptowane
+    accept_all_false: Nie udało się zaakceptować wszystkich komentarzy
+    reject_all_true: Wszystkie komentarze zostały odrzucone
+    reject_all_false: Nie udało się odrzucić wszystkich komentarzy
+    delete_rejected_true: Odrzucone komentarze zostały usunięte
+    delete_rejected_false: Nie udało się usunąć wszystkich odrzuconych komentarzy
+  
+  users:
+    index_add_new: Dodaj nowego użytkownika
+    index_title: Użytkownicy
+    new_title: Nowy użytkownik
+    new_user: Nowy użytkownik
+    add_user: Dodaj
+    edit_user: Edycja danych użytkownika
+    save_user: Zapisz
+    copy_title: Kopiuj użytkownika
+    edit_title: Edycja danych użytkownika
+    created: "Użytkownik <strong>'%{title}'</strong> został utworzony"
+    updated: "Użytkownik <strong>'%{title}'</strong> został poprawnie zapisany"
+    deleted: "Użytkownik <strong>'%{title}'</strong> został usunięty"
+    not_created: "Użytkownik <strong>'%{title}'</strong> nie został utworzony"
+    not_updated: "Użytkownik <strong>'%{title}'</strong> nie został poprawnie zapisany"
+    not_deleted: "Użytkownik <strong>'%{title}'</strong> nie został usunięty"
+    roles:  Role
+    role_name:
+      admin: Administrator
+      content_editor: Zarządzanie treścią
+      menu_editor: Zarządzanie strukturą menu
+      static_module_editor: Zarządzanie modułami statycznymi
+      user_editor: Zarządzanie użytkownikami
+      comment_approver: Obsługa komentarzy (moderowanie)
+      reader: Dosŧęp do odczytu
+    edit_password: Zmiana hasła
+    password_updated: Hasło zostało zmienione
+    password_not_updated: Nie udało się zmienic hasła
+
+  site_helper:
+    next: next
+    welcome_title: welcome_title
+    welcome_text: welcome_text
+    dashboard_nav_title: dashboard_nav_title
+    dashboard_nav_text: dashboard_nav_text
+    contentmanagment_nav_title: contentmanagment_nav_title
+    contentmanagment_nav_text: contentmanagment_nav_text
+    content_nav_title: content_nav_title
+    content_nav_text: content_nav_text
+    menu_nav_title: menu_nav_title
+    menu_nav_text: menu_nav_text
+    static_module_nav_title: static_module_nav_title
+    static_module_nav_text: static_module_nav_text
+    user_nav_title: user_nav_title
+    user_nav_text: user_nav_text
+
+
+# ============================================ Activerecord ============================================================= #    
+
+  activerecord:
+    errors:
+      models:
+        contact:
+          attributes:
+            title:
+              blank: "Tytuł nie może być pusty"
+        menu:
+          attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
+            lang:
+              not_match_parent: "Wybrany element nadrzędny nie należy do wybranego języka"
+        static_module:
+          attributes:
+            title:
+              blank: "Tytuł nie może być pusty"
+            display_from:
+              invalid: Przekracza datę do której ma być wyświetlany
+        pic_gallery:
+          attributes:
+            title:
+              blank: "Tytuł nie może być pusty"
+            display_from:
+              invalid: Przekracza datę do której ma być wyświetlana
+        article:
+          attributes:
+            title:
+              blank: "Tytuł nie może być pusty"
+            display_from:
+              invalid: Przekracza datę do której ma być wyświetlany
+        mov_gallery:
+          attributes:
+            title:
+              blank: "Tytuł nie może być pusty"
+            display_from:
+              invalid: Przekracza datę do której ma być wyświetlana
+      editable:
+        not_permitted: Edycja niedozwolona   
+      messages:
+        record_invalid: Niepoprawny rekord w bazie danych
+
+    attributes:
+      contents:
+        active: Włączony
+        intro: Wstęp
+        content: Treść
+        display_from: Wyświetlany od
+        display_to: Wyświetlany do
+        title: Tytuł
+        type: Typ
+        updated_at: Ostatnio edytowany
+        lang_id: Język
+        home_page: Strona Główna
+
+      pic_gallery:
+        active: Włączony
+        intro: Wstęp
+        content: Treść
+        display_from: Wyświetlany od
+        display_to: Wyświetlany do
+        title: Tytuł
+        type: Typ
+        updated_at: Ostatnio edytowany
+        lang_id: Język
+        home_page: Strona Główna
+
+      slider:
+        active: Włączony
+        intro: Wstęp
+        content: Treść
+        display_from: Wyświetlany od
+        display_to: Wyświetlany do
+        title: Tytuł
+        type: Typ
+        updated_at: Ostatnio edytowany
+        lang_id: Język
+        home_page: Strona Główna
+        fade_time_ms: Czas wyświetlania zdjęcia
+
+      mov_gallery:
+        active: Włączony
+        intro: Wstęp
+        content: Treść
+        display_from: Wyświetlany od
+        display_to: Wyświetlany do
+        title: Tytuł
+        type: Typ
+        updated_at: Ostatnio edytowany
+        lang_id: Język
+        home_page: Strona Główna
+
+      article:
+        active: Włączony
+        intro: Wstęp
+        content: Treść
+        display_from: Wyświetlany od
+        display_to: Wyświetlany do
+        title: Tytuł
+        type: Typ
+        updated_at: Ostatnio edytowany
+        lang_id: Język
+        home_page: Strona Główna
+
+      contact:
+        active: Włączony
+        content: Treść
+        title: Tytuł
+        type: Typ
+        updated_at: Ostatnio edytowany
+        lang_id: Język
+        recipient_emails: Adresaci
+
+      contact_template:
+        tpl: Szablon wiadomości
+        
+      gmap:
+        full_address: Adres
+
+      static_module:
+        active: Włączony
+        intro: Wstęp
+        content: Treść
+        display_from: Wyświetlany od
+        display_to: Wyświetlany do
+        title: Tytuł
+        module_positions: Pozycje modułu
+        always_displayed: Wyświetlany zawsze
+        updated_at: Ostatnio edytowany
+        lang_id: Język
+
+      photo:
+        name: Nazwa
+        intro: Opis
+        active: Włączony
+        external_link: Link zewnętrzny
+        data_file: Plik
+        thumb: Miniaturka
+        remote_data_file_url: Linki
+        subtitle: Podtytuł
+
+      youtube:
+        name: Nazwa
+        intro: Opis
+        active: Włączony
+        external_link: Link zewnętrzny
+        data_file: Plik
+        thumb: Miniaturka
+        add_own_thumb: Dodaj własną miniaturkę
+        subtitle: Podtytuł
+
+      meta:
+        g_title: Tytuł
+        g_desc: Opis
+        g_keywords: Słowa kluczowe
+        g_author: Autor 
+        g_copyright: Prawa autorskie
+        g_application_name: Nazwa aplikacji
+        f_title: Tytuł
+        f_type: Typ strony
+        f_image: Zdjęcie
+        f_url: Url strony
+        f_desc: Opis
+
+      user:
+        password: Hasło
+        remember_me: Zapamiętaj mnie
+        email: E-mail
+        password_confirmation: Potwierdź hasło
+      messages:
+        record_invalid : "Niepoprawny rekord w bazie danych"

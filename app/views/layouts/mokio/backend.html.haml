@@ -1,0 +1,71 @@
+!!!
+%html{xmlns: "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %title CMS Open Source
+
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+
+    = stylesheet_link_tag 'backend'
+    = csrf_meta_tags
+    = favicon_link_tag 'backend/favicon.ico'
+
+    = javascript_include_tag 'html5'
+    = javascript_include_tag 'backend/head'
+
+    = yield :head
+
+  %body
+    #video-preview-wrapper
+      #video-preview
+
+    .loader-div
+
+    / loading animation
+    #qLoverlay
+    #qLbar
+      
+    #header
+      = render :template => "mokio/backend/layout/header"
+
+    #wrapper
+      .resBtn
+        %a{href: "#"}
+          %span.icon16.minia-icon-list-3
+
+      .collapseBtn.leftbar
+        %a.tipR{href: "#", title: "Hide sidebar"}
+          %span.icon12.minia-icon-layout
+        -# binding.pry
+        =# render partial: "backend/layout/cache_test_haml"
+        =# render partial: "backend/layout/cache_test"
+        
+      #sidebarbg
+      #sidebar
+        = render :template => "mokio/backend/layout/sidebar"
+
+      / Body content
+      #content.clearfix
+        .contentwrapper
+          / Content wrapper
+          .heading
+            .search
+              %form#searchform
+                %input.top-search.text.typeahead_main_search{placeholder: bt("find_in_backend"), type: "text", autocomplete:"off"}/
+                %span.search-btn.nostyle
+            %ul.breadcrumb
+              %li= "#{bt("you_are_here")}:"
+              %li
+                %a.tip{href: backend_root_path, title: bt("dashboard")}
+                  %span.icon16.icomoon-icon-screen-2
+              = breadcrumbs # breadcrumbs helper
+
+          .row-fluid
+            = yield
+
+    = render :template => "mokio/backend/site_helper/first_login"
+    
+    = javascript_include_tag 'backend'
+    = yield :js         
+

@@ -1,0 +1,18 @@
+.dashboard-box {
+  .content:after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+
+  h4 .dashboard_label {
+    margin-right: 10px;
+  }
+
+  .title {
+    height: 48px;
+    padding-top: 10px;
+  }
+}
+
+

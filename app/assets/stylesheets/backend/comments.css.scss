@@ -1,0 +1,23 @@
+// Place all the styles related to the backend/comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comments_buttons {
+  float: right;
+  position: absolute;
+  top: 25px;
+  right: 0px;
+  z-index: 10;
+  div {
+    float: right;
+  }
+  form {
+    float: right;
+  }
+  button {
+    margin-right: 3px;
+  }
+  .white, .white a {
+    color: #fff;
+  }
+}

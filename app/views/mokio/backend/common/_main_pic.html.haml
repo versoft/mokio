@@ -1,0 +1,4 @@
+= f.input :main_pic
+#main_pic_view
+  %a.fancybox{:href => f.object.main_pic.url}
+    %img.image.marginR10{alt: "", src: f.object.main_pic.url(:edit)}/

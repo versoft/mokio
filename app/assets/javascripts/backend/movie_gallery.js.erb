@@ -1,0 +1,234 @@
+$(document).ready(function() {
+
+  $("a:contains('" + "<%= I18n.t('backend.cancel') %>" + "')").click(function(e) {
+    e.preventDefault();
+    $('.editcontentbtn').click();
+  });
+
+// loads a modal with a form for new movie
+  $('#add-youtube').click(function(e) {
+    e.preventDefault();
+    var url = $(this).attr('data-href');
+    $('#new_yt_form').load(url, function(result){
+      $('#new_yt_form').modal({show:true});
+    });
+  });
+
+  // loads modal with edit form - displays loader during modal load    
+  $('.edit-youtube').click(function(e) {
+    e.preventDefault();
+    $('#gallery-loader').show();
+    $('#gallery-loader').offset({top: $(this).parent().parent().offset().top, left: $(this).parent().parent().offset().left});
+    
+    var url = $(this).attr('data-href');
+    $('#edit-youtube-form').load(url, function(result){
+      $('#edit-youtube-form').modal({show:true});
+    });
+
+    $('#edit-youtube-form').on('hidden.bs.modal', function () {
+      $('#gallery-loader').hide();
+    });
+  });
+
+  function prettyyoutube(){
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+      default_width: 800,
+      default_height: 600,
+      theme: 'facebook',
+      social_tools: false,
+      show_title: false,
+      changepicturecallback: function() {
+        $(".pp_play").remove();
+      }
+    });
+  }
+  prettyyoutube();
+
+  $('#video-preview-wrapper').click(function () {
+    $(this).hide();
+  });
+
+  $(document).on('keydown', function ( e ) {
+    if (e.keyCode === 27) { // ESC
+        $('#video-preview-wrapper').hide();
+    }
+});
+
+
+  //--------------- Gallery & lazy load & jpaginate ------------------//
+
+  function gallery_lazy_load() {
+    //hide the action buttons
+    $('.actionBtn, .dragable').hide();
+    //show action buttons on hover image
+    $('.galleryView>li').hover(
+      function () {
+         $(this).find('.actionBtn').stop(true, true).show(300);
+         $(this).find('.dragable,.handler').stop(true, true).show(300);
+      },
+      function () {
+          $(this).find('.actionBtn').stop(true, true).hide(300);
+          $(this).find('.dragable,.handler').stop(true, true).hide(300);
+      }
+    );
+    //
+    // remove the gallery item after press delete
+    //
+    $('.actionBtn>.delete').click(function(){
+      $(this).closest('li').remove();
+    });
+
+    /* initiate lazyload defining a custom event to trigger image loading  */
+    $("ul#itemContainer li img").lazyload({
+        event : "turnPage",
+        effect : "fadeIn"
+    });
+    /* initiate plugin */
+    $("div.holder").jPages({
+        containerID : "itemContainer",
+        animation   : "fadeInUp",
+        perPage     : 16,
+        scrollBrowse   : true, //use scroll to change pages
+        keyBrowse   : true,
+        callback    : function( pages ,items ){
+            /* lazy load current images */
+            items.showing.find("img").trigger("turnPage");
+            /* lazy load next page images */
+            items.oncoming.find("img").trigger("turnPage");
+        }
+    });
+  };
+  gallery_lazy_load();
+
+
+  //
+  // remove the gallery item after press delete
+  //
+  $('.actionBtn>.delete').click(function(){
+    $(this).closest('li').remove();
+  });
+
+  //
+  // make photos sortable and draggable 
+  //
+  function sortablephotos(){
+    $('.sortable').sortable({
+      // handle: '.dragable .handler',
+      placeholder: "ui-state-highlight",
+
+      //
+      // problems with position dropped photos
+      //
+      helper: function(e, ui) {
+        $(ui).width($(ui).width());
+        $(ui).height($(ui).height());
+
+        ui.children().each(function() {
+          $(this).width($(this).width());
+        });
+
+        return ui;
+      },
+      stop: function(event, ui) {
+        var $idsInOrder = [];
+
+        $('.sortable li.sortableli').each(function(n){
+          $idsInOrder.push($(this).attr('id')); // get photos id's in order asc
+        });
+
+        $.post( '/backend/data_files/sort/', { ids_order: $idsInOrder } ); // ajax to sort photos
+      }
+    }).disableSelection();
+  }
+  sortablephotos();
+
+  //
+  // destroy instances of ckeditor
+  //
+  function ckeditorDestroy() {
+    CKEDITOR.instances.mov_gallery_intro.updateElement();
+    CKEDITOR.instances.mov_gallery_intro.destroy();
+
+    CKEDITOR.instances.mov_gallery_content.updateElement();
+    CKEDITOR.instances.mov_gallery_content.destroy();
+  }
+
+  //
+  // replace instances of ckeditor
+  //
+  function ckeditorReplace() {
+    CKEDITOR.replace( 'mov_gallery_intro', {height: "150px", toolbar: "Mini"});
+    CKEDITOR.replace( 'mov_gallery_content', {height: "300px", toolbar: "Medium"});
+  }
+
+  //
+  // hide/show gallery form
+  //
+  $content = $('.editcontent');
+  $content.hide();
+
+  $('.editcontentbtn').addClass('show');
+  $('.editcontentbtn').click(function(){
+    $this = $(this);
+
+    //
+    // ckeditor does not response after animation or hide/show(on Chrome)
+    // recreate it on show and destroy on hide to prevent bugs
+    //
+    if ( $this.hasClass('show') ){
+      if ( typeof CKEDITOR.instances.mov_gallery_intro == 'undefined' ) {
+        ckeditorReplace();
+      }
+      else {
+        ckeditorDestroy();
+        ckeditorReplace();
+      }
+      // show content
+      $content.removeClass('hidden');
+      $content.show("slow");
+      $this.removeClass('show');
+
+      $("html, body").animate({
+        scrollTop: ( $(".editcontentbtn").first().offset().top )
+      }, 1000);
+
+    } else {
+      // hide content
+      $content.hide("slow", function(){
+        $content.addClass('hidden');
+        $this.addClass('show');
+      });
+
+      ckeditorDestroy();
+    }
+  });
+
+});
+
+// ajax call for getting details about the movie based on provided URL
+function post_yt_search(){
+  $yt_id = $("#movie_url").val();
+  $("#movie_url").addClass("loader");
+  $content_id = $("#content_id").val();
+
+  $.post("/backend/youtubes/find", { yt: $yt_id, content_id: $content_id }, function(data, textStatus, xhr) {
+    /* optional stuff to do after success */
+  }).always(function() { $("#movie_url").removeClass("loader"); }).error($(".ytclear").click());
+}
+
+function yt_search() {
+  var thread = null;
+  $("#movie_url").keyup(function() {
+    clearTimeout(thread);
+    var $this = $(this); 
+    thread = setTimeout(function(){post_yt_search($this.val())}, 1000);
+  });
+
+
+
+  $("#clear-yt").click(function(event) {
+    /* Act on the event */
+    $("#video_preview").html("");
+    $("#movie_url").val('');
+  });
+}

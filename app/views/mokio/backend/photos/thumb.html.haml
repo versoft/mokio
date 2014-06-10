@@ -1,0 +1,9 @@
+- if photo.thumb.blank?
+  .thumb_upload
+    = form_for [:backend, @edited_photo], :html => { :id => "uploadthumb", :multipart => true }, :remote => true, :url => { :action => "update_thumb" } do |f|
+      %h5= bt("thumb_upload_info", Photo)
+      %span#photoinputbtn.btn.fileinput-button
+        %span= bt("add_file", Photo)
+        = f.file_field :thumb
+- else 
+  %img#photo_edited{ :src => photo.thumb.url }

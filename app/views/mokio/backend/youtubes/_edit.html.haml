@@ -1,0 +1,49 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      %h3.modal-title.modal-youtube{:id => "myModalLabel"}= bt("edit_youtube", Youtube)
+    = common_form do
+      = simple_form_for [:backend, @edited_movie], :html => { :class => 'form-horizontal' } do |f|
+        .modal-body
+          .video_preview
+            .video_info
+              .row-fluid
+                = f.input :name
+              .row-fluid
+                = f.input :subtitle
+              .row-fluid
+                = f.input :intro, :input_html => { :class => "wysihtml5" }
+                -# %br
+                = hidden_field_tag :content_id, @edited_movie.content_id
+              .row-fluid
+                = f.label btc("preview", Youtube), :class => "form-label span2"
+                .span10
+                  .video_frame
+                    = @video.embed_code.html_safe
+              .row-fluid
+                = f.label btc("thumb_from_net", Youtube), :class => "form-label span2"
+                .span10
+                  #thumbnail-container
+                    = f.collection_radio_buttons(:thumb_external_url, ([@video.thumbnail_small]).collect{|t| [t, t]}, :first, :last, :item_wrapper_class => 'horizontal', :checked => @video.thumbnail_small) do |thumb| 
+                      = thumb.label { image_tag(thumb.text) + thumb.radio_button } 
+              .row-fluid
+                = f.label btc("thumb_own", Youtube), :class => "form-label span2"
+                - if @edited_movie.thumb.present?
+                  %img.edit_view_img.thumb{:alt => @edited_movie.name, :src => @edited_movie.thumb.url }
+                  %span#movieinputbtn.btn.btn-info.fileinput-button
+                    %span= bt("change_thumb", Youtube)
+                    = f.file_field :thumb    
+                - else
+                  %span#movieinputbtn.btn.btn-info.fileinput-button
+                    %span.icomoon-icon-plus.white
+                    = bt("add_file", Youtube)
+                    = f.file_field :thumb         
+
+
+
+        .modal-footer
+          = f.submit bt('save'), :class => "btn btn-primary edit_modal_submit", remote: true
+          %button.btn.btn-default{ :type => "button", "data-dismiss" => "modal"}= bt("close")
+
+    
+        

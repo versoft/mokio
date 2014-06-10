@@ -1,0 +1,172 @@
+/* line 11, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button {
+  display: inline-block;
+  cursor: pointer;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid;
+  border-color: #c4c4c4;
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* line 29, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button.deactivate {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  cursor: default !important;
+}
+/* line 32, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button.deactivate label, .toggle-button.deactivate span {
+  cursor: default !important;
+}
+/* line 36, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button > div {
+  display: inline-block;
+  width: 150px;
+  position: absolute;
+  top: 0;
+}
+/* line 41, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button > div.disabled {
+  left: -50%;
+}
+/* line 45, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button input[type=checkbox] {
+  display: none;
+}
+/* line 53, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button span, .toggle-button label {
+  cursor: pointer;
+  position: relative;
+  float: left;
+  display: inline-block;
+}
+/* line 60, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button label {
+  margin-left: -4px;
+  margin-right: -4px;
+  border: 1px solid #c4c4c4;
+  background: #ffffff; /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZGVkZWQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  #ffffff 0%, #ededed 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ffffff 0%,#ededed 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ffffff 0%,#ededed 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ffffff 0%,#ededed 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ffffff 0%,#ededed 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-8 */
+  margin-top: -1px;
+  z-index: 100;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  text-align: center;
+}
+.toggle-button label span {  color: #c6c6c6 !important; float: none;}
+/* line 72, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button span {
+  color: #fefefe;
+  text-align: center;
+  font-weight: bold;
+  z-index: 1;
+}
+/* line 78, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button span.labelLeft {
+  -moz-border-radius-topleft: 2px;
+  -webkit-border-top-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  padding-left: 3px;
+}
+/* line 83, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button span.labelRight {
+  -moz-border-radius-topright: 2px;
+  -webkit-border-top-right-radius: 2px;
+  border-top-right-radius: 2px;
+  -moz-border-radius-bottomright: 2px;
+  -webkit-border-bottom-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  color: white;
+  padding-right: 3px;
+  background: #dd6a47; /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RkNmE0NyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZDgxNTciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  #dd6a47 0%, #ed8157 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dd6a47), color-stop(100%,#ed8157)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #dd6a47 0%,#ed8157 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #dd6a47 0%,#ed8157 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #dd6a47 0%,#ed8157 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #dd6a47 0%,#ed8157 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd6a47', endColorstr='#ed8157',GradientType=0 ); /* IE6-8 */
+}
+/* line 91, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button span.primary, .toggle-button span.labelLeft {
+  color: white;
+  background: #84a758; /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg0YTc1OCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhNWM5NmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  #84a758 0%, #a5c96f 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#84a758), color-stop(100%,#a5c96f)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #84a758 0%,#a5c96f 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #84a758 0%,#a5c96f 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #84a758 0%,#a5c96f 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #84a758 0%,#a5c96f 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#84a758', endColorstr='#a5c96f',GradientType=0 ); /* IE6-8 */
+}
+/* line 96, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button span.info {
+  color: #fefefe;
+  background: #5bc0de;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #5bc0de), color-stop(100%, #2f96b4));
+  background-image: -webkit-linear-gradient(bottom, #5bc0de, #2f96b4);
+  background-image: -moz-linear-gradient(bottom, #5bc0de, #2f96b4);
+  background-image: -o-linear-gradient(bottom, #5bc0de, #2f96b4);
+  background-image: linear-gradient(bottom, #5bc0de, #2f96b4);
+}
+/* line 102, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button span.success {
+  color: #fefefe;
+  background: #62c462;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #62c462), color-stop(100%, #51a351));
+  background-image: -webkit-linear-gradient(bottom, #62c462, #51a351);
+  background-image: -moz-linear-gradient(bottom, #62c462, #51a351);
+  background-image: -o-linear-gradient(bottom, #62c462, #51a351);
+  background-image: linear-gradient(bottom, #62c462, #51a351);
+}
+/* line 108, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button span.warning {
+  color: #fefefe;
+  background: #dbb450;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #dbb450), color-stop(100%, #f89406));
+  background-image: -webkit-linear-gradient(bottom, #dbb450, #f89406);
+  background-image: -moz-linear-gradient(bottom, #dbb450, #f89406);
+  background-image: -o-linear-gradient(bottom, #dbb450, #f89406);
+  background-image: linear-gradient(bottom, #dbb450, #f89406);
+}
+/* line 114, ../sass/bootstrap-toggle-buttons.scss */
+.toggle-button span.danger {
+  color: #fefefe;
+  background: #ee5f5b;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #ee5f5b), color-stop(100%, #bd362f));
+  background-image: -webkit-linear-gradient(bottom, #ee5f5b, #bd362f);
+  background-image: -moz-linear-gradient(bottom, #ee5f5b, #bd362f);
+  background-image: -o-linear-gradient(bottom, #ee5f5b, #bd362f);
+  background-image: linear-gradient(bottom, #ee5f5b, #bd362f);
+}
+
+.toggle-button .icon16 {float: none;}

@@ -1,0 +1,287 @@
+// Place all the styles related to the backend/Menu controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$selectColor: orange;
+$inactive_color: #dddddd;
+
+// ol {
+//   counter-reset: item;
+//   list-style: none;
+
+//   li {
+//     &:before {
+//       z-index: 1;
+//       content: counters(item, ".") ". ";
+//       counter-increment: item;
+//       float: left;
+//       position: relative;
+//       top: 6px;
+//       left: -20px;
+//       width: 50px;
+//       display: block;
+//       text-align: right;
+//     }
+//   }
+// }
+
+#menusList {
+  width: 90%;
+  list-style: none;
+
+  .menu_div {
+    &:hover {
+      background-color: #ffffd5;
+    }
+  }
+
+  .sortable_true {
+    .menu_div {
+      &:hover {
+        background-image: url('backend/handle1.png');
+        background-repeat: no-repeat;
+        background-position: 10px 8px;
+      }
+    }
+  }
+
+  li {
+    margin: 0;
+    list-style: disc;
+
+    li {
+      list-style: circle;
+
+      li {
+        list-style: disc;
+
+        li {
+          list-style: circle;
+        }
+      }
+    }
+
+    &:hover {
+    }
+
+    &.ui-sortable-helper {
+      opacity: .5;
+    }
+    
+    
+    .menu_div {
+      position: relative;
+      padding: 2px 0;
+      border-bottom: 1px solid #eee;
+      width: 100%;
+      padding: 4px 0 4px 40px;
+     
+      .active_true {
+        background: orange;
+      }
+
+      .menu_name {
+        margin-left: 0px;
+        
+      }
+      .menu_details {
+        position: absolute;
+        right: 0;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+/* classes for reflecting whether given element is active or visible */
+.active_true,
+.active_false,
+.visible_true .menu_name,
+.visible_false .menu_name {
+  &:before {
+    position: relative;
+    top: 1px;
+    font-family: 'icomoon';
+  }
+}
+
+.active_true,
+.active_false {
+  &:before {
+    left: -7px;
+  }
+}
+
+.visible_true .menu_name,
+.visible_false .menu_name {
+  &:before {
+    left: -3px;
+  }
+}
+
+.active_true {
+  &:before {
+    content: "\e099";
+  }
+}
+.active_false {
+  &:before {
+    content: "\e09a";
+  }
+}
+.visible_true {
+  .menu_name {
+    &:before {
+      content: "\e18f";
+    }
+  }
+}
+.visible_false {
+  .menu_name {
+    &:before {
+      content: "\e18e";
+    }
+  }
+}
+  
+
+
+.dn .nostyle, #box1Counter, #box2Counter {
+  display: none;
+}
+
+.panel-body .form-group .select-box {
+  height: 200px;
+
+}
+
+.panel-body {
+  margin-bottom: 10px;
+  // height: 300px;
+}
+
+.row-fluid {
+  select {
+    width: 200px;
+
+    &.multiple {
+      width: 100%;
+    }
+  }
+}
+
+.form-group {
+  display: block;
+  
+  .fake {
+    display: none;
+  }
+}
+
+.mod-pos-box {
+  border: 1px solid #eeeeee;
+}
+
+.list-wrapper {
+  border: 1px solid #cccccc;
+  overflow-y: scroll;
+  height: 200px;
+  width: 98.5%;
+  
+
+  .fake-select {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+
+    li {
+      padding: 0px;
+      margin: 0px;
+      padding-left:5px;
+      background: white;
+      border: none;
+      font: -webkit-small-control;
+      font-size: 14px;
+      line-height: 17px;
+      color: #555555;
+      cursor: pointer;
+      
+    }
+    .displayed_false {
+      color: $inactive_color; 
+   }
+    .selected   {
+      background-color: $selectColor;
+    }
+
+    .always_true {
+      text-decoration: underline; 
+      }
+  }
+}
+
+
+.warning {
+  font-weight: bold;
+  color: red;
+}
+.blank-delete  {
+  display: inline-block;
+  width: 22px;
+}
+.blank {
+  font-weight: 700;
+}
+
+.displayed_false {
+  color:$inactive_color ; 
+}
+
+.form-group > .searchBox {
+  margin: 0 0 5px;
+}
+
+#menu_breadcrumps {
+  padding: 5px 0 0;
+}
+
+.tabs {
+  list-style: none;
+  margin: 0;
+
+  li {
+    display: inline-block;
+
+    a {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 10px;
+    }
+  }
+}
+
+.label-wrapper {
+  width: 14.5299%;
+  float: left;
+
+  label {
+    float: none!important;
+  }
+
+  hr {
+    margin: 5px;
+  }
+
+  li {
+    display: flex;
+    font-size: 12px;
+    line-height: 130%;
+  }
+}
+
+#legend {
+  width: 350px;
+  
+  .active_true:before, .active_false:before {
+    left: 0px;
+  }
+}

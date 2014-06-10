@@ -1,0 +1,44 @@
+$(document).ready(function() {
+  var siteData = {
+    "<%= I18n.t("backend.sidebars.content_management") %>": "/backend/contents",
+    "<%= I18n.t("menus.index_title") %>"                  : "/backend/menus",
+    "<%= I18n.t("static_modules.index_title") %>"         : "/backend/static_modules",
+    "<%= I18n.t("articles.new_title") %>"                 : "/backend/articles/new",
+    "<%= I18n.t("pic_galleries.new_title") %>"            : "/backend/pic_galleries/new",
+    "<%= I18n.t("mov_galleries.new_title") %>"            : "/backend/mov_galleries/new",
+    "<%= I18n.t("static_modules.new_title") %>"           : "/backend/static_modules/new",
+    "<%= I18n.t("menus.new_title") %>"                    : "/backend/menus/new",
+    "<%= I18n.t("backend.dashboard") %>"                  : "/backend",
+  };
+
+  $('.typeahead_main_search').typeahead({
+    updater: function (item) {
+      /* navigate to the selected item */
+      window.location.href = siteData[item];
+     },
+    source: function (typeahead, query) {
+      var links = [];
+
+      for (var name in siteData) {
+        links.push(name); 
+      }
+
+      return links;
+    }
+  });
+
+  var searchWidth = '100%';
+  var searchWidthReturn = '75%';
+  $('.typeahead_main_search').focus(function(){
+      //animate the box
+      $(this).animate({
+          width: searchWidth
+      }, 300 );
+  }); 
+
+  $('.typeahead_main_search').blur(function(){
+      $(this).animate({
+          width: searchWidthReturn
+      }, 300 );
+  });
+});

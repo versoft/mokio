@@ -1,0 +1,54 @@
+%li.sortableli{ :id => photo.id, :class => photo.thumb_name }
+  .dragable
+    %span.handler
+      %span.icon16.brocco-icon-move.white
+  %a{:title => photo.name, :rel => "prettyPhoto[pp_gal]", :href => photo.data_file.url }
+    - if photo.thumb.blank?
+      %img{:alt => photo.name, :src => photo.data_file.url(photo.thumb_name) }
+    - else
+      %img{:alt => photo.name, :src => photo.thumb.url }
+  .actionBtn
+    %a.edit{"data-toggle" => "modal", :href => "#modaledit_#{photo.id}" }
+      %span.icon16.icomoon-icon-pencil-2.white
+    = link_to backend_photo_path(photo), remote: true, method: :delete, class: "delete" do
+      %span.icon16.icomoon-icon-remove.white
+
+/
+/ edit form
+/
+.modal.fade{:id =>"modaledit_#{photo.id}", :role =>"dialog", "aria-hidden" => "true", :style => "display:none;", "aria-labelledby" => "myModalLabel"}
+  .modal-dialog
+    .modal-content
+      .modal-header    
+        %h3.modal-title.modal-photo{:id => "myModalLabel"}= bt("edit_photo")
+        %button.btn.btn-options
+          %span.icon16.icomoon-icon-cog
+        .photo-options-fields
+          %ul
+            %li.photo_thumb
+              %span.icon8.icomoon-icon-pencil-2 
+              = bt("add_own_thumb", Photo)
+
+      = simple_form_for [:backend, photo], :html => { :class => 'form-horizontal' }, :remote => true do |f|
+        .modal-body
+          .span9
+            = f.input :name
+            = f.input :subtitle
+            = f.input :intro
+            = f.input :external_link
+            = f.input :active, :wrapper => :active_checkbox
+          .span3
+            .edit_view_img_container
+              = bt("thumb", Photo)
+              - if photo.thumb.blank?
+                %img.edit_view_img{:alt => photo.name, :src => photo.data_file.url(photo.thumb_name) }
+              - else
+                %img.edit_view_img.thumb{:alt => photo.name, :src => photo.thumb.url }
+              .buttons
+                %a.fancybox{:href => photo.data_file.url}
+                  %button.btn.btn-success.btn-mini= bt("show_photo", Photo)
+                %button.btn.btn-primary.btn-mini= bt("edit_thumb", Photo)
+
+        .modal-footer
+          = f.submit bt('save'), :class => "btn btn-primary edit_modal_submit", remote: true
+          %button.btn.btn-default{ :type => "button", "data-dismiss" => "modal"}= bt("close")

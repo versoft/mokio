@@ -1,0 +1,126 @@
+$(document).ready(function() {
+  //=============================================
+  // important!
+  //
+  gallery_load();
+
+  $("a:contains('" + "<%= I18n.t('backend.cancel') %>" + "')").click(function(e) {
+    if ($('.editcontentbtn').length > 0) {
+      e.preventDefault();
+      $('.editcontentbtn').click();
+    }
+  });
+
+  $('#fileupload').fileupload({
+    dataType: "script" // kurwa magia....
+  });
+  //
+  // important!
+  //=============================================
+
+  init_link_upload_textarea();
+
+  //
+  // reload scripts after file add
+  //
+  $("#fileupload").bind("fileuploaddone", function (e, data) {
+    $('.galleryView>li').off('mouseenter mouseleave');
+
+    gallery_lazy_load();
+    prettyphoto();
+    submitmodal();
+    sortablephotos();
+
+    $(".btn-options").off();
+    $(".photo-options-fields li.photo_thumb").off();
+    $(".photo-options-fields li.photo_main").off();
+    photo_options_fields();
+
+    $modal_id = $('#itemContainer li.sortableli').last().attr('id');
+
+    $("#edit_photo_" + $modal_id + " .activebutton input[type=checkbox]" ).attr('class', 'activebtn')
+                                     .attr('data-on-label', '<i class="icomoon-icon-checkmark white"></i>')
+                                     .attr('data-off-label', '<i class="icomoon-icon-cancel-3 white"></i>');
+
+    $("#edit_photo_" + $modal_id + " .activebtn" ).bootstrapSwitch()
+                   .bootstrapSwitch('setOnClass', 'success')
+                   .bootstrapSwitch('setOffClass', 'danger')
+                   .bootstrapSwitch('setSizeClass', 'switch-small');
+
+    //
+    // Clickable modal inputs and textareas
+    //
+    $('.modal input, .modal textarea').bind('click mouseup mousedown keypress keydown keyup', function (e) {
+        e.stopPropagation();
+    });
+
+    edit_image_button();
+  });
+
+  $(document).ajaxComplete(function(event, xhr, settings) {
+    /* executes whenever an AJAX request completes */
+    if ( settings.url.match(/\/backend\/photos\/[0-9]+\/get\_[a-z]+/) ) {
+      if ( !PhotoEditForm.isInitialized ) { // flag just for SURE its not executed twice
+        PhotoEditForm.init();
+      }
+    }
+    else if ( settings.url.match(/\/backend\/photos\/[0-9]+\/update_thumb/) ) {
+      $(".editwrapper").append('<span class="thumb_remove icon32 icomoon-icon-remove white"></span>');
+
+      reloadScripts(); 
+
+      $(".thumb_remove").hide().fadeIn(500);
+      $(".thumb_remove").click(function(event) {
+        /* Act on the event */
+        $.ajax({
+          url: "/backend/photos/" + Modal.id() + "/remove_thumb",
+          type: 'DELETE'
+        })
+        .done(function(){
+          $(".thumb_remove").fadeOut(500, function() {
+            $(this).remove();
+          });
+
+          PhotoEditForm.isInitialized = false;
+
+          $(".editwrapper").remove();
+          $(".modal-backdrop").fadeOut(500, function() {
+            $(this).remove();
+
+            setTimeout(function(){
+              Modal.show();
+            })
+          });
+        });
+      });
+
+      $(".photo_crop, .photo_rotate").fadeIn(500);
+    }
+    else if ( settings.url.match(/\/backend\/photos\/[0-9]+\/remove_thumb/)  ) {
+      reloadScripts();
+    }
+    else if ( settings.url.match(/\/backend\/photos\/[0-9]+\/upload_external_links/)  ) {
+      $('.galleryView>li').off('mouseenter mouseleave');
+      $(".btn-options").off();
+      $(".photo-options-fields li.photo_thumb").off();
+      $(".photo-options-fields li.photo_main").off();
+
+      gallery_load();
+    }
+      
+
+    $file_upload = document.getElementById('uploadthumb');
+
+    if ( $file_upload ) {
+      $("#uploadthumb").fileupload({
+        dataType: "script",
+        add: function(e, data) {
+          // Automatically upload the file once it is added to the queue
+          data.submit();
+        },
+        done: null,
+        stop: null
+      });  
+    }
+  });
+});

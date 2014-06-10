@@ -1,0 +1,37 @@
+$ ->
+
+  if $("table").hasClass("dynamicTable")
+    $(".dynamicTable").dataTable
+      sPaginationType: "full_numbers"
+      bJQueryUI: false
+      bAutoWidth: false
+      bLengthChange: false
+      bProcessing: true
+      bServerSide: true
+      aoColumnDefs: [ { 'bSortable': false, 'aTargets': [ -1 ] } ] # disable sorting in column with actions
+      sAjaxSource: $('#dTable').data("source")
+      iDisplayLength: <%= Mokio.backend_default_per_page %> # pagination - per page
+      oLanguage:
+        sProcessing: "<%= I18n.t("backend.please_wait") %>"
+        sLengthMenu: "<%= I18n.t("backend.show") %>" + " _MENU_ " + "<%= I18n.t("backend.table_positions") %>"
+        sZeroRecords: "<%= I18n.t("backend.no_matching_indexes") %>"
+        sInfo: "<%= I18n.t("backend.table_positions_from") %>" + " _START_ " + "<%= I18n.t("backend.table_to") %> "+ " _END_  - " + "<%= I18n.t("backend.table_all") %>" + " _TOTAL_"
+        sInfoEmpty: "<%= I18n.t("backend.table_no_records") %>"
+        sInfoFiltered: "<%= I18n.t("backend.table_filtring_from") %>" + " _MAX_ " + "<%= I18n.t("backend.table_available_positions") %>"
+        sInfoPostFix: ""
+        sSearch: "<%= I18n.t("backend.search") %>"
+        sUrl: ""
+        oPaginate:
+          sFirst: "<%= I18n.t("backend.table_first") %>"
+          sPrevious: "<%= I18n.t("backend.table_previous") %>"
+          sNext: "<%= I18n.t("backend.table_next") %>"
+          sLast: "<%= I18n.t("backend.table_last") %>"
+      fnInitComplete: (oSettings, json) ->
+        $(".dataTables_filter>label>input").attr "id", "search"
+      fnDrawCallback: (oSettings) ->
+        $(".activebtn").bootstrapSwitch()
+        $(".activebtn").on "switch-change", (e, data) ->
+          row_id = $(this).parents("tr").attr("id")
+          url = '/backend/comments/' + row_id + '/update_accepted' if $(this).parents('.activebutton').hasClass('comment')
+          url = '/backend/contents/' + row_id + '/update_active'  if !$(this).parents('.activebutton').hasClass('comment')
+          $.post url

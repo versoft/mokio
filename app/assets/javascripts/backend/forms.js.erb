@@ -1,0 +1,73 @@
+function removeTip(selector) { $(selector).removeClass('error').qtip('destroy').attr('title',''); }
+
+function required_field(selector) {
+  if ( !$(selector).val() ) {
+    $(selector).addClass('error').attr('title', "<%= I18n.t('backend.required_field') %>")
+      .qtip({
+        position: {
+          my: 'bottom center',
+          at: 'top center',
+          viewport: $(window)
+        },
+        style: { classes: 'qtip-tipsy' }
+      }).qtip('show');
+  } else {
+    removeTip(selector);
+  }
+}
+
+function display_from_errors(selector_from, selector_to) {
+  if ($(selector_to).attr('value')) {
+    if ( $(selector_from).attr('value') > $(selector_to).attr('value') ) {
+      $(selector_from).addClass('error').attr('title', "<%= I18n.t('backend.display_from_out_of_range') %>")
+        .qtip({
+          position: {
+            my: 'left center',
+            at: 'right center',
+            viewport: $(window)
+          },
+          style: { classes: 'qtip-tipsy' }
+        }).qtip('show');
+    } else {
+      removeTip(selector_from);
+    }
+  }
+}
+
+$(document).ready(function() {
+
+  $('.required input').on('change', function() {
+    if ( !$(this).parent().find('label').hasClass('error') ) {
+      required_field(this);
+    }
+  });
+
+  if ( !$('.display_from').parent().find('label').hasClass('error')  ) {
+    display_from_errors('.display_from', '.display_to');
+  }
+  
+  $('.display_from,.display_to').on('change', function() {
+    display_from_errors('.display_from', '.display_to');
+  });
+
+
+  $('.mask-date').mask('99-99-9999 99:99').attr('data-format', "dd/MM/yyyy hh:mm:ss");
+  $('.mask-date').datetimepicker({dateFormat: 'dd-mm-yy'});
+  $(".mask-date").parent().append("<span class='add-on calendar'><span class='icomoon-icon-calendar'></span></span>'");
+
+  $(".add-on.calendar").click(function(event) {
+    /* Act on the event */
+    $(this).parent().find('.mask-date').focus();
+  });
+
+  // $('.check_boxes').attr('class', 'activebtn')
+  //                  .attr('data-on-label', '<i class="icomoon-icon-checkmark white"></i>')
+  //                  .attr('data-off-label', '<i class="icomoon-icon-cancel-3 white"></i>');
+
+  // $('.check_boxes').bootstrapSwitch();
+
+
+  $('input[type=checkbox]').attr('class', 'activebtn')
+                                         .attr('data-on-label', '<i class="icomoon-icon-checkmark white"></i>')
+                                         .attr('data-off-label', '<i class="icomoon-icon-cancel-3 white"></i>');
+});

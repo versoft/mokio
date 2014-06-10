@@ -1,0 +1,17 @@
+- if params[:action] == "edit"
+  %h2.center.gallerytitle= "#{bt('gallery')}: #{obj.title}"
+  %span.btn.btn-info.editcontentbtn
+    %span.icomoon-icon-pencil.white
+    = bt('edit_gallery_content', @obj_class)
+  .editcontent
+    %hr
+    -# = f.input :content_id
+    = render :partial => "mokio/backend/mov_galleries/form_inputs", locals: {f:f}
+    .form-actions
+      = btn_submit bt("save")
+      = btn_submit bt("save_and_create_new"), true
+      = btn_cancel "/backend/#{obj.class.to_s.tableize}"
+  %hr
+
+- else
+  = render :partial => "mokio/backend/mov_galleries/form_inputs", locals: {f:f}

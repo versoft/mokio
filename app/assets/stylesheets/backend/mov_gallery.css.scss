@@ -1,0 +1,85 @@
+.modalyt {
+  margin-top: 0px; 
+
+  #youtube_intro {
+    height: 150px;
+  }
+
+  .video_preview {
+    .video_frame {
+      clear: left;
+      text-align: center;
+      height: 375px;
+      padding: 15px 0 0;
+    }
+
+
+    .video_info {
+
+      .youtube_name {
+        height: 30px;
+      }
+      
+      .youtube_intro {
+        float: left;
+      }
+
+    }
+
+    #thumbnail-container {
+      margin: 0 0 30px;
+      overflow: hidden;
+
+      .horizontal {
+        float: left;
+      }
+    }
+    img {
+      float: left;
+      display: inline-block;
+      width: 100px;
+      height: 80px;
+      padding: 5px;
+    }
+  }
+}
+.edit-youtube {
+  cursor: pointer;
+}
+
+#video-preview-wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  background: black;
+  display: none;
+  z-index: 1500;
+
+  #video-preview {
+    width: 700px;
+    height: 500px;
+    position: fixed;
+    top: 50%;
+    margin-top: -250px;
+    left: 50%;
+    margin-left: -350px;
+  }
+}
+
+.loader {
+  background: url('backend/loaders/circular/002.gif') no-repeat right;
+}
+
+.modal-footer .btn-primary {
+  padding: 9px;
+}
+#gallery-loader {
+  background: white url('backend/loaders/circular/002.gif') no-repeat center;
+  width: 330px;
+  height: 195px;
+  position: absolute;
+  display: none;
+}

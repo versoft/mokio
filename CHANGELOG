@@ -1,0 +1,20 @@
+# 
+# Mokio (Ruby on Rails content management system)
+#
+
+Mokio (dev "Kolibroryfer") 25.04.2014 v0.0.1
+
+  1. Created gem with working application
+  2. Added gem dependices to gemspec
+  3. Added configuration system working as Mokio's module variables
+  4. Added generator for initializer file
+  5. Specified TODO's for future updates
+    Adam Stomski
+
+Mokio (dev "Kolibroryfer") 7.05.2014 v0.0.2
+
+  1. Added users usage with Devise gem
+  2. Solved problems with "new" action in Menus
+  3. Enabled Ckeditor assets
+  4. Added solr_exceptions configuration key
+    Adam Stomski

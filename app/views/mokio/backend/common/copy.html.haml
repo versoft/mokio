@@ -1,0 +1,5 @@
+.span12
+  = render :partial => "mokio/backend/common/notice"
+  .box
+    = box_title bt("copy_title", @obj_class)
+    = render :partial => "mokio/backend/common/form_content", locals: {obj: obj}

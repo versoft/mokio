@@ -1,0 +1,8 @@
+.modal-header
+  %h3.modal-title.modal-youtube{:id => "myModalLabel"}= bt("add_youtube", Youtube)
+.modal-body
+  = render :partial => 'search_yt_body'
+  - if @error
+    = bt('no_movie_found', Youtube)
+#only-close-footer.modal-footer
+  %button.btn.btn-default{:type => "button", "data-dismiss" => "modal"}= bt("close")

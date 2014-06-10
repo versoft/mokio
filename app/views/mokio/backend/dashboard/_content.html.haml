@@ -1,0 +1,9 @@
+%tr
+  %td
+    %a{:href => edit_url(content.class.base_class, content)}
+      = content.title
+  %td
+    .controls.center
+      = table_controls_edit_btn( edit_url(content.class.base_class, content) )
+      = table_controls_delete_btn( obj_url(content.class.base_class, content) ) if content.deletable
+      = table_controls_copy_btn( copy_url(content.class.base_class, content) ) if content.deletable

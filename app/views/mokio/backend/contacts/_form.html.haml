@@ -1,0 +1,42 @@
+= f.input :lang_id, collection: Lang.all.collect{|lang| [bt(lang.name), lang.menu_id]},  include_blank: bt('all'), disabled: !obj.display_editable_field?('lang_id')
+= f.input :active, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('active')
+= f.input :title, disabled: !obj.display_editable_field?('title')
+= f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 400} }, disabled: !obj.display_editable_field?('content')
+
+= f.input :recipient_emails, :as => :string, :input_html => { :class => "recipients span10" }, disabled: !obj.display_editable_field?('recipient_emails')
+
+.contaner
+  %hr
+  .row-fluid
+    -# .span1
+    -# .span7
+    = f.fields_for :contact_template do |t|
+      .label-wrapper
+        = f.label btc("tpl", Contact)
+        .well
+          = btc("form_data", Contact)
+          %hr
+          %ul.unstyled
+            %li
+              %span.icon16.icomoon-icon-arrow-right-2
+              = "%name% - Imię i nazwisko lub nazwa firmy"
+            %li
+              %span.icon16.icomoon-icon-arrow-right-2
+              = "%email% - Adres e-mail"
+            %li
+              %span.icon16.icomoon-icon-arrow-right-2
+              = "%title% - Tytuł"
+            %li
+              %span.icon16.icomoon-icon-arrow-right-2
+              = "%content% - Treść"
+
+      = t.input :tpl, :label => "",  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 300} }
+   
+
+= f.hidden_field :contact, value: true
+= f.hidden_field :intro, value: ""
+
+- content_for :js do
+  = javascript_include_tag 'backend/plugins/forms/select/select2.min'
+  :javascript
+    $(".recipients").select2({tags:[]});

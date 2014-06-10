@@ -1,0 +1,41 @@
+// Core stylesheets do not remove
+@import "backend/bootstrap/bootstrap";
+@import "backend/bootstrap/bootstrap-responsive";
+@import "backend/bootstrap/bootstrap2-switch";
+@import "backend/supr-theme/jquery.ui.supr";
+@import "backend/icons";
+
+
+// Plugin stylesheets
+@import "backend/plugins/misc/qtip/jquery.qtip";
+
+// Main stylesheets
+@import "backend/main";
+@import "backend/menu";
+@import "backend/new";
+
+// Others
+@import "backend/plugins/gallery/pretty-photo/prettyPhoto";
+@import "backend/plugins/gallery/jpages/jPages";
+@import "backend/plugins/misc/pnotify/jquery.pnotify.default";
+@import "backend/supr-theme/jquery.ui.theme";
+@import "backend/supr-theme/jquery.ui.datepicker";
+@import "fancybox";
+
+// For tables layout
+@import "backend/plugins/tables/dataTables/jquery.dataTables";
+@import "backend/plugins/tables/responsive-tables/responsive-tables";
+
+@import "jquery.fileupload-ui";
+
+@import "backend/custom";
+@import "backend/plugins/jcrop/jquery.Jcrop";
+@import "backend/mov_gallery";
+@import "backend/dashboard";
+@import "backend/comments";
+
+@import "backend/bootstrap/bootstrap-wysihtml5-0.0.2";
+@import "backend/supr-theme/jquery-ui-timepicker-addon";
+@import "backend/plugins/forms/select2/select2";
+
+@import "backend/bootstrap/joyride-2.1";

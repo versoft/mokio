@@ -1,0 +1,168 @@
+# File that used by final_menu rake task for generating menu structure for new site
+
+# Apart from visible parts of tree menu we need to create nodes for langs and menu
+# types (i.e left menu, top menu) - they all have fake: set to true. The structure should be more or less as follows:
+# --pl
+#   --position1
+#     --menu_item1
+#       --submenu_item1
+#       --sumbenu_item1
+#     --menu_item2
+#       --submenu_item3
+#   --position2
+# --en
+#   --position1
+#     --menu_item1
+
+langs: 
+  -
+    id: 1
+    name: polish
+    shortname: pl
+    active: true
+    menu_id: 1
+  
+  -
+    id: 2
+    name: english
+    shortname: en
+    active: true
+    menu_id: 2
+
+menus: 
+  -
+    id: 1
+    name: pl
+    seq: 1
+    target: 
+    external_link: 
+    lang_id: 1
+    editable: false
+    deletable: false
+    visible: true
+    content_editable: false
+    modules_editable: false
+    fake: true
+    children: 
+      -
+        id: 3
+        name: Lewo
+        seq: 1
+        target: 
+        external_link: 
+        lang_id: 1
+        editable: false
+        deletable: false
+        visible: true
+        content_editable: false
+        modules_editable: false
+        fake: true
+        children:
+          - 
+            id: 4
+            name: Strona Główna
+            seq: 1
+            target: 
+            external_link: 
+            lang_id: 1
+            editable: true
+            deletable: true
+            visible: true
+            content_editable: true
+            modules_editable: true
+            fake: false
+          - 
+            id: 5
+            name: Galeria
+            seq: 2
+            target: 
+            external_link: 
+            lang_id: 1
+            editable: false
+            deletable: false
+            visible: true
+            content_editable: false
+            modules_editable: false
+            fake: false
+
+      -
+        id: 6
+        name: Stopka 
+        seq: 2
+        target: 
+        external_link: 
+        lang_id: 1
+        editable: true
+        deletable: true
+        visible: true
+        content_editable: true
+        modules_editable: true
+        fake: true
+        children:
+        - 
+          id: 7
+          name: Bonus
+          seq: 1
+          target: 
+          external_link: 
+          lang_id: 1
+          editable: true
+          deletable: true
+          visible: true
+          content_editable: true
+          modules_editable: true
+          fake: false
+        - 
+          id: 8
+          name: Galeria1
+          seq: 2
+          target: 
+          external_link: 
+          lang_id: 1
+          editable: true
+          deletable: true
+          visible: true
+          content_editable: true
+          modules_editable: true
+          fake: false
+  -
+    id: 2
+    name: en
+    seq: 2
+    target: 
+    external_link: 
+    lang_id: 2
+    editable: false
+    deletable: false
+    visible: true
+    content_editable: false
+    modules_editable: false
+    fake: true
+    children: 
+    -
+      id: 9
+      name: Left
+      seq: 1
+      target: 
+      external_link: 
+      lang_id: 1
+      editable: false
+      deletable: false
+      visible: true
+      content_editable: false
+      modules_editable: false
+      fake: true
+      children:
+        - 
+          id: 10
+          name: Home Page
+          seq: 1
+          target: 
+          external_link: 
+          lang_id: 1
+          editable: true
+          deletable: true
+          visible: true
+          content_editable: true
+          modules_editable: true
+          fake: false

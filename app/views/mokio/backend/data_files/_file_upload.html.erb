@@ -1,0 +1,71 @@
+<%= form_for [:backend, file_type.new], :remote => true, :html => { :multipart => true, :id => "fileupload" } do |f| %>
+  <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+  <div class="fileupload-buttonbar">
+      <!-- The fileinput-button span is used to style the file input field as button -->
+    <span class="btn btn-success fileinput-button">
+      <span><%= bt("add_files") %></span>
+      <%= f.hidden_field :content_id, :value => obj.id, name: "photo[content_id]"  %>
+      <%= f.file_field :data_file, multiple:true, name: "photo[data_file]" %>
+    </span>
+    <button type="submit" class="btn btn-primary start">
+      <span><%= bt("start_upload") %></span>
+    </button>
+    <button type="reset" class="btn btn-warning cancel">
+      <span><%= bt("cancel_upload") %></span>
+    </button>
+  </div>
+  <!-- The loading indicator is shown during image processing -->
+  <div class="fileupload-loading"></div>
+  <br>
+  <!-- The table listing the files available for upload/download -->
+  <table class="table table-striped"><tbody class="files" ></tbody>
+  </table>
+<% end %>
+
+
+<script>
+  var fileUploadErrors = {
+  maxFileSize: 'File is too big',
+  minFileSize: 'File is too small',
+  acceptFileTypes: 'Filetype not allowed',
+  maxNumberOfFiles: 'Max number of files exceeded',
+  uploadedBytes: 'Uploaded bytes exceed file size',
+  emptyResult: 'Empty file upload result'
+  };
+</script>
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+  <tr class="template-upload fade">
+    <td class="preview"><span class="fade"></span></td>
+    <td class="name"><span>{%=file.name%}</span></td>
+    <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+    {% if (file.error) { %}
+    <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+    {% } else if (o.files.valid && !i) { %}
+    <td>
+      <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
+    </td>
+    <td class="start">{% if (!o.options.autoUpload) { %}
+      <button class="btn btn-primary">
+        <span>{%=locale.fileupload.start%}</span>
+      </button>
+      {% } %}</td>
+    {% } else { %}
+    <td colspan="2"></td>
+    {% } %}
+    <td class="cancel">{% if (!i) { %}
+      <button class="btn btn-warning">
+        <span>{%=locale.fileupload.cancel%}</span>
+      </button>
+      {% } %}</td>
+  </tr>
+  {% } %}
+</script>
+
+
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+
+</script>

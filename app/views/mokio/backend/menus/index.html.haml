@@ -1,0 +1,53 @@
+-#= stylesheet_link_tag    "menu", :media => "all"
+= render :partial => "mokio/backend/common/notice"
+
+.box.gradient
+  .title
+    %h4
+      %span= bt("index_title", Menu)
+      = btn_new( bt("index_add_new", Menu), new_url(Menu) )
+
+- if @menus.present?
+  %ol#menusList.sortable
+    - @menus.each do |menu, menu_children|
+      %li{:id => "#menu_#{menu.id}", :class => "not-sortable"}
+        = render :partial => "menu", :locals => {menu: menu}
+        %ol
+          - menu_children.each do |submenu, submenu_children|
+            %li{:class => "not-sortable"}
+              = render :partial => "menu", :locals => {menu: submenu}
+              %ol= tree_menu(submenu_children, true)
+- else
+  %h3 There are currently no menus.
+
+#legend.well.span4
+  %label= btc("legend", Menu)
+  .active_true
+    = btc('menu_active_legend', Menu)
+  .active_false
+    = btc('menu_non_active_legend', Menu)
+  .visible_true
+    .menu_name
+      = btc('menu_visible_legend', Menu)
+  .visible_false
+    .menu_name
+      = btc('menu_non_visible_legend', Menu)
+
+- content_for :js do
+  = javascript_include_tag "backend/menu/jquery.ui.nestedSortable", :async => true
+
+  :javascript
+    setTimeout(function(){
+      $('.sortable').nestedSortable({
+          handle: 'div',
+          items: 'li.sortable_true', 
+          toleranceElement: '> div',
+          protectRoot: true,
+          update: function(event, ui) {
+            $.post("/backend/menus/sort", $(this).nestedSortable('serialize'));
+          }
+      });
+    },300);
+    //$("ol.sortable").bind("sortstop", function (event, ui) {
+    //     return ui.item.hasClass("sortable_true");
+    // });

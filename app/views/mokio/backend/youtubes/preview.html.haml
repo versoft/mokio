@@ -1,0 +1,36 @@
+- if !@video.present?
+  = render :partial => 'search_yt'
+- else 
+  .modal-dialog
+    .modal-content
+      #yt-uploader-content
+        = common_form do
+          = simple_form_for [:backend, @youtube], :html => { :class => 'form-horizontal' } do |f|
+            .modal-body
+              .video_preview
+                = render :partial => 'search_yt_body'
+                = f.input :name, :input_html => { :value => @video.title }
+                = f.input :subtitle
+                = f.input :movie_url, :as => :hidden, :input_html => { :value => @video.embed_url }
+                = f.input :content_id, :as => :hidden, :input_html => { :value => @edited_gallery.id }
+                = f.input :intro, :input_html => { :value => @video.description, :class => "wysihtml5" }
+                %br
+                = f.label :thumb, :class => "form-label span2"
+                #thumbnail-container
+                  %br
+                  = f.collection_radio_buttons(:thumb_external_url, ([@video.thumbnail_small] + [@video.thumbnail_medium] + [@video.thumbnail_large]).collect{|t| [t, t]}, :first, :last, :item_wrapper_class => 'horizontal', :checked => @video.thumbnail_small) do |thumb| 
+                    = thumb.label { image_tag(thumb.text) + thumb.radio_button } 
+
+                  %span#movieinputbtn.btn.fileinput-button
+                    %span= bt("add_own_thumb", Youtube)
+                    = f.file_field :thumb 
+
+                %br
+                .video_frame
+                  = @video.embed_code.html_safe
+                
+
+            .modal-footer
+              = f.submit bt('save'), :class => "btn btn-primary edit_modal_submit", remote: true
+              %button.btn.btn-default{ :type => "button", "data-dismiss" => "modal"}= bt("close")    
+

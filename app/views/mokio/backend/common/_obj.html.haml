@@ -1,0 +1,16 @@
+%tr.odd.gradeA{ :class => ("disabled" if !obj.active) }
+  - @obj_class.columns_for_table.each do |t|
+    %td{ :id => obj.id }
+      -#
+      -# Common index tries to find object.attribute_view function in your Model to parse value
+      -# if it's not defined, just puts simple object.atribute value
+      -#
+      - if obj.respond_to?("#{t}_view")
+        = eval("obj.#{t}_view")
+      - else
+        = obj.try(t)
+  %td
+    .controls.center
+      = table_controls_edit_btn( edit_url(@obj_class, obj) ) if obj.editable
+      = table_controls_delete_btn( obj_url(@obj_class, obj) ) if obj.deletable
+      = table_controls_copy_btn( copy_url(@obj_class, obj) ) if obj.editable 

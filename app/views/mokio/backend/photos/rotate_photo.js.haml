@@ -1,0 +1,10 @@
+$(".photo_holder").html('<img id="photo_edited" src="#{@edited_photo.data_file.url(:normal)}"></img>');
+previous = $("#itemContainer").find("li##{@edited_photo.id}").prev();
+$("#itemContainer").find("li##{@edited_photo.id}").remove();
+$("#itemContainer").find("#modaledit_#{@edited_photo.id}").remove();
+if (previous.attr("id")){
+previous.after("#{j render :template => 'mokio/backend/photos/photo', :locals => {photo: @edited_photo} }");  
+}
+else {
+$("#itemContainer").prepend("#{j render :template => 'mokio/backend/photos/photo', :locals => {photo: @edited_photo} }");
+}

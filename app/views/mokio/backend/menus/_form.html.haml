@@ -1,0 +1,66 @@
+= f.input :lang_id, label: btc("language"), collection: Lang.all.collect{|lang| [bt(lang.name), lang.menu_id]},  include_blank: false, disabled: !@menu.display_editable_field?('lang_id')
+
+-# = f.input :lang_id, :as => :hidden, :input_html => { :value => (@menu.lang_id.nil? ? 1 : @menu.lang_id)}, disabled: !@menu.display_editable_field?('lang_id')
+= f.input :active, :wrapper => :active_checkbox, label: btc("active",'Menu'), disabled: !@menu.display_editable_field?('active')
+= f.input :visible, :wrapper => :active_checkbox,label: btc("visible",'Menu'), disabled: !@menu.display_editable_field?('visible')
+= f.input :name, label: btc("name",'Menu'), disabled: !@menu.display_editable_field?('name')
+
+.row-fluid
+  = dual_select_box(@menu.available_contents, 'id', 'title', @menu.contents, 'id', 'title', btc('content', 'Menu'), '','menu[content_ids][]', true, false, false, @menu.display_editable_field?('contents'))
+
+= f.input :external_link, label: btc("external_link",'Menu'), disabled: !@menu.display_editable_field?('external_link')
+= f.input :description, label: btc("description",'Menu'), disabled: !@menu.display_editable_field?('description')
+= f.input :parent_id, label: btc("parent_menu",'Menu'), :collection => @menu.parent_tree.collect{|m| [m.name, m.id]}, include_blank: false, disabled: !@menu.display_editable_field?('parent_id')
+
+.row-fluid
+  %label.form-label.span2
+    = btc('path', Menu)
+  .span10
+    #menu_breadcrumps
+      = tree_menu_breadcrumps(@menu.parent)
+
+= f.input :target, label: btc("target",'Menu'), :collection => [[bt("current_window_inside",'Menu'), nil], [bt("new_window",'Menu'), "_blank"], [bt("current_window_whole",'Menu'), "_whole"]], include_blank: false, disabled: !@menu.display_editable_field?('target')
+
+.row-fluid
+  %label.form-label.span2 Moduły statyczne
+  .span10
+    .tabs_wrap
+      %ul.nav.nav-tabs.pattern{:id => "tabs_modules"}
+        - ModulePosition.all.each do |mp|
+          %li
+            %a{:href => "#" + mp.name.parameterize, :"data-toggle" => "tab"}
+              = mp.name
+
+      .tab-content
+        - ModulePosition.all.each do |mp|
+          .tab-pane.fade{:id => mp.name.parameterize}
+            = dual_select_box(@menu.available_modules_by_pos[mp.id].nil? ? [] : @menu.available_modules_by_pos[mp.id], 'id', 'module_title', @menu.selected_modules_by_pos[mp.id].nil? ? [] : @menu.selected_modules_by_pos[mp.id], 'id', 'module_title', mp.name, '_' + mp.id.to_s, 'menu[available_module_ids][' + mp.id.to_s + '][]', false, true, true, @menu.display_editable_field?('available_modules'))
+
+- content_for :js do
+  = javascript_include_tag "backend/menu/menu_dual_select"
+
+  :javascript
+    $(document).ready(function() {
+      $('#menu_parent_id').change(function() {
+        $.ajax({
+          url: "/backend/menus/" + $('#menu_parent_id').val() + "/update_menu_breadcrumps",
+          dataType: "script"
+        });
+      });
+
+      $('#menu_lang_id').change(function() {
+        var content_confirm = confirm('#{bt('content_remove_confirm', 'Menu')}');
+        var modules_confirm = confirm('#{bt('modules_remove_confirm', 'Menu')}');
+        $.ajax({
+          url: "/backend/menus/lang_changed?lang_id=" + $('#menu_lang_id').val() + '&content_confirm='+ content_confirm + '&modules_confirm=' + modules_confirm,
+          dataType: "script"
+        });
+      });
+      dualSelectInit('', true);
+      #{@dual_select_str}
+
+      //tabs
+      $('#tabs_modules li').first().addClass('active');
+      $('.tabs_wrap .tab-pane').first().addClass('in active');
+    });
+  

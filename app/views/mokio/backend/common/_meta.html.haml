@@ -1,0 +1,51 @@
+%a{"data-toggle" => "modal", :href => "#meta_g_modal" }
+  %button.btn.btn-success.btn-mini.box-form3.right
+    %span.icon16.icomoon-icon-google-plus.white
+    = bt("meta_google", Meta)
+
+%a{"data-toggle" => "modal", :href => "#meta_f_modal" }
+  %button.btn.btn-primary.btn-mini.box-form2.right
+    %span.icon16.icomoon-icon-facebook-2.white
+    = bt("meta_facebook", Meta)
+
+
+#meta_g_modal.modal.fade{:role =>"dialog", "aria-hidden" => "true", :style => "display:none;", "aria-labelledby" => "meta_g_ModalLabel"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h3.modal-title.modal-photo{:id => "meta_g_ModalLabel"}
+          %span.icon24.icomoon-icon-google-plus
+          = bt("meta_google", Meta)
+          %small= bt("meta_google_desc", Meta)
+
+      .modal-body
+        = f.fields_for :meta do |m|
+          = m.input :g_title
+          = m.input :g_desc
+          = m.input :g_keywords
+          = m.input :g_author
+          = m.input :g_copyright
+          = m.input :g_application_name
+
+      .modal-footer
+        %button.btn.btn-primary{ :type => "button", "data-dismiss" => "modal"}= bt("close")
+
+#meta_f_modal.modal.fade{:role =>"dialog", "aria-hidden" => "true", :style => "display:none;", "aria-labelledby" => "meta_f_ModalLabel"}
+  .modal-dialog
+    .modal-content
+      .modal-header    
+        %h3.modal-title.modal-photo{:id => "meta_f_ModalLabel"}
+          %span.icon24.icomoon-icon-facebook-2
+          = bt("meta_facebook", Meta)
+          %small= bt("meta_facebook_desc", Meta)
+
+      .modal-body
+        = f.fields_for :meta do |m|
+          = m.input :f_title
+          = m.input :f_type
+          = m.input :f_image
+          = m.input :f_url
+          = m.input :f_desc
+
+      .modal-footer
+        %button.btn.btn-primary{ :type => "button", "data-dismiss" => "modal"}= bt("close")
