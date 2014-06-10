@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVELOPMENT_MODE=true       # true for mokio in development
+DEVELOPMENT_MODE=false       # true for mokio in development
 LOGFILE="mokio-install.log" # Simple user does not need to see all standard output informations
 ADAPTERS=(mysql2 sqlite3)   # Database adapters
 RAILS_VERSION="=4.0.3"      # Currently used rails version with Mokio gem is 4.0.3 (may change still in development)
