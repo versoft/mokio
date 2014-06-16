@@ -106,6 +106,7 @@ en:
     slider: Slider
     sign_up: Sign up
     sign_in: Sign in
+    change_password: Change Password
 
     sidebars:
       sidebar_title: Sidebar
@@ -118,6 +119,7 @@ en:
       menu: Menu
       modules: Modules
       comments: Komentarze
+      users: Users
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -139,7 +141,8 @@ en:
       contacts_edit: Edit contact page
       sliders_new: New slider
       sliders_edit: Edit slidera
-      comments: Komentarze
+      comments: Comments
+      users: Users
 
   static_modules:
     actions: Actions
@@ -450,6 +453,35 @@ en:
     reject_all_false: Comments have NOT been rejected
     delete_rejected_true: Rejected comments have been deleted
     delete_rejected_false: Not all rejected comments have been deleted
+
+  users:
+    index_add_new: Add new user
+    index_title: Users
+    new_title: New user
+    new_user: New user
+    add_user: Add
+    edit_user: Edit user
+    save_user: Save
+    copy_title: Copy user
+    edit_title: Edit user
+    created: "User <strong>'%{title}'</strong> has been created"
+    updated: "User <strong>'%{title}'</strong> has been saved"
+    deleted: "User <strong>'%{title}'</strong> has been deleted"
+    not_created: "User <strong>'%{title}'</strong> has NOT been created"
+    not_updated: "User <strong>'%{title}'</strong> has NOT been saved"
+    not_deleted: "User <strong>'%{title}'</strong> has NOT been deleted"
+    roles:  Roles
+    role_name:
+      admin: Administrator
+      content_editor: Content management
+      menu_editor: Menu management
+      static_module_editor: Static modules management
+      user_editor: Users management
+      comment_approver: Comment approve
+      reader: Reader
+    edit_password: Change password
+    password_updated: Password has been updated
+    password_not_updated: Password has NOT been updated
 
   site_helper:
     next: next
