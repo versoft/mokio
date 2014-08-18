@@ -1,3 +1,6 @@
 module Mokio
-  VERSION = "0.0.2"
+  #
+  # Actual Mokio version
+  #
+  VERSION = "0.0.4"
 end

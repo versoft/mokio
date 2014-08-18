@@ -77,7 +77,7 @@ private
 
       collection = searched.results
     elsif params[:only_loose].present?
-      collection = @obj_class.includes(:menus).where(:content_links => {:content_id => nil}).order("#{sort_column} #{sort_direction}")
+      collection = @obj_class.includes(:menus).where(:mokio_content_links => {:content_id => nil}).order("#{sort_column} #{sort_direction}")
       collection = collection.page(page).per_page(per_page)
 
     else

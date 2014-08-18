@@ -1,13 +1,36 @@
 module Mokio
-  class Engine < ::Rails::Engine
+  #
+  # Mokio::Engine < Rails::Engine
+  #
+  class Engine < Rails::Engine
+    isolate_namespace Mokio
+
+    initializer 'mokio.helpers' do |app|
+      ActiveSupport.on_load :action_view do
+        ActionView::Base.send :include, Mokio::Backend::BackendHelper
+        ActionView::Base.send :include, Mokio::Backend::BreadcrumbsHelper
+        ActionView::Base.send :include, Mokio::Backend::CommonHelper
+        ActionView::Base.send :include, Mokio::Backend::JavascriptHelper
+        ActionView::Base.send :include, Mokio::Backend::MenuHelper
+        ActionView::Base.send :include, Mokio::Backend::UrlHelper
+
+        ActionView::Base.send :include, Mokio::FrontendHelpers::MenuHelper
+        ActionView::Base.send :include, Mokio::FrontendHelpers::StaticModulesHelper
+        ActionView::Base.send :include, Mokio::FrontendHelpers::ContentHelper
+        ActionView::Base.send :include, Mokio::FrontendHelpers::ExternalCodesHelper
+      end
+    end
+
     #
     # Precompile hook
     #
     initializer "mokio.precompile", group: :all do |app|
       app.config.assets.precompile += %w( *.eot *.svg *.woff *.ttf
         html5.js
+        mokio.js
         backend.js
         backend.css
+        images/*
         backend/*
         backend/**/*
         backend/patterns/1.png
@@ -31,7 +54,12 @@ module Mokio
         frontend.css
         frontend/*
         frontend/bg/*
+        backend/head.js
       )
+    end
+
+    initializer "mokio.fonts", group: :all do |app|
+      app.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     end
   end
 end

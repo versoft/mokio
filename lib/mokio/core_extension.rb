@@ -1,7 +1,4 @@
-#
-# String Class
-#
-class String
+class String #:nodoc:
   #
   # For easy colored std:out
   #

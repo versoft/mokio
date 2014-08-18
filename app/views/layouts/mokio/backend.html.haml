@@ -11,6 +11,7 @@
     = csrf_meta_tags
     = favicon_link_tag 'backend/favicon.ico'
 
+    = javascript_include_tag 'mokio'
     = javascript_include_tag 'html5'
     = javascript_include_tag 'backend/head'
 
@@ -27,7 +28,7 @@
     #qLbar
       
     #header
-      = render :template => "mokio/backend/layout/header"
+      = render :template => "mokio/layout/header"
 
     #wrapper
       .resBtn
@@ -43,7 +44,7 @@
         
       #sidebarbg
       #sidebar
-        = render :template => "mokio/backend/layout/sidebar"
+        = render :template => "mokio/layout/sidebar"
 
       / Body content
       #content.clearfix
@@ -57,14 +58,14 @@
             %ul.breadcrumb
               %li= "#{bt("you_are_here")}:"
               %li
-                %a.tip{href: backend_root_path, title: bt("dashboard")}
+                %a.tip{href: root_path, title: bt("dashboard")}
                   %span.icon16.icomoon-icon-screen-2
               = breadcrumbs # breadcrumbs helper
 
           .row-fluid
             = yield
 
-    = render :template => "mokio/backend/site_helper/first_login"
+    = render :template => "mokio/site_helper/first_login"
     
     = javascript_include_tag 'backend'
     = yield :js         

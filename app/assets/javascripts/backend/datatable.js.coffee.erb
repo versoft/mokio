@@ -32,6 +32,11 @@ $ ->
         $(".activebtn").bootstrapSwitch()
         $(".activebtn").on "switch-change", (e, data) ->
           row_id = $(this).parents("tr").attr("id")
-          url = '/backend/comments/' + row_id + '/update_accepted' if $(this).parents('.activebutton').hasClass('comment')
-          url = '/backend/contents/' + row_id + '/update_active'  if !$(this).parents('.activebutton').hasClass('comment')
+          url = '/' + Mokio.engine_root() + '/comments/' + row_id + '/update_accepted' if $(this).parents('.activebutton').hasClass('comment')
+          url = '/' + Mokio.engine_root() + '/contents/' + row_id + '/update_active'  if !$(this).parents('.activebutton').hasClass('comment')
           $.post url
+        # console.log( <%= Mokio.backend_default_per_page %> )
+        if oSettings.fnRecordsTotal() <= <%= Mokio.backend_default_per_page %>
+          $('#dTable_paginate')[0].style.display = "none"
+        else
+          $('#dTable_paginate')[0].style.display = "block"

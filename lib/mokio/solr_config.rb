@@ -1,5 +1,5 @@
 module Mokio
-  module SolrConfig
+  module SolrConfig #:nodoc:
     #
     # Enable/Disable using solr
     #

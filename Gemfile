@@ -52,3 +52,5 @@ group :development, :test do
     gem 'meta_request' # To use rails_panel extension
     gem 'deface'
 end
+
+gem 'haml2slim'

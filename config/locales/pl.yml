@@ -9,7 +9,6 @@
 # In views, this is aliased to just `t`:
 #
 #     <%= t('hello') %>
-#
 # To use a different locale, set it with `I18n.locale`:
 #
 #     I18n.locale = :es
@@ -26,10 +25,10 @@ pl:
   date:
     formats:
       default: "%d-%m-%Y"
-  article: Artykuł
-  pic_gallery: galeria zdjęć
-  mov_gallery: galeria filmów
-  contact: Strona kontaktowa
+  mokio/article: "Artykuł"
+  mokio/pic_gallery: Galeria zdjęć
+  mokio/mov_gallery: Galeria filmów
+  mokio/contact: Strona kontaktowa
   external_link: Url
   backend:
     site_preview: Twoja Strona
@@ -108,7 +107,7 @@ pl:
     sign_in: Zaloguj
     logout: Wyloguj
     change_password: Zmień hasło
-    
+
     sidebars:
       sidebar_title: Nawigacja
       content_management: Zarządzanie treścią
@@ -119,6 +118,9 @@ pl:
       contact: Strona Kontaktowa
       menu: Menu
       modules: Moduły
+      module_position: Pozycje modułów
+      external_code: Skrypty zewnętrzne
+      lang: Ustawienia lokalizacji
       comments: Komentarze
       users: Użytkownicy
 
@@ -146,6 +148,16 @@ pl:
       users: Użytkownicy
       users_new: Nowy użytkownik
       users_edit: Edycja danych użytkownika
+      external_codes: Skrypty zewnętrzne
+      external_codes_new: Nowy skrypt zewnętrzny
+      external_codes_edit: Edycja
+      module_positions: Pozycje modułów
+      module_positions_new: Nowa pozycja
+      module_positions_edit: Edycja pozycji
+      langs: Ustawienia lokalizacji i języka
+      langs_new: Nowa lokalizacja
+      langs_edit: Edycja lokalizacji
+      copy: Kopiuj
 
   static_modules:
     actions: Akcje
@@ -165,6 +177,53 @@ pl:
     deleted: "Moduł <strong>'%{title}'</strong> został usunięty."
     update_active_true: "Moduł <strong>'%{title}'</strong> jest teraz aktywny."
     update_active_false: "Moduł <strong>'%{title}'</strong> jest teraz nieaktywny."
+    copy_title: Kopiuj moduł
+
+  external_codes:
+        name: Nazwa / id
+        actions: Akcje
+        edit_title: Edytuj skrypt zewnętrzny
+        index_title: Skrypty zewnętrzne
+        index_add_new: Dodaj nowy skrypt zewnętrzny
+        new_title: Nowy skrypt zewnętrzny
+        title: Tytuł
+        updated_at: Uaktualniono
+        edit_title: Edytuj skrypt zewnętrzny
+        created: "Skrypt <strong>'%{title}'</strong> został utworzony."
+        updated: "Skrypt <strong>'%{title}'</strong> został poprawnie edytowany."
+        deleted: "Skrypt <strong>'%{title}'</strong> został usunięty."
+        copy_title: Kopiuj skrypt
+
+  module_positions:
+        name: Nazwa / id
+        actions: Akcje
+        edit_title: Edytuj pozycję
+        index_title: Pozycje modułów
+        index_add_new: Dodaj nowa pozycję
+        new_title: Nowa pozycja
+        title: Tytuł
+        updated_at: Uaktualniono
+        edit_title: Edytuj pozycję
+        created: "Pozycja <strong>'%{title}'</strong> została utworzona."
+        updated: "Pozycja <strong>'%{title}'</strong> została poprawnie edytowana."
+        deleted: "Pozycja <strong>'%{title}'</strong> została usunięta."
+        copy_title: Kopiuj pozycję modułów
+  langs:
+        name: Nazwa
+        shortname: Nazwa skrócona
+        active: Włączony
+        actions: Akcje
+        edit_title: Edytuj lokalizacje
+        index_add_new: Dodaj nowa lokalizacje
+        new_title: Nowa lokalizacja
+        index_title: Ustawienia lokalizacji i języka
+        updated_at: Uaktualniono
+        edit_title: Edytuj lokalizacje
+        created: "Lokalizacja <strong>'%{title}'</strong> została utworzona."
+        updated: "Lokalizacja <strong>'%{title}'</strong> została poprawnie edytowana."
+        deleted: "Lokalizacja <strong>'%{title}'</strong> została usunięta."
+        copy_title: Kopiuj lokalizację
+
 
   articles:
     active: Włączony
@@ -207,7 +266,7 @@ pl:
     deleted: "Menu <strong>'%{title}'</strong> zostało usunięte."
     not_created: "Menu <strong>'%{title}'</strong> nie zostało utworzone."
     not_updated: "Menu <strong>'%{title}'</strong> nie zostało poprawnie zapisane."
-    not_deleted: "Menu <strong>'%{title}'</strong> nie zostało usunięte." 
+    not_deleted: "Menu <strong>'%{title}'</strong> nie zostało usunięte."
     index_title: Zarządzanie menu
     index_add_new: Dodaj menu
     new_title: "Nowy element menu"
@@ -248,7 +307,7 @@ pl:
     edit_title: "Edytuj galerię zdjęć"
     update_active_true: "Galeria <strong>'%{title}'</strong> jest teraz aktywna"
     update_active_false: "Galeria <strong>'%{title}'</strong> jest teraz nieaktywna"
-  
+
   sliders:
     cannot_add_files_now: Dodawanie zdjęć do slidera będzie możliwe dopiero po jego zapisaniu
     created: "Slider <strong>'%{title}'</strong> został utworzony. Dodawanie zdjęć jest już możliwe."
@@ -334,13 +393,14 @@ pl:
     type: Typ Treści
     add_tag: Dodaj
     tags: Tagi
+    copy_title: Kopiuj treść
     comma_separated: "oddzielone przecinkami"
     types:
-      PicGallery: Galeria zdjęć
-      Article: Artykuł
-      MovGallery: Galeria filmów
-      Contact: Strona kontaktowa
-      Slider: Slider
+      Mokio::PicGallery: Galeria zdjęć
+      Mokio::Article: Artykuł
+      Mokio::MovGallery: Galeria filmów
+      Mokio::Contact: Strona kontaktowa
+      Mokio::Slider: Slider
 
   data_files:
     larger_image: powiększ
@@ -437,7 +497,7 @@ pl:
   gmaps:
     gmap: Mapa google
 
-  comments:
+  mokio/comments:
     title: Tytuł
     comment: Komentarz
     commentable: Komentowana treść
@@ -458,7 +518,7 @@ pl:
     reject_all_false: Nie udało się odrzucić wszystkich komentarzy
     delete_rejected_true: Odrzucone komentarze zostały usunięte
     delete_rejected_false: Nie udało się usunąć wszystkich odrzuconych komentarzy
-  
+
   users:
     index_add_new: Dodaj nowego użytkownika
     index_title: Użytkownicy
@@ -506,52 +566,52 @@ pl:
     user_nav_text: user_nav_text
 
 
-# ============================================ Activerecord ============================================================= #    
+# ============================================ Activerecord ============================================================= #
 
   activerecord:
     errors:
       models:
-        contact:
+        mokio/contact:
           attributes:
             title:
               blank: "Tytuł nie może być pusty"
-        menu:
+        mokio/menu:
           attributes:
             name:
               blank: "Nazwa nie może być pusta"
             lang:
               not_match_parent: "Wybrany element nadrzędny nie należy do wybranego języka"
-        static_module:
+        mokio/static_module:
           attributes:
             title:
               blank: "Tytuł nie może być pusty"
             display_from:
               invalid: Przekracza datę do której ma być wyświetlany
-        pic_gallery:
+        mokio/pic_gallery:
           attributes:
             title:
               blank: "Tytuł nie może być pusty"
             display_from:
               invalid: Przekracza datę do której ma być wyświetlana
-        article:
+        mokio/article:
           attributes:
             title:
               blank: "Tytuł nie może być pusty"
             display_from:
               invalid: Przekracza datę do której ma być wyświetlany
-        mov_gallery:
+        mokio/mov_gallery:
           attributes:
             title:
               blank: "Tytuł nie może być pusty"
             display_from:
               invalid: Przekracza datę do której ma być wyświetlana
       editable:
-        not_permitted: Edycja niedozwolona   
+        not_permitted: Edycja niedozwolona
       messages:
         record_invalid: Niepoprawny rekord w bazie danych
 
     attributes:
-      contents:
+      mokio/contents:
         active: Włączony
         intro: Wstęp
         content: Treść
@@ -563,7 +623,7 @@ pl:
         lang_id: Język
         home_page: Strona Główna
 
-      pic_gallery:
+      mokio/pic_gallery:
         active: Włączony
         intro: Wstęp
         content: Treść
@@ -575,7 +635,7 @@ pl:
         lang_id: Język
         home_page: Strona Główna
 
-      slider:
+      mokio/slider:
         active: Włączony
         intro: Wstęp
         content: Treść
@@ -588,7 +648,7 @@ pl:
         home_page: Strona Główna
         fade_time_ms: Czas wyświetlania zdjęcia
 
-      mov_gallery:
+      mokio/mov_gallery:
         active: Włączony
         intro: Wstęp
         content: Treść
@@ -600,7 +660,7 @@ pl:
         lang_id: Język
         home_page: Strona Główna
 
-      article:
+      mokio/article:
         active: Włączony
         intro: Wstęp
         content: Treść
@@ -611,8 +671,17 @@ pl:
         updated_at: Ostatnio edytowany
         lang_id: Język
         home_page: Strona Główna
-
-      contact:
+      mokio/external_code:
+        name: Nazwa / Id
+        code: Skrypt
+      mokio/lang:
+        name: Tytuł
+        shortname: Nazwa skrócona
+        active: Włączony
+      mokio/module_position:
+        name: Nazwa / Id
+        tpl: Szablon
+      mokio/contact:
         active: Włączony
         content: Treść
         title: Tytuł
@@ -621,13 +690,13 @@ pl:
         lang_id: Język
         recipient_emails: Adresaci
 
-      contact_template:
+      mokio/contact_template:
         tpl: Szablon wiadomości
-        
-      gmap:
+
+      mokio/gmap:
         full_address: Adres
 
-      static_module:
+      mokio/static_module:
         active: Włączony
         intro: Wstęp
         content: Treść
@@ -639,7 +708,7 @@ pl:
         updated_at: Ostatnio edytowany
         lang_id: Język
 
-      photo:
+      mokio/photo:
         name: Nazwa
         intro: Opis
         active: Włączony
@@ -649,7 +718,7 @@ pl:
         remote_data_file_url: Linki
         subtitle: Podtytuł
 
-      youtube:
+      mokio/youtube:
         name: Nazwa
         intro: Opis
         active: Włączony
@@ -659,11 +728,11 @@ pl:
         add_own_thumb: Dodaj własną miniaturkę
         subtitle: Podtytuł
 
-      meta:
+      mokio/meta:
         g_title: Tytuł
         g_desc: Opis
         g_keywords: Słowa kluczowe
-        g_author: Autor 
+        g_author: Autor
         g_copyright: Prawa autorskie
         g_application_name: Nazwa aplikacji
         f_title: Tytuł
@@ -672,10 +741,20 @@ pl:
         f_url: Url strony
         f_desc: Opis
 
-      user:
+      mokio/user:
         password: Hasło
         remember_me: Zapamiętaj mnie
         email: E-mail
         password_confirmation: Potwierdź hasło
       messages:
         record_invalid : "Niepoprawny rekord w bazie danych"
+
+      mokio/menu:
+        lang_id: Język
+        name: Nazwa
+        external_link: Url
+        active: Włączony
+        visible: Widoczny
+        description: Opis
+        parent_id: Element nadrzędny
+        target: Target

@@ -136,7 +136,7 @@ $(document).ready(function() {
           $idsInOrder.push($(this).attr('id')); // get photos id's in order asc
         });
 
-        $.post( '/backend/data_files/sort/', { ids_order: $idsInOrder } ); // ajax to sort photos
+        $.post( "/" + Mokio.engine_root() + "/data_files/sort/", { ids_order: $idsInOrder } ); // ajax to sort photos
       }
     }).disableSelection();
   }
@@ -211,7 +211,7 @@ function post_yt_search(){
   $("#movie_url").addClass("loader");
   $content_id = $("#content_id").val();
 
-  $.post("/backend/youtubes/find", { yt: $yt_id, content_id: $content_id }, function(data, textStatus, xhr) {
+  $.post("/" + Mokio.engine_root() + "/youtubes/find", { yt: $yt_id, content_id: $content_id }, function(data, textStatus, xhr) {
     /* optional stuff to do after success */
   }).always(function() { $("#movie_url").removeClass("loader"); }).error($(".ytclear").click());
 }

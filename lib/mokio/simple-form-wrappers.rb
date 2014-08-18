@@ -54,6 +54,17 @@ SimpleForm.setup do |config|
     end
   end
 
+  config.wrappers :active_checkbox_inline, :tag => 'div', :class => 'span4', :error_class => 'error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label_text, :wrap_with => { :tag => 'label', :class => 'form-label span6' }
+    b.wrapper :tag => 'div', :class => 'activebuttoninline' do |ba|
+      ba.use :input
+      ba.use :error, :wrap_with => { :tag => 'span', :class => 'error' }
+      ba.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
+    end
+  end
+
  # =========================================================================================== #
 
   config.wrappers :date, :tag => 'div', :class => 'row-fluid', :error_class => 'error' do |b|

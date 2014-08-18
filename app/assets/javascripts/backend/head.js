@@ -13,5 +13,5 @@
 // !
 
 // Ckeditor
-//= require ckeditor/override
+// require ckeditor/override
 //= require ckeditor/init

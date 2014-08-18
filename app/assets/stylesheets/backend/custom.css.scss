@@ -13,11 +13,6 @@
   }
 }
 
-#main_pic_view {
-  margin-bottom: 5px;
-  margin-left: 200px;
-}
-
 .modal {
   margin-top: 120px;
   width: 800px !important;
@@ -527,13 +522,14 @@ input.btn[type="submit"] {
 }
 .box-form2 { 
   position: absolute;
-  right: 30px;
+  right: 45px;
   top: -55px;
 }
 .box-form3 { 
   position: absolute;
-  right: 180px;
+  right: 195px;
   top: -55px;
+  box-shadow: none;
 }
 
 .box-form-gmap { 
@@ -624,4 +620,30 @@ ul.ui-autocomplete {
 #username {
   font-size: 14px;
   padding-top: 8px;
+
+  span {
+    bottom: 6px;
+    left: -30px;
+    position: absolute;
+  }
+}
+
+select[multiple] {
+  width: 20%;
+}
+
+#main_pic_view {
+  position: absolute;
+  right: 2%;
+  top: -20px;
+}
+
+.title {
+  h4 {
+    a {
+      padding-left: 10px;
+      position: absolute;
+      bottom: 8px;
+    }
+  }
 }

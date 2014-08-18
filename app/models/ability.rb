@@ -33,22 +33,23 @@ class Ability
       can :manage, :all
     end
     if user.has_role? :content_editor
-      can :manage, [Content]
+      can :manage, [Mokio::Content]
     end
     if user.has_role? :menu_editor
-      can :manage, [Menu]  
+      can :manage, [Mokio::Menu]  
     end
     if user.has_role? :static_module_editor
-      can :manage, [StaticModule]  
+      can :manage, [Mokio::StaticModule]  
     end
     if user.has_role? :user_editor
-      can :manage, [User]  
+      can :manage, [Mokio::User]  
     end
     if user.has_role? :comment_approver
-      can :manage, [Comment]  
+      can :manage, [Mokio::Comment]  
     end
     if user.has_role? :reader
       can :read, :all 
     end
   end
 end
+

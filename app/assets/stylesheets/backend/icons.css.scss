@@ -13,7 +13,7 @@
 @font-face {
 	font-family: 'broccolidry';
 	src: url(font_path('backend/broccolidry.eot'));
-	src: url(font_path('backend/broccolidry.eot?') + '#iefix') format('eot'),
+	src: url(font_path('backend/broccolidry.eot') + '#iefix') format('eot'),
 		url(font_path('backend/broccolidry.svg') + '#broccolidry') format('svg'),
 		url(font_path('backend/broccolidry.woff')) format('woff'),
 		url(font_path('backend/broccolidry.ttf')) format('truetype');

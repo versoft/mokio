@@ -144,7 +144,7 @@ function edit_image_button() {
       $id = Modal.id();                                                                        // Main Photo
       addEditLayout($id);                                                                      //
 
-      $.get('/backend/photos/' + $id + '/get_' + PhotoEditForm.photo_type, function(data) { });
+      $.get("/" + Mokio.engine_root() + "/photos/" + $id + "/get_" + PhotoEditForm.photo_type, function(data) { });
     }, 500);  
   }); 
 }
@@ -176,7 +176,7 @@ function sortablephotos(){
         $idsInOrder.push($(this).attr('id')); // get photos id's in order asc
       });
 
-      $.post( '/backend/data_files/sort/', { ids_order: $idsInOrder } ); // ajax to sort photos
+      $.post( '/' + Mokio.engine_root() + '/data_files/sort/', { ids_order: $idsInOrder } ); // ajax to sort photos
       prettyphoto();
     }
   }).disableSelection();
@@ -348,7 +348,7 @@ function photo_options_fields() {
       $id = Modal.id();                                                                        // Photo thumb
       addEditLayout($id);                                                                      //
 
-      $.get('/backend/photos/' + $id + '/get_thumb', function(data) { });
+      $.get('/' + Mokio.engine_root() +'/photos/' + $id + '/get_thumb', function(data) { });
     }, 500);
   });
 

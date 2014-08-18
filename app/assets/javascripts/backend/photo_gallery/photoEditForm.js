@@ -46,7 +46,7 @@ var PhotoEditForm = {
           showLoader();
 
           $.ajax({
-            url: "/backend/photos/" + Modal.id() + "/remove_thumb",
+            url: "/" + Mokio.engine_root() + "/photos/" + Modal.id() + "/remove_thumb",
             type: 'DELETE'
           })
           .done(function(){
@@ -105,7 +105,7 @@ var PhotoEditForm = {
       showLoader();
 
       $.ajax({
-        url: "/backend/photos/" + Modal.id() + "/rotate_" + PhotoEditForm.photo_type,
+        url: "/" + Mokio.engine_root() + "/photos/" + Modal.id() + "/rotate_" + PhotoEditForm.photo_type,
       })
       .done(function() {
         updateAjaxPhoto();
@@ -182,7 +182,7 @@ var PhotoEditForm = {
           showLoader();
 
           $.ajax({
-            url: "/backend/photos/" + Modal.id() + "/crop_" + PhotoEditForm.photo_type,
+            url: "/" + Mokio.engine_root() + "/photos/" + Modal.id() + "/crop_" + PhotoEditForm.photo_type,
             type: 'POST',
             dataType: 'script',
             data: {

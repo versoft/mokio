@@ -1,4 +1,5 @@
 require 'rake'
+require 'mokio'
 
 namespace :mokio do
   desc "Create database, running migrations and creating some default data for Mokio application"
@@ -9,25 +10,25 @@ namespace :mokio do
       %x{ rails g mokio:install }
     end
 
-    Rake::Task["mokio_engine:install:migrations"].execute
+    Rake::Task["mokio:install:migrations"].execute
     Rake::Task["db:create"].execute
     Rake::Task["db:migrate"].execute
 
-    Lang.create!(:name => 'polski', :shortname => 'pl', :active => true, :menu_id => Mokio.frontend_initial_pl, :id => 1)
-    puts "\n Created default lang 'polski'".green
+    Mokio::Lang.create!(:name => 'english', :shortname => 'en', :active => true, :menu_id => Mokio.frontend_initial_pl, :id => 1)
+    puts "\n Created default lang 'english'".green
 
-    ModulePosition.create!(:name => 'pozycja1')
-    puts "\n Created default module position 'pozycja1'".green
-    user = User.new({
+    Mokio::ModulePosition.create!(:name => 'position1')
+    puts "\n Created default module position 'position1'".green
+    user = Mokio::User.new({
       email: args[:email],
       password: args[:password], 
       password_confirmation: args[:password],
       roles_mask: 1
     })
-    puts "\n Created default user #{args[:email]} with password #{args[:password]}".red if user.save(:validate => false)
+    puts "\n Created default user #{args[:email]} with password #{args[:password]}".green if user.save(:validate => false)
 
-    pl_menu = Menu.new({
-      name: "pl",
+    pl_menu = Mokio::Menu.new({
+      name: "en",
       seq: 1,
       deletable: false,
       editable: false,
@@ -38,9 +39,9 @@ namespace :mokio do
       fake: true
     })
     pl_menu.build_meta
-    puts "\n Created default initial menu 'pl'".green if pl_menu.save(:validate => false)
+    puts "\n Created default initial menu 'en'".green if pl_menu.save(:validate => false)
     
-    top_menu = Menu.new({
+    top_menu = Mokio::Menu.new({
       name: "top",
       seq: 1,
       deletable: false,
@@ -69,10 +70,10 @@ namespace :mokio do
       langs = []
 
       config['langs'].each do |l|
-        langs << Lang.new(l)
+        langs << Mokio::Lang.new(l)
       end
 
-      Lang.import langs
+      Mokio::Lang.import langs
       
       menus = build_menu(config['menus'], nil)
 
@@ -88,7 +89,7 @@ namespace :mokio do
       menu_params.each do |m|
         
         m["ancestry"] = ancestry
-        new_menu = Menu.new(m.except("children"))
+        new_menu = Mokio::Menu.new(m.except("children"))
         new_menu.build_meta
         menus << new_menu
 

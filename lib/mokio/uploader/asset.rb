@@ -1,6 +1,6 @@
 module Mokio
-  module Uploader
-    module Asset
+  module Uploader #:nodoc:
+    module Asset #:nodoc:
       def self.included(base)
         #
         # Include RMagick or MiniMagick support:

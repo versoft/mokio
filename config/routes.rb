@@ -1,11 +1,7 @@
-Rails.application.routes.draw do
-  devise_for :users
-  mount Ckeditor::Engine => '/ckeditor'
+Mokio::Engine.routes.draw do
+  root to: "dashboard#show"
+  devise_for :users, class_name: "Mokio::User", module: :devise
   
-  scope :module => :mokio do
-    namespace :backend do
-      root to: "dashboard#show"
-      
       #
       # menus routes
       #
@@ -55,10 +51,10 @@ Rails.application.routes.draw do
       resources :pic_galleries, only: [:new, :create, :update]
       resources :mov_galleries, only: [:new, :create, :update]
       resources :contacts,      only: [:new, :create, :update]
-      get '/articles'      => redirect("/backend/contents")
-      get '/pic_galleries' => redirect("/backend/contents")
-      get '/mov_galleries' => redirect("/backend/contents")
-      get '/contacts'      => redirect("/backend/contents")
+      get '/articles'      => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
+      get '/pic_galleries' => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
+      get '/mov_galleries' => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
+      get '/contacts'      => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
 
       # TODO: do we realy want it?
       # content_children_routes()
@@ -103,6 +99,35 @@ Rails.application.routes.draw do
           post :find
         end
       end
-    end
-  end
+      
+          #
+      # external_codes
+      #
+      resources :external_codes do
+        member do
+          get :update_active
+          get  :copy
+
+        end
+      end
+
+
+      resources :module_positions do
+        member do
+          get :update_active
+          get  :copy
+        end
+      end
+
+      resources :langs do
+        member do
+          get :update_active
+          get :copy
+        end
+      end
+      
+end
+
+Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
 end

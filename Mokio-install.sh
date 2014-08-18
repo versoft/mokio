@@ -1,9 +1,9 @@
 #!/bin/bash
 
-DEVELOPMENT_MODE=false       # true for mokio in development
+DEVELOPMENT_MODE=true       # true for mokio in development
 LOGFILE="mokio-install.log" # Simple user does not need to see all standard output informations
 ADAPTERS=(mysql2 sqlite3)   # Database adapters
-RAILS_VERSION="=4.0.3"      # Currently used rails version with Mokio gem is 4.0.3 (may change still in development)
+RAILS_VERSION="=4.1.1"      # Currently used rails version with Mokio gem is 4.1.1 (may change still in development)
 
 
 #
@@ -56,42 +56,43 @@ case $1 in
         libxslt-dev libxml2-dev libxslt1-dev
 
       6. Mokio gem dependicies (may change still in development)
-        'rake',                        '10.3.1'
-        'rails',                       '~> 4.0.3'
+        'rake',                        '>= 10.3.1'
+        'rails',                       '>= 4.0.3'
 
         'sass-rails',                  '~> 4.0.0', '>= 4.0.2'
         'coffee-rails',                '~> 4.0.0'
-        'haml-rails',                  '0.5.3'
-        'fancybox2-rails',             '0.2.8'
-        'sunspot_rails',               '2.1.0'
+        'haml-rails',                  '>= 0.5.3'
+        'fancybox2-rails',             '>= 0.2.8'
+        'sunspot_rails',               '>= 2.1.0'
 
-        'jquery-rails',                '3.1.0'
-        'jquery-ui-rails',             '4.2.1'
-        'jquery-fileupload-rails',     '0.4.1'
-        'jquery-datatables-rails',     '1.12.2'
+        'jquery-rails',                '>= 3.1.0'
+        'jquery-ui-rails',             '>= 4.2.1'
+        'jquery-fileupload-rails',     '>= 0.4.1'
+        'jquery-datatables-rails',     '>= 1.12.2'
 
         'bootstrap-wysihtml5-rails',   '~> 0.3.1.23'
-        'bootstrap-switch-rails',      '2.0.0'
+        'bootstrap-switch-rails',      '2.0.0' # TODO problems with > 2.0.0
 
         'uglifier',                    '>= 1.3.0'
         'cancancan',                   '~> 1.7'  
-        'simple_form',                 '3.0.2'
-        'ckeditor',                    '4.0.8'
-        'carrierwave',                 '0.10.0'
-        'rmagick',                     '2.13.2'
-        'mini_magick',                 '3.7.0'
-        'amoeba',                      '2.0.0'           
-        'youtube_it',                  '2.1.4'
-        'ancestry',                    '2.1.0'
-        'acts_as_list',                '0.4.0'
-        'will_paginate',               '3.0.5'
-        'faraday',                     '0.7.6'
-        'validates',                   '0.0.8'
-        'friendly_id',                 '5.0.3'            
-        'video_info',                  '2.3.1'
-        'disqus',                      '1.0.4'
-        'devise',                      '3.2.4'
-        'role_model',                  '0.8.1'"
+        'simple_form',                 '>= 3.0.2'
+        'ckeditor',                    '>= 4.0.8'
+        'carrierwave',                 '>= 0.10.0'
+        'rmagick',                     '>= 2.13.2'
+        'mini_magick',                 '>= 3.7.0'
+        'amoeba',                      '>= 2.0.0'           
+        'youtube_it',                  '>= 2.1.4'
+        'ancestry',                    '>= 2.1.0'
+        'acts_as_list',                '>= 0.4.0'
+        'will_paginate',               '>= 3.0.5'
+        'faraday',                     '>= 0.7.6'
+        'validates',                   '>= 0.0.8'
+        'friendly_id',                 '>= 5.0.3'            
+        'video_info',                  '>= 2.3.1'
+        'disqus',                      '>= 1.0.4'
+        'devise',                      '>= 3.2.4'
+        'role_model',                  '>= 0.8.1'
+        'deface',                      '>= 1.0.0'"
     exit
   ;;
 

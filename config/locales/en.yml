@@ -26,10 +26,10 @@ en:
   date:
     formats:
       default: "%d-%m-%Y"
-  article: Article
-  pic_gallery: Photo Gallery
-  mov_gallery: Movie Gallery
-  contact: Contact
+  mokio/article: Article
+  mokio/pic_gallery: Photo Gallery
+  mokio/mov_gallery: Movie Gallery
+  mokio/contact: Contact
   external_link: Url
   backend:
     site_preview: Your Site
@@ -119,7 +119,6 @@ en:
       menu: Menu
       modules: Modules
       comments: Komentarze
-      users: Users
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -140,7 +139,7 @@ en:
       contacts_new: New contact page
       contacts_edit: Edit contact page
       sliders_new: New slider
-      sliders_edit: Edit slidera
+      sliders_edit: Edit slider
       comments: Comments
       users: Users
 
@@ -332,11 +331,11 @@ en:
     add_tag: Add
     tags: Tags
     types:
-      PicGallery: Photo Gallery
-      Article: Article
-      MovGallery: Movie Gallery
-      Contact: Strona kontaktowa
-      Slider: Slider
+      Mokio::PicGallery: Photo Gallery
+      Mokio::Article: Article
+      Mokio::MovGallery: Movie Gallery
+      Mokio::Contact: Contact page
+      Mokio::Slider: Slider
 
   data_files:
     larger_image: larger

@@ -25,7 +25,7 @@
 // require backend/plugins/fix/ios-fix/ios-orientationchange-fix
 
 // Important Place before main
-//= require backend/datatable
+// require backend/datatable
 
 // Unable touch for JQueryUI
 // Init plugins

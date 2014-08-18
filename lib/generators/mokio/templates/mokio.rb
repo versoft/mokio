@@ -14,7 +14,6 @@ Mokio.setup do |config|
   # 1. Create Lang for english (with shortname en - shortname needs to be unique)
   # 2. Set backend_default_lang to "en"
   #
-  # mattr_accessor :backend_default_lang
   # config.backend_default_lang = "pl"
 
   #
@@ -23,14 +22,12 @@ Mokio.setup do |config|
   # is used for pagination. Change this is you wish to display more or less records pew page. 
   # Please be careful, performance may decrease after increasing this value.
   #
-  # mattr_accessor :backend_default_per_page
   # config.backend_default_per_page = 10
 
   #
   # Enable adding google maps for listed content types. 
   # Mentioned content types will have option to choose location. This can be displayed in frontend using Google Maps API.
   #
-  # mattr_accessor :backend_gmap_enabled
   # config.backend_gmap_enabled = ["Contact"]
  
   #
@@ -38,13 +35,11 @@ Mokio.setup do |config|
   # For mentioned classes it will be possible to set META tags (Facebook and Google ones). 
   # By default it is set for menu and all connent types. Menu meta tags are more important than content meta tags if both are defined.
   #
-  # mattr_accessor :backend_meta_enabled
   # config.backend_meta_enabled = ["Menu"] + Mokio::CONTENT_TYPES
 
   #
   # How much records are listed in dashboard boxes. 
   #
-  # mattr_accessor :dashboard_size
   # config.dashboard_size = 5
 
   # ************************************************
@@ -56,14 +51,12 @@ Mokio.setup do |config|
   # Please note that after you change it, you need to upload you photos again. 
   # Otherwise uploaded photo will have previous width, only view will be scaled accordingly, what may affect photo quality.
   #
-  # mattr_accessor :default_width
   # config.default_width = 500
 
   #
   # Default photo height for whole application (in px).
   # Similar to default_width.
   #
-  # mattr_accessor :default_height
   # config.default_height = 500
 
   #
@@ -80,7 +73,6 @@ Mokio.setup do |config|
   # Height for photos thumb (in px).
   # Similar to photo_thumb_with
   #
-  # mattr_accessor :photo_thumb_height
   # config.photo_thumb_height = 100
 
   #
@@ -88,33 +80,27 @@ Mokio.setup do |config|
 
   # Medium width for scaling photos (in px)
   #
-  # mattr_accessor :photo_medium_width
   # config.photo_medium_width = 400
 
   #
   # Medium height for scaling photos (in px)
   #
-  # mattr_accessor :photo_medium_height
   # config.photo_medium_height = 400
 
   #
   # Big width for scaling photos (in px)
   #
-  # mattr_accessor :photo_big_width
   # config.photo_big_width = 1000
 
   #
   # Big height for scaling photos (in px)
   #
-  # mattr_accessor :photo_big_height
   # config.photo_big_height = 1000
-  # 
+
   #
   # Enable placing watermarks on photos.
   # Once set to true, all the images uploaded to the site will be marked with watermark located under :watermark_path
-  
-  # mattr_accessor :enable_watermark
-  # mattr_accessor :watermark_path
+  #
   # config.enable_watermark = false
   # config.watermark_path = ""
 
@@ -140,13 +126,10 @@ Mokio.setup do |config|
   #    4c. (Optional) Create Menu element for other position if you wish to have more that one menu on your site
   # 3. Add frontend_initial_en variable end set it to the ID of Menu record from point 4a.
   # In your frontend views use :frontend_initial_en when calling build_menu
-
-  # mattr_accessor :frontend_default_lang
+  #
   # config.frontend_default_lang = "pl"
 
   # Id  of root menu element for specific language
-  
-  # mattr_accessor :frontend_initial_pl
   # config.frontend_initial_pl = 1
 
   #

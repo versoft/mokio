@@ -1,6 +1,9 @@
 module Mokio
+  #
+  # Module for tour guide in Mokio
+  #
   module SiteHelper
-    module T
+    module T #:nodoc:
       def self.key(key)
         "site_helper.#{key}"
       end
@@ -102,8 +105,8 @@ module Mokio
       #   }        
       # }
     } # end config
-
-    def self.steps_for_url(current_path)
+    
+    def self.steps_for_url(current_path) #:nodoc:
       self.config.each do |key, value|
         return self.config[key.to_s] if key == current_path
       end
@@ -111,6 +114,20 @@ module Mokio
       {}
     end
 
+    #
+    # Adds new_config to config variable
+    #
+    # ==== Attributes
+    #
+    # * +new_config+ - Hash of parameters to add
+    #
+    def self.add_config(new_config)
+      self.config.merge!(new_config)
+    end
+
+    #
+    # Some way to change this module variables
+    #
     def self.setup
       yield self
     end

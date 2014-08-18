@@ -24,14 +24,26 @@ require 'devise'
 require 'cancancan'
 require 'role_model'
 require 'sass-rails'
+require 'slim'
 
+#
+# Mokio - Open Source CMS
+#
 module Mokio
 
   #
   # Constants
   #
+
+  #
+  # Rails version supported by Mokio
+  #
   SUPPORTED_RAILS = 4
-  CONTENT_TYPES   = ["Article", "Contact", "PicGallery", "MovGallery"]
+
+  #
+  # Array of content types
+  #
+  CONTENT_TYPES   = ["Mokio::Article", "Mokio::Contact", "Mokio::PicGallery", "Mokio::MovGallery"]
 
 
 
@@ -95,13 +107,13 @@ module Mokio
   # Enable adding google maps for listed content types
   #
   mattr_accessor :backend_gmap_enabled
-  self.backend_gmap_enabled = ["Contact"]
+  self.backend_gmap_enabled = ["Mokio::Contact"]
 
   #
   # Enable adding meta tags for listed models
   #
   mattr_accessor :backend_meta_enabled
-  self.backend_meta_enabled = ["Menu"] + Mokio::CONTENT_TYPES
+  self.backend_meta_enabled = ["Mokio::Menu"] + Mokio::CONTENT_TYPES
 
   #
   # How much records are listed in dashboard boxes
@@ -175,7 +187,7 @@ module Mokio
   # Default lang for frontend
   #
   mattr_accessor :frontend_default_lang
-  self.frontend_default_lang = "pl"
+  self.frontend_default_lang = "en"
 
   #
   # TODO: is it necessary?
@@ -206,17 +218,20 @@ module Mokio
   mattr_accessor :enable_site_helper
   self.enable_site_helper = true
 
+  mattr_accessor :solr_enabled
+  self.solr_enabled = false
+
 
   #
   # Default way to configure Mokio
   #
-  # TODO: add initializer generator with some of default variables
-  #
   # To overwite configs create initializer in application
-  # ex:
-  # Mokio.setup do |config|
-  #   config.frontend_default_lang = "en"
-  # end
+  #
+  # ==== Examples
+  #
+  #   Mokio.setup do |config|
+  #     config.frontend_default_lang = "en"
+  #   end
   #
   def self.setup
     yield self
@@ -225,8 +240,10 @@ end
 
 require "mokio/core_extension"
 require "mokio/engine"
-require "mokio/common"
+require "mokio/exceptions"
 require "mokio/simple-form-wrappers"
 require "mokio/uploader"
 require "mokio/solr_config"
 require "mokio/site_helper"
+require "mokio/concerns"
+require "mokio/frontend_helpers"
