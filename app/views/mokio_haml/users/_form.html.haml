@@ -1,0 +1,11 @@
+.form-inputs 
+  - unless @password_only
+    = f.input :email, required: true, :wrapper => :input_span
+  = f.input :password, :wrapper => :input_span
+  = f.input :password_confirmation, :wrapper => :input_span
+  - unless @password_only
+    - for role in Mokio::User::ROLES
+      = check_box_tag "user[roles][#{role}]", role, @user.has_role?(role), {:name => "user[roles][]"}
+      = label_tag "user_roles_#{role}", bt("role_name." + role, User)
+      %br/
+    = hidden_field_tag "user[roles][]", ""

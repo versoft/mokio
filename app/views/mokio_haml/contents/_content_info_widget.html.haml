@@ -1,0 +1,22 @@
+.sidebar-widget
+  %h5.title= bt("content_now")
+  .content
+    .rightnow
+      %ul.unstyled
+        %li
+          %span.number= Mokio::Article.count
+          = succeed bt("articles_now") do
+            %span.icon16.icomoon-icon-file
+        %li
+          %span.number= Mokio::PicGallery.count
+          = succeed bt("pic_galleries_now") do
+            %span.icon16.icomoon-icon-picture
+        %li
+          %span.number= Mokio::MovGallery.count
+          = succeed bt("mov_galleries_now") do
+            %span.icon16.icomoon-icon-movie
+
+        %li
+          %span.number= Mokio::Contact.count
+          = succeed bt("contacts_now") do
+            %span.icon16.icomoon-icon-mail-3

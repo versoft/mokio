@@ -1,0 +1,15 @@
+button.btn.btn-info.uploader data-toggle="modal" data-target="#modalupload" 
+  span.icomoon-icon-plus.white
+  = bt("add_#{obj.default_data_file.to_s.tableize}", @obj_class)
+
+= render :template => "mokio/photos/from_external_link", locals: {obj: obj} if (obj.default_data_file == Mokio::Photo)
+
+#modalupload.modal.fade role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style=("display: none;") 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h3#myModalLabel.modal-title= bt("file_upload")
+      .modal-body
+        = render :partial => "mokio/data_files/file_upload", locals: {file_type: obj.default_data_file }
+      .modal-footer
+        button.btn.btn-primary  type="button" data-dismiss="modal" = bt("close")

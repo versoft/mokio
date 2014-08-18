@@ -1,0 +1,12 @@
+%li.sortableli{ :id => youtube.id }
+  .dragable
+    %span.handler
+      %span.icon16.brocco-icon-move.white
+  = link_to preview_movie_youtube_path(youtube), remote: true, method: :get, title: youtube.name.html_safe do
+    %img{:class => "img-load", :alt => youtube.name, :src => (youtube.thumb_url[-1,1] == "0" ? youtube.thumb_external_url : youtube.thumb.url(:thumb_detail)) } 
+  .actionBtn
+    %a.edit{"data-toggle" => "modal", :class => "edit-youtube", :data => {:href => "#{mokio.root_path}/youtubes/#{youtube.friendly_id}/edit", :target => "edit-youtube-form" }}
+      %span.icon16.icomoon-icon-pencil-2.white
+    = link_to youtube_path(youtube), remote: true, method: :delete, class: "delete" do
+      %span.icon16.icomoon-icon-cancel-4.white
+

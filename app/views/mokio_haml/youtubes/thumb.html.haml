@@ -1,0 +1,14 @@
+.image-view
+  - unless @edited_movie.thumb.blank?
+    %img{ :src => @edited_movie.thumb.url, :alt => @edited_movie.thumb }
+  - else
+    = form_for @edited_movie, :html => { :multipart => true }, :remote => true, :url => { :action => "update_thumb" } do |f|
+      %span#photoinputbtn.btn.btn-success.fileinput-button
+        %span= bt("add_file")
+        = f.file_field :thumb
+      %canvas#imageCanvas
+      %ul#photo-fileinfo.unstyled
+
+.edit-sidebar
+  = link_to remove_thumb_photo_path(@edited_movie), remote: true, method: :delete do
+    %span.icon24.icomoon-icon-remove 

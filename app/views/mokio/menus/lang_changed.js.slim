@@ -1,0 +1,7 @@
+| $('#menu_parent_id').html('');
+| $('#menu_parent_id').html('#{j(options_from_collection_for_select(@menu.parent_tree, 'id', 'name'))}');
+| $('#menu_breadcrumps').html("");
+| if (#{@content_confirm}) {remove_except_all_lang('')}
+| if (#{@modules_confirm}) {$('[id^=fake-select_]').each(function(i, val) {remove_except_all_lang($(val).attr('id').substring(11));})}
+| $('#box1View').html("#{j (options_for_select(@menu.available_contents.collect{|elt| [elt.title, elt.id,{class: 'displayed_' + elt.displayed?.to_s}]}))}");
+|#{replace_available_modules(@menu)}
