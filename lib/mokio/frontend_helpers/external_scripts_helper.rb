@@ -3,7 +3,7 @@ module Mokio
     #
     # Frontend helper methods used with Mokio::ExternalCodes objects
     #
-    module ExternalCodesHelper
+    module ExternalScriptsHelper
 
       #  returns a single external code
       #

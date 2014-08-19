@@ -17,7 +17,8 @@ module Mokio
         ActionView::Base.send :include, Mokio::FrontendHelpers::MenuHelper
         ActionView::Base.send :include, Mokio::FrontendHelpers::StaticModulesHelper
         ActionView::Base.send :include, Mokio::FrontendHelpers::ContentHelper
-        ActionView::Base.send :include, Mokio::FrontendHelpers::ExternalCodesHelper
+        ActionView::Base.send :include, Mokio::FrontendHelpers::ExternalScriptsHelper
+        ActionView::Base.send :include, Mokio::FrontendHelpers::TemplateHelper
       end
     end
 
@@ -60,6 +61,10 @@ module Mokio
 
     initializer "mokio.fonts", group: :all do |app|
       app.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    end
+
+    initializer "mokio.views" do |app|
+      app.config.views_config = Mokio::FrontendHelpers::TemplateHelper.read_config
     end
   end
 end
