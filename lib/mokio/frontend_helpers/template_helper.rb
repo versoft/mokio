@@ -42,7 +42,7 @@ module Mokio
           to_parse = content.html_safe
           config[tpl_name].each do |entry|
             @html = Nokogiri::HTML::Document.parse to_parse
-            html_element = @html.at_css entry["id"]
+            html_element = @html.at_css entry["html_element_id"]
             new_options = {:template => entry["override_path"]} if options.has_key?(:template)
             new_options = {:partial => entry["override_path"]} if options.has_key?(:partial)
             new_options[:locals] = options[:locals] if options[:locals]
