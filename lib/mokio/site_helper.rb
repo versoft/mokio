@@ -71,6 +71,24 @@ module Mokio
         },
 
         "7" => {
+          "data-class"   => "module_position_nav",
+          "data-text"    => T.key("next"),
+          "data-options" => "tipLocation:right",
+
+          :title => T.key("module_position_nav_title"),
+          :text  => T.key("module_position_nav_text")
+        },
+
+        "8" => {
+          "data-class"   => "external_code_nav",
+          "data-text"    => T.key("next"),
+          "data-options" => "tipLocation:right",
+
+          :title => T.key("external_code_nav_title"),
+          :text  => T.key("external_code_nav_text")
+        },
+
+        "9" => {
           "data-class"   => "user_nav",
           "data-text"    => T.key("next"),
           "data-options" => "tipLocation:right",
