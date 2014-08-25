@@ -25,6 +25,7 @@ module Mokio
           def columns_for_table
             ["name","shortname","active"]
           end
+
         end
 
         def editable  #:nodoc:
