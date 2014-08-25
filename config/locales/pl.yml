@@ -1,4 +1,3 @@
-
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
@@ -103,7 +102,6 @@ pl:
     find_in_backend: Szukaj w backendzie
     continue: Kontynuuj
     back_to_edit: "<a href='%{url}'>Wróć do edycji.</a>"
-    slider: Slider
     sign_up: Zarejestruj się
     sign_in: Zaloguj
     logout: Wyloguj
@@ -640,18 +638,6 @@ pl:
         lang_id: Język
         home_page: Strona Główna
 
-      mokio/slider:
-        active: Włączony
-        intro: Wstęp
-        content: Treść
-        display_from: Wyświetlany od
-        display_to: Wyświetlany do
-        title: Tytuł
-        type: Typ
-        updated_at: Ostatnio edytowany
-        lang_id: Język
-        home_page: Strona Główna
-        fade_time_ms: Czas wyświetlania zdjęcia
 
       mokio/mov_gallery:
         active: Włączony

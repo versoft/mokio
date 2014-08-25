@@ -103,7 +103,6 @@ en:
     find_in_backend: Find in backend
     continue: Continue
     back_to_edit: "<a href='%{url}'>Back to edit.</a>"
-    slider: Slider
     sign_up: Sign up
     sign_in: Sign in
     change_password: Change Password
@@ -120,7 +119,7 @@ en:
       modules: HTML blocks
       comments: Comments
       module_position: Positions
-      external_code: External code
+      external_script: External script
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -140,13 +139,11 @@ en:
       mov_galleries_edit: Edit movie gallery
       contacts_new: New contact page
       contacts_edit: Edit contact page
-      sliders_new: New slider
-      sliders_edit: Edit slider
       comments: Comments
       users: Users
-      external_codes: External code
-      external_codes_new: Add external code
-      external_codes_edit: Edit
+      external_scripts: External script
+      external_scripts_new: Add external script
+      external_scripts_edit: Edit
       module_positions: Positions
       module_positions_new: New position
       module_positions_edit: Edit position
@@ -173,17 +170,17 @@ en:
   external_scripts:
         name: Name / Id
         actions: Actions
-        edit_title: Edit external code
-        index_title: External code
-        index_add_new: Add external code
-        new_title: New external code
+        edit_title: Edit external script
+        index_title: External script
+        index_add_new: Add external script
+        new_title: New external script
         title: Title
         updated_at: Updated at
-        edit_title: Edit external code
-        created: "External code <strong>'%{title}'</strong> has been created"
-        updated: "External code <strong>'%{title}'</strong> has been saved"
-        deleted: "External code <strong>'%{title}'</strong> has been deleted"
-        copy_title: Copy external code
+        edit_title: Edit external script
+        created: "External script <strong>'%{title}'</strong> has been created"
+        updated: "External script <strong>'%{title}'</strong> has been saved"
+        deleted: "External script <strong>'%{title}'</strong> has been deleted"
+        copy_title: Copy external script
 
   module_positions:
         name: Name / Id
@@ -298,24 +295,6 @@ en:
     update_active_true: "Gallery <strong>'%{title}'</strong> is active"
     update_active_false: "Gallery <strong>'%{title}'</strong> is not active"
 
-  sliders:
-    cannot_add_files_now: Adding photos will be possible only after saving the slider. 
-    created: "Slider <strong>'%{title}'</strong> has been created. You can now add photos."
-    created_and_new: "Slider <strong>'%{title}'</strong> has been created"
-    updated: "Slider <strong>'%{title}'</strong> has been saved"
-    deleted: "Slider <strong>'%{title}'</strong> has been deleted"
-    not_created: "Slider <strong>'%{title}'</strong> has NOT been created"
-    not_updated: "Slider <strong>'%{title}'</strong> has NOT been saved"
-    not_deleted: "Slider <strong>'%{title}'</strong> has NOT been deleted"
-    active: active
-    intro: introduction
-    content: content
-    display_from: "displayed from"
-    display_to: "displayed to"
-    new_title: "New slider"
-    edit_title: "Edit Slider"
-    update_active_true: "Slider <strong>'%{title}'</strong> is active"
-    update_active_false: "Slider <strong>'%{title}'</strong> is not active"
 
   mov_galleries:
     cannot_add_files_now: "Adding movies will be allowed after saving the gallery"
@@ -356,10 +335,8 @@ en:
 
   contents:
     edit_gallery_content: Edit content
-    edit_slider_content: Edit content
     edit_title: Edit
     add_photos: Add photos
-    add_slider_photos: Add photos
     add_youtubes: Add movies
     created: "Content <strong>'%{title}'</strong> has been created"
     updated: "Content <strong>'%{title}'</strong> has been saved"
@@ -388,45 +365,12 @@ en:
       Mokio::Article: Article
       Mokio::MovGallery: Movie Gallery
       Mokio::Contact: Contact page
-      Mokio::Slider: Slider
 
   data_files:
     larger_image: larger
     sorted: Order has been changed.
 
   photos:
-    edit_photo: Edit
-    updated: "Photo <strong>'%{title}'</strong> has been updated"
-    created: "Photo <strong>'%{title}'</strong> has been created"
-    deleted: "Photo <strong>'%{title}'</strong> has been deleted"
-    not_updated: "Photo <strong>'%{title}'</strong> has NOT been updated"
-    not_created: "Photo <strong>'%{title}'</strong> has NOT been created"
-    not_deleted: "Photo <strong>'%{title}'</strong> has NOT been deleted"
-    edit_main_photo: Edit photo
-    edit_thumb: Edit thumbnail
-    thumb_updated: Thumbnail has been updated
-    thumb_not_updated: Thumbnail has NOT been updated
-    thumb_deleted: "Thumbnail <strong>'%{name}'</strong> has been deleted"
-    thumb_not_deleted: "Thumbnail <strong>'%{name}'</strong> has NOT been deleted"
-    add_or_drop_file: Add or drop file
-    add_file: Add file
-    mark_on_photo: Select area to crop
-    crop_success: Thumbnail has been cropped
-    rotate_photo: Rotate photo
-    rotated: "Photo <strong>'%{name}'</strong> has been rotated"
-    not_rotated: "Photo <strong>'%{name}'</strong> has NOT been rotated"
-    crop: "Thumbnail <strong>'%{name}'</strong> has been cropped"
-    not_crop: "Thumbnail <strong>'%{name}'</strong> has NOT been cropped"
-    rotated_thumb: "Thumbnail <strong>'%{name}'</strong> has been rotated"
-    not_rotated_thumb: "Thumbnail <strong>'%{name}'</strong> has NOT been rotated"
-    thumb: Thumbnail
-    show_photo: Show photo
-    add_own_thumb: Add own thumb
-    thumb_upload_info: "By default, thumbnail is created from original photo"
-    photos_from_external_links_error: "Photos from this urls has NOT been saved:"
-    links_upload_info: " urls - one per row (max 10)"
-
-  slider_photos:
     edit_photo: Edit
     updated: "Photo <strong>'%{title}'</strong> has been updated"
     created: "Photo <strong>'%{title}'</strong> has been created"
@@ -548,11 +492,11 @@ en:
     menu_nav_title: Menu management
     menu_nav_text: "Add menu elements and attach content to menu. You can also add  HTML blocks to given position on given subpage (one, some or all)."
     static_module_nav_title: HTML blocks
-    static_module_nav_text: "Add HTML blocks, so pieces of code that should be displayed in various places of one, many or all of the subpages."
+    static_module_nav_text: "Add HTML blocks, so pieces of script that should be displayed in various places of one, many or all of the subpages."
     module_position_nav_title: Positions
     module_position_nav_text: Add a position that later can be user for putting HTML block or menu on the page.
-    external_code_nav_title: External code
-    external_code_nav_text: Add custom javascript to your page.
+    external_script_nav_title: External script
+    external_script_nav_text: Add custom javascript to your page.
     user_nav_title: Users management
     user_nav_text: "Add, delete or edit users."
 
@@ -625,19 +569,6 @@ en:
         updated_at: Updated at
         lang_id: Language
         home_page: Home page
-
-      slider:
-        active: Active
-        intro: Introduction
-        content: Content
-        display_from: Displayed from
-        display_to: Displayed to
-        title: Title
-        type: Type
-        updated_at: Updated at
-        lang_id: Language
-        home_page: Home page
-        fade_time_ms: Photo display time
 
       mov_gallery:
         active: Active
@@ -731,781 +662,3 @@ en:
       messages:
         record_invalid : "Incorrect record"
 
-
-
-
-
-
-
-
-
-
-
-pl
-
-
-
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
-pl:
-  time:
-    formats:
-      default: "%d-%m-%Y"
-  date:
-    formats:
-      default: "%d-%m-%Y"
-  mokio/article: "Artykuł"
-  mokio/pic_gallery: Galeria zdjęć
-  mokio/mov_gallery: Galeria filmów
-  mokio/contact: Strona kontaktowa
-  external_link: Url
-  backend:
-    site_preview: Twoja Strona
-    no_records_found: Nie znaleziono żadnej treści
-    dashboard: Biurko
-    cancel: Anuluj
-    save: Zapisz
-    save_and_create_new: Zapisz i utwórz nowy
-    edit: Edytuj
-    delete: Usuń
-    copy: Kopiuj
-    clear: wyczyść
-    confirm: Czy na pewno chcesz usunąć wybrany element?
-    no_init_image: "Nie wybrano miniaturki"
-    required_field: "Pole nie może być puste"
-    gallery: "Galeria"
-    edit_photo: Edytuj zdjęcie
-    file_upload: Załączanie plików
-    add_files: Dodaj pliki
-    add_file: Dodaj plik
-    add: Dodaj
-    start_upload: Załącz wszystkie
-    cancel_upload: Anuluj wszystkie
-    content_home_page: Ten artykuł znajduje się na stronie głównej
-    close: Zamknij
-    name: Nazwa
-    intro: Opis
-    active: Włączony
-    external_link: Link zewnętrzny
-    data_file: Plik
-    thumb: Miniaturka
-    you_are_here: Jesteś tutaj
-    actions: Akcje
-    display_from_out_of_range: Przekracza datę do której ma być wyświetlany
-    search: Szukaj
-    table_first: Pierwsza
-    table_last: Ostatnia
-    table_previous: Poprzednia
-    table_next: Następna
-    table_positions_from: Pozycje od
-    table_to: do
-    table_all: łącznie
-    table_no_records: Pozycji 0 z 0 dostępnych
-    table_filtring_from: "(filtrowanie spośród"
-    table_available_positions: "dostępnych pozycji)"
-    no_matching_indexes: "Nie znaleziono żadnych pasujących rekordów"
-    please_wait: "Proszę czekać..."
-    table_positions: pozycji
-    show: Pokaż
-    language: język
-    english: angielski
-    polish: polski
-    all: wszystkie
-    size: Rozmiar
-    wait: Proszę czekać
-    content_not_in_menu: "Treści nie podpięte pod żadne menu"
-    all_dashboard: "Wszystkich:"
-    back: "Wróć"
-    menu_with_invisible: "Menu bez wyświetlanej treści"
-    more: "więcej"
-    last_created_content: "Ostatnio dodana treść"
-    last_created: "Ostatnio dodany:"
-    last_updated_content: "Ostatnio zmieniana treść"
-    last_updated: "Ostatnio zmieniany:"
-    all: Wszystkie
-    content_now: "Istniejące treści"
-    mov_galleries_now: Galerii filmów
-    pic_galleries_now: Galerii zdjęć
-    articles_now: Artykułów
-    contacts_now: Strony kontaktowe
-    find_in_backend: Szukaj w backendzie
-    continue: Kontynuuj
-    back_to_edit: "<a href='%{url}'>Wróć do edycji.</a>"
-    slider: Slider
-    sign_up: Zarejestruj się
-    sign_in: Zaloguj
-    logout: Wyloguj
-    change_password: Zmień hasło
-
-    sidebars:
-      sidebar_title: Nawigacja
-      content_management: Zarządzanie treścią
-      add_content: Dodaj Treść
-      article: Artykuł
-      pic_galery: Galeria Zdjęć
-      mov_galery: Galeria Filmów
-      contact: Strona Kontaktowa
-      menu: Menu
-      modules: Bloki HTML
-      module_position: Pozycje
-      external_script: Skrypty zewnętrzne
-      lang: Ustawienia lokalizacji
-      comments: Komentarze
-      users: Użytkownicy
-
-    breadcrumbs:
-      only_loose: Treści nie podpięte pod menu
-      contents: Zarządzanie treścią
-      add_content: Dodaj Treść
-      menus: Zarządzanie menu
-      menus_edit: Edycja elementu menu
-      menus_new: Nowy element menu
-      static_modules: Bloki HTML
-      static_modules_edit: Edycja bloku HTML
-      static_modules_new: Nowy blok HTML
-      articles_new: Nowy artykuł
-      articles_edit: Edycja artykułu
-      pic_galleries_new: Nowa galeria zdjęć
-      pic_galleries_edit: Edycja galerii zdjęć
-      mov_galleries_new: Nowa galeria filmów
-      mov_galleries_edit: Edycja galerii filmów
-      contacts_new: Nowa strona kontaktowa
-      contacts_edit: Edycja strony kontatkowej
-      sliders_new: Nowy slider
-      sliders_edit: Edycja slidera
-      comments: Komentarze
-      users: Użytkownicy
-      users_new: Nowy użytkownik
-      users_edit: Edycja danych użytkownika
-      external_scripts: Skrypty zewnętrzne
-      external_scripts_new: Nowy skrypt zewnętrzny
-      external_scripts_edit: Edycja
-      module_positions: Pozycje
-      module_positions_new: Nowa pozycja
-      module_positions_edit: Edycja pozycji
-      langs: Ustawienia lokalizacji i języka
-      langs_new: Nowa lokalizacja
-      langs_edit: Edycja lokalizacji
-      copy: Kopiuj
-
-  static_modules:
-    actions: Akcje
-    active: Włączony
-    edit_title: Edytuj blok HTML
-    index_title: Bloki HTML
-    index_add_new: Dodaj nowy blok HTML
-    lang_id: Język
-    new_title: Nowy blok HTML
-    position: Pozycja
-    title: Tytuł
-    module_position_ids: Pozycje
-    updated_at: Uaktualniono
-    edit_title: Edytuj blok HTML
-    created: "Blok HTML <strong>'%{title}'</strong> został utworzony."
-    updated: "Blok HTML <strong>'%{title}'</strong> został poprawnie edytowany."
-    deleted: "Blok HTML <strong>'%{title}'</strong> został usunięty."
-    update_active_true: "Blok HTML <strong>'%{title}'</strong> jest teraz aktywny."
-    update_active_false: "Blok HTML <strong>'%{title}'</strong> jest teraz nieaktywny."
-    copy_title: Kopiuj blok HTML
-
-  external_scripts:
-        name: Nazwa / id
-        actions: Akcje
-        edit_title: Edytuj skrypt zewnętrzny
-        index_title: Skrypty zewnętrzne
-        index_add_new: Dodaj nowy skrypt zewnętrzny
-        new_title: Nowy skrypt zewnętrzny
-        title: Tytuł
-        updated_at: Uaktualniono
-        edit_title: Edytuj skrypt zewnętrzny
-        created: "Skrypt <strong>'%{title}'</strong> został utworzony."
-        updated: "Skrypt <strong>'%{title}'</strong> został poprawnie edytowany."
-        deleted: "Skrypt <strong>'%{title}'</strong> został usunięty."
-        copy_title: Kopiuj skrypt
-
-  module_positions:
-        name: Nazwa / id
-        actions: Akcje
-        edit_title: Edytuj pozycję
-        index_title: Pozycje
-        index_add_new: Dodaj nowa pozycję
-        new_title: Nowa pozycja
-        title: Tytuł
-        updated_at: Uaktualniono
-        edit_title: Edytuj pozycję
-        created: "Pozycja <strong>'%{title}'</strong> została utworzona."
-        updated: "Pozycja <strong>'%{title}'</strong> została poprawnie edytowana."
-        deleted: "Pozycja <strong>'%{title}'</strong> została usunięta."
-        copy_title: Kopiuj pozycję modułów
-  langs:
-        name: Nazwa
-        shortname: Nazwa skrócona
-        active: Włączony
-        actions: Akcje
-        edit_title: Edytuj lokalizacje
-        index_add_new: Dodaj nowa lokalizacje
-        new_title: Nowa lokalizacja
-        index_title: Ustawienia lokalizacji i języka
-        updated_at: Uaktualniono
-        edit_title: Edytuj lokalizacje
-        created: "Lokalizacja <strong>'%{title}'</strong> została utworzona."
-        updated: "Lokalizacja <strong>'%{title}'</strong> została poprawnie edytowana."
-        deleted: "Lokalizacja <strong>'%{title}'</strong> została usunięta."
-        copy_title: Kopiuj lokalizację
-
-
-  articles:
-    active: Włączony
-    actions: Akcje
-    edit_title: Edytuj artykuł
-    article_type: Typ
-    home_page: Strona startowa
-    index_title: Artykuły
-    index_add_new: Dodaj nowy artykuł
-    lang_id: Język
-    title: Tytuł
-    updated_at: Uaktualniono
-    intro: wstęp
-    content: treść
-    display_from: "wyświetlany od"
-    display_to: "wyświetlany do"
-    main_pic: miniaturka
-    no_init_image: "Nie wybrano miniaturki"
-    created: "Artykuł <strong>'%{title}'</strong> został utworzony."
-    updated: "Artykuł <strong>'%{title}'</strong> został poprawnie edytowany."
-    deleted: "Artykuł <strong>'%{title}'</strong> został usunięty."
-    new_title: "Nowy artykuł"
-    edit_title: "Edytuj artykuł"
-    update_active_true: "Artykuł <strong>'%{title}'</strong> jest teraz aktywny."
-    update_active_false: "Artykuł <strong>'%{title}'</strong> jest teraz nieaktywny."
-
-  menus:
-    name: "nazwa"
-    external_link: "url"
-    active: "włączony"
-    visible: "widoczny"
-    description: "opis"
-    parent_menu: "element nadrzędny"
-    target: "target"
-    current_window_inside: "bieżące okno"
-    current_window_whole: "bieżące okno - cały ekran"
-    new_window: "nowe okno"
-    created: "Menu <strong>'%{title}'</strong> zostało utworzone."
-    updated: "Menu <strong>'%{title}'</strong> zostało poprawnie zapisane."
-    deleted: "Menu <strong>'%{title}'</strong> zostało usunięte."
-    not_created: "Menu <strong>'%{title}'</strong> nie zostało utworzone."
-    not_updated: "Menu <strong>'%{title}'</strong> nie zostało poprawnie zapisane."
-    not_deleted: "Menu <strong>'%{title}'</strong> nie zostało usunięte."
-    index_title: Zarządzanie menu
-    index_add_new: Dodaj menu
-    new_title: "Nowy element menu"
-    edit_title: "Edytuj element menu"
-    save: Zapisz
-    save_and_create_new: "Zapisz i utwórz nowy"
-    content: treść
-    sort_true: Struktura menu została poprawnie zapisana
-    sort_false: Nie wszystkie zmiany w strukturze menu były dozwolone. Odśwież stronę.
-    list: Lista
-    content_remove_confirm: Czy chcesz odłączyć od menu wszystkie treści z innego języka niż nowowybrany?
-    modules_remove_confirm: Czy chcesz odłączyć wszystkie bloki HTML z innego języka niż nowowybrany?
-    confirm: Czy na pewno chcesz skasować ten element menu?
-    menu_active_legend: "Aktywna pozycja menu - link działa"
-    menu_non_active_legend: "Nieaktywna pozycja menu - link nie działa"
-    menu_visible_legend: "Wyświetlana pozycja menu"
-    menu_non_visible_legend: "Niewyświetlana pozycja menu"
-    exclamation_legend: "Menu bez podłączonej treści"
-    path: Ścieżka
-    legend: Legenda
-    type: Typ
-
-  pic_galleries:
-    cannot_add_files_now: Dodawanie zdjęć do galerii będzie możliwe dopiero po jej zapisaniu
-    created: "Galeria <strong>'%{title}'</strong> została utworzona. Dodawanie zdjęć jest już możliwe."
-    created_and_new: "Galeria <strong>'%{title}'</strong> została utworzona."
-    updated: "Galeria <strong>'%{title}'</strong> została poprawnie zapisana."
-    deleted: "Galeria <strong>'%{title}'</strong> została usunięta."
-    not_created: "Galeria <strong>'%{title}'</strong> nie została utworzona."
-    not_updated: "Galeria <strong>'%{title}'</strong> nie została poprawnie zapisana."
-    not_deleted: "Galeria <strong>'%{title}'</strong> nie została usunięta."
-    active: Włączony
-    intro: wstęp
-    content: treść
-    display_from: "wyświetlany od"
-    display_to: "wyświetlany do"
-    new_title: "Nowa galeria zdjęć"
-    edit_title: "Edytuj galerię zdjęć"
-    update_active_true: "Galeria <strong>'%{title}'</strong> jest teraz aktywna"
-    update_active_false: "Galeria <strong>'%{title}'</strong> jest teraz nieaktywna"
-
-  sliders:
-    cannot_add_files_now: Dodawanie zdjęć do slidera będzie możliwe dopiero po jego zapisaniu
-    created: "Slider <strong>'%{title}'</strong> został utworzony. Dodawanie zdjęć jest już możliwe."
-    created_and_new: "Slider <strong>'%{title}'</strong> został utworzony."
-    updated: "Slider <strong>'%{title}'</strong> został poprawnie zapisany."
-    deleted: "Slider <strong>'%{title}'</strong> został usunięty."
-    not_created: "Slider <strong>'%{title}'</strong> nie został utworzony."
-    not_updated: "Slider <strong>'%{title}'</strong> nie został poprawnie zapisany."
-    not_deleted: "Slider <strong>'%{title}'</strong> nie został usunięty."
-    active: Włączony
-    intro: wstęp
-    content: treść
-    display_from: "wyświetlany od"
-    display_to: "wyświetlany do"
-    new_title: "Nowy slider"
-    edit_title: "Edytuj Slider"
-    update_active_true: "Slider <strong>'%{title}'</strong> jest teraz aktywny"
-    update_active_false: "Slider <strong>'%{title}'</strong> jest teraz nieaktywny"
-
-  mov_galleries:
-    cannot_add_files_now: "Dodawanie filmów do galerii będzie możliwe dopiero po jej zapisaniu."
-    created: "Galeria <strong>'%{title}'</strong> została utworzona. Dodawanie filmów jest już możliwe."
-    created_and_new: "Galeria <strong>'%{title}'</strong> została utworzona."
-    updated: "Galeria <strong>'%{title}'</strong> została poprawnie zapisana."
-    deleted: "Galeria <strong>'%{title}'</strong> została usunięta."
-    not_created: "Galeria <strong>'%{title}'</strong> nie została utworzona."
-    not_updated: "Galeria <strong>'%{title}'</strong> nie została poprawnie zapisana."
-    not_deleted: "Galeria <strong>'%{title}'</strong> nie została usunięta."
-    active: Włączony
-    intro: wstęp
-    content: treść
-    display_from: "wyświetlany od"
-    display_to: "wyświetlany do"
-    new_title: "Nowa galeria filmów"
-    edit_title: "Edytuj galerię filmów"
-    update_active_true: "Galeria <strong>'%{title}'</strong> jest teraz aktywna"
-    update_active_false: "Galeria <strong>'%{title}'</strong> jest teraz nieaktywna"
-
-  contacts:
-    active: Włączony
-    actions: Akcje
-    edit_title: Edytuj stronę kontaktową
-    article_type: Typ
-    title: Tytuł
-    updated_at: Uaktualniono
-    main_pic: miniaturka
-    no_init_image: "Nie wybrano miniaturki"
-    created: "Strona kontaktowa <strong>'%{title}'</strong> została utworzona."
-    updated: "Strona kontaktowa <strong>'%{title}'</strong> została poprawnie edytowana."
-    deleted: "Strona kontaktowa <strong>'%{title}'</strong> została usunięta."
-    new_title: "Nowa strona kontaktowa"
-    update_active_true: "Strona kontaktowa <strong>'%{title}'</strong> jest teraz aktywna."
-    update_active_false: "Strona kontaktowa <strong>'%{title}'</strong> jest teraz nieaktywna."
-    tpl: Szablon wiadomości
-    form_data: Dane z formularza
-
-  contents:
-    edit_gallery_content: Edytuj treść
-    edit_slider_content: Edytuj treść
-    edit_title: Edycja
-    add_photos: Dodaj Zdjęcia
-    add_slider_photos: Dodaj Zdjęcia
-    add_youtubes: Dodaj Film
-    created: "Treść <strong>'%{title}'</strong> została utworzona"
-    updated: "Treść <strong>'%{title}'</strong> została poprawnie zapisana"
-    deleted: "Treść <strong>'%{title}'</strong> została usunięta"
-    not_created: "Treść <strong>'%{title}'</strong> nie została utworzona"
-    not_updated: "Treść <strong>'%{title}'</strong> nie została poprawnie zapisana"
-    not_deleted: "Treść <strong>'%{title}'</strong> nie została usunięta"
-    add_external_link: "Dodaj zdjęcia przez link"
-    active: Włączony
-    intro: Wstęp
-    content: Treść
-    display_from: Wyświetlany od
-    display_to: Wyświetlany do
-    title: Tytuł
-    index_title: Zarządzanie treścią
-    index_add_new: Dodaj treść
-    update_active_true: "Treść <strong>'%{title}'</strong> jest teraz aktywna"
-    update_active_false: "Treść <strong>'%{title}'</strong> jest teraz nieaktywna"
-    updated_at: Ostatnio edytowany
-    lang_id: Język
-    type: Typ Treści
-    add_tag: Dodaj
-    tags: Tagi
-    copy_title: Kopiuj treść
-    comma_separated: "oddzielone przecinkami"
-    types:
-      Mokio::PicGallery: Galeria zdjęć
-      Mokio::Article: Artykuł
-      Mokio::MovGallery: Galeria filmów
-      Mokio::Contact: Strona kontaktowa
-      Mokio::Slider: Slider
-
-  data_files:
-    larger_image: powiększ
-    sorted: Kolejność została poprawnie edytowana.
-
-  photos:
-    edit_photo: Edytuj
-    updated: "Zdjęcie <strong>'%{title}'</strong> zostało poprawnie edytowane"
-    created: "Zdjęcie <strong>'%{title}'</strong> zostało dodane"
-    deleted: "Zdjęcie <strong>'%{title}'</strong> zostało usunięte"
-    not_deleted: "Zdjęcie <strong>'%{title}'</strong> nie zostało usunięte"
-    not_created: "Zdjęcie <strong>'%{title}'</strong> nie zostało utworzone"
-    not_updated: "Zdjęcie <strong>'%{title}'</strong> nie zostało poprawnie edytowane"
-    edit_main_photo: Edycja zdjęcia
-    edit_thumb: Edycja miniaturki
-    thumb_updated: Miniaturka została poprawnie edytowana
-    thumb_not_updated: Miniaturka nie została poprawnie edytowana
-    thumb_deleted: "Miniaturka zdjęcia <strong>'%{name}'</strong> została usunięta"
-    thumb_not_deleted: "Miniaturka zdjęcia <strong>'%{name}'</strong> nie została usunięta"
-    add_or_drop_file: Naciśnij i wybierz lub upuść zdjęcie
-    add_file: Dodaj zdjęcie
-    mark_on_photo: Zaznacz obszar na zdjęciu
-    crop_success: Miniaturka została poprawnie przycięta
-    rotate_photo: Obróć zdjęcie
-    rotated: "Obracanie zdjęcia <strong>'%{name}'</strong> przebiegło pomyślnie"
-    not_rotated: "Obracanie zdjęcia <strong>'%{name}'</strong> nie przebiegło pomyślnie"
-    crop: "Miniaturka do zdjęcia <strong>'%{name}'</strong> poprawnie wycięta"
-    not_crop: "Miniaturka do zdjęcia <strong>'%{name}'</strong> nie została poprawnie wycięta"
-    rotated_thumb: "Obracanie miniaturki zdjęcia <strong>'%{name}'</strong> przebiegło pomyślnie"
-    not_rotated_thumb: "Obracanie miniaturki zdjęcia <strong>'%{name}'</strong> nie przebiegło pomyślnie"
-    thumb: Miniaturka
-    show_photo: Pokaż zdjęcie
-    add_own_thumb: Dodaj własną miniaturkę
-    thumb_upload_info: "Domyślnie miniaturka tworzona jest z oryginalnego zdjęcia"
-    photos_from_external_links_error: "Zdjęcia z następujących linków nie zostały zapisane:"
-    links_upload_info: "linki w oddzielnych wierszach (max 10)"
-
-  slider_photos:
-    edit_photo: Edytuj
-    updated: "Zdjęcie <strong>'%{title}'</strong> zostało poprawnie edytowane"
-    created: "Zdjęcie <strong>'%{title}'</strong> zostało dodane"
-    deleted: "Zdjęcie <strong>'%{title}'</strong> zostało usunięte"
-    not_deleted: "Zdjęcie <strong>'%{title}'</strong> nie zostało usunięte"
-    not_created: "Zdjęcie <strong>'%{title}'</strong> nie zostało utworzone"
-    not_updated: "Zdjęcie <strong>'%{title}'</strong> nie zostało poprawnie edytowane"
-    edit_main_photo: Edycja zdjęcia
-    edit_thumb: Edycja miniaturki
-    thumb_updated: Miniaturka została poprawnie edytowana
-    thumb_not_updated: Miniaturka nie została poprawnie edytowana
-    thumb_deleted: "Miniaturka zdjęcia <strong>'%{name}'</strong> została usunięta"
-    thumb_not_deleted: "Miniaturka zdjęcia <strong>'%{name}'</strong> nie została usunięta"
-    add_or_drop_file: Naciśnij i wybierz lub upuść zdjęcie
-    add_file: Dodaj zdjęcie
-    mark_on_photo: Zaznacz obszar na zdjęciu
-    crop_success: Miniaturka została poprawnie przycięta
-    rotate_photo: Obróć zdjęcie
-    rotated: "Obracanie zdjęcia <strong>'%{name}'</strong> przebiegło pomyślnie"
-    not_rotated: "Obracanie zdjęcia <strong>'%{name}'</strong> nie przebiegło pomyślnie"
-    crop: "Miniaturka do zdjęcia <strong>'%{name}'</strong> poprawnie wycięta"
-    not_crop: "Miniaturka do zdjęcia <strong>'%{name}'</strong> nie została poprawnie wycięta"
-    rotated_thumb: "Obracanie miniaturki zdjęcia <strong>'%{name}'</strong> przebiegło pomyślnie"
-    not_rotated_thumb: "Obracanie miniaturki zdjęcia <strong>'%{name}'</strong> nie przebiegło pomyślnie"
-    thumb: Miniaturka
-    show_photo: Pokaż zdjęcie
-    add_own_thumb: Dodaj własną miniaturkę
-    thumb_upload_info: "Domyślnie miniaturka tworzona jest z oryginalnego zdjęcia"
-    photos_from_external_links_error: "Zdjęcia z następujących linków nie zostały zapisane:"
-    links_upload_info: "linki w oddzielnych wierszach (max 10)"
-
-  youtubes:
-    edit_youtube: Edytuj film
-    updated: "Film <strong>'%{title}'</strong> został poprawnie zapisany"
-    created: "Film <strong>'%{title}'</strong> został dodany"
-    deleted: "Film <strong>'%{title}'</strong> został usunięty"
-    no_movie_found: 'Nie znaleziono filmu o podanym ID'
-    add_youtube: Dodaj Film
-    preview: Podgląd
-    search_movie_url: Url do filmu
-    add_file: Dodaj zdjęcie
-    add_own_thumb: Dodaj własną miniaturkę
-    thumb_from_net: Miniaturka z internetu
-    thumb_own: Miniaturka z dysku
-    change_thumb: Zmień miniaturkę
-    subtitle: Podtytuł
-    movie_url_desc: "Podaj url do filmu z Youtube, Vimeo lub DailyMotion"
-
-  meta:
-    meta_google: Google meta tagi
-    meta_google_desc: meta tagi mają wpływ na wyniki wyświetlania w google
-    meta_facebook: Facebook meta tagi
-    meta_facebook_desc: meta tagi wykorzystywane są przy udostępnianiu i wyświetlaniu witryny w Facebook
-    auto_completed: Meta tagi zostały uzupełnione automatycznie.
-
-  gmaps:
-    gmap: Mapa google
-
-  mokio/comments:
-    title: Tytuł
-    comment: Komentarz
-    commentable: Komentowana treść
-    status: Status
-    user_id: Użytkownik
-    created_at: Utworzony
-    update_accept_true: Komentarz został zaakceptowany
-    update_accept_false: Komentarz został odrzucony
-    deleted: Komentarz został usunięty
-    created: Komoentarz został utworzony
-    index_title: Zarządzanie komentarzami
-    accept_all: Zaakceptuj wszystkie
-    reject_all: Odrzuć wszystkie
-    delete_rejected: Usuń odrzucone
-    accept_all_true: Wszystkie komentarze zostały zakceptowane
-    accept_all_false: Nie udało się zaakceptować wszystkich komentarzy
-    reject_all_true: Wszystkie komentarze zostały odrzucone
-    reject_all_false: Nie udało się odrzucić wszystkich komentarzy
-    delete_rejected_true: Odrzucone komentarze zostały usunięte
-    delete_rejected_false: Nie udało się usunąć wszystkich odrzuconych komentarzy
-
-  users:
-    index_add_new: Dodaj nowego użytkownika
-    index_title: Użytkownicy
-    new_title: Nowy użytkownik
-    new_user: Nowy użytkownik
-    add_user: Dodaj
-    edit_user: Edycja danych użytkownika
-    save_user: Zapisz
-    copy_title: Kopiuj użytkownika
-    edit_title: Edycja danych użytkownika
-    created: "Użytkownik <strong>'%{title}'</strong> został utworzony"
-    updated: "Użytkownik <strong>'%{title}'</strong> został poprawnie zapisany"
-    deleted: "Użytkownik <strong>'%{title}'</strong> został usunięty"
-    not_created: "Użytkownik <strong>'%{title}'</strong> nie został utworzony"
-    not_updated: "Użytkownik <strong>'%{title}'</strong> nie został poprawnie zapisany"
-    not_deleted: "Użytkownik <strong>'%{title}'</strong> nie został usunięty"
-    roles:  Role
-    role_name:
-      admin: Administrator
-      content_editor: Zarządzanie treścią
-      menu_editor: Zarządzanie strukturą menu
-      static_module_editor: Zarządzanie blokami HTML
-      user_editor: Zarządzanie użytkownikami
-      comment_approver: Obsługa komentarzy (moderowanie)
-      reader: Dosŧęp do odczytu
-    edit_password: Zmiana hasła
-    password_updated: Hasło zostało zmienione
-    password_not_updated: Nie udało się zmienic hasła
-
-  site_helper:
-    next: następny
-    welcome_title: Witaj w Mokio!
-    welcome_text: W kilku krokach pokażemy Ci jak stworzyć własna stronę www.
-    dashboard_nav_title: Biurko
-    dashboard_nav_text: "Tutaj można oglądać ostatnio wprowadzone zmiany oraz łatwo znaleźć rzeczy do naprawienia, np. treść bez menu lub menu bez treści."
-    contentmanagment_nav_title: Zarządzanie treścią
-    contentmanagment_nav_text: "Dodawanie, edycja i usuwanie treści. "
-    content_nav_title: Dodaj treść
-    content_nav_text: "Dodawanie treści na stronę: artykuły, galerie zdjęć, filmów, itd. Dodane treści powinny zostać podpięte pod menu jeśli chcemy je wyświetlić na stronie."
-    menu_nav_title: Zarządzanie menu
-    menu_nav_text: "Dodawanie elementów menu i podpinanie pod nie treści, które mają być wyświetlone na danej podstronie. Do menu możemy również podpinać bloki HTML do wyświetlenia w odpowiednich pozycjach na stronie."
-    static_module_nav_title: Bloki HTML
-    static_module_nav_text: "Dodawanie bloków HTML, czyli kawałki kodu do wyświetlenia w różnych miejscach jednej, kilku lub wszystkich podstron."
-    module_position_nav_title: Pozycje
-    module_position_nav_text: "Dodawanie pozycji, które później moga zostać wykorzystane do umieszczania bloków HTML lub menu na stronie."
-    external_script_nav_title: Skrypty zewnętrzne
-    external_script_nav_text: Dodawanie własnego javascriptu do strony.
-    user_nav_title: Zarządzanie użytkownikami
-    user_nav_text: "Usuwanie, dodawanie nowych, edycja danych użytkowników."
-
-
-# ============================================ Activerecord ============================================================= #
-
-  activerecord:
-    errors:
-      models:
-        mokio/contact:
-          attributes:
-            title:
-              blank: "Tytuł nie może być pusty"
-        mokio/menu:
-          attributes:
-            name:
-              blank: "Nazwa nie może być pusta"
-            lang:
-              not_match_parent: "Wybrany element nadrzędny nie należy do wybranego języka"
-        mokio/static_module:
-          attributes:
-            title:
-              blank: "Tytuł nie może być pusty"
-            display_from:
-              invalid: Przekracza datę do której ma być wyświetlany
-        mokio/pic_gallery:
-          attributes:
-            title:
-              blank: "Tytuł nie może być pusty"
-            display_from:
-              invalid: Przekracza datę do której ma być wyświetlana
-        mokio/article:
-          attributes:
-            title:
-              blank: "Tytuł nie może być pusty"
-            display_from:
-              invalid: Przekracza datę do której ma być wyświetlany
-        mokio/mov_gallery:
-          attributes:
-            title:
-              blank: "Tytuł nie może być pusty"
-            display_from:
-              invalid: Przekracza datę do której ma być wyświetlana
-      editable:
-        not_permitted: Edycja niedozwolona
-      messages:
-        record_invalid: Niepoprawny rekord w bazie danych
-
-    attributes:
-      mokio/contents:
-        active: Włączony
-        intro: Wstęp
-        content: Treść
-        display_from: Wyświetlany od
-        display_to: Wyświetlany do
-        title: Tytuł
-        type: Typ
-        updated_at: Ostatnio edytowany
-        lang_id: Język
-        home_page: Strona Główna
-
-      mokio/pic_gallery:
-        active: Włączony
-        intro: Wstęp
-        content: Treść
-        display_from: Wyświetlany od
-        display_to: Wyświetlany do
-        title: Tytuł
-        type: Typ
-        updated_at: Ostatnio edytowany
-        lang_id: Język
-        home_page: Strona Główna
-
-      mokio/slider:
-        active: Włączony
-        intro: Wstęp
-        content: Treść
-        display_from: Wyświetlany od
-        display_to: Wyświetlany do
-        title: Tytuł
-        type: Typ
-        updated_at: Ostatnio edytowany
-        lang_id: Język
-        home_page: Strona Główna
-        fade_time_ms: Czas wyświetlania zdjęcia
-
-      mokio/mov_gallery:
-        active: Włączony
-        intro: Wstęp
-        content: Treść
-        display_from: Wyświetlany od
-        display_to: Wyświetlany do
-        title: Tytuł
-        type: Typ
-        updated_at: Ostatnio edytowany
-        lang_id: Język
-        home_page: Strona Główna
-
-      mokio/article:
-        active: Włączony
-        intro: Wstęp
-        content: Treść
-        display_from: Wyświetlany od
-        display_to: Wyświetlany do
-        title: Tytuł
-        type: Typ
-        updated_at: Ostatnio edytowany
-        lang_id: Język
-        home_page: Strona Główna
-      mokio/external_script:
-        name: Nazwa / Id
-        script: Skrypt
-      mokio/lang:
-        name: Tytuł
-        shortname: Nazwa skrócona
-        active: Włączony
-      mokio/module_position:
-        name: Nazwa / Id
-        tpl: Szablon
-      mokio/contact:
-        active: Włączony
-        content: Treść
-        title: Tytuł
-        type: Typ
-        updated_at: Ostatnio edytowany
-        lang_id: Język
-        recipient_emails: Adresaci
-
-      mokio/contact_template:
-        tpl: Szablon wiadomości
-
-      mokio/gmap:
-        full_address: Adres
-
-      mokio/static_module:
-        active: Włączony
-        intro: Wstęp
-        content: Treść
-        display_from: Wyświetlany od
-        display_to: Wyświetlany do
-        title: Tytuł
-        module_positions: Pozycje modułu
-        always_displayed: Wyświetlany zawsze
-        updated_at: Ostatnio edytowany
-        lang_id: Język
-
-      mokio/photo:
-        name: Nazwa
-        intro: Opis
-        active: Włączony
-        external_link: Link zewnętrzny
-        data_file: Plik
-        thumb: Miniaturka
-        remote_data_file_url: Linki
-        subtitle: Podtytuł
-
-      mokio/youtube:
-        name: Nazwa
-        intro: Opis
-        active: Włączony
-        external_link: Link zewnętrzny
-        data_file: Plik
-        thumb: Miniaturka
-        add_own_thumb: Dodaj własną miniaturkę
-        subtitle: Podtytuł
-
-      mokio/meta:
-        g_title: Tytuł
-        g_desc: Opis
-        g_keywords: Słowa kluczowe
-        g_author: Autor
-        g_copyright: Prawa autorskie
-        g_application_name: Nazwa aplikacji
-        f_title: Tytuł
-        f_type: Typ strony
-        f_image: Zdjęcie
-        f_url: Url strony
-        f_desc: Opis
-
-      mokio/user:
-        password: Hasło
-        remember_me: Zapamiętaj mnie
-        email: E-mail
-        password_confirmation: Potwierdź hasło
-      messages:
-        record_invalid : "Niepoprawny rekord w bazie danych"
-
-      mokio/menu:
-        lang_id: Język
-        name: Nazwa
-        external_link: Url
-        active: Włączony
-        visible: Widoczny
-        description: Opis
-        parent_id: Element nadrzędny
-        target: Target
