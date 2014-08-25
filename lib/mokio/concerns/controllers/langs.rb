@@ -10,6 +10,9 @@ module Mokio
         included do
         end
 
+        #
+        # Save new lang and generate default lang menu structure to mokio_menus
+        #
 
         def create
           @lang = Mokio::Lang.new(lang_params)

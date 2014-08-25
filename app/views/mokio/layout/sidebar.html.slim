@@ -53,12 +53,16 @@
             a href=module_positions_path
               span.icon16.icomoon-icon-grid-view
               = bt("module_position", "backend.sidebar")
-        - if can? :manage, Mokio::ExternalCode
-          li.external_code_nav
-            a href=external_codes_path
-              span.icon16.icomoon-icon-link
-              = bt("external_code", "backend.sidebar")
-
+        - if can? :manage, Mokio::ExternalScript
+          li.external_script_nav
+            a href=external_scripts_path
+              span.icon16.icomoon-icon-embed
+              = bt("external_script", "backend.sidebar")
+          - if can? :manage, Mokio::Lang
+            li.lang_nav
+              a href=langs_path
+                span.icon16.icomoon-icon-info
+                = bt("lang", "backend.sidebar")
         - if can? :manage, Mokio::User
           li.user_nav
             a href=users_path 

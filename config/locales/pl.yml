@@ -1,3 +1,4 @@
+
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
@@ -102,6 +103,7 @@ pl:
     find_in_backend: Szukaj w backendzie
     continue: Kontynuuj
     back_to_edit: "<a href='%{url}'>Wróć do edycji.</a>"
+    slider: Slider
     sign_up: Zarejestruj się
     sign_in: Zaloguj
     logout: Wyloguj
@@ -118,7 +120,7 @@ pl:
       menu: Menu
       modules: Bloki HTML
       module_position: Pozycje
-      external_code: Skrypty zewnętrzne
+      external_script: Skrypty zewnętrzne
       lang: Ustawienia lokalizacji
       comments: Komentarze
       users: Użytkownicy
@@ -147,9 +149,9 @@ pl:
       users: Użytkownicy
       users_new: Nowy użytkownik
       users_edit: Edycja danych użytkownika
-      external_codes: Skrypty zewnętrzne
-      external_codes_new: Nowy skrypt zewnętrzny
-      external_codes_edit: Edycja
+      external_scripts: Skrypty zewnętrzne
+      external_scripts_new: Nowy skrypt zewnętrzny
+      external_scripts_edit: Edycja
       module_positions: Pozycje
       module_positions_new: Nowa pozycja
       module_positions_edit: Edycja pozycji
@@ -178,7 +180,7 @@ pl:
     update_active_false: "Blok HTML <strong>'%{title}'</strong> jest teraz nieaktywny."
     copy_title: Kopiuj blok HTML
 
-  external_codes:
+  external_scripts:
         name: Nazwa / id
         actions: Akcje
         edit_title: Edytuj skrypt zewnętrzny
@@ -563,8 +565,8 @@ pl:
     static_module_nav_text: "Dodawanie bloków HTML, czyli kawałki kodu do wyświetlenia w różnych miejscach jednej, kilku lub wszystkich podstron."
     module_position_nav_title: Pozycje
     module_position_nav_text: "Dodawanie pozycji, które później moga zostać wykorzystane do umieszczania bloków HTML lub menu na stronie."
-    external_code_nav_title: Skrypty zewnętrzne
-    external_code_nav_text: Dodawanie własnego javascriptu do strony.
+    external_script_nav_title: Skrypty zewnętrzne
+    external_script_nav_text: Dodawanie własnego javascriptu do strony.
     user_nav_title: Zarządzanie użytkownikami
     user_nav_text: "Usuwanie, dodawanie nowych, edycja danych użytkowników."
 
@@ -638,6 +640,18 @@ pl:
         lang_id: Język
         home_page: Strona Główna
 
+      mokio/slider:
+        active: Włączony
+        intro: Wstęp
+        content: Treść
+        display_from: Wyświetlany od
+        display_to: Wyświetlany do
+        title: Tytuł
+        type: Typ
+        updated_at: Ostatnio edytowany
+        lang_id: Język
+        home_page: Strona Główna
+        fade_time_ms: Czas wyświetlania zdjęcia
 
       mokio/mov_gallery:
         active: Włączony
@@ -662,9 +676,9 @@ pl:
         updated_at: Ostatnio edytowany
         lang_id: Język
         home_page: Strona Główna
-      mokio/external_code:
+      mokio/external_script:
         name: Nazwa / Id
-        code: Skrypt
+        script: Skrypt
       mokio/lang:
         name: Tytuł
         shortname: Nazwa skrócona

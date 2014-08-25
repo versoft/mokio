@@ -1,30 +1,36 @@
 module Mokio
   module FrontendHelpers
-    #
-    # Frontend helper methods used with Mokio::ExternalCodes objects
+    # Frontend helper methods used with Mokio::ExternalScripts objects
     #
     module ExternalScriptsHelper
 
-      #  returns a single external code
       #
+      #  returns a single external script
+      #
+
       # ==== Attributes
       #
-      # * +code_name+ - external code name from mokio_external_codes
+      # * +script_name+ - external script name from mokio_external_scripts
 
-      def build_external_code(code_name)
+      def build_external_script(script_name)
         html = "";
-        result  = Mokio::ExternalCode.find_by(name:code_name)
+        result  = Mokio::ExternalScript.find_by(name:script_name)
         if !result.blank?
           html = build_common(result)
         end
         html.html_safe
       end
 
-      #  returns all external codes
+      #
+      #  returns all external scripts
+      #
 
-      def build_all_external_codes
+      # ==== Variables
+      # * +result+ - all external scripts from mokio_external_scripts
+
+      def build_all_external_scripts
         html = "";
-        result = Mokio::ExternalCode.all
+        result = Mokio::ExternalScript.all
         if !result.blank?
           result.each do |position|
             html = build_common(position)
@@ -33,21 +39,22 @@ module Mokio
         html.html_safe
       end
 
-      # returns a single external code and generates html
+      #
+      # build a single external script html
       #
       # ==== Attributes
       #
-      # * +obj+ - single external code object from ActiveRecord query result
+      # * +obj+ - single external script object from ActiveRecord query result
       #
       # ==== Variables
-      # * +obj.code+ - external code content from mokio_external_codes
-      # * +obj.name - external code name from mokio_external_codes
+      # * +obj.script+ - external script content from mokio_external_scripts
+      # * +obj.name+ - external script name from mokio_external_scripts
 
       def build_common(obj)
         html = ""
         if !obj.blank?
-          html << "<!--#{obj.name} - EXTERNAL CODE START-->\n"
-          html << obj.code + "\n"
+          html << "<!--#{obj.name} - EXTERNAL SCRIPT START-->\n"
+          html << obj.script + "\n"
           html << "<!--#{obj.name} END -->\n"
           html.html_safe
         end

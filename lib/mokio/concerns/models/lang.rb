@@ -15,11 +15,28 @@ module Mokio
           end
 
         module ClassMethods
+
           def default
             Mokio::Lang.where(shortname: Mokio.frontend_default_lang).first
           end
+          #
+          # Columns for table in CommonController#index view
+          #
+          def columns_for_table
+            ["name","shortname","active"]
+          end
+        end
+
+        def editable  #:nodoc:
+          true
+        end
+
+        def deletable  #:nodoc:
+          true
         end
       end
     end
   end
 end
+
+

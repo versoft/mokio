@@ -101,9 +101,9 @@ Mokio::Engine.routes.draw do
       end
       
           #
-      # external_codes
+      # external_scripts
       #
-      resources :external_codes do
+      resources :external_scripts do
         member do
           get :update_active
           get  :copy
