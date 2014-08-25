@@ -33,7 +33,7 @@ en:
   external_link: Url
   backend:
     site_preview: Your Site
-    no_records_found: Nie znaleziono żadnej treści
+    no_records_found: No records found
     dashboard: Dashboard
     cancel: Cancel
     save: Save
@@ -117,8 +117,10 @@ en:
       mov_galery: Movie Gallery
       contact: Contact Page
       menu: Menu
-      modules: Modules
-      comments: Komentarze
+      modules: HTML blocks
+      comments: Comments
+      module_position: Positions
+      external_code: External code
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -127,9 +129,9 @@ en:
       menus: Menu management
       menus_edit: Edit menu element
       menus_new: New menu element
-      static_modules: Static modules
-      static_modules_edit: Edit static module
-      static_modules_new: New static module
+      static_modules: HTML blocks
+      static_modules_edit: Edit HTML block
+      static_modules_new: New HTML block
       articles_new: New article
       articles_edit: Edit article
       pic_galleries_new: New photo gallery
@@ -142,25 +144,76 @@ en:
       sliders_edit: Edit slider
       comments: Comments
       users: Users
+      external_codes: External code
+      external_codes_new: Add external code
+      external_codes_edit: Edit
+      module_positions: Positions
+      module_positions_new: New position
+      module_positions_edit: Edit position
 
   static_modules:
     actions: Actions
     active: Active
-    edit_title: Edit module
-    index_title: Static modules
-    index_add_new: Add new module
+    edit_title: Edit HTML block
+    index_title: HTML block
+    index_add_new: Add HTML block
     lang_id: Language
-    new_title: New module
+    new_title: New HTML block
     position: Position
     title: Title
-    module_position_ids: Module position
+    module_position_ids: Position
     updated_at: Updated at
-    edit_title: Edit static module
-    created: "Module <strong>'%{title}'</strong> has been created"
-    updated: "Module <strong>'%{title}'</strong> has been saved"
-    deleted: "Module <strong>'%{title}'</strong> has been deleted"
-    update_active_true: "Module <strong>'%{title}'</strong> is active"
-    update_active_false: "Module <strong>'%{title}'</strong> is not active"
+    edit_title: Edit HTML block
+    created: "HTML block <strong>'%{title}'</strong> has been created"
+    updated: "HTML block <strong>'%{title}'</strong> has been saved"
+    deleted: "HTML block <strong>'%{title}'</strong> has been deleted"
+    update_active_true: "HTML block <strong>'%{title}'</strong> is active"
+    update_active_false: "HTML block <strong>'%{title}'</strong> is not active"
+    
+  external_codes:
+        name: Name / Id
+        actions: Actions
+        edit_title: Edit external code
+        index_title: External code
+        index_add_new: Add external code
+        new_title: New external code
+        title: Title
+        updated_at: Updated at
+        edit_title: Edit external code
+        created: "External code <strong>'%{title}'</strong> has been created"
+        updated: "External code <strong>'%{title}'</strong> has been saved"
+        deleted: "External code <strong>'%{title}'</strong> has been deleted"
+        copy_title: Copy external code
+
+  module_positions:
+        name: Name / Id
+        actions: Actions
+        edit_title: Edit position
+        index_title: Positions
+        index_add_new: Add position
+        new_title: New position
+        title: Title
+        updated_at: Updated at
+        edit_title: Edit position
+        created: "Position <strong>'%{title}'</strong> has been created"
+        updated: "Position code <strong>'%{title}'</strong> has been saved"
+        deleted: "Position code <strong>'%{title}'</strong> has been deleted"
+        copy_title: Copy position
+  langs:
+        name: Name
+        shortname: Short name
+        active: Active
+        actions: Actions
+        edit_title: Edit localization
+        index_add_new: Add localization
+        new_title: New localization
+        index_title: Localization and lang settings
+        updated_at: Updated
+        edit_title: Edit localization
+        created: "Localization <strong>'%{title}'</strong> has been created"
+        updated: "Localization <strong>'%{title}'</strong> has been saved"
+        deleted: "Localization <strong>'%{title}'</strong> has been deleted"
+        copy_title: Copy localization
 
   articles:
     active: Active
@@ -215,7 +268,7 @@ en:
     sort_false: Not all changes in menu structure were allowed - please refresh the page.
     list: List
     content_remove_confirm: Would you like to remove from this menu all content from previously selected language?
-    modules_remove_confirm: Would you like to remove from this menu all modules from previously selected language?
+    modules_remove_confirm: Would you like to remove from this menu all HTML blocks from previously selected language?
     confirm: Do you really want to delete this menu item?
     menu_active_legend: "Active menu position - url works"
     menu_non_active_legend: "Inactive menu position - url doesn't work"
@@ -474,7 +527,7 @@ en:
       admin: Administrator
       content_editor: Content management
       menu_editor: Menu management
-      static_module_editor: Static modules management
+      static_module_editor: HTML block management
       user_editor: Users management
       comment_approver: Comment approve
       reader: Reader
@@ -484,20 +537,25 @@ en:
 
   site_helper:
     next: next
-    welcome_title: welcome_title
-    welcome_text: welcome_text
-    dashboard_nav_title: dashboard_nav_title
-    dashboard_nav_text: dashboard_nav_text
-    contentmanagment_nav_title: contentmanagment_nav_title
-    contentmanagment_nav_text: contentmanagment_nav_text
-    content_nav_title: content_nav_title
-    content_nav_text: content_nav_text
-    menu_nav_title: menu_nav_title
-    menu_nav_text: menu_nav_text
-    static_module_nav_title: static_module_nav_title
-    static_module_nav_text: static_module_nav_text
-    user_nav_title: user_nav_title
-    user_nav_text: user_nav_text
+    welcome_title: Welcome in Mokio!
+    welcome_text: ""
+    dashboard_nav_title: Dashboard
+    dashboard_nav_text: "Here you can find last changes to content or menu and easily spot things that needs to be fixed, ie. content without menu or menu without any content attached."
+    contentmanagment_nav_title: Content management
+    contentmanagment_nav_text: "Manage content of your site (article, photo galleries, movies, etc.)."
+    content_nav_title: Add content
+    content_nav_text: "Add content to your site: article, photo galleries, movies, etc. Added content should be attached to any menu element if you want it to be displayed on your site."
+    menu_nav_title: Menu management
+    menu_nav_text: "Add menu elements and attach content to menu. You can also add  HTML blocks to given position on given subpage (one, some or all)."
+    static_module_nav_title: HTML blocks
+    static_module_nav_text: "Add HTML blocks, so pieces of code that should be displayed in various places of one, many or all of the subpages."
+    module_position_nav_title: Positions
+    module_position_nav_text: Add a position that later can be user for putting HTML block or menu on the page.
+    external_code_nav_title: External code
+    external_code_nav_text: Add custom javascript to your page.
+    user_nav_title: Users management
+    user_nav_text: "Add, delete or edit users."
+
 
 # ============================================ Activerecord ============================================================= #    
 
@@ -627,7 +685,7 @@ en:
         display_from: Displayed from
         display_to: Displayed to
         title: Title
-        module_positions: Module positions
+        module_positions: Positions
         always_displayed: Always displayed
         updated_at: Updated at
         lang_id: Language
@@ -666,10 +724,10 @@ en:
         f_desc: Description
 
       user:
-        password: Hasło
-        remember_me: Zapamiętaj mnie
+        password: Password
+        remember_me: Remember me
         email: E-mail
-        password_confirmation: Potwierdź hasło
+        password_confirmation: Confirm password
       messages:
         record_invalid : "Incorrect record"
 

@@ -117,8 +117,8 @@ pl:
       mov_galery: Galeria Filmów
       contact: Strona Kontaktowa
       menu: Menu
-      modules: Moduły
-      module_position: Pozycje modułów
+      modules: Bloki HTML
+      module_position: Pozycje
       external_code: Skrypty zewnętrzne
       lang: Ustawienia lokalizacji
       comments: Komentarze
@@ -131,9 +131,9 @@ pl:
       menus: Zarządzanie menu
       menus_edit: Edycja elementu menu
       menus_new: Nowy element menu
-      static_modules: Moduły statyczne
-      static_modules_edit: Edycja modułu statycznego
-      static_modules_new: Nowy moduł statyczny
+      static_modules: Bloki HTML
+      static_modules_edit: Edycja bloku HTML
+      static_modules_new: Nowy blok HTML
       articles_new: Nowy artykuł
       articles_edit: Edycja artykułu
       pic_galleries_new: Nowa galeria zdjęć
@@ -151,7 +151,7 @@ pl:
       external_codes: Skrypty zewnętrzne
       external_codes_new: Nowy skrypt zewnętrzny
       external_codes_edit: Edycja
-      module_positions: Pozycje modułów
+      module_positions: Pozycje
       module_positions_new: Nowa pozycja
       module_positions_edit: Edycja pozycji
       langs: Ustawienia lokalizacji i języka
@@ -162,22 +162,22 @@ pl:
   static_modules:
     actions: Akcje
     active: Włączony
-    edit_title: Edytuj moduł statyczny
-    index_title: Moduły Statyczne
-    index_add_new: Dodaj nowy moduł
+    edit_title: Edytuj blok HTML
+    index_title: Bloki HTML
+    index_add_new: Dodaj nowy blok HTML
     lang_id: Język
-    new_title: Nowy moduł statyczny
+    new_title: Nowy blok HTML
     position: Pozycja
     title: Tytuł
-    module_position_ids: Pozycje Modułu
+    module_position_ids: Pozycje
     updated_at: Uaktualniono
-    edit_title: Edytuj moduł statyczny
-    created: "Moduł <strong>'%{title}'</strong> został utworzony."
-    updated: "Moduł <strong>'%{title}'</strong> został poprawnie edytowany."
-    deleted: "Moduł <strong>'%{title}'</strong> został usunięty."
-    update_active_true: "Moduł <strong>'%{title}'</strong> jest teraz aktywny."
-    update_active_false: "Moduł <strong>'%{title}'</strong> jest teraz nieaktywny."
-    copy_title: Kopiuj moduł
+    edit_title: Edytuj blok HTML
+    created: "Blok HTML <strong>'%{title}'</strong> został utworzony."
+    updated: "Blok HTML <strong>'%{title}'</strong> został poprawnie edytowany."
+    deleted: "Blok HTML <strong>'%{title}'</strong> został usunięty."
+    update_active_true: "Blok HTML <strong>'%{title}'</strong> jest teraz aktywny."
+    update_active_false: "Blok HTML <strong>'%{title}'</strong> jest teraz nieaktywny."
+    copy_title: Kopiuj blok HTML
 
   external_codes:
         name: Nazwa / id
@@ -198,7 +198,7 @@ pl:
         name: Nazwa / id
         actions: Akcje
         edit_title: Edytuj pozycję
-        index_title: Pozycje modułów
+        index_title: Pozycje
         index_add_new: Dodaj nowa pozycję
         new_title: Nowa pozycja
         title: Tytuł
@@ -278,7 +278,7 @@ pl:
     sort_false: Nie wszystkie zmiany w strukturze menu były dozwolone. Odśwież stronę.
     list: Lista
     content_remove_confirm: Czy chcesz odłączyć od menu wszystkie treści z innego języka niż nowowybrany?
-    modules_remove_confirm: Czy chcesz odłączyć wszystkie moduły statyczne z innego języka niż nowowybrany?
+    modules_remove_confirm: Czy chcesz odłączyć wszystkie bloki HTML z innego języka niż nowowybrany?
     confirm: Czy na pewno chcesz skasować ten element menu?
     menu_active_legend: "Aktywna pozycja menu - link działa"
     menu_non_active_legend: "Nieaktywna pozycja menu - link nie działa"
@@ -540,7 +540,7 @@ pl:
       admin: Administrator
       content_editor: Zarządzanie treścią
       menu_editor: Zarządzanie strukturą menu
-      static_module_editor: Zarządzanie modułami statycznymi
+      static_module_editor: Zarządzanie blokami HTML
       user_editor: Zarządzanie użytkownikami
       comment_approver: Obsługa komentarzy (moderowanie)
       reader: Dosŧęp do odczytu
@@ -549,21 +549,25 @@ pl:
     password_not_updated: Nie udało się zmienic hasła
 
   site_helper:
-    next: next
-    welcome_title: welcome_title
-    welcome_text: welcome_text
-    dashboard_nav_title: dashboard_nav_title
-    dashboard_nav_text: dashboard_nav_text
-    contentmanagment_nav_title: contentmanagment_nav_title
-    contentmanagment_nav_text: contentmanagment_nav_text
-    content_nav_title: content_nav_title
-    content_nav_text: content_nav_text
-    menu_nav_title: menu_nav_title
-    menu_nav_text: menu_nav_text
-    static_module_nav_title: static_module_nav_title
-    static_module_nav_text: static_module_nav_text
-    user_nav_title: user_nav_title
-    user_nav_text: user_nav_text
+    next: następny
+    welcome_title: Witaj w Mokio!
+    welcome_text: W kilku krokach pokażemy Ci jak stworzyć własna stronę www.
+    dashboard_nav_title: Biurko
+    dashboard_nav_text: "Tutaj można oglądać ostatnio wprowadzone zmiany oraz łatwo znaleźć rzeczy do naprawienia, np. treść bez menu lub menu bez treści."
+    contentmanagment_nav_title: Zarządzanie treścią
+    contentmanagment_nav_text: "Dodawanie, edycja i usuwanie treści. "
+    content_nav_title: Dodaj treść
+    content_nav_text: "Dodawanie treści na stronę: artykuły, galerie zdjęć, filmów, itd. Dodane treści powinny zostać podpięte pod menu jeśli chcemy je wyświetlić na stronie."
+    menu_nav_title: Zarządzanie menu
+    menu_nav_text: "Dodawanie elementów menu i podpinanie pod nie treści, które mają być wyświetlone na danej podstronie. Do menu możemy również podpinać bloki HTML do wyświetlenia w odpowiednich pozycjach na stronie."
+    static_module_nav_title: Bloki HTML
+    static_module_nav_text: "Dodawanie bloków HTML, czyli kawałki kodu do wyświetlenia w różnych miejscach jednej, kilku lub wszystkich podstron."
+    module_position_nav_title: Pozycje
+    module_position_nav_text: "Dodawanie pozycji, które później moga zostać wykorzystane do umieszczania bloków HTML lub menu na stronie."
+    external_code_nav_title: Skrypty zewnętrzne
+    external_code_nav_text: Dodawanie własnego javascriptu do strony.
+    user_nav_title: Zarządzanie użytkownikami
+    user_nav_text: "Usuwanie, dodawanie nowych, edycja danych użytkowników."
 
 
 # ============================================ Activerecord ============================================================= #

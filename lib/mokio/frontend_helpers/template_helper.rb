@@ -8,12 +8,8 @@ module Mokio
         conf_path =  "config/views.yml"
 
         #read app configuration
-        if File.exist?(Rails.root + conf_path)
-          config = YAML.load_file Rails.root + conf_path
-        else
-          config ||= []
-        end
-
+        config = YAML.load_file Rails.root + conf_path if File.exist?(Rails.root + conf_path)
+        config ||= []
         #read gems configuration
         Gem.loaded_specs.each do |key, value|
           file = value.full_gem_path + "/" + conf_path
