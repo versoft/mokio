@@ -73,7 +73,7 @@ $(document).ready(function() {
       $(".thumb_remove").click(function(event) {
         /* Act on the event */
         $.ajax({
-          url: "/" + Mokio.engine_root() + "/photos/" + Modal.id() + "/remove_thumb",
+          url: "/" + Mokio.engine_root() + "/"+default_data_file+"/" + Modal.id() + "/remove_thumb",
           type: 'DELETE'
         })
         .done(function(){
