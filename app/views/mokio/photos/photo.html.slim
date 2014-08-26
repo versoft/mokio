@@ -11,7 +11,7 @@
     .actionBtn
       a.edit data-toggle="modal" href=("#modaledit_#{photo.id}" ) 
         span.icon16.icomoon-icon-pencil-2.white
-      = link_to photo_path(photo), remote: true, method: :delete, class: "delete" do
+      = link_to self.send("#{photo.class.to_s.demodulize.downcase}_path", photo), remote: true, method: :delete, class: "delete" do
         span.icon16.icomoon-icon-remove.white
 
   /!
