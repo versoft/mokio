@@ -182,7 +182,7 @@ var PhotoEditForm = {
           showLoader();
 
           $.ajax({
-            url: "/" + Mokio.engine_root() + "/"+default_data_file+"/" + Modal.id() + "/crop_" + PhotoEditForm.photo_type,
+            url: "/" + Mokio.engine_root() + "/"+ default_data_file +"/" + Modal.id() + "/crop_" + PhotoEditForm.photo_type,
             type: 'POST',
             dataType: 'script',
             data: {

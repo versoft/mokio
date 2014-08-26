@@ -28,7 +28,7 @@ module Mokio
             respond_to do |format|
               if @photo.save
                 flash[:notice] = t("photos.created", title: @photo.name)
-                format.js
+                format.js { render :template => "mokio/photos/create"}
               else
                 flash[:error] = t("photos.not_created", title: @photo.name)
                 format.html { render nothing: true }
@@ -110,9 +110,9 @@ module Mokio
             else
               flash[:error] = t("photos.not_deleted", title: @photo.name)
             end
-            
+
             respond_to do |format|
-              format.js
+              format.js {render :template => "mokio/photos/destroy"}
             end
           end
 
@@ -139,7 +139,7 @@ module Mokio
           def get_thumb
             if stale?(:etag => @edited_photo, :last_modified => @edited_photo.updated_at, :public => true)
               respond_to do |format|
-                format.js
+                format.js {render :template => "mokio/photos/get_thumb"}
               end
             end
           end
@@ -171,7 +171,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.js
+              format.js {render :template => "mokio/photos/crop_thumb"}
             end 
           end
 
@@ -199,7 +199,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.js
+              format.js {render :template => "mokio/photos/rotate_thumb"}
             end
           end
 
@@ -215,7 +215,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.js
+              format.js {render :template => "mokio/photos/update_thumb"}
             end
           end
 
@@ -233,7 +233,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.js 
+              format.js {render :template => "mokio/photos/remove_thumb"}
             end
           end
 
@@ -243,7 +243,7 @@ module Mokio
           def get_photo
             if stale?(:etag => @edited_photo, :last_modified => @edited_photo.updated_at, :public => true)
               respond_to do |format|
-                format.js
+                format.js {render :template => "mokio/photos/get_photo"}
               end
             end
           end
@@ -273,10 +273,9 @@ module Mokio
               flash[:error] = t("photos.not_crop", name: @edited_photo.name)
               logger.error exception_msg(image_path)
             end
-
             respond_to do |format|
-              format.js
-            end 
+              format.js {render :template => "mokio/photos/crop_photo"}
+            end
           end
 
           #
@@ -305,7 +304,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.js
+              format.js {render :template => "mokio/photos/rotate_photo"}
             end
           end
 

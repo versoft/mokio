@@ -144,7 +144,7 @@ function edit_image_button() {
       $id = Modal.id();                                                                        // Main Photo
       addEditLayout($id);                                                                      //
 
-      $.get("/" + Mokio.engine_root() + "/"+default_data_file+"/" + $id + "/get_" + PhotoEditForm.photo_type, function(data) { });
+      $.get("/" + Mokio.engine_root() + "/"+ default_data_file +"/" + $id + "/get_" + PhotoEditForm.photo_type, function(data) { });
     }, 500);  
   }); 
 }
