@@ -33,7 +33,7 @@
         = simple_form_for photo, :html => { :class => 'form-horizontal' }, :remote => true do |f|
           .modal-body
             .span9
-              = render :partial => "mokio/photos/edit_photo_form", locals: {f:f}
+              = render :partial => "mokio/"+photo.class.to_s.demodulize.tableize+"/edit_photo_form", locals: {f:f}
             .span3
               .edit_view_img_container
                 = bt("thumb", photo.class)
