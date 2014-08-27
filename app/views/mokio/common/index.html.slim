@@ -19,4 +19,6 @@
             = render partial: "mokio/common/obj", collection: obj
 
 - content_for :js do
+  javascript:
+    var obj_table = "#{@obj_class.to_s.demodulize.tableize}"
   = javascript_include_tag "backend/datatable"
