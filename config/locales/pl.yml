@@ -141,8 +141,6 @@ pl:
       mov_galleries_edit: Edycja galerii filmów
       contacts_new: Nowa strona kontaktowa
       contacts_edit: Edycja strony kontatkowej
-      sliders_new: Nowy slider
-      sliders_edit: Edycja slidera
       comments: Komentarze
       users: Użytkownicy
       users_new: Nowy użytkownik
@@ -307,25 +305,6 @@ pl:
     update_active_true: "Galeria <strong>'%{title}'</strong> jest teraz aktywna"
     update_active_false: "Galeria <strong>'%{title}'</strong> jest teraz nieaktywna"
 
-  sliders:
-    cannot_add_files_now: Dodawanie zdjęć do slidera będzie możliwe dopiero po jego zapisaniu
-    created: "Slider <strong>'%{title}'</strong> został utworzony. Dodawanie zdjęć jest już możliwe."
-    created_and_new: "Slider <strong>'%{title}'</strong> został utworzony."
-    updated: "Slider <strong>'%{title}'</strong> został poprawnie zapisany."
-    deleted: "Slider <strong>'%{title}'</strong> został usunięty."
-    not_created: "Slider <strong>'%{title}'</strong> nie został utworzony."
-    not_updated: "Slider <strong>'%{title}'</strong> nie został poprawnie zapisany."
-    not_deleted: "Slider <strong>'%{title}'</strong> nie został usunięty."
-    active: Włączony
-    intro: wstęp
-    content: treść
-    display_from: "wyświetlany od"
-    display_to: "wyświetlany do"
-    new_title: "Nowy slider"
-    edit_title: "Edytuj Slider"
-    update_active_true: "Slider <strong>'%{title}'</strong> jest teraz aktywny"
-    update_active_false: "Slider <strong>'%{title}'</strong> jest teraz nieaktywny"
-
   mov_galleries:
     cannot_add_files_now: "Dodawanie filmów do galerii będzie możliwe dopiero po jej zapisaniu."
     created: "Galeria <strong>'%{title}'</strong> została utworzona. Dodawanie filmów jest już możliwe."
@@ -365,10 +344,8 @@ pl:
 
   contents:
     edit_gallery_content: Edytuj treść
-    edit_slider_content: Edytuj treść
     edit_title: Edycja
     add_photos: Dodaj Zdjęcia
-    add_slider_photos: Dodaj Zdjęcia
     add_youtubes: Dodaj Film
     created: "Treść <strong>'%{title}'</strong> została utworzona"
     updated: "Treść <strong>'%{title}'</strong> została poprawnie zapisana"
@@ -399,7 +376,6 @@ pl:
       Mokio::Article: Artykuł
       Mokio::MovGallery: Galeria filmów
       Mokio::Contact: Strona kontaktowa
-      Mokio::Slider: Slider
 
   data_files:
     larger_image: powiększ
@@ -437,37 +413,6 @@ pl:
     photos_from_external_links_error: "Zdjęcia z następujących linków nie zostały zapisane:"
     links_upload_info: "linki w oddzielnych wierszach (max 10)"
 
-  slider_photos:
-    edit_photo: Edytuj
-    updated: "Zdjęcie <strong>'%{title}'</strong> zostało poprawnie edytowane"
-    created: "Zdjęcie <strong>'%{title}'</strong> zostało dodane"
-    deleted: "Zdjęcie <strong>'%{title}'</strong> zostało usunięte"
-    not_deleted: "Zdjęcie <strong>'%{title}'</strong> nie zostało usunięte"
-    not_created: "Zdjęcie <strong>'%{title}'</strong> nie zostało utworzone"
-    not_updated: "Zdjęcie <strong>'%{title}'</strong> nie zostało poprawnie edytowane"
-    edit_main_photo: Edycja zdjęcia
-    edit_thumb: Edycja miniaturki
-    thumb_updated: Miniaturka została poprawnie edytowana
-    thumb_not_updated: Miniaturka nie została poprawnie edytowana
-    thumb_deleted: "Miniaturka zdjęcia <strong>'%{name}'</strong> została usunięta"
-    thumb_not_deleted: "Miniaturka zdjęcia <strong>'%{name}'</strong> nie została usunięta"
-    add_or_drop_file: Naciśnij i wybierz lub upuść zdjęcie
-    add_file: Dodaj zdjęcie
-    mark_on_photo: Zaznacz obszar na zdjęciu
-    crop_success: Miniaturka została poprawnie przycięta
-    rotate_photo: Obróć zdjęcie
-    rotated: "Obracanie zdjęcia <strong>'%{name}'</strong> przebiegło pomyślnie"
-    not_rotated: "Obracanie zdjęcia <strong>'%{name}'</strong> nie przebiegło pomyślnie"
-    crop: "Miniaturka do zdjęcia <strong>'%{name}'</strong> poprawnie wycięta"
-    not_crop: "Miniaturka do zdjęcia <strong>'%{name}'</strong> nie została poprawnie wycięta"
-    rotated_thumb: "Obracanie miniaturki zdjęcia <strong>'%{name}'</strong> przebiegło pomyślnie"
-    not_rotated_thumb: "Obracanie miniaturki zdjęcia <strong>'%{name}'</strong> nie przebiegło pomyślnie"
-    thumb: Miniaturka
-    show_photo: Pokaż zdjęcie
-    add_own_thumb: Dodaj własną miniaturkę
-    thumb_upload_info: "Domyślnie miniaturka tworzona jest z oryginalnego zdjęcia"
-    photos_from_external_links_error: "Zdjęcia z następujących linków nie zostały zapisane:"
-    links_upload_info: "linki w oddzielnych wierszach (max 10)"
 
   youtubes:
     edit_youtube: Edytuj film
