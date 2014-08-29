@@ -18,7 +18,7 @@ class CommonsDatatable
     @obj_class = obj_class
   end
 
-  def as_json(options = {}, addd)
+  def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
       iTotalRecords: @obj_class.count,
