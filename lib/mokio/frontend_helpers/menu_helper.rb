@@ -19,8 +19,7 @@ module Mokio
       # * +IsNotMenuRootError+ when initial_id is not root's id
       #
       def build_menu(initial_id, position, limit = 1)
-        lang = Mokio::Lang.find_by_shortname(Mokio.frontend_default_lang)
-        root = Mokio::Menu.find_by_lang_id_and_id(lang.id,initial_id)
+        root = Mokio::Menu.find_by_id(initial_id)
         #
         # throw exception when initial_id isn't root's id
         #
