@@ -4,15 +4,15 @@ module Mokio
       #
       # Concern for Lang model
       #
-      module Lang
-        extend ActiveSupport::Concern
-
+      module Lang extend ActiveSupport::Concern
         # included do
         #   scope :default, -> {where(shortname: Mokio.frontend_default_lang).first}
         # end
           included do
+            include Mokio::Concerns::Models::Common
             has_many :menu ,:dependent => :destroy
-          end
+            # scope :default, -> {where(shortname: Mokio.frontend_default_lang).first}
+           end
 
         module ClassMethods
 

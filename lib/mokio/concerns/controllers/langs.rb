@@ -18,15 +18,20 @@ module Mokio
           @lang = Mokio::Lang.new(lang_params)
 
           if success = @lang.save
-            @menu = Array.new
-            @menu[0] = Mokio::Menu.new( name: @lang.shortname , lang_id: @lang.id,fake:true)
-            @menu[1] = Mokio::Menu.new( name: 'top',ancestry:@menu[0].id, lang_id: @lang.id,fake:true)
-            @menu.each do |obj|
-              obj.build_meta
-              obj.save(:validate => false)
-            end
-          end
 
+              menu = Array.new
+              @menu = Mokio::Menu.new( name: @lang.shortname , lang_id: @lang.id,fake:true)
+              @menu.build_meta
+
+          if(success = @menu.save)
+              result = Mokio::Menu.fake_structure_unique
+              result.each do |pos|
+                menu = Mokio::Menu.new( name: pos.name,ancestry:@menu.id, lang_id: @lang.id,fake:true)
+                menu.save(:validate => false)
+              end
+
+          end
+          end
           redirect_to controller: :langs
         end
 

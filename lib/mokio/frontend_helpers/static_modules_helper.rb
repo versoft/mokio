@@ -20,7 +20,7 @@ module Mokio
         position = Mokio::ModulePosition.find_by(name:position_name)
         mod = Mokio::AvailableModule.static_module_with_always_displayed_and_active_for_lang(position.id,lang.id)
         html = " "
-        html << build_content(mod,position) #mod = obiekt static module
+        html << build_content(mod,position)
         html.html_safe
       end
 
@@ -70,7 +70,7 @@ module Mokio
         else
           html = ""
         end
-        
+
         obj.each do |pos|
         content = pos
           if(content.displayed?)
@@ -91,7 +91,7 @@ module Mokio
       #  returns all always displayed static modules
       #
 
-      def build_always_displayed()
+      def build_static_modules_always_displayed()
         lang = Mokio::Lang.default
         allways_displayed = Mokio::StaticModule.where(:always_displayed => true,:lang_id => lang.id,:active=>true)
         build_content(allways_displayed,Mokio::ModulePosition.new)

@@ -639,7 +639,7 @@ pl:
         display_from: Wyświetlany od
         display_to: Wyświetlany do
         title: Tytuł
-        module_positions: Pozycje modułu
+        module_positions: Pozycje bloku
         always_displayed: Wyświetlany zawsze
         updated_at: Ostatnio edytowany
         lang_id: Język

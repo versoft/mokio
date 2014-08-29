@@ -37,6 +37,7 @@ module Mokio
 
           scope :order_default, -> { order("seq asc") }
           scope :active,        -> { where(active: true) }
+          scope :fake_structure_unique, -> { where(fake: true,slug: nil,meta_id: nil).group('name').order('id ASC')}
 
           if Mokio.solr_enabled
             ## For Sunspot Solr:
@@ -46,6 +47,7 @@ module Mokio
             ##
           end
         end
+
 
         #
         # Friendly_id slug_candidates (<b>gem 'friendly_id'</b>)
