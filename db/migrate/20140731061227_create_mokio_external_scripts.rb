@@ -1,4 +1,4 @@
-class CreateMokioExternalCodes < ActiveRecord::Migration
+class CreateMokioExternalScripts < ActiveRecord::Migration
   def change
     create_table :mokio_external_scripts do |t|
       t.text "code"
