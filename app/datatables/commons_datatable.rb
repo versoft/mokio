@@ -18,7 +18,7 @@ class CommonsDatatable
     @obj_class = obj_class
   end
 
-  def as_json(options = {})
+  def as_json(options = {}, addd)
     {
       sEcho: params[:sEcho].to_i,
       iTotalRecords: @obj_class.count,
@@ -61,6 +61,7 @@ private
     html += table_controls_edit_btn( edit_url(@obj_class, row), true ) if row.editable
     html += table_controls_delete_btn( obj_url(@obj_class, row), nil, true ) if row.deletable 
     html += table_controls_copy_btn( copy_url(@obj_class, row) ) if row.editable
+    html += @view.controller.render_additional_action_buttons row
     html
   end 
 

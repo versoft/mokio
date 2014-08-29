@@ -5,6 +5,7 @@
     = box_title do
       span= bt("index_title", @obj_class)
       = btn_new( bt("index_add_new", @obj_class), new_url(@obj_class) )
+      = @_controller.render_additional_index_buttons
 
     .content.noPad.clearfix
       = responsive_dynamic_table do # see in CommonHelper
