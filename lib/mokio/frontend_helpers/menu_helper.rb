@@ -10,11 +10,44 @@ module Mokio
       #
       # ==== Attributes
       #
+      # * +initial_id+ - root's id
+      # * +position+   - menu position, root child name or id
+      # * +limit+      - how deep should builder look for children, count starts after position
+      #
+      # ==== Exceptions
+      #
+      # * +IsNotMenuRootError+ when initial_id is not root's id
+      #
+      def build_menu(initial_id, position, limit = 1)
+        lang = Mokio::Lang.find_by_shortname(Mokio.frontend_default_lang)
+        root = Mokio::Menu.find_by_lang_id_and_id(lang.id,initial_id)
+        #
+        # throw exception when initial_id isn't root's id
+        #
+        raise Exceptions::IsNotMenuRootError.new(:id, initial_id) if root.ancestry
+
+        html = "<nav class='navmenu' id='menuMain'>"
+
+        root.children.each do |item|
+          html << build_items(item, limit, 1) if (item.name == position || item.id == position) && item.children.present? && item.active
+        end
+
+        html << "</nav>"
+        html.html_safe
+      end
+
+
+
+      #
+      # Builds menu tree for specified arguments, returns html
+      #
+      # ==== Attributes
+      #
       # * +initial_name+ - parent menu position name
       # * +limit+      - how deep should builder look for children, count starts after position
       #
 
-      def build_menu(initial_name,limit = 1)
+      def build_menu_by_name(initial_name,limit = 1)
         lang = Mokio::Lang.default
         position = Mokio::Menu.find_by_lang_id_and_name(lang.id,initial_name)
 
