@@ -58,10 +58,10 @@ private
 
   def table_controls( row )
     html = ""
-    html += table_controls_edit_btn( edit_url(@obj_class, row), true ) if row.editable
-    html += table_controls_delete_btn( obj_url(@obj_class, row), nil, true ) if row.deletable 
-    html += table_controls_copy_btn( copy_url(@obj_class, row) ) if row.editable
     html += @view.controller.render_additional_action_buttons row
+    html += table_controls_edit_btn( edit_url(@obj_class, row), true ) if row.editable
+    html += table_controls_copy_btn( copy_url(@obj_class, row) ) if row.cloneable
+    html += table_controls_delete_btn( obj_url(@obj_class, row), nil, true ) if row.deletable
     html
   end 
 
