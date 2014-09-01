@@ -10,18 +10,30 @@ module Mokio
       # ==== Attributes
       #
       # * +position_name+ - name of the module position
+      # * +always_displayed+ - display all modules for positions or only always displayed
       #
       # ==== Variables
       # * +content+ - single static module from result
       # * +position+ - module position active record result
 
-      def build_static_modules(position_name)
+      def build_static_modules(position_name,always_displayed = false)
         lang = Mokio::Lang.default
-        position = Mokio::ModulePosition.find_by(name:position_name)
-        mod = Mokio::AvailableModule.static_module_with_always_displayed_and_active_for_lang(position.id,lang.id)
+        position = Mokio::ModulePosition.find_by_name(position_name)
         html = " "
-        html << build_content(mod,position)
+
+        if !position.nil?
+
+          if always_displayed == true
+            mod = Mokio::AvailableModule.static_module_active_for_lang(position.id,lang.id).only_always_displayed
+          else
+            mod = Mokio::AvailableModule.static_module_active_for_lang(position.id,lang.id)
+          end
+            html << build_content(mod,position)
+        else
+          html << "Position not found"
+        end
         html.html_safe
+
       end
 
       #  builds html for a single position without tpl template
@@ -86,15 +98,6 @@ module Mokio
           html << "</div>"
         end
         html.html_safe
-      end
-
-      #  returns all always displayed static modules
-      #
-
-      def build_static_modules_always_displayed()
-        lang = Mokio::Lang.default
-        allways_displayed = Mokio::StaticModule.where(:always_displayed => true,:lang_id => lang.id,:active=>true)
-        build_content(allways_displayed,Mokio::ModulePosition.new)
       end
     end
   end
