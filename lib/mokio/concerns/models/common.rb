@@ -115,7 +115,7 @@ module Mokio
         #
         # Is object cloneable?
         #
-        def cloneable
+        def cloneable?
           true
         end
 
