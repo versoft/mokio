@@ -120,21 +120,6 @@ module Mokio
         end
 
         #
-        # Is object editable?
-        #
-        def editable
-          true
-        end
-
-        #
-        # Is object deletable?
-        #
-        def deletable
-          true
-        end
-
-
-        #
         # Method for autocomplete meta tags
         #
         def complete_meta
