@@ -42,16 +42,16 @@ $(document).ready(function() {
     }
   });
 
-  if ( !$('.display_from').parent().find('label').hasClass('error')  ) {
+  if ( !$('.display_from').parent().find('label').hasClass('error') ) {
     display_from_errors('.display_from', '.display_to');
   }
-  
+
   $('.display_from,.display_to').on('change', function() {
     display_from_errors('.display_from', '.display_to');
   });
 
 
-  $('.mask-date').mask('99-99-9999 99:99').attr('data-format', "dd/MM/yyyy hh:mm:ss");
+  $('.mask-date').mask('99-99-9999').attr('data-format', "dd-MM-yyyy");
   $('.mask-date').datetimepicker({dateFormat: 'dd-mm-yy'});
   $(".mask-date").parent().append("<span class='add-on calendar'><span class='icomoon-icon-calendar'></span></span>'");
 
