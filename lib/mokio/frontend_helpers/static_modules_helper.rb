@@ -16,7 +16,7 @@ module Mokio
       # * +content+ - single static module from result
       # * +position+ - module position active record result
 
-      def build_static_modules(position_name,always_displayed = false)
+      def build_static_modules(position_name,always_displayed = false, with_intro = true)
         lang = Mokio::Lang.default
         position = Mokio::ModulePosition.find_by_name(position_name)
         html = " "
@@ -28,7 +28,7 @@ module Mokio
           else
             mod = Mokio::AvailableModule.static_module_active_for_lang(position.id,lang.id)
           end
-            html << build_content(mod,position)
+            html << build_content(mod,position, with_intro)
         else
           html << "Position not found"
         end
@@ -46,11 +46,16 @@ module Mokio
       # * +content.intro+ - static_module_intro from mokio_static_modules
       # * +content.content+ - static_module_content from mokio_static_modules
 
-      def build_from_content(content)
-        html = "<div class='static-module'>"
-        html << "<div>#{content.intro}</div>"
-        html << "<div>#{content.content}</div>"
-        html << "</div>"
+      def build_from_content(content, with_intro = true)
+        html = ""
+        if with_intro
+          html = "<div class='static-module'>"
+          html << "<div>#{content.intro}</div>"
+          html << "<div>#{content.content}</div>"
+          html << "</div>"
+        else
+          html << content.content
+        end
         html.html_safe
       end
 
@@ -75,28 +80,21 @@ module Mokio
       # * +position+ - module position object
       #
 
-      def build_content(obj,position)
+      def build_content(obj,position, with_intro = true)
 
-        if position.tpl.blank?
-          html = "<div class='static-modules'>"
-        else
-          html = ""
-        end
+        html = ""
 
         obj.each do |pos|
         content = pos
           if(content.displayed?)
             if(position.tpl.blank?)
-              html << build_from_content(content)
+              html << build_from_content(content, with_intro)
             else
               html << build_from_view_file(content,position.tpl)
             end
           end
         end
 
-        if position.tpl.blank?
-          html << "</div>"
-        end
         html.html_safe
       end
     end
