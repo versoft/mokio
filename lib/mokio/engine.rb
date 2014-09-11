@@ -46,6 +46,8 @@ module Mokio
         ckeditor/skins/moono/icons.png
         backend/loader.gif
         backend/search.png
+        progressbar.gif
+        loading.gif
         images/ui-bg_flat_75_ffffff_40x100.png
         ckeditor/contents.css
         backend/forms.js
