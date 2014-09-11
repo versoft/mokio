@@ -18,20 +18,20 @@ module Mokio
       #
       # * +IsNotMenuRootError+ when initial_id is not root's id
       #
-      def build_menu(initial_id, position, limit = 1)
+      def build_menu(initial_id, position, limit = 1, with_nav = true, nav_class="navmenu")
         root = Mokio::Menu.find_by_id(initial_id)
         #
         # throw exception when initial_id isn't root's id
         #
         raise Exceptions::IsNotMenuRootError.new(:id, initial_id) if root.ancestry
-
-        html = "<nav class='navmenu' id='menuMain'>"
+        html = ""
+        html = "<nav class='#{nav_class}' id='menuMain'>" if with_nav
 
         root.children.each do |item|
           html << build_items(item, limit, 1) if (item.name == position || item.id == position) && item.children.present? && item.active
         end
 
-        html << "</nav>"
+        html << "</nav>"  if with_nav
         html.html_safe
       end
 
