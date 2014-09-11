@@ -21,7 +21,7 @@
             .navbar-inner
               .container-fluid
                 %a#logo.brand{href: "http://www.bloomnet.eu", target: "_blank", title: "MOKIO - CMS Open Source"}
-                  = image_tag asset_path("backend/mokio-logo.svg"), alt:"Logo MOKIO"
+                  = image_tag "backend/mokio-logo.svg", alt:"Logo MOKIO"
     .container-fluid
       .loginContainer
         = simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: "form-horizontal", id:"loginForm"}) do |f|
