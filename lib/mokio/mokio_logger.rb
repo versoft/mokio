@@ -12,11 +12,11 @@ class MokioLogger
   end
 
   def debug(msg) 
-    @@mokiologger.error(msg)
+    @@mokiologger.debug(msg)
   end
 
   def error(msg) 
-    @@mokiologger.debug(msg)
+    @@mokiologger.error(msg)
   end
   
   def warn(msg) 
