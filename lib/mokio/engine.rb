@@ -18,7 +18,6 @@ module Mokio
         ActionView::Base.send :include, Mokio::FrontendHelpers::StaticModulesHelper
         ActionView::Base.send :include, Mokio::FrontendHelpers::ContentHelper
         ActionView::Base.send :include, Mokio::FrontendHelpers::ExternalScriptsHelper
-        ActionView::Base.send :include, Mokio::FrontendHelpers::TemplateHelper
       end
     end
 
@@ -66,7 +65,7 @@ module Mokio
     end
 
     initializer "mokio.views" do |app|
-      app.config.views_config = Mokio::FrontendHelpers::TemplateHelper.read_config
+      app.config.views_config = Mokio::TemplateRenderer.read_config
     end
   end
 end

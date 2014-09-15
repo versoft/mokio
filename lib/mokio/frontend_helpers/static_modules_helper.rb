@@ -23,7 +23,7 @@ module Mokio
 
         if !position.nil?
 
-          if always_displayed == true
+          if always_displayed
             mod = Mokio::AvailableModule.static_module_active_for_lang(position.id,lang.id).only_always_displayed
           else
             mod = Mokio::AvailableModule.static_module_active_for_lang(position.id,lang.id)
