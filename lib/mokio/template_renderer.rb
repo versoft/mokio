@@ -34,10 +34,11 @@ module Mokio
         tpl_name = options[:template] if options.has_key?(:template)
         tpl_name = options[:partial] if options.has_key?(:partial)
         
-        to_parse = content.html_safe
+     
         
         if config.has_key?(tpl_name)
         
+           to_parse = content.html_safe
             config[tpl_name].each do |entry|
             @html = Nokogiri::HTML::Document.parse to_parse
             
