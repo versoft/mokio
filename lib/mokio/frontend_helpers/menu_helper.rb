@@ -272,7 +272,7 @@ module Mokio
                 if i.external_link.blank?
                   html << "<a href='/#{i.slug}'>#{i.name}</a>"
                 else
-                  html << "<a href='#{i.external_link}' rel='#{i.follow ? "follow" : "nofollow"}' target='#{i.target.blank? ? '_self' : i.target}'>#{i.name}</a>"
+                  html << "<a href='#{i.external_link}' rel='#{i.follow ? "follow" : "nofollow"}'  data-toggle='dropdown' target='#{i.target.blank? ? '_self' : i.target}'>#{i.name}</a>"
                 end
                 html << build_items_with_css(i, limit, index + 1,css_c)
 
