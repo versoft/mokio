@@ -25,9 +25,5 @@
 module Mokio
   class Content < ActiveRecord::Base
     include Mokio::Concerns::Models::Content
-    searchable do
-      text :title, :boost => 5
-      text :content, :intro
-    end
   end
 end
