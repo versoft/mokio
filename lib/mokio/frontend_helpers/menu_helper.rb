@@ -258,6 +258,51 @@ module Mokio
           raise Exceptions::IsNotMenuRootError.new(:name, name)
         end
       end
+
+  
+     def build_items_with_css(item, limit, index ,css_c)
+            return "" if index > limit || !item.children.present?
+
+
+            html = "<ul class='#{index == 1 ? css_c[0] :  css_c[1]}'>"
+            item.children.order_default.each do |i|
+              if i.visible && i.active
+                html << "<li class='#{ css_c[2]  if i.children.present?} #{"active" if i.slug == params[:menu_id] || i.slug == request.original_fullpath.match(/(\D+\/{1}|\D+)/)[0].gsub('/', '')}'>"
+
+                if i.external_link.blank?
+                  html << "<a href='/#{i.slug}'>#{i.name}</a>"
+                else
+                  html << "<a href='#{i.external_link}' rel='#{i.follow ? "follow" : "nofollow"}' target='#{i.target.blank? ? '_self' : i.target}'>#{i.name}</a>"
+                end
+                html << build_items_with_css(i, limit, index + 1,css_c)
+
+                html << "</li>"
+              end
+            end
+            html << "</ul>"
+            html.html_safe
+          end
+
+
+      def build_menu_with_css(initial_id, position, limit = 1, css_c = false)
+
+        if css_c == false
+          css_c = ["menu","sub-menu","menu-item-has-children"]
+        end     
+           
+        root = Mokio::Menu.find_by_id(initial_id)
+        #
+        # throw exception when initial_id isn't root's id
+        #
+        raise Exceptions::IsNotMenuRootError.new(:id, initial_id) if root.ancestry
+        html = ""
+           root.children.each do |item|
+          html << build_items_with_css(item, limit, 1,css_c) if (item.name == position || item.id == position) && item.children.present? && item.active
+        end
+        html.html_safe
+      end
+
+
     end
   end
 end
