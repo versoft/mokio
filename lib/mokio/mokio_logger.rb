@@ -4,6 +4,7 @@ class MokioLogger
   #initialize and set debug level
   def initialize
      level =  Mokio.mokio_log_level
+    @@mokiologger.level = level
   end
   # methods for logged info , error ,debug , warn  msg
   def info(msg)
