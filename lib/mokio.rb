@@ -221,6 +221,8 @@ module Mokio
   mattr_accessor :solr_enabled
   self.solr_enabled = false
 
+  mattr_accessor :mokio_log_level 
+  self.mokio_log_level = Logger::INFO
 
   #
   # Default way to configure Mokio

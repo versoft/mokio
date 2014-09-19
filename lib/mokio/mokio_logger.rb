@@ -3,8 +3,7 @@ class MokioLogger
   @@mokiologger = Logger.new("log/#{Rails.env}_mokio.log")
   #initialize and set debug level
   def initialize
-     level =  !defined?(Rails.configuration.mokio_log_level) ? Rails.configuration.mokio_log_level : Logger::INFO
-     @@mokiologger.level = level
+     level =  Mokio.mokio_log_level
   end
   # methods for logged info , error ,debug , warn  msg
   def info(msg)
