@@ -238,6 +238,8 @@ en:
     update_active_false: "Article <strong>'%{title}'</strong> is not active"
 
   menus:
+    slug: Link to menu
+    no_slug: a link to the menu will be visible after saving the menu
     name: "name"
     external_link: "url"
     active: "active"

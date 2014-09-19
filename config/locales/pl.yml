@@ -248,6 +248,8 @@ pl:
     update_active_false: "Artykuł <strong>'%{title}'</strong> jest teraz nieaktywny."
 
   menus:
+    slug: Link do menu
+    no_slug: link do menu będzie widoczny po zapisaniu menu
     name: "nazwa"
     external_link: "url"
     active: "włączony"
