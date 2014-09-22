@@ -5,8 +5,8 @@ namespace :mokio do
 
   task :create_user, [:email, :password] => :environment do |t, args|
     args.with_defaults(:email => "admin@admin.com", :password => "blabla")
-    @user = User.new(:email => args[:email], :password => args[:password], :roles_mask => 1)
-      
+    @user = Mokio::User.new(:email => args[:email], :password => args[:password], :roles_mask => 1)
+
     if @user.save(validate: false)
       puts "User: #{args[:email]} with password: #{args[:password]} sucessfully created."
     else
