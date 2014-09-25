@@ -34,7 +34,8 @@ module Mokio
         html.html_safe
       end
 
-      #  builds html for a single position
+      #  builds html for a single static_module, without specific template
+      #, with or without intro
       #
       # ==== Attributes
       #
@@ -64,6 +65,31 @@ module Mokio
         view.render(:file => "#{content.tpl}", :locals => content, :layout => false)
       end
 
+      #  checks visibility and generate static modules tree from activerecord object
+      #
+      # ==== Attributes
+      #
+      # * +obj+ - static modules object from activerecord
+      # * +position+ - module position object
+      #
+
+      def build_content(obj,position, with_intro = true)
+
+        html = ""
+
+        obj.each do |pos|
+        content = pos
+          if(content.displayed?)
+            if(position.tpl.blank?)
+              html << build_from_content(content, with_intro)
+            else
+              html << build_from_view_file(content,position.tpl)
+            end
+          end
+        end
+
+        html.html_safe
+      end
     end
   end
 end

@@ -149,7 +149,7 @@ module Mokio
       # ==== Attributes
       #
       # * +menu+ - Mokio::Menu object
-      # * +limit+ - Limit contents count
+      # * +limit+ - Limit static_modules count
       #
       # ==== Exceptions
       #
@@ -168,7 +168,7 @@ module Mokio
       # ==== Attributes
       #
       # * +menu+ - Mokio::Menu object
-      # * +limit+ - Limit contents count
+      # * +limit+ - Limit static_modules count
       #
       # ==== Exceptions
       #
