@@ -60,7 +60,7 @@ module Mokio
           respond_to do |format|
             if @user.update(user_params)
               sign_in(@user, :bypass => true) #I18n.t("prices.quotation_not_created", title: l(@date))
-              format.html { redirect_to backend_users_path, notice: I18n.t("users.password_updated") }
+              format.html { redirect_to users_path, notice: I18n.t("users.password_updated") }
               format.json { render action: 'index', status: :updated}
             else
               format.html { render "edit", notice: I18n.t("users.password_not_updated") }
