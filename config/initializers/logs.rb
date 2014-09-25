@@ -1,1 +1,1 @@
-MOKIO_LOG = MokioLogger.new
+MOKIO_LOG = Mokio::Logger.new
