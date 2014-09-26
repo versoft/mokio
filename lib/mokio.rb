@@ -222,7 +222,7 @@ module Mokio
   self.solr_enabled = false
 
   mattr_accessor :mokio_log_level 
-  self.mokio_log_level = Logger::INFO
+  self.mokio_log_level = Logger::DEBUG
 
   #
   # Default way to configure Mokio
