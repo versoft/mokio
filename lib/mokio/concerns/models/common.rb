@@ -22,7 +22,7 @@ module Mokio
           before_destroy :deletable
           before_save :complete_meta
 
-          validate  :some_editable
+          validate  :some_editable , on: :update
 
           #
           # For Sunspot Solr:

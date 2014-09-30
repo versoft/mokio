@@ -20,13 +20,13 @@ module Mokio
           if success = @lang.save
 
               menu = Array.new
-              @menu = Mokio::Menu.new( name: @lang.shortname , lang_id: @lang.id,fake:true)
+              @menu = Mokio::Menu.new( name: @lang.shortname , lang_id: @lang.id,fake:true,deletable:false,editable:false)
               @menu.build_meta
 
           if(success = @menu.save)
               result = Mokio::Menu.fake_structure_unique
               result.each do |pos|
-                menu = Mokio::Menu.new( name: pos.name,ancestry:@menu.id, lang_id: @lang.id,fake:true)
+                menu = Mokio::Menu.new( name: pos.name,ancestry:@menu.id, lang_id: @lang.id,fake:true,deletable:false,editable:false)
                 menu.save(:validate => false)
               end
 
