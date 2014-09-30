@@ -1,6 +1,7 @@
 - cache [:form, obj] do
   = f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.menu_id]},  include_blank: bt('all'), disabled: !obj.display_editable_field?('lang_id')
   = f.input :active, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('active')
+  = f.input :home_page, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('home_page')
   = f.input :title, disabled: !obj.display_editable_field?('title')
   = f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 400} }, disabled: !obj.display_editable_field?('content')
 
