@@ -201,16 +201,16 @@ en:
         shortname: Short name
         active: Active
         actions: Actions
-        edit_title: Edit localization
-        index_add_new: Add localization
-        new_title: New localization
-        index_title: Localization and lang settings
+        edit_title: Edit language
+        index_add_new: Add language
+        new_title: New language
+        index_title: Language settings
         updated_at: Updated
-        edit_title: Edit localization
-        created: "Localization <strong>'%{title}'</strong> has been created"
-        updated: "Localization <strong>'%{title}'</strong> has been saved"
-        deleted: "Localization <strong>'%{title}'</strong> has been deleted"
-        copy_title: Copy localization
+        edit_title: Edit language
+        created: "Language <strong>'%{title}'</strong> has been created"
+        updated: "Language <strong>'%{title}'</strong> has been saved"
+        deleted: "Language <strong>'%{title}'</strong> has been deleted"
+        copy_title: Copy language
 
   articles:
     active: Active
