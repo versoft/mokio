@@ -39,6 +39,10 @@ module Mokio
           scope :active,        -> { where(active: true) }
           scope :fake_structure_unique, -> { where(fake: true,slug: nil,meta_id: nil).group('name').order('id ASC')}
 
+          def should_generate_new_friendly_id?
+            name_changed?
+          end
+
           if Mokio.solr_enabled
             ## For Sunspot Solr:
               searchable do ## Columns where Sunspot knows which data use to index
@@ -53,7 +57,18 @@ module Mokio
         # Friendly_id slug_candidates (<b>gem 'friendly_id'</b>)
         #
         def slug_candidates
-          [:name]
+          [
+            :name,
+            [build_slug, :name]
+          ]
+        end
+        
+        def build_slug
+          if !parent.fake
+            parent.slug
+          else
+            parent.name            
+          end
         end
 
         #
