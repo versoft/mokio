@@ -541,7 +541,11 @@ en:
             title:
               blank: "Title cannot be blank"
             display_from:
-              invalid: Exceeds 'Display to' date     
+              invalid: Exceeds 'Display to' date
+        mokio/user:
+          attributes:
+            password:
+              too_short: Password too short (min 8 characters).
       editable:
         not_permitted: Edit not allowed
       messages:

@@ -555,6 +555,10 @@ pl:
               blank: "Tytuł nie może być pusty"
             display_from:
               invalid: Przekracza datę do której ma być wyświetlana
+        mokio/user:
+          attributes:
+            password:
+              too_short: Hasło za krótkie ( min 8 znaków ).
       editable:
         not_permitted: Edycja niedozwolona
       messages:
