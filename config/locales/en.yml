@@ -546,6 +546,10 @@ en:
           attributes:
             password:
               too_short: Password too short (min 8 characters).
+            password_confirmation:
+              confirmation: Passwords do not match
+            email:
+              invalid: Provided an incorrect e-mail address
       editable:
         not_permitted: Edit not allowed
       messages:

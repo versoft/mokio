@@ -559,6 +559,10 @@ pl:
           attributes:
             password:
               too_short: Hasło za krótkie ( min 8 znaków ).
+            password_confirmation:
+              confirmation: Hasła nie zgadzają się
+            email:
+              invalid: Podano nieprawidłowy adres e-mail
       editable:
         not_permitted: Edycja niedozwolona
       messages:
