@@ -120,6 +120,7 @@ en:
       comments: Comments
       module_position: Positions
       external_script: External script
+      lang: Language Management
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -147,6 +148,9 @@ en:
       module_positions: Positions
       module_positions_new: New position
       module_positions_edit: Edit position
+      langs:  Language Management
+      langs_new: New language
+      langs_edit: Edit language
 
   static_modules:
     actions: Actions

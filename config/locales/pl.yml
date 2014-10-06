@@ -119,7 +119,7 @@ pl:
       modules: Bloki HTML
       module_position: Pozycje
       external_script: Skrypty zewnętrzne
-      lang: Ustawienia języka
+      lang: Zarządzanie językami
       comments: Komentarze
       users: Użytkownicy
 
@@ -151,7 +151,7 @@ pl:
       module_positions: Pozycje
       module_positions_new: Nowa pozycja
       module_positions_edit: Edycja pozycji
-      langs: Ustawienia języka
+      langs: Zarządzanie językami
       langs_new: Nowy język
       langs_edit: Edycja języka
       copy: Kopiuj

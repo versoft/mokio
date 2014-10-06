@@ -64,13 +64,14 @@ module Mokio
         end
         
         def build_slug
-          if !parent.fake
+          if parent.nil?
+            return ''
+          elsif !parent.fake
             parent.slug
           else
             parent.name            
           end
         end
-
         #
         # Updating seq and lang_id fields
         #
