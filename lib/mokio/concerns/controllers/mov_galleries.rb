@@ -34,7 +34,7 @@ module Mokio
           # Never trust parameters from the scary internet, only allow the white list through.
           #
           def mov_gallery_params #:doc:
-            params.require(:mov_gallery).permit(:title, :type, :active, :intro, :content, :display_from, :display_to, :lang_id, :main_pic, :tag_list, :menu_ids => [], :data_file => [], 
+            params.require(:mov_gallery).permit(:title, :type, :active, :home_page ,:intro, :content, :display_from, :display_to, :lang_id, :main_pic, :tag_list, :menu_ids => [], :data_file => [], 
               :meta_attributes => Mokio::Meta.meta_attributes)
           end
       end
