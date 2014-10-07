@@ -57,7 +57,7 @@ module Mokio
         end
       end
 
-      def table_controls_delete_btn(link, confirm = bt("confirm"), from_commons_datatable = false)
+      def table_controls_delete_btn(link, confirm = bt("confirm"))
         content_tag :a, :rel => "nofollow", :href => link, :data => { :method => "delete", :confirm => confirm, :hasqtip => true }, :class => "tip", :title => bt("delete") do
           tag :span, :class => "icon12 icomoon-icon-remove"
         end
