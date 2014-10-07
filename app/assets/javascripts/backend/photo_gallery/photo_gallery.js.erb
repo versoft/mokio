@@ -59,12 +59,17 @@ $(document).ready(function() {
 
   $(document).ajaxComplete(function(event, xhr, settings) {
     /* executes whenever an AJAX request completes */
-    if ( settings.url.match(/\/photos\/[0-9]+\/get\_[a-z]+/) ) {
+    var exp_base = "\\/" + default_data_file+ "\/[0-9]+\/";
+    var exp1 = new RegExp(exp_base + "get\_[a-z]+");
+    var exp2 = new RegExp(exp_base + "update_thumb");
+    var exp3 = new RegExp(exp_base + "remove_thumb");
+    var exp4 = new RegExp(exp_base + "upload_external_links");
+    if ( settings.url.match(exp1) ) {
       if ( !PhotoEditForm.isInitialized ) { // flag just for SURE its not executed twice
         PhotoEditForm.init();
       }
     }
-    else if ( settings.url.match(/\/photos\/[0-9]+\/update_thumb/) ) {
+    else if ( settings.url.match(exp2) ) {
       $(".editwrapper").append('<span class="thumb_remove icon32 icomoon-icon-remove white"></span>');
 
       reloadScripts(); 
@@ -73,7 +78,7 @@ $(document).ready(function() {
       $(".thumb_remove").click(function(event) {
         /* Act on the event */
         $.ajax({
-          url: "/" + Mokio.engine_root() + "/photos/" + Modal.id() + "/remove_thumb",
+          url: "/" + Mokio.engine_root() + "/"+default_data_file+"/" + Modal.id() + "/remove_thumb",
           type: 'DELETE'
         })
         .done(function(){
@@ -96,10 +101,10 @@ $(document).ready(function() {
 
       $(".photo_crop, .photo_rotate").fadeIn(500);
     }
-    else if ( settings.url.match(/\/photos\/[0-9]+\/remove_thumb/)  ) {
+    else if ( settings.url.match(exp3)  ) {
       reloadScripts();
     }
-    else if ( settings.url.match(/\/photos\/[0-9]+\/upload_external_links/)  ) {
+    else if ( settings.url.match(exp4)  ) {
       $('.galleryView>li').off('mouseenter mouseleave');
       $(".btn-options").off();
       $(".photo-options-fields li.photo_thumb").off();

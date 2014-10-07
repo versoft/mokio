@@ -1,0 +1,11 @@
+
+# EXAMPLE OF config/views.yml
+# REMEMBER:
+# if you want to override partial view
+# the override_path should be:            "path/to/view/my_partial"
+# but the file should have a name:      "path/to/view/_my_partial"
+
+#-
+#  original_view: "mokio/layout/sidebar"
+#  override_path: "my_sidebar/awesome_sidebar_button"
+#  html_element_id: "#sidebar-ul"

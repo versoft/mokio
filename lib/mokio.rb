@@ -221,6 +221,8 @@ module Mokio
   mattr_accessor :solr_enabled
   self.solr_enabled = false
 
+  mattr_accessor :mokio_log_level 
+  self.mokio_log_level = Logger::DEBUG
 
   #
   # Default way to configure Mokio
@@ -247,3 +249,5 @@ require "mokio/solr_config"
 require "mokio/site_helper"
 require "mokio/concerns"
 require "mokio/frontend_helpers"
+require "mokio/logger"
+require "mokio/template_renderer"

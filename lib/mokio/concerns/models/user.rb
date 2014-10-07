@@ -18,7 +18,15 @@ module Mokio
           #
           ROLES = ["admin", "content_editor", "menu_editor", "static_module_editor", "user_editor", "comment_approver", "reader"]
 
-          devise :database_authenticatable, :rememberable, :recoverable, :trackable , :validatable #, :registerable       
+          devise :database_authenticatable, :rememberable, :recoverable, :trackable , :validatable # :registerable,
+
+          # validates :email, uniqueness: true
+          # validates :password, length: {in: 6..12}, unless: "password.blank?"
+          # validates :password, confirmation: true
+          # validates :password_confirmation, presence: true, :on => :create
+          # validates :password, presence: true, :on => :create
+         
+>>>>>>> 0.0.5
 
           # optionally set the integer attribute to store the roles in,
           # :roles_mask is the default

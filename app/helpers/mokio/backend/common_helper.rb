@@ -5,6 +5,14 @@ module Mokio
       def has_data_files?(obj)
         obj.respond_to?("data_files") && obj.respond_to?("default_data_file")
       end
+
+      #
+      # returns which table stores data files for object
+      # default: data_files
+      #
+      def data_file_model(obj)
+        obj.respond_to?("data_file_type") ? obj.data_file_type.to_s.demodulize.tableize : "data_files"
+      end
      
       def responsive_dynamic_table(&block)
         content_tag :table, :data => {:source => datatable_source_url}, :class => "responsive dynamicTable display table table-bordered", :border => 0, :cellpadding => 0, :cellspacing => 0, :width => "100%", :id =>"dTable" do

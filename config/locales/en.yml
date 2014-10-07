@@ -33,7 +33,7 @@ en:
   external_link: Url
   backend:
     site_preview: Your Site
-    no_records_found: Nie znaleziono żadnej treści
+    no_records_found: No records found
     dashboard: Dashboard
     cancel: Cancel
     save: Save
@@ -103,7 +103,6 @@ en:
     find_in_backend: Find in backend
     continue: Continue
     back_to_edit: "<a href='%{url}'>Back to edit.</a>"
-    slider: Slider
     sign_up: Sign up
     sign_in: Sign in
     change_password: Change Password
@@ -117,8 +116,11 @@ en:
       mov_galery: Movie Gallery
       contact: Contact Page
       menu: Menu
-      modules: Modules
-      comments: Komentarze
+      modules: HTML blocks
+      comments: Comments
+      module_position: Positions
+      external_script: External script
+      lang: Language Management
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -127,9 +129,9 @@ en:
       menus: Menu management
       menus_edit: Edit menu element
       menus_new: New menu element
-      static_modules: Static modules
-      static_modules_edit: Edit static module
-      static_modules_new: New static module
+      static_modules: HTML blocks
+      static_modules_edit: Edit HTML block
+      static_modules_new: New HTML block
       articles_new: New article
       articles_edit: Edit article
       pic_galleries_new: New photo gallery
@@ -138,29 +140,81 @@ en:
       mov_galleries_edit: Edit movie gallery
       contacts_new: New contact page
       contacts_edit: Edit contact page
-      sliders_new: New slider
-      sliders_edit: Edit slider
       comments: Comments
       users: Users
+      external_scripts: External script
+      external_scripts_new: Add external script
+      external_scripts_edit: Edit
+      module_positions: Positions
+      module_positions_new: New position
+      module_positions_edit: Edit position
+      langs:  Language Management
+      langs_new: New language
+      langs_edit: Edit language
 
   static_modules:
     actions: Actions
     active: Active
-    edit_title: Edit module
-    index_title: Static modules
-    index_add_new: Add new module
+    edit_title: Edit HTML block
+    index_title: HTML block
+    index_add_new: Add HTML block
     lang_id: Language
-    new_title: New module
+    new_title: New HTML block
     position: Position
     title: Title
-    module_position_ids: Module position
+    module_position_ids: Position
     updated_at: Updated at
-    edit_title: Edit static module
-    created: "Module <strong>'%{title}'</strong> has been created"
-    updated: "Module <strong>'%{title}'</strong> has been saved"
-    deleted: "Module <strong>'%{title}'</strong> has been deleted"
-    update_active_true: "Module <strong>'%{title}'</strong> is active"
-    update_active_false: "Module <strong>'%{title}'</strong> is not active"
+    edit_title: Edit HTML block
+    created: "HTML block <strong>'%{title}'</strong> has been created"
+    updated: "HTML block <strong>'%{title}'</strong> has been saved"
+    deleted: "HTML block <strong>'%{title}'</strong> has been deleted"
+    update_active_true: "HTML block <strong>'%{title}'</strong> is active"
+    update_active_false: "HTML block <strong>'%{title}'</strong> is not active"
+    
+  external_scripts:
+        name: Name / Id
+        actions: Actions
+        edit_title: Edit external script
+        index_title: External script
+        index_add_new: Add external script
+        new_title: New external script
+        title: Title
+        updated_at: Updated at
+        edit_title: Edit external script
+        created: "External script <strong>'%{title}'</strong> has been created"
+        updated: "External script <strong>'%{title}'</strong> has been saved"
+        deleted: "External script <strong>'%{title}'</strong> has been deleted"
+        copy_title: Copy external script
+
+  module_positions:
+        name: Name / Id
+        actions: Actions
+        edit_title: Edit position
+        index_title: Positions
+        index_add_new: Add position
+        new_title: New position
+        title: Title
+        updated_at: Updated at
+        edit_title: Edit position
+        created: "Position <strong>'%{title}'</strong> has been created"
+        updated: "Position code <strong>'%{title}'</strong> has been saved"
+        deleted: "Position code <strong>'%{title}'</strong> has been deleted"
+        copy_title: Copy position
+  langs:
+        name: Name
+        shortname: Short name
+        active: Active
+        actions: Actions
+        edit_title: Edit language
+        index_add_new: Add language
+        new_title: New language
+        index_title: Language settings
+        updated_at: Updated
+        edit_title: Edit language
+        created: "Language <strong>'%{title}'</strong> has been created"
+        updated: "Language <strong>'%{title}'</strong> has been saved"
+        deleted: "Language <strong>'%{title}'</strong> has been deleted"
+        copy_title: Copy language
 
   articles:
     active: Active
@@ -188,6 +242,8 @@ en:
     update_active_false: "Article <strong>'%{title}'</strong> is not active"
 
   menus:
+    slug: Link to menu
+    no_slug: a link to the menu will be visible after saving the menu
     name: "name"
     external_link: "url"
     active: "active"
@@ -215,7 +271,7 @@ en:
     sort_false: Not all changes in menu structure were allowed - please refresh the page.
     list: List
     content_remove_confirm: Would you like to remove from this menu all content from previously selected language?
-    modules_remove_confirm: Would you like to remove from this menu all modules from previously selected language?
+    modules_remove_confirm: Would you like to remove from this menu all HTML blocks from previously selected language?
     confirm: Do you really want to delete this menu item?
     menu_active_legend: "Active menu position - url works"
     menu_non_active_legend: "Inactive menu position - url doesn't work"
@@ -245,24 +301,6 @@ en:
     update_active_true: "Gallery <strong>'%{title}'</strong> is active"
     update_active_false: "Gallery <strong>'%{title}'</strong> is not active"
 
-  sliders:
-    cannot_add_files_now: Adding photos will be possible only after saving the slider. 
-    created: "Slider <strong>'%{title}'</strong> has been created. You can now add photos."
-    created_and_new: "Slider <strong>'%{title}'</strong> has been created"
-    updated: "Slider <strong>'%{title}'</strong> has been saved"
-    deleted: "Slider <strong>'%{title}'</strong> has been deleted"
-    not_created: "Slider <strong>'%{title}'</strong> has NOT been created"
-    not_updated: "Slider <strong>'%{title}'</strong> has NOT been saved"
-    not_deleted: "Slider <strong>'%{title}'</strong> has NOT been deleted"
-    active: active
-    intro: introduction
-    content: content
-    display_from: "displayed from"
-    display_to: "displayed to"
-    new_title: "New slider"
-    edit_title: "Edit Slider"
-    update_active_true: "Slider <strong>'%{title}'</strong> is active"
-    update_active_false: "Slider <strong>'%{title}'</strong> is not active"
 
   mov_galleries:
     cannot_add_files_now: "Adding movies will be allowed after saving the gallery"
@@ -303,10 +341,8 @@ en:
 
   contents:
     edit_gallery_content: Edit content
-    edit_slider_content: Edit content
     edit_title: Edit
     add_photos: Add photos
-    add_slider_photos: Add photos
     add_youtubes: Add movies
     created: "Content <strong>'%{title}'</strong> has been created"
     updated: "Content <strong>'%{title}'</strong> has been saved"
@@ -335,45 +371,12 @@ en:
       Mokio::Article: Article
       Mokio::MovGallery: Movie Gallery
       Mokio::Contact: Contact page
-      Mokio::Slider: Slider
 
   data_files:
     larger_image: larger
     sorted: Order has been changed.
 
   photos:
-    edit_photo: Edit
-    updated: "Photo <strong>'%{title}'</strong> has been updated"
-    created: "Photo <strong>'%{title}'</strong> has been created"
-    deleted: "Photo <strong>'%{title}'</strong> has been deleted"
-    not_updated: "Photo <strong>'%{title}'</strong> has NOT been updated"
-    not_created: "Photo <strong>'%{title}'</strong> has NOT been created"
-    not_deleted: "Photo <strong>'%{title}'</strong> has NOT been deleted"
-    edit_main_photo: Edit photo
-    edit_thumb: Edit thumbnail
-    thumb_updated: Thumbnail has been updated
-    thumb_not_updated: Thumbnail has NOT been updated
-    thumb_deleted: "Thumbnail <strong>'%{name}'</strong> has been deleted"
-    thumb_not_deleted: "Thumbnail <strong>'%{name}'</strong> has NOT been deleted"
-    add_or_drop_file: Add or drop file
-    add_file: Add file
-    mark_on_photo: Select area to crop
-    crop_success: Thumbnail has been cropped
-    rotate_photo: Rotate photo
-    rotated: "Photo <strong>'%{name}'</strong> has been rotated"
-    not_rotated: "Photo <strong>'%{name}'</strong> has NOT been rotated"
-    crop: "Thumbnail <strong>'%{name}'</strong> has been cropped"
-    not_crop: "Thumbnail <strong>'%{name}'</strong> has NOT been cropped"
-    rotated_thumb: "Thumbnail <strong>'%{name}'</strong> has been rotated"
-    not_rotated_thumb: "Thumbnail <strong>'%{name}'</strong> has NOT been rotated"
-    thumb: Thumbnail
-    show_photo: Show photo
-    add_own_thumb: Add own thumb
-    thumb_upload_info: "By default, thumbnail is created from original photo"
-    photos_from_external_links_error: "Photos from this urls has NOT been saved:"
-    links_upload_info: " urls - one per row (max 10)"
-
-  slider_photos:
     edit_photo: Edit
     updated: "Photo <strong>'%{title}'</strong> has been updated"
     created: "Photo <strong>'%{title}'</strong> has been created"
@@ -474,7 +477,7 @@ en:
       admin: Administrator
       content_editor: Content management
       menu_editor: Menu management
-      static_module_editor: Static modules management
+      static_module_editor: HTML block management
       user_editor: Users management
       comment_approver: Comment approve
       reader: Reader
@@ -484,20 +487,25 @@ en:
 
   site_helper:
     next: next
-    welcome_title: welcome_title
-    welcome_text: welcome_text
-    dashboard_nav_title: dashboard_nav_title
-    dashboard_nav_text: dashboard_nav_text
-    contentmanagment_nav_title: contentmanagment_nav_title
-    contentmanagment_nav_text: contentmanagment_nav_text
-    content_nav_title: content_nav_title
-    content_nav_text: content_nav_text
-    menu_nav_title: menu_nav_title
-    menu_nav_text: menu_nav_text
-    static_module_nav_title: static_module_nav_title
-    static_module_nav_text: static_module_nav_text
-    user_nav_title: user_nav_title
-    user_nav_text: user_nav_text
+    welcome_title: Welcome in Mokio!
+    welcome_text: ""
+    dashboard_nav_title: Dashboard
+    dashboard_nav_text: "Here you can find last changes to content or menu and easily spot things that needs to be fixed, ie. content without menu or menu without any content attached."
+    contentmanagment_nav_title: Content management
+    contentmanagment_nav_text: "Manage content of your site (article, photo galleries, movies, etc.)."
+    content_nav_title: Add content
+    content_nav_text: "Add content to your site: article, photo galleries, movies, etc. Added content should be attached to any menu element if you want it to be displayed on your site."
+    menu_nav_title: Menu management
+    menu_nav_text: "Add menu elements and attach content to menu. You can also add  HTML blocks to given position on given subpage (one, some or all)."
+    static_module_nav_title: HTML blocks
+    static_module_nav_text: "Add HTML blocks, so pieces of script that should be displayed in various places of one, many or all of the subpages."
+    module_position_nav_title: Positions
+    module_position_nav_text: Add a position that later can be user for putting HTML block or menu on the page.
+    external_script_nav_title: External script
+    external_script_nav_text: Add custom javascript to your page.
+    user_nav_title: Users management
+    user_nav_text: "Add, delete or edit users."
+
 
 # ============================================ Activerecord ============================================================= #    
 
@@ -537,7 +545,15 @@ en:
             title:
               blank: "Title cannot be blank"
             display_from:
-              invalid: Exceeds 'Display to' date     
+              invalid: Exceeds 'Display to' date
+        mokio/user:
+          attributes:
+            password:
+              too_short: Password too short (min 8 characters).
+            password_confirmation:
+              confirmation: Passwords do not match
+            email:
+              invalid: Provided an incorrect e-mail address
       editable:
         not_permitted: Edit not allowed
       messages:
@@ -567,19 +583,6 @@ en:
         updated_at: Updated at
         lang_id: Language
         home_page: Home page
-
-      slider:
-        active: Active
-        intro: Introduction
-        content: Content
-        display_from: Displayed from
-        display_to: Displayed to
-        title: Title
-        type: Type
-        updated_at: Updated at
-        lang_id: Language
-        home_page: Home page
-        fade_time_ms: Photo display time
 
       mov_gallery:
         active: Active
@@ -627,7 +630,7 @@ en:
         display_from: Displayed from
         display_to: Displayed to
         title: Title
-        module_positions: Module positions
+        module_positions: Positions
         always_displayed: Always displayed
         updated_at: Updated at
         lang_id: Language
@@ -666,10 +669,10 @@ en:
         f_desc: Description
 
       user:
-        password: Hasło
-        remember_me: Zapamiętaj mnie
+        password: Password
+        remember_me: Remember me
         email: E-mail
-        password_confirmation: Potwierdź hasło
+        password_confirmation: Confirm password
       messages:
         record_invalid : "Incorrect record"
 

@@ -15,16 +15,20 @@ module Mokio
                                               :get_photo, :rotate_photo, :crop_photo]
         end
 
+        def photo_model
+          Mokio::Photo
+        end
+
          #
          # Standard create action
          #
          def create
-            @photo = Mokio::Photo.new(photo_params)
+            @photo = photo_model.new(photo_params)
 
             respond_to do |format|
               if @photo.save
                 flash[:notice] = t("photos.created", title: @photo.name)
-                format.js
+                format.js { render :template => "mokio/photos/create"}
               else
                 flash[:error] = t("photos.not_created", title: @photo.name)
                 format.html { render nothing: true }
@@ -61,7 +65,7 @@ module Mokio
                   # Check first if url status will be 200 and then try upload this file
                   #
                   if Faraday.head(url).status == 200
-                    photo = Mokio::Photo.new(:remote_data_file_url => url, :content_id => params[:photo][:content_id]) # remote_data_file_url is Carrierwave parameter for adding file from url
+                    photo = create_external_photo url
                     
                     if photo.save # !!!
                       @photos << photo
@@ -99,16 +103,16 @@ module Mokio
          #
           def destroy
             @id = params[:id]
-            @photo = Mokio::Photo.friendly.find(@id)
+            @photo = photo_model.friendly.find(@id)
             
             if @photo.destroy
               flash[:notice] = t("photos.deleted", title: @photo.name)
             else
               flash[:error] = t("photos.not_deleted", title: @photo.name)
             end
-            
+
             respond_to do |format|
-              format.js
+              format.js {render :template => "mokio/photos/destroy"}
             end
           end
 
@@ -116,7 +120,7 @@ module Mokio
           # Standard update action
           #
           def update
-            @photo = Mokio::Photo.friendly.find(params[:id])
+            @photo = photo_model.friendly.find(params[:id])
 
             if @photo.update(photo_params)
               flash[:notice] = t("photos.updated", title: @photo.name)
@@ -135,7 +139,7 @@ module Mokio
           def get_thumb
             if stale?(:etag => @edited_photo, :last_modified => @edited_photo.updated_at, :public => true)
               respond_to do |format|
-                format.js
+                format.js {render :template => "mokio/photos/get_thumb"}
               end
             end
           end
@@ -167,7 +171,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.js
+              format.js {render :template => "mokio/photos/crop_thumb"}
             end 
           end
 
@@ -195,7 +199,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.js
+              format.js {render :template => "mokio/photos/rotate_thumb"}
             end
           end
 
@@ -211,7 +215,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.js
+              format.js {render :template => "mokio/photos/update_thumb"}
             end
           end
 
@@ -229,7 +233,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.js 
+              format.js {render :template => "mokio/photos/remove_thumb"}
             end
           end
 
@@ -239,7 +243,7 @@ module Mokio
           def get_photo
             if stale?(:etag => @edited_photo, :last_modified => @edited_photo.updated_at, :public => true)
               respond_to do |format|
-                format.js
+                format.js {render :template => "mokio/photos/get_photo"}
               end
             end
           end
@@ -269,10 +273,9 @@ module Mokio
               flash[:error] = t("photos.not_crop", name: @edited_photo.name)
               logger.error exception_msg(image_path)
             end
-
             respond_to do |format|
-              format.js
-            end 
+              format.js {render :template => "mokio/photos/crop_photo"}
+            end
           end
 
           #
@@ -301,7 +304,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.js
+              format.js {render :template => "mokio/photos/rotate_photo"}
             end
           end
 
@@ -317,7 +320,7 @@ module Mokio
             # Simple finding photo for given id
             #
             def edited_photo #:doc:
-              @edited_photo = Mokio::Photo.friendly.find(params[:id])
+              @edited_photo = photo_model.friendly.find(params[:id])
             end
 
             #
@@ -341,6 +344,12 @@ module Mokio
             def exception_msg(path)
               "[Errno::ENOENT] cannot open #{path}"
             end
+
+            protected
+              def create_external_photo (url)
+                photo_model.new(:remote_data_file_url => url, :content_id => params[:photo][:content_id]) # remote_data_file_url is Carrierwave parameter for adding file from url
+              end
+
       end
     end
   end

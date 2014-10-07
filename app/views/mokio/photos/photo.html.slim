@@ -11,7 +11,7 @@
     .actionBtn
       a.edit data-toggle="modal" href=("#modaledit_#{photo.id}" ) 
         span.icon16.icomoon-icon-pencil-2.white
-      = link_to photo_path(photo), remote: true, method: :delete, class: "delete" do
+      = link_to self.send("#{photo.class.to_s.demodulize.downcase}_path", photo), remote: true, method: :delete, class: "delete" do
         span.icon16.icomoon-icon-remove.white
 
   /!
@@ -28,27 +28,23 @@
             ul
               li.photo_thumb
                 span.icon8.icomoon-icon-pencil-2
-                = bt("add_own_thumb", Mokio::Photo)
+                = bt("add_own_thumb", photo.class)
 
         = simple_form_for photo, :html => { :class => 'form-horizontal' }, :remote => true do |f|
           .modal-body
             .span9
-              = f.input :name
-              = f.input :subtitle
-              = f.input :intro
-              = f.input :external_link
-              = f.input :active, :wrapper => :active_checkbox
+              = render :partial => "mokio/"+photo.class.to_s.demodulize.tableize+"/edit_photo_form", locals: {f:f}
             .span3
               .edit_view_img_container
-                = bt("thumb", Mokio::Photo)
+                = bt("thumb", photo.class)
                 - if photo.thumb.blank?
-                  img.edit_view_img alt=photo.name src=(photo.data_file.url(photo.thumb_name) ) 
+                  img.edit_view_img alt=photo.name src=(photo.data_file.url(photo.thumb_name) )
                 - else
-                  img.edit_view_img.thumb alt=photo.name src=(photo.thumb.url ) 
+                  img.edit_view_img.thumb alt=photo.name src=(photo.thumb.url )
                 .buttons
-                  a.fancybox href=photo.data_file.url 
-                    button.btn.btn-success.btn-mini= bt("show_photo", Mokio::Photo)
-                  button.btn.btn-primary.btn-mini= bt("edit_thumb", Mokio::Photo)
+                  a.fancybox href=photo.data_file.url
+                    button.btn.btn-success.btn-mini= bt("show_photo", photo.class)
+                  button.btn.btn-primary.btn-mini= bt("edit_thumb", photo.class)
 
           .modal-footer
             = f.submit bt('save'), :class => "btn btn-primary edit_modal_submit", remote: true

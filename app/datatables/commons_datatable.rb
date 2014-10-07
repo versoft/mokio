@@ -58,13 +58,22 @@ private
 
   def table_controls( row )
     html = ""
+    html += @view.controller.render_additional_action_buttons row
     html += table_controls_edit_btn( edit_url(@obj_class, row), true ) if row.editable
-    html += table_controls_delete_btn( obj_url(@obj_class, row), nil, true ) if row.deletable 
-    html += table_controls_copy_btn( copy_url(@obj_class, row) ) if row.editable
+    html += table_controls_copy_btn( copy_url(@obj_class, row) ) if row_cloneable? row
+    html += table_controls_delete_btn( obj_url(@obj_class, row), nil, true ) if row.deletable
     html
   end 
 
+  def row_cloneable?(row)
+    (row.respond_to? "cloneable?") ? row.cloneable? : true
+  end
+
   def collection
+    if @view.controller.respond_to? "current_records"
+      @collection = @view.controller.current_records
+      @collection = @collection.page(page).per_page(per_page) if !@collection.nil?
+    end
     @collection ||= fetch_commons
   end
 
@@ -79,7 +88,6 @@ private
     elsif params[:only_loose].present?
       collection = @obj_class.includes(:menus).where(:mokio_content_links => {:content_id => nil}).order("#{sort_column} #{sort_direction}")
       collection = collection.page(page).per_page(per_page)
-
     else
       collection = @obj_class.order("#{sort_column} #{sort_direction}")
       collection = collection.page(page).per_page(per_page)

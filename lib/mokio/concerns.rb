@@ -37,7 +37,7 @@ require "mokio/concerns/models/selected_module"
 require "mokio/concerns/models/static_module"
 require "mokio/concerns/models/user"
 require "mokio/concerns/models/youtube"
-require "mokio/concerns/models/external_code"
+require "mokio/concerns/models/external_script"
 
 #
 # CommonController extensions
@@ -64,6 +64,6 @@ require "mokio/concerns/controllers/pic_galleries"
 require "mokio/concerns/controllers/static_modules"
 require "mokio/concerns/controllers/users"
 require "mokio/concerns/controllers/youtubes"
-require "mokio/concerns/controllers/external_codes"
+require "mokio/concerns/controllers/external_scripts"
 require "mokio/concerns/controllers/module_positions"
 require "mokio/concerns/controllers/langs"

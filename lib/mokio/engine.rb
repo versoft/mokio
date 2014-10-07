@@ -17,7 +17,7 @@ module Mokio
         ActionView::Base.send :include, Mokio::FrontendHelpers::MenuHelper
         ActionView::Base.send :include, Mokio::FrontendHelpers::StaticModulesHelper
         ActionView::Base.send :include, Mokio::FrontendHelpers::ContentHelper
-        ActionView::Base.send :include, Mokio::FrontendHelpers::ExternalCodesHelper
+        ActionView::Base.send :include, Mokio::FrontendHelpers::ExternalScriptsHelper
       end
     end
 
@@ -45,6 +45,8 @@ module Mokio
         ckeditor/skins/moono/icons.png
         backend/loader.gif
         backend/search.png
+        progressbar.gif
+        loading.gif
         images/ui-bg_flat_75_ffffff_40x100.png
         ckeditor/contents.css
         backend/forms.js
@@ -60,6 +62,10 @@ module Mokio
 
     initializer "mokio.fonts", group: :all do |app|
       app.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    end
+
+    initializer "mokio.views" do |app|
+      app.config.views_config = Mokio::TemplateRenderer.read_config
     end
   end
 end

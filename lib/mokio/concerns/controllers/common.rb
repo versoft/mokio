@@ -178,6 +178,61 @@ module Mokio
             format.js   { render :nothing => true }
           end
         end
+
+        #
+        # Renders additional buttons in index view
+        #
+        def render_additional_index_buttons
+          template = self.additional_index_buttons
+          if !template.nil?
+              result = render_to_string :partial => template
+            result.html_safe
+          else
+            ""
+          end
+        end
+
+        #
+        # Renders additional action buttons in datatable row in index view
+        # ==== Attributes
+        # * +obj+ - record object from database
+        #
+        def render_additional_action_buttons(obj)
+          template = self.additional_action_buttons
+          if !template.nil?
+            result = render_to_string  :partial => template, :locals => {obj: obj}
+            result.html_safe
+          else
+            ""
+          end
+        end
+
+        # Returns string with path to partial <b>html</b>
+        # Override when you want to add other buttons
+        # to header in index view
+        #
+        # ==== Examples
+        #   "mokio/my_objects/some_btn"
+        # refers to file:
+        #   "mokio/my_objects/_some_btn.html.*(slim/erb/haml)"
+        #
+        def additional_index_buttons
+          nil
+        end
+
+        # Returns string with path to partial <b>json</b>
+        # Override when you want to add other action buttons
+        # to datatable row in index view
+        #
+        # ==== Examples
+        #   "mokio/my_objects/some_row_action"
+        # refers to file:
+        #   "mokio/my_objects/_some_row_action.json.*(slim/erb/haml)"
+        #
+        def additional_action_buttons
+          nil
+        end
+
       end
     end
   end

@@ -28,6 +28,14 @@ module Mokio
           # }
           # scope :for_lang_without_always_displayed, -> (lang_id = 0) {joins("join static_modules on available_modules.static_module_id = static_modules.id").where('static_modules.lang_id = ? and always_displayed = ?', lang_id, false)}
           # scope :for_lang_with_always_displayed, -> (lang_id = 0) {joins("join static_modules on available_modules.static_module_id = static_modules.id").where('static_modules.lang_id = ?', lang_id)}
+
+          scope :only_always_displayed, -> { where('mokio_static_modules.always_displayed = true')}
+          scope :static_module_active_for_lang, -> (position_id,lang_id) {
+              joins("join mokio_static_modules on mokio_available_modules.static_module_id = mokio_static_modules.id")
+              .where('(mokio_static_modules.lang_id = ? AND mokio_static_modules.active = true AND mokio_available_modules.module_position_id = ?) ', lang_id,position_id)
+              .select("mokio_static_modules.*,mokio_available_modules.*")
+          }
+
           # scope :with_always_displayed, -> {joins("join static_modules on available_modules.static_module_id = static_modules.id").where('static_modules.always_displayed = ?', true)}
         end
 

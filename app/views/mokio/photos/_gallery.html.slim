@@ -1,14 +1,14 @@
-.page-header
-  h4
-    = bt("gallery")
+#gallery_header.page-header
+  h4#gallery_title
+    = bt("gallery",@obj_class)
     small
       = obj.title
 ul#itemContainer.galleryView.sortable
   - obj.data_files.order_default.each do |photo|
     = render :template => 'mokio/photos/photo', :locals => {photo: photo}
-    
+
 - cache :photo_gallery do
-  #edit-photo-form.modal.fade role="dialog" aria-hidden="true" style="display:none;" aria-labelledby="EditPhotoModalLabel" 
+  #edit-photo-form.modal.fade role="dialog" aria-hidden="true" style="display:none;" aria-labelledby="EditPhotoModalLabel"
     .modal-dialog
       .modal-content
         .modal-header
@@ -21,6 +21,7 @@ ul#itemContainer.galleryView.sortable
           button.btn.btn-default.close-edit-photo-form  type="button" data-dismiss="modal" = bt("close")
 
 - content_for :js do
+  = render :partial => "mokio/photos/data_file_info"
   = javascript_include_tag 'backend/photo_gallery/functions', :async => true
   = javascript_include_tag 'backend/photo_gallery/photoEditForm', :async => true
   = javascript_include_tag 'backend/photo_gallery/photo_gallery', :async => true
