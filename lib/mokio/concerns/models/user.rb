@@ -26,7 +26,6 @@ module Mokio
           # validates :password_confirmation, presence: true, :on => :create
           # validates :password, presence: true, :on => :create
          
->>>>>>> 0.0.5
 
           # optionally set the integer attribute to store the roles in,
           # :roles_mask is the default
