@@ -72,11 +72,7 @@ module Mokio
         @html.html_safe
       end
 
-<<<<<<< HEAD
-      #  checks visibility and generate static modules tree from activerecord object
-=======
       #  check visibility and generate static modules tree from activerecord object
->>>>>>> 0.0.5
       #
       # ==== Attributes
       #
