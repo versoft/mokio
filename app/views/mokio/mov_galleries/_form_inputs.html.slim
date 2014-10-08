@@ -8,4 +8,8 @@
   = f.input :content, :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 300} }, disabled: !obj.display_editable_field?('content')
   = f.input :display_from,  :wrapper => :date, :as => :string, :input_html => { :class => "mask-date display_from", :value => (localize(f.object.display_from) if f.object.display_from) }, disabled: !obj.display_editable_field?('display_from')
   = f.input :display_to,    :wrapper => :date, :as => :string, :input_html => { :class => "mask-date display_to", :value => (localize(f.object.display_to) if f.object.display_to) }, disabled: !obj.display_editable_field?('display_to')
-  = f.association :menus
+  .row-fluid
+    label.form-label.span2
+      = "Menus"
+    .span10
+      = select_tag "article[menu_ids]", options_for_select(Mokio::Menu.all.nofake.map {|s| [s.name, s.id]},obj.menus.map {|j| j.id}), :multiple => true ,:include_blank => true
