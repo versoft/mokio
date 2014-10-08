@@ -21,6 +21,7 @@ Mokio (dev "Kolibroryfer") 25.04.2014 v0.0.1
 Mokio (dev "Kolibroryfer") 7.05.2014 v0.0.2
 
   1. Added users usage with Devise gem
+
     ~ We chose Devise gem for user auth, as its use is well known to Rails developers
 
   2. Solved problems with "new" action in Menus
@@ -109,3 +110,25 @@ Mokio (dev "Tree Pipit") 12.08.2014 v0.0.4
     1.3 IsNotAMokioContentError exception
 
     1.4 IsNotAMokioMenuError exception
+
+Mokio 07.10.2014 v0.0.5
+    1. Add configurable mechanizm to extend standard Mokio views (check spec/dummy/config/views.yml)
+    2. Easy way to add your own buttons in index views (main buttons and action buttons)
+    3. Add languages management
+    4. Add Mokio Logger
+    5. More code cleanups
+    6. Fixed handling solr configuration and content searching
+    7. Show link to menu in form
+    8. Fixed password update function
+    9. Fixed "Your site" href
+    10. Better generation of menu slug
+    11. Add / change translations
+    12. More flexible menu helpers
+    13. More bug fixes
+    14. More code cleanups
+
+
+
+Mokio 07.10.2014 v0.0.6
+    1. Update summary, description in mokio.gemspec
+    2. Update changelog
