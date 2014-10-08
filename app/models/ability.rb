@@ -44,9 +44,6 @@ class Ability
     if user.has_role? :user_editor
       can :manage, [Mokio::User]  
     end
-    if user.has_role? :comment_approver
-      can :manage, [Mokio::Comment]  
-    end
     if user.has_role? :reader
       can :read, :all 
     end
