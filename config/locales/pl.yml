@@ -177,49 +177,50 @@ pl:
     copy_title: Kopiuj blok HTML
 
   external_scripts:
-        name: Nazwa / id
-        actions: Akcje
-        edit_title: Edytuj skrypt zewnętrzny
-        index_title: Skrypty zewnętrzne
-        index_add_new: Dodaj nowy skrypt zewnętrzny
-        new_title: Nowy skrypt zewnętrzny
-        title: Tytuł
-        updated_at: Uaktualniono
-        edit_title: Edytuj skrypt zewnętrzny
-        created: "Skrypt <strong>'%{title}'</strong> został utworzony."
-        updated: "Skrypt <strong>'%{title}'</strong> został poprawnie edytowany."
-        deleted: "Skrypt <strong>'%{title}'</strong> został usunięty."
-        copy_title: Kopiuj skrypt
+    name: Nazwa / id
+    actions: Akcje
+    edit_title: Edytuj skrypt zewnętrzny
+    index_title: Skrypty zewnętrzne
+    index_add_new: Dodaj nowy skrypt zewnętrzny
+    new_title: Nowy skrypt zewnętrzny
+    title: Tytuł
+    updated_at: Uaktualniono
+    edit_title: Edytuj skrypt zewnętrzny
+    created: "Skrypt <strong>'%{title}'</strong> został utworzony."
+    updated: "Skrypt <strong>'%{title}'</strong> został poprawnie edytowany."
+    deleted: "Skrypt <strong>'%{title}'</strong> został usunięty."
+    copy_title: Kopiuj skrypt
 
   module_positions:
-        name: Nazwa / id
-        actions: Akcje
-        edit_title: Edytuj pozycję
-        index_title: Pozycje
-        index_add_new: Dodaj nowa pozycję
-        new_title: Nowa pozycja
-        title: Tytuł
-        updated_at: Uaktualniono
-        edit_title: Edytuj pozycję
-        created: "Pozycja <strong>'%{title}'</strong> została utworzona."
-        updated: "Pozycja <strong>'%{title}'</strong> została poprawnie edytowana."
-        deleted: "Pozycja <strong>'%{title}'</strong> została usunięta."
-        copy_title: Kopiuj pozycję modułów
+    name: Nazwa / id
+    actions: Akcje
+    edit_title: Edytuj pozycję
+    index_title: Pozycje
+    index_add_new: Dodaj nowa pozycję
+    new_title: Nowa pozycja
+    title: Tytuł
+    updated_at: Uaktualniono
+    edit_title: Edytuj pozycję
+    created: "Pozycja <strong>'%{title}'</strong> została utworzona."
+    updated: "Pozycja <strong>'%{title}'</strong> została poprawnie edytowana."
+    deleted: "Pozycja <strong>'%{title}'</strong> została usunięta."
+    copy_title: Kopiuj pozycję modułów
+
   langs:
-        name: Nazwa
-        shortname: Nazwa skrócona
-        active: Włączony
-        actions: Akcje
-        edit_title: Edytuj język
-        index_add_new: Dodaj nowy język
-        new_title: Nowy język
-        index_title: Ustawienia języka
-        updated_at: Uaktualniono
-        edit_title: Edytuj język
-        created: "Język <strong>'%{title}'</strong> została utworzony."
-        updated: "Język <strong>'%{title}'</strong> został poprawnie edytowany."
-        deleted: "Język <strong>'%{title}'</strong> został usunięty."
-        copy_title: Kopiuj język
+    name: Nazwa
+    shortname: Nazwa skrócona
+    active: Włączony
+    actions: Akcje
+    edit_title: Edytuj język
+    index_add_new: Dodaj nowy język
+    new_title: Nowy język
+    index_title: Ustawienia języka
+    updated_at: Uaktualniono
+    edit_title: Edytuj język
+    created: "Język <strong>'%{title}'</strong> została utworzony."
+    updated: "Język <strong>'%{title}'</strong> został poprawnie edytowany."
+    deleted: "Język <strong>'%{title}'</strong> został usunięty."
+    copy_title: Kopiuj język
 
 
   articles:
@@ -549,6 +550,10 @@ pl:
               blank: "Tytuł nie może być pusty"
             display_from:
               invalid: Przekracza datę do której ma być wyświetlany
+        mokio/external_script:
+          attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
         mokio/mov_gallery:
           attributes:
             title:
