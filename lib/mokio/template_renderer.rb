@@ -29,7 +29,7 @@ module Mokio
         result[new_key] = [] if !result.has_key?(new_key)
         result[new_key].push value
       end
-      
+
       result
     end
 
@@ -57,7 +57,7 @@ module Mokio
       end
 
       MOKIO_LOG.debug "[TemplateRenderer] tpl_name: #{tpl_name}, config.has_key?: #{config.has_key?(tpl_name)}."
-      
+
       #
       # if view is an override
       #
@@ -68,38 +68,39 @@ module Mokio
 
         config[tpl_name].each do |entry|
           @html = Nokogiri::HTML::Document.parse to_parse
-                        
+
           element_path = entry["html_element_id"] if entry["html_element_id"]
-          element_path ||= entry["element_path"] 
-          
+          element_path ||= entry["element_path"]
+
           if entry["type"] == "xpath"
             MOKIO_LOG.debug "[TemplateRenderer] Parsing element with xpath"
             html_element = @html.at_xpath element_path
 
-          elsif entry["type"] == "css" || !entry["type"] || entry["type"] == "" 
+          elsif entry["type"] == "css" || !entry["type"] || entry["type"] == ""
             html_element = @html.at_css element_path
             MOKIO_LOG.debug "[TemplateRenderer] Parsing element with css"
           end
-                      
+
           new_options          = {:template => entry["override_path"]} if options.has_key?(:template)
           new_options          = {:partial => entry["override_path"]}  if options.has_key?(:partial)
           new_options[:locals] = options[:locals]                      if options[:locals]
-          
+
           new_html = renderer.render context, new_options
-                  
-          case entry["position"]
-          when "before"
-            html_element.add_previous_sibling(new_html)
-          when "after"
-            html_element.add_next_sibling(new_html)
-          when "inside" || ""
-            html_element.add_child(new_html)
-          else
-            html_element.add_child(new_html)
+          unless html_element.nil?
+            case entry["position"]
+              when "before"
+                html_element.add_previous_sibling(new_html)
+              when "after"
+                html_element.add_next_sibling(new_html)
+              when "inside" || ""
+                html_element.add_child(new_html)
+              else
+                html_element.add_child(new_html)
+            end
           end
 
           MOKIO_LOG.debug "[TemplateRenderer] Postion for '#{entry["override_path"]}' is: '#{entry["position"] ? entry["position"] : "inside"} #{element_path}'"
-                
+
           to_parse = @html.to_s
         end
 
