@@ -32,6 +32,7 @@ en:
   mokio/contact: Contact
   external_link: Url
   backend:
+    go_back: Go back
     site_preview: Your Site
     no_records_found: No records found
     dashboard: Dashboard
@@ -506,6 +507,9 @@ en:
     user_nav_title: Users management
     user_nav_text: "Add, delete or edit users."
 
+  errors:
+    messages:
+      unauthorized: You are not authorized to perform this action
 
 # ============================================ Activerecord ============================================================= #    
 

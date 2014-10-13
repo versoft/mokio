@@ -31,6 +31,7 @@ pl:
   mokio/contact: Strona kontaktowa
   external_link: Url
   backend:
+    go_back: Powrót
     site_preview: Twoja Strona
     no_records_found: Nie znaleziono żadnej treści
     dashboard: Biurko
@@ -516,6 +517,9 @@ pl:
     user_nav_title: Zarządzanie użytkownikami
     user_nav_text: "Usuwanie, dodawanie nowych, edycja danych użytkowników."
 
+  errors:
+    messages:
+      unauthorized: Brak uprawnień
 
 # ============================================ Activerecord ============================================================= #
 
