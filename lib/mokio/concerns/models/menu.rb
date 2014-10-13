@@ -34,9 +34,9 @@ module Mokio
 
           after_save :touch_content
           after_destroy :touch_content
-
           scope :order_default, -> { order("seq asc") }
           scope :active,        -> { where(active: true) }
+          scope :nofake,        -> { where(fake: false)}
           scope :fake_structure_unique, -> { where(fake: true,slug: nil,meta_id: nil).group('name').order('id ASC')}
 
           def should_generate_new_friendly_id?
@@ -51,7 +51,6 @@ module Mokio
             ##
           end
         end
-
 
         #
         # Friendly_id slug_candidates (<b>gem 'friendly_id'</b>)

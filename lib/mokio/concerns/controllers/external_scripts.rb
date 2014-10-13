@@ -16,7 +16,7 @@ module Mokio
           #
 
           def external_script_params #:doc:
-            params[:external_script].permit(:code,:script)
+            params[:external_script].permit(:name,:script)
           end
       end
     end

@@ -6,7 +6,12 @@
   = f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 400} }, disabled: !obj.display_editable_field?('content')
 
   = f.input :recipient_emails, :as => :string, :input_html => { :class => "recipients span10" }, disabled: !obj.display_editable_field?('recipient_emails')
-  = f.association :menus
+  .row-fluid
+    label.form-label.span2
+      = "Menus"
+    .span10
+      = select_tag "article[menu_ids]", options_for_select(Mokio::Menu.all.nofake.map {|s| [s.name, s.id]},obj.menus.map {|j| j.id}), :multiple => true ,:include_blank => true
+
 .contaner
   hr
   .row-fluid

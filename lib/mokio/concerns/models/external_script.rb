@@ -18,7 +18,7 @@ module Mokio
           # Columns for table in CommonController#index view
           #
           def columns_for_table
-            ["code", "script"]
+            ["name", "script"]
           end
         end
 

@@ -197,8 +197,8 @@ en:
         updated_at: Updated at
         edit_title: Edit position
         created: "Position <strong>'%{title}'</strong> has been created"
-        updated: "Position code <strong>'%{title}'</strong> has been saved"
-        deleted: "Position code <strong>'%{title}'</strong> has been deleted"
+        updated: "Position <strong>'%{title}'</strong> has been saved"
+        deleted: "Position <strong>'%{title}'</strong> has been deleted"
         copy_title: Copy position
   langs:
         name: Name
@@ -607,7 +607,9 @@ en:
         updated_at: Ostatnio edytowany
         lang_id: Language
         home_page: Home page
-
+      external_script:
+        name: Nazwa / Id
+        script: Skrypt
       contact:
         active: Active
         content: Content
