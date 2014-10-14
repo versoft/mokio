@@ -109,6 +109,7 @@ en:
     change_password: Change Password
 
     sidebars:
+      users: Admins
       sidebar_title: Sidebar
       content_management: Content management
       add_content: Add content

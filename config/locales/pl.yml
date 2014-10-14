@@ -109,6 +109,7 @@ pl:
     change_password: Zmień hasło
 
     sidebars:
+      users: Administratorzy
       sidebar_title: Nawigacja
       content_management: Zarządzanie treścią
       add_content: Dodaj Treść
