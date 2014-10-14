@@ -32,6 +32,7 @@ en:
   mokio/contact: Contact
   external_link: Url
   backend:
+    go_back: Go back
     site_preview: Your Site
     no_records_found: No records found
     dashboard: Dashboard
@@ -108,6 +109,7 @@ en:
     change_password: Change Password
 
     sidebars:
+      users: Admins
       sidebar_title: Sidebar
       content_management: Content management
       add_content: Add content
@@ -141,7 +143,7 @@ en:
       contacts_new: New contact page
       contacts_edit: Edit contact page
       comments: Comments
-      users: Users
+      users: Admins
       external_scripts: External script
       external_scripts_new: Add external script
       external_scripts_edit: Edit
@@ -458,28 +460,28 @@ en:
     delete_rejected_false: Not all rejected comments have been deleted
 
   users:
-    index_add_new: Add new user
-    index_title: Users
-    new_title: New user
-    new_user: New user
+    index_add_new: Add new admin
+    index_title: Admins
+    new_title: New admin
+    new_user: New admin
     add_user: Add
-    edit_user: Edit user
+    edit_user: Edit admin
     save_user: Save
-    copy_title: Copy user
-    edit_title: Edit user
-    created: "User <strong>'%{title}'</strong> has been created"
-    updated: "User <strong>'%{title}'</strong> has been saved"
-    deleted: "User <strong>'%{title}'</strong> has been deleted"
-    not_created: "User <strong>'%{title}'</strong> has NOT been created"
-    not_updated: "User <strong>'%{title}'</strong> has NOT been saved"
-    not_deleted: "User <strong>'%{title}'</strong> has NOT been deleted"
+    copy_title: Copy admin
+    edit_title: Edit admin
+    created: "Admin <strong>'%{title}'</strong> has been created"
+    updated: "Admin <strong>'%{title}'</strong> has been saved"
+    deleted: "Admin <strong>'%{title}'</strong> has been deleted"
+    not_created: "Admin <strong>'%{title}'</strong> has NOT been created"
+    not_updated: "Admin <strong>'%{title}'</strong> has NOT been saved"
+    not_deleted: "Admin <strong>'%{title}'</strong> has NOT been deleted"
     roles:  Roles
     role_name:
       admin: Administrator
       content_editor: Content management
       menu_editor: Menu management
       static_module_editor: HTML block management
-      user_editor: Users management
+      user_editor: Admins management
       comment_approver: Comment approve
       reader: Reader
     edit_password: Change password
@@ -504,9 +506,12 @@ en:
     module_position_nav_text: Add a position that later can be user for putting HTML block or menu on the page.
     external_script_nav_title: External script
     external_script_nav_text: Add custom javascript to your page.
-    user_nav_title: Users management
-    user_nav_text: "Add, delete or edit users."
+    user_nav_title: Admins management
+    user_nav_text: "Add, delete or edit admins."
 
+  errors:
+    messages:
+      unauthorized: You are not authorized to perform this action
 
 # ============================================ Activerecord ============================================================= #    
 
