@@ -10,10 +10,29 @@ module Mokio
         included do
         end
 
+
         #
         # Save new lang and generate default lang menu structure to mokio_menus
         #
 
+        def destroy
+
+          if(Mokio::Lang.count > 1)
+
+            @lang = Mokio::Lang.find(params[:id])
+            @menu = Mokio::Menu
+
+            if(@lang.delete && @menu.delete_all(["lang_id = ?", @lang.id]))
+                notice = I18n.t("langs.deleted", title: @lang.name)
+
+                redirect_to langs_path, notice: notice
+
+            end
+          else
+                redirect_to langs_path, notice: I18n.t("langs.only_one_not_deleted", title: @lang.name)
+          end
+
+        end
         def create
           @lang = Mokio::Lang.new(lang_params)
 

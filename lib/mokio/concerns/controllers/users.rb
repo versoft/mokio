@@ -45,6 +45,9 @@ module Mokio
         # Editing password for user
         #
         def edit_password
+
+          # Request Referer for redirect user in the place where it was before the change password
+          session[:return_to] = request.referer
           @password_only = true
           @user = current_user
           obj = @user
@@ -54,14 +57,15 @@ module Mokio
         # Updating password for user
         #
         def update_password
-          # @current = current_user 
+          # @current = current_user
           @user = current_user
           obj = @user
           respond_to do |format|
             if @user.update(user_params)
               sign_in(@user, :bypass => true) #I18n.t("prices.quotation_not_created", title: l(@date))
-              format.html { redirect_to users_path, notice: I18n.t("users.password_updated") }
-              format.json { render action: 'index', status: :updated}
+
+              format.html { redirect_to session[:return_to] ,notice: I18n.t("users.password_updated") }
+              format.json { render action: 'edit', status: :updated}
             else
               format.html { render "edit", notice: I18n.t("users.password_not_updated") }
               format.json { render json: @user.errors, status: :unprocessable_entity }

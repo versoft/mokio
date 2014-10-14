@@ -35,6 +35,8 @@ module Mokio
         def deletable  #:nodoc:
           true
         end
+
+
       end
     end
   end
