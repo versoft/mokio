@@ -132,3 +132,12 @@ Mokio 07.10.2014 v0.0.5
 Mokio 07.10.2014 v0.0.6
     1. Update summary, description in mokio.gemspec
     2. Update changelog
+
+Mokio <add_release_date> v0.0.7
+    1. Bugfix in ablility.rb
+    2. Fix delete element confirmation
+    3. Search box hidden when SOLR is off
+    4. Bug fixes in ExternalScripts
+    5. Prevent renderer from crash when can't find html element
+    6. Add / change some translations
+    7. Change "Users" to "Admins"
