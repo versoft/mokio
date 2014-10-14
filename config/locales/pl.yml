@@ -122,7 +122,7 @@ pl:
       external_script: Skrypty zewnętrzne
       lang: Zarządzanie językami
       comments: Komentarze
-      users: Użytkownicy
+      users: Administratorzy
 
     breadcrumbs:
       only_loose: Treści nie podpięte pod menu
@@ -143,9 +143,9 @@ pl:
       contacts_new: Nowa strona kontaktowa
       contacts_edit: Edycja strony kontatkowej
       comments: Komentarze
-      users: Użytkownicy
-      users_new: Nowy użytkownik
-      users_edit: Edycja danych użytkownika
+      users: Administratorzy
+      users_new: Nowy administrator
+      users_edit: Edycja danych administrator
       external_scripts: Skrypty zewnętrzne
       external_scripts_new: Nowy skrypt zewnętrzny
       external_scripts_edit: Edycja
@@ -450,7 +450,7 @@ pl:
     comment: Komentarz
     commentable: Komentowana treść
     status: Status
-    user_id: Użytkownik
+    user_id: Administrator
     created_at: Utworzony
     update_accept_true: Komentarz został zaakceptowany
     update_accept_false: Komentarz został odrzucony
@@ -468,28 +468,28 @@ pl:
     delete_rejected_false: Nie udało się usunąć wszystkich odrzuconych komentarzy
 
   users:
-    index_add_new: Dodaj nowego użytkownika
-    index_title: Użytkownicy
-    new_title: Nowy użytkownik
-    new_user: Nowy użytkownik
+    index_add_new: Dodaj nowego administratora
+    index_title: Administratorzy
+    new_title: Nowy administrator
+    new_user: Nowy administrator
     add_user: Dodaj
-    edit_user: Edycja danych użytkownika
+    edit_user: Edycja danych administratora
     save_user: Zapisz
-    copy_title: Kopiuj użytkownika
-    edit_title: Edycja danych użytkownika
-    created: "Użytkownik <strong>'%{title}'</strong> został utworzony"
-    updated: "Użytkownik <strong>'%{title}'</strong> został poprawnie zapisany"
-    deleted: "Użytkownik <strong>'%{title}'</strong> został usunięty"
-    not_created: "Użytkownik <strong>'%{title}'</strong> nie został utworzony"
-    not_updated: "Użytkownik <strong>'%{title}'</strong> nie został poprawnie zapisany"
-    not_deleted: "Użytkownik <strong>'%{title}'</strong> nie został usunięty"
+    copy_title: Kopiuj administratora
+    edit_title: Edycja danych administratora
+    created: "Administrator <strong>'%{title}'</strong> został utworzony"
+    updated: "Administrator <strong>'%{title}'</strong> został poprawnie zapisany"
+    deleted: "Administrator <strong>'%{title}'</strong> został usunięty"
+    not_created: "Administrator <strong>'%{title}'</strong> nie został utworzony"
+    not_updated: "Administrator <strong>'%{title}'</strong> nie został poprawnie zapisany"
+    not_deleted: "Administrator <strong>'%{title}'</strong> nie został usunięty"
     roles:  Role
     role_name:
       admin: Administrator
       content_editor: Zarządzanie treścią
       menu_editor: Zarządzanie strukturą menu
       static_module_editor: Zarządzanie blokami HTML
-      user_editor: Zarządzanie użytkownikami
+      user_editor: Zarządzanie administratorami
       comment_approver: Obsługa komentarzy (moderowanie)
       reader: Dosŧęp do odczytu
     edit_password: Zmiana hasła
@@ -514,8 +514,8 @@ pl:
     module_position_nav_text: "Dodawanie pozycji, które później moga zostać wykorzystane do umieszczania bloków HTML lub menu na stronie."
     external_script_nav_title: Skrypty zewnętrzne
     external_script_nav_text: Dodawanie własnego javascriptu do strony.
-    user_nav_title: Zarządzanie użytkownikami
-    user_nav_text: "Usuwanie, dodawanie nowych, edycja danych użytkowników."
+    user_nav_title: Zarządzanie administratorami
+    user_nav_text: "Usuwanie, dodawanie nowych, edycja danych administratorów."
 
   errors:
     messages:
