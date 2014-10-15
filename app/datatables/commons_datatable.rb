@@ -78,13 +78,32 @@ private
   end
 
   def fetch_commons
+
     if params[:sSearch].present?
-      searched =  Sunspot.search @obj_class do
+
+
+      # TODO Check Solr Server Running
+       if Mokio.solr_enabled
+        searched =  Sunspot.search @obj_class do
         fulltext params[:sSearch]
         paginate page: page, per_page: per_page
       end
-
       collection = searched.results
+      else
+
+      columns = ''
+      @obj_class.column_names.each do |c|
+        columns << c
+        columns << ' LIKE :kw'
+        if c != @obj_class.column_names.last
+          columns << " OR "
+        end
+      end
+
+      collection = @obj_class.order("#{sort_column} #{sort_direction}").where("#{columns}",:kw=>"%#{params[:sSearch]}%")
+      collection = collection.page(page).per_page(per_page)
+      end
+
     elsif params[:only_loose].present?
       collection = @obj_class.includes(:menus).where(:mokio_content_links => {:content_id => nil}).order("#{sort_column} #{sort_direction}")
       collection = collection.page(page).per_page(per_page)

@@ -222,6 +222,7 @@ pl:
     created: "Język <strong>'%{title}'</strong> została utworzony."
     updated: "Język <strong>'%{title}'</strong> został poprawnie edytowany."
     deleted: "Język <strong>'%{title}'</strong> został usunięty."
+    only_one_not_deleted: "Język <strong>'${title}' nie został usunięty. Nie możesz usunąć ostatniego języka "
     copy_title: Kopiuj język
 
 
