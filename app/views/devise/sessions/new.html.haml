@@ -28,8 +28,11 @@
           .form-row.row-fluid
             = f.input :email, required: false, autofocus: true, :wrapper => :label_newline
             = f.input :password, required: false, :wrapper => :label_newline
-          %br 
+          %br
           -# = link_to bt("sign_up"), new_registration_path(resource_name)
           = f.button :submit, bt("sign_in"), class: 'btn btn-info', id: 'loginBtn'
-        %br    
+          -if flash[:alert] && flash[:alert] != t("devise.failure.unauthenticated")
+            %div
+              =flash[:alert]
+        %br
         
