@@ -65,9 +65,10 @@ module Mokio
               sign_in(@user, :bypass => true) #I18n.t("prices.quotation_not_created", title: l(@date))
 
               format.html { redirect_to session[:return_to] ,notice: I18n.t("users.password_updated") }
-              format.json { render action: 'edit', status: :updated}
+              # format.json { render action: 'edit_password', status: :updated}
             else
-              format.html { render "edit", notice: I18n.t("users.password_not_updated") }
+              @password_only = true
+              format.html { render "edit_password", notice: I18n.t("users.password_not_updated") }
               format.json { render json: @user.errors, status: :unprocessable_entity }
             end
           end

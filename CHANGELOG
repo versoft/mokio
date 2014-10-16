@@ -141,3 +141,4 @@ Mokio <add_release_date> v0.0.7
     5. Prevent renderer from crash when can't find html element
     6. Add / change some translations
     7. Change "Users" to "Admins"
+    8. Fixes in breadcrumbs and form for password change

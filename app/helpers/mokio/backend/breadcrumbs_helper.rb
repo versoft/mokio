@@ -17,7 +17,9 @@ module Mokio
 
           html << "<li>"
 
-          if b.match(/edit/)
+          if b.match(/edit_password/) || b.match(/update_password/)
+            html << I18n.t("#{t}.#{b}")
+          elsif b.match(/edit/)
             if breadcrumbs[i-1].match(/contents/)
               html << breadcrumbs_obj_title(I18n.t("#{t}.#{obj.type.to_s.tableize.gsub("mokio/", "")}_edit"))
             else

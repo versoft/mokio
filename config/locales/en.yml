@@ -153,12 +153,14 @@ en:
       langs:  Language Management
       langs_new: New language
       langs_edit: Edit language
+      edit_password: Change password
+      update_password: Change password
 
   static_modules:
     actions: Actions
     active: Active
     edit_title: Edit HTML block
-    index_title: HTML block
+    index_title: HTML blocks
     index_add_new: Add HTML block
     lang_id: Language
     new_title: New HTML block

@@ -146,7 +146,7 @@ pl:
       comments: Komentarze
       users: Administratorzy
       users_new: Nowy administrator
-      users_edit: Edycja danych administrator
+      users_edit: Edycja danych administratora
       external_scripts: Skrypty zewnętrzne
       external_scripts_new: Nowy skrypt zewnętrzny
       external_scripts_edit: Edycja
@@ -157,6 +157,8 @@ pl:
       langs_new: Nowy język
       langs_edit: Edycja języka
       copy: Kopiuj
+      update_password: Zmień hasło
+      edit_password: Zmień hasło
 
   static_modules:
     actions: Akcje
@@ -570,8 +572,9 @@ pl:
           attributes:
             password:
               too_short: Hasło za krótkie ( min 8 znaków ).
+              blank: Nie podano hasła
             password_confirmation:
-              confirmation: Hasła nie zgadzają się
+              confirmation: Hasła się nie zgadzają
             email:
               invalid: Podano nieprawidłowy adres e-mail
       editable:
