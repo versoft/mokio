@@ -19,6 +19,7 @@
           = menu.updated_at_view
         span.edit_buttons
           = table_controls_edit_btn(edit_url(menu.class, menu))
+          = table_controls_copy_btn(copy_url(menu.class, menu))
           - if menu.deletable
             = table_controls_delete_btn(obj_url(menu.class, menu), btc('confirm', Mokio::Menu))
           - else

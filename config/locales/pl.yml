@@ -276,6 +276,7 @@ pl:
     index_add_new: Dodaj menu
     new_title: "Nowy element menu"
     edit_title: "Edytuj element menu"
+    copy_title: "Kopiuj element menu"
     save: Zapisz
     save_and_create_new: "Zapisz i utwórz nowy"
     content: treść

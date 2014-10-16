@@ -271,6 +271,7 @@ en:
     index_add_new: Add menu
     new_title: "New menu element"
     edit_title: "Edit menu element"
+    copy_title: "Copy menu element"
     save: Save
     save_and_create_new: "Save and new"
     content: content

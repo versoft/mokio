@@ -8,6 +8,7 @@ Mokio::Engine.routes.draw do
       resources :menus do 
         member do
           get :update_menu_breadcrumps
+          get :copy
         end
 
         collection do
@@ -28,6 +29,7 @@ Mokio::Engine.routes.draw do
       
       resources :users do
         member do
+          get :copy
           get :edit_password
           patch :update_password
         end
@@ -47,10 +49,10 @@ Mokio::Engine.routes.draw do
         end
       end
 
-      resources :articles,      only: [:new, :create, :update]
-      resources :pic_galleries, only: [:new, :create, :update]
-      resources :mov_galleries, only: [:new, :create, :update]
-      resources :contacts,      only: [:new, :create, :update]
+      resources :articles,      only: [:new, :create, :update, :copy]
+      resources :pic_galleries, only: [:new, :create, :update, :copy]
+      resources :mov_galleries, only: [:new, :create, :update, :copy]
+      resources :contacts,      only: [:new, :create, :update, :copy]
       get '/articles'      => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
       get '/pic_galleries' => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
       get '/mov_galleries' => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
