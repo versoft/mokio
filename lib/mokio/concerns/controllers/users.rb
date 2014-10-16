@@ -26,7 +26,7 @@ module Mokio
           @current = current_user 
           respond_to do |format|
             if obj.update(obj_params)
-              sign_in(@current, :bypass => true)
+              sign_in(obj, :bypass => true)
               if !params[:save_and_new].blank?
                 format.html { redirect_to obj_new_url(@obj_class.new), notice: CommonTranslation.updated(obj) }
                 format.json { head :no_content }
@@ -60,6 +60,7 @@ module Mokio
           # @current = current_user
           @user = current_user
           obj = @user
+          @user.only_password = true
           respond_to do |format|
             if @user.update(user_params)
               sign_in(@user, :bypass => true) #I18n.t("prices.quotation_not_created", title: l(@date))

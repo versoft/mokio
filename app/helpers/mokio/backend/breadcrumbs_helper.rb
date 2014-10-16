@@ -64,7 +64,7 @@ module Mokio
         title ||= obj.name if obj.has_attribute?( :name )
         title ||= obj.breadcrumb_name
 
-        "<li>#{translation}</li><li> - #{title}</li>"
+        "<li>#{translation} - #{title}</li>"
       end
 
     end
