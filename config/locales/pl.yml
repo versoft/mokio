@@ -572,6 +572,8 @@ pl:
               blank: "Nazwa nie może być pusta"
         mokio/mov_gallery:
           attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
             title:
               blank: "Tytuł nie może być pusty"
             display_from:

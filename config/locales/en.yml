@@ -530,7 +530,7 @@ en:
   activerecord:
     errors:
       models:
-        contact:
+        mokio/contact:
           attributes:
             title:
               blank: "Title cannot be blank"
@@ -552,18 +552,22 @@ en:
               blank: "Title cannot be blank"
             display_from:
               invalid: Exceeds 'Display to' date
-        mokio/article:
-          attributes:
-            title:
-              blank: "Title cannot be blank"
-            display_from:
-              invalid: Exceeds 'Display to' date
         mokio/lang:
           attributes:
             name:
               blank: "Name cannot be blank"
             shortname:
               blank: "Short name cannot be blank"
+        mokio/article:
+          attributes:
+            title:
+              blank: "Title cannot be blank"
+            display_from:
+              invalid: Exceeds 'Display to' date
+        mokio/external_script:
+          attributes:
+            name:
+              blank: "Name cannot be blank"
         mokio/mov_gallery:
           attributes:
             name:
@@ -576,6 +580,7 @@ en:
           attributes:
             password:
               too_short: Password too short (min 8 characters).
+              blank: The password is not given
             password_confirmation:
               confirmation: Passwords do not match
             email:
@@ -633,7 +638,7 @@ en:
         updated_at: Updated at
         lang_id: Language
         home_page: Home page
-      external_script:
+      mokio/external_script:
         name: Name / Id
         script: Script
       mokio/lang:
@@ -658,7 +663,7 @@ en:
       mokio/gmap:
         full_address: Address
 
-      static_module:
+      mokio/static_module:
         active: Active
         intro: Introduction
         content: Content
@@ -670,7 +675,7 @@ en:
         updated_at: Updated at
         lang_id: Language
 
-      photo:
+      mokio/photo:
         name: Name
         intro: Description
         active: Active
@@ -689,7 +694,7 @@ en:
         add_own_thumb: Add your own thumb
         subtitle: Subtitle
 
-      meta:
+      mokio/meta:
         g_title: Title
         g_desc: Description
         g_keywords: Keywords
@@ -702,7 +707,7 @@ en:
         f_url: Page url
         f_desc: Description
 
-      user:
+      mokio/user:
         password: Password
         remember_me: Remember me
         email: E-mail
