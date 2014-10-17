@@ -148,3 +148,4 @@ Mokio <add_release_date> v0.0.7
     12. Added spaces between form actions buttons
     13. Add helper to create sidebar buttons (sidebar_btn)
     14. Add translation helper for sidebar buttons (bts)
+    15. Rebuilding language management
