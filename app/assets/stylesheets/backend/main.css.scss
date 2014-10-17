@@ -415,6 +415,7 @@ body, p {font-family: 'Open Sans', Helvetica, Arial, sans-serif;}
   }
 .form-row input, .form-row textarea, .form-row select {width: 100%;}
 .form-row .form-actions {padding-left:0;}
+.form-row .form-actions button, .form-row .form-actions a{margin-left:10px;}
 
 .form-row .row-fluid [class*="span"] {margin-left: 0;}
 
