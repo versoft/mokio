@@ -35,7 +35,6 @@ pl:
     go_back: Powrót
     site_preview: Twoja Strona
     no_records_found: Nie znaleziono żadnej treści
-    dashboard: Dashboard
     cancel: Anuluj
     save: Zapisz
     save_and_create_new: Zapisz i utwórz nowy
@@ -110,13 +109,14 @@ pl:
     change_password: Zmień hasło
 
     sidebars:
-      users: Administratorzy
+      dashboard: Dashboard
+      user: Administratorzy
       sidebar_title: Nawigacja
       content_management: Zarządzanie treścią
       all: Wszystko
       article: Artykuły
-      pic_galery: Galerie Zdjęć
-      mov_galery: Galerie Filmów
+      pic_gallery: Galerie Zdjęć
+      mov_gallery: Galerie Filmów
       contact: Strony Kontaktowe
       menu: Menu
       modules: Bloki
@@ -226,8 +226,9 @@ pl:
     updated: "Język <strong>'%{title}'</strong> został poprawnie edytowany."
     deleted: "Język <strong>'%{title}'</strong> został usunięty."
     copy_title: Kopiuj język
-    only_one_not_deleted: "Język <strong>'${title}' nie został usunięty. Nie możesz usunąć ostatniego języka "
-
+    not_deleted: " Nie możesz usunąć ostatniego języka "
+    update_active_true: "Język <strong>'%{title}'</strong> jest teraz aktywny."
+    update_active_false: "Język <strong>'%{title}'</strong> jest teraz nieaktywny."
   articles:
     active: Włączony
     actions: Akcje
@@ -505,7 +506,7 @@ pl:
     next: następny
     welcome_title: Witaj w Mokio!
     welcome_text: W kilku krokach pokażemy Ci jak stworzyć własna stronę www.
-    dashboard_nav_title: Biurko
+    dashboard_nav_title: Dashboard
     dashboard_nav_text: "Tutaj można oglądać ostatnio wprowadzone zmiany oraz łatwo znaleźć rzeczy do naprawienia, np. treść bez menu lub menu bez treści."
     contentmanagment_nav_title: Zarządzanie treścią
     contentmanagment_nav_text: "Dodawanie, edycja i usuwanie treści. "
@@ -553,6 +554,12 @@ pl:
               blank: "Tytuł nie może być pusty"
             display_from:
               invalid: Przekracza datę do której ma być wyświetlana
+        mokio/lang:
+          attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
+            shortname:
+              blank: "Nazwa skrócona nie może być pusta"
         mokio/article:
           attributes:
             title:
@@ -565,6 +572,8 @@ pl:
               blank: "Nazwa nie może być pusta"
         mokio/mov_gallery:
           attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
             title:
               blank: "Tytuł nie może być pusty"
             display_from:
@@ -577,6 +586,7 @@ pl:
             password_confirmation:
               confirmation: Hasła się nie zgadzają
             email:
+              blank: Proszę wpisać adres email
               invalid: Podano nieprawidłowy adres e-mail
       editable:
         not_permitted: Edycja niedozwolona
@@ -635,7 +645,7 @@ pl:
         name: Nazwa / Id
         script: Skrypt
       mokio/lang:
-        name: Tytuł
+        name: Nazwa
         shortname: Nazwa skrócona
         active: Włączony
       mokio/module_position:

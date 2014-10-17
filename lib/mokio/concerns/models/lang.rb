@@ -10,12 +10,18 @@ module Mokio
         # end
           included do
             include Mokio::Concerns::Models::Common
-            has_many :menu ,:dependent => :destroy
+
+            validates :name ,presence: true , :on => :create
+            validates :shortname , presence: true , :on => :create
+
+            has_many :menu ,:dependent => :delete_all
+            after_save :add_fake_menu
+            before_destroy :validate_last
+
             # scope :default, -> {where(shortname: Mokio.frontend_default_lang).first}
            end
 
         module ClassMethods
-
           def default
             Mokio::Lang.where(shortname: Mokio.frontend_default_lang).first
           end
@@ -36,7 +42,33 @@ module Mokio
           true
         end
 
+        def name_view
+          (ActionController::Base.helpers.link_to self[:name], ApplicationController.helpers.edit_url(self.class.base_class, self)).html_safe
+        end
 
+        private
+
+        def add_fake_menu
+          menu = Array.new
+          @menu = Mokio::Menu.new( name: self.shortname , lang_id: self.id,fake:true,deletable:false,editable:false)
+          @menu.build_meta
+          if(@menu.save)
+            result = Mokio::Menu.fake_structure_unique
+            result.each do |pos|
+              menu = Mokio::Menu.new( name: pos.name,ancestry:@menu.id, lang_id:self.id,fake:true,deletable:false,editable:false)
+              menu.save(:validate => false)
+            end
+          end
+        end
+
+
+        def validate_last
+          if Mokio::Lang.count > 1
+            return true
+          else
+            return false
+          end
+        end
       end
     end
   end
