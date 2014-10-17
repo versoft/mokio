@@ -61,6 +61,10 @@ en:
     external_link: External Url
     data_file: File
     thumb: Thumbnail
+    thumb_exit: Close
+    thumb_crop: Crop
+    thumb_rotate: Rotate
+    thumb_cuts: Cut
     you_are_here: You are here
     actions: Actions
     display_from_out_of_range: After display to date

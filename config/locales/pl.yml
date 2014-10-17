@@ -61,6 +61,10 @@ pl:
     external_link: Link zewnętrzny
     data_file: Plik
     thumb: Miniaturka
+    thumb_exit: Zamknij
+    thumb_crop: Kadruj
+    thumb_rotate: Obróć
+    thumb_cuts: Przytnij
     you_are_here: Jesteś tutaj
     actions: Akcje
     display_from_out_of_range: Przekracza datę do której ma być wyświetlany
