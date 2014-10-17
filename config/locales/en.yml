@@ -588,6 +588,7 @@ en:
             password_confirmation:
               confirmation: Passwords do not match
             email:
+              blank: Email cannot be empty
               invalid: Provided an incorrect e-mail address
       editable:
         not_permitted: Edit not allowed

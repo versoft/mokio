@@ -590,6 +590,7 @@ pl:
             password_confirmation:
               confirmation: Hasła się nie zgadzają
             email:
+              blank: Proszę wpisać adres email
               invalid: Podano nieprawidłowy adres e-mail
       editable:
         not_permitted: Edycja niedozwolona
