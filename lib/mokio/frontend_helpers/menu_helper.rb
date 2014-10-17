@@ -77,7 +77,7 @@ module Mokio
             if i.external_link.blank?
               html << "<a href='/#{i.slug}'>#{i.name}</a>"
             else
-              html << "<a href='#{i.external_link}' rel='#{i.follow ? "follow" : "nofollow"}' target='#{i.target.blank? ? '_self' : i.target}'>#{i.name}</a>"
+              html << "<a href='#{i.external_link}' rel='#{(i.follow || i.follow.nil?) ? "follow" : "nofollow"}' target='#{i.target.blank? ? '_self' : i.target}'>#{i.name}</a>"
             end
             html << build_items(i, limit, index + 1)
 

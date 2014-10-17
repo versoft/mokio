@@ -146,7 +146,7 @@ module Mokio
           # Never trust parameters from the scary internet, only allow the white list through.
           #
           def menu_params #:doc:
-            params[:menu].permit(:name, :seq, :target, :external_link, :parent_id, :active, :visible, :description, :lang_id, :content_ids => [],:available_module_ids => [],
+            params[:menu].permit(:name, :seq, :target, :external_link, :follow, :parent_id, :active, :visible, :description, :lang_id, :content_ids => [],:available_module_ids => [],
               :meta_attributes => Mokio::Meta.meta_attributes)
           end
       end
