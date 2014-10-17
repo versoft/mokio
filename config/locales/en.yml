@@ -224,7 +224,7 @@ en:
     updated: "Language <strong>'%{title}'</strong> has been saved"
     deleted: "Language <strong>'%{title}'</strong> has been deleted"
     copy_title: Copy language
-    only_one_not_deleted: "You can not remove the last language "
+    not_deleted: "You can not remove the last language "
     update_active_true: "Language <strong>'%{title}'</strong> is active"
     update_active_false: "Language <strong>'%{title}'</strong> is not active"
   articles:
