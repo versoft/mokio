@@ -103,7 +103,7 @@ Mokio::Engine.routes.draw do
       #
       resources :external_scripts do
         member do
-          get :update_active
+          post :update_active
           get  :copy
 
         end
@@ -119,7 +119,7 @@ Mokio::Engine.routes.draw do
 
       resources :langs do
         member do
-          get :update_active
+          post :update_active
           get :copy
         end
       end
