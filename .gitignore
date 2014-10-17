@@ -8,6 +8,7 @@ spec/dummy/tmp/
 spec/dummy/.sass-cache
 spec/dummy/solr
 spec/dummy/public/uploads
+spec/dummy/public/assets
 spec/dummy/config/initializers/mokio.rb
 spec/dummy/db/schema.rb
 spec/dummy/db/migrate/*
