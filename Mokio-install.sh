@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVELOPMENT_MODE=true       # true for mokio in development
+DEVELOPMENT_MODE=false      # true for mokio in development
 LOGFILE="mokio-install.log" # Simple user does not need to see all standard output informations
 ADAPTERS=(mysql2 sqlite3)   # Database adapters
 RAILS_VERSION="=4.1.1"      # Currently used rails version with Mokio gem is 4.1.1 (may change still in development)
@@ -276,6 +276,8 @@ esac
     source ~/.bash_profile
     . ~/.bash_profile
     /bin/bash -c 'source ~/.bash_profile'
+    source ~/.bashrc
+    . ~/.bashrc
   }
 #
 # ============================== RVM & Ruby & Rails ==================================
@@ -439,40 +441,7 @@ esac
 # ======================= Mysql2 ==============================================
 # 
   function check_msql2_server() {
-    if [[ $(getOS) =~ "Ubuntu" || $(getOS) =~ "Debian" ]]; then
-      if [[ $(apt_get_package_status mysql-server) != "installed" ]]; then
-        echo "mysql-server packages are not installed. Install now? (y/n)"
-        read install_myslq
-
-        if [[ $install_myslq = "y" ]]; then
-          apt_get_install_mysql_server
-        else
-          echo "not_installed"
-        fi
-      fi
-
-      if [[ $(apt_get_package_status libmysql-ruby) != "installed" ]]; then
-        echo "mysql-server packages are not installed. Install now? (y/n)"
-        read install_myslq
-
-        if [[ $install_myslq = "y" ]]; then
-          apt_get_install_mysql_server
-        else
-          echo "not_installed"
-        fi
-      fi
-
-      if [[ $(apt_get_package_status libmysqlclient-dev) != "installed" ]]; then
-        echo "mysql-server packages are not installed. Install now? (y/n)"
-        read install_myslq
-
-        if [[ $install_myslq = "y" ]]; then
-          apt_get_install_mysql_server
-        else
-          echo "not_installed"
-        fi
-      fi
-    fi
+    apt_get_install_mysql_server
   }
 
   function apt_get_install_mysql_server() {
