@@ -224,8 +224,9 @@ en:
     updated: "Language <strong>'%{title}'</strong> has been saved"
     deleted: "Language <strong>'%{title}'</strong> has been deleted"
     copy_title: Copy language
-    only_one_not_deleted: "Language <strong>'${title}' was not deleted. You can not remove the last language "
-
+    only_one_not_deleted: "You can not remove the last language "
+    update_active_true: "Language <strong>'%{title}'</strong> is active"
+    update_active_false: "Language <strong>'%{title}'</strong> is not active"
   articles:
     active: Active
     actions: Actions
@@ -533,36 +534,40 @@ en:
           attributes:
             title:
               blank: "Title cannot be blank"
-        menu:
+        mokio/menu:
           attributes:
             name:
               blank: "Name cannot be blank"
             lang:
               not_match_parent: "Chosen parent element doesn't match chosern language"
-        static_module:
+        mokio/static_module:
           attributes:
             title:
               blank: "Title cannot be blank"
             display_from:
               invalid: Exceeds 'Display to' date.
-        pic_gallery:
+        mokio/pic_gallery:
           attributes:
             title:
               blank: "Title cannot be blank"
             display_from:
               invalid: Exceeds 'Display to' date
-        article:
+        mokio/article:
           attributes:
             title:
               blank: "Title cannot be blank"
             display_from:
               invalid: Exceeds 'Display to' date
-        mov_gallery:
+        mokio/lang:
+          attributes:
+            name:
+              blank: "Name cannot be blank"
+            shortname:
+              blank: "Short name cannot be blank"
+        mokio/mov_gallery:
           attributes:
             name:
               blank: "Name cannot be empty"
-        mokio/mov_gallery:
-          attributes:
             title:
               blank: "Title cannot be blank"
             display_from:
@@ -632,8 +637,8 @@ en:
         name: Name / Id
         script: Script
       mokio/lang:
-        name: Title
-        shortname: Shortname
+        name: Name
+        shortname: Short name
         active: Active
       mokio/module_position:
         name: Name / Id

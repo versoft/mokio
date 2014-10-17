@@ -16,6 +16,7 @@ module Mokio
 
             has_many :menu ,:dependent => :delete_all
             after_save :add_fake_menu
+            before_destroy :validate_last
 
             # scope :default, -> {where(shortname: Mokio.frontend_default_lang).first}
            end
@@ -53,6 +54,15 @@ module Mokio
               menu = Mokio::Menu.new( name: pos.name,ancestry:@menu.id, lang_id:self.id,fake:true,deletable:false,editable:false)
               menu.save(:validate => false)
             end
+          end
+        end
+
+
+        def validate_last
+          if Mokio::Lang.count > 1
+            return true
+          else
+            return false
           end
         end
       end

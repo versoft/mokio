@@ -226,8 +226,9 @@ pl:
     updated: "Język <strong>'%{title}'</strong> został poprawnie edytowany."
     deleted: "Język <strong>'%{title}'</strong> został usunięty."
     copy_title: Kopiuj język
-    only_one_not_deleted: "Język <strong>'${title}' nie został usunięty. Nie możesz usunąć ostatniego języka "
-
+    not_deleted: " Nie możesz usunąć ostatniego języka "
+    update_active_true: "Język <strong>'%{title}'</strong> jest teraz aktywny."
+    update_active_false: "Język <strong>'%{title}'</strong> jest teraz nieaktywny."
   articles:
     active: Włączony
     actions: Akcje
