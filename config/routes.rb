@@ -49,14 +49,10 @@ Mokio::Engine.routes.draw do
         end
       end
 
-      resources :articles,      only: [:new, :create, :update, :copy]
-      resources :pic_galleries, only: [:new, :create, :update, :copy]
-      resources :mov_galleries, only: [:new, :create, :update, :copy]
-      resources :contacts,      only: [:new, :create, :update, :copy]
-      get '/articles'      => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
-      get '/pic_galleries' => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
-      get '/mov_galleries' => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
-      get '/contacts'      => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
+      resources :articles,      only: [:index, :new, :create, :update, :copy]
+      resources :pic_galleries, only: [:index, :new, :create, :update, :copy]
+      resources :mov_galleries, only: [:index, :new, :create, :update, :copy]
+      resources :contacts,      only: [:index, :new, :create, :update, :copy]
 
       # TODO: do we realy want it?
       # content_children_routes()

@@ -1599,6 +1599,8 @@ select {width: 150px;}
        -o-transition: all .2s ease-in-out;
           transition: all .2s ease-in-out;
   }
+
+
   .mainnav li a:hover {
     text-decoration:none;
     background: #35404d;
@@ -1609,6 +1611,10 @@ select {width: 150px;}
     color: #fff;
   }
   .mainnav li a.current span, {
+    color: #ff4057;
+  }
+
+  .mainnav li a:hover span, {
     color: #ff4057;
   }
   #sidebar-right .mainnav li a.current, #sidebar-right .mainnav li a.current:hover {
@@ -1627,10 +1633,32 @@ select {width: 150px;}
     display: none;
     float: left;
     margin-top:0px;
+    margin-right:0;
   }
   .mainnav ul li .sub.expand {display: block;}
 
-    .mainnav ul li .sub li a{font-size: 12px; box-shadow:none; }
+    /* sub sidebar element with plus button */
+    .mainnav ul li .sub li a:first-child{
+      font-size: 12px;
+      box-shadow:none;
+      width: 172px;
+    }
+
+    /* sub sidebar element without plus button */
+    .mainnav ul li .sub li a:only-of-type{
+      width: 195px;
+    }
+
+    /* main sidebar element with plus button */
+    .mainnav ul li a:first-child:not(.hasUl){
+      width: 184px;
+    }
+
+    /* main sidebar element without plus button */
+    .mainnav ul li a:only-child{
+      width: 100% !important;
+    }
+
     .mainnav ul li .sub li a.current {
       color: #fff;
     }
@@ -1646,7 +1674,37 @@ select {width: 150px;}
     }
     .mainnav ul li .sub li {
       width:100%;
+      position: relative;
     }
+
+
+    /* main sidebar element plus button */
+    .mainnav ul li a:nth-child(2) {
+      width: 20px;
+      right: 28px;
+      position: absolute;
+      height: 20px;
+      background: none;
+    }
+
+    /* sub sidebar element plus button */
+    .mainnav ul li .sub li a:last-child {
+      width: 20px;
+      right: -3px;
+      position: absolute;
+      height: 20px;
+      background: none;
+    }
+    
+  .mainnav ul li .sub li a:last-child span {
+    width: 20px;
+    height:20px;
+    margin:0;
+    padding:0;
+  }
+
+
+
     .mainnav ul li .sub li:first-child a:hover {
 
     }
@@ -1654,7 +1712,7 @@ select {width: 150px;}
       border-bottom: none;
     }
     .mainnav ul li .sub a span[class*=" icon-"], .mainnav ul li .sub a span[class*=" brocco-icon-"],.mainnav ul li .sub a span[class*=" cut-icon-"],.mainnav ul li .sub a span[class*=" entypo-icon-"],.mainnav ul li .sub a span[class*=" icomoon-icon-"], .mainnav ul li .sub a span[class*=" minia-icon-"],.mainnav ul li .sub a span[class*=" iconic-icon-"],.mainnav ul li .sub a span[class*=" meteo-icon-"],.mainnav ul li .sub a span[class*=" silk-icon-"],.mainnav ul li .sub a span[class*=" typ-icon-"],.mainnav ul li .sub a span[class*=" wpzoom-"],.mainnav ul li .sub a span[class*=" eco-"] {
-      padding-left:25px;
+      padding-left:13px;
       padding-right:10px;
     }
       .mainnav ul li .sub li .sub a span[class*=" icon-"], .mainnav ul li .sub li .sub a span[class*=" brocco-icon-"], .mainnav ul li .sub li .sub a span[class*=" cut-icon-"], .mainnav ul li .sub li .sub a span[class*=" entypo-icon-"], .mainnav ul li .sub li .sub a span[class*=" icomoon-icon-"], .mainnav ul li .sub li .sub a span[class*=" minia-icon-"], .mainnav ul li .sub li .sub a span[class*=" iconic-icon-"], .mainnav ul li .sub li .sub a span[class*=" meteo-icon-"], .mainnav ul li .sub li .sub a span[class*=" silk-icon-"], .mainnav ul li .sub li .sub a span[class*=" typ-icon-"], .mainnav ul li .sub li .sub a span[class*=" wpzoom-"],.mainnav ul li .sub li .sub a span[class*=" eco-"]  {

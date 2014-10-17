@@ -9,6 +9,7 @@
 # In views, this is aliased to just `t`:
 #
 #     <%= t('hello') %>
+
 # To use a different locale, set it with `I18n.locale`:
 #
 #     I18n.locale = :es
@@ -34,7 +35,7 @@ pl:
     go_back: Powrót
     site_preview: Twoja Strona
     no_records_found: Nie znaleziono żadnej treści
-    dashboard: Biurko
+    dashboard: Dashboard
     cancel: Anuluj
     save: Zapisz
     save_and_create_new: Zapisz i utwórz nowy
@@ -112,18 +113,19 @@ pl:
       users: Administratorzy
       sidebar_title: Nawigacja
       content_management: Zarządzanie treścią
-      add_content: Dodaj Treść
-      article: Artykuł
-      pic_galery: Galeria Zdjęć
-      mov_galery: Galeria Filmów
-      contact: Strona Kontaktowa
+      all: Wszystko
+      article: Artykuły
+      pic_galery: Galerie Zdjęć
+      mov_galery: Galerie Filmów
+      contact: Strony Kontaktowe
       menu: Menu
-      modules: Bloki HTML
+      modules: Bloki
       module_position: Pozycje
       external_script: Skrypty zewnętrzne
       lang: Zarządzanie językami
-      comments: Komentarze
-      users: Administratorzy
+      lang: Wersje językowe
+      site_elements: Elementy strony
+      settings: Ustawienia
 
     breadcrumbs:
       only_loose: Treści nie podpięte pod menu
@@ -209,7 +211,6 @@ pl:
     updated: "Pozycja <strong>'%{title}'</strong> została poprawnie edytowana."
     deleted: "Pozycja <strong>'%{title}'</strong> została usunięta."
     copy_title: Kopiuj pozycję modułów
-
   langs:
     name: Nazwa
     shortname: Nazwa skrócona
@@ -224,9 +225,8 @@ pl:
     created: "Język <strong>'%{title}'</strong> została utworzony."
     updated: "Język <strong>'%{title}'</strong> został poprawnie edytowany."
     deleted: "Język <strong>'%{title}'</strong> został usunięty."
-    only_one_not_deleted: "Język <strong>'${title}' nie został usunięty. Nie możesz usunąć ostatniego języka "
     copy_title: Kopiuj język
-
+    only_one_not_deleted: "Język <strong>'${title}' nie został usunięty. Nie możesz usunąć ostatniego języka "
 
   articles:
     active: Włączony
@@ -296,6 +296,14 @@ pl:
     type: Typ
 
   pic_galleries:
+    active: Włączona
+    actions: Akcje
+    type: Typ
+    index_title: Galerie zdjęć
+    index_add_new: Dodaj nową galerię zdjęć
+    lang_id: Język
+    title: Tytuł
+    updated_at: Uaktualniono
     cannot_add_files_now: Dodawanie zdjęć do galerii będzie możliwe dopiero po jej zapisaniu
     created: "Galeria <strong>'%{title}'</strong> została utworzona. Dodawanie zdjęć jest już możliwe."
     created_and_new: "Galeria <strong>'%{title}'</strong> została utworzona."
@@ -315,6 +323,14 @@ pl:
     update_active_false: "Galeria <strong>'%{title}'</strong> jest teraz nieaktywna"
 
   mov_galleries:
+    active: Włączona
+    actions: Akcje
+    type: Typ
+    index_title: Galerie filmów
+    index_add_new: Dodaj nową galerię filmów
+    lang_id: Język
+    title: Tytuł
+    updated_at: Uaktualniono
     cannot_add_files_now: "Dodawanie filmów do galerii będzie możliwe dopiero po jej zapisaniu."
     created: "Galeria <strong>'%{title}'</strong> została utworzona. Dodawanie filmów jest już możliwe."
     created_and_new: "Galeria <strong>'%{title}'</strong> została utworzona."
@@ -334,9 +350,17 @@ pl:
     update_active_false: "Galeria <strong>'%{title}'</strong> jest teraz nieaktywna"
 
   contacts:
-    active: Włączony
+    active: Włączona
     actions: Akcje
     edit_title: Edytuj stronę kontaktową
+    type: Typ
+    index_title: Strony kontaktowe
+    index_add_new: Dodaj nową stronę kontaktową
+    lang_id: Język
+    title: Tytuł
+    updated_at: Uaktualniono
+    active: Włączony
+    actions: Akcje
     article_type: Typ
     title: Tytuł
     updated_at: Uaktualniono
@@ -422,7 +446,6 @@ pl:
     photos_from_external_links_error: "Zdjęcia z następujących linków nie zostały zapisane:"
     links_upload_info: "linki w oddzielnych wierszach (max 10)"
 
-
   youtubes:
     edit_youtube: Edytuj film
     updated: "Film <strong>'%{title}'</strong> został poprawnie zapisany"
@@ -449,29 +472,6 @@ pl:
 
   gmaps:
     gmap: Mapa google
-
-  mokio/comments:
-    title: Tytuł
-    comment: Komentarz
-    commentable: Komentowana treść
-    status: Status
-    user_id: Administrator
-    created_at: Utworzony
-    update_accept_true: Komentarz został zaakceptowany
-    update_accept_false: Komentarz został odrzucony
-    deleted: Komentarz został usunięty
-    created: Komoentarz został utworzony
-    index_title: Zarządzanie komentarzami
-    accept_all: Zaakceptuj wszystkie
-    reject_all: Odrzuć wszystkie
-    delete_rejected: Usuń odrzucone
-    accept_all_true: Wszystkie komentarze zostały zakceptowane
-    accept_all_false: Nie udało się zaakceptować wszystkich komentarzy
-    reject_all_true: Wszystkie komentarze zostały odrzucone
-    reject_all_false: Nie udało się odrzucić wszystkich komentarzy
-    delete_rejected_true: Odrzucone komentarze zostały usunięte
-    delete_rejected_false: Nie udało się usunąć wszystkich odrzuconych komentarzy
-
   users:
     index_add_new: Dodaj nowego administratora
     index_title: Administratorzy
@@ -595,9 +595,9 @@ pl:
         updated_at: Ostatnio edytowany
         lang_id: Język
         home_page: Strona Główna
-
+        tag_list: Tagi (oddzielone przecinkami)
       mokio/pic_gallery:
-        active: Włączony
+        active: Włączona
         intro: Wstęp
         content: Treść
         display_from: Wyświetlany od
@@ -608,9 +608,8 @@ pl:
         lang_id: Język
         home_page: Strona Główna
 
-
       mokio/mov_gallery:
-        active: Włączony
+        active: Włączona
         intro: Wstęp
         content: Treść
         display_from: Wyświetlany od
@@ -643,17 +642,17 @@ pl:
         name: Nazwa / Id
         tpl: Szablon
       mokio/contact:
-        active: Włączony
+        active: Włączona
         content: Treść
         title: Tytuł
         type: Typ
         updated_at: Ostatnio edytowany
         lang_id: Język
         recipient_emails: Adresaci
+        home_page: Strona Główna
 
       mokio/contact_template:
         tpl: Szablon wiadomości
-
       mokio/gmap:
         full_address: Adres
 
@@ -678,7 +677,6 @@ pl:
         thumb: Miniaturka
         remote_data_file_url: Linki
         subtitle: Podtytuł
-
       mokio/youtube:
         name: Nazwa
         intro: Opis
@@ -718,4 +716,4 @@ pl:
         visible: Widoczny
         description: Opis
         parent_id: Element nadrzędny
-        target: Target
+        target: Okno docelowe

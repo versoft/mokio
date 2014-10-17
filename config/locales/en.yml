@@ -85,7 +85,7 @@ en:
     polish: polish
     all: all
     size: Size 
-    wait: Proszę czekać
+    wait: Please wait
     content_not_in_menu: "Content not assigned to any menu"
     all_dashboard: "All:"
     back: "Back"
@@ -106,23 +106,24 @@ en:
     back_to_edit: "<a href='%{url}'>Back to edit.</a>"
     sign_up: Sign up
     sign_in: Sign in
+    logout: Logout
     change_password: Change Password
 
     sidebars:
       users: Admins
       sidebar_title: Sidebar
       content_management: Content management
-      add_content: Add content
-      article: Article
-      pic_galery: Photo Gallery
-      mov_galery: Movie Gallery
-      contact: Contact Page
+      all: All
+      article: Articles
+      pic_galery: Photo Galleries
+      mov_galery: Movie Galleries
+      contact: Contact Pages
       menu: Menu
-      modules: HTML blocks
-      comments: Comments
+      modules: HTML Blocks
       module_position: Positions
       external_script: External script
       lang: Language Management
+      site_elements: Site elements
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -144,6 +145,8 @@ en:
       contacts_edit: Edit contact page
       comments: Comments
       users: Admins
+      users_new: New admin
+      users_edit: Edit admin
       external_scripts: External script
       external_scripts_new: Add external script
       external_scripts_edit: Edit
@@ -155,8 +158,7 @@ en:
       langs_edit: Edit language
       edit_password: Change password
       update_password: Change password
-      users_edit: Edit admin 
-      users_new: New admin
+      copy: Copy
 
   static_modules:
     actions: Actions
@@ -176,52 +178,53 @@ en:
     deleted: "HTML block <strong>'%{title}'</strong> has been deleted"
     update_active_true: "HTML block <strong>'%{title}'</strong> is active"
     update_active_false: "HTML block <strong>'%{title}'</strong> is not active"
-    
+    copy_title: Copy HTML block
+
   external_scripts:
-        name: Name / Id
-        actions: Actions
-        edit_title: Edit external script
-        index_title: External script
-        index_add_new: Add external script
-        new_title: New external script
-        title: Title
-        updated_at: Updated at
-        edit_title: Edit external script
-        created: "External script <strong>'%{title}'</strong> has been created"
-        updated: "External script <strong>'%{title}'</strong> has been saved"
-        deleted: "External script <strong>'%{title}'</strong> has been deleted"
-        copy_title: Copy external script
+    name: Name / Id
+    actions: Actions
+    edit_title: Edit external script
+    index_title: External script
+    index_add_new: Add external script
+    new_title: New external script
+    title: Title
+    updated_at: Updated at
+    edit_title: Edit external script
+    created: "External script <strong>'%{title}'</strong> has been created"
+    updated: "External script <strong>'%{title}'</strong> has been saved"
+    deleted: "External script <strong>'%{title}'</strong> has been deleted"
+    copy_title: Copy external script
 
   module_positions:
-        name: Name / Id
-        actions: Actions
-        edit_title: Edit position
-        index_title: Positions
-        index_add_new: Add position
-        new_title: New position
-        title: Title
-        updated_at: Updated at
-        edit_title: Edit position
-        created: "Position <strong>'%{title}'</strong> has been created"
-        updated: "Position <strong>'%{title}'</strong> has been saved"
-        deleted: "Position <strong>'%{title}'</strong> has been deleted"
-        copy_title: Copy position
+    name: Name / Id
+    actions: Actions
+    edit_title: Edit position
+    index_title: Positions
+    index_add_new: Add position
+    new_title: New position
+    title: Title
+    updated_at: Updated at
+    edit_title: Edit position
+    created: "Position <strong>'%{title}'</strong> has been created"
+    updated: "Position <strong>'%{title}'</strong> has been saved"
+    deleted: "Position <strong>'%{title}'</strong> has been deleted"
+    copy_title: Copy position
   langs:
-        name: Name
-        shortname: Short name
-        active: Active
-        actions: Actions
-        edit_title: Edit language
-        index_add_new: Add language
-        new_title: New language
-        index_title: Language settings
-        updated_at: Updated
-        edit_title: Edit language
-        created: "Language <strong>'%{title}'</strong> has been created"
-        updated: "Language <strong>'%{title}'</strong> has been saved"
-        deleted: "Language <strong>'%{title}'</strong> has been deleted"
-        copy_title: Copy language
-        only_one_not_deleted: "Language <strong>'${title}' was not deleted. You can not remove the last language "
+    name: Name
+    shortname: Short name
+    active: Active
+    actions: Actions
+    edit_title: Edit language
+    index_add_new: Add language
+    new_title: New language
+    index_title: Language settings
+    updated_at: Updated
+    edit_title: Edit language
+    created: "Language <strong>'%{title}'</strong> has been created"
+    updated: "Language <strong>'%{title}'</strong> has been saved"
+    deleted: "Language <strong>'%{title}'</strong> has been deleted"
+    copy_title: Copy language
+    only_one_not_deleted: "Language <strong>'${title}' was not deleted. You can not remove the last language "
 
   articles:
     active: Active
@@ -291,6 +294,14 @@ en:
     type: Type
 
   pic_galleries:
+    active: Active
+    actions: Actions
+    type: Type
+    index_title: Picture galleries
+    index_add_new: Add new picture gallery
+    lang_id: Language
+    title: Title
+    updated_at: Updated at
     cannot_add_files_now: "Adding photos will be allowed after saving the gallery"
     created: "Gallery <strong>'%{title}'</strong> has been created. You can now add photos."
     created_and_new: "Gallery <strong>'%{title}'</strong> has been created"
@@ -309,8 +320,15 @@ en:
     update_active_true: "Gallery <strong>'%{title}'</strong> is active"
     update_active_false: "Gallery <strong>'%{title}'</strong> is not active"
 
-
   mov_galleries:
+    active: Active
+    actions: Actions
+    type: Type
+    index_title: Movie galleries
+    index_add_new: Add new movie gallery
+    lang_id: Language
+    title: Title
+    updated_at: Updated at
     cannot_add_files_now: "Adding movies will be allowed after saving the gallery"
     created: "Gallery <strong>'%{title}'</strong> has been created. You can now add movies."
     created_and_new: "Gallery <strong>'%{title}'</strong> has been created"
@@ -333,6 +351,14 @@ en:
     active: Active
     actions: Actions
     edit_title: Edit contact page
+    type: Type
+    index_title: Contact pages
+    index_add_new: Add new contact page
+    lang_id: Language
+    title: Title
+    updated_at: Updated at
+    active: Active
+    actions: Actions
     article_type: Type
     title: Title
     updated_at: Updated at
@@ -374,6 +400,8 @@ en:
     type: Type
     add_tag: Add
     tags: Tags
+    copy_title: Copy content
+    comma_separated: "comma separated"
     types:
       Mokio::PicGallery: Photo Gallery
       Mokio::Article: Article
@@ -441,29 +469,7 @@ en:
     auto_completed: Meta tags were automatically filed in.
 
   gmaps:
-    gmap: Mapa google
-
-  comments:
-    title: Title
-    comment: Comment
-    commentable: Commented content
-    status: Status
-    user_id: User
-    created_at: Created at
-    update_accept_true: Comment has been accepted
-    update_accept_false: Comment has been rejected
-    deleted: Comment has been deleted
-    index_title: Comments management
-    accept_all: Accept all
-    reject_all: Reject all
-    delete_rejected: Delete rejected
-    accept_all_true: All comments have been accepted
-    accept_all_false: Comments have NOT been accepted
-    reject_all_true: All comments have been rejected
-    reject_all_false: Comments have NOT been rejected
-    delete_rejected_true: Rejected comments have been deleted
-    delete_rejected_false: Not all rejected comments have been deleted
-
+    gmap: Google map
   users:
     index_add_new: Add new admin
     index_title: Admins
@@ -553,6 +559,10 @@ en:
               invalid: Exceeds 'Display to' date
         mov_gallery:
           attributes:
+            name:
+              blank: "Name cannot be empty"
+        mokio/mov_gallery:
+          attributes:
             title:
               blank: "Title cannot be blank"
             display_from:
@@ -571,7 +581,7 @@ en:
         record_invalid: Incorrect record 
 
     attributes:
-      contents:
+      mokio/contents:
         active: Active
         intro: Introduction
         content: Content
@@ -583,7 +593,7 @@ en:
         lang_id: Language
         home_page: Home page
         tag_list: Tags (sepparated by commas)
-      pic_gallery:
+      mokio/pic_gallery:
         active: Active
         intro: Introduction
         content: Content
@@ -595,7 +605,7 @@ en:
         lang_id: Language
         home_page: Home page
 
-      mov_gallery:
+      mokio/mov_gallery:
         active: Active
         intro: Introduction
         content: Content
@@ -607,21 +617,28 @@ en:
         lang_id: Language
         home_page: Home page
 
-      article:
+      mokio/article:
         active: Active
         intro: Introduction
         content: Content
         display_from: Displayed from
         display_to: Displayed to
         title: Title
-        type: Typ
-        updated_at: Ostatnio edytowany
+        type: Type
+        updated_at: Updated at
         lang_id: Language
         home_page: Home page
       external_script:
-        name: Nazwa / Id
-        script: Skrypt
-      contact:
+        name: Name / Id
+        script: Script
+      mokio/lang:
+        name: Title
+        shortname: Shortname
+        active: Active
+      mokio/module_position:
+        name: Name / Id
+        tpl: Template
+      mokio/contact:
         active: Active
         content: Content
         title: Title
@@ -629,11 +646,11 @@ en:
         updated_at: Updated at
         lang_id: Language
         recipient_emails: Recipients
+        home_page: Home Page
 
-      contact_template:
+      mokio/contact_template:
         tpl: Message template
-        
-      gmap:
+      mokio/gmap:
         full_address: Address
 
       static_module:
@@ -655,10 +672,9 @@ en:
         external_link: External url
         data_file: File
         thumb: Thumbnail
-        remote_data_file_url: Linki
-        subtitle: Podtytuł
-      
-      youtube:
+        remote_data_file_url: Links
+        subtitle: Subtitle
+      mokio/youtube:
         name: Name
         intro: Description
         active: Active
@@ -689,3 +705,12 @@ en:
       messages:
         record_invalid : "Incorrect record"
 
+      mokio/menu:
+        lang_id: Language
+        name: Name
+        external_link: Url
+        active: Active
+        visible: Visible
+        description: Description
+        parent_id: Parent element
+        target: Target
