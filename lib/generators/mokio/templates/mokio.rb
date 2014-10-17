@@ -65,8 +65,7 @@ Mokio.setup do |config|
   # Photos will also be displayed with this width in the backend (when a list of photos is displayed, when the thumb is displayed) and in frontend.
   # Please note that after you change it, you need to upload your photos again. 
   # Otherwise uploaded photo thumb will have previous width, only view will be scaled accordingly, what may affect photo thumb quality.
-
-  # mattr_accessor :photo_thumb_width
+  #
   # config.photo_thumb_width = 100
 
   #
@@ -108,7 +107,7 @@ Mokio.setup do |config|
   # Default quality for youtube movies.
   # You can set it to low, medium or high. It is used when getting movies from Youtube, Dailymotion and Vimeo -
   # if only there are movies with given quality provided.
-  # mattr_accessor :youtube_movie_quality
+  #
   # config.youtube_movie_quality = "medium"
 
   #
@@ -128,8 +127,9 @@ Mokio.setup do |config|
   # In your frontend views use :frontend_initial_en when calling build_menu
   #
   # config.frontend_default_lang = "pl"
-
-  # Id  of root menu element for specific language
+  #
+  # Id of root menu element for specific language
+  #
   # config.frontend_initial_pl = 1
 
   #
@@ -137,7 +137,6 @@ Mokio.setup do |config|
   # If you would like to have facebook comments enabled for your application 
   # you need to provide Facebook App ID - you can get it from https://developers.facebook.com/apps
   #
-  # mattr_accessor :frontend_facebook_app_id
   # config.frontend_facebook_app_id = ''
 
 end

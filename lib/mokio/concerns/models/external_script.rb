@@ -22,6 +22,10 @@ module Mokio
           end
         end
 
+        def name_view
+          (ActionController::Base.helpers.link_to self[:name], ApplicationController.helpers.edit_url(self.class.base_class, self)).html_safe
+        end
+
         def code_view
           self.script.truncate(200)
         end
