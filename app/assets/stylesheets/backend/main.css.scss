@@ -415,6 +415,7 @@ body, p {font-family: 'Open Sans', Helvetica, Arial, sans-serif;}
   }
 .form-row input, .form-row textarea, .form-row select {width: 100%;}
 .form-row .form-actions {padding-left:0;}
+.form-row .form-actions button, .form-row .form-actions a{margin-left:10px;}
 
 .form-row .row-fluid [class*="span"] {margin-left: 0;}
 
@@ -1688,7 +1689,7 @@ select {width: 150px;}
     }
 
     /* sub sidebar element plus button */
-    .mainnav ul li .sub li a:last-child {
+    .mainnav ul li .sub li a:nth-child(2) {
       width: 20px;
       right: -3px;
       position: absolute;
@@ -1696,7 +1697,7 @@ select {width: 150px;}
       background: none;
     }
     
-  .mainnav ul li .sub li a:last-child span {
+  .mainnav ul li .sub li a:nth-child(2) span {
     width: 20px;
     height:20px;
     margin:0;

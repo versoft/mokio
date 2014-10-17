@@ -145,3 +145,4 @@ Mokio <add_release_date> v0.0.7
     9. Add invalid password error message
     10. Clean up the mess in translations
     11. Reorganization of menu
+    12. Added spaces between form actions buttons
