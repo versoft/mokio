@@ -423,10 +423,10 @@ esac
 
   function create_db_config() {
     if [[ $DATABASE = "mysql2" ]]; then
-      if [[ $(check_msql2_server) != "not_installed" ]]; then
-        devname=$APP_NAME"_dev"
+      check_msql2_server
+      devname=$APP_NAME"_dev"
 
-        echo -e "development:
+      echo -e "development:
       adapter: mysql2
       encoding: utf8
       database: $devname
@@ -434,7 +434,6 @@ esac
       username: $devname
       password: $devname
       socket: /var/run/mysqld/mysqld.sock" > $DATABASE_YML
-      fi
     fi
   }
 #
@@ -445,7 +444,7 @@ esac
   }
 
   function apt_get_install_mysql_server() {
-    sudo apt-get install mysql-server libmysqlclient-dev libmysql-ruby
+    sudo apt-get install mysql-client libmysqlclient-dev
   }
 #
 # ======================= After creating application =========================
