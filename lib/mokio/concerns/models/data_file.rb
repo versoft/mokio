@@ -10,8 +10,8 @@ module Mokio
         included do
           extend FriendlyId
 
-          friendly_id :name, use: :slugged
-
+          friendly_id :slug_candidates, use: :slugged
+          validates_uniqueness_of :slug
           belongs_to :contents, :touch => true
           
           mount_uploader :data_file, Mokio::DataFileUploader
@@ -28,14 +28,7 @@ module Mokio
           after_touch :touch_content
 
           before_create :default_name
-          before_save :change_slug
-        end
 
-        #
-        # Changing slug
-        #
-        def change_slug
-          self.slug = self.name.parameterize unless self.name.blank?
         end
 
         #
@@ -50,6 +43,17 @@ module Mokio
         #
         def name_underscored
           self.name.gsub(' ', '_')
+        end
+
+        def should_generate_new_friendly_id?
+          name_changed?
+        end
+
+        #
+        # Friendly_id slug_candidates (<b>gem 'friendly_id'</b>)
+        #
+        def slug_candidates
+          [:name]
         end
 
         #
