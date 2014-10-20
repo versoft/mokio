@@ -15,8 +15,9 @@ module Mokio
             validates :shortname , presence: true , :on => :create
 
             has_many :menu ,:dependent => :delete_all
-            after_save :add_fake_menu
+            after_create :add_fake_menu
             before_destroy :validate_last
+            
 
             # scope :default, -> {where(shortname: Mokio.frontend_default_lang).first}
            end
