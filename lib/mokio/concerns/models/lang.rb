@@ -11,13 +11,13 @@ module Mokio
           included do
             include Mokio::Concerns::Models::Common
 
-            validates :name ,presence: true , :on => :create
-            validates :shortname , presence: true , :on => :create
+            validates :name, presence: true
+            validates :shortname, presence: true
 
             has_many :menu ,:dependent => :delete_all
             after_create :add_fake_menu
             before_destroy :validate_last
-            
+
 
             # scope :default, -> {where(shortname: Mokio.frontend_default_lang).first}
            end
@@ -53,6 +53,7 @@ module Mokio
           menu = Array.new
           @menu = Mokio::Menu.new( name: self.shortname , lang_id: self.id,fake:true,deletable:false,editable:false)
           @menu.build_meta
+
           if(@menu.save)
             result = Mokio::Menu.fake_structure_unique
             result.each do |pos|

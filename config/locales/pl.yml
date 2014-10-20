@@ -577,6 +577,10 @@ pl:
           attributes:
             name:
               blank: "Nazwa nie może być pusta"
+        mokio/module_position:
+          attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
         mokio/mov_gallery:
           attributes:
             name:

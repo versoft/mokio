@@ -575,6 +575,10 @@ en:
           attributes:
             name:
               blank: "Name cannot be blank"
+        mokio/module_position:
+          attributes:
+            name:
+              blank: "Name cannot be blank"
         mokio/mov_gallery:
           attributes:
             name:

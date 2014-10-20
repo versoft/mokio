@@ -10,7 +10,7 @@ module Mokio
         included do
           has_and_belongs_to_many :static_modules, :join_table => "mokio_available_modules"
           accepts_nested_attributes_for :static_modules
-
+          validates :name , presence: true
           amoeba do
             include_field :static_modules
           end
