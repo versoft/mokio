@@ -14,18 +14,15 @@ module Mokio
           before_destroy :last_one?
 
           attr_accessor :only_password
+          
           #
           # Table of roles for user
           #
+          
           ROLES = ["admin", "content_editor", "menu_editor", "static_module_editor", "user_editor", "comment_approver", "reader"]
 
-          devise :database_authenticatable, :rememberable, :recoverable, :trackable #, :validatable # :registerable,
+          devise :database_authenticatable, :rememberable, :recoverable, :trackable
 
-          # validates :email, uniqueness: true
-          # validates :password, length: {in: 6..12}, unless: "password.blank?"
-          # validates :password, confirmation: true
-          # validates :password_confirmation, presence: true, :on => :create
-          # validates :password, presence: true, :on => :create
           validates_presence_of   :email
           validates_uniqueness_of :email, allow_blank: true, if: :email_changed?
           validates_format_of     :email, with: email_regexp, allow_blank: true, if: :email_changed?
@@ -38,6 +35,7 @@ module Mokio
 
           # optionally set the integer attribute to store the roles in,
           # :roles_mask is the default
+
           roles_attribute :roles_mask
 
           # declare the valid roles -- do not change the order if you add more
