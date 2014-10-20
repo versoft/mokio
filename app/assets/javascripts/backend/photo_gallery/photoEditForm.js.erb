@@ -26,9 +26,9 @@ var PhotoEditForm = {
     //
     // create buttons
     //
-    $(".editwrapper").append('<span class="photo_exit icon32 icomoon-icon-cancel white"></span>')
-                     .append('<span class="photo_crop icon32 icomoon-icon-crop white"></span>')
-                     .append('<span class="photo_rotate icon32 icomoon-icon-redo white"></span>');
+    $(".editwrapper").append('<span class="photo_exit icon32 icomoon-icon-cancel white" title="<%= I18n.t('backend.thumb_exit') %>"></span>')
+                     .append('<span class="photo_crop icon32 icomoon-icon-crop white" title="<%= I18n.t('backend.thumb_crop') %>"></span>')
+                     .append('<span class="photo_rotate icon32 icomoon-icon-redo white" title="<%= I18n.t('backend.thumb_rotate') %>"></span>');
 
     $file_upload = document.getElementById('uploadthumb');
 
@@ -145,7 +145,7 @@ var PhotoEditForm = {
       if ( !$(this).hasClass('show') ) {
         $(this).addClass('show')
 
-        $(".editwrapper").append('<span class="photo_cut icon32 icomoon-icon-scissors-2 white"></span>')
+        $(".editwrapper").append('<span class="photo_cut icon32 icomoon-icon-scissors-2 white" title="<%= I18n.t('backend.thumb_cuts') %>"></span>')
                          .append("<div class=\"preview\"><img id=\"preview-img\" src=\"" + $("#photo_edited").attr('src') + "\"</div>");
 
         $(".photo_cut").hide().fadeIn(500);
