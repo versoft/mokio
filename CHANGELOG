@@ -153,3 +153,5 @@ Mokio <add_release_date> v0.0.7
     17. New README
     18. Version
     19. Smaller red header
+    20. Removed option - whole window in menu creation
+    21. Fix for backend search

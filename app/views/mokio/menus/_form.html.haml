@@ -28,7 +28,7 @@
     #menu_breadcrumps
       = tree_menu_breadcrumps(@menu.parent)
 
-= f.input :target, :collection => [[bt("current_window_inside",Mokio::Menu), nil], [bt("new_window",Mokio::Menu), "_blank"], [bt("current_window_whole",Mokio::Menu), "_whole"]], include_blank: false, disabled: !@menu.display_editable_field?('target')
+= f.input :target, :collection => [[bt("current_window_inside",Mokio::Menu), nil], [bt("new_window",Mokio::Menu), "_blank"]], include_blank: false, disabled: !@menu.display_editable_field?('target')
 
 .row-fluid
   %label.form-label.span2 Moduły statyczne
