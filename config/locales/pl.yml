@@ -123,7 +123,7 @@ pl:
       mov_gallery: Galerie Filmów
       contact: Strony Kontaktowe
       menu: Menu
-      modules: Bloki
+      static_module: Bloki
       module_position: Pozycje
       external_script: Skrypty zewnętrzne
       lang: Zarządzanie językami

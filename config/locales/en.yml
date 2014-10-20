@@ -123,7 +123,7 @@ en:
       mov_gallery: Movie Galleries
       contact: Contact Pages
       menu: Menu
-      modules: HTML Blocks
+      static_module: HTML Blocks
       module_position: Positions
       external_script: External script
       lang: Language Management
