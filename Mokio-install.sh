@@ -192,7 +192,7 @@ esac
   }
 
   function install_libraries() {
-    local libs="libmagickwand-dev libxslt1-dev libxml2-dev nodejs curl imagemagick"
+    local libs="libmagickwand-dev libxslt1-dev libxml2-dev nodejs curl imagemagick build-essential dpkg-dev fakeroot git-core libalgorithm-diff-perl"
 
     if [[ $(getOS) =~ "Ubuntu" || $(getOS) =~ "Debian" ]]; then
       apt_get_install $libs
