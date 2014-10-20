@@ -258,6 +258,7 @@ en:
     update_active_false: "Article <strong>'%{title}'</strong> is not active"
 
   menus:
+    content_assoc: Menu position
     slug: Link to menu
     no_slug: a link to the menu will be visible after saving the menu
     name: "name"

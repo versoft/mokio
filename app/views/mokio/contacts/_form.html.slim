@@ -8,7 +8,7 @@
   = f.input :recipient_emails, :as => :string, :input_html => { :class => "recipients span10" }, disabled: !obj.display_editable_field?('recipient_emails')
   .row-fluid
     label.form-label.span2
-      = "Menus"
+      = t('menus.content_assoc')
     .span10
       = select_tag "article[menu_ids]", options_for_select(Mokio::Menu.all.nofake.map {|s| [s.name, s.id]},obj.menus.map {|j| j.id}), :multiple => true ,:include_blank => true
 
