@@ -458,10 +458,12 @@ $(document).on('ready page:load', function(){
 
 	//make custom redirect for search form in .heading
 	$('#searchform').submit(function() {
-		var sText = $('.top-search').val();
-		var sAction = $(this).attr('action');
-		var sUrl = sAction + '?q=' + sText;
-		$(location).attr('href',sUrl);
+        var sText = $('.top-search').val();
+        var sAction = $(this).attr('action');
+        if (! sAction == 'undefined') {
+            var sUrl = sAction + '?q=' + sText;
+            $(location).attr('href', sUrl);
+        }
 		return false;
 	});
 
