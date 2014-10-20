@@ -127,6 +127,7 @@ var PhotoEditForm = {
           marginLeft: '-' + Math.round(rx * coords.x) + 'px',
           marginTop: '-' + Math.round(ry * coords.y) + 'px'
         });
+
       } 
       //
       // remember coordinates
@@ -146,7 +147,7 @@ var PhotoEditForm = {
         $(this).addClass('show')
 
         $(".editwrapper").append('<span class="photo_cut icon32 icomoon-icon-scissors-2 white" title="<%= I18n.t('backend.thumb_cuts') %>"></span>')
-                         .append("<div class=\"preview\"><img id=\"preview-img\" src=\"" + $("#photo_edited").attr('src') + "\"</div>");
+                         .append('<div class="preview" style="position:static;margin:0px auto 0px auto;"><img id="preview-img" src="' + $("#photo_edited").attr('src') + '"</div>');
 
         $(".photo_cut").hide().fadeIn(500);
         $(".preview").hide().fadeIn(500);
