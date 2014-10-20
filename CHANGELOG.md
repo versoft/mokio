@@ -209,4 +209,19 @@
   
   15. Rebuilding language management
 
-  16. Fixed Mokio-install script
+  16. Improved movie gallery
+
+  17. New README
+
+  18. Version
+
+  19. Smaller red header
+
+  20. Removed option - whole window in menu creation
+
+  21. Fix for backend search
+
+  22. Change dual select box style in menu
+
+  23. Fixed Mokio-install script
+
