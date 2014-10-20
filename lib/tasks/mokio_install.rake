@@ -56,6 +56,12 @@ namespace :mokio do
     pl_menu.build_meta
     puts "\n Created default initial menu 'top'".green if top_menu.save(:validate => false)
 
+    text = File.read("#{Rails.root}/config/routes.rb")
+
+    File.open("#{Rails.root}/config/routes.rb", "w") do |file|
+      file.puts text.gsub(/# The priority is based upon order of creation: first created \-\> highest priority\./, "mount Mokio::Engine => '/backend'")
+    end
+
     puts "\n Created initializer(configuration file) in config/initializers/mokio.rb".green
     puts "\n Mokio is ready to start! Run 'rails server' and go to localhost:3000/backend to see your application in development mode"
   end

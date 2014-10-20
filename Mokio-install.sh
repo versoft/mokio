@@ -302,7 +302,7 @@ esac
   }
 
   function get_rails() {
-    gem install rails --version "$RAILS_VERSION"
+    gem install rails --no-rdoc --no-ri --version "$RAILS_VERSION"
   }
 #
 # ============================ Creating Application ==================================
@@ -444,7 +444,7 @@ esac
   }
 
   function apt_get_install_mysql_server() {
-    sudo apt-get install mysql-client libmysqlclient-dev
+    sudo apt-get install mysql-client libmysqlclient-dev mysql-server
   }
 #
 # ======================= After creating application =========================

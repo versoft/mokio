@@ -208,3 +208,5 @@
   14. Add translation helper for sidebar buttons (bts)
   
   15. Rebuilding language management
+
+  16. Fixed Mokio-install script
