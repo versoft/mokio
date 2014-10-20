@@ -111,6 +111,7 @@ pl:
     sign_in: Zaloguj
     logout: Wyloguj
     change_password: Zmień hasło
+    version: Wersja
 
     sidebars:
       dashboard: Dashboard

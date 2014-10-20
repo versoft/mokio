@@ -972,7 +972,7 @@ select {width: 150px;}
 ================================================== */
 #header {
   background:image-url('backend/patterns/header.png') repeat #fa243c;
-  height:100px;
+  height:75px;
   position: absolute;
   top:0;
   left:0;
@@ -999,7 +999,7 @@ select {width: 150px;}
   .navbar-inner {
     min-height: 100px;
     padding-right: 0px;
-    padding-left: 20px;
+//    padding-left: 20px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
@@ -1007,9 +1007,9 @@ select {width: 150px;}
     border:none;
   }
   .navbar .brand {
-    padding: 15px 20px 8px;
-    margin-left: -20px;
-    margin-right: 55px;
+    padding: 7px 20px 8px;
+    margin-left: -40px;
+    margin-right: 30px;
     font-size: 30px;
     font-weight: 700;
     line-height: 45px;
@@ -1321,7 +1321,7 @@ select {width: 150px;}
   display: block;
 }
 .collapseBtn.leftbar {
-  top:150px;
+  top:125px;
   left:200px;
 }
 .collapseBtn.rightbar {
@@ -1380,9 +1380,9 @@ select {width: 150px;}
 
 /*Content for left sidebar only*/
 #content {
-  padding: 100px 25px 25px 25px;
+  padding: 75px 25px 25px 25px;
   margin-left: 242px;
-  padding-top: 100px;
+  padding-top: 75px;
   min-height: 100%;
 }
 
@@ -1426,7 +1426,7 @@ select {width: 150px;}
 }
 #sidebar {
   width: 240px;
-  padding-top: 100px;
+  padding-top: 75px;
   float: left;
   z-index: 1;
 }
@@ -1539,6 +1539,7 @@ select {width: 150px;}
   }
   .search form {
     margin-bottom: 0;
+    margin-right: -5px;
   }
   .search .top-search {
     width:75%;
@@ -3170,5 +3171,12 @@ form input.valid {border: 1px solid #9FC569 !important;}
   width: 170px;
   text-align: center;
   
-  img { width: auto; height: 65px;}
+  img { width: auto; height: 60px;}
+}
+
+.version-nr {
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  font-weight: bold;
 }

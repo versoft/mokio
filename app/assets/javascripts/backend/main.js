@@ -314,7 +314,7 @@ $(document).on('ready page:load', function(){
 
 				$this.removeClass('hide');
 				$('.collapseBtn.leftbar').animate({
-						top: '150',
+						top: '125',
 						left: '200'
 					}, 500, 'easeInExpo', function() {
 					$(this).removeClass('shadow');
@@ -328,7 +328,7 @@ $(document).on('ready page:load', function(){
 				$('#sidebar').css('margin-left','-299'+'px');
 				$('.collapseBtn.leftbar').animate({ //use .hide() if you experience heavy animation :)
  				    left: '20',
-				    top: '112'
+				    top: '87'
 				  }, 500, 'easeInExpo', function() {
 					    // Animation complete.
 				  
