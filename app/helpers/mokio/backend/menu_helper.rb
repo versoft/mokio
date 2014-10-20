@@ -51,7 +51,7 @@ module Mokio
       end
 
       def dual_select_search_box(html_id)
-        "<div class='searchBox'><input id='box1Filter#{html_id}' class='searchField form-control' placeholder='filter ...' type='text'></input></div>"
+        "<div class='searchBox'><input id='box1Filter#{html_id}' class='searchField form-control' placeholder='#{t("menus.filter")}' type='text'></input></div>"
       end
 
       def dual_select_buttons(html_id, useFilters)
