@@ -300,6 +300,7 @@ pl:
     path: Ścieżka
     legend: Legenda
     type: Typ
+    filter: wyszukaj treść ...
 
   pic_galleries:
     active: Włączona

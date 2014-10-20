@@ -148,6 +148,23 @@ $inactive_color: #dddddd;
   display: none;
 }
 
+#box1View {
+  padding: 0px;
+}
+
+#box1View option, #fake-select li  {
+  word-wrap: break-all;
+  white-space: pre-wrap;
+  padding: 5px;
+  font-size: 12px;
+}
+
+#fake-select :nth-child(even), #box1View :nth-child(even){
+  background: #EBECEC;
+}
+
+
+
 .panel-body .form-group .select-box {
   height: 200px;
 

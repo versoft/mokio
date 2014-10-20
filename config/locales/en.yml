@@ -298,6 +298,7 @@ en:
     path: Path
     legend: Legend
     type: Type
+    filter: filter ...
 
   pic_galleries:
     active: Active
