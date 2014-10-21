@@ -543,6 +543,39 @@ en:
     external_script_nav_text: Add custom javascript to your page.
     user_nav_title: Admins management
     user_nav_text: "Add, delete or edit admins."
+  timepicker:
+    timeOnlyTitle: "Select time"
+    timeText: "Time"
+    hourText: "Hour"
+    minuteText: "Minute"
+    secondText: "Second"
+    millisecText: "Milisecond"
+    timezoneText: "Time Zone"
+    currentText: "Now"
+    closeText: "Done"
+    timeFormat: "hh:mm"
+    timeSuffix: ''
+    ampm: "0"
+    amNames: "AM,A"
+    pmNames: "PM,P"
+  datepicker:
+    closeText: "Done"
+    prevText: "Prev"
+    nextText: "Next"
+    currentText: "Today"
+    monthNames: "January,February,March,April,May,June,July,August,September,October,November,December"
+    monthNamesShort: "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+    dayNames: "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
+    dayNamesShort: "Sun,Mon,Tue,Wed,Thu,Fri,Sat"
+    dayNamesMin: "Su,Mo,Tu,We,Th,Fr,Sa"
+    weekHeader: "Wk"
+    mask: "99/99/9999"
+    maskFormat: "MM/dd/yyyy"
+    dateFormat: "mm/dd/yy"
+    firstDay: "0"
+    isRTL: "0"
+    showMonthAfterYear: "0"
+    yearSuffix: ''
 
   errors:
     messages:

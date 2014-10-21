@@ -231,3 +231,4 @@
   
   26. Copy suffix
 
+  26. Added posibility to translate datetimepicker

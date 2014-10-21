@@ -544,7 +544,39 @@ pl:
     external_script_nav_text: Dodawanie własnego javascriptu do strony.
     user_nav_title: Zarządzanie administratorami
     user_nav_text: "Usuwanie, dodawanie nowych, edycja danych administratorów."
-
+  timepicker:
+    timeOnlyTitle: "Wybierz godzinę"
+    timeText: "Czas"
+    hourText: "Godzina"
+    minuteText: "Minuta"
+    secondText: "Sekunda"
+    millisecText: "Milisekunda"
+    timezoneText: "Strefa czasowa"
+    currentText: "Teraz"
+    closeText: "Gotowe"
+    timeFormat: "hh:mm"
+    timeSuffix: ''
+    ampm: "0"
+    amNames: "AM,A"
+    pmNames: "PM,P"
+  datepicker:
+    closeText: "Gotowe"
+    prevText: "Poprzedni"
+    nextText: "Następny"
+    currentText: "Dziś"
+    monthNames: "Styczeń,Luty,Marzec,Kwiecień,Maj,Czerwiec,Lipiec,Sierpień,Wrzesień,Październik,Listopad,Grudzień"
+    monthNamesShort: "Sty,Lu,Mar,Kw,Maj,Cze,Lip,Sie,Wrz,Pa,Lis,Gru"
+    dayNames: "Niedziela,Poniedziałek,Wtorek,Środa,Czwartek,Piątek,Sobota"
+    dayNamesShort: "Nie,Pn,Wt,Śr,Czw,Pt,So"
+    dayNamesMin: "N,Pn,Wt,Śr,Cz,Pt,So"
+    weekHeader: "Tydz"
+    mask: 99-99-9999
+    maskFormat: dd-MM-yyyy
+    dateFormat: "dd-mm-yy"
+    firstDay: "1"
+    isRTL: "0"
+    showMonthAfterYear: "0"
+    yearSuffix: ''
   errors:
     messages:
       unauthorized: Brak uprawnień
