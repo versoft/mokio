@@ -127,11 +127,9 @@ pl:
       static_module: Bloki
       module_position: Pozycje
       external_script: Skrypty zewnętrzne
-      lang: Zarządzanie językami
       lang: Wersje językowe
       site_elements: Elementy strony
       settings: Ustawienia
-
     breadcrumbs:
       only_loose: Treści nie podpięte pod menu
       contents: Zarządzanie treścią
