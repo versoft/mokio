@@ -229,3 +229,4 @@
   
   25. Fixed user edit - no logout after password change
 
+  26. Added posibility to translate datetimepicker
