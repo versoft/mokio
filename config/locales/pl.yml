@@ -274,6 +274,7 @@ pl:
     update_active_false: "Artykuł <strong>'%{title}'</strong> jest teraz nieaktywny."
 
   menus:
+    content_assoc: Pozycja menu
     slug: Link do menu
     no_slug: link do menu będzie widoczny po zapisaniu menu
     name: "nazwa"
@@ -587,6 +588,10 @@ pl:
             display_from:
               invalid: Przekracza datę do której ma być wyświetlany
         mokio/external_script:
+          attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
+        mokio/module_position:
           attributes:
             name:
               blank: "Nazwa nie może być pusta"

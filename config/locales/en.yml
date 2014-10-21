@@ -273,6 +273,7 @@ en:
     update_active_false: "Article <strong>'%{title}'</strong> is not active"
 
   menus:
+    content_assoc: Menu position
     slug: Link to menu
     no_slug: a link to the menu will be visible after saving the menu
     name: "name"
@@ -586,6 +587,10 @@ en:
             display_from:
               invalid: Exceeds 'Display to' date
         mokio/external_script:
+          attributes:
+            name:
+              blank: "Name cannot be blank"
+        mokio/module_position:
           attributes:
             name:
               blank: "Name cannot be blank"
