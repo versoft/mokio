@@ -228,4 +228,6 @@
   24. New breadcrumbs
   
   25. Fixed user edit - no logout after password change
+  
+  26. Copy suffix
 

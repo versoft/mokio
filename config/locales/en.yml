@@ -113,6 +113,7 @@ en:
     change_password: Change Password
     version: Version
     dashboard: Dashboard
+    copy_suffix: (copy)
 
     sidebars:
       dashboard: Dashboard
@@ -128,7 +129,7 @@ en:
       static_module: HTML Blocks
       module_position: Positions
       external_script: External script
-      lang: Language Management
+      lang: Languages
       site_elements: Site elements
       settings: Settings
 

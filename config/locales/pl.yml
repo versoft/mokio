@@ -113,6 +113,7 @@ pl:
     change_password: Zmień hasło
     version: Wersja
     dashboard: Dashboard
+    copy_suffix: (kopia)
 
     sidebars:
       dashboard: Dashboard
