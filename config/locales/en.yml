@@ -665,6 +665,7 @@ en:
         updated_at: Updated at
         lang_id: Language
         home_page: Home page
+        main_pic: Main Photo
       mokio/external_script:
         name: Name / Id
         script: Script

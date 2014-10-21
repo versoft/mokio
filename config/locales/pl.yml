@@ -666,6 +666,7 @@ pl:
         updated_at: Ostatnio edytowany
         lang_id: Język
         home_page: Strona Główna
+        main_pic: Zdjęcie Główne
       mokio/external_script:
         name: Nazwa / Id
         script: Skrypt
