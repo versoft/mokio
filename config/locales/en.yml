@@ -112,6 +112,7 @@ en:
     logout: Logout
     change_password: Change Password
     version: Version
+    dashboard: Dashboard
 
     sidebars:
       dashboard: Dashboard
@@ -129,6 +130,7 @@ en:
       external_script: External script
       lang: Language Management
       site_elements: Site elements
+      settings: Settings
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -164,6 +166,19 @@ en:
       edit_password: Change password
       update_password: Change password
       copy: Copy
+      dashboard: Dashboard
+      articles: Articles
+      pic_galleries: Photo Gallery
+      mov_galleries: Movie Gallery
+      contacts: Contact pages
+      new: New
+      create: New
+      edit: Edit
+      update: Edit
+      copy: Copy
+      content_management: Content management
+      page_elements: Site elements
+      settings: Settings
 
   static_modules:
     actions: Actions

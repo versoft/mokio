@@ -82,6 +82,13 @@ module Mokio
         def type_view
           I18n.t("contents.types.#{self[:type]}")
         end
+
+        #
+        # Specify what's showed in breadcrumb
+        #
+        def breadcrumb_name
+          title
+        end
       end
     end
   end

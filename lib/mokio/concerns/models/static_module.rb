@@ -44,6 +44,13 @@ module Mokio
         def title_view
           (ActionController::Base.helpers.link_to self[:title], ApplicationController.helpers.edit_url(self.class.base_class, self)).html_safe
         end
+
+        #
+        # Specify what's showed in breadcrumb
+        #
+        def breadcrumb_name
+          title
+        end
       end
     end
   end

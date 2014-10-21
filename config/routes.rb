@@ -49,13 +49,34 @@ Mokio::Engine.routes.draw do
         end
       end
 
-      resources :articles,      only: [:index, :new, :create, :update, :copy]
-      resources :pic_galleries, only: [:index, :new, :create, :update, :copy]
-      resources :mov_galleries, only: [:index, :new, :create, :update, :copy]
-      resources :contacts,      only: [:index, :new, :create, :update, :copy]
+      resources :articles do
+        member do
+          get  :copy
+          post :update_active
+        end
+      end
 
-      # TODO: do we realy want it?
-      # content_children_routes()
+      resources :pic_galleries do
+        member do
+          get  :copy
+          post :update_active
+        end
+      end
+
+      resources :mov_galleries do
+        member do
+          get  :copy
+          post :update_active
+        end
+      end
+
+      resources :contacts do
+        member do
+          get  :copy
+          post :update_active
+        end
+      end
+
 
       #
       # data_files routes

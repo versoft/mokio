@@ -47,6 +47,13 @@ module Mokio
           (ActionController::Base.helpers.link_to self[:name], ApplicationController.helpers.edit_url(self.class.base_class, self)).html_safe
         end
 
+      #
+      # Specify what's showed in breadcrumb
+      #
+      def breadcrumb_name
+        name
+      end
+
         private
 
         def add_fake_menu

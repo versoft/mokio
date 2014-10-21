@@ -224,4 +224,8 @@
   22. Change dual select box style in menu
 
   23. Fixed Mokio-install script
+  
+  24. New breadcrumbs
+  
+  25. Fixed user edit - no logout after password change
 

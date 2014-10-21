@@ -13,6 +13,9 @@ module Mokio
 
           before_action :authenticate_user!
           after_filter :flash_to_headers    # json sending flash notices with ajax success see in main.js
+          attr_accessor :breadcrumbs_prefix
+          attr_accessor :breadcrumbs_prefix_link
+          before_filter :set_breadcrumbs_prefix
         end
 
         #
@@ -44,6 +47,11 @@ module Mokio
             format.html { redirect_to url,   notice: message }
             format.json { head :no_content }
           end
+        end
+
+        def set_breadcrumbs_prefix
+          @breadcrumbs_prefix = ""
+          @breadcrumbs_prefix_link = ""
         end
       end
     end

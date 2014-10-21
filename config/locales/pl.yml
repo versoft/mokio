@@ -112,6 +112,7 @@ pl:
     logout: Wyloguj
     change_password: Zmień hasło
     version: Wersja
+    dashboard: Dashboard
 
     sidebars:
       dashboard: Dashboard
@@ -128,7 +129,6 @@ pl:
       module_position: Pozycje
       external_script: Skrypty zewnętrzne
       lang: Zarządzanie językami
-      lang: Wersje językowe
       site_elements: Elementy strony
       settings: Ustawienia
 
@@ -163,9 +163,23 @@ pl:
       langs: Zarządzanie językami
       langs_new: Nowy język
       langs_edit: Edycja języka
-      copy: Kopiuj
-      update_password: Zmień hasło
       edit_password: Zmień hasło
+      update_password: Zmień hasło
+      copy: Kopiuj
+      dashboard: Dashboard
+      articles: Artykuły
+      pic_galleries: Galerie zdjęć
+      mov_galleries: Galerie filmów
+      contacts: Strony kontaktowe
+      new: Tworzenie
+      create: Tworzenie
+      edit: Edycja
+      update: Edycja
+      copy: Kopiowanie
+      content_management: Zarządzanie treścią
+      page_elements: Elementy strony
+      settings: Ustawienia
+
 
   static_modules:
     actions: Akcje

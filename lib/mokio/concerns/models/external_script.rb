@@ -38,6 +38,12 @@ module Mokio
           true
         end
 
+        #
+        # Specify what's showed in breadcrumb
+        #
+        def breadcrumb_name
+          name
+        end
 
       end
     end
