@@ -181,7 +181,6 @@ pl:
       page_elements: Elementy strony
       settings: Ustawienia
 
-
   static_modules:
     actions: Akcje
     active: Włączony
@@ -312,7 +311,7 @@ pl:
     menu_non_active_legend: "Nieaktywna pozycja menu - link nie działa"
     menu_visible_legend: "Wyświetlana pozycja menu"
     menu_non_visible_legend: "Niewyświetlana pozycja menu"
-    exclamation_legend: "Menu bez podłączonej treści"
+    exclamation_legend: "Pozycja menu bez podłączonej treści lub z podłączoną treścią, która jest nieaktywna bądź nie jest aktualnie wyświetlana - po wejściu na niniejszą zakładkę zostanie wyświetlona pusta strona"
     path: Ścieżka
     legend: Legenda
     type: Typ
