@@ -13,12 +13,18 @@ module Mokio
       # * +initial_id+ - root's id
       # * +position+   - menu position, root child name or id
       # * +limit+      - how deep should builder look for children, count starts after position
-      #
+      # * +hierarchical+ - specifies if you want to use hierarchical links or not
+
+      # if you would like to use hierarchical links in your frontend, add following route to your routes.rb
+
+      # get "/*menu_path/:menu_id" => "content#show"
+      # get "/:menu_id" => "content#show"
+
       # ==== Exceptions
       #
       # * +IsNotMenuRootError+ when initial_id is not root's id
       #
-      def build_menu(initial_id, position, limit = 1, with_nav = true, nav_class="navmenu")
+      def build_menu(initial_id, position, limit = 1, with_nav = true, nav_class = "navmenu", hierarchical = false)
         root = Mokio::Menu.find_by_id(initial_id)
         #
         # throw exception when initial_id isn't root's id
@@ -28,14 +34,12 @@ module Mokio
         html = "<nav class='#{nav_class}' id='menuMain'>" if with_nav
 
         root.children.each do |item|
-          html << build_items(item, limit, 1) if (item.name == position || item.id == position) && item.children.present? && item.active
+          html << build_items(item, limit, 1, hierarchical, "") if (item.name == position || item.id == position) && item.children.present? && item.active
         end
 
         html << "</nav>"  if with_nav
         html.html_safe
       end
-
-
 
       #
       # Builds menu tree for specified arguments, returns html
@@ -66,7 +70,7 @@ module Mokio
       # * +limit+ - how deep should builder look for children
       # * +index+ - how deep is function already
       #
-      def build_items(item, limit, index)
+      def build_items(item, limit, index, hierarchical  = false, root_path = "")
         return "" if index > limit || !item.children.present?
 
         html = "<ul class='#{index == 1 ? "menu" : "sub-menu"}'>"
@@ -75,12 +79,16 @@ module Mokio
             html << "<li class='#{"menu-item-has-children" if i.children.present?} #{"active" if i.slug == params[:menu_id] || i.slug == request.original_fullpath.match(/(\D+\/{1}|\D+)/)[0].gsub('/', '')}'>"
 
             if i.external_link.blank?
-              html << "<a href='/#{i.slug}'>#{i.name}</a>"
+              if hierarchical
+                html << "<a href='#{root_path}/#{i.slug}'>#{i.name}</a>"
+              else
+                html << "<a href='/#{i.slug}'>#{i.name}</a>"
+              end
             else
               html << "<a href='#{i.external_link}' rel='#{(i.follow || i.follow.nil?) ? "follow" : "nofollow"}' target='#{i.target.blank? ? '_self' : i.target}'>#{i.name}</a>"
             end
-            html << build_items(i, limit, index + 1)
 
+            html << build_items(i, limit, index + 1, hierarchical, root_path + "/#{i.slug}")
             html << "</li>"
           end
         end
@@ -154,7 +162,7 @@ module Mokio
       #
       def menu_content_titles(menu, limit = nil)
         isMenu?(menu)
-        contents = menu_content(menu, limit)     
+        contents = menu_content(menu, limit)
         titles   = []
 
         contents.each do |c|
@@ -197,7 +205,7 @@ module Mokio
       #
       def menu_static_modules_titles(menu, limit = nil)
         isMenu?(menu)
-        modules = menu_static_modules(menu, limit) 
+        modules = menu_static_modules(menu, limit)
         titles  = []
 
         modules.each do |m|
@@ -250,7 +258,7 @@ module Mokio
       # * +IsNotMenuRootError+ when initial_id is not root's id
       #
       def menu_root_id(name)
-        begin 
+        begin
           root = Mokio::Menu.find_by_name(name)
           raise Exceptions::IsNotMenuRootError.new(:name, name) if root.ancestry
           root.id
@@ -259,44 +267,44 @@ module Mokio
         end
       end
 
-  
-     def build_items_with_css(item, limit, index ,css_c)
-            return "" if index > limit || !item.children.present?
+
+      def build_items_with_css(item, limit, index ,css_c)
+        return "" if index > limit || !item.children.present?
 
 
-            html = "<ul class='#{index == 1 ? css_c[0] :  css_c[1]}'>"
-            item.children.order_default.each do |i|
-              if i.visible && i.active
-                html << "<li class='#{ css_c[2]  if i.children.present?} #{"active" if i.slug == params[:menu_id] || i.slug == request.original_fullpath.match(/(\D+\/{1}|\D+)/)[0].gsub('/', '')}'>"
+        html = "<ul class='#{index == 1 ? css_c[0] :  css_c[1]}'>"
+        item.children.order_default.each do |i|
+          if i.visible && i.active
+            html << "<li class='#{ css_c[2]  if i.children.present?} #{"active" if i.slug == params[:menu_id] || i.slug == request.original_fullpath.match(/(\D+\/{1}|\D+)/)[0].gsub('/', '')}'>"
 
-                if i.external_link.blank?
-                  html << "<a href='/#{i.slug}'>#{i.name}</a>"
-                else
-                  html << "<a href='#{i.external_link}' rel='#{i.follow ? "follow" : "nofollow"}' target='#{i.target.blank? ? '_self' : i.target}'>#{i.name}</a>"
-                end
-                html << build_items_with_css(i, limit, index + 1,css_c)
-
-                html << "</li>"
-              end
+            if i.external_link.blank?
+              html << "<a href='/#{i.slug}'>#{i.name}</a>"
+            else
+              html << "<a href='#{i.external_link}' rel='#{i.follow ? "follow" : "nofollow"}' target='#{i.target.blank? ? '_self' : i.target}'>#{i.name}</a>"
             end
-            html << "</ul>"
-            html.html_safe
+            html << build_items_with_css(i, limit, index + 1,css_c)
+
+            html << "</li>"
           end
+        end
+        html << "</ul>"
+        html.html_safe
+      end
 
 
       def build_menu_with_css(initial_id, position, limit = 1, css_c = false)
 
         if css_c == false
           css_c = ["menu","sub-menu","menu-item-has-children"]
-        end     
-           
+        end
+
         root = Mokio::Menu.find_by_id(initial_id)
         #
         # throw exception when initial_id isn't root's id
         #
         raise Exceptions::IsNotMenuRootError.new(:id, initial_id) if root.ancestry
         html = ""
-           root.children.each do |item|
+        h do |item|
           html << build_items_with_css(item, limit, 1,css_c) if (item.name == position || item.id == position) && item.children.present? && item.active
         end
         html.html_safe
