@@ -34,7 +34,8 @@ namespace :mokio do
       content_editable: false,
       modules_editable: false,
       fake: true,
-      parent: menu
+      parent: menu,
+      slug: "top"
     })
     top_menu.build_meta
     puts "\n Created default initial menu 'top'".green if top_menu.save(:validate => false)
