@@ -240,3 +240,11 @@
   29. Hierarchical menu
   
   30. Minor menu fixes
+  
+  31. Generate slug for initial "top" menu
+  
+  32. Fix saving meta tags
+  
+  33. Install mokio migrations initializer
+  
+  34. Fix creating mokio.rb config file
