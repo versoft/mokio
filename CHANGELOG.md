@@ -234,3 +234,9 @@
   26. Added posibility to translate datetimepicker
 
   27. Menu tree in content editor
+  
+  28. Copy suffix
+  
+  29. Hierarchical menu
+  
+  30. Minor menu fixes

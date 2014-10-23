@@ -223,7 +223,8 @@ $inactive_color: #dddddd;
       
     }
     .displayed_false {
-      color: $inactive_color; 
+//      color: $inactive_color;
+      text-decoration: line-through;
    }
     .selected   {
       background-color: $selectColor;
@@ -250,7 +251,8 @@ $inactive_color: #dddddd;
 }
 
 .displayed_false {
-  color:$inactive_color ; 
+//  color:$inactive_color ;
+  text-decoration: line-through;
 }
 
 .form-group > .searchBox {
