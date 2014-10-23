@@ -27,7 +27,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "faker"
   gem "capybara"
-  gem "capybara-webkit" # may be useful: apt-get install qtquick1-5-dev qtlocation5-dev qtsensors5-dev qtdeclarative5-dev
+  #gem "capybara-webkit" # may be useful: apt-get install qtquick1-5-dev qtlocation5-dev qtsensors5-dev qtdeclarative5-dev
 
   #
   # or #sudo apt-get install qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
