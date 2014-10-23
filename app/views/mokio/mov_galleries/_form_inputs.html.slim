@@ -12,4 +12,12 @@
     label.form-label.span2
       = t('menus.content_assoc')
     .span10
-      = select_tag "article[menu_ids]", options_for_select(Mokio::Menu.all.nofake.map {|s| [s.name, s.id]},obj.menus.map {|j| j.id}), :multiple => true ,:include_blank => true
+      =collection_select(:mov_gallery, :menu_ids,menu_select_grouped(Mokio::Menu.all.includes(:content_links).arrange(:order => :seq)),:id,:name, {disabled: lambda{|s| s.fake.present? },selected:obj.menus.map {|j| j.id} },:multiple => true)
+    javascript:
+      $(document).ready(function () {
+        $('#article_menu_ids').attr("size", function () {
+          return this.options.length;
+        });
+      });
+
+

@@ -186,12 +186,32 @@ module Mokio
         ModulePosition.all.each do |mp|
           if !menu.available_modules_by_pos[mp.id].nil?
             str += "$('#box1View_" + mp.id.to_s + "').html('" +  ( j(options_for_select(menu.available_modules_by_pos[mp.id].collect{|elt| [elt.module_title, elt.id, {class: 'displayed_' + elt.displayed?.to_s}]}))) + "');"
-          else 
+          else
             str += "$('#box1View_" + mp.id.to_s + "').html('');"
           end
         end
         str.html_safe
       end
+
+
+      # def menu_select_grouped(obj)
+      #   obj.map do |pos, sub_pos|
+      #     pos.name = ('- ' * pos.depth) + pos.name
+      #     obj = menu_select_grouped(sub_pos) unless sub_pos.blank?
+      #   end
+      #   obj
+      # end
+      #
+      def menu_select_grouped(obj)
+        arr = []
+        obj.map do |pos, sub_pos|
+            pos.name =  ('- ' * pos.depth) + pos.name
+            arr << pos
+            arr += menu_select_grouped(sub_pos) unless sub_pos.blank?
+          end
+        arr
+      end
+
     end
   end
 end
