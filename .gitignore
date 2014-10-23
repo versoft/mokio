@@ -24,3 +24,4 @@ coverage
 /.idea/
 /.metadata/
 /.project
+mokio*.gem
