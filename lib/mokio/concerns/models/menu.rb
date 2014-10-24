@@ -34,10 +34,11 @@ module Mokio
 
           after_save :touch_content
           after_destroy :touch_content
+
           scope :order_default, -> { order("seq asc") }
           scope :active,        -> { where(active: true) }
           scope :nofake,        -> { where(fake: false)}
-          scope :fake_structure_unique, -> { where(fake: true,slug: nil,meta_id: nil).group('name').order('id ASC')}
+          scope :fake_structure_unique, -> { where(fake: true).group('name').order('id ASC') }
 
           def should_generate_new_friendly_id?
             name_changed?
@@ -88,7 +89,7 @@ module Mokio
         #
         def available_contents
           if (lang_id.nil? || lang_id == 0) 
-            Mokio::Content.lang(Mokio::Lang.default.id) - contents
+            Mokio::Content.lang(Mokio::Lang.first.id) - contents
           else
             Mokio::Content.lang(lang_id) - contents
           end
@@ -96,7 +97,7 @@ module Mokio
 
         def parent_root
           root = Mokio::Menu.find_by_lang_id(lang_id) unless lang_id.nil?
-          root = Mokio::Menu.find(Mokio::Lang.default.id) if root.nil?
+          root = Mokio::Menu.find_by_lang_id(Mokio::Lang.first.id) if root.nil?
           root
         end
 
@@ -124,7 +125,7 @@ module Mokio
         def available_modules_by_pos
           menu_id = (self.id.nil? ? -1 : self.id)
           if (lang_id.nil? || lang_id == 0)
-            Mokio::AvailableModule.not_selected_for_menu(menu_id).for_lang(Mokio::Lang.default.id).group_by(&:module_position_id)
+            Mokio::AvailableModule.not_selected_for_menu(menu_id).for_lang(Mokio::Lang.first.id).group_by(&:module_position_id)
           else
             Mokio::AvailableModule.not_selected_for_menu(menu_id).for_lang(lang_id).group_by(&:module_position_id) 
           end
