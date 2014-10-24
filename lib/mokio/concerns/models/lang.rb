@@ -13,7 +13,7 @@ module Mokio
 
             validates :name, presence: true
             validates_uniqueness_of :shortname, presence: true
-            has_many :menu,:dependent => :destroy
+            has_many :menu,:dependent => :delete_all
 
             after_create :add_fake_menu
             before_destroy :validate_last

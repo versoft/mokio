@@ -17,7 +17,7 @@ module Mokio
       # * +position+ - module position active record result
 
       def build_static_modules(position_name,always_displayed = false, with_intro = true)
-        lang = Mokio::Lang.default
+        lang = Mokio::Lang.default_frontend
         position = Mokio::ModulePosition.find_by_name(position_name)
         html = " "
 
