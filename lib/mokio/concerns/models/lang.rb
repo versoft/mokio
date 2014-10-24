@@ -17,10 +17,11 @@ module Mokio
 
             after_create :add_fake_menu
             before_destroy :validate_last
-
-            searchable do
-              text :name
-              text :shortname
+            if Mokio.solr_enabled
+              searchable do
+                text :name
+                text :shortname
+              end
             end
 
             # scope :default, -> {where(shortname: Mokio.frontend_default_lang).first}

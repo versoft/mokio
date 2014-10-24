@@ -11,9 +11,11 @@ module Mokio
 
           validates :name, presence: true
           validates :script, presence: true
-          searchable do
-            text :name
-            text :script
+          if Mokio.solr_enabled
+            searchable do
+              text :name
+              text :script
+            end
           end
         end
 
