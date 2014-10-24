@@ -59,7 +59,7 @@ module Mokio
         if title.blank?
           "<li>#{translation}</li>"
         else
-          title = title.split(" ").first(5).join(" ")
+          title = title.truncate(37)
           "<li>#{translation} - #{title}</li>"
         end
       end
