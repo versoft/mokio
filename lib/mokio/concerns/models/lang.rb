@@ -12,11 +12,12 @@ module Mokio
             include Mokio::Concerns::Models::Common
 
             validates :name, presence: true
-            validates_uniqueness_of :shortname, presence: true
+            validates :shortname, presence: true ,uniqueness: true
             has_many :menu,:dependent => :delete_all
 
             after_update :update_menu_name
             after_create :add_fake_menu
+
             before_destroy :validate_last
             if Mokio.solr_enabled
               searchable do
@@ -68,11 +69,12 @@ module Mokio
         private
 
         def add_fake_menu
-
           @menu = Mokio::Menu.new( name: self.shortname , lang_id: self.id,fake:true,deletable:false,editable:false)
           @menu.build_meta
 
           if(@menu.save)
+            self.menu_id = @menu.id
+            self.save(:validate => false)
             result = Mokio::Menu.all.fake_structure_unique
             result.each do |s|
               if s.depth == 1
@@ -85,7 +87,6 @@ module Mokio
 
         def validate_last
           if Mokio::Lang.count > 1
-            #TODO
             return true
           else
             return false
@@ -93,10 +94,13 @@ module Mokio
         end
 
         def update_menu_name
+          if !self.menu_id.nil?
           a = Mokio::Menu.find_by_id(self.menu_id)
           a.name = self.shortname
           a.save(:validate => false)
+          end
         end
+
       end
     end
   end
