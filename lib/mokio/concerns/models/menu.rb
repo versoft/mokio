@@ -234,12 +234,6 @@ module Mokio
           type.tableize
         end
 
-        #
-        # Specify what's showed in breadcrumb
-        #
-        def breadcrumb_name
-          name
-        end
       end
     end
   end

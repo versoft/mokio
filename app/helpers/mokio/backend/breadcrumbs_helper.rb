@@ -55,7 +55,7 @@ module Mokio
       def breadcrumbs_obj_title(translation)
         title   = obj.title if obj.has_attribute?( :title )
         title ||= obj.name if obj.has_attribute?( :name )
-        title ||= obj.breadcrumb_name
+        title ||= obj.breadcrumb_name if obj.respond_to?(:breadcrumb_name)
         if title.blank?
           "<li>#{translation}</li>"
         else
