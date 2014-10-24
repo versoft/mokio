@@ -12,9 +12,9 @@ module Mokio
             include Mokio::Concerns::Models::Common
 
             validates :name, presence: true
-            validates :shortname, presence: true
+            validates_uniqueness_of :shortname, presence: true
+            has_many :menu,:dependent => :destroy
 
-            has_many :menu ,:dependent => :delete_all
             after_create :add_fake_menu
             before_destroy :validate_last
 
@@ -27,7 +27,12 @@ module Mokio
            end
 
         module ClassMethods
+
           def default
+            Mokio::Lang.where(shortname: Mokio.frontend_default_lang).first
+          end
+
+          def default_frontend
             Mokio::Lang.where(shortname: Mokio.frontend_default_lang).first
           end
           #
@@ -61,27 +66,31 @@ module Mokio
         private
 
         def add_fake_menu
-          menu = Array.new
+
           @menu = Mokio::Menu.new( name: self.shortname , lang_id: self.id,fake:true,deletable:false,editable:false)
           @menu.build_meta
 
           if(@menu.save)
-            result = Mokio::Menu.fake_structure_unique
-            result.each do |pos|
-              menu = Mokio::Menu.new( name: pos.name,ancestry:@menu.id, lang_id:self.id,fake:true,deletable:false,editable:false)
-              menu.save(:validate => false)
+            result = Mokio::Menu.all.fake_structure_unique
+            result.each do |s|
+              if s.depth == 1
+                  @parent_menu = Mokio::Menu.new( name: s.name,ancestry:@menu.id, lang_id:self.id,fake:true,deletable:false,editable:false)
+                  @parent_menu.save
+                end
             end
           end
         end
 
-
         def validate_last
           if Mokio::Lang.count > 1
+            #TODO
             return true
           else
             return false
           end
         end
+
+
       end
     end
   end
