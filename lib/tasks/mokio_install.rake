@@ -8,9 +8,13 @@ namespace :mokio do
   task :install, [:email, :password] => :environment do |t, args|
     args.with_defaults(:email => "admin@admin.com", :password => "admin")
 
-    Rake::Task["mokio:install:migrations"].execute
+    puts "\nRunning task: 'rake:db:create'...".green
     Rake::Task["db:create"].execute
+
+    puts "\nRunning task: 'rake:db:migrate'...".green
     Rake::Task["db:migrate"].execute
+
+    puts "\nCreating initial data...".green
 
     default_lang = Mokio::Lang.new({
       :name => Mokio.frontend_default_lang,
@@ -20,9 +24,9 @@ namespace :mokio do
       :id => 1
     })
 
-    puts "\n Created default lang '#{default_lang.name}'".green if default_lang.save
+    puts "\n\tCreated default lang '#{default_lang.name}'".green if default_lang.save
     menu = Mokio::Menu.find_by_name(default_lang.shortname)
-    puts "\n Created default initial menu '#{menu.name}'".green unless menu.nil?
+    puts "\n\tCreated default initial menu '#{menu.name}'".green unless menu.nil?
 
     top_menu = Mokio::Menu.new({
       name: "top",
@@ -38,18 +42,18 @@ namespace :mokio do
       slug: "top"
     })
     top_menu.build_meta
-    puts "\n Created default initial menu 'top'".green if top_menu.save(:validate => false)
+    puts "\n\tCreated default initial menu 'top'".green if top_menu.save(:validate => false)
 
 
     Mokio::ModulePosition.create!(:name => 'footer')
-    puts "\n Created default module position 'footer'".green
+    puts "\n\tCreated default module position 'footer'".green
     user = Mokio::User.new({
       email: args[:email],
       password: args[:password],
       password_confirmation: args[:password],
       roles_mask: 1
     })
-    puts "\n Created default user '#{args[:email]}' with password '#{args[:password]}'".green if user.save(:validate => false)
+    puts "\n\tCreated default user '#{args[:email]}' with password '#{args[:password]}'".green if user.save(:validate => false)
 
     text = File.read("#{Rails.root}/config/routes.rb")
 
@@ -60,9 +64,9 @@ namespace :mokio do
     unless File.exist?("#{Rails.root}/config/initializers/mokio.rb")
       puts "\n"
       result = Rails::Generators.invoke("mokio:install")
-      puts "\n Created initializer(configuration file) in #{result}".green
+      puts "\n\tCreated initializer(configuration file) in #{result}".green
     end
-    puts "\n Mokio is ready to start! Run 'rails server' and go to localhost:3000/backend to see your application in development mode"
+    puts "\nMokio is ready to start! Run 'rails server' and go to localhost:3000/backend to see your application in development mode"
   end
 
 
