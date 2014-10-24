@@ -85,13 +85,13 @@ module Mokio
         end
 
         #
-        # Returns list of contents available for assignment to given menu element (based on lang_id)
+        # Returns list of contents available for assignment to given menu element (based on lang_id) ordered by title
         #
         def available_contents
-          if (lang_id.nil? || lang_id == 0) 
-            Mokio::Content.lang(Mokio::Lang.first.id) - contents
+          if (lang_id.nil? || lang_id == 0)
+            Mokio::Content.lang(Mokio::Lang.first.id).order(:title) - contents
           else
-            Mokio::Content.lang(lang_id) - contents
+            Mokio::Content.lang(lang_id).order(:title) - contents
           end
         end
 
