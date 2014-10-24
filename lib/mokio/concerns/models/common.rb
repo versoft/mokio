@@ -28,7 +28,7 @@ module Mokio
           # For Sunspot Solr:
           #
           if Mokio.solr_enabled
-            exceptions = Mokio::SolrConfig.exceptions # Classes which are excluded from indexing or have own searchable method
+            exceptions = Mokio::SolrConfig.all_exceptions # Classes which are excluded from indexing or have own searchable method
             
             unless exceptions.include? self.name.demodulize.downcase.to_sym
               searchable do # Columns where Sunspot knows which data use to index

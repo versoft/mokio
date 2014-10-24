@@ -18,6 +18,10 @@ module Mokio
             after_create :add_fake_menu
             before_destroy :validate_last
 
+            searchable do
+              text :name
+              text :shortname
+            end
 
             # scope :default, -> {where(shortname: Mokio.frontend_default_lang).first}
            end
