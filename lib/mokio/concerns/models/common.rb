@@ -82,7 +82,7 @@ module Mokio
         # Output for <b>lang_id</b> parameter, used in CommonController#index
         #
         def lang_id_view
-          return I18n.t('backend.' + Mokio::Lang.find(self.lang_id).name) unless self.lang_id.nil?
+          return Mokio::Lang.find(self.lang_id).name unless self.lang_id.nil?
           return I18n.t('backend.all') if self.lang_id.nil?
         end
 
