@@ -15,6 +15,7 @@ module Mokio
             validates_uniqueness_of :shortname, presence: true
             has_many :menu,:dependent => :delete_all
 
+            after_update :update_menu_name
             after_create :add_fake_menu
             before_destroy :validate_last
             if Mokio.solr_enabled
@@ -91,7 +92,11 @@ module Mokio
           end
         end
 
-
+        def update_menu_name
+          a = Mokio::Menu.find_by_id(self.menu_id)
+          a.name = self.shortname
+          a.save(:validate => false)
+        end
       end
     end
   end
