@@ -40,10 +40,14 @@ module Mokio
 
         #action
 
+        html << "<li>#{breadcrumbs_arrow}</li>"
+
         if defined?(obj) && obj.present?
-          html << "<li>#{breadcrumbs_arrow}</li>"
           html << breadcrumbs_obj_title(I18n.t("#{t}.#{controller.action_name}"))
+        else
+          html << I18n.t("#{t}.#{controller.action_name}")
         end
+
         html.html_safe
 
       end
