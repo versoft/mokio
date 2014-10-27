@@ -1,7 +1,7 @@
 class MigrateExternalCodesToExternalScripts < ActiveRecord::Migration
   def change
     if ActiveRecord::Base.connection.table_exists? :mokio_external_codes
-
+      if ActiveRecord::Base.connection.table_exists? :mokio_external_scripts
         ActiveRecord::Base.transaction do
 
           begin
@@ -18,7 +18,7 @@ class MigrateExternalCodesToExternalScripts < ActiveRecord::Migration
           end
 
           raise ActiveRecord::Rollback if @_errors
-
+        end
       end
     end
   end
