@@ -258,3 +258,5 @@
   38. Change solr configuration for mokio models
   
   39. Order contents by title in dual_select_box (menu view)
+  
+  40. Show menu hierarchical slug in menu form
