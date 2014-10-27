@@ -71,6 +71,7 @@ module Mokio
       private
 
       def destroy_all_dependand
+        Mokio::StaticModule.where(:lang_id => id).update_all(:lang_id => nil)
         Mokio::ContentLink.delete_all(:menu_id => menu.pluck(:id))
         Mokio::Meta.delete(menu.where.not(:meta_id => nil).pluck(:meta_id))
         Mokio::Menu.delete_all(:lang_id => id)
