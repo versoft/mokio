@@ -20,9 +20,9 @@ module Mokio
           validates_uniqueness_of :slug
 
           belongs_to :lang
-          belongs_to :meta
-          
-          has_many :content_links,     -> {order('mokio_content_links.seq')}
+          belongs_to :meta, :dependent => :destroy
+
+          has_many :content_links,     -> {order('mokio_content_links.seq')}, :dependent => :destroy
           has_many :contents,          -> {order('mokio_content_links.seq')},    :through => :content_links
           has_many :selected_modules,  -> {order('mokio_selected_modules.seq')}
           has_many :available_modules, -> {order('mokio_selected_modules.seq')}, :through => :selected_modules
@@ -46,9 +46,9 @@ module Mokio
 
           if Mokio.solr_enabled
             ## For Sunspot Solr:
-              searchable do ## Columns where Sunspot knows which data use to index
-                text :name
-              end
+            searchable do ## Columns where Sunspot knows which data use to index
+              text :name
+            end
             ##
           end
         end
@@ -58,18 +58,18 @@ module Mokio
         #
         def slug_candidates
           [
-            :name,
-            [build_slug, :name]
+              :name,
+              [build_slug, :name]
           ]
         end
-        
+
         def build_slug
           if parent.nil?
             return ''
           elsif !parent.fake
             parent.slug
           else
-            parent.name            
+            parent.name
           end
         end
         #
@@ -78,7 +78,7 @@ module Mokio
         def seq_and_lang_update
           self.seq = sequence_number
           if self.lang_id.nil?
-             self.lang_id = root.lang_id
+            self.lang_id = root.lang_id
           else
             self.lang_id = self.root.lang_id
           end
@@ -127,7 +127,7 @@ module Mokio
           if (lang_id.nil? || lang_id == 0)
             Mokio::AvailableModule.not_selected_for_menu(menu_id).for_lang(Mokio::Lang.first.id).group_by(&:module_position_id)
           else
-            Mokio::AvailableModule.not_selected_for_menu(menu_id).for_lang(lang_id).group_by(&:module_position_id) 
+            Mokio::AvailableModule.not_selected_for_menu(menu_id).for_lang(lang_id).group_by(&:module_position_id)
           end
         end
 
@@ -138,7 +138,7 @@ module Mokio
           Mokio::StaticModule.where(:id => self.available_modules.map(&:static_module_id))
         end
 
-        def sequence_number 
+        def sequence_number
           if seq.nil?
             if parent.nil?
               Mokio::Menu.where('ancestry is null').count +1
