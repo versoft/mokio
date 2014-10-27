@@ -186,6 +186,21 @@ module Mokio
         end
 
         #
+        # Hierarchical slug
+        #
+        def full_slug
+          m = self
+          slug = m.slug
+          unless m.parent.nil?
+            while !m.parent.fake
+              slug = m.parent.slug + "/" + slug
+              m = m.parent
+            end
+            slug
+          end
+        end
+
+        #
         # Just for easier logic
         #
         def title

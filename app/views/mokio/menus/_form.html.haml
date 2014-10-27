@@ -2,7 +2,7 @@
   %label.form-label.span2
     = btc('slug', Mokio::Menu)
   .span10
-    = text_field_tag '', (@menu.slug.nil?) ? bt('no_slug', Mokio::Menu) : "/" + @menu.slug.to_s, readonly: true
+    = text_field_tag '', (@menu.full_slug.nil?) ? bt('no_slug', Mokio::Menu) : "/" + @menu.full_slug.to_s, readonly: true
 = f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.id]},  include_blank: false, disabled: !@menu.display_editable_field?('lang_id')
 -# = f.input :lang_id, :as => :hidden, :input_html => { :value => (@menu.lang_id.nil? ? 1 : @menu.lang_id)}, disabled: !@menu.display_editable_field?('lang_id')
 = f.input :active, :wrapper => :active_checkbox, disabled: !@menu.display_editable_field?('active')
