@@ -248,3 +248,15 @@
   33. Install mokio migrations initializer
   
   34. Fix creating mokio.rb config file
+  
+  35. Delete meta and content_links after remove menu or lang
+  
+  36. Update static module lang_id after delete lang
+  
+  37. Ability to set static module language
+  
+  38. Change solr configuration for mokio models
+  
+  39. Order contents by title in dual_select_box (menu view)
+  
+  40. Show menu hierarchical slug in menu form
