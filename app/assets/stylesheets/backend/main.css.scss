@@ -418,6 +418,10 @@ body, p {font-family: 'Open Sans', Helvetica, Arial, sans-serif;}
 .form-row .form-actions button, .form-row .form-actions a{margin-left:10px;}
 
 .form-row .row-fluid [class*="span"] {margin-left: 0;}
+.form-row .row-fluid select[id*="_menu_ids"] {
+  width: 100%;
+  height: 300px;
+}
 
 #content .form-row.row-fluid {margin-top:15px !important;}
 #content .form-row.row-fluid .row-fluid {margin-top:0;}
