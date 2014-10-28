@@ -613,6 +613,7 @@ en:
             name:
               blank: "Name cannot be blank"
             shortname:
+              taken: Given short name is already used
               blank: "Short name cannot be blank"
         mokio/article:
           attributes:

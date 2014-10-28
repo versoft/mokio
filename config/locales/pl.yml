@@ -612,6 +612,7 @@ pl:
             name:
               blank: "Nazwa nie może być pusta"
             shortname:
+              taken: "Podana nazwa skrócona jest już zajęta"
               blank: "Nazwa skrócona nie może być pusta"
         mokio/article:
           attributes:
