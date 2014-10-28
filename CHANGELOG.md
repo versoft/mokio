@@ -260,3 +260,7 @@
   39. Order contents by title in dual_select_box (menu view)
   
   40. Show menu hierarchical slug in menu form
+  
+### Mokio 28.10.2014  v0.0.8
+  
+  1. Remove unnecessary migrations
