@@ -33,16 +33,16 @@
           ul.unstyled
             li
               span.icon16.icomoon-icon-arrow-right-2
-              = "%name% - Imię i nazwisko lub nazwa firmy"
+              = "%name% - #{t('contacts.form_name')}"
             li
               span.icon16.icomoon-icon-arrow-right-2
-              = "%email% - Adres e-mail"
+              = "%email% - #{t('contacts.form_email')}"
             li
               span.icon16.icomoon-icon-arrow-right-2
-              = "%title% - Tytuł"
+              = "%title% - #{t('contacts.form_title')}"
             li
               span.icon16.icomoon-icon-arrow-right-2
-              = "%content% - Treść"
+              = "%content% - #{t('contacts.form_content')}"
 
       = t.input :tpl, :label => "",  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 300} }
    

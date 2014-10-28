@@ -397,6 +397,10 @@ en:
     update_active_false: "Contact page <strong>'%{title}'</strong> is not inactive."
     tpl: Message template
     form_data: Form data
+    form_name: Name or company
+    form_email: E-mail address
+    form_title: Title
+    form_content: Content
 
   contents:
     edit_gallery_content: Edit content
@@ -577,7 +581,6 @@ en:
     isRTL: "0"
     showMonthAfterYear: "0"
     yearSuffix: ''
-
   errors:
     messages:
       unauthorized: You are not authorized to perform this action
