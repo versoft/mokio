@@ -5,6 +5,23 @@ module Mokio
   class Engine < Rails::Engine
     isolate_namespace Mokio
 
+    initializer :copy_migrations do |app|
+      unless app.root.to_s.match root.to_s
+        railties = {}
+        railties["mokio"] = config.paths["db/migrate"].expanded.first
+
+        on_skip = Proc.new do |name, migration|
+          puts "NOTE: Migration #{migration.basename} from #{name} has been skipped. Migration with the same name already exists."
+        end
+
+        on_copy = Proc.new do |name, migration|
+          puts "\nCopied migration #{migration.basename} from #{name}\n".green + "Run rake db:migrate first!\n".red
+        end
+        ActiveRecord::Migration.copy(ActiveRecord::Migrator.migrations_paths.first, railties,
+                                     :on_skip => on_skip, :on_copy => on_copy)
+      end
+    end
+
     initializer 'mokio.helpers' do |app|
       ActiveSupport.on_load :action_view do
         ActionView::Base.send :include, Mokio::Backend::BackendHelper

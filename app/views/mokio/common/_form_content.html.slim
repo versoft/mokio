@@ -25,6 +25,7 @@
     - if has_data_files?(obj) && params[:action] == "edit"
       = render :partial => "#{obj.default_data_file.to_s.tableize}/gallery", :locals => {videos: @videos}
 
+= render :partial => "mokio/common/datepicker_settings"
 
 - content_for :js do
   = javascript_include_tag 'backend/forms'

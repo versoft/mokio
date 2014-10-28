@@ -9,6 +9,7 @@
 # In views, this is aliased to just `t`:
 #
 #     <%= t('hello') %>
+
 # To use a different locale, set it with `I18n.locale`:
 #
 #     I18n.locale = :es
@@ -31,9 +32,9 @@ pl:
   mokio/contact: Strona kontaktowa
   external_link: Url
   backend:
+    go_back: Powrót
     site_preview: Twoja Strona
     no_records_found: Nie znaleziono żadnej treści
-    dashboard: Biurko
     cancel: Anuluj
     save: Zapisz
     save_and_create_new: Zapisz i utwórz nowy
@@ -60,6 +61,10 @@ pl:
     external_link: Link zewnętrzny
     data_file: Plik
     thumb: Miniaturka
+    thumb_exit: Zamknij
+    thumb_crop: Kadruj
+    thumb_rotate: Obróć
+    thumb_cuts: Przytnij
     you_are_here: Jesteś tutaj
     actions: Akcje
     display_from_out_of_range: Przekracza datę do której ma być wyświetlany
@@ -106,22 +111,27 @@ pl:
     sign_in: Zaloguj
     logout: Wyloguj
     change_password: Zmień hasło
+    version: Wersja
+    dashboard: Dashboard
+    copy_suffix: (kopia)
 
     sidebars:
+      dashboard: Dashboard
+      user: Administratorzy
       sidebar_title: Nawigacja
       content_management: Zarządzanie treścią
-      add_content: Dodaj Treść
-      article: Artykuł
-      pic_galery: Galeria Zdjęć
-      mov_galery: Galeria Filmów
-      contact: Strona Kontaktowa
+      all: Wszystko
+      article: Artykuły
+      pic_gallery: Galerie Zdjęć
+      mov_gallery: Galerie Filmów
+      contact: Strony Kontaktowe
       menu: Menu
-      modules: Bloki HTML
+      static_module: Bloki
       module_position: Pozycje
       external_script: Skrypty zewnętrzne
       lang: Zarządzanie językami
-      comments: Komentarze
-      users: Użytkownicy
+      site_elements: Elementy strony
+      settings: Ustawienia
 
     breadcrumbs:
       only_loose: Treści nie podpięte pod menu
@@ -142,9 +152,9 @@ pl:
       contacts_new: Nowa strona kontaktowa
       contacts_edit: Edycja strony kontatkowej
       comments: Komentarze
-      users: Użytkownicy
-      users_new: Nowy użytkownik
-      users_edit: Edycja danych użytkownika
+      users: Administratorzy
+      users_new: Nowy administrator
+      users_edit: Edycja danych administratora
       external_scripts: Skrypty zewnętrzne
       external_scripts_new: Nowy skrypt zewnętrzny
       external_scripts_edit: Edycja
@@ -154,7 +164,23 @@ pl:
       langs: Zarządzanie językami
       langs_new: Nowy język
       langs_edit: Edycja języka
+      edit_password: Zmień hasło
+      update_password: Zmień hasło
       copy: Kopiuj
+      dashboard: Dashboard
+      articles: Artykuły
+      pic_galleries: Galerie zdjęć
+      mov_galleries: Galerie filmów
+      contacts: Strony kontaktowe
+      new: Tworzenie
+      create: Tworzenie
+      edit: Edycja
+      update: Edycja
+      copy: Kopiowanie
+      show: Przegląd
+      content_management: Zarządzanie treścią
+      page_elements: Elementy strony
+      settings: Ustawienia
 
   static_modules:
     actions: Akcje
@@ -177,51 +203,52 @@ pl:
     copy_title: Kopiuj blok HTML
 
   external_scripts:
-        name: Nazwa / id
-        actions: Akcje
-        edit_title: Edytuj skrypt zewnętrzny
-        index_title: Skrypty zewnętrzne
-        index_add_new: Dodaj nowy skrypt zewnętrzny
-        new_title: Nowy skrypt zewnętrzny
-        title: Tytuł
-        updated_at: Uaktualniono
-        edit_title: Edytuj skrypt zewnętrzny
-        created: "Skrypt <strong>'%{title}'</strong> został utworzony."
-        updated: "Skrypt <strong>'%{title}'</strong> został poprawnie edytowany."
-        deleted: "Skrypt <strong>'%{title}'</strong> został usunięty."
-        copy_title: Kopiuj skrypt
+    name: Nazwa / id
+    actions: Akcje
+    edit_title: Edytuj skrypt zewnętrzny
+    index_title: Skrypty zewnętrzne
+    index_add_new: Dodaj nowy skrypt zewnętrzny
+    new_title: Nowy skrypt zewnętrzny
+    title: Tytuł
+    updated_at: Uaktualniono
+    edit_title: Edytuj skrypt zewnętrzny
+    created: "Skrypt <strong>'%{title}'</strong> został utworzony."
+    updated: "Skrypt <strong>'%{title}'</strong> został poprawnie edytowany."
+    deleted: "Skrypt <strong>'%{title}'</strong> został usunięty."
+    copy_title: Kopiuj skrypt
 
   module_positions:
-        name: Nazwa / id
-        actions: Akcje
-        edit_title: Edytuj pozycję
-        index_title: Pozycje
-        index_add_new: Dodaj nowa pozycję
-        new_title: Nowa pozycja
-        title: Tytuł
-        updated_at: Uaktualniono
-        edit_title: Edytuj pozycję
-        created: "Pozycja <strong>'%{title}'</strong> została utworzona."
-        updated: "Pozycja <strong>'%{title}'</strong> została poprawnie edytowana."
-        deleted: "Pozycja <strong>'%{title}'</strong> została usunięta."
-        copy_title: Kopiuj pozycję modułów
+    name: Nazwa / id
+    actions: Akcje
+    edit_title: Edytuj pozycję
+    index_title: Pozycje
+    index_add_new: Dodaj nowa pozycję
+    new_title: Nowa pozycja
+    title: Tytuł
+    updated_at: Uaktualniono
+    edit_title: Edytuj pozycję
+    created: "Pozycja <strong>'%{title}'</strong> została utworzona."
+    updated: "Pozycja <strong>'%{title}'</strong> została poprawnie edytowana."
+    deleted: "Pozycja <strong>'%{title}'</strong> została usunięta."
+    copy_title: Kopiuj pozycję modułów
   langs:
-        name: Nazwa
-        shortname: Nazwa skrócona
-        active: Włączony
-        actions: Akcje
-        edit_title: Edytuj język
-        index_add_new: Dodaj nowy język
-        new_title: Nowy język
-        index_title: Ustawienia języka
-        updated_at: Uaktualniono
-        edit_title: Edytuj język
-        created: "Język <strong>'%{title}'</strong> została utworzony."
-        updated: "Język <strong>'%{title}'</strong> został poprawnie edytowany."
-        deleted: "Język <strong>'%{title}'</strong> został usunięty."
-        copy_title: Kopiuj język
-
-
+    name: Nazwa
+    shortname: Nazwa skrócona
+    active: Włączony
+    actions: Akcje
+    edit_title: Edytuj język
+    index_add_new: Dodaj nowy język
+    new_title: Nowy język
+    index_title: Ustawienia języka
+    updated_at: Uaktualniono
+    edit_title: Edytuj język
+    created: "Język <strong>'%{title}'</strong> została utworzony."
+    updated: "Język <strong>'%{title}'</strong> został poprawnie edytowany."
+    deleted: "Język <strong>'%{title}'</strong> został usunięty."
+    copy_title: Kopiuj język
+    not_deleted: " Nie możesz usunąć ostatniego języka "
+    update_active_true: "Język <strong>'%{title}'</strong> jest teraz aktywny."
+    update_active_false: "Język <strong>'%{title}'</strong> jest teraz nieaktywny."
   articles:
     active: Włączony
     actions: Akcje
@@ -248,6 +275,7 @@ pl:
     update_active_false: "Artykuł <strong>'%{title}'</strong> jest teraz nieaktywny."
 
   menus:
+    content_assoc: Pozycja menu
     slug: Link do menu
     no_slug: link do menu będzie widoczny po zapisaniu menu
     name: "nazwa"
@@ -270,6 +298,7 @@ pl:
     index_add_new: Dodaj menu
     new_title: "Nowy element menu"
     edit_title: "Edytuj element menu"
+    copy_title: "Kopiuj element menu"
     save: Zapisz
     save_and_create_new: "Zapisz i utwórz nowy"
     content: treść
@@ -283,12 +312,21 @@ pl:
     menu_non_active_legend: "Nieaktywna pozycja menu - link nie działa"
     menu_visible_legend: "Wyświetlana pozycja menu"
     menu_non_visible_legend: "Niewyświetlana pozycja menu"
-    exclamation_legend: "Menu bez podłączonej treści"
+    exclamation_legend: "Pozycja menu bez podłączonej treści lub z podłączoną treścią, która jest nieaktywna bądź nie jest aktualnie wyświetlana - po wejściu na niniejszą zakładkę zostanie wyświetlona pusta strona"
     path: Ścieżka
     legend: Legenda
     type: Typ
+    filter: wyszukaj treść ...
 
   pic_galleries:
+    active: Włączona
+    actions: Akcje
+    type: Typ
+    index_title: Galerie zdjęć
+    index_add_new: Dodaj nową galerię zdjęć
+    lang_id: Język
+    title: Tytuł
+    updated_at: Uaktualniono
     cannot_add_files_now: Dodawanie zdjęć do galerii będzie możliwe dopiero po jej zapisaniu
     created: "Galeria <strong>'%{title}'</strong> została utworzona. Dodawanie zdjęć jest już możliwe."
     created_and_new: "Galeria <strong>'%{title}'</strong> została utworzona."
@@ -308,6 +346,14 @@ pl:
     update_active_false: "Galeria <strong>'%{title}'</strong> jest teraz nieaktywna"
 
   mov_galleries:
+    active: Włączona
+    actions: Akcje
+    type: Typ
+    index_title: Galerie filmów
+    index_add_new: Dodaj nową galerię filmów
+    lang_id: Język
+    title: Tytuł
+    updated_at: Uaktualniono
     cannot_add_files_now: "Dodawanie filmów do galerii będzie możliwe dopiero po jej zapisaniu."
     created: "Galeria <strong>'%{title}'</strong> została utworzona. Dodawanie filmów jest już możliwe."
     created_and_new: "Galeria <strong>'%{title}'</strong> została utworzona."
@@ -327,9 +373,17 @@ pl:
     update_active_false: "Galeria <strong>'%{title}'</strong> jest teraz nieaktywna"
 
   contacts:
-    active: Włączony
+    active: Włączona
     actions: Akcje
     edit_title: Edytuj stronę kontaktową
+    type: Typ
+    index_title: Strony kontaktowe
+    index_add_new: Dodaj nową stronę kontaktową
+    lang_id: Język
+    title: Tytuł
+    updated_at: Uaktualniono
+    active: Włączony
+    actions: Akcje
     article_type: Typ
     title: Tytuł
     updated_at: Uaktualniono
@@ -343,6 +397,10 @@ pl:
     update_active_false: "Strona kontaktowa <strong>'%{title}'</strong> jest teraz nieaktywna."
     tpl: Szablon wiadomości
     form_data: Dane z formularza
+    form_name: Imię i nazwisko lub nazwa firmy
+    form_email: Adres e-mail
+    form_title: Tytuł
+    form_content: Treść
 
   contents:
     edit_gallery_content: Edytuj treść
@@ -415,7 +473,6 @@ pl:
     photos_from_external_links_error: "Zdjęcia z następujących linków nie zostały zapisane:"
     links_upload_info: "linki w oddzielnych wierszach (max 10)"
 
-
   youtubes:
     edit_youtube: Edytuj film
     updated: "Film <strong>'%{title}'</strong> został poprawnie zapisany"
@@ -442,52 +499,29 @@ pl:
 
   gmaps:
     gmap: Mapa google
-
-  mokio/comments:
-    title: Tytuł
-    comment: Komentarz
-    commentable: Komentowana treść
-    status: Status
-    user_id: Użytkownik
-    created_at: Utworzony
-    update_accept_true: Komentarz został zaakceptowany
-    update_accept_false: Komentarz został odrzucony
-    deleted: Komentarz został usunięty
-    created: Komoentarz został utworzony
-    index_title: Zarządzanie komentarzami
-    accept_all: Zaakceptuj wszystkie
-    reject_all: Odrzuć wszystkie
-    delete_rejected: Usuń odrzucone
-    accept_all_true: Wszystkie komentarze zostały zakceptowane
-    accept_all_false: Nie udało się zaakceptować wszystkich komentarzy
-    reject_all_true: Wszystkie komentarze zostały odrzucone
-    reject_all_false: Nie udało się odrzucić wszystkich komentarzy
-    delete_rejected_true: Odrzucone komentarze zostały usunięte
-    delete_rejected_false: Nie udało się usunąć wszystkich odrzuconych komentarzy
-
   users:
-    index_add_new: Dodaj nowego użytkownika
-    index_title: Użytkownicy
-    new_title: Nowy użytkownik
-    new_user: Nowy użytkownik
+    index_add_new: Dodaj nowego administratora
+    index_title: Administratorzy
+    new_title: Nowy administrator
+    new_user: Nowy administrator
     add_user: Dodaj
-    edit_user: Edycja danych użytkownika
+    edit_user: Edycja danych administratora
     save_user: Zapisz
-    copy_title: Kopiuj użytkownika
-    edit_title: Edycja danych użytkownika
-    created: "Użytkownik <strong>'%{title}'</strong> został utworzony"
-    updated: "Użytkownik <strong>'%{title}'</strong> został poprawnie zapisany"
-    deleted: "Użytkownik <strong>'%{title}'</strong> został usunięty"
-    not_created: "Użytkownik <strong>'%{title}'</strong> nie został utworzony"
-    not_updated: "Użytkownik <strong>'%{title}'</strong> nie został poprawnie zapisany"
-    not_deleted: "Użytkownik <strong>'%{title}'</strong> nie został usunięty"
+    copy_title: Kopiuj administratora
+    edit_title: Edycja danych administratora
+    created: "Administrator <strong>'%{title}'</strong> został utworzony"
+    updated: "Administrator <strong>'%{title}'</strong> został poprawnie zapisany"
+    deleted: "Administrator <strong>'%{title}'</strong> został usunięty"
+    not_created: "Administrator <strong>'%{title}'</strong> nie został utworzony"
+    not_updated: "Administrator <strong>'%{title}'</strong> nie został poprawnie zapisany"
+    not_deleted: "Administrator <strong>'%{title}'</strong> nie został usunięty"
     roles:  Role
     role_name:
       admin: Administrator
       content_editor: Zarządzanie treścią
       menu_editor: Zarządzanie strukturą menu
       static_module_editor: Zarządzanie blokami HTML
-      user_editor: Zarządzanie użytkownikami
+      user_editor: Zarządzanie administratorami
       comment_approver: Obsługa komentarzy (moderowanie)
       reader: Dosŧęp do odczytu
     edit_password: Zmiana hasła
@@ -498,7 +532,7 @@ pl:
     next: następny
     welcome_title: Witaj w Mokio!
     welcome_text: W kilku krokach pokażemy Ci jak stworzyć własna stronę www.
-    dashboard_nav_title: Biurko
+    dashboard_nav_title: Dashboard
     dashboard_nav_text: "Tutaj można oglądać ostatnio wprowadzone zmiany oraz łatwo znaleźć rzeczy do naprawienia, np. treść bez menu lub menu bez treści."
     contentmanagment_nav_title: Zarządzanie treścią
     contentmanagment_nav_text: "Dodawanie, edycja i usuwanie treści. "
@@ -512,9 +546,44 @@ pl:
     module_position_nav_text: "Dodawanie pozycji, które później moga zostać wykorzystane do umieszczania bloków HTML lub menu na stronie."
     external_script_nav_title: Skrypty zewnętrzne
     external_script_nav_text: Dodawanie własnego javascriptu do strony.
-    user_nav_title: Zarządzanie użytkownikami
-    user_nav_text: "Usuwanie, dodawanie nowych, edycja danych użytkowników."
-
+    user_nav_title: Zarządzanie administratorami
+    user_nav_text: "Usuwanie, dodawanie nowych, edycja danych administratorów."
+  timepicker:
+    timeOnlyTitle: "Wybierz godzinę"
+    timeText: "Czas"
+    hourText: "Godzina"
+    minuteText: "Minuta"
+    secondText: "Sekunda"
+    millisecText: "Milisekunda"
+    timezoneText: "Strefa czasowa"
+    currentText: "Teraz"
+    closeText: "Gotowe"
+    timeFormat: "hh:mm"
+    timeSuffix: ''
+    ampm: "0"
+    amNames: "AM,A"
+    pmNames: "PM,P"
+  datepicker:
+    closeText: "Gotowe"
+    prevText: "Poprzedni"
+    nextText: "Następny"
+    currentText: "Dziś"
+    monthNames: "Styczeń,Luty,Marzec,Kwiecień,Maj,Czerwiec,Lipiec,Sierpień,Wrzesień,Październik,Listopad,Grudzień"
+    monthNamesShort: "Sty,Lu,Mar,Kw,Maj,Cze,Lip,Sie,Wrz,Pa,Lis,Gru"
+    dayNames: "Niedziela,Poniedziałek,Wtorek,Środa,Czwartek,Piątek,Sobota"
+    dayNamesShort: "Nie,Pn,Wt,Śr,Czw,Pt,So"
+    dayNamesMin: "N,Pn,Wt,Śr,Cz,Pt,So"
+    weekHeader: "Tydz"
+    mask: 99-99-9999
+    maskFormat: dd-MM-yyyy
+    dateFormat: "dd-mm-yy"
+    firstDay: "1"
+    isRTL: "0"
+    showMonthAfterYear: "0"
+    yearSuffix: ''
+  errors:
+    messages:
+      unauthorized: Brak uprawnień
 
 # ============================================ Activerecord ============================================================= #
 
@@ -543,14 +612,31 @@ pl:
               blank: "Tytuł nie może być pusty"
             display_from:
               invalid: Przekracza datę do której ma być wyświetlana
+        mokio/lang:
+          attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
+            shortname:
+              taken: "Podana nazwa skrócona jest już zajęta"
+              blank: "Nazwa skrócona nie może być pusta"
         mokio/article:
           attributes:
             title:
               blank: "Tytuł nie może być pusty"
             display_from:
               invalid: Przekracza datę do której ma być wyświetlany
+        mokio/external_script:
+          attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
+        mokio/module_position:
+          attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
         mokio/mov_gallery:
           attributes:
+            name:
+              blank: "Nazwa nie może być pusta"
             title:
               blank: "Tytuł nie może być pusty"
             display_from:
@@ -559,9 +645,11 @@ pl:
           attributes:
             password:
               too_short: Hasło za krótkie ( min 8 znaków ).
+              blank: Nie podano hasła
             password_confirmation:
-              confirmation: Hasła nie zgadzają się
+              confirmation: Hasła się nie zgadzają
             email:
+              blank: Proszę wpisać adres email
               invalid: Podano nieprawidłowy adres e-mail
       editable:
         not_permitted: Edycja niedozwolona
@@ -580,9 +668,9 @@ pl:
         updated_at: Ostatnio edytowany
         lang_id: Język
         home_page: Strona Główna
-
+        tag_list: Tagi (oddzielone przecinkami)
       mokio/pic_gallery:
-        active: Włączony
+        active: Włączona
         intro: Wstęp
         content: Treść
         display_from: Wyświetlany od
@@ -593,9 +681,8 @@ pl:
         lang_id: Język
         home_page: Strona Główna
 
-
       mokio/mov_gallery:
-        active: Włączony
+        active: Włączona
         intro: Wstęp
         content: Treść
         display_from: Wyświetlany od
@@ -617,28 +704,29 @@ pl:
         updated_at: Ostatnio edytowany
         lang_id: Język
         home_page: Strona Główna
+        main_pic: Zdjęcie Główne
       mokio/external_script:
         name: Nazwa / Id
         script: Skrypt
       mokio/lang:
-        name: Tytuł
+        name: Nazwa
         shortname: Nazwa skrócona
         active: Włączony
       mokio/module_position:
         name: Nazwa / Id
         tpl: Szablon
       mokio/contact:
-        active: Włączony
+        active: Włączona
         content: Treść
         title: Tytuł
         type: Typ
         updated_at: Ostatnio edytowany
         lang_id: Język
         recipient_emails: Adresaci
+        home_page: Strona Główna
 
       mokio/contact_template:
         tpl: Szablon wiadomości
-
       mokio/gmap:
         full_address: Adres
 
@@ -663,7 +751,6 @@ pl:
         thumb: Miniaturka
         remote_data_file_url: Linki
         subtitle: Podtytuł
-
       mokio/youtube:
         name: Nazwa
         intro: Opis
@@ -703,4 +790,4 @@ pl:
         visible: Widoczny
         description: Opis
         parent_id: Element nadrzędny
-        target: Target
+        target: Okno docelowe

@@ -148,6 +148,23 @@ $inactive_color: #dddddd;
   display: none;
 }
 
+#box1View {
+  padding: 0px;
+}
+
+#box1View option, #fake-select li  {
+  word-wrap: break-all;
+  white-space: pre-wrap;
+  padding: 5px;
+  font-size: 12px;
+}
+
+#fake-select :nth-child(even), #box1View :nth-child(even){
+  background: #EBECEC;
+}
+
+
+
 .panel-body .form-group .select-box {
   height: 200px;
 
@@ -206,10 +223,11 @@ $inactive_color: #dddddd;
       
     }
     .displayed_false {
-      color: $inactive_color; 
+//      color: $inactive_color;
+      text-decoration: line-through;
    }
     .selected   {
-      background-color: $selectColor;
+      background-color: $selectColor !important;
     }
 
     .always_true {
@@ -222,6 +240,7 @@ $inactive_color: #dddddd;
 .warning {
   font-weight: bold;
   color: red;
+  padding-right: 7px;
 }
 .blank-delete  {
   display: inline-block;
@@ -232,7 +251,8 @@ $inactive_color: #dddddd;
 }
 
 .displayed_false {
-  color:$inactive_color ; 
+//  color:$inactive_color ;
+  text-decoration: line-through;
 }
 
 .form-group > .searchBox {
@@ -284,4 +304,7 @@ $inactive_color: #dddddd;
   .active_true:before, .active_false:before {
     left: 0px;
   }
+}
+.content_type, .updated {
+  padding-right: 6px;
 }

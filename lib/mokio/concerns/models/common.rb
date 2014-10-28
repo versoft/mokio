@@ -28,7 +28,7 @@ module Mokio
           # For Sunspot Solr:
           #
           if Mokio.solr_enabled
-            exceptions = Mokio::SolrConfig.exceptions # Classes which are excluded from indexing or have own searchable method
+            exceptions = Mokio::SolrConfig.all_exceptions # Classes which are excluded from indexing or have own searchable method
             
             unless exceptions.include? self.name.demodulize.downcase.to_sym
               searchable do # Columns where Sunspot knows which data use to index
@@ -82,7 +82,7 @@ module Mokio
         # Output for <b>lang_id</b> parameter, used in CommonController#index
         #
         def lang_id_view
-          return I18n.t('backend.' + Mokio::Lang.find(self.lang_id).name) unless self.lang_id.nil?
+          return Mokio::Lang.find(self.lang_id).name unless self.lang_id.nil?
           return I18n.t('backend.all') if self.lang_id.nil?
         end
 

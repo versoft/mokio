@@ -33,7 +33,9 @@
     .visible_false
       .menu_name
         = btc('menu_non_visible_legend', Mokio::Menu)
-
+    span.warning
+      | !
+    = '  ' + btc('exclamation_legend', Mokio::Menu)
 
 - content_for :js do
   = javascript_include_tag "backend/menu/jquery.ui.nestedSortable", :async => true

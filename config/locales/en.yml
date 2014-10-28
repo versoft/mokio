@@ -32,9 +32,9 @@ en:
   mokio/contact: Contact
   external_link: Url
   backend:
+    go_back: Go back
     site_preview: Your Site
     no_records_found: No records found
-    dashboard: Dashboard
     cancel: Cancel
     save: Save
     save_and_create_new: Save and new
@@ -61,6 +61,10 @@ en:
     external_link: External Url
     data_file: File
     thumb: Thumbnail
+    thumb_exit: Close
+    thumb_crop: Crop
+    thumb_rotate: Rotate
+    thumb_cuts: Cut
     you_are_here: You are here
     actions: Actions
     display_from_out_of_range: After display to date
@@ -84,7 +88,7 @@ en:
     polish: polish
     all: all
     size: Size 
-    wait: Proszę czekać
+    wait: Please wait
     content_not_in_menu: "Content not assigned to any menu"
     all_dashboard: "All:"
     back: "Back"
@@ -105,22 +109,29 @@ en:
     back_to_edit: "<a href='%{url}'>Back to edit.</a>"
     sign_up: Sign up
     sign_in: Sign in
+    logout: Logout
     change_password: Change Password
+    version: Version
+    dashboard: Dashboard
+    copy_suffix: (copy)
 
     sidebars:
+      dashboard: Dashboard
+      user: Admins
       sidebar_title: Sidebar
       content_management: Content management
-      add_content: Add content
-      article: Article
-      pic_galery: Photo Gallery
-      mov_galery: Movie Gallery
-      contact: Contact Page
+      all: All
+      article: Articles
+      pic_gallery: Photo Galleries
+      mov_gallery: Movie Galleries
+      contact: Contact Pages
       menu: Menu
-      modules: HTML blocks
-      comments: Comments
+      static_module: HTML Blocks
       module_position: Positions
       external_script: External script
-      lang: Language Management
+      lang: Languages
+      site_elements: Site elements
+      settings: Settings
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -141,7 +152,9 @@ en:
       contacts_new: New contact page
       contacts_edit: Edit contact page
       comments: Comments
-      users: Users
+      users: Admins
+      users_new: New admin
+      users_edit: Edit admin
       external_scripts: External script
       external_scripts_new: Add external script
       external_scripts_edit: Edit
@@ -151,12 +164,29 @@ en:
       langs:  Language Management
       langs_new: New language
       langs_edit: Edit language
+      edit_password: Change password
+      update_password: Change password
+      copy: Copy
+      dashboard: Dashboard
+      articles: Articles
+      pic_galleries: Photo Gallery
+      mov_galleries: Movie Gallery
+      contacts: Contact pages
+      new: New
+      create: New
+      edit: Edit
+      update: Edit
+      copy: Copy
+      show: Show
+      content_management: Content management
+      page_elements: Site elements
+      settings: Settings
 
   static_modules:
     actions: Actions
     active: Active
     edit_title: Edit HTML block
-    index_title: HTML block
+    index_title: HTML blocks
     index_add_new: Add HTML block
     lang_id: Language
     new_title: New HTML block
@@ -170,52 +200,55 @@ en:
     deleted: "HTML block <strong>'%{title}'</strong> has been deleted"
     update_active_true: "HTML block <strong>'%{title}'</strong> is active"
     update_active_false: "HTML block <strong>'%{title}'</strong> is not active"
-    
+    copy_title: Copy HTML block
+
   external_scripts:
-        name: Name / Id
-        actions: Actions
-        edit_title: Edit external script
-        index_title: External script
-        index_add_new: Add external script
-        new_title: New external script
-        title: Title
-        updated_at: Updated at
-        edit_title: Edit external script
-        created: "External script <strong>'%{title}'</strong> has been created"
-        updated: "External script <strong>'%{title}'</strong> has been saved"
-        deleted: "External script <strong>'%{title}'</strong> has been deleted"
-        copy_title: Copy external script
+    name: Name / Id
+    actions: Actions
+    edit_title: Edit external script
+    index_title: External script
+    index_add_new: Add external script
+    new_title: New external script
+    title: Title
+    updated_at: Updated at
+    edit_title: Edit external script
+    created: "External script <strong>'%{title}'</strong> has been created"
+    updated: "External script <strong>'%{title}'</strong> has been saved"
+    deleted: "External script <strong>'%{title}'</strong> has been deleted"
+    copy_title: Copy external script
 
   module_positions:
-        name: Name / Id
-        actions: Actions
-        edit_title: Edit position
-        index_title: Positions
-        index_add_new: Add position
-        new_title: New position
-        title: Title
-        updated_at: Updated at
-        edit_title: Edit position
-        created: "Position <strong>'%{title}'</strong> has been created"
-        updated: "Position code <strong>'%{title}'</strong> has been saved"
-        deleted: "Position code <strong>'%{title}'</strong> has been deleted"
-        copy_title: Copy position
+    name: Name / Id
+    actions: Actions
+    edit_title: Edit position
+    index_title: Positions
+    index_add_new: Add position
+    new_title: New position
+    title: Title
+    updated_at: Updated at
+    edit_title: Edit position
+    created: "Position <strong>'%{title}'</strong> has been created"
+    updated: "Position <strong>'%{title}'</strong> has been saved"
+    deleted: "Position <strong>'%{title}'</strong> has been deleted"
+    copy_title: Copy position
   langs:
-        name: Name
-        shortname: Short name
-        active: Active
-        actions: Actions
-        edit_title: Edit language
-        index_add_new: Add language
-        new_title: New language
-        index_title: Language settings
-        updated_at: Updated
-        edit_title: Edit language
-        created: "Language <strong>'%{title}'</strong> has been created"
-        updated: "Language <strong>'%{title}'</strong> has been saved"
-        deleted: "Language <strong>'%{title}'</strong> has been deleted"
-        copy_title: Copy language
-
+    name: Name
+    shortname: Short name
+    active: Active
+    actions: Actions
+    edit_title: Edit language
+    index_add_new: Add language
+    new_title: New language
+    index_title: Language settings
+    updated_at: Updated
+    edit_title: Edit language
+    created: "Language <strong>'%{title}'</strong> has been created"
+    updated: "Language <strong>'%{title}'</strong> has been saved"
+    deleted: "Language <strong>'%{title}'</strong> has been deleted"
+    copy_title: Copy language
+    not_deleted: "You can not remove the last language "
+    update_active_true: "Language <strong>'%{title}'</strong> is active"
+    update_active_false: "Language <strong>'%{title}'</strong> is not active"
   articles:
     active: Active
     actions: Actions
@@ -242,6 +275,7 @@ en:
     update_active_false: "Article <strong>'%{title}'</strong> is not active"
 
   menus:
+    content_assoc: Menu position
     slug: Link to menu
     no_slug: a link to the menu will be visible after saving the menu
     name: "name"
@@ -264,6 +298,7 @@ en:
     index_add_new: Add menu
     new_title: "New menu element"
     edit_title: "Edit menu element"
+    copy_title: "Copy menu element"
     save: Save
     save_and_create_new: "Save and new"
     content: content
@@ -277,12 +312,21 @@ en:
     menu_non_active_legend: "Inactive menu position - url doesn't work"
     menu_visible_legend: "Visible menu position"
     menu_non_visible_legend: "Invisible menu position"
-    exclamation_legend: "Menu without any content"
+    exclamation_legend: "Menu position without content or with content that is non-active or non-displayed - blank page appears when using this menu position."
     path: Path
     legend: Legend
     type: Type
+    filter: filter ...
 
   pic_galleries:
+    active: Active
+    actions: Actions
+    type: Type
+    index_title: Picture galleries
+    index_add_new: Add new picture gallery
+    lang_id: Language
+    title: Title
+    updated_at: Updated at
     cannot_add_files_now: "Adding photos will be allowed after saving the gallery"
     created: "Gallery <strong>'%{title}'</strong> has been created. You can now add photos."
     created_and_new: "Gallery <strong>'%{title}'</strong> has been created"
@@ -301,8 +345,15 @@ en:
     update_active_true: "Gallery <strong>'%{title}'</strong> is active"
     update_active_false: "Gallery <strong>'%{title}'</strong> is not active"
 
-
   mov_galleries:
+    active: Active
+    actions: Actions
+    type: Type
+    index_title: Movie galleries
+    index_add_new: Add new movie gallery
+    lang_id: Language
+    title: Title
+    updated_at: Updated at
     cannot_add_files_now: "Adding movies will be allowed after saving the gallery"
     created: "Gallery <strong>'%{title}'</strong> has been created. You can now add movies."
     created_and_new: "Gallery <strong>'%{title}'</strong> has been created"
@@ -325,6 +376,14 @@ en:
     active: Active
     actions: Actions
     edit_title: Edit contact page
+    type: Type
+    index_title: Contact pages
+    index_add_new: Add new contact page
+    lang_id: Language
+    title: Title
+    updated_at: Updated at
+    active: Active
+    actions: Actions
     article_type: Type
     title: Title
     updated_at: Updated at
@@ -338,6 +397,10 @@ en:
     update_active_false: "Contact page <strong>'%{title}'</strong> is not inactive."
     tpl: Message template
     form_data: Form data
+    form_name: Name or company
+    form_email: E-mail address
+    form_title: Title
+    form_content: Content
 
   contents:
     edit_gallery_content: Edit content
@@ -366,6 +429,8 @@ en:
     type: Type
     add_tag: Add
     tags: Tags
+    copy_title: Copy content
+    comma_separated: "comma separated"
     types:
       Mokio::PicGallery: Photo Gallery
       Mokio::Article: Article
@@ -433,52 +498,30 @@ en:
     auto_completed: Meta tags were automatically filed in.
 
   gmaps:
-    gmap: Mapa google
-
-  comments:
-    title: Title
-    comment: Comment
-    commentable: Commented content
-    status: Status
-    user_id: User
-    created_at: Created at
-    update_accept_true: Comment has been accepted
-    update_accept_false: Comment has been rejected
-    deleted: Comment has been deleted
-    index_title: Comments management
-    accept_all: Accept all
-    reject_all: Reject all
-    delete_rejected: Delete rejected
-    accept_all_true: All comments have been accepted
-    accept_all_false: Comments have NOT been accepted
-    reject_all_true: All comments have been rejected
-    reject_all_false: Comments have NOT been rejected
-    delete_rejected_true: Rejected comments have been deleted
-    delete_rejected_false: Not all rejected comments have been deleted
-
+    gmap: Google map
   users:
-    index_add_new: Add new user
-    index_title: Users
-    new_title: New user
-    new_user: New user
+    index_add_new: Add new admin
+    index_title: Admins
+    new_title: New admin
+    new_user: New admin
     add_user: Add
-    edit_user: Edit user
+    edit_user: Edit admin
     save_user: Save
-    copy_title: Copy user
-    edit_title: Edit user
-    created: "User <strong>'%{title}'</strong> has been created"
-    updated: "User <strong>'%{title}'</strong> has been saved"
-    deleted: "User <strong>'%{title}'</strong> has been deleted"
-    not_created: "User <strong>'%{title}'</strong> has NOT been created"
-    not_updated: "User <strong>'%{title}'</strong> has NOT been saved"
-    not_deleted: "User <strong>'%{title}'</strong> has NOT been deleted"
+    copy_title: Copy admin
+    edit_title: Edit admin
+    created: "Admin <strong>'%{title}'</strong> has been created"
+    updated: "Admin <strong>'%{title}'</strong> has been saved"
+    deleted: "Admin <strong>'%{title}'</strong> has been deleted"
+    not_created: "Admin <strong>'%{title}'</strong> has NOT been created"
+    not_updated: "Admin <strong>'%{title}'</strong> has NOT been saved"
+    not_deleted: "Admin <strong>'%{title}'</strong> has NOT been deleted"
     roles:  Roles
     role_name:
       admin: Administrator
       content_editor: Content management
       menu_editor: Menu management
       static_module_editor: HTML block management
-      user_editor: Users management
+      user_editor: Admins management
       comment_approver: Comment approve
       reader: Reader
     edit_password: Change password
@@ -503,45 +546,97 @@ en:
     module_position_nav_text: Add a position that later can be user for putting HTML block or menu on the page.
     external_script_nav_title: External script
     external_script_nav_text: Add custom javascript to your page.
-    user_nav_title: Users management
-    user_nav_text: "Add, delete or edit users."
-
+    user_nav_title: Admins management
+    user_nav_text: "Add, delete or edit admins."
+  timepicker:
+    timeOnlyTitle: "Select time"
+    timeText: "Time"
+    hourText: "Hour"
+    minuteText: "Minute"
+    secondText: "Second"
+    millisecText: "Milisecond"
+    timezoneText: "Time Zone"
+    currentText: "Now"
+    closeText: "Done"
+    timeFormat: "hh:mm"
+    timeSuffix: ''
+    ampm: "0"
+    amNames: "AM,A"
+    pmNames: "PM,P"
+  datepicker:
+    closeText: "Done"
+    prevText: "Prev"
+    nextText: "Next"
+    currentText: "Today"
+    monthNames: "January,February,March,April,May,June,July,August,September,October,November,December"
+    monthNamesShort: "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+    dayNames: "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
+    dayNamesShort: "Sun,Mon,Tue,Wed,Thu,Fri,Sat"
+    dayNamesMin: "Su,Mo,Tu,We,Th,Fr,Sa"
+    weekHeader: "Wk"
+    mask: "99/99/9999"
+    maskFormat: "MM/dd/yyyy"
+    dateFormat: "mm/dd/yy"
+    firstDay: "0"
+    isRTL: "0"
+    showMonthAfterYear: "0"
+    yearSuffix: ''
+  errors:
+    messages:
+      unauthorized: You are not authorized to perform this action
 
 # ============================================ Activerecord ============================================================= #    
 
   activerecord:
     errors:
       models:
-        contact:
+        mokio/contact:
           attributes:
             title:
               blank: "Title cannot be blank"
-        menu:
+        mokio/menu:
           attributes:
             name:
               blank: "Name cannot be blank"
             lang:
               not_match_parent: "Chosen parent element doesn't match chosern language"
-        static_module:
+        mokio/static_module:
           attributes:
             title:
               blank: "Title cannot be blank"
             display_from:
               invalid: Exceeds 'Display to' date.
-        pic_gallery:
+        mokio/pic_gallery:
           attributes:
             title:
               blank: "Title cannot be blank"
             display_from:
               invalid: Exceeds 'Display to' date
-        article:
+        mokio/lang:
+          attributes:
+            name:
+              blank: "Name cannot be blank"
+            shortname:
+              taken: Given short name is already used
+              blank: "Short name cannot be blank"
+        mokio/article:
           attributes:
             title:
               blank: "Title cannot be blank"
             display_from:
               invalid: Exceeds 'Display to' date
-        mov_gallery:
+        mokio/external_script:
           attributes:
+            name:
+              blank: "Name cannot be blank"
+        mokio/module_position:
+          attributes:
+            name:
+              blank: "Name cannot be blank"
+        mokio/mov_gallery:
+          attributes:
+            name:
+              blank: "Name cannot be empty"
             title:
               blank: "Title cannot be blank"
             display_from:
@@ -550,9 +645,11 @@ en:
           attributes:
             password:
               too_short: Password too short (min 8 characters).
+              blank: The password is not given
             password_confirmation:
               confirmation: Passwords do not match
             email:
+              blank: Email cannot be empty
               invalid: Provided an incorrect e-mail address
       editable:
         not_permitted: Edit not allowed
@@ -560,7 +657,7 @@ en:
         record_invalid: Incorrect record 
 
     attributes:
-      contents:
+      mokio/contents:
         active: Active
         intro: Introduction
         content: Content
@@ -572,7 +669,7 @@ en:
         lang_id: Language
         home_page: Home page
         tag_list: Tags (sepparated by commas)
-      pic_gallery:
+      mokio/pic_gallery:
         active: Active
         intro: Introduction
         content: Content
@@ -584,7 +681,7 @@ en:
         lang_id: Language
         home_page: Home page
 
-      mov_gallery:
+      mokio/mov_gallery:
         active: Active
         intro: Introduction
         content: Content
@@ -596,19 +693,29 @@ en:
         lang_id: Language
         home_page: Home page
 
-      article:
+      mokio/article:
         active: Active
         intro: Introduction
         content: Content
         display_from: Displayed from
         display_to: Displayed to
         title: Title
-        type: Typ
-        updated_at: Ostatnio edytowany
+        type: Type
+        updated_at: Updated at
         lang_id: Language
         home_page: Home page
-
-      contact:
+        main_pic: Main Photo
+      mokio/external_script:
+        name: Name / Id
+        script: Script
+      mokio/lang:
+        name: Name
+        shortname: Short name
+        active: Active
+      mokio/module_position:
+        name: Name / Id
+        tpl: Template
+      mokio/contact:
         active: Active
         content: Content
         title: Title
@@ -616,14 +723,14 @@ en:
         updated_at: Updated at
         lang_id: Language
         recipient_emails: Recipients
+        home_page: Home Page
 
-      contact_template:
+      mokio/contact_template:
         tpl: Message template
-        
-      gmap:
+      mokio/gmap:
         full_address: Address
 
-      static_module:
+      mokio/static_module:
         active: Active
         intro: Introduction
         content: Content
@@ -635,17 +742,16 @@ en:
         updated_at: Updated at
         lang_id: Language
 
-      photo:
+      mokio/photo:
         name: Name
         intro: Description
         active: Active
         external_link: External url
         data_file: File
         thumb: Thumbnail
-        remote_data_file_url: Linki
-        subtitle: Podtytuł
-      
-      youtube:
+        remote_data_file_url: Links
+        subtitle: Subtitle
+      mokio/youtube:
         name: Name
         intro: Description
         active: Active
@@ -655,7 +761,7 @@ en:
         add_own_thumb: Add your own thumb
         subtitle: Subtitle
 
-      meta:
+      mokio/meta:
         g_title: Title
         g_desc: Description
         g_keywords: Keywords
@@ -668,7 +774,7 @@ en:
         f_url: Page url
         f_desc: Description
 
-      user:
+      mokio/user:
         password: Password
         remember_me: Remember me
         email: E-mail
@@ -676,3 +782,12 @@ en:
       messages:
         record_invalid : "Incorrect record"
 
+      mokio/menu:
+        lang_id: Language
+        name: Name
+        external_link: Url
+        active: Active
+        visible: Visible
+        description: Description
+        parent_id: Parent element
+        target: Target

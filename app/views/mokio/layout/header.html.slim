@@ -1,5 +1,9 @@
 .navbar
+
   .navbar-inner
+    .version-nr
+      = "#{bt("version")}: "
+      = Mokio::VERSION
     .container-fluid
       a.brand#logo href=root_path title="MOKIO - CMS Open Source" target="_blank" 
         img src=asset_path("backend/mokio-logo.svg") alt="Logo MOKIO"

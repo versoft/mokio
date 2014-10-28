@@ -42,14 +42,17 @@ class Ability
       can :manage, [Mokio::StaticModule]  
     end
     if user.has_role? :user_editor
-      can :manage, [Mokio::User]  
-    end
-    if user.has_role? :comment_approver
-      can :manage, [Mokio::Comment]  
+      can :manage, [Mokio::User]
     end
     if user.has_role? :reader
-      can :read, :all 
+      can :read, :all
     end
+
+    can :edit_password, Mokio::User
+    can :update_password, Mokio::User
+
+
+
   end
 end
 

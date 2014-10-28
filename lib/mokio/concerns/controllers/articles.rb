@@ -8,7 +8,14 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
+
         end
+
+        def set_breadcrumbs_prefix
+          @breadcrumbs_prefix = "content_management"
+          @breadcrumbs_prefix_link = "contents"
+        end
+
 
         private
           #

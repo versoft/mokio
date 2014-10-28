@@ -10,7 +10,7 @@ module Mokio
         included do
           has_and_belongs_to_many :static_modules, :join_table => "mokio_available_modules"
           accepts_nested_attributes_for :static_modules
-
+          validates :name , presence: true
           amoeba do
             include_field :static_modules
           end
@@ -25,6 +25,10 @@ module Mokio
           end
         end
 
+        def name_view
+          (ActionController::Base.helpers.link_to self[:name], ApplicationController.helpers.edit_url(self.class.base_class, self)).html_safe
+        end
+
         def editable
           true
         end
@@ -32,6 +36,13 @@ module Mokio
         def deletable
           true
         end
+
+      #
+      # Specify what's showed in breadcrumb
+      #
+      def breadcrumb_name
+        name
+      end
 
       end
     end

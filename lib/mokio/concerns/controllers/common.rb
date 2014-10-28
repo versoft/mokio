@@ -52,6 +52,8 @@ module Mokio
           load_and_authorize_resource
         end
 
+
+
         #
         # Index action renders <b>json</b> with parameters to jquery.datatables
         #
@@ -154,6 +156,9 @@ module Mokio
         def copy
           create_obj(obj.amoeba_dup)
           build_enabled(obj)
+
+          #add (copy) suffix to name/title, etc.
+          obj.send(obj.class.columns_for_table[0] + '=',  obj.send(obj.class.columns_for_table[0]) + I18n.t('backend.copy_suffix'))
         end
 
         #

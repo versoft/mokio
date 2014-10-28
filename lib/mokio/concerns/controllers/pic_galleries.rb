@@ -29,6 +29,11 @@ module Mokio
           end
         end
 
+        def set_breadcrumbs_prefix
+          @breadcrumbs_prefix = "content_management"
+          @breadcrumbs_prefix_link = "contents"
+        end
+
         private
           #
           # Never trust parameters from the scary internet, only allow the white list through.

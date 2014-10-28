@@ -1,0 +1,43 @@
+- content_for :js do
+  javascript:
+    $.timepicker.regional['#{I18n.default_locale}'] = {
+      currentText: "#{I18n.t("timepicker.currentText")}",
+      closeText: "#{I18n.t("timepicker.closeText")}",
+      ampm: Boolean(parseInt("#{I18n.t("timepicker.ampm")}")),
+      amNames: "#{I18n.t("timepicker.amNames")}".split(","),
+      pmNames: "#{I18n.t("timepicker.pmNames")}".split(","),
+      timeFormat: "#{I18n.t("timepicker.timeFormat")}",
+      timeSuffix: "#{I18n.t("timepicker.timeSuffix")}",
+      timeOnlyTitle: "#{I18n.t("timepicker.timeOnlyTitle")}",
+      timeText: "#{I18n.t("timepicker.timeText")}",
+      hourText: "#{I18n.t("timepicker.hourText")}",
+      minuteText: "#{I18n.t("timepicker.minuteText")}",
+      secondText: "#{I18n.t("timepicker.secondText")}",
+      millisecText: "#{I18n.t("timepicker.millisecText")}",
+      timezoneText: "#{I18n.t("timepicker.timezoneText")}"
+    };
+
+    $.datepicker.regional['#{I18n.default_locale}'] = {
+      closeText: "#{I18n.t("datepicker.closeText")}",
+      prevText: "#{I18n.t("datepicker.prevText")}",
+      nextText: "#{I18n.t("datepicker.nextText")}",
+      currentText: "#{I18n.t("datepicker.currentText")}",
+      monthNames: "#{I18n.t("datepicker.monthNames")}".split(","),
+      monthNamesShort: "#{I18n.t("datepicker.monthNamesShort")}".split(","),
+      dayNames: "#{I18n.t("datepicker.dayNames")}".split(","),
+      dayNamesShort: "#{I18n.t("datepicker.dayNamesShort")}".split(","),
+      dayNamesMin: "#{I18n.t("datepicker.dayNamesMin")}".split(","),
+      weekHeader: "#{I18n.t("datepicker.weekHeader")}",
+      dateFormat: "#{I18n.t("datepicker.dateFormat")}",
+      firstDay: parseInt("#{I18n.t("datepicker.firstDay")}"),
+      isRTL: Boolean(parseInt("#{I18n.t("datepicker.isRTL")}")),
+      showMonthAfterYear: Boolean(parseInt("#{I18n.t("datepicker.showMonthAfterYear")}")),
+      yearSuffix: "#{I18n.t("datepicker.yearSuffix")}"
+    };
+
+    $.timepicker.setDefaults($.timepicker.regional["#{I18n.default_locale}"]);
+    $.datepicker.setDefaults($.datepicker.regional["#{I18n.default_locale}"]);
+
+    $('.mask-date').mask("#{I18n.t("datepicker.mask")}").attr('data-format', "#{I18n.t("datepicker.dateFormat")}");
+    $('.mask-date').datetimepicker({dateFormat: "#{I18n.t("datepicker.dateFormat")}"});
+    $(".mask-date").parent().append("<span class='add-on calendar'><span class='icomoon-icon-calendar'></span></span>'");

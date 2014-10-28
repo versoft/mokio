@@ -37,6 +37,7 @@
             .span3
               .edit_view_img_container
                 = bt("thumb", photo.class)
+                br
                 - if photo.thumb.blank?
                   img.edit_view_img alt=photo.name src=(photo.data_file.url(photo.thumb_name) )
                 - else

@@ -39,6 +39,9 @@ Gem::Specification.new do |s|
 
     Beside Mokio itself, there are various gems dedicated for Mokio, that
     extends its core functionality.
+
+    Visit: http://www.mokio.org
+    Folow us on facebook: https://www.facebook.com/mokioCMS
   EOF
 
   s.files       = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc", "CHANGELOG"]

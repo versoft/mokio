@@ -11,15 +11,26 @@ module Mokio
 
           validates :name, presence: true
           validates :script, presence: true
+          if Mokio.solr_enabled
+            searchable do
+              text :name
+              text :script
+            end
+          end
         end
+
 
         module ClassMethods
           #
           # Columns for table in CommonController#index view
           #
           def columns_for_table
-            ["code", "script"]
+            ["name", "script"]
           end
+        end
+
+        def name_view
+          (ActionController::Base.helpers.link_to self[:name], ApplicationController.helpers.edit_url(self.class.base_class, self)).html_safe
         end
 
         def code_view

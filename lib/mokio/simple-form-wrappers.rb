@@ -75,7 +75,7 @@ SimpleForm.setup do |config|
 
     b.use :label_text, :wrap_with => { :tag => 'label', :class => 'form-label span2' }
     b.wrapper :tag => 'div', :class => 'span2' do |ba|
-      ba.use :input, :wrap_with => { :tag => 'div', :class => 'input-append' }
+      ba.use :input, :wrap_with => { :tag => 'div', :class => 'input-append input-datepicker' }
       ba.use :error, :wrap_with => { :tag => 'label', :class => 'error' }
       ba.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
     end

@@ -1,4 +1,4 @@
 - @photos.each do |photo|
   $("#itemContainer").append("#{j render :template => 'mokio/backend/photos/photo', :locals => {photo: photo} }");
-  activeButtonForPhoto(#{photo.id})
+  activeButtonForPhoto(#{photo.id});
 $("#myModalLabel2 .loader").remove();

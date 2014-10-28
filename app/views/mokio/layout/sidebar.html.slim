@@ -10,65 +10,40 @@
         li.dashboard_nav
           a href=root_path 
             span.icon16.icomoon-icon-screen-2
-            = bt("dashboard")
-        - if can? :manage, Mokio::Content
-          li.contentmanagment_nav
-            a href=contents_path 
-              span.icon16.icomoon-icon-stats-up
-              = bt("content_management", "backend.sidebar")
-        - if can? :create, Mokio::Content
-          li.content_nav
-            a href="#" 
-              span.icon16.icomoon-icon-list-view-2
-              = bt("add_content", "backend.sidebar")
+            = bts("dashboard")
+        /  MENU
+        = sidebar_btn Mokio::Menu, "icomoon-icon-menu-2"
+        /  CONTENT MANAGEMENT
+        - if (can? :manage, Mokio::Content) || (can? :create, Mokio::Content)
+          li.contents_nav
+            a href="#"
+              span.icon16.minia-icon-pencil-2
+              = bts("content_management")
             ul.sub#add_content
-              li
-                a href=new_article_path 
-                  span.icon16.icomoon-icon-pencil
-                  = bt("article", "backend.sidebar")
-              li
-                a href=new_pic_gallery_path 
-                  span.icon16.icomoon-icon-picture
-                  = bt("pic_galery", "backend.sidebar")
-              li
-                a href=new_mov_gallery_path 
-                  span.icon16.icomoon-icon-movie
-                  = bt("mov_galery", "backend.sidebar")
-              li
-                a href=new_contact_path 
-                  span.icon16.icomoon-icon-mail-3
-                  = bt("contact", "backend.sidebar")
-        - if can? :manage, Mokio::Menu
-          li.menu_nav
-            a href=menus_path 
-              span.icon16.icomoon-icon-menu-2
-              = bt("menu", "backend.sidebar")
-        - if can? :manage, Mokio::StaticModule
-          li.static_module_nav
-            a href=static_modules_path 
-              span.icon16.icomoon-icon-cube
-              = bt("modules", "backend.sidebar")
-        - if can? :manage, Mokio::ModulePosition
-          li.module_position_nav
-            a href=module_positions_path
-              span.icon16.icomoon-icon-grid-view
-              = bt("module_position", "backend.sidebar")
-        - if can? :manage, Mokio::ExternalScript
-          li.external_script_nav
-            a href=external_scripts_path
-              span.icon16.icomoon-icon-embed
-              = bt("external_script", "backend.sidebar")
-          - if can? :manage, Mokio::Lang
-            li.lang_nav
-              a href=langs_path
-                span.icon16.icomoon-icon-info
-                = bt("lang", "backend.sidebar")
-        - if can? :manage, Mokio::User
-          li.user_nav
-            a href=users_path 
-              span.icon16.entypo-icon-users
-              = bt("users", "backend.sidebar")
-            
+              = sidebar_btn Mokio::Content, "icomoon-icon-list-view-2", bts("all"), false
+              = sidebar_btn Mokio::Article, "icomoon-icon-file"
+              = sidebar_btn Mokio::PicGallery, "icomoon-icon-picture"
+              = sidebar_btn Mokio::MovGallery, "icomoon-icon-movie"
+              = sidebar_btn Mokio::Contact, "icomoon-icon-mail-3"
+        /  SITE ELEMENTS
+        - if can? :create, Mokio::Content
+          li.site_elements_nav
+            a href="#"
+              span.icon16.icomoon-icon-puzzle
+              = bts("site_elements")
+            ul.sub#site_elements
+              = sidebar_btn Mokio::ModulePosition, "icomoon-icon-grid-view"
+              = sidebar_btn Mokio::StaticModule, "icomoon-icon-cube"
+              = sidebar_btn Mokio::ExternalScript, "icomoon-icon-embed"
+          /  SETTINGS
+        - if can? :manage, :all
+          li.settings_nav
+            a href="#"
+              span.icon16.minia-icon-cog
+              = bts("settings")
+            ul.sub#settings
+              = sidebar_btn Mokio::User, "entypo-icon-users"
+              = sidebar_btn Mokio::Lang, "brocco-icon-earth"
   - if @obj_class == Mokio::Content && params[:action] == "index"
     = render :partial => "mokio/contents/content_info_widget"
 

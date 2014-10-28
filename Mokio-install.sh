@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVELOPMENT_MODE=true       # true for mokio in development
+DEVELOPMENT_MODE=false      # true for mokio in development
 LOGFILE="mokio-install.log" # Simple user does not need to see all standard output informations
 ADAPTERS=(mysql2 sqlite3)   # Database adapters
 RAILS_VERSION="=4.1.1"      # Currently used rails version with Mokio gem is 4.1.1 (may change still in development)
@@ -192,7 +192,7 @@ esac
   }
 
   function install_libraries() {
-    local libs="libmagickwand-dev libxslt1-dev libxml2-dev nodejs curl imagemagick"
+    local libs="libmagickwand-dev libxslt1-dev libxml2-dev nodejs curl imagemagick build-essential dpkg-dev fakeroot git-core libalgorithm-diff-perl"
 
     if [[ $(getOS) =~ "Ubuntu" || $(getOS) =~ "Debian" ]]; then
       apt_get_install $libs
@@ -276,6 +276,8 @@ esac
     source ~/.bash_profile
     . ~/.bash_profile
     /bin/bash -c 'source ~/.bash_profile'
+    source ~/.bashrc
+    . ~/.bashrc
   }
 #
 # ============================== RVM & Ruby & Rails ==================================
@@ -300,7 +302,7 @@ esac
   }
 
   function get_rails() {
-    gem install rails --version "$RAILS_VERSION"
+    gem install rails --no-rdoc --no-ri --version "$RAILS_VERSION"
   }
 #
 # ============================ Creating Application ==================================
@@ -421,10 +423,10 @@ esac
 
   function create_db_config() {
     if [[ $DATABASE = "mysql2" ]]; then
-      if [[ $(check_msql2_server) != "not_installed" ]]; then
-        devname=$APP_NAME"_dev"
+      check_msql2_server
+      devname=$APP_NAME"_dev"
 
-        echo -e "development:
+      echo -e "development:
       adapter: mysql2
       encoding: utf8
       database: $devname
@@ -432,51 +434,17 @@ esac
       username: $devname
       password: $devname
       socket: /var/run/mysqld/mysqld.sock" > $DATABASE_YML
-      fi
     fi
   }
 #
 # ======================= Mysql2 ==============================================
 # 
   function check_msql2_server() {
-    if [[ $(getOS) =~ "Ubuntu" || $(getOS) =~ "Debian" ]]; then
-      if [[ $(apt_get_package_status mysql-server) != "installed" ]]; then
-        echo "mysql-server packages are not installed. Install now? (y/n)"
-        read install_myslq
-
-        if [[ $install_myslq = "y" ]]; then
-          apt_get_install_mysql_server
-        else
-          echo "not_installed"
-        fi
-      fi
-
-      if [[ $(apt_get_package_status libmysql-ruby) != "installed" ]]; then
-        echo "mysql-server packages are not installed. Install now? (y/n)"
-        read install_myslq
-
-        if [[ $install_myslq = "y" ]]; then
-          apt_get_install_mysql_server
-        else
-          echo "not_installed"
-        fi
-      fi
-
-      if [[ $(apt_get_package_status libmysqlclient-dev) != "installed" ]]; then
-        echo "mysql-server packages are not installed. Install now? (y/n)"
-        read install_myslq
-
-        if [[ $install_myslq = "y" ]]; then
-          apt_get_install_mysql_server
-        else
-          echo "not_installed"
-        fi
-      fi
-    fi
+    apt_get_install_mysql_server
   }
 
   function apt_get_install_mysql_server() {
-    sudo apt-get install mysql-server libmysqlclient-dev libmysql-ruby
+    sudo apt-get install mysql-client libmysqlclient-dev mysql-server
   }
 #
 # ======================= After creating application =========================

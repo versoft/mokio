@@ -8,6 +8,7 @@ Mokio::Engine.routes.draw do
       resources :menus do 
         member do
           get :update_menu_breadcrumps
+          get :copy
         end
 
         collection do
@@ -28,6 +29,7 @@ Mokio::Engine.routes.draw do
       
       resources :users do
         member do
+          get :copy
           get :edit_password
           patch :update_password
         end
@@ -47,17 +49,34 @@ Mokio::Engine.routes.draw do
         end
       end
 
-      resources :articles,      only: [:new, :create, :update]
-      resources :pic_galleries, only: [:new, :create, :update]
-      resources :mov_galleries, only: [:new, :create, :update]
-      resources :contacts,      only: [:new, :create, :update]
-      get '/articles'      => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
-      get '/pic_galleries' => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
-      get '/mov_galleries' => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
-      get '/contacts'      => redirect("#{Mokio::Engine.routes.url_helpers.root_path}contents")
+      resources :articles do
+        member do
+          get  :copy
+          post :update_active
+        end
+      end
 
-      # TODO: do we realy want it?
-      # content_children_routes()
+      resources :pic_galleries do
+        member do
+          get  :copy
+          post :update_active
+        end
+      end
+
+      resources :mov_galleries do
+        member do
+          get  :copy
+          post :update_active
+        end
+      end
+
+      resources :contacts do
+        member do
+          get  :copy
+          post :update_active
+        end
+      end
+
 
       #
       # data_files routes
@@ -105,7 +124,7 @@ Mokio::Engine.routes.draw do
       #
       resources :external_scripts do
         member do
-          get :update_active
+          post :update_active
           get  :copy
 
         end
@@ -121,7 +140,7 @@ Mokio::Engine.routes.draw do
 
       resources :langs do
         member do
-          get :update_active
+          post :update_active
           get :copy
         end
       end
