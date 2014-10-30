@@ -304,7 +304,7 @@ module Mokio
         #
         raise Exceptions::IsNotMenuRootError.new(:id, initial_id) if root.ancestry
         html = ""
-        h do |item|
+        root.children.each do |item|
           html << build_items_with_css(item, limit, 1,css_c) if (item.name == position || item.id == position) && item.children.present? && item.active
         end
         html.html_safe
