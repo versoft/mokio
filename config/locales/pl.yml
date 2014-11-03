@@ -308,11 +308,11 @@ pl:
     content_remove_confirm: Czy chcesz odłączyć od menu wszystkie treści z innego języka niż nowowybrany?
     modules_remove_confirm: Czy chcesz odłączyć wszystkie bloki HTML z innego języka niż nowowybrany?
     confirm: Czy na pewno chcesz skasować ten element menu?
-    menu_active_legend: "Aktywna pozycja menu - link działa"
-    menu_non_active_legend: "Nieaktywna pozycja menu - link nie działa"
-    menu_visible_legend: "Wyświetlana pozycja menu"
-    menu_non_visible_legend: "Niewyświetlana pozycja menu"
-    exclamation_legend: "Pozycja menu bez podłączonej treści lub z podłączoną treścią, która jest nieaktywna bądź nie jest aktualnie wyświetlana - po wejściu na niniejszą zakładkę zostanie wyświetlona pusta strona"
+    menu_active_legend: "Aktywny element menu - link działa"
+    menu_non_active_legend: "Nieaktywny element menu - link nie działa"
+    menu_visible_legend: "Wyświetlany element menu"
+    menu_non_visible_legend: "Niewyświetlany element menu"
+    exclamation_legend: "Element menu bez podłączonej treści lub z podłączoną treścią, która jest nieaktywna bądź nie jest aktualnie wyświetlana - po wejściu na niniejszą zakładkę zostanie wyświetlona pusta strona"
     path: Ścieżka
     legend: Legenda
     type: Typ
