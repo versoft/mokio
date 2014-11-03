@@ -397,6 +397,10 @@ pl:
     update_active_false: "Strona kontaktowa <strong>'%{title}'</strong> jest teraz nieaktywna."
     tpl: Szablon wiadomości
     form_data: Dane z formularza
+    form_name: Imię i nazwisko lub nazwa firmy
+    form_email: Adres e-mail
+    form_title: Tytuł
+    form_content: Treść
 
   contents:
     edit_gallery_content: Edytuj treść
@@ -613,6 +617,7 @@ pl:
             name:
               blank: "Nazwa nie może być pusta"
             shortname:
+              taken: "Podana nazwa skrócona jest już zajęta"
               blank: "Nazwa skrócona nie może być pusta"
         mokio/article:
           attributes:

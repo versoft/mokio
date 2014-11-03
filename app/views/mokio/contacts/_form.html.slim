@@ -11,12 +11,6 @@
       = t('menus.content_assoc')
     .span10
       =collection_select(:contact, :menu_ids,menu_select_grouped(Mokio::Menu.all.includes(:content_links).arrange(:order => :seq)),:id,:name, {disabled: lambda{|s| s.fake.present? },selected:obj.menus.map {|j| j.id} },:multiple => true)
-    javascript:
-      $(document).ready(function () {
-        $('#article_menu_ids').attr("size", function () {
-          return this.options.length;
-        });
-      });
 
 
 .contaner
@@ -33,16 +27,16 @@
           ul.unstyled
             li
               span.icon16.icomoon-icon-arrow-right-2
-              = "%name% - Imię i nazwisko lub nazwa firmy"
+              = "%name% - #{t('contacts.form_name')}"
             li
               span.icon16.icomoon-icon-arrow-right-2
-              = "%email% - Adres e-mail"
+              = "%email% - #{t('contacts.form_email')}"
             li
               span.icon16.icomoon-icon-arrow-right-2
-              = "%title% - Tytuł"
+              = "%title% - #{t('contacts.form_title')}"
             li
               span.icon16.icomoon-icon-arrow-right-2
-              = "%content% - Treść"
+              = "%content% - #{t('contacts.form_content')}"
 
       = t.input :tpl, :label => "",  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 300} }
    

@@ -227,7 +227,7 @@ $inactive_color: #dddddd;
       text-decoration: line-through;
    }
     .selected   {
-      background-color: $selectColor;
+      background-color: $selectColor !important;
     }
 
     .always_true {
