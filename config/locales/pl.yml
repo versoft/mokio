@@ -140,9 +140,9 @@ pl:
       menus: Zarządzanie menu
       menus_edit: Edycja elementu menu
       menus_new: Nowy element menu
-      static_modules: Bloki HTML
-      static_modules_edit: Edycja bloku HTML
-      static_modules_new: Nowy blok HTML
+      static_modules: Bloki
+      static_modules_edit: Edycja bloku
+      static_modules_new: Nowy blok
       articles_new: Nowy artykuł
       articles_edit: Edycja artykułu
       pic_galleries_new: Nowa galeria zdjęć
@@ -185,22 +185,22 @@ pl:
   static_modules:
     actions: Akcje
     active: Włączony
-    edit_title: Edytuj blok HTML
-    index_title: Bloki HTML
-    index_add_new: Dodaj nowy blok HTML
+    edit_title: Edytuj blok
+    index_title: Bloki
+    index_add_new: Dodaj nowy blok
     lang_id: Język
-    new_title: Nowy blok HTML
+    new_title: Nowy blok
     position: Pozycja
     title: Tytuł
     module_position_ids: Pozycje
     updated_at: Uaktualniono
-    edit_title: Edytuj blok HTML
-    created: "Blok HTML <strong>'%{title}'</strong> został utworzony."
-    updated: "Blok HTML <strong>'%{title}'</strong> został poprawnie edytowany."
-    deleted: "Blok HTML <strong>'%{title}'</strong> został usunięty."
-    update_active_true: "Blok HTML <strong>'%{title}'</strong> jest teraz aktywny."
-    update_active_false: "Blok HTML <strong>'%{title}'</strong> jest teraz nieaktywny."
-    copy_title: Kopiuj blok HTML
+    edit_title: Edytuj blok
+    created: "Blok <strong>'%{title}'</strong> został utworzony."
+    updated: "Blok <strong>'%{title}'</strong> został poprawnie edytowany."
+    deleted: "Blok <strong>'%{title}'</strong> został usunięty."
+    update_active_true: "Blok <strong>'%{title}'</strong> jest teraz aktywny."
+    update_active_false: "Blok <strong>'%{title}'</strong> jest teraz nieaktywny."
+    copy_title: Kopiuj blok
 
   external_scripts:
     name: Nazwa / id
@@ -317,6 +317,7 @@ pl:
     legend: Legenda
     type: Typ
     filter: wyszukaj treść ...
+    blocks: Bloki
 
   pic_galleries:
     active: Włączona
@@ -520,7 +521,7 @@ pl:
       admin: Administrator
       content_editor: Zarządzanie treścią
       menu_editor: Zarządzanie strukturą menu
-      static_module_editor: Zarządzanie blokami HTML
+      static_module_editor: Zarządzanie blokami
       user_editor: Zarządzanie administratorami
       comment_approver: Obsługa komentarzy (moderowanie)
       reader: Dosŧęp do odczytu
@@ -539,11 +540,11 @@ pl:
     content_nav_title: Dodaj treść
     content_nav_text: "Dodawanie treści na stronę: artykuły, galerie zdjęć, filmów, itd. Dodane treści powinny zostać podpięte pod menu jeśli chcemy je wyświetlić na stronie."
     menu_nav_title: Zarządzanie menu
-    menu_nav_text: "Dodawanie elementów menu i podpinanie pod nie treści, które mają być wyświetlone na danej podstronie. Do menu możemy również podpinać bloki HTML do wyświetlenia w odpowiednich pozycjach na stronie."
-    static_module_nav_title: Bloki HTML
-    static_module_nav_text: "Dodawanie bloków HTML, czyli kawałki kodu do wyświetlenia w różnych miejscach jednej, kilku lub wszystkich podstron."
+    menu_nav_text: "Dodawanie elementów menu i podpinanie pod nie treści, które mają być wyświetlone na danej podstronie. Do menu możemy również podpinać bloki do wyświetlenia w odpowiednich pozycjach na stronie."
+    static_module_nav_title: Bloki
+    static_module_nav_text: "Dodawanie bloków, czyli kawałki kodu do wyświetlenia w różnych miejscach jednej, kilku lub wszystkich podstron."
     module_position_nav_title: Pozycje
-    module_position_nav_text: "Dodawanie pozycji, które później moga zostać wykorzystane do umieszczania bloków HTML lub menu na stronie."
+    module_position_nav_text: "Dodawanie pozycji, które później moga zostać wykorzystane do umieszczania bloków lub menu na stronie."
     external_script_nav_title: Skrypty zewnętrzne
     external_script_nav_text: Dodawanie własnego javascriptu do strony.
     user_nav_title: Zarządzanie administratorami
