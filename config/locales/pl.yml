@@ -312,7 +312,7 @@ pl:
     menu_non_active_legend: "Nieaktywny element menu - link nie działa"
     menu_visible_legend: "Wyświetlany element menu"
     menu_non_visible_legend: "Niewyświetlany element menu"
-    exclamation_legend: "Element menu bez podłączonej treści lub z podłączoną treścią, która jest nieaktywna bądź nie jest aktualnie wyświetlana - po wejściu na niniejszą zakładkę zostanie wyświetlona pusta strona"
+    exclamation_legend:  "Element menu bez podłączonej treści lub z podłączoną treścią, która jest nieaktywna bądź nie jest aktualnie wyświetlana - po wejściu na niniejszą zakładkę zostanie wyświetlona pusta strona"
     path: Ścieżka
     legend: Legenda
     type: Typ

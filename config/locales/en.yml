@@ -311,7 +311,7 @@ en:
     menu_active_legend: "Active menu element - url works"
     menu_non_active_legend: "Inactive menu element - url doesn't work"
     menu_visible_legend: "Visible menu element"
-    menu_non_visible_legend: "Invisible menu element"
+    menu_non_visible_legend:  "Invisible menu element"
     exclamation_legend: "Menu element without content or with content that is non-active or non-displayed - blank page appears when this menu element is clicked."
     path: Path
     legend: Legend
