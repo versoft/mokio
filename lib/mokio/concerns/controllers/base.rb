@@ -57,9 +57,9 @@ module Mokio
         #
         # override current_ability to use Mokio's one
         #
-        # def current_ability
-        #   @current_ability ||= Mokio::Ability.new(current_user)
-        # end
+        def current_ability
+          @current_ability ||= Mokio::Ability.new(current_user)
+        end
       end
     end
   end
