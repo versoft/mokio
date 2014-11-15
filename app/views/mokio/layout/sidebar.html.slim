@@ -26,7 +26,7 @@
               = sidebar_btn Mokio::MovGallery, "icomoon-icon-movie"
               = sidebar_btn Mokio::Contact, "icomoon-icon-mail-3"
         /  SITE ELEMENTS
-        - if can? :create, Mokio::Content
+        - if can_manage_site_elements?
           li.site_elements_nav
             a href="#"
               span.icon16.icomoon-icon-puzzle
