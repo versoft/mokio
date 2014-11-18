@@ -126,7 +126,7 @@ en:
       mov_gallery: Movie Galleries
       contact: Contact Pages
       menu: Menu
-      static_module: HTML Blocks
+      static_module: Reusable Blocks
       module_position: Positions
       external_script: External script
       lang: Languages
@@ -140,9 +140,9 @@ en:
       menus: Menu management
       menus_edit: Edit menu element
       menus_new: New menu element
-      static_modules: HTML blocks
-      static_modules_edit: Edit HTML block
-      static_modules_new: New HTML block
+      static_modules: Reusable blocks
+      static_modules_edit: Edit Reusable block
+      static_modules_new: New Reusable block
       articles_new: New article
       articles_edit: Edit article
       pic_galleries_new: New photo gallery
@@ -185,22 +185,22 @@ en:
   static_modules:
     actions: Actions
     active: Active
-    edit_title: Edit HTML block
-    index_title: HTML blocks
-    index_add_new: Add HTML block
+    edit_title: Edit Reusable block
+    index_title: Reusable blocks
+    index_add_new: Add Reusable block
     lang_id: Language
-    new_title: New HTML block
+    new_title: New Reusable block
     position: Position
     title: Title
     module_position_ids: Position
     updated_at: Updated at
-    edit_title: Edit HTML block
-    created: "HTML block <strong>'%{title}'</strong> has been created"
-    updated: "HTML block <strong>'%{title}'</strong> has been saved"
-    deleted: "HTML block <strong>'%{title}'</strong> has been deleted"
-    update_active_true: "HTML block <strong>'%{title}'</strong> is active"
-    update_active_false: "HTML block <strong>'%{title}'</strong> is not active"
-    copy_title: Copy HTML block
+    edit_title: Edit Reusable block
+    created: "Reusable block <strong>'%{title}'</strong> has been created"
+    updated: "Reusable block <strong>'%{title}'</strong> has been saved"
+    deleted: "Reusable block <strong>'%{title}'</strong> has been deleted"
+    update_active_true: "Reusable block <strong>'%{title}'</strong> is active"
+    update_active_false: "Reusable block <strong>'%{title}'</strong> is not active"
+    copy_title: Copy Reusable block
 
   external_scripts:
     name: Name / Id
@@ -306,17 +306,19 @@ en:
     sort_false: Not all changes in menu structure were allowed - please refresh the page.
     list: List
     content_remove_confirm: Would you like to remove from this menu all content from previously selected language?
-    modules_remove_confirm: Would you like to remove from this menu all HTML blocks from previously selected language?
+    modules_remove_confirm: Would you like to remove from this menu all Reusable blocks from previously selected language?
     confirm: Do you really want to delete this menu item?
-    menu_active_legend: "Active menu position - url works"
-    menu_non_active_legend: "Inactive menu position - url doesn't work"
-    menu_visible_legend: "Visible menu position"
-    menu_non_visible_legend: "Invisible menu position"
-    exclamation_legend: "Menu position without content or with content that is non-active or non-displayed - blank page appears when using this menu position."
+    menu_active_legend: "Active menu element - url works"
+    menu_non_active_legend: "Inactive menu element - url doesn't work"
+    menu_visible_legend: "Visible menu element"
+    menu_non_visible_legend:  "Invisible menu element"
+    exclamation_legend: "Menu element without content or with content that is non-active or non-displayed - blank page appears when this menu element is clicked."
     path: Path
     legend: Legend
     type: Type
     filter: filter ...
+    blocks: "Reusable blocks"
+
 
   pic_galleries:
     active: Active
@@ -520,7 +522,7 @@ en:
       admin: Administrator
       content_editor: Content management
       menu_editor: Menu management
-      static_module_editor: HTML block management
+      static_module_editor: Reusable blocks management
       user_editor: Admins management
       comment_approver: Comment approve
       reader: Reader
@@ -539,11 +541,11 @@ en:
     content_nav_title: Add content
     content_nav_text: "Add content to your site: article, photo galleries, movies, etc. Added content should be attached to any menu element if you want it to be displayed on your site."
     menu_nav_title: Menu management
-    menu_nav_text: "Add menu elements and attach content to menu. You can also add  HTML blocks to given position on given subpage (one, some or all)."
-    static_module_nav_title: HTML blocks
-    static_module_nav_text: "Add HTML blocks, so pieces of script that should be displayed in various places of one, many or all of the subpages."
+    menu_nav_text: "Add menu elements and attach content to menu. You can also add  Reusable blocks to given position on given subpage (one, some or all)."
+    static_module_nav_title: Reusable blocks
+    static_module_nav_text: "Add Reusable blocks, so pieces of HTML that should be displayed in various places of one, many or all of the subpages."
     module_position_nav_title: Positions
-    module_position_nav_text: Add a position that later can be user for putting HTML block or menu on the page.
+    module_position_nav_text: Add a position that later can be user for putting Reusable block or menu on the page.
     external_script_nav_title: External script
     external_script_nav_text: Add custom javascript to your page.
     user_nav_title: Admins management

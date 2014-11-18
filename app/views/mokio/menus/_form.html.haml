@@ -31,7 +31,8 @@
 = f.input :target, :collection => [[bt("current_window_inside",Mokio::Menu), nil], [bt("new_window",Mokio::Menu), "_blank"]], include_blank: false, disabled: !@menu.display_editable_field?('target')
 
 .row-fluid
-  %label.form-label.span2 Moduły statyczne
+  %label.form-label.span2
+    = btc("blocks", 'Menu')
   .span10
     .tabs_wrap
       %ul.nav.nav-tabs.pattern{:id => "tabs_modules"}
