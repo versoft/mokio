@@ -319,7 +319,6 @@ en:
     filter: filter ...
     blocks: "Reusable blocks"
 
-
   pic_galleries:
     active: Active
     actions: Actions
@@ -631,6 +630,8 @@ en:
           attributes:
             name:
               blank: "Name cannot be blank"
+            script:
+              blank: "Script cannot be blank"
         mokio/module_position:
           attributes:
             name:

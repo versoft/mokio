@@ -630,6 +630,8 @@ pl:
           attributes:
             name:
               blank: "Nazwa nie może być pusta"
+            script:
+              blank: "Skrypt nie może być pusty"
         mokio/module_position:
           attributes:
             name:
