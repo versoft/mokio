@@ -265,7 +265,7 @@
   
   1. Remove unnecessary migrations
 
-### Mokio <add release date> v0.0.9
+### Mokio 19.11.2014 v0.0.9
   1. Fix: disable caching in backend forms
   2. Menu with css helper bugfix
   3. Changes in translations
