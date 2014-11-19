@@ -270,3 +270,4 @@
   2. Menu with css helper bugfix
   3. Changes in translations
   4. Fix in search engine
+  5. Fix assets problem in datepicker
