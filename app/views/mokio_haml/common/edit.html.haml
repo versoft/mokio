@@ -1,6 +1,0 @@
-.span12
-  = render :partial => "mokio/common/notice"
-  .box
-    = box_title do 
-      = bt("edit_title", obj.respond_to?(:type) ? obj.type : @obj_class)
-    = render :partial => "mokio/common/form_content", locals: {obj: obj}

@@ -1,8 +1,0 @@
-- if user_signed_in?
-  %ul.nav.pull-right.usernav
-    %li#username
-      #{current_user.email}
-    %li
-      = link_to bt('change_password'), edit_password_user_path(current_user), :method => :get
-    %li
-      = link_to bt('logout'), destroy_user_session_path, :method => :delete
