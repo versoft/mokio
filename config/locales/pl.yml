@@ -652,6 +652,7 @@ pl:
             password_confirmation:
               confirmation: Hasła się nie zgadzają
             email:
+              taken: Podany adres e-mail jest już zajęty
               blank: Proszę wpisać adres email
               invalid: Podano nieprawidłowy adres e-mail
       editable:

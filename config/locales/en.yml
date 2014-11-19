@@ -652,6 +652,7 @@ en:
             password_confirmation:
               confirmation: Passwords do not match
             email:
+              taken: Given e-mail address is taken
               blank: Email cannot be empty
               invalid: Provided an incorrect e-mail address
       editable:
