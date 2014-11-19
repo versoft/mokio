@@ -269,3 +269,4 @@
   1. Fix: disable caching in backend forms
   2. Menu with css helper bugfix
   3. Changes in translations
+  4. Fix in search engine

@@ -92,12 +92,11 @@ private
       else
 
       columns = ''
-      @obj_class.column_names.each do |c|
-        columns << c
+      @obj_class.columns.each_with_index do |c, i|
+        next unless [:string, :text].include? c.type
+        columns << c.name
         columns << ' LIKE :kw'
-        if c != @obj_class.column_names.last
-          columns << " OR "
-        end
+        columns << " OR " if i  != @obj_class.columns.count - 1
       end
 
       collection = @obj_class.order("#{sort_column} #{sort_direction}").where("#{columns}",:kw=>"%#{params[:sSearch]}%")
