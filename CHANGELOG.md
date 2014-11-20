@@ -272,4 +272,5 @@
   4. Fix in search engine
   5. Fix assets problem in datepicker
  
-### Mokio <add release date> v0.0.10
+### Mokio  v0.0.10
+  1. Add translations
