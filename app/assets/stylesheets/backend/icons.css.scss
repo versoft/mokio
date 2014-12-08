@@ -5699,7 +5699,7 @@
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("backend/glyphicons-halflings.png");
+  background-image: image-url("backend/glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -5713,7 +5713,7 @@
 .dropdown-menu > li > a:hover > [class*=" icon-"],
 .dropdown-menu > .active > a > [class^="icon-"],
 .dropdown-menu > .active > a > [class*=" icon-"] {
-  background-image: url("backend/glyphicons-halflings-white.png");
+  background-image: image-url("backend/glyphicons-halflings-white.png");
 }
 
 .icon-glass {
