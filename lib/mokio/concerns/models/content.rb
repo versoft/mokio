@@ -30,6 +30,10 @@ module Mokio
           scope :lang,          -> (lang_id) { where('lang_id = ? or lang_id is null', lang_id) }
           scope :order_default, -> { order("seq asc") }
           scope :active,        -> { where(active: true) }
+          scope :_displayed_from, -> { where("display_from < ? OR display_from IS NULL", Time.zone.now) }
+          scope :_displayed_to, -> { where("display_to > ? OR display_to IS NULL", Time.zone.now) }
+          scope :displayed, -> { _displayed_from._displayed_to}
+
           scope :order_created, -> { reorder(nil).order('created_at DESC') }
 
           before_save :update_display_to
