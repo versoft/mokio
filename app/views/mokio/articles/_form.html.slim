@@ -1,4 +1,3 @@
-= obj.display_from
 = render :partial => "mokio/common/main_pic", locals: {f:f}
 = f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.id]},  include_blank: bt('all'), disabled: !obj.display_editable_field?('lang_id')
 = f.input :active, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('active')
