@@ -32,6 +32,7 @@ module Mokio
           scope :active,        -> { where(active: true) }
           scope :order_created, -> { reorder(nil).order('created_at DESC') }
 
+          before_save :update_display_to
           after_save :update_etag
 
           self.per_page = 15
@@ -51,6 +52,17 @@ module Mokio
         #
         def update_etag
           self.touch(:etag)
+        end
+
+
+        #
+        # Update display_to field: set time to 23:59:59 if time is set to 00:00:00
+        #
+        def update_display_to
+          if self.display_to && self.display_to.time.strftime("%H:%M") == "00:00"
+            updated = self.display_to.end_of_day
+            self.display_to = updated
+          end
         end
 
         #

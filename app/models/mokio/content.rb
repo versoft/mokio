@@ -15,8 +15,8 @@
 #  gallery_type :string(255)
 #  editable     :boolean          default(TRUE)
 #  deletable    :boolean          default(TRUE)
-#  display_from :date
-#  display_to   :date
+#  display_from :datetime
+#  display_to   :datetime
 #  created_at   :datetime
 #  updated_at   :datetime
 #  meta_id      :integer
