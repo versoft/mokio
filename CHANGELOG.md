@@ -276,3 +276,4 @@
   1. Add translations
   2. Add Slugged module (generate slug for any model that includes Mokio::Slugged)
   3. Fix saving "display from" and "display to" in content (english version)
+  4. Added "displayed" scope for contents
