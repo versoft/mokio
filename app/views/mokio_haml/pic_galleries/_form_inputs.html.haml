@@ -1,9 +1,0 @@
-= render :partial => "mokio/common/main_pic", locals: {f:f}
-= f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.menu_id]},  include_blank: bt('all'), disabled: !obj.display_editable_field?('lang_id')
-= f.input :active, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('active')
-= f.input :title, disabled: !obj.display_editable_field?('title')
-= f.input :intro,   :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Mini', :height => 150} }, disabled: !obj.display_editable_field?('intro')
-= f.input :content, :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 300} }, disabled: !obj.display_editable_field?('content')
-
-= f.input :display_from,  :wrapper => :date, :as => :string, :input_html => { :class => "mask-date display_from", :value => (localize(f.object.display_from) if f.object.display_from) }, disabled: !obj.display_editable_field?('display_from')
-= f.input :display_to,    :wrapper => :date, :as => :string, :input_html => { :class => "mask-date display_to", :value => (localize(f.object.display_to) if f.object.display_to) }, disabled: !obj.display_editable_field?('display_to')

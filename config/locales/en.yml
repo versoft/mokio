@@ -23,6 +23,7 @@ en:
   time:
     formats:
       default: "%d-%m-%Y"
+      datepicker: "%d-%m-%Y %H:%M"
   date:
     formats:
       default: "%d-%m-%Y"
@@ -319,7 +320,6 @@ en:
     filter: filter ...
     blocks: "Reusable blocks"
 
-
   pic_galleries:
     active: Active
     actions: Actions
@@ -576,9 +576,8 @@ en:
     dayNamesShort: "Sun,Mon,Tue,Wed,Thu,Fri,Sat"
     dayNamesMin: "Su,Mo,Tu,We,Th,Fr,Sa"
     weekHeader: "Wk"
-    mask: "99/99/9999"
-    maskFormat: "MM/dd/yyyy"
-    dateFormat: "mm/dd/yy"
+    mask: "99/99/9999 99:99"
+    dateFormat: "dd/mm/yy"
     firstDay: "0"
     isRTL: "0"
     showMonthAfterYear: "0"
@@ -631,6 +630,8 @@ en:
           attributes:
             name:
               blank: "Name cannot be blank"
+            script:
+              blank: "Script cannot be blank"
         mokio/module_position:
           attributes:
             name:
@@ -651,6 +652,7 @@ en:
             password_confirmation:
               confirmation: Passwords do not match
             email:
+              taken: Given e-mail address is taken
               blank: Email cannot be empty
               invalid: Provided an incorrect e-mail address
       editable:

@@ -1,16 +1,15 @@
-- cache [:form, obj] do
-  = f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.id]},  include_blank: bt('all'), disabled: !obj.display_editable_field?('lang_id')
-  = f.input :active, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('active')
-  = f.input :home_page, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('home_page')
-  = f.input :title, disabled: !obj.display_editable_field?('title')
-  = f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 400} }, disabled: !obj.display_editable_field?('content')
+= f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.id]},  include_blank: bt('all'), disabled: !obj.display_editable_field?('lang_id')
+= f.input :active, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('active')
+= f.input :home_page, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('home_page')
+= f.input :title, disabled: !obj.display_editable_field?('title')
+= f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 400} }, disabled: !obj.display_editable_field?('content')
 
-  = f.input :recipient_emails, :as => :string, :input_html => { :class => "recipients span10" }, disabled: !obj.display_editable_field?('recipient_emails')
-  .row-fluid
-    label.form-label.span2
-      = t('menus.content_assoc')
-    .span10
-      =collection_select(:contact, :menu_ids,menu_select_grouped(Mokio::Menu.all.includes(:content_links).arrange(:order => :seq)),:id,:name, {disabled: lambda{|s| s.fake.present? },selected:obj.menus.map {|j| j.id} },:multiple => true)
+= f.input :recipient_emails, :as => :string, :input_html => { :class => "recipients span10" }, disabled: !obj.display_editable_field?('recipient_emails')
+.row-fluid
+  label.form-label.span2
+    = t('menus.content_assoc')
+  .span10
+    =collection_select(:contact, :menu_ids,menu_select_grouped(Mokio::Menu.all.includes(:content_links).arrange(:order => :seq)),:id,:name, {disabled: lambda{|s| s.fake.present? },selected:obj.menus.map {|j| j.id} },:multiple => true)
 
 
 .contaner

@@ -1,4 +1,3 @@
-- cache [:form, obj] do
-  = f.input :name
-  = f.input :shortname
-  = f.input :active, :wrapper => :active_checkbox,:input_html => { :checked => true }, disabled: !obj.display_editable_field?('active')
+= f.input :name
+= f.input :shortname
+= f.input :active, :wrapper => :active_checkbox,:input_html => { :checked => true }, disabled: !obj.display_editable_field?('active')

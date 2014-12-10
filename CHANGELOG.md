@@ -264,14 +264,22 @@
 ### Mokio 28.10.2014  v0.0.8
   
   1. Remove unnecessary migration
-  
-### Mokio  <DATE> v0.0.9
 
-1. Menu form and index - name changes + translations
-2. HTML Blocks -> Reusable blocks
-3. Menu legend - small changes
+### Mokio 19.11.2014 v0.0.9
 
+  1. Fix: disable caching in backend forms
+  2. Menu with css helper bugfix
+  3. Changes in translations
+  4. Fix in search engine
+  5. Fix assets problem in datepicker
+ 
 ### Mokio <DATE> v0.0.10
 
-1. Build menu extended helper - with parameters
-2. Additional methods in menu (for slug)
+  1. Add translations
+  2. Add Slugged module (generate slug for any model that includes Mokio::Slugged)
+  3. Fix saving "display from" and "display to" in content (english version)
+  4. Added "displayed" scope for contents
+  5. Added modules positions generator (usage: "rails g mokio:positions footer top left right")
+  6. Build menu extended helper - with parameters
+  7. Additional methods in menu (for slug)
+

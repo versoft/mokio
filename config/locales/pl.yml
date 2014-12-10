@@ -23,6 +23,7 @@ pl:
   time:
     formats:
       default: "%d-%m-%Y"
+      datepicker: "%d-%m-%Y %H:%M"
   date:
     formats:
       default: "%d-%m-%Y"
@@ -575,8 +576,7 @@ pl:
     dayNamesShort: "Nie,Pn,Wt,Śr,Czw,Pt,So"
     dayNamesMin: "N,Pn,Wt,Śr,Cz,Pt,So"
     weekHeader: "Tydz"
-    mask: 99-99-9999
-    maskFormat: dd-MM-yyyy
+    mask: 99-99-9999 99:99
     dateFormat: "dd-mm-yy"
     firstDay: "1"
     isRTL: "0"
@@ -630,6 +630,8 @@ pl:
           attributes:
             name:
               blank: "Nazwa nie może być pusta"
+            script:
+              blank: "Skrypt nie może być pusty"
         mokio/module_position:
           attributes:
             name:
@@ -650,6 +652,7 @@ pl:
             password_confirmation:
               confirmation: Hasła się nie zgadzają
             email:
+              taken: Podany adres e-mail jest już zajęty
               blank: Proszę wpisać adres email
               invalid: Podano nieprawidłowy adres e-mail
       editable:
