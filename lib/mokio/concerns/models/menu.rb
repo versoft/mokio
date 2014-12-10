@@ -200,6 +200,12 @@ module Mokio
           end
         end
 
+        # Real slug - menu slug hierarchical or not, with lang prefix or not
+
+        def real_slug (hierarchical)
+          "/#{hierarchical ? full_slug : slug}"
+        end
+
         #
         # Just for easier logic
         #

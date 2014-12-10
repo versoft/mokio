@@ -8,7 +8,7 @@ Ckeditor.setup do |config|
 
   # Allowed image file types for upload.
   # Set to nil or [] (empty array) for all file types
-  # config.image_file_types = ["jpg", "jpeg", "png", "gif", "tiff"]
+  config.image_file_types = ["jpg", "jpeg", "png", "gif", "tiff", "svg"]
 
   # Allowed attachment file types for upload.
   # Set to nil or [] (empty array) for all file types

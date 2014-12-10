@@ -263,4 +263,15 @@
   
 ### Mokio 28.10.2014  v0.0.8
   
-  1. Remove unnecessary migrations
+  1. Remove unnecessary migration
+  
+### Mokio  <DATE> v0.0.9
+
+1. Menu form and index - name changes + translations
+2. HTML Blocks -> Reusable blocks
+3. Menu legend - small changes
+
+### Mokio <DATE> v0.0.10
+
+1. Build menu extended helper - with parameters
+2. Additional methods in menu (for slug)

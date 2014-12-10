@@ -2,7 +2,7 @@
   div  class=("menu_div active_#{menu.active} visible_#{menu.visible} fake_#{menu.fake}") 
     - if menu.fake
       span.menu_name
-        = menu.name
+        = "#{menu.name} (ID: #{menu.id})"
     - else
       - if menu.invisible_content
         span.warning
@@ -11,7 +11,7 @@
         span.blank
           | !
       span.menu_name
-        = link_to menu.name, edit_url(menu.class, menu)
+        = link_to "#{menu.name} (ID: #{menu.id})", edit_url(menu.class, menu)
       span.menu_details
         span.content_type
           = menu.content_type

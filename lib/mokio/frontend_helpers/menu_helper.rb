@@ -6,7 +6,7 @@ module Mokio
     module MenuHelper
 
       #
-      # Builds menu tree for specified arguments, returns html
+      # Builds menu tree for specified arguments, returns html. Left for backward compatibility. Use build_menu_extended instead.
       #
       # ==== Attributes
       #
@@ -70,6 +70,7 @@ module Mokio
       # * +limit+ - how deep should builder look for children
       # * +index+ - how deep is function already
       #
+
       def build_items(item, limit, index, hierarchical  = false, root_path = "")
         return "" if index > limit || !item.children.present?
 
@@ -97,6 +98,144 @@ module Mokio
       end
 
       alias_method :create_menu, :build_menu
+
+      #
+      # Finds proper menu element - based on lang and menu position and calls build_menu_extended for this menu element
+      #
+
+      def build_menu_extended_lang(menu_position_name, lang_code, limit = 999999, include_menu_parent = false, options = {hierarchical: true, with_nav: true, nav_class: "nav_menu", active_class: "active", item_class: nil, item_with_children_class: nil, item_without_children_class: nil, ul_class: nil, ul_wrapper_class: nil, ul_nested_class:nil, ul_nested_wrapper_class:nil, a_class: nil})
+        lang = Mokio::Lang.find_by_shortname(lang_code)
+        menu_parent = Mokio::Menu.where(lang_id: lang.id, name: menu_position_name) unless lang.blank?
+        build_menu_extended(menu_parent.first.id, limit, include_menu_parent, options) unless menu_parent.blank?
+      end
+
+
+      #
+      # Builds menu tree for specified arguments, returns html. Allows specifying css classes and start from any menu element.
+      # Menu structure:
+      # <nav> (optional)
+      #   <div class='#{ul_wrapper_class}'>
+      #     <ul class='#{ul_class}'>
+      #       <div class='#{item_wrapper_class}'> (optional)
+      #         <li class='#{item_class} #{item_with_children_class} #{active_class}'>
+      #            <a>item.slug or item.full_slug</a>
+      #           <div class='#{ul_nested_wrapper_class}'>
+      #             <ul class="#{ul_nested_class}">
+      #               <li class='#{item_class}#{item without_children_class}'>
+      #                 <a class='#{active_class}'>item.slug or item.full_slug</a>
+      #               </li>
+      #               <li class='#{item_class}#{item without_children_class}'
+      #                 <a class='#{active_class}'>item.slug or item.full_slug</a>
+      #               </li>
+      #             </ul>
+      #           </div>
+      #         </li>
+      #       </div>
+      #       <li class='#{item_class}#{item without_children_class}'>
+      #         <a class='#{active_class}'>item.slug or item.full_slug</a>
+      #       <li>
+      #     </ul>
+      #   </div>
+      # </nav>
+      #
+      # ==== Attributes
+      #
+      # * +menu_parent_id+ - starting menu element's id - this element will be displayed or not and all its children will be displayed
+      # * +include_menu_parent+ - whether parent menu element should be displayed or not
+      # * +limit+      - how deep should builder look for children, count starts from 1
+      # * +options+   - hash with following options:
+      # *   +hierarchical+ - specifies if you want to use hierarchical links or not
+      # *   +with_nav+  - whether nav element should be generated
+      # *   +nav_class+  - css class of the nav element
+      # *   +active_class+  - css class of the active items
+      # *   +item_class+  - css class of the items
+      # *   +item_with_children_class+  - css class of the items that have children
+      # *   +item_without_children_class+  - css class of the items without children
+      # *   +ul_class+  - css class of the ul element
+      # *   +ul_wrapper_class+ - css class of the ul wrapper class, if nil then wrapper for ul will not be generated
+      # *   +ul_nested_class+  - css class of the nested ul element
+      # *   +ul_nested_wrapper_class+ - css class of the ul wrapper class, generated only for nested uls, if nil then wrapper for nested ul will not be generated
+      # *   +a_class+ - css class of the a element
+      # * +active_ids+ - list of ids of active menu elements
+
+      # if you need hierarchical links in your frontend, add following route to your routes.rb
+
+      # get "/*menu_path/:menu_id" => "content#show"
+      # get "/:menu_id" => "content#show"
+
+      def build_menu_extended(menu_parent_id, limit = 999999, include_menu_parent = false, options = {hierarchical: true, with_nav: true, nav_class: "nav_menu", active_class: "active", item_class: nil, item_with_children_class: nil, item_without_children_class: nil, ul_class: nil, ul_wrapper_class: nil, ul_nested_class:nil, ul_nested_wrapper_class:nil, a_class: nil})
+
+        html = ""
+        html = "<nav class='#{options[:nav_class]}' id='menuMain'>" if options[:with_nav]
+        html << "<div class='#{options[:ul_wrapper_class]}'>" unless options[:ul_wrapper_class].nil?
+        html << "<ul class='#{options[:ul_class]}'>"
+        begin
+          menu_parent = Mokio::Menu.find(menu_parent_id)
+          if include_menu_parent
+            html << build_menu_items_extended(menu_parent, limit, 1, menu_parent.ancestor_ids, options)
+          else
+            menu_parent.children.order_default.each do |i|
+              html << build_menu_items_extended(i, limit, 1, i.ancestor_ids, options)
+            end
+          end
+
+        rescue
+          logger.error "Wrong menu parent ID"
+        end
+        html << "</ul>"
+        html << "</div>" unless options[:ul_wrapper_class].nil?
+        html << "</nav>"  if options[:with_nav]
+        html.html_safe
+      end
+
+      # Builds menu starting from given menu element (real menu only)
+      # - displays all its children
+
+      def build_menu_items_extended (i, limit, index, active_ids = [], options)
+
+        return "" if index > limit
+
+        html = ""
+        if i.visible && i.active
+          item_class = build_item_class(i, options, active_ids)
+          html << "<li class='#{item_class}'>"
+
+          if i.external_link.blank?
+            html << "<a class='#{options[:a_class]}' href='#{i.real_slug(options[:hierarchical])}'>#{i.name}</a>"
+          else
+            html << "<a class='#{options[:a_class]}' href='#{i.external_link}' #{"rel='nofollow'" unless i.follow  || i.follow.nil?} #{"target='#{i.target}'" unless (i.target.blank? || i.target == '_self') }>#{i.name}</a>"
+          end
+
+          if i.has_children?
+            html << "<div class='#{options[:ul_nested_wrapper_class]}'>" unless options[:ul_nested_wrapper_class].nil?
+            html <<  "<ul class='#{options[:ul_nested_class]}'>"
+
+            i.children.order_default.each do |item_child|
+              html << build_menu_items_extended(item_child, limit, index + 1, active_ids, options)
+            end
+
+            html << "</ul>"
+            html << "</div>" unless options[:ul_nested_wrapper_class].nil?
+          end
+
+          html << "</li>"
+        end
+        html.html_safe
+      end
+
+      def build_item_class(i, options, active_ids)
+
+        item_class = "#{options[:item_class]} #{i.css_class}"
+
+        if i.has_children?
+          item_class += " #{options[:item_with_children_class]}"
+        else
+          item_class += " #{options[:item_without_children_class]}"
+        end
+
+        item_class += " #{options[:active_class] if i.slug == params[:menu_id] || i.slug == request.original_fullpath.match(/(\D+\/{1}|\D+)/)[0].gsub('/', '') || active_ids.include?(i.id)}"
+        item_class
+      end
 
       #
       # Raises IsNotAMokioMenuErrorr if obj isn't a Mokio::Menu object
