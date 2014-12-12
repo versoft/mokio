@@ -282,4 +282,6 @@
   5. Added modules positions generator (usage: "rails g mokio:positions footer top left right")
   6. Build menu extended helper - with parameters
   7. Additional methods in menu (for slug)
+  8. Copy menu - fix
+  9. Content links removed when removing a content
 

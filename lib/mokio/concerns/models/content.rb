@@ -10,7 +10,7 @@ module Mokio
         included do
           include Mokio::Concerns::Models::Common
 
-          has_many :content_links
+          has_many :content_links, :dependent => :destroy
           has_many :data_files, :dependent => :destroy
           has_many :menus, :through => :content_links
 
