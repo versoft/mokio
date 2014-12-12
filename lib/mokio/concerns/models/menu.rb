@@ -53,6 +53,16 @@ module Mokio
           end
         end
 
+        module ClassMethods
+          #
+          # Columns for table - needed for coping a menu
+          #
+          def columns_for_table
+            %w(name active updated_at lang_id)
+          end
+        end
+
+
         #
         # Friendly_id slug_candidates (<b>gem 'friendly_id'</b>)
         #
@@ -65,7 +75,7 @@ module Mokio
 
         def build_slug
           if parent.nil?
-            return ''
+            ''
           elsif !parent.fake
             parent.slug
           else
@@ -88,7 +98,7 @@ module Mokio
         # Returns list of contents available for assignment to given menu element (based on lang_id) ordered by title
         #
         def available_contents
-          if (lang_id.nil? || lang_id == 0)
+          if lang_id.nil? || lang_id == 0
             Mokio::Content.lang(Mokio::Lang.first.id).order(:title) - contents
           else
             Mokio::Content.lang(lang_id).order(:title) - contents
@@ -124,7 +134,7 @@ module Mokio
         #
         def available_modules_by_pos
           menu_id = (self.id.nil? ? -1 : self.id)
-          if (lang_id.nil? || lang_id == 0)
+          if lang_id.nil? || lang_id == 0
             Mokio::AvailableModule.not_selected_for_menu(menu_id).for_lang(Mokio::Lang.first.id).group_by(&:module_position_id)
           else
             Mokio::AvailableModule.not_selected_for_menu(menu_id).for_lang(lang_id).group_by(&:module_position_id)
@@ -164,11 +174,11 @@ module Mokio
         end
 
         def content_type
-          if (contents.length > 1)
+          if contents.length > 1
             I18n.t('menus.list').titleize
-          elsif (contents.length == 1)
+          elsif contents.length == 1
             I18n.t(contents[0].type.underscore).titleize
-          elsif (!external_link.blank?)
+          elsif !external_link.blank?
             I18n.t('external_link', Menu).titleize
           else
             ''
@@ -176,7 +186,7 @@ module Mokio
         end
 
         #
-        # Retruns always editable fields
+        # Returns always editable fields
         #
         def always_editable_fields
           @always = %w(active seq visible always_displayed ancestry)
@@ -191,13 +201,14 @@ module Mokio
         def full_slug
           m = self
           slug = m.slug
-          unless m.parent.nil?
+          unless m.parent.nil? || slug.nil?
             while !m.parent.fake
               slug = m.parent.slug + "/" + slug
               m = m.parent
             end
             slug
           end
+          slug
         end
 
         # Real slug - menu slug hierarchical or not, with lang prefix or not
