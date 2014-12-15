@@ -35,6 +35,7 @@ module Mokio
         ActionView::Base.send :include, Mokio::FrontendHelpers::StaticModulesHelper
         ActionView::Base.send :include, Mokio::FrontendHelpers::ContentHelper
         ActionView::Base.send :include, Mokio::FrontendHelpers::ExternalScriptsHelper
+        ActionView::Base.send :include, Mokio::FrontendHelpers::LangsHelper
       end
     end
 
