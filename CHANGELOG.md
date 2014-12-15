@@ -284,4 +284,4 @@
   7. Additional methods in menu (for slug)
   8. Copy menu - fix
   9. Content links removed when removing a content
-
+  10. Generator for Google Analytics script (usage: "rails g mokio:ga_script UA-xxxxxxxx-xx)  - generates Mokio::ExternalScript object and partial view for frontend
