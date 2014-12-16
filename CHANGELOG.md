@@ -273,7 +273,7 @@
   4. Fix in search engine
   5. Fix assets problem in datepicker
  
-### Mokio <DATE> v0.0.10
+### Mokio 16.12.2014  v0.0.10
 
   1. Add translations
   2. Add Slugged module (generate slug for any model that includes Mokio::Slugged)
