@@ -259,11 +259,11 @@ module Mokio
       # Sets default values for build_menu_extended
 
       def set_options_defaults(options)
-        options[:hierarchical] ||= true
-        options[:with_nav] ||= true
-        options[:nav_class] ||= "nav_menu"
-        options[:active_class] ||=  "active"
-        options[:content_type] ||= ""
+        options[:hierarchical] = true unless options.has_key? :hierarchical
+        options[:with_nav] = true unless options.has_key? :with_nav
+        options[:nav_class] = "nav_menu" unless options.has_key? :nav_class
+        options[:active_class] =  "active" unless options.has_key? :active_class
+        options[:content_type] = "" unless options.has_key? :content_type
       end
 
 
