@@ -164,12 +164,14 @@ module Mokio
       # get "/*menu_path/:menu_id" => "content#show"
       # get "/:menu_id" => "content#show"
 
-      def build_menu_extended(menu_parent_id, limit = 999999, include_menu_parent = false, options = {hierarchical: true, with_nav: true, nav_class: "nav_menu", active_class: "active", item_class: nil, item_with_children_class: nil, item_without_children_class: nil, ul_class: nil, ul_wrapper_class: nil, ul_nested_class:nil, ul_nested_wrapper_class:nil, a_class: nil, content_type: "", content_item_class: nil})
+      def build_menu_extended(menu_parent_id, limit = 999999, include_menu_parent = false, options = {})
+
+        set_options_defaults(options)
 
         html = ""
-        html = "<nav class='#{options[:nav_class]}' id='menuMain'>" if options[:with_nav]
+        html = "<nav #{"class='#{options[:nav_class]}'" if options[:nav_class]} id='menuMain'>" if options[:with_nav]
         html << "<div class='#{options[:ul_wrapper_class]}'>" unless options[:ul_wrapper_class].nil?
-        html << "<ul class='#{options[:ul_class]}'>"
+        html << "<ul #{"class='#{options[:ul_class]}'" if options[:ul_class]}>"
         begin
           menu_parent = Mokio::Menu.find(menu_parent_id)
           if include_menu_parent
@@ -199,12 +201,12 @@ module Mokio
         html = ""
         if i.visible && i.active
           item_class = build_item_class(i, options, active_ids)
-          html << "<li class='#{item_class}'>"
+          html << "<li #{"class='#{item_class}'" unless item_class.blank?}>"
 
           if i.external_link.blank?
-            html << "<a class='#{options[:a_class]}' href='#{i.real_slug(options[:hierarchical])}'>#{i.name}</a>"
+            html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{i.real_slug(options[:hierarchical])}'>#{i.name}</a>"
           else
-            html << "<a class='#{options[:a_class]}' href='#{i.external_link}' #{"rel='nofollow'" unless i.follow  || i.follow.nil?} #{"target='#{i.target}'" unless (i.target.blank? || i.target == '_self') }>#{i.name}</a>"
+            html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{i.external_link}' #{"rel='nofollow'" unless i.follow  || i.follow.nil?} #{"target='#{i.target}'" unless (i.target.blank? || i.target == '_self') }>#{i.name}</a>"
           end
 
           items_html = ""
@@ -216,14 +218,14 @@ module Mokio
           content_item_class = [item_class, options[:content_item_class]].compact.join(" ")
           i.contents.displayed.order_default.each do |content|
             next if options[:content_type].blank? || options[:content_type].exclude?(content.type.to_s)
-            items_html << "<li class='#{content_item_class}'>"
-            items_html << "<a class='#{options[:a_class]}' href='#{content.slug}'>#{content.title}</a>" if content.respond_to?("slug")
+            items_html << "<li #{"class='#{content_item_class}'" unless content_item_class.blank?}>"
+            items_html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{content.slug}'>#{content.title}</a>" if content.respond_to?("slug")
             items_html << "</li>"
           end
 
           unless items_html.empty?
             html << "<div class='#{options[:ul_nested_wrapper_class]}'>" unless options[:ul_nested_wrapper_class].nil?
-            html << "<ul class='#{options[:ul_nested_class]}'>"
+            html << "<ul #{"class='#{options[:ul_nested_class]}'" if options[:ul_nested_class]}>"
             html << items_html
             html << "</ul>"
             html << "</div>" unless options[:ul_nested_wrapper_class].nil?
@@ -232,6 +234,9 @@ module Mokio
         end
         html.html_safe
       end
+
+
+      # Builds css class fot one menu item
 
       def build_item_class(i, options, active_ids)
 
@@ -249,6 +254,18 @@ module Mokio
         item_class << options[:active_class] if i.slug == params[:menu_id] || i.slug == request.original_fullpath.match(/(\D+\/{1}|\D+)/)[0].gsub('/', '') || active_ids.include?(i.id)
         item_class.compact.join(" ")
       end
+
+
+      # Sets default values for build_menu_extended
+
+      def set_options_defaults(options)
+        options[:hierarchical] ||= true
+        options[:with_nav] ||= true
+        options[:nav_class] ||= "nav_menu"
+        options[:active_class] ||=  "active"
+        options[:content_type] ||= ""
+      end
+
 
       #
       # Raises IsNotAMokioMenuErrorr if obj isn't a Mokio::Menu object
