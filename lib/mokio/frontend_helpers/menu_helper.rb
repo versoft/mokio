@@ -156,14 +156,15 @@ module Mokio
       # *   +ul_nested_class+  - css class of the nested ul element
       # *   +ul_nested_wrapper_class+ - css class of the ul wrapper class, generated only for nested uls, if nil then wrapper for nested ul will not be generated
       # *   +a_class+ - css class of the a element
-      # * +active_ids+ - list of ids of active menu elements
+      #*    +content_type+ - content types for which we'll build menu items(string or array e.g. "Mokio::Article" OR ["Mokio::Article", "Mokio::PicGallery"])
+      #*    +content_item_class+ - css class of the content items (not Mokio::Menu, specified above)
 
       # if you need hierarchical links in your frontend, add following route to your routes.rb
 
       # get "/*menu_path/:menu_id" => "content#show"
       # get "/:menu_id" => "content#show"
 
-      def build_menu_extended(menu_parent_id, limit = 999999, include_menu_parent = false, options = {hierarchical: true, with_nav: true, nav_class: "nav_menu", active_class: "active", item_class: nil, item_with_children_class: nil, item_without_children_class: nil, ul_class: nil, ul_wrapper_class: nil, ul_nested_class:nil, ul_nested_wrapper_class:nil, a_class: nil})
+      def build_menu_extended(menu_parent_id, limit = 999999, include_menu_parent = false, options = {hierarchical: true, with_nav: true, nav_class: "nav_menu", active_class: "active", item_class: nil, item_with_children_class: nil, item_without_children_class: nil, ul_class: nil, ul_wrapper_class: nil, ul_nested_class:nil, ul_nested_wrapper_class:nil, a_class: nil, content_type: "", content_item_class: nil})
 
         html = ""
         html = "<nav class='#{options[:nav_class]}' id='menuMain'>" if options[:with_nav]
@@ -179,8 +180,8 @@ module Mokio
             end
           end
 
-        rescue
-          logger.error "Wrong menu parent ID"
+        rescue => e
+          MOKIO_LOG.error "BUILD MENU ERROR: #{e}"
         end
         html << "</ul>"
         html << "</div>" unless options[:ul_wrapper_class].nil?
@@ -206,18 +207,27 @@ module Mokio
             html << "<a class='#{options[:a_class]}' href='#{i.external_link}' #{"rel='nofollow'" unless i.follow  || i.follow.nil?} #{"target='#{i.target}'" unless (i.target.blank? || i.target == '_self') }>#{i.name}</a>"
           end
 
-          if i.has_children?
+          items_html = ""
+
+          i.children.order_default.each do |item_child|
+            items_html << build_menu_items_extended(item_child, limit, index + 1, active_ids, options)
+          end
+
+          content_item_class = [item_class, options[:content_item_class]].compact.join(" ")
+          i.contents.displayed.order_default.each do |content|
+            next if options[:content_type].blank? || options[:content_type].exclude?(content.type.to_s)
+            items_html << "<li class='#{content_item_class}'>"
+            items_html << "<a class='#{options[:a_class]}' href='#{content.slug}'>#{content.title}</a>" if content.respond_to?("slug")
+            items_html << "</li>"
+          end
+
+          unless items_html.empty?
             html << "<div class='#{options[:ul_nested_wrapper_class]}'>" unless options[:ul_nested_wrapper_class].nil?
-            html <<  "<ul class='#{options[:ul_nested_class]}'>"
-
-            i.children.order_default.each do |item_child|
-              html << build_menu_items_extended(item_child, limit, index + 1, active_ids, options)
-            end
-
+            html << "<ul class='#{options[:ul_nested_class]}'>"
+            html << items_html
             html << "</ul>"
             html << "</div>" unless options[:ul_nested_wrapper_class].nil?
           end
-
           html << "</li>"
         end
         html.html_safe
@@ -225,16 +235,19 @@ module Mokio
 
       def build_item_class(i, options, active_ids)
 
-        item_class = "#{options[:item_class]} #{i.css_class}"
+        item_class = []
+
+        item_class << options[:item_class]
+        item_class << i.css_class
 
         if i.has_children?
-          item_class += " #{options[:item_with_children_class]}"
+          item_class << options[:item_with_children_class]
         else
-          item_class += " #{options[:item_without_children_class]}"
+          item_class << options[:item_without_children_class]
         end
 
-        item_class += " #{options[:active_class] if i.slug == params[:menu_id] || i.slug == request.original_fullpath.match(/(\D+\/{1}|\D+)/)[0].gsub('/', '') || active_ids.include?(i.id)}"
-        item_class
+        item_class << options[:active_class] if i.slug == params[:menu_id] || i.slug == request.original_fullpath.match(/(\D+\/{1}|\D+)/)[0].gsub('/', '') || active_ids.include?(i.id)
+        item_class.compact.join(" ")
       end
 
       #
