@@ -290,4 +290,4 @@
 ### Mokio 17.12.2014  v0.0.11
 
   1. Set 'simple_form' gem version to 3.0.2 (problems with 3.1.0)
-
+  2. Fix in always_displayed static modules - removed from selected_modules 

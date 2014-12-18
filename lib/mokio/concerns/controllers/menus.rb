@@ -109,7 +109,17 @@ module Mokio
 
           def transform_modules #:doc:
             if !params[:menu][:available_module_ids].nil?
-              params[:menu][:available_module_ids] = params[:menu][:available_module_ids].values.flatten
+              av_module_ids = params[:menu][:available_module_ids].values.flatten
+
+              # modules that are always displayed are not saved as selected_modules
+
+              av_modules = AvailableModule.where('id IN (?)', av_module_ids)
+              av_modules.each do |mod|
+                if mod.static_module.always_displayed
+                  av_module_ids.delete(mod.id.to_s)
+                end
+              end
+              params[:menu][:available_module_ids] = av_module_ids
             end
           end
 
