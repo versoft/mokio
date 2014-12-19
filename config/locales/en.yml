@@ -182,6 +182,7 @@ en:
       content_management: Content management
       page_elements: Site elements
       settings: Settings
+      new_menu_position: New menu position
 
   static_modules:
     actions: Actions
@@ -296,8 +297,9 @@ en:
     not_updated: "Menu <strong>'%{title}'</strong> has NOT been saved"
     not_deleted: "Menu <strong>'%{title}'</strong> has NOT beed deleted"
     index_title: Menu management
-    index_add_new: Add menu
+    index_add_new: Add menu element
     new_title: "New menu element"
+    index_add_new_menu_position: Add menu position
     edit_title: "Edit menu element"
     copy_title: "Copy menu element"
     save: Save
@@ -319,6 +321,7 @@ en:
     type: Type
     filter: filter ...
     blocks: "Reusable blocks"
+    new_menu_position_title: "New menu position"
 
   pic_galleries:
     active: Active

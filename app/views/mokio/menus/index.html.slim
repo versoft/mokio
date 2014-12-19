@@ -6,6 +6,7 @@
     h4
       span= bt("index_title", Mokio::Menu)
       = btn_new( bt("index_add_new", Mokio::Menu), new_url(Mokio::Menu) )
+      = btn_new( bt("index_add_new_menu_position", Mokio::Menu), new_menu_position_menus_url(Mokio::Menu) )
 
 - if @menus.present?
   ol#menusList.sortable

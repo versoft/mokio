@@ -1,8 +1,14 @@
 - cache [:tree, menu] do
-  div  class=("menu_div active_#{menu.active} visible_#{menu.visible} fake_#{menu.fake}") 
+  div class=("menu_div active_#{menu.active} visible_#{menu.visible} fake_#{menu.fake}")
     - if menu.fake
       span.menu_name
         = "#{menu.name} (ID: #{menu.id})"
+      span.menu_details
+        span.edit_buttons
+          - if menu.fake && !menu.parent.blank? && menu.children.empty?
+            = table_controls_delete_btn(obj_url(menu.class, menu), btc('confirm', Mokio::Menu))
+          - else
+            span.blank-delete
     - else
       - if menu.invisible_content
         span.warning

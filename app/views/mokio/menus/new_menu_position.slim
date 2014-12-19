@@ -1,0 +1,21 @@
+.span12
+  = render :partial => "mokio/common/notice"
+  .box
+    = box_title do
+      = bt("new_menu_position_title", @menu.class)
+    = common_form do
+      .row-fluid
+        = simple_form_for @menu, :url => create_menu_position_menus_path, :html => { :class => 'form-horizontal' } do |f|
+
+          .row-fluid
+            = f.hidden_field :fake, :value => true
+            = f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.id]},  include_blank: false, disabled: !@menu.display_editable_field?('lang_id')
+            = f.input :name
+
+
+          - cache [:form_buttons, obj] do
+            .form-actions
+              = btn_submit bt("save")
+              = btn_submit bt("save_and_create_new"), true
+              = btn_cancel "#{engine_root}#{obj.class.to_s.tableize.gsub("mokio/", "")}"
+

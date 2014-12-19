@@ -182,6 +182,7 @@ pl:
       content_management: Zarządzanie treścią
       page_elements: Elementy strony
       settings: Ustawienia
+      new_menu_position: Nowa pozycja dla menu
 
   static_modules:
     actions: Akcje
@@ -296,7 +297,8 @@ pl:
     not_updated: "Menu <strong>'%{title}'</strong> nie zostało poprawnie zapisane."
     not_deleted: "Menu <strong>'%{title}'</strong> nie zostało usunięte."
     index_title: Zarządzanie menu
-    index_add_new: Dodaj menu
+    index_add_new: Dodaj element menu
+    index_add_new_menu_position: Dodaj pozycję dla menu
     new_title: "Nowy element menu"
     edit_title: "Edytuj element menu"
     copy_title: "Kopiuj element menu"
@@ -319,6 +321,7 @@ pl:
     type: Typ
     filter: wyszukaj treść ...
     blocks: Bloki
+    new_menu_position_title: Nowa pozycja dla menu
 
   pic_galleries:
     active: Włączona
