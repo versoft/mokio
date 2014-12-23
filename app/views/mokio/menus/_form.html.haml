@@ -19,7 +19,7 @@
 #url_box{:style => "display: #{@menu.contents.empty? && !@menu.external_link.blank? ? 'block' : 'none'};"}
   = f.input :external_link, label: btc("external_link",'Menu'), disabled: !@menu.display_editable_field?('external_link')
   = f.input :follow, :as => :select, :collection => [[bt("follow",'Menu'), "true"], [bt("nofollow",'Menu'), "false"]],  :include_blank => false
-= f.input :parent_id, :collection => @menu.parent_tree.collect{|m| [m.name, m.id]}, include_blank: false, disabled: !@menu.display_editable_field?('parent_id')
+= f.input :parent_id, :collection => @menu.parent_tree.collect{|m| ["#{'-' * m.ancestry.count('/')}#{m.name}", m.id]}, include_blank: false, disabled: !@menu.display_editable_field?('parent_id')
 
 .row-fluid
   %label.form-label.span2
