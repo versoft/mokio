@@ -9,11 +9,14 @@ Mokio::Engine.routes.draw do
         member do
           get :update_menu_breadcrumps
           get :copy
+
         end
 
         collection do
           post :sort
-          get  :lang_changed
+          get :lang_changed
+          get :new_menu_position
+          post :create_menu_position
         end
       end
 

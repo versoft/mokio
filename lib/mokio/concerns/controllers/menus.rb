@@ -71,6 +71,19 @@ module Mokio
           render :nothing => true
         end
 
+        # Renders form for creating menu positon (fake menu - direct child of a lang root)
+
+        def new_menu_position
+          @menu = Mokio::Menu.new
+        end
+
+        def create_menu_position
+          parent = Mokio::Menu.where(lang_id: params[:menu][:lang_id], ancestry: nil).first
+          params[:menu][:parent_id] = parent.id
+          params[:menu][:deletable] = true
+          create
+        end
+
         private
           #
           # Method to initialize menu's dual select boxes
@@ -109,7 +122,17 @@ module Mokio
 
           def transform_modules #:doc:
             if !params[:menu][:available_module_ids].nil?
-              params[:menu][:available_module_ids] = params[:menu][:available_module_ids].values.flatten
+              av_module_ids = params[:menu][:available_module_ids].values.flatten
+
+              # modules that are always displayed are not saved as selected_modules
+
+              av_modules = AvailableModule.where('id IN (?)', av_module_ids)
+              av_modules.each do |mod|
+                if mod.static_module.always_displayed
+                  av_module_ids.delete(mod.id.to_s)
+                end
+              end
+              params[:menu][:available_module_ids] = av_module_ids
             end
           end
 
@@ -146,7 +169,7 @@ module Mokio
           # Never trust parameters from the scary internet, only allow the white list through.
           #
           def menu_params #:doc:
-            params[:menu].permit(:name, :seq, :target, :external_link, :follow, :parent_id, :active, :visible, :description, :lang_id, :content_ids => [],:available_module_ids => [],
+            params[:menu].permit(:name, :seq, :target, :external_link, :follow, :parent_id, :active, :visible, :description, :lang_id, :fake, :content_ids => [],:available_module_ids => [],
               :meta_attributes => Mokio::Meta.meta_attributes)
           end
       end

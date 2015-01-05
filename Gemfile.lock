@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    mokio (0.0.10)
+    mokio (0.0.11)
       acts_as_list (~> 0.4, >= 0.4.0)
       amoeba (~> 2.0, >= 2.0.0)
       ancestry (~> 2.1, >= 2.1.0)
@@ -276,10 +276,10 @@ GEM
       sexp_processor (~> 4.1)
     rubyzip (1.1.4)
     sass (3.2.19)
-    sass-rails (4.0.4)
+    sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.2.2)
-      sprockets (~> 2.8, < 2.12)
+      sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
     sdoc (0.4.0)
       json (~> 1.8)
