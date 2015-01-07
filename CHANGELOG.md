@@ -296,3 +296,6 @@
   1. Fix in always_displayed static modules - removed from selected_modules
   2. New menu position - additional option
   3. Fix some update_active routes
+  4. Menu helper option to generate localized links
+  5. Changed helper for generating langs menu
+  6. Added 'localized_slug' method to Slugged module
