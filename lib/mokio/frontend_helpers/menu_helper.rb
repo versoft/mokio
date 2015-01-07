@@ -103,10 +103,10 @@ module Mokio
       # Finds proper menu element - based on lang and menu position and calls build_menu_extended for this menu element
       #
 
-      def build_menu_extended_lang(menu_position_name, lang_code, limit = 999999, include_menu_parent = false, options = {hierarchical: true, with_nav: true, nav_class: "nav_menu", active_class: "active", item_class: nil, item_with_children_class: nil, item_without_children_class: nil, ul_class: nil, ul_wrapper_class: nil, ul_nested_class:nil, ul_nested_wrapper_class:nil, a_class: nil})
+      def build_menu_extended_lang(menu_position_name, lang_code, options = {})
         lang = Mokio::Lang.find_by_shortname(lang_code)
         menu_parent = Mokio::Menu.where(lang_id: lang.id, name: menu_position_name) unless lang.blank?
-        build_menu_extended(menu_parent.first.id, limit, include_menu_parent, options) unless menu_parent.blank?
+        build_menu_extended(menu_parent.first.id, options) unless menu_parent.blank?
       end
 
 
@@ -141,9 +141,9 @@ module Mokio
       # ==== Attributes
       #
       # * +menu_parent_id+ - starting menu element's id - this element will be displayed or not and all its children will be displayed
-      # * +include_menu_parent+ - whether parent menu element should be displayed or not
-      # * +limit+      - how deep should builder look for children, count starts from 1
       # * +options+   - hash with following options:
+      # *   +include_menu_parent+ - whether parent menu element should be displayed or not
+      # *   +limit+      - how deep should builder look for children, count starts from 1
       # *   +hierarchical+ - specifies if you want to use hierarchical links or not
       # *   +with_nav+  - whether nav element should be generated
       # *   +nav_class+  - css class of the nav element
@@ -158,30 +158,30 @@ module Mokio
       # *   +a_class+ - css class of the a element
       #*    +content_type+ - content types for which we'll build menu items(string or array e.g. "Mokio::Article" OR ["Mokio::Article", "Mokio::PicGallery"])
       #*    +content_item_class+ - css class of the content items (not Mokio::Menu, specified above)
+      #*    +with_locale+ - whether add locale prefix to href
 
       # if you need hierarchical links in your frontend, add following route to your routes.rb
 
       # get "/*menu_path/:menu_id" => "content#show"
       # get "/:menu_id" => "content#show"
 
-      def build_menu_extended(menu_parent_id, limit = 999999, include_menu_parent = false, options = {})
+      def build_menu_extended(menu_parent_id, options = {})
 
         set_options_defaults(options)
 
         html = ""
-        html = "<nav #{"class='#{options[:nav_class]}'" if options[:nav_class]} id='menuMain'>" if options[:with_nav]
+        html << "<nav #{"class='#{options[:nav_class]}'" if options[:nav_class]} id='menuMain'>" if options[:with_nav]
         html << "<div class='#{options[:ul_wrapper_class]}'>" unless options[:ul_wrapper_class].nil?
         html << "<ul #{"class='#{options[:ul_class]}'" if options[:ul_class]}>"
         begin
           menu_parent = Mokio::Menu.find(menu_parent_id)
-          if include_menu_parent
-            html << build_menu_items_extended(menu_parent, limit, 1, menu_parent.ancestor_ids, options)
+          if options[:include_menu_parent]
+            html << build_menu_items_extended(menu_parent, 1, menu_parent.ancestor_ids, options)
           else
             menu_parent.children.order_default.each do |i|
-              html << build_menu_items_extended(i, limit, 1, i.ancestor_ids, options)
+              html << build_menu_items_extended(i, 1, i.ancestor_ids, options)
             end
           end
-
         rescue => e
           MOKIO_LOG.error "BUILD MENU ERROR: #{e}"
         end
@@ -194,32 +194,34 @@ module Mokio
       # Builds menu starting from given menu element (real menu only)
       # - displays all its children
 
-      def build_menu_items_extended (i, limit, index, active_ids = [], options)
+      def build_menu_items_extended (i, index, active_ids = [], options)
 
-        return "" if index > limit
+        return "" if index > options[:limit]
 
         html = ""
         if i.visible && i.active
           item_class = build_item_class(i, options, active_ids)
           html << "<li #{"class='#{item_class}'" unless item_class.blank?}>"
 
+          locale_prefix = "/#{I18n.locale.to_s}" if options[:with_locale]
+          locale_prefix ||= ''
           if i.external_link.blank?
-            html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{i.real_slug(options[:hierarchical])}'>#{i.name}</a>"
+            html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{locale_prefix}#{i.real_slug(options[:hierarchical])}'>#{i.name}</a>"
           else
-            html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{i.external_link}' #{"rel='nofollow'" unless i.follow  || i.follow.nil?} #{"target='#{i.target}'" unless (i.target.blank? || i.target == '_self') }>#{i.name}</a>"
+            html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{locale_prefix}#{i.external_link}' #{"rel='nofollow'" unless i.follow  || i.follow.nil?} #{"target='#{i.target}'" unless (i.target.blank? || i.target == '_self') }>#{i.name}</a>"
           end
 
           items_html = ""
 
           i.children.order_default.each do |item_child|
-            items_html << build_menu_items_extended(item_child, limit, index + 1, active_ids, options)
+            items_html << build_menu_items_extended(item_child, index + 1, active_ids, options)
           end
 
           content_item_class = [item_class, options[:content_item_class]].compact.join(" ")
           i.contents.displayed.order_default.each do |content|
             next if options[:content_type].blank? || options[:content_type].exclude?(content.type.to_s)
             items_html << "<li #{"class='#{content_item_class}'" unless content_item_class.blank?}>"
-            items_html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{content.slug}'>#{content.title}</a>" if content.respond_to?("slug")
+            items_html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{locale_prefix}#{content.slug}'>#{content.title}</a>" if content.respond_to?("slug")
             items_html << "</li>"
           end
 
@@ -259,11 +261,14 @@ module Mokio
       # Sets default values for build_menu_extended
 
       def set_options_defaults(options)
+        options[:limit] = 999999 unless options.has_key? :limit
+        options[:include_menu_parent] = false unless options.has_key? :include_menu_parent
         options[:hierarchical] = true unless options.has_key? :hierarchical
         options[:with_nav] = true unless options.has_key? :with_nav
         options[:nav_class] = "nav_menu" unless options.has_key? :nav_class
         options[:active_class] =  "active" unless options.has_key? :active_class
         options[:content_type] = "" unless options.has_key? :content_type
+        options[:with_locale] = false unless options.has_key? :with_locale
       end
 
 
