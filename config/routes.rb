@@ -26,7 +26,7 @@ Mokio::Engine.routes.draw do
       resources :static_modules do
         member do
           get :copy
-          get :update_active
+          post :update_active
         end
       end
       
@@ -136,7 +136,7 @@ Mokio::Engine.routes.draw do
 
       resources :module_positions do
         member do
-          get :update_active
+          post :update_active
           get  :copy
         end
       end

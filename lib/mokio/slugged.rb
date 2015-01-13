@@ -1,5 +1,10 @@
 module Mokio
   module Slugged
+
+    def localized_slug
+      "/#{I18n.locale.to_s}#{slug}"
+    end
+
     def slug
       "/#{slug_prefix}/#{id}/#{slug_candidate.parameterize}"
     end
