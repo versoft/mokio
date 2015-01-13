@@ -9,7 +9,8 @@
 #
 
 require 'spec_helper'
-
-describe ContentLink do
-  pending "add some examples to (or delete) #{__FILE__}"
+module Mokio
+  describe ContentLink do
+    pending "add some examples to (or delete) #{__FILE__}"
+  end
 end

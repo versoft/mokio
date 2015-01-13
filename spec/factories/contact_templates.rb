@@ -12,7 +12,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :contact_template do
+  factory :contact_template, class: "Mokio::ContactTemplate" do
     tpl "MyText"
   end
 end

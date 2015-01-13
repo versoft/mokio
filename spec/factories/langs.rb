@@ -14,6 +14,6 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :lang do
+  factory :lang, :class => Mokio::Lang do
   end
 end

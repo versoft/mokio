@@ -18,30 +18,39 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe Mokio::Backend::ContentsController do
+module Mokio
 
-  # This should return the minimal set of attributes required to create a valid
-  # Content. As you add validations to Content, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) { {:title => 'Tralalala' } }
+  describe Mokio::ContentsController do
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # ContentsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+    before :each do
+      @routes = Mokio::Engine.routes
+      Content.delete_all
+    end
 
-  # describe "GET index" do
-  #   it "assigns all contents as @contents" do
-  #     content = Content.create! valid_attributes
-  #     get :index, {}, valid_session
-  #     assigns(:content).should eq([content])
-  #   end
-  # end
+    # This should return the minimal set of attributes required to create a valid
+    # Content. As you add validations to Content, be sure to
+    # adjust the attributes here as well.
+    let(:valid_attributes) { {:title => 'Tralalala' } }
 
-  describe "GET new" do
-    # it "redirects to Article controller" do
-    #   expect{get :new, valid_session}.to redirect_to (new_backend_article_path)
-    # end
-    pending
+    # This should return the minimal set of values that should be in the session
+    # in order to pass any filters (e.g. authentication) defined in
+    # ContentsController. Be sure to keep this updated too.
+    let(:valid_session) { {} }
+
+    describe "GET index" do
+      it "assigns all contents as @contents" do
+        content = Content.create! valid_attributes
+        get :index, {}, valid_session
+        assigns(:contents).should eq([content])
+      end
+    end
+
+    describe "GET new" do
+      it "redirects to Article controller" do
+        get :new, valid_session
+        expect(response).to redirect_to (new_article_path)
+      end
+
+    end
   end
 end

@@ -98,6 +98,7 @@ module Mokio
         # Returns list of contents available for assignment to given menu element (based on lang_id) ordered by title
         #
         def available_contents
+          raise "NoLangDefinedException" if Mokio::Lang.count < 1
           if lang_id.nil? || lang_id == 0
             Mokio::Content.lang(Mokio::Lang.first.id).order(:title) - contents
           else
@@ -202,7 +203,7 @@ module Mokio
           m = self
           slug = m.slug
           unless m.parent.nil? || slug.nil?
-            while !m.parent.fake
+            while m.parent && !m.parent.fake
               slug = m.parent.slug + "/" + slug
               m = m.parent
             end

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
-describe Mokio::Backend::MenusController do
+module Mokio
+
+describe Mokio::MenusController do
   # include Devise::TestHelpers
   render_views
   # This should return the minimal set of attributes required to create a valid
@@ -14,64 +16,66 @@ describe Mokio::Backend::MenusController do
   let(:valid_session) { {} }
 
   before :each do
-    request.env["HTTP_REFERER"] = backend_menus_path
+    @routes = Mokio::Engine.routes
+    request.env["HTTP_REFERER"] = menus_path
   end
 
   before :all do
-    Menu.delete_all
-    Lang.delete_all
-    Lang.create(:name => 'polish', :shortname => 'pl', :id => 1)
-    Menu.new(:name => 'pl', :id => 1, :lang_id => 1, :editable => false).save(:validate => false)
-    Menu.new(:name => 'Stopka', :lang_id => 1, :parent_id => 1, :editable => false).save(:validate => false)
+    Mokio::Lang.delete_all
+    Mokio::Lang.create(:name => 'polish', :shortname => 'pl', :id => 1)
+    Mokio::Menu.delete_all
+    Mokio::Menu.new(:name => 'pl', :id => 1, :lang_id => 1, :editable => false, :slug => 'pl').save(:validate => false)
+    Mokio::Menu.new(:name => 'Stopka', :lang_id => 1, :parent_id => 1, :editable => false, :slug => 'stopka').save(:validate => false)
   end
 
-  # describe "GET index" do
-  #   it "@menus contains arranged tree" do
-  #     get :index, {}, valid_session
-  #     assigns(:menus).keys[0].name.should eq("pl")
-  #   end
-  # end
+  describe "GET index" do
+    it "@menus contains arranged tree" do
+      get :index, {}, valid_session
+      assigns(:menus).keys[0].name.should eq("pl")
+    end
+  end
 
   describe "GET new" do
+
     it "assigns a new backend_menu as @menu" do
-      get :new, {}, valid_session
-      assigns(:menu).should be_a_new(Menu)
+      get :new, valid_session
+      assigns(:menu).should be_a_new(Mokio::Menu)
     end
-    it "@parent_tree is set for valid lang_id" do
-      get :new, {}, valid_session
-      assigns(:menu).parent_tree[0].name.should eq("pl") #todo - more than one language
+    it "@parent_root is set for valid lang_id" do
+      get :new, valid_session
+      assigns(:menu).parent_root.name.should eq("pl") #todo - more than one language
     end
   end
 
   describe "GET edit" do
     it "assigns the requested backend_menu as @menu" do
-      menu = Menu.create! valid_attributes
+      menu = Mokio::Menu.create! valid_attributes
       get :edit, {:id => menu.to_param}, valid_session
       assigns(:menu).should eq(menu)
     end
 
-    it "@parent_tree is set for valid lang_id" do
-      menu = Menu.create! valid_attributes
+    it "@parent_root is set for valid lang_id" do
+      menu = Mokio::Menu.create! valid_attributes
       get :edit, {:id => menu.to_param}, valid_session
-      assigns(:menu).parent_tree[0].name.should eq("pl")
+      assigns(:menu).parent_root.name.should eq("pl")
     end
 
     it "@parent_tree is set for deep element" do
-      menu = Menu.find_by('ancestry is not NULL')
+      menu = Mokio::Menu.find_by('ancestry is not NULL')
       get :edit, {:id => menu.to_param}, valid_session
-      assigns(:menu).parent_tree[0].name.should eq(menu.parent.name)
+      assigns(:menu).parent_root.name.should eq(menu.parent.name)
     end
 
     it "@parent_tree does not contain self" do
-      menu = Menu.find_by('ancestry is not NULL')
+      menu = Mokio::Menu.find_by('ancestry is not NULL')
       get :edit, {:id => menu.to_param}, valid_session
       assigns(:menu).parent_tree.should_not include(menu)
     end
 
     it "gets article list for valid lang PL" do
-      menu = Menu.create! valid_attributes
+      menu = Mokio::Menu.create! valid_attributes
       get :edit, {:id => menu.to_param}, valid_session
-      assigns(:menu).available_contents.to_set.superset?(Article.where(:lang_id => menu.lang_id).to_set).should be_true
+      assigns(:menu).available_contents.to_set.superset?(Mokio::Article.where(:lang_id => menu.lang_id).to_set).should be_true
     end
 
     it "assigns a list of available (not selected) modules to available_modules_by_pos (with lang_id = 1)" do
@@ -80,12 +84,12 @@ describe Mokio::Backend::MenusController do
       stat_module.module_positions = [mod_pos]
       stat_module.lang_id = 1
       stat_module.save
-      av_module = AvailableModule.where(static_module_id: stat_module.id, module_position_id: mod_pos.id).first
+      av_module = Mokio::AvailableModule.where(static_module_id: stat_module.id, module_position_id: mod_pos.id).first
       menu = FactoryGirl.create(:menu)
-      get :edit, {:id => menu.to_param}, valid_session 
+      get :edit, {:id => menu.to_param}, valid_session
       (assigns(:menu).available_modules_by_pos[mod_pos.id].include?(av_module)).should be_true
     end
-   
+
   end
 
   describe "POST create" do
@@ -93,33 +97,33 @@ describe Mokio::Backend::MenusController do
       it "creates a new Menu" do
         expect {
           post :create, {:menu => valid_attributes}, valid_session
-        }.to change(Menu, :count).by(1)
+        }.to change(Mokio::Menu, :count).by(1)
       end
 
-      
+
       it "assigns a newly created backend_menu as @menu" do
         post :create, {:menu => valid_attributes}, valid_session
-        assigns(:menu).should be_a(Menu)
+        assigns(:menu).should be_a(Mokio::Menu)
         assigns(:menu).should be_persisted
       end
 
       it "redirects to the created backend_menu" do
         post :create, {:menu => valid_attributes}, valid_session
-        response.should redirect_to(backend_menus_path)
+        response.should redirect_to(menus_path)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved menu as @menu" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Menu.any_instance.stub(:save).and_return(false)
+        Mokio::Menu.any_instance.stub(:save).and_return(false)
         post :create, {:menu => {  }}, valid_session
-        assigns(:menu).should be_a_new(Menu)
+        assigns(:menu).should be_a_new(Mokio::Menu)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        @menu = Menu.any_instance.stub(:save).and_return(false)
+        @menu = Mokio::Menu.any_instance.stub(:save).and_return(false)
         post :create, {:menu => {  }}, valid_session
         response.should render_template("new")
       end
@@ -129,53 +133,53 @@ describe Mokio::Backend::MenusController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested backend_menu" do
-        menu = Menu.create! valid_attributes
+        menu = Mokio::Menu.create! valid_attributes
         put :update, {:id => menu.to_param, :menu => { :name => "bla" }}, valid_session
-        @new_menu = Menu.find(menu.id)
+        @new_menu = Mokio::Menu.find(menu.id)
         @new_menu.name.should eq("bla") #_receive(:update) #.with({ :name => "bla" })
-        
+
       end
 
       it "for not editable menu update is not performed" do
-        menu = Menu.where(editable: false).first
+        menu = Mokio::Menu.where(editable: false).first
         expect(menu.editable).to be_false
         put :update, {:id => menu.to_param, :menu => {:name => 'New name'}}, valid_session
-        @new_menu = Menu.find(menu.id)
+        @new_menu = Mokio::Menu.find(menu.id)
         @new_menu.name.should eq(menu.name)
       end
 
       it "assigns the requested backend_menu as @menu" do
-        menu = Menu.create! valid_attributes
+        menu = Mokio::Menu.create! valid_attributes
         put :update, {:id => menu.to_param, :menu => valid_attributes}, valid_session
         assigns(:menu).should eq(menu)
       end
 
       it "redirects to the backend_menu" do
-        menu = Menu.create! valid_attributes
+        menu = Mokio::Menu.create! valid_attributes
         put :update, {:id => menu.to_param, :menu => valid_attributes}, valid_session
-        response.should redirect_to(backend_menus_path)
+        response.should redirect_to(menus_path)
       end
     end
 
     describe "with invalid params" do
       it "assigns the backend_menu as @menu" do
-        menu = Menu.create! valid_attributes
+        menu = Mokio::Menu.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Menu.any_instance.stub(:save).and_return(false)
+        Mokio::Menu.any_instance.stub(:save).and_return(false)
         put :update, {:id => menu.to_param, :menu => {  }}, valid_session
         assigns(:menu).should eq(menu)
       end
 
       it "re-renders the 'edit' template" do
-        menu = Menu.create! valid_attributes
+        menu = Mokio::Menu.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Menu.any_instance.stub(:save).and_return(false)
+        Mokio::Menu.any_instance.stub(:save).and_return(false)
         put :update, {:id => menu.to_param, :menu => {  }}, valid_session
         response.should render_template("edit")
       end
 
       it "contents are not removed" do
-        menu = Menu.create! valid_attributes
+        menu = Mokio::Menu.create! valid_attributes
         content = FactoryGirl.create(:content)
         menu.contents << content
         menu.save
@@ -192,7 +196,7 @@ describe Mokio::Backend::MenusController do
         stat_module.module_positions = [mod_pos]
         stat_module.lang_id = 1
         stat_module.save
-        menu = Menu.create! valid_attributes
+        menu = Mokio::Menu.create! valid_attributes
         first_module = menu.available_modules_by_pos[mod_pos.id][0]
         menu.available_modules << first_module
         menu.save
@@ -205,9 +209,9 @@ describe Mokio::Backend::MenusController do
    end
 
     it "contents order is saved after update" do
-      content1 = Article.create(:title => 'Bla')
-      content2 = Article.create(:title => 'ZZZZ')
-      menu = Menu.create! valid_attributes
+      content1 = Mokio::Article.create(:title => 'Bla')
+      content2 = Mokio::Article.create(:title => 'ZZZZ')
+      menu = Mokio::Menu.create! valid_attributes
       put :update, {:id => menu.to_param, :menu => {:content_ids => [content2.id, content1.id] }}, valid_session
       menu.reload
       expect(menu.contents.first).to eq(content2)
@@ -223,7 +227,7 @@ describe Mokio::Backend::MenusController do
       stat_module1.module_positions = [mod_pos]
       stat_module1.lang_id = 1
       stat_module1.save
-      menu = Menu.create! valid_attributes
+      menu = Mokio::Menu.create! valid_attributes
       first_module_id = menu.available_modules_by_pos[mod_pos.id][0].id
       put :update, {:id => menu.to_param, :menu => {:available_module_ids => {mod_pos.id.to_s => [menu.available_modules_by_pos[mod_pos.id][0].id, menu.available_modules_by_pos[mod_pos.id][1].id] }}}, valid_session
       (assigns(:menu).available_modules.first.id).should eq(first_module_id)
@@ -231,8 +235,8 @@ describe Mokio::Backend::MenusController do
 
 
     it "contents are cleared properly" do
-      content = Article.create(:title => 'Bla')
-      menu = Menu.create! valid_attributes
+      content = Mokio::Article.create(:title => 'Bla')
+      menu = Mokio::Menu.create! valid_attributes
       menu.contents << content
       menu.save
       expect(menu.contents.length).to eq(1)
@@ -246,7 +250,7 @@ describe Mokio::Backend::MenusController do
       stat_module.module_positions = [mod_pos]
       stat_module.lang_id = 1
       stat_module.save
-      menu = Menu.create! valid_attributes
+      menu = Mokio::Menu.create! valid_attributes
       first_module = menu.available_modules_by_pos[mod_pos.id][0]
       menu.available_modules << first_module
       menu.save
@@ -260,72 +264,72 @@ describe Mokio::Backend::MenusController do
 
   describe "DELETE destroy" do
     it "destroys the requested menu when deletable" do
-      menu = Menu.create! valid_attributes.merge(:deletable => true)
+      menu = Mokio::Menu.create! valid_attributes.merge(:deletable => true)
       @obj = menu
       expect {
         delete :destroy, {:id => menu.to_param}, valid_session
-      }.to change(Menu, :count).by(-1)
+      }.to change(Mokio::Menu, :count).by(-1)
     end
 
     it "redirects to the backend_menus list" do
-      menu = Menu.create! valid_attributes
+      menu = Mokio::Menu.create! valid_attributes
       delete :destroy, {:id => menu.to_param}, valid_session
-      response.should redirect_to(backend_menus_url)
+      response.should redirect_to(menus_url)
 
     end
 
     it "not destroys the requested menu when not deletable" do
-      menu = Menu.create! valid_attributes.merge(:deletable => false)
+      menu = Mokio::Menu.create! valid_attributes.merge(:deletable => false)
       expect {
         delete :destroy, {:id => menu.to_param}, valid_session
-      }.to change(Menu, :count).by(0)
+      }.to change(Mokio::Menu, :count).by(0)
     end
 
     it "redirects to the backend_menus list when not deletable" do
-      menu = Menu.create! valid_attributes.merge(:deletable => false)
+      menu = Mokio::Menu.create! valid_attributes.merge(:deletable => false)
       delete :destroy, {:id => menu.to_param}, valid_session
-      response.should redirect_to(backend_menus_url)
+      response.should redirect_to(menus_url)
 
     end
 
 
     it "destroys the requested menu" do
-      menu = Menu.create! valid_attributes.merge(:deletable => true)
-      child_del = Menu.create! valid_attributes.merge(:deletable => false, :parent => menu)
-      child_not_del = Menu.create! valid_attributes.merge(:deletable => true, :parent => menu)
+      menu = Mokio::Menu.create! valid_attributes.merge(:deletable => true)
+      child_del = Mokio::Menu.create! valid_attributes.merge(:deletable => false, :parent => menu)
+      child_not_del = Mokio::Menu.create! valid_attributes.merge(:deletable => true, :parent => menu)
       expect {
         delete :destroy, {:id => menu.to_param}, valid_session
-      }.to change(Menu, :count).by(-1)
+      }.to change(Mokio::Menu, :count).by(-1)
 
     end
 
     it "attaches children to parent node" do
-      top_parent = Menu.create! valid_attributes.merge(:deletable => true)
-      menu = Menu.create! valid_attributes.merge(:deletable => true, :parent => top_parent)
-      child_del = Menu.create! valid_attributes.merge(:deletable => false, :parent => menu)
-      child_not_del = Menu.create! valid_attributes.merge(:deletable => true, :parent => menu)
+      top_parent = Mokio::Menu.create! valid_attributes.merge(:deletable => true)
+      menu = Mokio::Menu.create! valid_attributes.merge(:deletable => true, :parent => top_parent)
+      child_del = Mokio::Menu.create! valid_attributes.merge(:deletable => false, :parent => menu)
+      child_not_del = Mokio::Menu.create! valid_attributes.merge(:deletable => true, :parent => menu)
       delete :destroy, {:id => menu.to_param}, valid_session
-      expect top_parent.children.should include(child_del) 
+      expect top_parent.children.should include(child_del)
     end
   end
 
   describe "update_menu_breadcrumps" do
     subject {controller.update_menu_breadcrumps}
     it "updates menu_breadcrumps element" do
-      menu = Menu.find_by(:name => "Stopka")
-      # expect(
-      #   (xhr :get, :update_menu_breadcrumps, {:menu_id => menu.id}, valid_session).body
-      # ).to match('.*pl.*Stopka.*') 
-      pending
+      menu = Mokio::Menu.find_by(:name => "Stopka")
+      expect(
+        (xhr :get, :update_menu_breadcrumps, {:id => menu.id}, valid_session).body
+      ).to match('.*pl.*Stopka.*')
+
     end
   end
 
   describe "lang_changed" do
     subject {controller.lang_changed}
     it "updates menu_parent options" do
-      menu = Menu.find_by(:name => "Stopka")
+      menu = Mokio::Menu.find_by(:name => "Stopka")
       body = (xhr :get, :lang_changed, {:menu_id => menu.id, :lang_id => 1}, valid_session).body
-      expect(body).to match('.*pl.*') 
+      expect(body).to match('.*Stopka.*')
     end
 
   end
@@ -333,14 +337,14 @@ describe Mokio::Backend::MenusController do
   describe "sort" do
     before(:each) {
       @menu_hash = {}
-      @menu_fake_pl = Menu.create! valid_attributes.merge(:parent => nil, :lang_id => 1)
-      @menu_fake_top = Menu.create! valid_attributes.merge(:parent_id => @menu_fake_pl.id, :lang_id => 1)
-      @menu = Menu.create! valid_attributes.merge(:parent_id => @menu_fake_top.id, :lang_id => 1)
-      @menu_child = Menu.create! valid_attributes.merge(:parent_id => @menu.id, :lang_id => 1)
-      @menu_grandchild1 = Menu.create! valid_attributes.merge(:parent_id => @menu_child.id, :seq => 1, :lang_id => 1)
-      @menu_grandchild2 = Menu.create! valid_attributes.merge(:parent_id => @menu_child.id, :seq => 2, :lang_id => 1)
-      @menu_grandchild3 = Menu.create! valid_attributes.merge(:parent_id => @menu_child.id, :seq => 3, :lang_id => 1)
-      @potential_parent = Menu.create! valid_attributes
+      @menu_fake_pl = Mokio::Menu.create! valid_attributes.merge(:parent => nil, :lang_id => 1)
+      @menu_fake_top = Mokio::Menu.create! valid_attributes.merge(:parent_id => @menu_fake_pl.id, :lang_id => 1)
+      @menu = Mokio::Menu.create! valid_attributes.merge(:parent_id => @menu_fake_top.id, :lang_id => 1)
+      @menu_child = Mokio::Menu.create! valid_attributes.merge(:parent_id => @menu.id, :lang_id => 1)
+      @menu_grandchild1 = Mokio::Menu.create! valid_attributes.merge(:parent_id => @menu_child.id, :seq => 1, :lang_id => 1)
+      @menu_grandchild2 = Mokio::Menu.create! valid_attributes.merge(:parent_id => @menu_child.id, :seq => 2, :lang_id => 1)
+      @menu_grandchild3 = Mokio::Menu.create! valid_attributes.merge(:parent_id => @menu_child.id, :seq => 3, :lang_id => 1)
+      @potential_parent = Mokio::Menu.create! valid_attributes
       @menu_hash[@menu.id] = @menu_fake_top.id
       @menu_hash[@menu_child.id] = @menu_child.parent_id
     }
@@ -349,7 +353,7 @@ describe Mokio::Backend::MenusController do
     it "changes the order of elements" do
       @menu_hash[@menu_grandchild2.id] = @menu_grandchild2.parent_id
       @menu_hash[@menu_grandchild1.id] = @menu_grandchild1.parent_id
-      xhr :get, :sort, {:menu => @menu_hash}, valid_session 
+      xhr :get, :sort, {:menu => @menu_hash}, valid_session
       expect(@menu_grandchild2.reload.seq).to eq(1)
       expect(@menu_grandchild1.reload.seq).to eq(2)
     end
@@ -375,21 +379,21 @@ describe Mokio::Backend::MenusController do
       expect(@menu_child.reload.root.id).to eq(@menu_grandchild3.root.id)
       expect(@menu_child.reload.root.id).not_to eq(@menu_child.parent.id)
       expect(@menu_child.root.lang.id).to eq(@menu_child.lang.id)
-      
+
     end
 
-    it "allows changes of ROOT nodes order" do 
-      @menu2 = Menu.create! valid_attributes.merge(:parent => nil, :lang_id => 1)
-      @menu3 = Menu.create! valid_attributes.merge(:parent_id => nil, :lang_id => 1) 
+    it "allows changes of ROOT nodes order" do
+      @menu2 = Mokio::Menu.create! valid_attributes.merge(:parent => nil, :lang_id => 1)
+      @menu3 = Mokio::Menu.create! valid_attributes.merge(:parent_id => nil, :lang_id => 1)
       @menu_hash[@menu2.id] = "null"
       @menu_hash[@menu3.id] = "null"
-      
-      xhr :get, :sort, {:menu => @menu_hash}, valid_session 
+
+      xhr :get, :sort, {:menu => @menu_hash}, valid_session
       expect(@menu3.reload.seq).to eq(@menu2.reload.seq + 1)
 
     end
 
-    it "doesn't allow loops in the tree" do 
+    it "doesn't allow loops in the tree" do
       @menu_hash[@menu_child.id] = @menu_grandchild1.id
       xhr :get, :sort, {:menu => @menu_hash}, valid_session
       @menu_child.reload
@@ -402,8 +406,9 @@ describe Mokio::Backend::MenusController do
       @menu_grandchild1.save
       @menu_hash[@menu_grandchild1.id] = @root_en.id
       expect(@menu_grandchild1.lang_id).not_to eq(@root_en.lang_id)
-      xhr :get, :sort, {:menu => @menu_hash}, valid_session 
+      xhr :get, :sort, {:menu => @menu_hash}, valid_session
       expect(@menu_grandchild1.reload.lang_id).to eq(@root_en.lang_id)
     end
   end
+end
 end

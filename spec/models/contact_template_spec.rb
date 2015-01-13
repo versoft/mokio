@@ -11,6 +11,8 @@
 
 require 'spec_helper'
 
-describe ContactTemplate do
-  pending "add some examples to (or delete) #{__FILE__}"
+module Mokio
+  describe ContactTemplate do
+    pending "add some examples to (or delete) #{__FILE__}"
+  end
 end

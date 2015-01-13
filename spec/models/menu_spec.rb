@@ -28,12 +28,19 @@ require 'spec_helper'
 
 MENU_COUNT_INITIAL = 7
 
+module Mokio
+
 describe Menu do
 
   before :all do
     Lang.delete_all
     Lang.create(:name => 'polish', :shortname => 'pl', :id => 1)
   end
+
+  # before :each do
+  #   # @routes = Mokio::Engine.routes
+  # end
+
 
   it "has one record" do
     
@@ -240,8 +247,9 @@ describe Menu do
 
   describe 'some_editable' do
     it 'is invalid when not editable' do
-      @menu = FactoryGirl.build(:menu, :not_editable)
+      @menu = FactoryGirl.create(:menu, :not_editable)
       @menu.name = 'aaa'
+      # raise (@menu.valid?).inspect
       expect(@menu).not_to be_valid
     end
 
@@ -311,5 +319,5 @@ describe Menu do
     end
 
   end 
-
+end
 end

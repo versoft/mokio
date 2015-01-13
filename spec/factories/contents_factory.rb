@@ -2,7 +2,7 @@ require 'faker'
 
 FactoryGirl.define do
 
-  factory :content, traits: [:with_intro_and_content] do
+  factory :content, traits: [:with_intro_and_content], :class=> Mokio::Content do
     title Faker::Lorem.word
     display_from '2013-12-02'
     display_to '2013-12-31'
@@ -77,30 +77,30 @@ FactoryGirl.define do
     end
 
     factory :article do
-      type 'Article'
+      type 'Mokio::Article'
     end
 
     factory :article_non_active do
-      type 'Article'
+      type 'Mokio::Article'
       active false
     end
 
     factory :article_non_displayed do
-      type 'Article'
+      type 'Mokio::Article'
       display_from '2011-12-12'
       display_to '2011-12-25'
     end
 
 
     factory :article_displayed_and_active do
-      type 'Article'
+      type 'Mokio::Article'
       display_from nil
       display_to nil
       active true
     end
 
     factory :pic_gallery do
-      type 'PicGallery'
+      type 'Mokio::PicGallery'
       gallery_type 'pic'
 
       factory :home_page_pic_gallery, traits: [:home_page]
@@ -109,7 +109,7 @@ FactoryGirl.define do
     end
 
     factory :mov_gallery do
-      type 'MovGallery'
+      type 'Mokio::MovGallery'
       gallery_type 'mov'
 
       factory :home_page_mov_gallery, traits: [:home_page]
@@ -119,7 +119,7 @@ FactoryGirl.define do
 
     factory :contact do
       contact true
-      type 'contact'
+      type 'Mokio::Contact'
 
       factory :not_editable_contact, traits: [:not_editable]
       factory :not_deletable_contact, traits: [:not_deletable]

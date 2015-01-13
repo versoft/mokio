@@ -2,7 +2,7 @@ require 'faker'
 
 FactoryGirl.define do
 
-  factory :menu do
+  factory :menu, :class=> Mokio::Menu do
     name Faker::Lorem.word
     lang_id 1
     parent_id 1

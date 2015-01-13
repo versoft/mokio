@@ -35,6 +35,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+
+
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -82,7 +85,7 @@ RSpec.configure do |config|
   
   config.before(:each) do
     ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)
-    
+
   end
 
   config.after(:each) do

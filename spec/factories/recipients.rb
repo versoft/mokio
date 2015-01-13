@@ -13,7 +13,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :recipient do
+  factory :recipient, :class => Mokio::Recipient do
     email "MyString"
     active false
     contact_id 1

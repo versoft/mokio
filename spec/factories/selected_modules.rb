@@ -13,6 +13,6 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :selected_module do
+  factory :selected_module, :class => Mokio::SelectedModule do
   end
 end

@@ -21,7 +21,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :metum, :class => 'Meta' do
+  factory :metum, :class => Mokio::Meta do
     g_title ""
     g_desc "MyString"
     g_keywords "MyString"

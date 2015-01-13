@@ -22,7 +22,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :gmap do
+  factory :gmap, :class => Mokio::Gmap do
     full_address "MyString"
     street_number "MyString"
     route "MyString"
