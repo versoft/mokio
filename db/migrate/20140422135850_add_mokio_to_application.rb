@@ -1,6 +1,6 @@
 class AddMokioToApplication < ActiveRecord::Migration
   def change
-    create_table "mokio_available_modules", force: true do |t|
+    create_table "mokio_available_modules" do |t|
       t.datetime "created_at"
       t.datetime "updated_at"
       t.integer  "module_position_id"
@@ -10,7 +10,7 @@ class AddMokioToApplication < ActiveRecord::Migration
     add_index "mokio_available_modules", ["module_position_id"], name: "index_mokio_available_modules_on_module_position_id", using: :btree
     add_index "mokio_available_modules", ["static_module_id"], name: "index_mokio_available_modules_on_static_module_id", using: :btree
 
-    create_table "ckeditor_assets", force: true do |t|
+    create_table "ckeditor_assets" do |t|
       t.string   "data_file_name",               null: false
       t.string   "data_content_type"
       t.integer  "data_file_size"
@@ -27,7 +27,7 @@ class AddMokioToApplication < ActiveRecord::Migration
     add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
 
-    create_table "mokio_contact_templates", force: true do |t|
+    create_table "mokio_contact_templates" do |t|
       t.text     "tpl"
       t.datetime "created_at"
       t.datetime "updated_at"
@@ -36,7 +36,7 @@ class AddMokioToApplication < ActiveRecord::Migration
 
     add_index "mokio_contact_templates", ["contact_id"], name: "index_mokio_contact_templates_on_contact_id", using: :btree
 
-    create_table "mokio_content_links", force: true do |t|
+    create_table "mokio_content_links" do |t|
       t.integer "content_id"
       t.integer "menu_id"
       t.integer "seq"
@@ -44,7 +44,7 @@ class AddMokioToApplication < ActiveRecord::Migration
 
     add_index "mokio_content_links", ["content_id", "menu_id"], name: "index_mokio_content_links_on_content_id_and_menu_id", unique: true, using: :btree
 
-    create_table "mokio_contents", force: true do |t|
+    create_table "mokio_contents" do |t|
       t.string   "title"
       t.text     "intro"
       t.text     "content"
@@ -71,7 +71,7 @@ class AddMokioToApplication < ActiveRecord::Migration
     add_index "mokio_contents", ["gmap_id"], name: "index_mokio_contents_on_gmap_id", using: :btree
     add_index "mokio_contents", ["meta_id"], name: "index_mokio_contents_on_meta_id", using: :btree
 
-    create_table "mokio_data_files", force: true do |t|
+    create_table "mokio_data_files" do |t|
       t.string   "name"
       t.string   "data_file"
       t.integer  "download_count",     default: 0
@@ -92,7 +92,7 @@ class AddMokioToApplication < ActiveRecord::Migration
 
     add_index "mokio_data_files", ["content_id"], name: "index_mokio_data_files_on_content_id", using: :btree
 
-    create_table "mokio_gmaps", force: true do |t|
+    create_table "mokio_gmaps" do |t|
       t.string   "full_address"
       t.string   "street_number"
       t.string   "route"
@@ -112,7 +112,7 @@ class AddMokioToApplication < ActiveRecord::Migration
     add_index "mokio_gmaps", ["lat"], name: "index_mokio_gmaps_on_lat", using: :btree
     add_index "mokio_gmaps", ["lng"], name: "index_mokio_gmaps_on_lng", using: :btree
 
-    create_table "mokio_langs", force: true do |t|
+    create_table "mokio_langs" do |t|
       t.string   "name"
       t.string   "shortname"
       t.boolean  "active"
@@ -121,7 +121,7 @@ class AddMokioToApplication < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "mokio_menus", force: true do |t|
+    create_table "mokio_menus" do |t|
       t.string   "name"
       t.boolean  "active",           default: true
       t.integer  "seq"
@@ -148,7 +148,7 @@ class AddMokioToApplication < ActiveRecord::Migration
     add_index "mokio_menus", ["meta_id"], name: "index_mokio_menus_on_meta_id", using: :btree
     add_index "mokio_menus", ["slug"], name: "index_mokio_menus_on_slug", unique: true, using: :btree
 
-    create_table "mokio_meta", force: true do |t|
+    create_table "mokio_meta" do |t|
       t.string   "g_title"
       t.string   "g_desc"
       t.string   "g_keywords"
@@ -164,14 +164,14 @@ class AddMokioToApplication < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "mokio_module_positions", force: true do |t|
+    create_table "mokio_module_positions" do |t|
       t.string   "name"
       t.string   "tpl"
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "mokio_recipients", force: true do |t|
+    create_table "mokio_recipients" do |t|
       t.string   "email",                     null: false
       t.boolean  "active",     default: true
       t.datetime "created_at"
@@ -181,7 +181,7 @@ class AddMokioToApplication < ActiveRecord::Migration
 
     add_index "mokio_recipients", ["contact_id"], name: "index_mokio_recipients_on_contact_id", using: :btree
 
-    create_table "mokio_selected_modules", force: true do |t|
+    create_table "mokio_selected_modules" do |t|
       t.integer  "available_module_id"
       t.integer  "menu_id"
       t.integer  "seq"
@@ -189,7 +189,7 @@ class AddMokioToApplication < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "mokio_static_modules", force: true do |t|
+    create_table "mokio_static_modules" do |t|
       t.integer  "available_modules_id"
       t.string   "title"
       t.text     "content"
@@ -207,7 +207,7 @@ class AddMokioToApplication < ActiveRecord::Migration
       t.text     "intro"
     end
 
-    create_table "mokio_users", force: true do |t|
+    create_table "mokio_users" do |t|
       t.string   "email",                  default: "", null: false
       t.string   "encrypted_password",     default: "", null: false
       t.string   "reset_password_token"
