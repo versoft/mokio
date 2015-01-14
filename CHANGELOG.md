@@ -300,4 +300,4 @@
   5. Changed helper for generating langs menu
   6. Added 'localized_slug' method to Slugged module
   7. Tests
-  8. Remove force from migration
+  8. Fix for duplicates when creating Recipients

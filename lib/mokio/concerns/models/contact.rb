@@ -21,7 +21,7 @@ module Mokio
         # Get recipient_id's for given email
         #
         def recipient_emails=(emails)
-          self.recipient_ids = Mokio::Recipient.ids_from_emails(emails)
+          self.recipients = emails.delete(' ').split(',').map {|m| Mokio::Recipient.new(email: m) }
         end
 
         #
