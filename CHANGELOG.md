@@ -299,3 +299,5 @@
   4. Menu helper option to generate localized links
   5. Changed helper for generating langs menu
   6. Added 'localized_slug' method to Slugged module
+  7. Tests
+  8. Remove force from migration
