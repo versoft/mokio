@@ -291,7 +291,7 @@
 
   1. Set 'simple_form' gem version to 3.0.2 (problems with 3.1.0)
 
-### Mokio  v0.0.12
+### Mokio  09.02.2015 v0.0.12
 
   1. Fix in always_displayed static modules - removed from selected_modules
   2. New menu position - additional option
