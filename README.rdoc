@@ -28,6 +28,14 @@ GNU AGPLv3: http://www.gnu.org/licenses/agpl-3.0.html
     Beside Mokio itself, there are various gems dedicated for Mokio, that
     extends its core functionality.
 
+== Sample app using Mokio CMS
+
+See https://github.com/versoft/mokio_sample_app
+
+== Gems dedicated for mokio
+
+mokio_skins https://github.com/versoft/mokio_skins
+
 == Tutorials, documentation & useful tips
 
 See http://www.mokio.org/support
