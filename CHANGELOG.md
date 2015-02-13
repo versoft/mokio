@@ -303,4 +303,5 @@
   8. Fix for duplicates when creating Recipients
 
 ### Mokio  v0.0.13
+  1. Fix problem with cache in meta
 
