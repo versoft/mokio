@@ -59,7 +59,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'jquery-rails',                '~> 3.1',   '>= 3.1.0'
   s.add_dependency 'jquery-ui-rails',             '~> 4.2',   '>= 4.2.1'
-  s.add_dependency 'jquery-fileupload-rails',     '~> 0.4',   '>= 0.4.1'
+  s.add_dependency 'jquery-fileupload-rails',     '~> 0.4',   '<= 0.4.1'
   s.add_dependency 'jquery-datatables-rails',     '~> 1.12',  '>= 1.12.2'
 
   s.add_dependency 'bootstrap-wysihtml5-rails',   '~> 0.3',   '>= 0.3.1.23'
@@ -90,4 +90,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec',              '~> 2.14',  '>= 2.14.1'
   s.add_development_dependency 'capybara',           '~> 2.2',   '>= 2.2.1'
   s.add_development_dependency 'factory_girl_rails', '~> 4.4',   '>= 4.4.1'
+
+
+
+
 end
