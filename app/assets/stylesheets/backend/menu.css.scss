@@ -27,7 +27,8 @@ $inactive_color: #dddddd;
 #menusList {
   width: 90%;
   list-style: none;
-
+  overflow-y:scroll;
+  overflow-x:scroll;
   .menu_div {
     &:hover {
       background-color: #ffffd5;
