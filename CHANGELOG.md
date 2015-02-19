@@ -304,4 +304,4 @@
 
 ### Mokio  v0.0.13
   1. Fix problem with cache in meta
-
+  2. Fix problem with gallery uploader . gem jquery-fileupload-rails locked to version 0.4.1
