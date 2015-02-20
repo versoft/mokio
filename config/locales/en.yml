@@ -799,6 +799,9 @@ en:
         name: Name
         subtitle: "Subtitle"
         external_link: Url
+        css_class: "Menu CSS class"
+        css_body_class: "Page CSS class"
+        main_pic: "thumbnail"
         active: Active
         visible: Visible
         description: Description

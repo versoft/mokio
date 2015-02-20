@@ -799,6 +799,9 @@ pl:
         name: Nazwa
         subtitle: "Podtytuł"
         external_link: Url
+        css_class: "Klasa CSS menu"
+        css_body_class: "Klasa CSS strony"
+        main_pic: "Miniaturka"
         active: Włączony
         visible: Widoczny
         description: Opis

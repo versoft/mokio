@@ -22,6 +22,8 @@
 #  fake             :boolean          default(FALSE)
 #  meta_id          :integer
 #  slug             :string(255)
+# css_class :string
+# css_body_class :string
 #
 module Mokio
   class Menu < ActiveRecord::Base

@@ -1,12 +1,13 @@
+= render :partial => "mokio/common/main_pic", locals: {f:f}
+= f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.id]},  include_blank: false, disabled: !@menu.display_editable_field?('lang_id')
+-# = f.input :lang_id, :as => :hidden, :input_html => { :value => (@menu.lang_id.nil? ? 1 : @menu.lang_id)}, disabled: !@menu.display_editable_field?('lang_id')
+= f.input :active, :wrapper => :active_checkbox, disabled: !@menu.display_editable_field?('active')
+= f.input :visible, :wrapper => :active_checkbox, disabled: !@menu.display_editable_field?('visible')
 .row-fluid
   %label.form-label.span2
     = btc('slug', Mokio::Menu)
   .span10
     = text_field_tag '', (@menu.full_slug.nil?) ? bt('no_slug', Mokio::Menu) : "/" + @menu.full_slug.to_s, readonly: true
-= f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.id]},  include_blank: false, disabled: !@menu.display_editable_field?('lang_id')
--# = f.input :lang_id, :as => :hidden, :input_html => { :value => (@menu.lang_id.nil? ? 1 : @menu.lang_id)}, disabled: !@menu.display_editable_field?('lang_id')
-= f.input :active, :wrapper => :active_checkbox, disabled: !@menu.display_editable_field?('active')
-= f.input :visible, :wrapper => :active_checkbox, disabled: !@menu.display_editable_field?('visible')
 = f.input :name, disabled: !@menu.display_editable_field?('name')
 = f.input :subtitle, disabled: !@menu.display_editable_field?('subtitle'), :as => :string
 .row-fluid
@@ -14,7 +15,8 @@
     = btc('type', Mokio::Menu)
   .span10
     = select_tag "menu_type", options_for_select([[btc("content",'Menu'), 'content'],[btc("external_link",'Menu'), 'external_link']], @menu.contents.empty? && !@menu.external_link.blank? ? "external_link" : "content") 
-
+= f.input :css_class, disabled: !@menu.display_editable_field?('css_class')
+= f.input :css_body_class, disabled: !@menu.display_editable_field?('css_body_class')
 .row-fluid#content_box{:style => "display: #{@menu.contents.empty? && !@menu.external_link.blank? ? 'none' : 'block'};"}
   = dual_select_box(@menu.available_contents, 'id', 'title', @menu.contents, 'id', 'title', btc('content', 'Menu'), '','menu[content_ids][]', true, false, false, @menu.display_editable_field?('contents'))
 #url_box{:style => "display: #{@menu.contents.empty? && !@menu.external_link.blank? ? 'block' : 'none'};"}

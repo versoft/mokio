@@ -306,3 +306,5 @@
   1. Fix problem with cache in meta
   2. Fix problem with gallery uploader . gem jquery-fileupload-rails locked to version 0.4.1
   3. Add subtitle to article, pic_gallery, mov_gallery, contact page, menu and static module
+  4. Add 'css_class' and 'css_body_class' fields to Mokio::Menu
+  5. Add thumbnail to Mokio::Menu
