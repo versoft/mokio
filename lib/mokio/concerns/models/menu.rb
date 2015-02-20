@@ -28,11 +28,9 @@ module Mokio
           has_many :contents,          -> {order('mokio_content_links.seq')},    :through => :content_links
           has_many :selected_modules,  -> {order('mokio_selected_modules.seq')}
           has_many :available_modules, -> {order('mokio_selected_modules.seq')}, :through => :selected_modules
-          has_many :data_files, :dependent => :destroy
 
           accepts_nested_attributes_for :contents, :available_modules
           accepts_nested_attributes_for :meta
-          accepts_nested_attributes_for :data_files, :allow_destroy => true, :reject_if => lambda { |d| d[:data_file].blank? }
 
           before_save :seq_and_lang_update
 
