@@ -304,5 +304,5 @@
 
 ### Mokio  v0.0.13
   1. Fix problem with cache in meta
-  2. Add subtitle to article, pic_gallery, mov_gallery, contact page, menu and static module
-
+  2. Fix problem with gallery uploader . gem jquery-fileupload-rails locked to version 0.4.1
+  3. Add subtitle to article, pic_gallery, mov_gallery, contact page, menu and static module
