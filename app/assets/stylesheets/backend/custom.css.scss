@@ -75,7 +75,7 @@ button.uploader {
 
       .handler {
         background: black;
-        opacity: $default-opacity;
+
         padding: 4px 1px;
         cursor: pointer;
       }
@@ -159,10 +159,22 @@ input.btn[type="submit"] {
   margin-right: 15px;
 }
 
+
+
+//.ui-state-highlight {
+//  background-color: #F5F5F5 !important;
+//  border: 1px solid #E5E5E5 !important;
+//  box-shadow: 0 1px 0 rgba(229, 229, 229, 0.1) !important;
+//}
+
+// 20.02.2015 mz
 .ui-state-highlight {
+  min-width: 114px;
   background-color: #F5F5F5 !important;
-  border: 1px solid #E5E5E5 !important;
-  box-shadow: 0 1px 0 rgba(229, 229, 229, 0.1) !important;
+  border: 1px dashed #E5E5E5 !important;
+  box-shadow: 0 1px 0 rgba(229,229,229,0.1) !important;
+  min-height: 94px;
+  
 }
 
 #FlashInfo {
@@ -644,5 +656,23 @@ select[multiple] {
       padding-left: 10px;
       bottom: 8px;
     }
+  }
+}
+
+// 20.02.2015 mz
+.drag_wrapper {
+
+  cursor:move;
+  height:auto;
+  width:auto;
+}
+
+.sortableli {
+
+
+  min-height:100px;
+
+  .drag_wrapper {
+    min-height:100px;
   }
 }
