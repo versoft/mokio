@@ -683,6 +683,7 @@ pl:
         display_from: Wyświetlany od
         display_to: Wyświetlany do
         title: Tytuł
+        subtitle: "Podtytuł"
         type: Typ
         updated_at: Ostatnio edytowany
         lang_id: Język
@@ -695,6 +696,7 @@ pl:
         display_from: Wyświetlany od
         display_to: Wyświetlany do
         title: Tytuł
+        subtitle: "Podtytuł"
         type: Typ
         updated_at: Ostatnio edytowany
         lang_id: Język
@@ -707,6 +709,7 @@ pl:
         display_from: Wyświetlany od
         display_to: Wyświetlany do
         title: Tytuł
+        subtitle: "Podtytuł"
         type: Typ
         updated_at: Ostatnio edytowany
         lang_id: Język
@@ -726,6 +729,7 @@ pl:
         active: Włączona
         content: Treść
         title: Tytuł
+        subtitle: "Podtytuł"
         type: Typ
         updated_at: Ostatnio edytowany
         lang_id: Język
@@ -744,6 +748,7 @@ pl:
         display_from: Wyświetlany od
         display_to: Wyświetlany do
         title: Tytuł
+        subtitle: "Podtytuł"
         module_positions: Pozycje bloku
         always_displayed: Wyświetlany zawsze
         updated_at: Ostatnio edytowany
@@ -792,6 +797,7 @@ pl:
       mokio/menu:
         lang_id: Język
         name: Nazwa
+        subtitle: "Podtytuł"
         external_link: Url
         active: Włączony
         visible: Widoczny

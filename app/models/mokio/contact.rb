@@ -4,6 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  title        :string(255)
+#  subtitle :text
 #  intro        :text
 #  content      :text
 #  type         :string(255)

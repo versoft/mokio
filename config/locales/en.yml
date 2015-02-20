@@ -298,8 +298,8 @@ en:
     not_deleted: "Menu <strong>'%{title}'</strong> has NOT beed deleted"
     index_title: Menu management
     index_add_new: Add menu element
-    new_title: "New menu element"
     index_add_new_menu_position: Add menu position
+    new_title: "New menu element"
     edit_title: "Edit menu element"
     copy_title: "Copy menu element"
     save: Save
@@ -683,6 +683,7 @@ en:
         display_from: Displayed from
         display_to: Displayed to
         title: Title
+        subtitle: "Subtitle"
         type: Type
         updated_at: Updated at
         lang_id: Language
@@ -695,6 +696,7 @@ en:
         display_from: Displayed from
         display_to: Displayed to
         title: Title
+        subtitle: "Subtitle"
         type: Type
         updated_at: Updated at
         lang_id: Language
@@ -707,6 +709,7 @@ en:
         display_from: Displayed from
         display_to: Displayed to
         title: Title
+        subtitle: "Subtitle"
         type: Type
         updated_at: Updated at
         lang_id: Language
@@ -726,6 +729,7 @@ en:
         active: Active
         content: Content
         title: Title
+        subtitle: "Subtitle"
         type: Type
         updated_at: Updated at
         lang_id: Language
@@ -744,6 +748,7 @@ en:
         display_from: Displayed from
         display_to: Displayed to
         title: Title
+        subtitle: "Subtitle"
         module_positions: Positions
         always_displayed: Always displayed
         updated_at: Updated at
@@ -792,6 +797,7 @@ en:
       mokio/menu:
         lang_id: Language
         name: Name
+        subtitle: "Subtitle"
         external_link: Url
         active: Active
         visible: Visible

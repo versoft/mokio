@@ -8,6 +8,7 @@
 = f.input :active, :wrapper => :active_checkbox, disabled: !@menu.display_editable_field?('active')
 = f.input :visible, :wrapper => :active_checkbox, disabled: !@menu.display_editable_field?('visible')
 = f.input :name, disabled: !@menu.display_editable_field?('name')
+= f.input :subtitle, disabled: !@menu.display_editable_field?('subtitle'), :as => :string
 .row-fluid
   %label.form-label.span2
     = btc('type', Mokio::Menu)
