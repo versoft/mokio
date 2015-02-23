@@ -17,8 +17,8 @@ $(document).ready(function() {
   // loads modal with edit form - displays loader during modal load    
   $('.edit-youtube').click(function(e) {
     e.preventDefault();
-    $('#gallery-loader').show();
-    $('#gallery-loader').offset({top: $(this).parent().parent().offset().top, left: $(this).parent().parent().offset().left});
+//    $('#gallery-loader').show();
+//    $('#gallery-loader').offset({top: $(this).parent().parent().offset().top, left: $(this).parent().parent().offset().left});
     
     var url = $(this).attr('data-href');
     $('#edit-youtube-form').load(url, function(result){
@@ -113,7 +113,7 @@ $(document).ready(function() {
   //
   function sortablephotos(){
     $('.sortable').sortable({
-      // handle: '.dragable .handler',
+      handle: '.drag_wrapper',
       placeholder: "ui-state-highlight",
 
       //

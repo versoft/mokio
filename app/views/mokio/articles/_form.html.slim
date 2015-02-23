@@ -3,6 +3,7 @@
 = f.input :active, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('active')
 = f.input :home_page, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('home_page')
 = f.input :title, disabled: !obj.display_editable_field?('title')
+= f.input :subtitle, disabled: !obj.display_editable_field?('subtitle'), :as => :string
 = f.input :intro,    :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Mini', :height => 150} }, disabled: !obj.display_editable_field?('intro')
 = f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 400} }, disabled: !obj.display_editable_field?('content')
 = f.input :display_from, :wrapper => :date, :as => :string,   :input_html => { :class => "mask-date display_from", :value => (localize(f.object.display_from, :format => :datepicker) if f.object.display_from) },  disabled: !obj.display_editable_field?('display_from')
