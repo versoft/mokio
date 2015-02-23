@@ -308,3 +308,4 @@
   3. Add subtitle to article, pic_gallery, mov_gallery, contact page, menu and static module
   4. Add 'css_class' and 'css_body_class' fields to Mokio::Menu
   5. Add thumbnail to Mokio::Menu
+  6. Password reset functionality
