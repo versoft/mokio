@@ -658,6 +658,8 @@ pl:
               taken: Podany adres e-mail jest już zajęty
               blank: Proszę wpisać adres email
               invalid: Podano nieprawidłowy adres e-mail
+            reset_password_token:
+              invalid: "Niepoprawny token."
       editable:
         not_permitted: Edycja niedozwolona
       messages:

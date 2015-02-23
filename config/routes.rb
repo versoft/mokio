@@ -1,7 +1,9 @@
 Mokio::Engine.routes.draw do
   root to: "dashboard#show"
-  devise_for :users, class_name: "Mokio::User", module: :devise
-  
+  devise_for :users, :controllers => { :passwords => "passwords" }, class_name: "Mokio::User", skip: [:sessions]
+  devise_for :users, class_name: "Mokio::User", module: :devise, skip: [:passwords]
+
+
       #
       # menus routes
       #

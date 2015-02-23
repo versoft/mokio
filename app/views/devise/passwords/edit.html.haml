@@ -24,15 +24,18 @@
                   = image_tag "backend/mokio-logo.svg", alt:"Logo MOKIO"
     .container-fluid
       .loginContainer
-        = simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: "form-horizontal", id:"loginForm"}) do |f|
+        -#= bt("reset_password_instruction")
+        = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+          = f.input :reset_password_token, as: :hidden
+          = f.input :only_password, as: :hidden, value: true
+          = f.full_error :reset_password_token
           .form-row.row-fluid
-            = f.input :email, required: false, autofocus: true, :wrapper => :label_newline
-            = f.input :password, required: false, :wrapper => :label_newline
+            -#= f.input :email, required: true, autofocus: true, :wrapper => :label_newline
+            = f.input :password, label: t("activerecord.attributes.mokio/user.password"), required: true, autofocus: true, :wrapper => :label_newline
+            = f.input :password_confirmation, label: t("activerecord.attributes.mokio/user.password_confirmation"), required: true, :wrapper => :label_newline
           %br
           -# = link_to bt("sign_up"), new_registration_path(resource_name)
-          = f.button :submit, bt("sign_in"), class: 'btn btn-info', id: 'loginBtn'
-          -if flash[:alert] && flash[:alert] != t("devise.failure.unauthenticated")
-            %div
-              =flash[:alert]
-        %br
-        = link_to t("devise.link.forgot_password"), new_password_path(resource_name)
+          -#= f.button :submit, bt("sign_in"), class: 'btn btn-info', id: 'loginBtn'
+          = f.button :submit, bt("change_password"), id:"loginBtn", class: 'btn btn-info'
+
+        -#= link_to "ble ble", new_user_password_path(resource_name)

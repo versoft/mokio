@@ -51,6 +51,13 @@ module Mokio
               text :email
             end
           end
+
+          # Overwrite devise-3.4.1/lib/devise/models/recoverable.rb to force check password is filled
+          def reset_password!(new_password, new_password_confirmation)
+            self.only_password=true
+            super
+          end
+
         end
 
         module ClassMethods
