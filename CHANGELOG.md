@@ -309,3 +309,6 @@
   4. Add 'css_class' and 'css_body_class' fields to Mokio::Menu
   5. Add thumbnail to Mokio::Menu
   6. Password reset functionality
+
+### Mokio v0.0.14
+  1. Ckeditor attachment - added extensions for images
