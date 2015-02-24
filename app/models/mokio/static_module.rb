@@ -5,6 +5,7 @@
 #  id                   :integer          not null, primary key
 #  available_modules_id :integer
 #  title                :string(255)
+#  subtitle :text
 #  content              :text
 #  external_link        :string(255)
 #  lang_id              :integer

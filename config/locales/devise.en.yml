@@ -2,6 +2,8 @@
 
 en:
   devise:
+    link:
+      forgot_password: "Forgot your password?"
     confirmations:
       confirmed: "Your account was successfully confirmed."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
@@ -17,6 +19,10 @@ en:
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
+      hello: "Hello"
+      reset_password_first_paragraph: "Someone has requested a link to change your password. You can do this through the link below."
+      reset_password_second_paragraph: "If you didn't request this, please ignore this email."
+      reset_password_third_paragraph: "Your password won't change until you access the link above and create a new one."
       confirmation_instructions:
         subject: "Confirmation instructions"
       reset_password_instructions:

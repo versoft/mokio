@@ -301,3 +301,11 @@
   6. Added 'localized_slug' method to Slugged module
   7. Tests
   8. Fix for duplicates when creating Recipients
+
+### Mokio 24.02.2015 v0.0.13
+  1. Fix problem with cache in meta
+  2. Fix problem with gallery uploader . gem jquery-fileupload-rails locked to version 0.4.1
+  3. Add subtitle to article, pic_gallery, mov_gallery, contact page, menu and static module
+  4. Add 'css_class' and 'css_body_class' fields to Mokio::Menu
+  5. Add thumbnail to Mokio::Menu
+  6. Password reset functionality

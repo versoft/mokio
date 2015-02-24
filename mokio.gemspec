@@ -59,7 +59,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'jquery-rails',                '~> 3.1',   '>= 3.1.0'
   s.add_dependency 'jquery-ui-rails',             '~> 4.2',   '>= 4.2.1'
-  s.add_dependency 'jquery-fileupload-rails',     '~> 0.4',   '>= 0.4.1'
+  s.add_dependency 'jquery-fileupload-rails',     '0.4.1' # TODO problems with > 0.4.1
   s.add_dependency 'jquery-datatables-rails',     '~> 1.12',  '>= 1.12.2'
 
   s.add_dependency 'bootstrap-wysihtml5-rails',   '~> 0.3',   '>= 0.3.1.23'

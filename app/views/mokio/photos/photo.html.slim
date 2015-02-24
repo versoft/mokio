@@ -1,18 +1,20 @@
 - cache [:photo_edit, photo] do
-  li.sortableli id=photo.id class=(photo.thumb_name ) 
-    .dragable
-      span.handler
-        span.icon16.brocco-icon-move.white
-    a title=photo.name rel="prettyPhoto[pp_gal]" href=(photo.data_file.url ) 
+  li.sortableli id=photo.id class=(photo.thumb_name )
+    .drag_wrapper
+      .dragable
+        .actionBtn
+          a title=photo.name rel="prettyPhoto[pp_gal]" href=(photo.data_file.url )
+            span.icon16.icomoon-icon-zoom-in.white
       - if photo.thumb.blank?
-        img alt=photo.name src=(photo.data_file.url(photo.thumb_name) ) 
+        img alt=photo.name src=(photo.data_file.url(photo.thumb_name) )
       - else
-        img alt=photo.name src=(photo.thumb.url ) 
-    .actionBtn
-      a.edit data-toggle="modal" href=("#modaledit_#{photo.id}" ) 
-        span.icon16.icomoon-icon-pencil-2.white
-      = link_to self.send("#{photo.class.to_s.demodulize.downcase}_path", photo), remote: true, method: :delete, class: "delete" do
-        span.icon16.icomoon-icon-remove.white
+        img alt=photo.name src=(photo.thumb.url )
+
+      .actionBtn
+        a.edit data-toggle="modal" href=("#modaledit_#{photo.id}" )
+          span.icon16.icomoon-icon-pencil-2.white
+        = link_to self.send("#{photo.class.to_s.demodulize.downcase}_path", photo), remote: true, method: :delete, class: "delete" do
+          span.icon16.icomoon-icon-remove.white
 
   /!
   /! edit form

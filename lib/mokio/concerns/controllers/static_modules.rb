@@ -20,7 +20,7 @@ module Mokio
           # Never trust parameters from the scary internet, only allow the white list through.
           #
           def static_module_params #:doc:
-            params[:static_module].permit(:title, :content, :intro, :active, :always_displayed, :display_from, :display_to, :lang_id, { :module_position_ids => [] })
+            params[:static_module].permit(:title, :subtitle, :content, :intro, :active, :always_displayed, :display_from, :display_to, :lang_id, { :module_position_ids => [] })
           end
       end
     end

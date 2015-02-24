@@ -60,16 +60,14 @@ function prettyphoto(){
 
 function gallery_lazy_load() {
   //hide the action buttons
-  $('.actionBtn, .dragable').hide();
+  $('.actionBtn').hide();
   //show action buttons on hover image
   $('.galleryView>li').hover(
     function () {
        $(this).find('.actionBtn').stop(true, true).show(300);
-       $(this).find('.dragable,.handler').stop(true, true).show(300);
     },
     function () {
         $(this).find('.actionBtn').stop(true, true).hide(300);
-        $(this).find('.dragable,.handler').stop(true, true).hide(300);
     }
   );
   //
@@ -154,7 +152,7 @@ function edit_image_button() {
 //
 function sortablephotos(){
   $('.sortable').sortable({
-    handle: '.dragable .handler',
+    handle: '.drag_wrapper',
     placeholder: "ui-state-highlight",
 
     //

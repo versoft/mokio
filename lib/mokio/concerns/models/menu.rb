@@ -22,6 +22,8 @@ module Mokio
           belongs_to :lang
           belongs_to :meta, :dependent => :destroy
 
+          mount_uploader :main_pic, Mokio::MainPicUploader
+
           has_many :content_links,     -> {order('mokio_content_links.seq')}, :dependent => :destroy
           has_many :contents,          -> {order('mokio_content_links.seq')},    :through => :content_links
           has_many :selected_modules,  -> {order('mokio_selected_modules.seq')}
