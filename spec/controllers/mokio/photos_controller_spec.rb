@@ -156,7 +156,7 @@ module Mokio
         end
 
         it "assigns photo id to @id" do
-          assigns(:id).should eq(@photo.id.to_s)
+          assigns(:id).should eq(@photo.slug)
         end
       end
 
