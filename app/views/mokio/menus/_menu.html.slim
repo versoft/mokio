@@ -14,7 +14,7 @@
         span.warning
           | !
       - if menu.editable && menu.contents.empty? && menu.external_link.blank?
-        span.blank
+        span.blank.no_content
           | !
       span.menu_name
         = link_to "#{menu.name} (ID: #{menu.id})", edit_url(menu.class, menu)
