@@ -133,6 +133,7 @@ en:
       lang: Languages
       site_elements: Site elements
       settings: Settings
+      support: Help
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -183,6 +184,7 @@ en:
       page_elements: Site elements
       settings: Settings
       new_menu_position: New menu position
+      support: Help
 
   static_modules:
     actions: Actions
@@ -532,6 +534,12 @@ en:
     edit_password: Change password
     password_updated: Password has been updated
     password_not_updated: Password has NOT been updated
+
+  support:
+    support_title: Support
+    tips_title: Tips & Tricks
+    terms_title: Terms and privacy policy
+    contact_title: Contact Us
 
   site_helper:
     next: next

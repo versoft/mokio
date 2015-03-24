@@ -3,6 +3,10 @@
     li#username
       span.icon16.icomoon-icon-user.white
       = current_user.email
+    li#support
+      a href="#{support_path}"
+        span.icon16.entypo-icon-help
+        = bts("support")
     li
       = link_to bt('change_password'), edit_password_user_path(current_user), :method => :get
     li

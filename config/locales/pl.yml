@@ -133,6 +133,7 @@ pl:
       lang: Zarządzanie językami
       site_elements: Elementy strony
       settings: Ustawienia
+      support: Pomoc
 
     breadcrumbs:
       only_loose: Treści nie podpięte pod menu
@@ -183,6 +184,7 @@ pl:
       page_elements: Elementy strony
       settings: Ustawienia
       new_menu_position: Nowa pozycja dla menu
+      support: Pomoc
 
   static_modules:
     actions: Akcje
@@ -533,6 +535,11 @@ pl:
     password_updated: Hasło zostało zmienione
     password_not_updated: Nie udało się zmienic hasła
 
+  support:
+    support_title: Wsparcie
+    tips_title: Tips & Tricks
+    terms_title: Regulamin i polityka prywatności
+    contact_title: Kontakt
   site_helper:
     next: następny
     welcome_title: Witaj w Mokio!

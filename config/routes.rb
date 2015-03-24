@@ -1,5 +1,7 @@
 Mokio::Engine.routes.draw do
   root to: "dashboard#show"
+
+
   devise_for :users, :controllers => { :passwords => "passwords" }, class_name: "Mokio::User", skip: [:sessions]
   devise_for :users, class_name: "Mokio::User", module: :devise, skip: [:passwords]
 
@@ -149,7 +151,14 @@ Mokio::Engine.routes.draw do
           get :copy
         end
       end
-      
+
+
+      namespace :support do
+        get '/', to: :index
+      end
+
+
+
 end
 
 Rails.application.routes.draw do
