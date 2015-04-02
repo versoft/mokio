@@ -314,3 +314,4 @@
   1. Ckeditor attachment - added extensions for images
   2. Deleted old Device's views
   3. Add setting url host for Devise's mailer
+  4. Simple mokio content generator for model and controller
