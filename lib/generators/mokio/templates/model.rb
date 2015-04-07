@@ -16,7 +16,7 @@ module Mokio
 
     # Generate url to edit content
     def title_view
-      (ActionController::Base.helpers.link_to self[:name], ApplicationController.helpers.edit_url(self.class.base_class, self)).html_safe
+      (ActionController::Base.helpers.link_to self[:title], ApplicationController.helpers.edit_url(self.class.base_class, self)).html_safe
     end
 
   end
