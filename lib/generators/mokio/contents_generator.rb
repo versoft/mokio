@@ -8,7 +8,7 @@ module Mokio
     remove_hook_for :orm
     remove_hook_for :resource_route
 
-    source_root File.expand_path("../templates", __FILE__)
+    source_root File.expand_path("../templates/contents/", __FILE__)
 
     # generate model from mokio template
     def create_model_files
@@ -22,9 +22,15 @@ module Mokio
     def create_template_file
       template "_form.html.slim", File.join("app/views/mokio/#{controller_file_name}/", controller_class_path,"_form.html.slim")
     end
+
     def create_override_view_file
       template "_sidebar_btn.html.slim" ,File.join('app/views/mokio/overrides/','',"#{file_name}_sidebar_btn.html.slim")
     end
+
+    def create_example_translation_file
+      template "../translations/backend_example.yml", File.join("config/locales/","backend_#{self.name.underscore}.yml")
+    end
+
     def create_views_file
       template "views_template.yml",File.join("config/",'',"#{file_name}_views_template.yml.example")
       view_file = "#{Rails.root}/config/#{file_name}_views_template.yml.example"
@@ -43,7 +49,7 @@ module Mokio
 
         routes_file = File.read("#{Rails.root}/config/routes.rb")
         File.open("#{Rails.root}/config/routes.rb", "w") do |file|
-          file.puts routes_file.gsub(/Mokio::Engine.routes.draw do/, "Mokio::Engine.routes.draw do \n\nresources #{controller_file_name.to_sym} do \n member do\nget:update_menu_breadcrumps\nget :copy\nend")
+          file.puts routes_file.gsub(/Mokio::Engine.routes.draw do/, "Mokio::Engine.routes.draw do \n\nresources :#{controller_file_name} do \n member do\n   get :update_menu_breadcrumps\n   get :copy\n end \n end")
         end
 
       end

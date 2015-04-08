@@ -1,0 +1,61 @@
+en:
+  mokio/<%=self.plural_name%>: Article
+  backend:
+    sidebars:
+      <%=self.singular_name%>: <%=self.plural_name%>
+    breadcrumbs:
+      add_<%=self.singular_name%>: Add element
+      <%=self.plural_name%>: Management
+      <%=self.plural_name%>_edit: Edit element
+      <%=self.plural_name%>_new: New element
+
+  <%=self.plural_name%>:
+    actions: Actions
+    active: Active
+    edit_title: Edit <%=self.singular_name%>
+    index_title: <%=self.singular_name%>
+    index_add_new: Add <%=self.singular_name%>
+    lang_id: Language
+    new_title: New <%=self.singular_name%>
+    position: Position
+    title: Title
+    module_position_ids: Position
+    updated_at: Updated at
+    edit_title: Edit <%=self.singular_name%>
+    created: "Reusable block <strong>'%{title}'</strong> has been created"
+    updated: "Reusable block <strong>'%{title}'</strong> has been saved"
+    deleted: "Reusable block <strong>'%{title}'</strong> has been deleted"
+    update_active_true: "Reusable block <strong>'%{title}'</strong> is active"
+    update_active_false: "Reusable block <strong>'%{title}'</strong> is not active"
+    copy_title: Copy <%=self.singular_name%>
+  contents:
+    types:
+      Mokio::PicGallery: Photo Gallery
+      Mokio::Article: Article
+      Mokio::MovGallery: Movie Gallery
+      Mokio::Contact: Contact page
+      Mokio::<%=self.class_name%>:
+
+
+# ============================================ Activerecord ============================================================= #
+
+  activerecord:
+    errors:
+      models:
+        mokio/<%=self.singular_name%>:
+          attributes:
+            title:
+              blank: "Blank"
+    attributes:
+      mokio/<%=self.plural_name%>:
+        active: Active
+        intro: Introduction
+        content: Content
+        display_from: Displayed from
+        display_to: Displayed to
+        title: Title
+        type: Type
+        updated_at: Updated at
+        lang_id: Language
+        home_page: Home page
+        tag_list: Tags (sepparated by commas)
