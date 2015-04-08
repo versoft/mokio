@@ -22,11 +22,11 @@ en:
     module_position_ids: Position
     updated_at: Updated at
     edit_title: Edit <%=self.singular_name%>
-    created: "Reusable block <strong>'%{title}'</strong> has been created"
-    updated: "Reusable block <strong>'%{title}'</strong> has been saved"
-    deleted: "Reusable block <strong>'%{title}'</strong> has been deleted"
-    update_active_true: "Reusable block <strong>'%{title}'</strong> is active"
-    update_active_false: "Reusable block <strong>'%{title}'</strong> is not active"
+    created: " <%=self.singular_name%> <strong>'%{title}'</strong> has been created"
+    updated: " <%=self.singular_name%><strong>'%{title}'</strong> has been saved"
+    deleted: " <%=self.singular_name%> <strong>'%{title}'</strong> has been deleted"
+    update_active_true: " <%=self.singular_name%> <strong>'%{title}'</strong> is active"
+    update_active_false: " <%=self.singular_name%> <strong>'%{title}'</strong> is not active"
     copy_title: Copy <%=self.singular_name%>
   contents:
     types:
