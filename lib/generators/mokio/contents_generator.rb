@@ -28,7 +28,7 @@ module Mokio
     end
 
     def create_example_translation_file
-      template "../translations/backend_example.yml", File.join("config/locales/","backend_#{self.name.underscore}.yml")
+      template "../translations/backend_example.yml", File.join("config/locales/","en_backend_#{self.name.underscore}.yml")
     end
 
     def create_views_file

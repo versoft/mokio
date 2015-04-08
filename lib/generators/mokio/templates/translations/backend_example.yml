@@ -30,10 +30,6 @@ en:
     copy_title: Copy <%=self.singular_name%>
   contents:
     types:
-      Mokio::PicGallery: Photo Gallery
-      Mokio::Article: Article
-      Mokio::MovGallery: Movie Gallery
-      Mokio::Contact: Contact page
       Mokio::<%=self.class_name%>:
 
 
