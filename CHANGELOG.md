@@ -316,3 +316,4 @@
   3. Add setting url host for Devise's mailer
   4. Simple mokio content generator for model and controller
   5. Fix "ActionController::RoutingError (No route matches [GET] "/backend/users/images/favicon.ico")" error
+  6. Added first_name and last_name to Mokio::User

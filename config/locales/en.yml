@@ -522,6 +522,7 @@ en:
     not_created: "Admin <strong>'%{title}'</strong> has NOT been created"
     not_updated: "Admin <strong>'%{title}'</strong> has NOT been saved"
     not_deleted: "Admin <strong>'%{title}'</strong> has NOT been deleted"
+    name_view: "Name"
     roles:  Roles
     role_name:
       admin: Administrator
@@ -799,6 +800,8 @@ en:
         remember_me: Remember me
         email: E-mail
         password_confirmation: Confirm password
+        first_name: "First name"
+        last_name: "Last name"
       messages:
         record_invalid : "Incorrect record"
 

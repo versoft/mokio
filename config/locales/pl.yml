@@ -522,6 +522,7 @@ pl:
     not_created: "Administrator <strong>'%{title}'</strong> nie został utworzony"
     not_updated: "Administrator <strong>'%{title}'</strong> nie został poprawnie zapisany"
     not_deleted: "Administrator <strong>'%{title}'</strong> nie został usunięty"
+    name_view: "Imię i nazwisko"
     roles:  Role
     role_name:
       admin: Administrator
@@ -800,6 +801,8 @@ pl:
         remember_me: Zapamiętaj mnie
         email: E-mail
         password_confirmation: Potwierdź hasło
+        first_name: "Imię"
+        last_name: "Nazwisko"
       messages:
         record_invalid : "Niepoprawny rekord w bazie danych"
 
