@@ -143,6 +143,7 @@ module Mokio
       # * +menu_parent_id+ - starting menu element's id - this element will be displayed or not and all its children will be displayed
       # * +options+   - hash with following options:
       # *   +include_menu_parent+ - whether parent menu element should be displayed or not
+      # *   +active_ids+ - additional active ids
       # *   +limit+      - how deep should builder look for children, count starts from 1
       # *   +hierarchical+ - specifies if you want to use hierarchical links or not
       # *   +with_nav+  - whether nav element should be generated
@@ -176,10 +177,10 @@ module Mokio
         begin
           menu_parent = Mokio::Menu.find(menu_parent_id)
           if options[:include_menu_parent]
-            html << build_menu_items_extended(menu_parent, 1, menu_parent.ancestor_ids, options)
+            html << build_menu_items_extended(menu_parent, 1, menu_parent.ancestor_ids + options[:active_ids], options)
           else
             menu_parent.children.order_default.each do |i|
-              html << build_menu_items_extended(i, 1, i.ancestor_ids, options)
+              html << build_menu_items_extended(i, 1, i.ancestor_ids + options[:active_ids], options)
             end
           end
         rescue => e
@@ -269,6 +270,7 @@ module Mokio
         options[:active_class] =  "active" unless options.has_key? :active_class
         options[:content_type] = "" unless options.has_key? :content_type
         options[:with_locale] = false unless options.has_key? :with_locale
+        options[:active_ids] = [] unless options.has_key? :active_ids
       end
 
 
