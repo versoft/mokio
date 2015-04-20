@@ -318,3 +318,4 @@
   5. Fix "ActionController::RoutingError (No route matches [GET] "/backend/users/images/favicon.ico")" error
   6. Added first_name and last_name to Mokio::User
   7. Added created_by and updated_by for Mokio::Content
+  8. Menu helper: possibility to add active menu elements ids
