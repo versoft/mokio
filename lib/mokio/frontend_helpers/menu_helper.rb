@@ -181,12 +181,11 @@ module Mokio
           menu_parent = Mokio::Menu.find(menu_parent_id)
           if options[:include_menu_parent]
             html << build_menu_items_extended(menu_parent, 1, menu_parent.ancestor_ids + options[:active_ids], options)
-          else
+          elsif !options[:children_content]
             menu_parent.children.order_default.each do |i|
               html << build_menu_items_extended(i, 1, i.ancestor_ids + options[:active_ids], options)
             end
-          end
-          if options[:children_content]
+          else
             html << build_menu_items_extended(menu_parent, 1, menu_parent.ancestor_ids + options[:active_ids], options)
           end
         rescue => e
