@@ -71,7 +71,7 @@ module Mokio
           render :nothing => true
         end
 
-        # Renders form for creating menu positon (fake menu - direct child of a lang root)
+        # Renders form for creating menu position (fake menu - direct child of a lang root)
 
         def new_menu_position
           @menu = Mokio::Menu.new
