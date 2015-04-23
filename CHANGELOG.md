@@ -321,3 +321,4 @@
   8. Menu helper: possibility to add active menu elements ids
   9. Menu helper: option of displaying current menu and its contents (not menu children)
   10. Menu: better content/url switcher
+  11. Menu: Extended parameters
