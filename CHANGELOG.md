@@ -320,3 +320,4 @@
   7. Added created_by and updated_by for Mokio::Content
   8. Menu helper: possibility to add active menu elements ids
   9. Menu helper: option of displaying current menu and its contents (not menu children)
+  10. Menu: better content/url switcher
