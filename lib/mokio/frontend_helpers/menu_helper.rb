@@ -209,7 +209,7 @@ module Mokio
           if i.external_link.blank?
             html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{locale_prefix}#{i.real_slug(options[:hierarchical])}'>#{i.name}</a>"
           else
-            html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{locale_prefix}#{i.external_link}' #{"rel='nofollow'" unless i.follow  || i.follow.nil?} #{"target='#{i.target}'" unless (i.target.blank? || i.target == '_self') }>#{i.name}</a>"
+            html << "<a #{"class='#{options[:a_class]}'" if options[:a_class]} href='#{i.external_link}' #{"rel='nofollow'" unless i.follow  || i.follow.nil?} #{"target='#{i.target}'" unless (i.target.blank? || i.target == '_self') }>#{i.name}</a>"
           end
 
           items_html = ""
