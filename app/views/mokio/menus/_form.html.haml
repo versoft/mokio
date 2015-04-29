@@ -10,16 +10,17 @@
     = text_field_tag '', (@menu.full_slug.nil?) ? bt('no_slug', Mokio::Menu) : "/" + @menu.full_slug.to_s, readonly: true
 = f.input :name, disabled: !@menu.display_editable_field?('name')
 = f.input :subtitle, disabled: !@menu.display_editable_field?('subtitle'), :as => :string
+= f.input :css_class, disabled: !@menu.display_editable_field?('css_class')
+= f.input :css_body_class, disabled: !@menu.display_editable_field?('css_body_class')
 .row-fluid
   %label.form-label.span2
     = btc('type', Mokio::Menu)
   .span10
-    = select_tag "menu_type", options_for_select([[btc("content",'Menu'), 'content'],[btc("external_link",'Menu'), 'external_link']], @menu.contents.empty? && !@menu.external_link.blank? ? "external_link" : "content") 
-= f.input :css_class, disabled: !@menu.display_editable_field?('css_class')
-= f.input :css_body_class, disabled: !@menu.display_editable_field?('css_body_class')
-.row-fluid#content_box{:style => "display: #{@menu.contents.empty? && !@menu.external_link.blank? ? 'none' : 'block'};"}
+    = select_tag "menu_type", options_for_select([[btc("content",'Menu'), 'content'],[btc("external_link",'Menu'), 'external_link']], !@menu.external_link.blank? ? "external_link" : "content")
+
+.row-fluid#content_box{:style => "display: #{!@menu.external_link.blank? ? 'none' : 'block'};"}
   = dual_select_box(@menu.available_contents, 'id', 'title', @menu.contents, 'id', 'title', btc('content', 'Menu'), '','menu[content_ids][]', true, false, false, @menu.display_editable_field?('contents'))
-#url_box{:style => "display: #{@menu.contents.empty? && !@menu.external_link.blank? ? 'block' : 'none'};"}
+#url_box{:style => "display: #{!@menu.external_link.blank? ? 'block' : 'none'};"}
   = f.input :external_link, label: btc("external_link",'Menu'), disabled: !@menu.display_editable_field?('external_link')
   = f.input :follow, :as => :select, :collection => [[bt("follow",'Menu'), "true"], [bt("nofollow",'Menu'), "false"]],  :include_blank => false
 = f.input :parent_id, :collection => @menu.parent_tree.collect{|m| ["#{'-' * m.ancestry.count('/')}#{m.name}", m.id]}, include_blank: false, disabled: !@menu.display_editable_field?('parent_id')
@@ -75,9 +76,16 @@
       //tabs
       $('#tabs_modules li').first().addClass('active');
       $('.tabs_wrap .tab-pane').first().addClass('in active');
+
       $('#menu_type').change(function() {
         $('#content_box').toggle();
         $('#url_box').toggle();
+        if ($('#menu_type').val() == "content") {
+          $('#menu_external_link').val("");
+        }
+        else {
+          $('#allTo1real').click();
+        }
       });
     });
   

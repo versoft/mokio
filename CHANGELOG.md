@@ -319,4 +319,7 @@
   6. Added first_name and last_name to Mokio::User
   7. Added created_by and updated_by for Mokio::Content
   8. Menu helper: possibility to add active menu elements ids
-  9. Menu helper: remove locale prefix if url is set
+  9. Menu helper: option of displaying current menu and its contents (not menu children)
+  10. Menu: better content/url switcher
+  11. Menu: Extended parameters
+  12. Menu helper: remove locale prefix if url is set 
