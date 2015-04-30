@@ -322,4 +322,5 @@
   9. Menu helper: option of displaying current menu and its contents (not menu children)
   10. Menu: better content/url switcher
   11. Menu: Extended parameters
-  12. Menu helper: remove locale prefix if url is set 
+  12. Menu helper: remove locale prefix if url is set
+  13. Config file (mokio.rb) : Added ability to set where the user is to be redirected after logging in (based on model and role)

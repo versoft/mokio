@@ -224,6 +224,8 @@ module Mokio
   mattr_accessor :mokio_log_level 
   self.mokio_log_level = Logger::DEBUG
 
+  mattr_accessor :after_sign_in_path
+  self.after_sign_in_path = {:user => {}}
   #
   # Default way to configure Mokio
   #

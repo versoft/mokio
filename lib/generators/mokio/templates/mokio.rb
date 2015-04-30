@@ -139,4 +139,20 @@ Mokio.setup do |config|
   #
   # config.frontend_facebook_app_id = ''
 
+  #
+  # You can set where the user is to be redirected after logging in
+  #
+  # Default: mokio.root_path ("/backend")
+  #
+  # Examples:
+  # config.after_sign_in_path = {:user => {:path => "/path_for_all_users"}}
+  # config.after_sign_in_path = {:user => {:method => :method_for_all_users}} => returns: user.method_for_all_users
+  #
+  # Path based on user role examples
+  #
+  # config.after_sign_in_path = {:user => {:roles => {:admin =>{:method => :method_name_for_admin}}}} => returns: user.method_name_for_admin
+  # config.after_sign_in_path = {:user => {:roles => {:admin =>{:path => "/path_for_admin"}}}}
+
+  #config.after_sign_in_path = {:user => {}}
+
 end
