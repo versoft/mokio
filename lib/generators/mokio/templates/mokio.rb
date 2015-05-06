@@ -144,14 +144,17 @@ Mokio.setup do |config|
   #
   # Default: mokio.root_path ("/backend")
   #
-  # Examples:
+  # Examples
+  # 1. Path:
   # config.after_sign_in_path = {:user => {:path => "/path_for_all_users"}}
-  # config.after_sign_in_path = {:user => {:method => :method_for_all_users}} => returns: user.method_for_all_users
   #
-  # Path based on user role examples
+  # 2. Method (add method to Mokio::ApplicationController):
+  # config.after_sign_in_path = {:user => {:method => :method_for_all_users}} => returns: controller.method_for_all_users
   #
-  # config.after_sign_in_path = {:user => {:roles => {:admin =>{:method => :method_name_for_admin}}}} => returns: user.method_name_for_admin
+  # Path based on user role examples:
+  #
   # config.after_sign_in_path = {:user => {:roles => {:admin =>{:path => "/path_for_admin"}}}}
+  # config.after_sign_in_path = {:user => {:roles => {:admin =>{:method => :method_name_for_admin}}}} => returns: controller.method_name_for_admin
 
   #config.after_sign_in_path = {:user => {}}
 

@@ -226,6 +226,9 @@ module Mokio
 
   mattr_accessor :after_sign_in_path
   self.after_sign_in_path = {:user => {}}
+
+  mattr_accessor :after_sign_out_path
+  self.after_sign_out_path = {:user => {}}
   #
   # Default way to configure Mokio
   #
