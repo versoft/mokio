@@ -7,10 +7,11 @@
       h5.title style="margin-bottom:0" = bt("sidebar_title", "backend.sidebar")
     .mainnav
       ul#sidebar-ul
-        li.dashboard_nav
-          a href=root_path 
-            span.icon16.icomoon-icon-screen-2
-            = bts("dashboard")
+        - if (can? :manage, Mokio::Content) && (can? :manage, Mokio::Menu)
+          li.dashboard_nav
+            a href=root_path
+              span.icon16.icomoon-icon-screen-2
+              = bts("dashboard")
         /  MENU
         = sidebar_btn Mokio::Menu, "icomoon-icon-menu-2"
         /  CONTENT MANAGEMENT
