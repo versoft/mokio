@@ -1,0 +1,13 @@
+= render :partial => "mokio/common/main_pic", locals: {f:lf}
+= lf.input :lang_id , :as => :hidden, :input_html => { :value => obj.lang_id }
+= lf.input :title, disabled: !obj.display_editable_field?('title')
+= lf.input :subtitle, disabled: !obj.display_editable_field?('subtitle'), :as => :string
+= lf.input :intro,   :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Mini', :height => 150} }, disabled: !obj.display_editable_field?('intro')
+= lf.input :content, :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 300} }, disabled: !obj.display_editable_field?('content')
+
+.row-fluid
+  label.form-label.span2
+    = t('menus.content_assoc')
+  .span10
+    =collection_select(:pic_gallery, :menu_ids,menu_select_grouped(Mokio::Menu.all.includes(:content_links).arrange(:order => :seq)),:id,:name, {disabled: lambda{|s| s.fake.present? },selected:obj.menus.map {|j| j.id} },:multiple => true)
+

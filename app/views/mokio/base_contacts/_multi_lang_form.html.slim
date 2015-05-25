@@ -1,0 +1,48 @@
+= lf.input :lang_id , :as => :hidden, :input_html => { :value => obj.lang_id }
+= lf.input :title, disabled: !obj.display_editable_field?('title')
+= lf.input :subtitle, disabled: !obj.display_editable_field?('subtitle'), :as => :string
+= lf.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 400} }, disabled: !obj.display_editable_field?('content')
+
+= lf.input :recipient_emails, :as => :string, :input_html => { :class => "recipients span10" }, disabled: !obj.display_editable_field?('recipient_emails')
+.row-fluid
+  label.lorm-label.span2
+    = t('menus.content_assoc')
+  .span10
+    =collection_select(:contact, :menu_ids,menu_select_grouped(Mokio::Menu.all.includes(:content_links).arrange(:order => :seq)),:id,:name, {disabled: lambda{|s| s.fake.present? },selected:obj.menus.map {|j| j.id} },:multiple => true)
+
+
+.contaner
+  hr
+  .row-fluid
+    / .span1
+    / .span7
+    = f.fields_for :contact_template do |t|
+      .label-wrapper
+        = f.label btc("tpl", Mokio::Contact)
+        .well
+          = btc("form_data", Mokio::Contact)
+          hr
+          ul.unstyled
+            li
+              span.icon16.icomoon-icon-arrow-right-2
+              = "%name% - #{t('contacts.form_name')}"
+            li
+              span.icon16.icomoon-icon-arrow-right-2
+              = "%email% - #{t('contacts.form_email')}"
+            li
+              span.icon16.icomoon-icon-arrow-right-2
+              = "%title% - #{t('contacts.form_title')}"
+            li
+              span.icon16.icomoon-icon-arrow-right-2
+              = "%content% - #{t('contacts.form_content')}"
+
+      = t.input :tpl, :label => "",  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 300} }
+
+
+= f.hidden_field :contact, value: true
+= f.hidden_field :intro, value: ""
+
+- content_for :js do
+  = javascript_include_tag 'backend/plugins/forms/select/select2.min'
+  javascript:
+    $(".recipients").select2({tags: []});
