@@ -139,4 +139,17 @@ Mokio.setup do |config|
   #
   # config.frontend_facebook_app_id = ''
 
+
+
+  # External parameters for mokio controllers
+  # Create a initializer in your rails app or rails plugin
+  #
+  # Mokio.setup do |config|
+  #   config.mokio_gems_parameters[:plugin_name] = { :controller_name => [:param_1,:param_2,:param_3]}
+  # end
+  #
+
+  # mattr_accessor :mokio_gems_parameters
+  # self.mokio_gems_parameters = {}
+
 end
