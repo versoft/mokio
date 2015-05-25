@@ -223,21 +223,18 @@ module Mokio
   mattr_accessor :mokio_log_level 
   self.mokio_log_level = Logger::DEBUG
 
-<<<<<<< HEAD
-
   mattr_accessor :multi_lang_contents
   self.multi_lang_contents = false
 
   mattr_accessor :mokio_gems_parameters
   self.mokio_gems_parameters = {}
 
-=======
   mattr_accessor :after_sign_in_path
   self.after_sign_in_path = {:user => {}}
 
   mattr_accessor :after_sign_out_path
   self.after_sign_out_path = {:user => {}}
->>>>>>> 22952500aa9e807b797a42cfbcf5988c1de15a22
+
   #
   # Default way to configure Mokio
   #

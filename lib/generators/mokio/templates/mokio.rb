@@ -139,8 +139,6 @@ Mokio.setup do |config|
   #
   # config.frontend_facebook_app_id = ''
 
-<<<<<<< HEAD
-
 
   # External parameters for mokio controllers
   # Create a initializer in your rails app or rails plugin
@@ -152,7 +150,7 @@ Mokio.setup do |config|
 
   # mattr_accessor :mokio_gems_parameters
   # self.mokio_gems_parameters = {}
-=======
+
   #
   # You can set where the user is to be redirected after logging in
   #
@@ -171,6 +169,6 @@ Mokio.setup do |config|
   # config.after_sign_in_path = {:user => {:roles => {:admin =>{:method => :method_name_for_admin}}}} => returns: controller.method_name_for_admin
 
   #config.after_sign_in_path = {:user => {}}
->>>>>>> 22952500aa9e807b797a42cfbcf5988c1de15a22
+
 
 end
