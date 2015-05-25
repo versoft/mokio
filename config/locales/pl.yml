@@ -27,12 +27,14 @@ pl:
   date:
     formats:
       default: "%d-%m-%Y"
+      datepicker: "%d-%m-%Y %H:%M"
   mokio/article: "Artykuł"
   mokio/pic_gallery: Galeria zdjęć
   mokio/mov_gallery: Galeria filmów
   mokio/contact: Strona kontaktowa
   external_link: Url
   backend:
+    form_active: Pokaż formularz
     go_back: Powrót
     site_preview: Twoja Strona
     no_records_found: Nie znaleziono żadnej treści
@@ -185,6 +187,21 @@ pl:
       settings: Ustawienia
       new_menu_position: Nowa pozycja dla menu
       support: Pomoc
+      base_articles_new: Nowy artykuł
+      base_articles_edit: Edycja artykułu
+      base_articles: Artykuły
+      base_pic_galleries_new: Nowa galeria zdjęć
+      base_pic_galleries_edit: Edycja galerii zdjęć
+      base_pic_galleries: Galerie zdjęć
+      base_mov_galleries_new: Nowa galeria filmów
+      base_mov_galleries_edit: Edycja galerii filmów
+      base_mov_galleries: Galerie filmów
+      base_contacts_new: Nowa strona kontaktowa
+      base_contacts_edit: Edycja strony kontatkowej
+      base_contacts: Strony kontaktowe
+      base_content: Zarządzanie treścią
+
+
 
   static_modules:
     actions: Akcje
@@ -277,6 +294,7 @@ pl:
     edit_title: "Edytuj artykuł"
     update_active_true: "Artykuł <strong>'%{title}'</strong> jest teraz aktywny."
     update_active_false: "Artykuł <strong>'%{title}'</strong> jest teraz nieaktywny."
+    form_active: Edycja
 
   menus:
     content_assoc: Pozycja menu
@@ -667,6 +685,11 @@ pl:
               invalid: Podano nieprawidłowy adres e-mail
             reset_password_token:
               invalid: "Niepoprawny token."
+        mokio/content:
+          attributes:
+            title:
+              blank: "Tytuł nie może być pusty"
+
       editable:
         not_permitted: Edycja niedozwolona
       messages:
@@ -685,6 +708,7 @@ pl:
         lang_id: Język
         home_page: Strona Główna
         tag_list: Tagi (oddzielone przecinkami)
+
       mokio/pic_gallery:
         active: Włączona
         intro: Wstęp
@@ -816,3 +840,4 @@ pl:
         description: Opis
         parent_id: Element nadrzędny
         target: Okno docelowe
+

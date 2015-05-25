@@ -27,6 +27,7 @@ en:
   date:
     formats:
       default: "%d-%m-%Y"
+      datepicker: "%d-%m-%Y"
   mokio/article: Article
   mokio/pic_gallery: Photo Gallery
   mokio/mov_gallery: Movie Gallery
