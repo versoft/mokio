@@ -7,18 +7,17 @@ ul#itemContainer.galleryView.movieGalleryView.sortable
   - obj.data_files.order_default.each do |youtube|
     = render :template => 'mokio/youtubes/youtube', :locals => {youtube: youtube}
 
-- cache :yt_gallery do
-  #edit-youtube-form.modal.fade.modalyt role="dialog" aria-hidden="true" style="display:none;" aria-labelledby="EditYoutubeModalLabel" 
-    .modal-dialog
-      .modal-content
-        .modal-header
-          h3.modal-title id="EditYoutubeModalLabel" = bt("edit_youtube")
+#edit-youtube-form.modal.fade.modalyt role="dialog" aria-hidden="true" style="display:none;" aria-labelledby="EditYoutubeModalLabel"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h3.modal-title id="EditYoutubeModalLabel" = bt("edit_youtube")
 
-        #edit-youtube-form-content.modal-body
-          #loader
+      #edit-youtube-form-content.modal-body
+        #loader
 
-        .modal-footer
-          button.btn.btn-default.close-edit-youtube-form  type="button" data-dismiss="modal" = bt("close")
+      .modal-footer
+        button.btn.btn-default.close-edit-youtube-form  type="button" data-dismiss="modal" = bt("close")
   #gallery-loader
 
 - content_for :js do

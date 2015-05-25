@@ -65,7 +65,7 @@ module Mokio
           # Columns for table in CommonController#index view
           #
           def columns_for_table
-            ["email", "roles"]
+            ["email", "name_view", "roles"]
           end
         end
 
@@ -82,6 +82,10 @@ module Mokio
 
         def deletable #:nodoc:
           true
+        end
+
+        def name_view
+          "#{first_name}#{' '  unless first_name.blank?}#{last_name}"
         end
 
         def name #:nodoc:

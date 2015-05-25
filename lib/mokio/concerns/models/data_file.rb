@@ -13,7 +13,8 @@ module Mokio
           friendly_id :slug_candidates, use: :slugged
           validates_uniqueness_of :slug
           belongs_to :contents, :touch => true
-          
+          belongs_to :base_contents
+
           mount_uploader :data_file, Mokio::DataFileUploader
           mount_uploader :thumb,     Mokio::ThumbUploader
 
@@ -60,7 +61,9 @@ module Mokio
         # For some reason touch => true does not work for DataFile :(
         #
         def touch_content
-          Mokio::Content.find(self.content_id).touch(:etag)
+            # Mokio::Content.find(self.content_id).touch(:etag)
+            Mokio::BaseContent.find(self.base_content_id).touch(:etag)
+
         end
 
         def slide?

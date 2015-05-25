@@ -10,8 +10,8 @@ module Mokio
         included do
           before_filter :set_obj_class
           before_action :set_obj, only: [:update, :destroy, :edit, :show, :copy, :update_active]
-          
-          helper_method :obj # Method obj must be also a helper method for usage in views 
+
+          helper_method :obj # Method obj must be also a helper method for usage in views
         end
 
         private

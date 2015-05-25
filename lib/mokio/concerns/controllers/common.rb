@@ -52,15 +52,13 @@ module Mokio
           load_and_authorize_resource
         end
 
-
-
         #
         # Index action renders <b>json</b> with parameters to jquery.datatables
         #
         def index
           respond_to do |format|
             # @TODO zrobic cos by przy formacie html nie renderował się javascript z datatable
-            format.html # { create_obj(@obj_class.page( params[:page] ) ) } 
+            format.html # { create_obj(@obj_class.page( params[:page] ) ) }
             format.json { render json: ::CommonsDatatable.new(view_context, @obj_class) }
           end
         end
@@ -91,7 +89,7 @@ module Mokio
               if !params[:save_and_new].blank?
                 format.html { redirect_to obj_new_url(@obj_class.new), notice: CommonTranslation.created(obj) }
                 format.json { render action: 'new', status: :created, location: obj }
-              else 
+              else
                 format.html { redirect_to obj_index_url, notice: CommonTranslation.created(obj) }
                 format.json { render action: 'index', status: :created, location: obj }
               end
@@ -106,12 +104,13 @@ module Mokio
         # Standard update action. Update params object for specified class in database
         #
         def update
+
           respond_to do |format|
             if obj.update(obj_params)
               if !params[:save_and_new].blank?
                 format.html { redirect_to obj_new_url(@obj_class.new), notice: CommonTranslation.updated(obj) }
                 format.json { head :no_content }
-              else 
+              else
                 format.html { redirect_to obj_index_url, notice: CommonTranslation.updated(obj) }
                 format.json { render action: 'index', status: :created, location: obj }
               end
@@ -135,7 +134,7 @@ module Mokio
           end
         end
 
-        # 
+        #
         # Similar to <b>new</b> action but creates new object with copied data.
         # This method is using amoeba_dup to duplicate object with every associations specified in Model (<b>gem amoeba</b>)
         # === Examples
@@ -148,7 +147,7 @@ module Mokio
         #     include_field [:tags, :authors]
         #   end
         #
-        # If you use this method add to your controller resources in routes.rb: 
+        # If you use this method add to your controller resources in routes.rb:
         #    member do
         #      get :copy
         #    end
@@ -163,7 +162,7 @@ module Mokio
 
         #
         # Method for ajax updating "active" attribute
-        # If you use this method, add to your controller resources in routes.rb: 
+        # If you use this method, add to your controller resources in routes.rb:
         #    member do
         #      get :update_active
         #    end

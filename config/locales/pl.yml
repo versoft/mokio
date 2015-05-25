@@ -540,6 +540,7 @@ pl:
     not_created: "Administrator <strong>'%{title}'</strong> nie został utworzony"
     not_updated: "Administrator <strong>'%{title}'</strong> nie został poprawnie zapisany"
     not_deleted: "Administrator <strong>'%{title}'</strong> nie został usunięty"
+    name_view: "Imię i nazwisko"
     roles:  Role
     role_name:
       admin: Administrator
@@ -721,6 +722,8 @@ pl:
         updated_at: Ostatnio edytowany
         lang_id: Język
         home_page: Strona Główna
+        author_name: "Utworzone przez"
+        editor_name: "Edytowane przez"
 
       mokio/mov_gallery:
         active: Włączona
@@ -734,6 +737,8 @@ pl:
         updated_at: Ostatnio edytowany
         lang_id: Język
         home_page: Strona Główna
+        author_name: "Utworzone przez"
+        editor_name: "Edytowane przez"
 
       mokio/article:
         active: Włączony
@@ -748,6 +753,8 @@ pl:
         lang_id: Język
         home_page: Strona Główna
         main_pic: Zdjęcie Główne
+        author_name: "Utworzone przez"
+        editor_name: "Edytowane przez"
       mokio/external_script:
         name: Nazwa / Id
         script: Skrypt
@@ -768,6 +775,8 @@ pl:
         lang_id: Język
         recipient_emails: Adresaci
         home_page: Strona Główna
+        author_name: "Utworzone przez"
+        editor_name: "Edytowane przez"
 
       mokio/contact_template:
         tpl: Szablon wiadomości
@@ -824,6 +833,8 @@ pl:
         remember_me: Zapamiętaj mnie
         email: E-mail
         password_confirmation: Potwierdź hasło
+        first_name: "Imię"
+        last_name: "Nazwisko"
       messages:
         record_invalid : "Niepoprawny rekord w bazie danych"
 

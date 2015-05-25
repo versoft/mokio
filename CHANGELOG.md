@@ -316,3 +316,12 @@
   3. Add setting url host for Devise's mailer
   4. Simple mokio content generator for model and controller
   5. Fix "ActionController::RoutingError (No route matches [GET] "/backend/users/images/favicon.ico")" error
+  6. Added first_name and last_name to Mokio::User
+  7. Added created_by and updated_by for Mokio::Content
+  8. Menu helper: possibility to add active menu elements ids
+  9. Menu helper: option of displaying current menu and its contents (not menu children)
+  10. Menu: better content/url switcher
+  11. Menu: Extended parameters
+  12. Menu helper: remove locale prefix if url is set
+  13. Config file (mokio.rb) : Added ability to set where the user is to be redirected after logging in and logging out (based on model and role)
+  14. Fix problem with cache in Movie Gallery

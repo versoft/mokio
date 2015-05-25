@@ -1,6 +1,8 @@
 .form-inputs
   - unless @password_only
     = f.input :email, required: true, :wrapper => :input_span
+    = f.input :first_name, :wrapper => :input_span
+    = f.input :last_name, :wrapper => :input_span
   = f.input :password, :wrapper => :input_span
   = f.input :password_confirmation, :wrapper => :input_span
   - unless @password_only

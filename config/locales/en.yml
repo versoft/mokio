@@ -523,6 +523,7 @@ en:
     not_created: "Admin <strong>'%{title}'</strong> has NOT been created"
     not_updated: "Admin <strong>'%{title}'</strong> has NOT been saved"
     not_deleted: "Admin <strong>'%{title}'</strong> has NOT been deleted"
+    name_view: "Name"
     roles:  Roles
     role_name:
       admin: Administrator
@@ -697,6 +698,8 @@ en:
         updated_at: Updated at
         lang_id: Language
         home_page: Home page
+        author_name: "Created by"
+        editor_name: "Updated by"
 
       mokio/mov_gallery:
         active: Active
@@ -710,6 +713,8 @@ en:
         updated_at: Updated at
         lang_id: Language
         home_page: Home page
+        author_name: "Created by"
+        editor_name: "Updated by"
 
       mokio/article:
         active: Active
@@ -724,6 +729,8 @@ en:
         lang_id: Language
         home_page: Home page
         main_pic: Main Photo
+        author_name: "Created by"
+        editor_name: "Updated by"
       mokio/external_script:
         name: Name / Id
         script: Script
@@ -744,6 +751,8 @@ en:
         lang_id: Language
         recipient_emails: Recipients
         home_page: Home Page
+        author_name: "Created by"
+        editor_name: "Updated by"
 
       mokio/contact_template:
         tpl: Message template
@@ -800,6 +809,8 @@ en:
         remember_me: Remember me
         email: E-mail
         password_confirmation: Confirm password
+        first_name: "First name"
+        last_name: "Last name"
       messages:
         record_invalid : "Incorrect record"
 

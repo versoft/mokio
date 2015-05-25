@@ -17,6 +17,9 @@ module Mokio
           belongs_to :gmap, :dependent => :destroy  # Relation with gmap isn't necessary !
           belongs_to :meta, :dependent => :destroy
 
+          belongs_to :author, :class_name => 'Mokio::User', :foreign_key => :created_by
+          belongs_to :editor, :class_name => 'Mokio::User', :foreign_key => :updated_by
+
           mount_uploader :main_pic, Mokio::MainPicUploader
 
           accepts_nested_attributes_for :menus
@@ -49,6 +52,14 @@ module Mokio
           def columns_for_table 
             %w(title active type updated_at lang_id)
           end
+        end
+
+        def author_name
+          author.name_view unless author.blank?
+        end
+
+        def editor_name
+          editor.name_view unless editor.blank?
         end
 
         #

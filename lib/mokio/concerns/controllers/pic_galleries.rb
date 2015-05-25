@@ -8,14 +8,29 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
+
+          before_action :init_obj, :set_author, :only =>[:create]
+          before_action :set_editor, :only => [:create, :update]
+
+        end
+
+        def init_obj
+          @pic_gallery = Mokio::PicGallery.new(pic_gallery_params)
+        end
+
+        def set_author
+          @pic_gallery.created_by = current_user.id
+        end
+
+        def set_editor
+          obj.updated_by = current_user.id
+          set_author if obj.created_by.blank? # for backward compatibility
         end
 
         #
         # Overriten create from CommonController#create (Mokio::Concerns::Controllers::Common)
         #
         def create
-          @pic_gallery = Mokio::PicGallery.new(pic_gallery_params)
-
           respond_to do |format|
             if @pic_gallery.save
               if !params[:save_and_new].blank?

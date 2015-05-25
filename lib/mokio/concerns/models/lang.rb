@@ -14,7 +14,7 @@ module Mokio
         validates :name, presence: true
         validates :shortname, presence: true ,uniqueness: true
         has_many :menu
-
+        has_many :contents
         after_update :update_menu_name
         after_create :add_fake_menu
 
