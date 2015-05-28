@@ -84,8 +84,61 @@ Mokio::Engine.routes.draw do
         end
       end
 
+      # multi lang contents
 
-      #
+      resources :base_contents do
+        member do
+          post :update_active
+          get :copy
+        end
+        #
+        collection do
+          get :update_content_form
+        end
+
+      end
+
+    resources :base_articles do
+      member do
+        post :update_active
+        get :copy
+      end
+      collection do
+        get :update_content_form
+      end
+    end
+
+    resources :base_mov_galleries do
+      member do
+        post :update_active
+        get :copy
+      end
+      collection do
+        get :update_content_form
+      end
+    end
+
+    resources :base_pic_galleries do
+      member do
+        post :update_active
+        get :copy
+      end
+      collection do
+        get :update_content_form
+      end
+    end
+
+    resources :base_contacts do
+      member do
+        post :update_active
+        get :copy
+      end
+      collection do
+        get :update_content_form
+      end
+  end
+
+  #
       # data_files routes
       #
       resources :data_files do
