@@ -325,3 +325,4 @@
   12. Menu helper: remove locale prefix if url is set
   13. Config file (mokio.rb) : Added ability to set where the user is to be redirected after logging in and logging out (based on model and role)
   14. Fix problem with cache in Movie Gallery
+  15. Removing content main picture function

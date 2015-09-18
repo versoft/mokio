@@ -498,6 +498,10 @@ pl:
     photos_from_external_links_error: "Zdjęcia z następujących linków nie zostały zapisane:"
     links_upload_info: "linki w oddzielnych wierszach (max 10)"
 
+  main_pics:
+    deleted: "Zdjęcie zostało usunięte"
+    not_deleted: "Zdjęcie nie zostało usunięte"
+
   youtubes:
     edit_youtube: Edytuj film
     updated: "Film <strong>'%{title}'</strong> został poprawnie zapisany"

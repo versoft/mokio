@@ -677,3 +677,17 @@ select[multiple] {
     min-height:100px;
   }
 }
+
+.delete-mainpic-button {
+  vertical-align: top;
+  margin-left: -35px;
+  margin-top: 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 0.9)
+}
+
+.delete-mainpic-button:hover {
+  color: rgba(255, 255, 255, 1)
+}

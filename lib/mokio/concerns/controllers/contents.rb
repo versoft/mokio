@@ -8,6 +8,7 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
+          include Mokio::Concerns::Controllers::MainPics
         end
 
         #

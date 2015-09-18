@@ -481,6 +481,10 @@ en:
     photos_from_external_links_error: "Photos from this urls has NOT been saved:"
     links_upload_info: " urls - one per row (max 10)"
 
+  main_pics:
+    deleted: "Picture has been deleted"
+    not_deleted: "Picture has NOT been deleted"
+
   youtubes:
     edit_youtube: Edit
     updated: "Movie <strong>'%{title}'</strong> has been saved"

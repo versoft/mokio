@@ -78,6 +78,6 @@ require "mokio/concerns/controllers/base_articles"
 require "mokio/concerns/controllers/base_pic_galleries"
 require "mokio/concerns/controllers/base_mov_galleries"
 require "mokio/concerns/controllers/base_contacts"
-
+require "mokio/concerns/controllers/main_pics"
 
 

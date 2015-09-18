@@ -1,4 +1,6 @@
 = f.input :main_pic
 #main_pic_view
   a.fancybox href=f.object.main_pic.url
-    img.image.marginR10 alt="" src=f.object.main_pic.url(:main_pic) /
+    img.image.marginR10.article-mainpic alt="" src=f.object.main_pic.url(:main_pic) /
+    - unless f.object.main_pic.file.nil?
+      = link_to "", delete_main_pic_content_path, method: :delete, remote: true, class: "delete-mainpic-button icon16 icomoon-icon-remove white"

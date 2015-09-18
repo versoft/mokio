@@ -49,6 +49,7 @@ Mokio::Engine.routes.draw do
         member do
           get  :copy
           post :update_active
+          delete :delete_main_pic
         end
 
         collection do
@@ -209,8 +210,6 @@ Mokio::Engine.routes.draw do
       namespace :support do
         get '/', to: :index
       end
-
-
 
 end
 
