@@ -54,3 +54,12 @@ group :development, :test do
 end
 
 gem 'haml2slim'
+
+
+
+
+
+
+# assety sie nie wczytywaly
+gem 'rails_serve_static_assets'
+gem 'rails_stdout_logging'

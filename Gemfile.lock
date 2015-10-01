@@ -35,7 +35,7 @@ PATH
       rake (~> 10.3, >= 10.3.1)
       rmagick (~> 2.13, >= 2.13.2)
       role_model (~> 0.8, >= 0.8.1)
-      sass-rails (~> 4.0, >= 4.0.2)
+      sass-rails (~> 5.0, >= 4.0.2)
       simple_form (= 3.0.2)
       slim-rails (~> 2.1, >= 2.1.5)
       sunspot_rails (~> 2.1, >= 2.1.0)
@@ -252,6 +252,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.1)
       sprockets-rails (~> 2.0)
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.4)
     railties (4.1.1)
       actionpack (= 4.1.1)
       activesupport (= 4.1.1)
@@ -285,12 +287,13 @@ GEM
     ruby_parser (3.6.1)
       sexp_processor (~> 4.1)
     rubyzip (1.1.4)
-    sass (3.2.19)
-    sass-rails (4.0.5)
+    sass (3.4.18)
+    sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.2)
-      sprockets (~> 2.8, < 3.0)
-      sprockets-rails (~> 2.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
@@ -392,8 +395,13 @@ DEPENDENCIES
   pry-remote
   quiet_assets
   rack-mini-profiler
+  rails_serve_static_assets
+  rails_stdout_logging
   rspec (~> 2.14, >= 2.14.1)
   rspec-rails
   sdoc
   selenium-webdriver
   simplecov
+
+BUNDLED WITH
+   1.10.6

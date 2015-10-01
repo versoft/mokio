@@ -51,7 +51,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rake',                        '~> 10.3',  '>= 10.3.1'
   s.add_dependency 'rails',                       '~> 4.0',   '>= 4.0.3', '<= 4.1.1'
 
-  s.add_dependency 'sass-rails',                  '~> 4.0',   '>= 4.0.2'
+  s.add_dependency 'sass-rails',                  '~> 5.0',   '>= 4.0.2'
   s.add_dependency 'coffee-rails',                '~> 4.0',   '>= 4.0.0'
   s.add_dependency 'haml-rails',                  '~> 0.5',   '>= 0.5.3'
   s.add_dependency 'fancybox2-rails',             '~> 0.2',   '>= 0.2.8'
