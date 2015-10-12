@@ -327,3 +327,4 @@
   14. Fix problem with cache in Movie Gallery
   15. Content main picture removing function
   16. GEMSPEC: Updating sass-rails to ~> 5.0
+  17. Bugfix: display_from and display_to were cleaned after save PicGallery and MovGallery

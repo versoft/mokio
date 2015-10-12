@@ -8,8 +8,8 @@
 = f.input :intro,   :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Mini', :height => 150} }, disabled: !obj.display_editable_field?('intro')
 = f.input :content, :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 300} }, disabled: !obj.display_editable_field?('content')
 
-= f.input :display_from,  :wrapper => :date, :as => :string, :input_html => { :class => "mask-date display_from", :value => (localize(f.object.display_from) if f.object.display_from) }, disabled: !obj.display_editable_field?('display_from')
-= f.input :display_to,    :wrapper => :date, :as => :string, :input_html => { :class => "mask-date display_to", :value => (localize(f.object.display_to) if f.object.display_to) }, disabled: !obj.display_editable_field?('display_to')
+= f.input :display_from, :wrapper => :date, :as => :string,   :input_html => { :class => "mask-date display_from", :value => (localize(f.object.display_from, :format => :datepicker) if f.object.display_from) },  disabled: !obj.display_editable_field?('display_from')
+= f.input :display_to, :wrapper => :date, :as => :string,   :input_html => { :class => "mask-date display_to", :value => (localize(f.object.display_to, :format => :datepicker) if f.object.display_to) },  disabled: !obj.display_editable_field?('display_to')
 .row-fluid
   label.form-label.span2
     = t('menus.content_assoc')
