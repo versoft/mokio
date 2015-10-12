@@ -65,7 +65,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'bootstrap-wysihtml5-rails',   '~> 0.3',   '>= 0.3.1.23'
   s.add_dependency 'bootstrap-switch-rails',      '2.0.0' # TODO problems with >2.0.0
 
-  s.add_dependency 'uglifier',                    '~> 1.3',   '>= 1.3.0'
+  s.add_dependency 'uglifier',                    '~> 2.7',   '>= 1.3.0'
   s.add_dependency 'cancancan',                   '~> 1.7'
   s.add_dependency 'simple_form',                 '3.0.2' # TODO problems with 3.1.0
   s.add_dependency 'ckeditor',                    '~> 4.0',   '>= 4.0.8'
