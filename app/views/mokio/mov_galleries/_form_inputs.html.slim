@@ -5,8 +5,8 @@
 = f.input :home_page, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('home_page')
 = f.input :title, disabled: !obj.display_editable_field?('title')
 = f.input :subtitle, disabled: !obj.display_editable_field?('subtitle'), :as => :string
-= f.input :intro, label: btc("intro", 'mov_gallery'),  :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Mini', :height => 150} }, disabled: !obj.display_editable_field?('intro')
-= f.input :content, :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 300} }, disabled: !obj.display_editable_field?('content')
+= f.input :intro, label: btc("intro", 'mov_gallery'),  :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 150, :language => I18n.locale} }, disabled: !obj.display_editable_field?('intro')
+= f.input :content, :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 300, :language => I18n.locale} }, disabled: !obj.display_editable_field?('content')
 = f.input :display_from, :wrapper => :date, :as => :string,   :input_html => { :class => "mask-date display_from", :value => (localize(f.object.display_from, :format => :datepicker) if f.object.display_from) },  disabled: !obj.display_editable_field?('display_from')
 = f.input :display_to, :wrapper => :date, :as => :string,   :input_html => { :class => "mask-date display_to", :value => (localize(f.object.display_to, :format => :datepicker) if f.object.display_to) },  disabled: !obj.display_editable_field?('display_to')
 .row-fluid

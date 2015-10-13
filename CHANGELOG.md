@@ -329,3 +329,4 @@
   16. GEMSPEC: Updating sass-rails to ~> 5.0
   17. Bugfix: display_from and display_to were cleaned after save PicGallery and MovGallery
   18. GEMSPEC: Updating ugliefier to ~> 2.7, DUMMY: lock mysql2 to 0.3.18, update gems
+  19. CKEDITOR: Changed to 'Full' toolbar, translations based on I18n.locale; FORMS: Added intro field to Mokio::Contact form 
