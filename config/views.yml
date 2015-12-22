@@ -1,0 +1,4 @@
+-
+  original_view: "mokio/layout/sidebar"
+  override_path: "mokio/layout/sidebar_support"
+  html_element_id: "#sidebar-ul"

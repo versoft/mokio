@@ -27,6 +27,7 @@ en:
   date:
     formats:
       default: "%d-%m-%Y"
+      datepicker: "%d-%m-%Y"
   mokio/article: Article
   mokio/pic_gallery: Photo Gallery
   mokio/mov_gallery: Movie Gallery
@@ -133,6 +134,7 @@ en:
       lang: Languages
       site_elements: Site elements
       settings: Settings
+      support: Help
 
     breadcrumbs:
       only_loose: Content not assigned to any menu element
@@ -183,6 +185,7 @@ en:
       page_elements: Site elements
       settings: Settings
       new_menu_position: New menu position
+      support: Help
 
   static_modules:
     actions: Actions
@@ -478,6 +481,10 @@ en:
     photos_from_external_links_error: "Photos from this urls has NOT been saved:"
     links_upload_info: " urls - one per row (max 10)"
 
+  main_pics:
+    deleted: "Picture has been deleted"
+    not_deleted: "Picture has NOT been deleted"
+
   youtubes:
     edit_youtube: Edit
     updated: "Movie <strong>'%{title}'</strong> has been saved"
@@ -520,6 +527,7 @@ en:
     not_created: "Admin <strong>'%{title}'</strong> has NOT been created"
     not_updated: "Admin <strong>'%{title}'</strong> has NOT been saved"
     not_deleted: "Admin <strong>'%{title}'</strong> has NOT been deleted"
+    name_view: "Name"
     roles:  Roles
     role_name:
       admin: Administrator
@@ -532,6 +540,12 @@ en:
     edit_password: Change password
     password_updated: Password has been updated
     password_not_updated: Password has NOT been updated
+
+  support:
+    support_title: Support
+    tips_title: Tips & Tricks
+    terms_title: Terms and privacy policy
+    contact_title: Contact Us
 
   site_helper:
     next: next
@@ -688,6 +702,8 @@ en:
         updated_at: Updated at
         lang_id: Language
         home_page: Home page
+        author_name: "Created by"
+        editor_name: "Updated by"
 
       mokio/mov_gallery:
         active: Active
@@ -701,6 +717,8 @@ en:
         updated_at: Updated at
         lang_id: Language
         home_page: Home page
+        author_name: "Created by"
+        editor_name: "Updated by"
 
       mokio/article:
         active: Active
@@ -715,6 +733,8 @@ en:
         lang_id: Language
         home_page: Home page
         main_pic: Main Photo
+        author_name: "Created by"
+        editor_name: "Updated by"
       mokio/external_script:
         name: Name / Id
         script: Script
@@ -735,6 +755,8 @@ en:
         lang_id: Language
         recipient_emails: Recipients
         home_page: Home Page
+        author_name: "Created by"
+        editor_name: "Updated by"
 
       mokio/contact_template:
         tpl: Message template
@@ -791,6 +813,8 @@ en:
         remember_me: Remember me
         email: E-mail
         password_confirmation: Confirm password
+        first_name: "First name"
+        last_name: "Last name"
       messages:
         record_invalid : "Incorrect record"
 

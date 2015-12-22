@@ -3,7 +3,8 @@
 = f.input :home_page, :wrapper => :active_checkbox, disabled: !obj.display_editable_field?('home_page')
 = f.input :title, disabled: !obj.display_editable_field?('title')
 = f.input :subtitle, disabled: !obj.display_editable_field?('subtitle'), :as => :string
-= f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 400} }, disabled: !obj.display_editable_field?('content')
+= f.input :intro,    :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 150, :language => I18n.locale} }, disabled: !obj.display_editable_field?('intro')
+= f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400, :language => I18n.locale} }, disabled: !obj.display_editable_field?('content')
 
 = f.input :recipient_emails, :as => :string, :input_html => { :class => "recipients span10" }, disabled: !obj.display_editable_field?('recipient_emails')
 .row-fluid

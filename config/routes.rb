@@ -1,5 +1,7 @@
 Mokio::Engine.routes.draw do
   root to: "dashboard#show"
+
+
   devise_for :users, :controllers => { :passwords => "passwords" }, class_name: "Mokio::User", skip: [:sessions]
   devise_for :users, class_name: "Mokio::User", module: :devise, skip: [:passwords]
 
@@ -47,6 +49,7 @@ Mokio::Engine.routes.draw do
         member do
           get  :copy
           post :update_active
+          delete :delete_main_pic
         end
 
         collection do
@@ -82,8 +85,61 @@ Mokio::Engine.routes.draw do
         end
       end
 
+      # multi lang contents
 
-      #
+      resources :base_contents do
+        member do
+          post :update_active
+          get :copy
+        end
+        #
+        collection do
+          get :update_content_form
+        end
+
+      end
+
+    resources :base_articles do
+      member do
+        post :update_active
+        get :copy
+      end
+      collection do
+        get :update_content_form
+      end
+    end
+
+    resources :base_mov_galleries do
+      member do
+        post :update_active
+        get :copy
+      end
+      collection do
+        get :update_content_form
+      end
+    end
+
+    resources :base_pic_galleries do
+      member do
+        post :update_active
+        get :copy
+      end
+      collection do
+        get :update_content_form
+      end
+    end
+
+    resources :base_contacts do
+      member do
+        post :update_active
+        get :copy
+      end
+      collection do
+        get :update_content_form
+      end
+  end
+
+  #
       # data_files routes
       #
       resources :data_files do
@@ -149,7 +205,12 @@ Mokio::Engine.routes.draw do
           get :copy
         end
       end
-      
+
+
+      namespace :support do
+        get '/', to: :index
+      end
+
 end
 
 Rails.application.routes.draw do

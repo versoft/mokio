@@ -9,6 +9,8 @@ module Mokio
 
         included do
           belongs_to :contact
+          belongs_to :base_contact
+
           validates :email, :email => true
         end
       end

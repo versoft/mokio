@@ -3,4 +3,8 @@
   .box
     = box_title do
       = bt("edit_title", obj.respond_to?(:type) ? obj.type : @obj_class)
-    = render :partial => "mokio/common/form_content", locals: {obj: obj}
+
+    -if Mokio.multi_lang_contents == true && obj.kind_of?(Mokio::BaseContent)
+      = render :template => "mokio/common/multi_lang_form_content", locals: {obj: obj}
+    -else
+      = render :partial => "mokio/common/form_content", locals: {obj: obj}

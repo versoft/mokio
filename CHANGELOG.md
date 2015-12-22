@@ -309,3 +309,24 @@
   4. Add 'css_class' and 'css_body_class' fields to Mokio::Menu
   5. Add thumbnail to Mokio::Menu
   6. Password reset functionality
+
+### Mokio 22.12.2015 v0.0.14
+  1. Ckeditor attachment - added extensions for images
+  2. Deleted old Device's views
+  3. Add setting url host for Devise's mailer
+  4. Simple mokio content generator for model and controller
+  5. Fix "ActionController::RoutingError (No route matches [GET] "/backend/users/images/favicon.ico")" error
+  6. Added first_name and last_name to Mokio::User
+  7. Added created_by and updated_by for Mokio::Content
+  8. Menu helper: possibility to add active menu elements ids
+  9. Menu helper: option of displaying current menu and its contents (not menu children)
+  10. Menu: better content/url switcher
+  11. Menu: Extended parameters
+  12. Menu helper: remove locale prefix if url is set
+  13. Config file (mokio.rb) : Added ability to set where the user is to be redirected after logging in and logging out (based on model and role)
+  14. Fix problem with cache in Movie Gallery
+  15. Content main picture removing function
+  16. GEMSPEC: Updating sass-rails to ~> 5.0
+  17. Bugfix: display_from and display_to were cleaned after save PicGallery and MovGallery
+  18. GEMSPEC: Updating ugliefier to ~> 2.7, DUMMY: lock mysql2 to 0.3.18, update gems
+  19. CKEDITOR: Changed to 'Full' toolbar, translations based on I18n.locale; FORMS: Added intro field to Mokio::Contact form 

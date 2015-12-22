@@ -1,0 +1,2 @@
+= f.input :author_name, :disabled => true if params[:action] == "edit"
+= f.input :editor_name, :disabled => true, :input_html => {:value => params[:action] == "edit" ? current_user.name_view : obj.editor_name} if params[:action] == "edit"

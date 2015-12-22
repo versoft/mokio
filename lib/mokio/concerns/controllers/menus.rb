@@ -25,6 +25,7 @@ module Mokio
         # extended CommonController#index (Mokio::Concerns::Controllers::Common)
         #
         def index
+
           @menus = Mokio::Menu.includes(:content_links).arrange(:order => :seq)
           super
         end
@@ -71,7 +72,7 @@ module Mokio
           render :nothing => true
         end
 
-        # Renders form for creating menu positon (fake menu - direct child of a lang root)
+        # Renders form for creating menu position (fake menu - direct child of a lang root)
 
         def new_menu_position
           @menu = Mokio::Menu.new
@@ -169,7 +170,7 @@ module Mokio
           # Never trust parameters from the scary internet, only allow the white list through.
           #
           def menu_params #:doc:
-            params[:menu].permit(:name, :subtitle, :seq, :target, :external_link, :css_class, :css_body_class, :main_pic, :follow, :parent_id, :active, :visible, :description, :lang_id, :fake, :content_ids => [],:available_module_ids => [],
+            params[:menu].permit(extended_parameters,mokio_gems_parameters, :name, :subtitle, :seq, :target, :external_link, :css_class, :css_body_class, :main_pic, :follow, :parent_id, :active, :visible, :description, :lang_id, :fake, :content_ids => [],:available_module_ids => [],
               :meta_attributes => Mokio::Meta.meta_attributes)
           end
       end

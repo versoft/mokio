@@ -44,8 +44,7 @@ module Mokio
   # Array of content types
   #
   CONTENT_TYPES   = ["Mokio::Article", "Mokio::Contact", "Mokio::PicGallery", "Mokio::MovGallery"]
-
-
+  BASE_CONTENT_TYPES   = ["Mokio::BaseArticle", "Mokio::BaseContact", "Mokio::BasePicGallery", "Mokio::BaseMovGallery"]
 
   #
   # Default lang for backend
@@ -223,6 +222,18 @@ module Mokio
 
   mattr_accessor :mokio_log_level 
   self.mokio_log_level = Logger::DEBUG
+
+  mattr_accessor :multi_lang_contents
+  self.multi_lang_contents = false
+
+  mattr_accessor :mokio_gems_parameters
+  self.mokio_gems_parameters = {}
+
+  mattr_accessor :after_sign_in_path
+  self.after_sign_in_path = {:user => {}}
+
+  mattr_accessor :after_sign_out_path
+  self.after_sign_out_path = {:user => {}}
 
   #
   # Default way to configure Mokio

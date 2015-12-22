@@ -126,7 +126,7 @@ module Mokio
           if self.class.has_meta_enabled?
             self.empty_meta = true if self.meta.present? && (self.meta.g_title.blank? || self.meta.f_title.blank? || self.meta.g_application_name.blank?)
 
-            application_name = Rails.application.class.to_s.split("::").first 
+            application_name = Rails.application.class.to_s.split("::").first
             self.meta.g_title            = self.title       if self.meta.present? && self.meta.g_title.blank?
             self.meta.f_title            = self.title       if self.meta.present? && self.meta.f_title.blank?
             self.meta.g_application_name = application_name if self.meta.present? && self.meta.g_application_name.blank?

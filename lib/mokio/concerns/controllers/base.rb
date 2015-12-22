@@ -16,6 +16,7 @@ module Mokio
           attr_accessor :breadcrumbs_prefix
           attr_accessor :breadcrumbs_prefix_link
           before_filter :set_breadcrumbs_prefix
+
         end
 
         #

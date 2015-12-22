@@ -250,6 +250,13 @@ $inactive_color: #dddddd;
   font-weight: 700;
 }
 
+.no_content {
+  display: inline-block;
+  margin: 0 5px 0 0;
+  text-align: center;
+  width: 15px;
+}
+
 .displayed_false {
 //  color:$inactive_color ;
   text-decoration: line-through;

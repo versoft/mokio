@@ -15,7 +15,7 @@ gemspec
 
 
 #==================================================================================================
-gem 'mysql2' # this is NOT required, someone may want to use different database
+gem 'mysql2', '0.3.18' # this is NOT required, someone may want to use different database
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -54,3 +54,12 @@ group :development, :test do
 end
 
 gem 'haml2slim'
+
+
+
+
+
+
+# assety sie nie wczytywaly
+gem 'rails_serve_static_assets'
+gem 'rails_stdout_logging'

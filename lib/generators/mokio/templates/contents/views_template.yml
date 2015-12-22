@@ -1,0 +1,6 @@
+-
+  original_view: "mokio/layout/sidebar"
+  override_path: "mokio/overrides/<%=file_name%>_sidebar_btn"
+  html_element_id: ".article_nav"
+  position: "after"
+  type: "css"

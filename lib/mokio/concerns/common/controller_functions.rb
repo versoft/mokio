@@ -8,11 +8,13 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
+
           after_action :back_to_edit, only: [:create, :update]
           after_action :meta_info, only: [:create, :update]
+
         end
 
-        private
+         private
           #
           # <b>after_action</b>, Info message about autocompleted meta tags
           #
@@ -45,8 +47,24 @@ module Mokio
             parameters = {}
             parameters[:gmap_attributes] = Mokio::Gmap.gmap_attributes if @obj_class.has_gmap_enabled?
             parameters[:meta_attributes] = Mokio::Meta.meta_attributes if @obj_class.has_meta_enabled?
+
             parameters
           end
+
+
+        def mokio_gems_parameters
+          parameters = []
+          c_name = self.controller_name.to_sym
+
+          Mokio.mokio_gems_parameters.each do |g,v|
+            v.each do |par,val|
+              if par == c_name || par == :contents && CONTENT_TYPES.include?("#{controller_path.classify.constantize.name}")
+                  parameters += val
+              end
+            end
+          end
+          parameters
+        end
 
           #
           # Returns obj index url
