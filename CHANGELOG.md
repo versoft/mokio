@@ -310,7 +310,7 @@
   5. Add thumbnail to Mokio::Menu
   6. Password reset functionality
 
-### Mokio v0.0.14
+### Mokio 22.12.2015 v0.0.14
   1. Ckeditor attachment - added extensions for images
   2. Deleted old Device's views
   3. Add setting url host for Devise's mailer
