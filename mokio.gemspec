@@ -49,7 +49,7 @@ Gem::Specification.new do |s|
 
 # ============================================================================
   s.add_dependency 'rake',                        '~> 10.3',  '>= 10.3.1'
-  s.add_dependency 'rails',                       '~> 4.0',   '>= 4.0.3', '<= 4.1.1'
+  s.add_dependency 'rails',                       '~> 4.2.6'
 
   s.add_dependency 'sass-rails',                  '~> 5.0',   '>= 4.0.2'
   s.add_dependency 'coffee-rails',                '~> 4.0',   '>= 4.0.0'
@@ -85,7 +85,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'devise',                      '~> 3.2',   '>= 3.2.4'
   s.add_dependency 'role_model',                  '~> 0.8',   '>= 0.8.1'
   s.add_dependency 'deface',                      '~> 1.0',   '>= 1.0.0'
-  s.add_dependency 'slim-rails',                    '~> 2.1', '>= 2.1.5'
+  s.add_dependency 'slim-rails',                  '~> 3.0.1'
 # ============================================================================
   s.add_development_dependency 'rspec',              '~> 2.14',  '>= 2.14.1'
   s.add_development_dependency 'capybara',           '~> 2.2',   '>= 2.2.1'
