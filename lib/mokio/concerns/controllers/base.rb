@@ -54,6 +54,13 @@ module Mokio
           @breadcrumbs_prefix = ""
           @breadcrumbs_prefix_link = ""
         end
+
+        #
+        # override current_ability to use Mokio's one
+        #
+        def current_ability
+          @current_ability ||= Mokio::Ability.new(current_user)
+        end
       end
     end
   end

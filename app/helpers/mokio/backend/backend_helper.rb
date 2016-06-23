@@ -98,6 +98,19 @@ module Mokio
         html.html_safe
       end
 
+      #
+      # Can user manage any site elements
+      #
+      def can_manage_site_elements?
+        (
+          (can? :manage, Mokio::StaticModule) ||
+          (can? :create, Mokio::StaticModule) ||
+          (can? :manage, Mokio::ModulePosition) ||
+          (can? :create, Mokio::ModulePosition) ||
+          (can? :manage, Mokio::ExternalScript) ||
+          (can? :create, Mokio::ExternalScript)
+        )
+      end
     end
   end
 end

@@ -1,7 +1,7 @@
-class Ability
-  include CanCan::Ability
+module Mokio
+  class Ability
+    include CanCan::Ability
 
-  def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
@@ -28,31 +28,28 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/bryanrite/cancancan/wiki/Defining-Abilities
+    def initialize(user)
+      if user.has_role? :admin
+        can :manage, :all
+      end
+      if user.has_role? :content_editor
+        can :manage, [Mokio::Content]
+      end
+      if user.has_role? :menu_editor
+        can :manage, [Mokio::Menu]  
+      end
+      if user.has_role? :static_module_editor
+        can :manage, [Mokio::StaticModule]  
+      end
+      if user.has_role? :user_editor
+        can :manage, [Mokio::User]
+      end
+      if user.has_role? :reader
+        can :read, :all
+      end
 
-    if user.has_role? :admin
-      can :manage, :all
+      can :edit_password, Mokio::User
+      can :update_password, Mokio::User
     end
-    if user.has_role? :content_editor
-      can :manage, [Mokio::Content]
-    end
-    if user.has_role? :menu_editor
-      can :manage, [Mokio::Menu]  
-    end
-    if user.has_role? :static_module_editor
-      can :manage, [Mokio::StaticModule]  
-    end
-    if user.has_role? :user_editor
-      can :manage, [Mokio::User]
-    end
-    if user.has_role? :reader
-      can :read, :all
-    end
-
-    can :edit_password, Mokio::User
-    can :update_password, Mokio::User
-
-
-
   end
 end
-
