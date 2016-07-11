@@ -68,5 +68,7 @@
     = render :template => "mokio/site_helper/first_login"
     
     = javascript_include_tag 'backend'
-    = yield :js         
+    = yield :js
 
+    :javascript
+      CKEDITOR.config.entities = false;
