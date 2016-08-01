@@ -1,6 +1,6 @@
 module Mokio
   module Backend
-    module BackendHelper  
+    module BackendHelper
       include Haml::Helpers
       #
       # Translate methods
@@ -55,7 +55,8 @@ module Mokio
       #     i.e.(can? : manage, Mokio::Menu)
       # * +plus_icon_class+ Icon css class for "+" button
       def sidebar_btn(type, icon_class, label="", add_btn = true, check_permissions = true, plus_icon_class = "icomoon-icon-plus")
-        table = type.to_s.demodulize.tableize #Mokio::Menu => menus
+
+        table = generate_tableize_name(type.to_s) #Mokio::Menu => menus or Mokio::MyModule::Menu => mymodule_menus
         model = table.singularize#Mokio::Menu => menu
 
         if label.empty?
@@ -96,6 +97,13 @@ module Mokio
           html << "</li>"
         end
         html.html_safe
+      end
+
+      #return table name for type
+      def generate_tableize_name(type)
+        type.gsub!("Mokio::","")
+        type.gsub!("::","_") if(type.include? "::")
+        type.tableize
       end
 
     end

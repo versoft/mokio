@@ -66,11 +66,18 @@ module Mokio
           parameters
         end
 
+          def generate_path
+            path = @obj_class.name
+            path = path.gsub("Mokio::","") if path.include? "Mokio::"
+            path = path.tableize.gsub("/","_")
+            path
+          end
+
           #
           # Returns obj index url
           #
           def obj_index_url #:doc:
-            send("#{self.controller_name.demodulize}_url") # call your_controller index path 
+            send("#{generate_path}_url") # call your_controller index path
           end
 
           #
@@ -89,7 +96,7 @@ module Mokio
           # Returns obj new url
           #
           def obj_new_url(obj) #:doc:
-            send("new_#{self.controller_name.demodulize.singularize}_path", obj) # call your_controller edit path for obj
+            send("new_#{generate_path.singularize}_path", obj) # call your_controller edit path for obj
           end
       end
     end
