@@ -1,6 +1,6 @@
 module Mokio
-  module Concerns 
-    module Common 
+  module Concerns
+    module Common
       #
       # Most important logic for CommonController
       #
@@ -16,7 +16,7 @@ module Mokio
 
         private
           #
-          # Returns inherited conroller singularized name 
+          # Returns inherited conroller singularized name
           #
           def obj_name #:doc:
             self.controller_name.singularize
@@ -68,13 +68,22 @@ module Mokio
             create_obj( @obj_class.respond_to?(:friendly) ? @obj_class.friendly.find(params[:id]) : @obj_class.find(params[:id]) )
           end
 
-          
+
           #
           # Setting constant parsed from controller name to @obj_class variable.
           # Our controllers are named to match model name. <b>before_filter</b> in CommonController
           #
           def set_obj_class #:doc:
-            @obj_class = "Mokio::#{self.class.name.demodulize.gsub("Controller", "").classify}".constantize
+
+            class_name = (self.class.name.include? "Mokio::") ? self.class.name.gsub("Mokio::", "") : self.class.name
+            #check is class in Mokio module
+            @obj_class = "Mokio::#{class_name.gsub("Controller", "").classify}".constantize rescue nil
+            #if there is no class in Mokio module check outside
+            if @obj_class.nil?
+                @obj_class = "#{class_name.gsub("Controller", "").classify}".constantize rescue nil
+            end
+            #used for path to update_active action in datatable.js.coffee.erb
+            @obj_path = ((@obj_class.to_s.include? "Mokio::") ? @obj_class.to_s.gsub("Mokio::","") : @obj_class.to_s).tableize
           end
 
           #

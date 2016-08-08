@@ -14,11 +14,11 @@ module Mokio
           before_destroy :last_one?
 
           attr_accessor :only_password
-          
+
           #
           # Table of roles for user
           #
-          
+
           ROLES = ["admin", "content_editor", "menu_editor", "static_module_editor", "user_editor", "comment_approver", "reader"]
 
           devise :database_authenticatable, :rememberable, :recoverable, :trackable
@@ -91,7 +91,7 @@ module Mokio
         def name #:nodoc:
           email
         end
-        
+
         def title #:nodoc:
           email
         end
@@ -127,7 +127,7 @@ module Mokio
         private
           def last_one?
             errors.add(:base, "Cannot delete last user") if Mokio::User.count == 1
-            errors.blank? 
+            errors.blank?
           end
       end
     end

@@ -1,7 +1,7 @@
 module Mokio
   module Concerns
     module Controllers
-      # 
+      #
       # Concern for CommonController. Many important controller logic is placed here.
       #
       # Most of Mokio's controllers are inherited by this controller. The main logic is to not repeat same part of code with changing only variables.
@@ -12,10 +12,10 @@ module Mokio
       # == CommonController provides:
       #
       # * +index+ method with json sending data.
-      # Its using common/index view and place date into jquery.datatable plugin (you can see in backend/datatable.js.coffee.erb file). 
+      # Its using common/index view and place date into jquery.datatable plugin (you can see in backend/datatable.js.coffee.erb file).
       # We send json as CommonsDatatable object (app/datatables/commons_datatable.rb)
       # Columns displayed in table are specified in used model inside method called columns_for_table.
-      # 
+      #
       # * +new+ method with building meta/gmap if they are enabled in used model
       # Its using common/new view and need partial '_form' with specifed form elements. Main form uses simple_form.
       #
@@ -23,7 +23,7 @@ module Mokio
       # Its using common/edit and need same partial as in 'new' action.
       #
       # * +create+ method
-      # Simple creating and saving object to database if passed validation. 
+      # Simple creating and saving object to database if passed validation.
       #
       # * +update+ method
       # Simple updating object in database
@@ -49,7 +49,11 @@ module Mokio
           include Mokio::Concerns::Common::ControllerObject
           include Mokio::Concerns::Common::ControllerFunctions
 
-          load_and_authorize_resource
+          before_action :authorize_actions
+          def authorize_actions
+            authorize!(params[:action].to_sym, @obj_class)
+          end
+
         end
 
         #

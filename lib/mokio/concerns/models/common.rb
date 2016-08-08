@@ -29,7 +29,7 @@ module Mokio
           #
           if Mokio.solr_enabled
             exceptions = Mokio::SolrConfig.all_exceptions # Classes which are excluded from indexing or have own searchable method
-            
+
             unless exceptions.include? self.name.demodulize.downcase.to_sym
               searchable do # Columns where Sunspot knows which data use to index
                 text :title, :boost => 5
@@ -37,7 +37,7 @@ module Mokio
               end
             end
           end
-        end 
+        end
 
         module ClassMethods
           #
@@ -60,12 +60,12 @@ module Mokio
         #
         def active_view
           "<div class=\"activebutton\">
-            <input type=\"checkbox\" 
-              #{"checked=\"checked\"" if self.active} 
+            <input type=\"checkbox\"
+              #{"checked=\"checked\"" if self.active}
               class=\"activebtn switch-small\"
               data-on=\"success\"
               data-off=\"danger\"
-              data-on-label=\"<i class='icomoon-icon-checkmark white'></i>\" 
+              data-on-label=\"<i class='icomoon-icon-checkmark white'></i>\"
               data-off-label=\"<i class='icomoon-icon-cancel-3 white'></i>\"
             >
           </div>"
@@ -103,7 +103,7 @@ module Mokio
         def some_editable
           if !self.editable && !self.changed.nil?
             (self.changed.to_set - self.always_editable_fields.to_set).each do |field|
-              errors.add(field.to_sym, "#{I18n.t('activerecord.errors.editable.not_permitted')}") 
+              errors.add(field.to_sym, "#{I18n.t('activerecord.errors.editable.not_permitted')}")
             end
           end
         end
