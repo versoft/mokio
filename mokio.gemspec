@@ -57,9 +57,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'fancybox2-rails',             '0.2.7'
   s.add_dependency 'sunspot_rails',               '~> 2.2',   '>= 2.1.0'
 
-  s.add_dependency 'jquery-rails',                '~> 4.2'
+  s.add_dependency 'jquery-rails',                '~> 4.1'
   s.add_dependency 'jquery-ui-rails',             '~> 4.2',   '>= 4.2.1'
-  s.add_dependency 'jquery-fileupload-rails',     '~> 0.4' # TODO problems with > 0.4.1
+  s.add_dependency 'jquery-fileupload-rails',     '0.4.1' # TODO problems with > 0.4.1
   s.add_dependency 'jquery-datatables-rails',     '~> 1.12',  '>= 1.12.2'
 #
   s.add_dependency 'bootstrap-wysihtml5-rails',   '~> 0.3',   '>= 0.3.1.23'

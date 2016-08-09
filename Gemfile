@@ -61,4 +61,3 @@ gem 'rails_stdout_logging'
 gem 'youtube_it', github: 'LiveWorld/youtube_it'
 # temporary until fix error 'undefined method 'number?'' in rails 5
 gem 'simple_form', github: 'kesha-antonov/simple_form', branch: 'rails-5-0'
-gem 'jquery-rails', github: 'rails/jquery-rails'
