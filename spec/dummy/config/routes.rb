@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount Mokio::Engine => "/backend"
+  mount Mokio::Engine, at: "/backend"
 end
 
 
