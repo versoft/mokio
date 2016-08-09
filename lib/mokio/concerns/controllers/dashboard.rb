@@ -25,9 +25,9 @@ module Mokio
           #
           # menu without displayed content
           #
-          @menu_with_invisible_content = (Mokio::Menu.includes(:contents).where('mokio_contents.id is not NULL').references(:contents)).select{|menu| menu.invisible_content}
-          @empty_menu = Mokio::Menu.includes(:contents).where(:mokio_content_links => {:menu_id => nil}, :external_link => nil, :fake => false)
-          @empty_menu = @empty_menu.concat(@menu_with_invisible_content)
+          @menu_with_invisible_content = (Mokio::Menu.includes(:contents).where('mokio_contents.id is not NULL').references(:contents)).select{|menu| menu.invisible_content}.pluck :id
+          @empty_menu = Mokio::Menu.includes(:contents).where(:mokio_content_links => {:menu_id => nil}, :external_link => nil, :fake => false).pluck :id
+          @empty_menu = Mokio::Menu.where id: @empty_menu + @menu_with_invisible_content
           @empty_menu = @empty_menu.first(Mokio.dashboard_size.to_i)
           @more_empty_menu = @empty_menu.size
 
