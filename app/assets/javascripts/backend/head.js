@@ -1,5 +1,5 @@
 // ! Important plugins put in all pages
-//= require jquery
+//= require jquery2
 // require jquery.turbolinks
 //= require jquery.ui.all
 //= require jquery_ujs

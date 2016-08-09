@@ -110,7 +110,7 @@ $(document).on('ready page:load', function(){
 	// })();
 	
   	//Disable certain links
-    $('a[href^=#]').click(function (e) {
+    $('a[href^=\\#]').click(function (e) {
       e.preventDefault()
     })
 

@@ -23,14 +23,14 @@
 #url_box{:style => "display: #{!@menu.external_link.blank? ? 'block' : 'none'};"}
   = f.input :external_link, label: btc("external_link",'Menu'), disabled: !@menu.display_editable_field?('external_link')
   = f.input :follow, :as => :select, :collection => [[bt("follow",'Menu'), "true"], [bt("nofollow",'Menu'), "false"]],  :include_blank => false
-= f.input :parent_id, :collection => @menu.parent_tree.collect{|m| ["#{'-' * m.ancestry.count('/')}#{m.name}", m.id]}, include_blank: false, disabled: !@menu.display_editable_field?('parent_id')
+= f.input :parent_id, :collection => @menu.parent_tree.where.not(ancestry: nil).collect{|m| ["#{'-' * (m.depth - 1)} #{m.name}", m.id]}, include_blank: false, disabled: !@menu.display_editable_field?('parent_id')
 
 .row-fluid
   %label.form-label.span2
     = btc('path', Mokio::Menu)
   .span10
     #menu_breadcrumps
-      = tree_menu_breadcrumps(@menu.parent)
+      = tree_menu_breadcrumbs(@menu.parent)
 
 = f.input :target, :collection => [[bt("current_window_inside",Mokio::Menu), nil], [bt("new_window",Mokio::Menu), "_blank"]], include_blank: false, disabled: !@menu.display_editable_field?('target')
 

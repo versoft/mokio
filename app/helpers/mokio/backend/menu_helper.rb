@@ -3,10 +3,10 @@ module Mokio
     module MenuHelper
       include Haml::Helpers
       
-      #displays breadcrump to current menu element
-      def tree_menu_breadcrumps(menu)
+      #displays breadcrumb to current menu element
+      def tree_menu_breadcrumbs(menu)
         unless menu.nil?
-          @tree_nodes = menu.ancestors << menu
+          @tree_nodes = menu.ancestors.to_a << menu
           @tree_nodes.map do |m|
             if m.present? and m != menu
               link_to(m.name, edit_menu_path(m)) + " -> "
