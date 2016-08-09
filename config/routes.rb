@@ -206,10 +206,7 @@ Mokio::Engine.routes.draw do
         end
       end
 
-
-      namespace :support do
-        get '/', to: :index
-      end
+      resources :support, only: :index
 
 end
 

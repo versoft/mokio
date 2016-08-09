@@ -36,7 +36,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'activerecord-import'
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # Annotate ActiveRecord models as a gem
-  gem 'quiet_assets' #turns off the Rails asset pipeline log
+  #gem 'quiet_assets' #turns off the Rails asset pipeline log
   gem 'rack-mini-profiler' # displays speed badge for every html page
   #gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
   gem 'progress_bar' # optional - for solr
@@ -58,3 +58,4 @@ gem 'haml2slim'
 # assety sie nie wczytywaly
 gem 'rails_serve_static_assets'
 gem 'rails_stdout_logging'
+gem 'youtube_it', github: 'LiveWorld/youtube_it'
