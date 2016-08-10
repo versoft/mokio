@@ -73,7 +73,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rmagick',                     '~> 2.13',  '>= 2.13.2'
   s.add_dependency 'mini_magick',                 '~> 3.7',   '>= 3.7.0'
   s.add_dependency 'amoeba',                      '~> 3.0'
-  s.add_dependency 'youtube_it',                  '~> 2.4',   '>= 2.4.2'
+#  s.add_dependency 'youtube_it',                  '~> 2.4',   '>= 2.4.3'
   s.add_dependency 'ancestry',                    '~> 2.1',   '>= 2.1.0'
   s.add_dependency 'acts_as_list',                '~> 0.4',   '>= 0.4.0'
   s.add_dependency 'will_paginate',               '~> 3.0',   '>= 3.0.5'
