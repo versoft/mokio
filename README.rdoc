@@ -39,3 +39,7 @@ mokio_skins https://github.com/versoft/mokio_skins
 == Tutorials, documentation & useful tips
 
 See http://www.mokio.org/support
+
+== Known issues
+
+To use Mokio::MovGallery you have to add this to your Gemfile: `gem 'youtube_it', github: 'LiveWorld/youtube_it'`, because original version of `youtube_it` gem is not maintained anymore and uncompatibile with Rails 5.
