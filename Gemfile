@@ -59,5 +59,3 @@ gem 'haml2slim'
 gem 'rails_serve_static_assets'
 gem 'rails_stdout_logging'
 gem 'youtube_it', github: 'LiveWorld/youtube_it'
-# temporary until fix error 'undefined method 'number?'' in rails 5
-gem 'simple_form', github: 'kesha-antonov/simple_form', branch: 'rails-5-0'
