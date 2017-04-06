@@ -330,3 +330,8 @@
   17. Bugfix: display_from and display_to were cleaned after save PicGallery and MovGallery
   18. GEMSPEC: Updating ugliefier to ~> 2.7, DUMMY: lock mysql2 to 0.3.18, update gems
   19. CKEDITOR: Changed to 'Full' toolbar, translations based on I18n.locale; FORMS: Added intro field to Mokio::Contact form 
+### Mokio 06.04.2017 v0.0.15
+  1. Update Rails to 5.0
+  2. Possibility to add own models in main 'models' catalog and properly handling by common mokio controller
+  3. Namespaced Ability
+  4. Remove some deprecation warnings
