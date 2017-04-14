@@ -43,7 +43,7 @@ module Mokio
     # Precompile hook
     #
     initializer "mokio.precompile", group: :all do |app|
-      app.config.assets.precompile += %w( *.eot *.svg *.woff *.ttf
+      app.config.assets.precompile += %w( 
         html5.js
         mokio.js
         backend.js
@@ -70,10 +70,6 @@ module Mokio
         backend/forms.js
         backend/gmap.js
         backend/jquery.ui.addresspicker.js
-        frontend.js
-        frontend.css
-        frontend/*
-        frontend/bg/*
         backend/head.js
       )
     end
