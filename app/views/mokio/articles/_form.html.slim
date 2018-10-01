@@ -14,3 +14,6 @@
     = t('menus.content_assoc')
   .span10
     =collection_select(:article, :menu_ids,menu_select_grouped(Mokio::Menu.all.includes(:content_links).arrange(:order => :seq)),:id,:name, {disabled: lambda{|s| s.fake.present? },selected:obj.menus.map {|j| j.id} },:multiple => true)
+
+/ #TODO - in all similar views
+/ DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "coalesce(`mokio_menus`.`ancestry`, ''), seq". Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from __home_matt_projects_bloomnet_mokio_git_mokio_app_views_mokio_articles__form_html_slim___906233159799876300_69966117229420 at /home/matt/projects/bloomnet/mokio-git/mokio/app/views/mokio/articles/_form.html.slim:16)

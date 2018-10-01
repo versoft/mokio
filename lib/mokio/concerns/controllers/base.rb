@@ -12,17 +12,17 @@ module Mokio
           layout "mokio/backend"
 
           before_action :authenticate_user!
-          after_filter :flash_to_headers    # json sending flash notices with ajax success see in main.js
+          after_action :flash_to_headers    # json sending flash notices with ajax success see in main.js
           attr_accessor :breadcrumbs_prefix
           attr_accessor :breadcrumbs_prefix_link
-          before_filter :set_breadcrumbs_prefix
+          before_action :set_breadcrumbs_prefix
 
         end
 
         #
         # Sending flash messages in X-Flash-Messages header.
         # Decoding to UTF-8 with ajax success placed in main.js.
-        # <b>after_filter</b> in BaseController
+        # <b>after_action</b> in BaseController
         #
         def flash_to_headers
           if request.xhr?

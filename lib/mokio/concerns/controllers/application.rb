@@ -1,6 +1,6 @@
 module Mokio
-  module Concerns 
-    module Controllers 
+  module Concerns
+    module Controllers
       #
       # Concern for ApplicationController
       #
@@ -12,7 +12,7 @@ module Mokio
           # For APIs, you may want to use :null_session instead.
           protect_from_forgery with: :exception
 
-          before_filter :configure_permitted_parameters, if: :devise_controller?
+          before_action :configure_permitted_parameters, if: :devise_controller?
 
           rescue_from CanCan::AccessDenied do |exception|
             render :template =>'/mokio/errors/unauthorized', :alert => exception.message # backend_root_url
@@ -21,7 +21,7 @@ module Mokio
 
         protected
           #
-          # <b>before_filter</b> in ApplicationController using <b>gem devise</b>
+          # <b>before_action</b> in ApplicationController using <b>gem devise</b>
           #
           def configure_permitted_parameters
             devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation])

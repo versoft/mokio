@@ -1,5 +1,5 @@
 class PasswordsController < Devise::PasswordsController
-	before_filter :set_mailer_host
+	before_action :set_mailer_host
 
   def set_mailer_host
     ActionMailer::Base.default_url_options[:host] = request.host_with_port
