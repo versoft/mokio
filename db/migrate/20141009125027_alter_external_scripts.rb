@@ -1,4 +1,4 @@
-class AlterExternalScripts < ActiveRecord::Migration
+class AlterExternalScripts < ActiveRecord::Migration[5.0]
   def change
     if ActiveRecord::Base.connection.table_exists? :mokio_external_scripts
       change_table :mokio_external_scripts do |t|

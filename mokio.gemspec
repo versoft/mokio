@@ -49,11 +49,11 @@ Gem::Specification.new do |s|
 
 # ============================================================================
   s.add_dependency 'rake',                        '~> 10.3',  '>= 10.3.1'
-  s.add_dependency 'rails',                       '~> 5.0.0'
+  s.add_dependency 'rails',                       '~> 5.2.1'
 
   s.add_dependency 'sass-rails',                  '~> 5.0',   '>= 4.0.2'
   s.add_dependency 'coffee-rails',                '~> 4.0',   '>= 4.0.0'
-  s.add_dependency 'haml-rails',                  '~> 0.9'
+  s.add_dependency 'haml-rails',                  '~> 1'
   s.add_dependency 'fancybox2-rails',             '0.2.7'
   s.add_dependency 'sunspot_rails',               '~> 2.2',   '>= 2.1.0'
 
@@ -67,7 +67,7 @@ Gem::Specification.new do |s|
 #
   s.add_dependency 'uglifier',                    '~> 2.7',   '>= 1.3.0'
   s.add_dependency 'cancancan',                   '~> 1.7'
-  s.add_dependency 'simple_form',                 '~> 3.4'
+  s.add_dependency 'simple_form',                 '>= 3.4'
   s.add_dependency 'ckeditor',                    '~> 4.0',   '>= 4.0.8'
   s.add_dependency 'carrierwave',                 '~> 0.10',  '>= 0.10.0'
   s.add_dependency 'rmagick',                     '~> 2.13',  '>= 2.13.2'

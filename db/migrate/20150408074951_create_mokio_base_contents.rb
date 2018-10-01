@@ -1,4 +1,4 @@
-class CreateMokioBaseContents < ActiveRecord::Migration
+class CreateMokioBaseContents < ActiveRecord::Migration[5.0]
   def change
     create_table :mokio_base_contents do |t|
       t.string   "title"

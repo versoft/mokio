@@ -12,7 +12,7 @@ module Mokio
           accepts_nested_attributes_for :static_modules
           validates :name , presence: true
           amoeba do
-            include_field :static_modules
+            include_association :static_modules
           end
         end
 

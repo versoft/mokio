@@ -1,4 +1,4 @@
-class AddMokioToApplication < ActiveRecord::Migration
+class AddMokioToApplication < ActiveRecord::Migration[5.0]
   def change
     create_table "mokio_available_modules" do |t|
       t.datetime "created_at"

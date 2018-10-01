@@ -11,7 +11,7 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
-          before_filter :edited_photo, only: [:get_thumb, :update_thumb, :remove_thumb, :crop_thumb, :rotate_thumb,
+          before_action :edited_photo, only: [:get_thumb, :update_thumb, :remove_thumb, :crop_thumb, :rotate_thumb,
                                               :get_photo, :rotate_photo, :crop_photo]
         end
 
@@ -50,8 +50,8 @@ module Mokio
             # split with "\n" can create "empty" string with '\r', when parsing textarea parameter
             # we don't want to have them in loop
             #
-            urls.reject! {|u| u == "\r"} 
-                                         
+            urls.reject! {|u| u == "\r"}
+
             if urls
               urls.each do |url|
                 url = url.gsub(/,/, '')
@@ -66,7 +66,7 @@ module Mokio
                   #
                   if Faraday.head(url).status == 200
                     photo = create_external_photo url
-                    
+
                     if photo.save # !!!
                       @photos << photo
                       notice += "#{t("photos.created", title: photo.name)}\n"
@@ -90,7 +90,7 @@ module Mokio
             #
             # we can have both error and notice messages so only those cases
             #
-            flash[:error]  = error  unless error == t("photos.photos_from_external_links_error") 
+            flash[:error]  = error  unless error == t("photos.photos_from_external_links_error")
             flash[:notice] = notice unless notice.blank?
 
             respond_to do |format|
@@ -104,7 +104,7 @@ module Mokio
           def destroy
             @id = params[:id]
             @photo = photo_model.friendly.find(@id)
-            
+
             if @photo.destroy
               flash[:notice] = t("photos.deleted", title: @photo.name)
             else
@@ -166,13 +166,13 @@ module Mokio
             # when MiniMagick.open failed, continue action with only error message for user, this prevent redirect to 500 in this case
             #
             rescue Errno::ENOENT
-              flash[:error] = t("photos.not_crop", name: @edited_photo.name) 
+              flash[:error] = t("photos.not_crop", name: @edited_photo.name)
               logger.error exception_msg(image_path)
             end
 
             respond_to do |format|
               format.js {render :template => "mokio/photos/crop_thumb"}
-            end 
+            end
           end
 
           #
@@ -224,7 +224,7 @@ module Mokio
           #
           def remove_thumb
             @edited_photo.remove_thumb = true
-            
+
             if @edited_photo.save!
               flash[:notice] = t("photos.thumb_deleted", name: @edited_photo.name)
               @edited_photo.touch

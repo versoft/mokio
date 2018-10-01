@@ -8,8 +8,8 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
-          before_filter :set_edited_gallery, :only => [:create, :update, :find]
-          before_filter :set_edited_movie, :only => [:edit, :update, :preview_movie]
+          before_action :set_edited_gallery, :only => [:create, :update, :find]
+          before_action :set_edited_movie, :only => [:edit, :update, :preview_movie]
         end
 
         #
@@ -29,14 +29,14 @@ module Mokio
           end
 
           @youtube.thumb = @youtube.thumb.file
-        
+
           if @youtube.save
             flash[:notice] = t("youtubes.created", title: @youtube.name).html_safe
           else
             flash[:error]  = t("youtubes.created", title: @youtube.name).html_safe
           end
 
-          redirect_to edit_content_path(@edited_gallery) 
+          redirect_to edit_content_path(@edited_gallery)
         end
 
         #
@@ -76,7 +76,7 @@ module Mokio
 
         #
         # Searches for a movie on Youtube, Vimeo or Dailymotion based on given URL.
-        # Renders preview.html.haml 
+        # Renders preview.html.haml
         #
         def find
           @youtube = Mokio::Youtube.new
@@ -102,7 +102,7 @@ module Mokio
         end
 
         #
-        # Opens a window with a movie based on the movie URL 
+        # Opens a window with a movie based on the movie URL
         #
         def preview_movie
           @video = Mokio::Youtube.find_movie(@edited_movie.movie_url)
@@ -114,7 +114,7 @@ module Mokio
         private
           #
           # Never trust parameters from the scary internet, only allow the white list through.
-          #   
+          #
           def youtube_params #:doc:
             params.require(:youtube).permit(:name, :intro, :external_link, :active, :content_id, :movie_url, :id, :thumb, :subtitle, :thumb_external_url)
           end

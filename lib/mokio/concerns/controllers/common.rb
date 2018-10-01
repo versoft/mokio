@@ -87,7 +87,6 @@ module Mokio
         #
         def create
           create_obj( @obj_class.new(obj_params) )
-
           respond_to do |format|
             if obj.save
               if !params[:save_and_new].blank?
@@ -148,7 +147,7 @@ module Mokio
         #     has_many :authors
         #
         #   amoeba do
-        #     include_field [:tags, :authors]
+        #     include_association [:tags, :authors]
         #   end
         #
         # If you use this method add to your controller resources in routes.rb:

@@ -8,7 +8,7 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
-          before_filter :set_obj_class
+          before_action :set_obj_class
           before_action :set_obj, only: [:update, :destroy, :edit, :show, :copy, :update_active]
 
           helper_method :obj # Method obj must be also a helper method for usage in views
@@ -71,7 +71,7 @@ module Mokio
 
           #
           # Setting constant parsed from controller name to @obj_class variable.
-          # Our controllers are named to match model name. <b>before_filter</b> in CommonController
+          # Our controllers are named to match model name. <b>before_action</b> in CommonController
           #
           def set_obj_class #:doc:
 

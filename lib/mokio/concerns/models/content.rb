@@ -14,7 +14,7 @@ module Mokio
           has_many :data_files, :dependent => :destroy
           has_many :menus, :through => :content_links
 
-          belongs_to :gmap, :dependent => :destroy  # Relation with gmap isn't necessary !
+          belongs_to :gmap, :dependent => :destroy,optional: true # Relation with gmap isn't necessary !
           belongs_to :meta, :dependent => :destroy
 
           belongs_to :author, :class_name => 'Mokio::User', :foreign_key => :created_by
@@ -27,9 +27,9 @@ module Mokio
           accepts_nested_attributes_for :meta,       :allow_destroy => true
           accepts_nested_attributes_for :gmap,       :allow_destroy => true, :reject_if => lambda { |g| g[:full_address].blank? }
           accepts_nested_attributes_for :data_files, :allow_destroy => true, :reject_if => lambda { |d| d[:data_file].blank? }
-          
+
           validates :title, presence: true
-          validate :compare_dates  
+          validate :compare_dates
 
           scope :lang,          -> (lang_id) { where('lang_id = ? or lang_id is null', lang_id) }
           scope :order_default, -> { order("seq asc") }
@@ -50,7 +50,7 @@ module Mokio
           #
           # Columns for table in CommonController#index view
           #
-          def columns_for_table 
+          def columns_for_table
             %w(title active type updated_at lang_id)
           end
         end

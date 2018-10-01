@@ -43,7 +43,7 @@ module Mokio
           roles :admin, :content_editor, :menu_editor, :static_module_editor, :user_editor, :comment_approver, :reader
 
           # before_validation :add_default_role
-          belongs_to :market
+          # belongs_to :market
 
           if Mokio.solr_enabled
             searchable do
