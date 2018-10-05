@@ -3,12 +3,12 @@ module Mokio
     module Controllers
       #
       # Concern for DataFilesController
-      # 
+      #
       module DataFiles
         extend ActiveSupport::Concern
 
         included do
-          before_filter :data_file, only: [:edit, :update, :destroy]
+          before_action :data_file, only: [:edit, :update, :destroy]
 
           load_and_authorize_resource
         end
@@ -90,7 +90,7 @@ module Mokio
 
         private
           #
-          # before_filter finding datafile by id
+          # before_action finding datafile by id
           #
           def data_file #:doc:
             @data_file = Mokio::DataFile.find(params[:id])

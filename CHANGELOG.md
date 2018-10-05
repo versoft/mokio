@@ -340,3 +340,7 @@
 <br/>
   1. Update Rails to 5.2.1
   2. Fix deprecated methods
+
+### Mokio 05.10.2018 v0.1.1
+<br/>
+  1. Fix deprecated methods
