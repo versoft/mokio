@@ -344,3 +344,7 @@
 ### Mokio 05.10.2018 v0.1.1
 <br/>
   1. Fix deprecated methods
+
+### Mokio 06.12.2018 v0.1.2
+<br/>
+  1. Fix ckeditor issue with Rails 5.2

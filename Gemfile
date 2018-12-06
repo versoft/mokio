@@ -41,7 +41,7 @@ group :development, :test do
   #gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
   gem 'progress_bar' # optional - for solr
 
-  # Debuger: 
+  # Debuger:
     gem 'pry'
     gem 'pry-remote'
     gem 'pry-nav'
@@ -59,3 +59,5 @@ gem 'haml2slim'
 gem 'rails_serve_static_assets'
 gem 'rails_stdout_logging'
 gem 'youtube_it', github: 'LiveWorld/youtube_it'
+
+gem 'ckeditor', github: 'galetahub/ckeditor'
