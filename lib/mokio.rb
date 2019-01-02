@@ -115,6 +115,12 @@ module Mokio
   self.backend_meta_enabled = ["Mokio::Menu"] + Mokio::CONTENT_TYPES
 
   #
+  # Language CMS
+  #
+  mattr_accessor :cms_locale
+  self.cms_locale = :pl
+
+  #
   # How much records are listed in dashboard boxes
   #
   mattr_accessor :dashboard_size
@@ -207,7 +213,7 @@ module Mokio
   #
   # For developers, enable/disable debuging
   # use it for testing purposes
-  # 
+  #
   mattr_accessor :debug_all
   self.debug_all = false
 
@@ -220,7 +226,7 @@ module Mokio
   mattr_accessor :solr_enabled
   self.solr_enabled = false
 
-  mattr_accessor :mokio_log_level 
+  mattr_accessor :mokio_log_level
   self.mokio_log_level = Logger::DEBUG
 
   mattr_accessor :multi_lang_contents
