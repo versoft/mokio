@@ -16,7 +16,7 @@ module Mokio
           attr_accessor :breadcrumbs_prefix
           attr_accessor :breadcrumbs_prefix_link
           before_action :set_breadcrumbs_prefix
-
+          before_action :prepare_locale
         end
 
         #
@@ -53,6 +53,11 @@ module Mokio
         def set_breadcrumbs_prefix
           @breadcrumbs_prefix = ""
           @breadcrumbs_prefix_link = ""
+        end
+
+        def prepare_locale
+          I18n.locale = session[:locale_cms] || Mokio.cms_locale
+          session[:locale_cms] = I18n.locale
         end
 
         #
