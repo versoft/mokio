@@ -68,7 +68,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'uglifier',                    '~> 2.7',   '>= 1.3.0'
   s.add_dependency 'cancancan',                   '~> 1.7'
   s.add_dependency 'simple_form',                 '>= 3.4'
-  s.add_dependency 'ckeditor',                    '>= 4.2'
+  s.add_dependency 'ckeditor',                    '~> 4.2'
   s.add_dependency 'carrierwave',                 '~> 0.10',  '>= 0.10.0'
   s.add_dependency 'rmagick',                     '~> 2.13',  '>= 2.13.2'
   s.add_dependency 'mini_magick',                 '~> 3.7',   '>= 3.7.0'
