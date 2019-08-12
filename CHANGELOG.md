@@ -352,3 +352,8 @@
 ### Mokio 02.01.2019 v0.1.3
 <br/>
   1. Explicit CMS language setting
+
+### Mokio 12.08.2019 v0.1.4
+<br/>
+  1. Set Ckeditor version to ~>4.3
+  2. Don't require language in Models::Content in belongs_to relation

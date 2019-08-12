@@ -60,4 +60,4 @@ gem 'rails_serve_static_assets'
 gem 'rails_stdout_logging'
 gem 'youtube_it', github: 'LiveWorld/youtube_it'
 
-gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'ckeditor', '~> 4.3'

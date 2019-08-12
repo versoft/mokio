@@ -19,7 +19,7 @@ module Mokio
 
           belongs_to :author, :class_name => 'Mokio::User', :foreign_key => :created_by
           belongs_to :editor, :class_name => 'Mokio::User', :foreign_key => :updated_by
-          belongs_to :lang
+          belongs_to :lang, required: false
 
           mount_uploader :main_pic, Mokio::MainPicUploader
 
