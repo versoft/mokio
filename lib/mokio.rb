@@ -38,7 +38,7 @@ module Mokio
   #
   # Rails version supported by Mokio
   #
-  SUPPORTED_RAILS = 4
+  SUPPORTED_RAILS = 5
 
   #
   # Array of content types

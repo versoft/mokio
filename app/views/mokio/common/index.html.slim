@@ -23,6 +23,9 @@
   javascript:
     var obj_table = "#{@obj_class.to_s.demodulize.tableize}"
     var obj_class = "#{@obj_path}"
+    var tmp = "#{set_sorting_param(@obj_class)}";
+    tmp = tmp.replace(/&quot;/g, '"');
+    var default_sorting = JSON.parse(tmp);
   = javascript_include_tag "backend/datatable"
 
 /-if Mokio.solr_enabled == false

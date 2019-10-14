@@ -112,12 +112,20 @@ module Mokio
           (can? :create, Mokio::ExternalScript)
         )
       end
-      
+
       #return table name for type
       def generate_tableize_name(type)
         type.gsub!("Mokio::","")
         type.gsub!("::","_") if(type.include? "::")
         type.tableize
+      end
+
+      def set_sorting_param(obj_class)
+        if obj_class.respond_to? :default_datatable_sorting
+          obj_class.default_datatable_sorting
+        else
+          [[0, 'asc']]
+        end
       end
 
     end
