@@ -3,15 +3,15 @@ include Mokio
 
 class CommonsDatatable
 
-  delegate :params, 
-          :h, 
-          :edit_url, 
-          :obj_url, 
-          :copy_url, 
-          :table_controls_edit_btn, 
+  delegate :params,
+          :h,
+          :edit_url,
+          :obj_url,
+          :copy_url,
+          :table_controls_edit_btn,
           :table_controls_delete_btn,
           :table_controls_copy_btn,
-          to: :@view  
+          to: :@view
 
   def initialize(view, obj_class)
     @view = view
@@ -63,7 +63,7 @@ private
     html += table_controls_copy_btn( copy_url(@obj_class, row) ) if row_cloneable? row
     html += table_controls_delete_btn( obj_url(@obj_class, row)) if row.deletable
     html
-  end 
+  end
 
   def row_cloneable?(row)
     (row.respond_to? "cloneable?") ? row.cloneable? : true
@@ -80,29 +80,25 @@ private
   def fetch_commons
 
     if params[:sSearch].present?
-
-
       # TODO Check Solr Server Running
-       if Mokio.solr_enabled
+      if Mokio.solr_enabled
         searched =  Sunspot.search @obj_class do
-        fulltext params[:sSearch]
-        paginate page: page, per_page: per_page
-      end
-      collection = searched.results
+          fulltext params[:sSearch]
+          paginate page: page, per_page: per_page
+        end
+        collection = searched.results
       else
-
-      columns = ''
-      first_col = true
-      @obj_class.columns.each do |c|
-        next unless [:string, :text].include? c.type
-        columns << " OR " unless first_col
-        columns << c.name
-        columns << ' LIKE :kw'
-        first_col = false
-      end
-
-      collection = @obj_class.order("#{sort_column} #{sort_direction}").where("#{columns}",:kw=>"%#{params[:sSearch]}%")
-      collection = collection.page(page).per_page(per_page)
+        columns = ''
+        first_col = true
+        @obj_class.columns.each do |c|
+          next unless [:string, :text].include? c.type
+          columns << " OR " unless first_col
+          columns << c.name
+          columns << ' LIKE :kw'
+          first_col = false
+        end
+        collection = @obj_class.order("#{sort_column} #{sort_direction}").where("#{columns}",:kw=>"%#{params[:sSearch]}%")
+        collection = collection.page(page).per_page(per_page)
       end
 
     elsif params[:only_loose].present?
@@ -125,7 +121,12 @@ private
   end
 
   def sort_column
-    @obj_class.columns_for_table[params[:iSortCol_0].to_i]
+    param_column = @obj_class.columns_for_table[params[:iSortCol_0].to_i]
+    column_name = nil
+    if @obj_class.respond_to? :override_column_sort
+      column_name = @obj_class.override_column_sort[param_column.to_sym]
+    end
+    column_name ? column_name : param_column
   end
 
   def sort_direction

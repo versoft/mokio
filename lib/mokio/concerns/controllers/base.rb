@@ -41,13 +41,8 @@ module Mokio
         # Redirects back if back if available otherwise redirects to specified url, flash message is displayed
         #
         def redirect_back(format, url, message)
-          begin
-            format.html { redirect_to :back, notice: message }
-            format.json { head :no_content }
-          rescue ::ActionController::RedirectBackError
-            format.html { redirect_to url,   notice: message }
-            format.json { head :no_content }
-          end
+          format.html { redirect_to url, notice: message }
+          format.json { head :no_content }
         end
 
         def set_breadcrumbs_prefix

@@ -357,3 +357,9 @@
 <br/>
   1. Set Ckeditor version to ~>4.3
   2. Don't require language in Models::Content in belongs_to relation
+
+### Mokio 14.10.2019 v0.1.5
+<br/>
+  1. Fix `redirect_to :back` to `redirect_to url`
+  2. Add default sorting in datatable `def self.default_datatable_sorting`
+  3. Override search columns when using datatable `def self.override_column_sort`

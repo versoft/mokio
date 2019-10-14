@@ -2,7 +2,8 @@ $ ->
   if $("table").hasClass("dynamicTable")
     $(".dynamicTable").dataTable
       sPaginationType: "full_numbers"
-      bJQueryUI: false
+      bJQueryUI: false,
+      aaSorting: default_sorting,
       bAutoWidth: false
       bLengthChange: false
       bProcessing: true
