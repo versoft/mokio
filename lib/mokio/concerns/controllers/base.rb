@@ -8,7 +8,7 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
-          protect_from_forgery
+          protect_from_forgery prepend: true
           layout "mokio/backend"
 
           before_action :authenticate_user!
