@@ -397,3 +397,8 @@
     - Mokio::DataFile
   2. Updated: fake menu generation
   3. Fixed: Mokio::Menu belongs_to Mokio::Meta // optional: true
+
+### Mokio 16.12.2019 v2.0.5
+<br/>
+  1. Changed `protect_from_forgery with: :exception` to `protect_from_forgery prepend: true`
+  2. Fixed admin password changing by add set_obj to prevent nil object exception

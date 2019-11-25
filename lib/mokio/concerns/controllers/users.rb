@@ -8,7 +8,7 @@ module Mokio
         extend ActiveSupport::Concern
 
         include Mokio::Concerns::Common::Translations
-        
+
         included do
         end
 
@@ -35,7 +35,7 @@ module Mokio
               if !params[:save_and_new].blank?
                 format.html { redirect_to obj_new_url(@obj_class.new), notice: CommonTranslation.updated(obj) }
                 format.json { head :no_content }
-              else 
+              else
                 format.html { redirect_to obj_index_url, notice: CommonTranslation.updated(obj) }
                 format.json { render action: 'index', status: :created, location: obj }
               end
@@ -50,7 +50,7 @@ module Mokio
         # Editing password for user
         #
         def edit_password
-
+          set_obj
           # Request Referer for redirect user in the place where it was before the change password
           session[:return_to] = request.referer
           @password_only = true
@@ -60,6 +60,7 @@ module Mokio
         # Updating password for user
         #
         def update_password
+          set_obj
           @user.only_password = true
           respond_to do |format|
             if @user.update(user_params)
