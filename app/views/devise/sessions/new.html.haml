@@ -32,6 +32,7 @@
           = f.button :submit, bt("sign_in"), class: 'btn btn-info', id: 'loginBtn'
           -if flash[:alert] && flash[:alert] != t("devise.failure.unauthenticated")
             %div
-              =flash[:alert]
+              %label.error
+                = flash[:alert]
         %br
         = link_to t("devise.link.forgot_password"), new_password_path(resource_name)

@@ -363,3 +363,8 @@
   1. Fix `redirect_to :back` to `redirect_to url`
   2. Add default sorting in datatable `def self.default_datatable_sorting`
   3. Override search columns when using datatable `def self.override_column_sort`
+
+### Mokio 29.11.2019 v0.1.6
+<br/>
+  1. Changed `protect_from_forgery with: :exception` to `protect_from_forgery prepend: true`
+  2. Fixed admin password changing by add set_obj to prevent nil object exception
