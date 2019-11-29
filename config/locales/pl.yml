@@ -25,7 +25,9 @@ pl:
     Mokio::Article: Artykuł
     Mokio::MovGallery: Galeria filmów
     Mokio::Contact: Strona kontaktowa
-
+  mokio_model_names:
+    <<: *mokio_content_types
+    Mokio::Menu: Menu
   time:
     formats:
       default: "%d-%m-%Y"
@@ -40,6 +42,7 @@ pl:
   mokio/contact: Strona kontaktowa
   external_link: Url
   backend:
+    no_data: Brak danych
     form_active: Pokaż formularz
     go_back: Powrót
     site_preview: Twoja Strona
@@ -134,7 +137,7 @@ pl:
     add_mokio/photos: Dodaj Zdjęcia
     add_mokio/youtubes: Dodaj Film
     reset_password: Reset hasła
-    new_user_pass_info: Po kliknięciu przycisku "Zapisz" do uzytkownika zostanie 
+    new_user_pass_info: Po kliknięciu przycisku "Zapisz" do uzytkownika zostanie
       wysłana wiadomość z linkiem do ustawienia hasła
     tabs:
       content: Treść
@@ -225,7 +228,7 @@ pl:
       base_contacts_edit: Edycja strony kontatkowej
       base_contacts: Strony kontaktowe
       base_content: Zarządzanie treścią
-
+      backend_search: Szukaj w backendzie
 
 
   static_modules:
@@ -546,6 +549,20 @@ pl:
     histories: Historia zmian
     histories_desc: Historia zmian
     show_more: Pokaż więcej
+  backend_searches:
+    index_title: Szukaj w backendzie
+    search_name: Nazwa
+    search_model_name: Typ treści
+    search_model_id: Id treści
+    created_at: Utworzono
+    active: Aktywny
+  meta:
+    meta_google: Google meta tagi
+    meta_google_desc: meta tagi mają wpływ na wyniki wyświetlania w google
+    meta_facebook: Facebook meta tagi
+    meta_facebook_desc: meta tagi wykorzystywane są przy udostępnianiu i wyświetlaniu witryny w Facebook
+    auto_completed: Meta tagi zostały uzupełnione automatycznie.
+
   gmaps:
     gmap: Mapa google
   users:

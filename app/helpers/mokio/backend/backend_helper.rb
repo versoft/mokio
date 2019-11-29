@@ -155,6 +155,34 @@ module Mokio
       def gallery_title(obj)
         obj.try(:gallery_title) || obj.try(:title) || bt('gallery', obj.class)
       end
+
+      def active_view_switch_helper(bool,obj)
+
+        class_name = (obj.class.name.include? "Mokio::") ? obj.class.name.gsub("Mokio::", "") : obj.class.name
+        #check is class in Mokio module
+        obj_class = "Mokio::#{class_name.gsub("Controller", "").classify}".constantize rescue nil
+        #if there is no class in Mokio module check outside
+        if obj_class.nil?
+            obj_class = "#{class_name.gsub("Controller", "").classify}".constantize rescue nil
+        end
+        #used for path to update_active action in datatable.js.coffee.erb
+        obj_path = ((obj_class.to_s.include? "Mokio::") ? obj_class.to_s.gsub("Mokio::","") : obj_class.to_s).tableize
+        obj_id = obj.id.to_s
+
+        return "<div class=\"activebutton\">
+        <input type=\"checkbox\"
+          #{"checked=\"checked\"" if bool}
+          class=\"activebtn switch-small\"
+          data-on=\"success\"
+          data-off=\"danger\"
+          data-on-label=\"<i class='icomoon-icon-checkmark white'></i>\"
+          data-off-label=\"<i class='icomoon-icon-cancel-3 white'></i>\"
+          #{"data-object-class='" + obj_path + "'"}
+          #{"data-object-id='" + obj_id + "'"}
+        >
+      </div>"
+      .html_safe
+      end
     end
   end
 end

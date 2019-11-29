@@ -26,7 +26,7 @@
     / loading animation
     #qLoverlay
     #qLbar
-      
+
     #header
       = render :template => "mokio/layout/header"
 
@@ -41,7 +41,7 @@
         -# binding.pry
         =# render partial: "backend/layout/cache_test_haml"
         =# render partial: "backend/layout/cache_test"
-        
+
       #sidebarbg
       #sidebar
         = render :template => "mokio/layout/sidebar"
@@ -52,9 +52,12 @@
           / Content wrapper
           .heading
             .search
-              %form#searchform
-                %input.top-search.text.typeahead_main_search{placeholder: bt("find_in_backend"), type: "text", autocomplete:"off"}/
+              =form_tag backend_search_index_path,method: :get do
+                =text_field_tag :query,"",class: "top-search text",placeholder: bt("find_in_backend"),autocomplete:"off",value: params[:query] || ''
                 %span.search-btn.nostyle
+              -# %form#searchform
+              -#   %input.top-search.text.typeahead_main_search{placeholder: bt("find_in_backend"), type: "text", autocomplete:"off"}/
+              -#   %span.search-btn.nostyle
             %ul.breadcrumb
               %li= "#{bt("you_are_here")}:"
               %li
@@ -66,7 +69,7 @@
             = yield
 
     = render :template => "mokio/site_helper/first_login"
-    
+
     = javascript_include_tag 'backend'
     = yield :js
 

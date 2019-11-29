@@ -39,6 +39,8 @@ require "mokio/concerns/models/youtube"
 require "mokio/concerns/models/external_script"
 require "mokio/concerns/models/seo_tag"
 require "mokio/concerns/models/history"
+require "mokio/concerns/models/backend_search"
+
 
 #
 # CommonController extensions
@@ -82,5 +84,4 @@ require "mokio/concerns/controllers/langs"
 require "mokio/concerns/controllers/main_pics"
 require "mokio/concerns/controllers/sessions"
 require "mokio/concerns/controllers/histories"
-
-
+require "mokio/concerns/controllers/backend_search"

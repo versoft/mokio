@@ -12,6 +12,7 @@ require 'ancestry'
 require 'acts_as_list'
 require 'jquery-datatables-rails'
 require 'will_paginate'
+require 'will_paginate/array'
 require 'sunspot_rails'
 require 'faraday'
 require 'validates'
@@ -275,6 +276,12 @@ module Mokio
   # Default time to log out unactive user
   mattr_accessor :devise_timeout_after
   self.devise_timeout_after = 15.minutes
+
+  mattr_accessor :backend_search_enabled
+  self.backend_search_enabled = ["Mokio::PicGallery","Mokio::MovGallery","Mokio::Article","Mokio::Contact","Mokio::Menu"]
+
+  mattr_accessor :backend_search_nested_enabled
+  self.backend_search_nested_enabled= []
 
   #
   # Default way to configure Mokio

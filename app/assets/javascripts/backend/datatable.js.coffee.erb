@@ -1,6 +1,12 @@
 $ ->
   if $("table").hasClass("dynamicTable")
+    filter = true
+
+    if $(".dynamicTable").hasClass("without-search")
+      filter = false
+
     $(".dynamicTable").dataTable
+      bFilter: filter
       pagingType: "full_numbers"
       jQueryUI: false,
       order: default_sorting,
@@ -32,10 +38,12 @@ $ ->
       drawCallback: (oSettings) ->
         $(".activebtn").bootstrapSwitch()
         $(".activebtn").on "switch-change", (e, data) ->
-          row_id = $(this).parents("tr").attr("id")
+          data_obj_class = $(this).attr("data-object-class");
+          data_obj_id = $(this).attr("data-object-id");
+          row_id = data_obj_id
+          data_url = '/' + Mokio.engine_root() + '/' + data_obj_class + '/' + row_id + '/update_active'
           url = '/' + Mokio.engine_root() + '/comments/' + row_id + '/update_accepted' if $(this).parents('.activebutton').hasClass('comment')
-          # url = '/' + Mokio.engine_root() + '/' + obj_table + '/' + row_id + '/update_active'  if !$(this).parents('.activebutton').hasClass('comment')
-          url = '/' + Mokio.engine_root() + '/' + obj_class + '/' + row_id + '/update_active'  if !$(this).parents('.activebutton').hasClass('comment')
+          url = data_url  if !$(this).parents('.activebutton').hasClass('comment')
           $.post url
         if oSettings.fnRecordsTotal() <= <%= Mokio.backend_default_per_page %>
           $('#dTable_paginate')[0].style.display = "none"

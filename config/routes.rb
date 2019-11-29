@@ -4,10 +4,12 @@ Mokio::Engine.routes.draw do
   root to: 'dashboard#show'
 
   devise_for :users, class_name: 'Mokio::User', module: :devise, controllers: { passwords: 'mokio/passwords', :sessions => "mokio/sessions" }
-  
+
   devise_scope :user do
     post '/users/send_pass_change_link' => "passwords#send_pass_change_link", as: 'send_pass_change_link'
   end
+
+  resources :backend_search,only: [:index]
 
   resources :menus do
     member do
@@ -73,56 +75,6 @@ Mokio::Engine.routes.draw do
     member do
       get  :copy
       post :update_active
-    end
-  end
-
-  resources :base_contents do
-    member do
-      post :update_active
-      get :copy
-    end
-    collection do
-      get :update_content_form
-    end
-  end
-
-  resources :base_articles do
-    member do
-      post :update_active
-      get :copy
-    end
-    collection do
-      get :update_content_form
-    end
-  end
-
-  resources :base_mov_galleries do
-    member do
-      post :update_active
-      get :copy
-    end
-    collection do
-      get :update_content_form
-    end
-  end
-
-  resources :base_pic_galleries do
-    member do
-      post :update_active
-      get :copy
-    end
-    collection do
-      get :update_content_form
-    end
-  end
-
-  resources :base_contacts do
-    member do
-      post :update_active
-      get :copy
-    end
-    collection do
-      get :update_content_form
     end
   end
 
