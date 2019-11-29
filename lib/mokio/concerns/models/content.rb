@@ -54,6 +54,11 @@ module Mokio
           def columns_for_table
             %w(title active type updated_at lang_id)
           end
+
+          def backend_search_columns
+            %w(title content)
+          end
+
         end
 
         def sitemap_url_strategy

@@ -51,17 +51,7 @@ module Mokio
         # Output for <b>active</b> parameter, used in CommonController#index
         #
         def active_view
-          "<div class=\"activebutton\">
-            <input type=\"checkbox\"
-              #{"checked=\"checked\"" if self.active}
-              class=\"activebtn switch-small\"
-              data-on=\"success\"
-              data-off=\"danger\"
-              data-on-label=\"<i class='icomoon-icon-checkmark white'></i>\"
-              data-off-label=\"<i class='icomoon-icon-cancel-3 white'></i>\"
-            >
-          </div>"
-          .html_safe
+          ApplicationController.helpers.active_view_switch_helper(self.active,self)
         end
 
         DATE_ATTRIBUTES.each do |d|

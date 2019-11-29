@@ -20,11 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+
   mokio_content_types: &mokio_content_types
     Mokio::PicGallery: Photo Gallery
     Mokio::Article: Article
     Mokio::MovGallery: Movie Gallery
     Mokio::Contact: Contact page
+  mokio_model_names:
+    <<: *mokio_content_types
+    Mokio::Menu: Menu
   time:
     formats:
       default: "%d-%m-%Y"
@@ -39,6 +43,7 @@ en:
   mokio/contact: Contact
   external_link: Url
   backend:
+    no_data: No data
     go_back: Go back
     site_preview: Your Site
     no_records_found: No records found
@@ -131,7 +136,7 @@ en:
     add_mokio/photos: Add photos
     add_mokio/youtubes: Add movies
     reset_password: Reset password
-    new_user_pass_info: After save, new user will receive an e-mail with 
+    new_user_pass_info: After save, new user will receive an e-mail with
       creating password instructions
     tabs:
       content: Content
@@ -209,6 +214,7 @@ en:
       settings: Settings
       new_menu_position: New menu position
       support: Help
+      backend_search: Find in backend
 
   static_modules:
     actions: Actions
@@ -442,6 +448,7 @@ en:
     not_created: "Content <strong>'%{title}'</strong> has NOT been created"
     not_updated: "Content <strong>'%{title}'</strong> has NOT been updated"
     not_deleted: "Content <strong>'%{title}'</strong> has NOT been deleted"
+    add_external_link: "Add external photo"
     active: Active
     intro: Introduction
     content: Content
@@ -528,6 +535,19 @@ en:
     histories: Change history
     histories_desc: Change history
     show_more: Show more
+  backend_searches:
+    index_title: Find in backend
+    search_name: Name
+    search_model_name: Content Type
+    search_model_id: Content Id
+    created_at: Created
+    active: Active
+  meta:
+    meta_google: Google meta tags
+    meta_google_desc: meta tags influence Google search results
+    meta_facebook: Facebook meta tags
+    meta_facebook_desc: meta tags are used when sharing or displaying the site on Facebook
+    auto_completed: Meta tags were automatically filed in.
 
   gmaps:
     gmap: Google map
@@ -830,6 +850,20 @@ en:
         thumb: Thumb
         add_own_thumb: Add your own thumb
         subtitle: Subtitle
+
+      mokio/meta:
+        g_title: Title
+        g_desc: Description
+        g_keywords: Keywords
+        g_author: Author
+        g_copyright: Copyright
+        g_application_name: Application name
+        f_title: Title
+        f_type: Page type
+        f_image: Image
+        f_url: Page url
+        f_desc: Description
+
       mokio/user:
         current_password: Current password
         password: New password

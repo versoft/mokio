@@ -62,6 +62,10 @@ module Mokio
           def columns_for_table
             %w(name active updated_at lang_id)
           end
+
+          def backend_search_columns
+            %w(name)
+          end
         end
 
 

@@ -512,11 +512,26 @@
 <br/>
   1. Add CircleCI config
   2. Update Spec Dummy App database.yml file to works with .env config
-  
-## Mokio 20.03.2020 v2.5.0
+
+## Mokio 26.03.2020 v2.5.0
 <br/>
   1. Refactor Mokio::Users data editing
 
-## Mokio 20.03.2020 v2.6.0
+## Mokio 26.03.2020 v2.6.0
 <br/>
   1. Move content in common form to separate tabs
+
+## Mokio 26.03.2020 v2.7.0
+<br/>
+
+  1. Added backend search model feature
+  2. Changed obj_class and obj_id flow in datatable.js.coffee for update_active
+  3. Removed obj_class and obj_table from common index
+  4. Added support for redirect back after destroy record in backend search
+  5. Added datatable option for turn off search input ( default false )
+  6. Added dedicated datatable module for backend search
+  7. Moved active button code from common model to backend helper
+  8. Added translations for additional columns in backend search
+  9. Added default search input value based on query parameter
+  10. Added content types in mokio settings (default)
+  11. Removed base contents routing

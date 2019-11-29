@@ -49,7 +49,7 @@ module Mokio
           include Mokio::Concerns::Common::ControllerObject
           include Mokio::Concerns::Common::ControllerFunctions
           include Mokio::Concerns::Common::History::Controller
-          
+
           helper Mokio::FrontendHelpers::SeoTagHelper
 
           before_action :authorize_actions
@@ -134,18 +134,21 @@ module Mokio
         # Standard destroy action. Remove object for specified class from database
         #
         def destroy
+
+          index_url = (request.referer.include?('backend_search')) ? request.referer : obj_index_url
+
           # check object can be removed by "deletable"
           if obj.respond_to?(:deletable) && obj.deletable == false
             respond_to do |format|
-              redirect_back(format, obj_index_url, CommonTranslation.not_deleted(obj))
+              redirect_back(format, index_url, CommonTranslation.not_deleted(obj))
             end and return
           end
 
           respond_to do |format|
             if obj.destroy
-              redirect_back(format, obj_index_url, CommonTranslation.deleted(obj))
+              redirect_back(format, index_url, CommonTranslation.deleted(obj))
             else
-              redirect_back(format, obj_index_url, CommonTranslation.not_deleted(obj))
+              redirect_back(format, index_url, CommonTranslation.not_deleted(obj))
             end
           end
         end

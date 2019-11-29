@@ -82,8 +82,6 @@ module Mokio
             if @obj_class.nil?
                 @obj_class = "#{class_name.gsub("Controller", "").classify}".constantize rescue nil
             end
-            #used for path to update_active action in datatable.js.coffee.erb
-            @obj_path = ((@obj_class.to_s.include? "Mokio::") ? @obj_class.to_s.gsub("Mokio::","") : @obj_class.to_s).tableize
           end
 
           #
