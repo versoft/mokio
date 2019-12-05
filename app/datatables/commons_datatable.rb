@@ -79,11 +79,11 @@ private
 
   def fetch_commons
 
-    if params[:sSearch].present?
+    if params[:search].present? && params[:search][:value].present?
       # TODO Check Solr Server Running
       if Mokio.solr_enabled
         searched =  Sunspot.search @obj_class do
-          fulltext params[:sSearch]
+          fulltext params[:search][:value]
           paginate page: page, per_page: per_page
         end
         collection = searched.results
@@ -97,7 +97,7 @@ private
           columns << ' LIKE :kw'
           first_col = false
         end
-        collection = @obj_class.order("#{sort_column} #{sort_direction}").where("#{columns}",:kw=>"%#{params[:sSearch]}%")
+        collection = @obj_class.order("#{sort_column} #{sort_direction}").where("#{columns}",:kw=>"%#{params[:search][:value]}%")
         collection = collection.page(page).per_page(per_page)
       end
 
@@ -108,7 +108,6 @@ private
       collection = @obj_class.order("#{sort_column} #{sort_direction}")
       collection = collection.page(page).per_page(per_page)
     end
-
     collection
   end
 

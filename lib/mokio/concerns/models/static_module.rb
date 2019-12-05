@@ -13,12 +13,12 @@ module Mokio
           has_and_belongs_to_many :module_positions, :join_table => "mokio_available_modules"
           accepts_nested_attributes_for :module_positions
           validates :title, presence: true
-          
+
           #
           # include module_positions to amoeba duplication process
           #
           amoeba do
-            include_field :module_positions
+            include_association :module_positions
           end
         end
 

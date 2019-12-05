@@ -5,13 +5,8 @@
         <!-- The fileinput-button span is used to style the file input field as button -->
       <span class="btn btn-success fileinput-button">
         <span><%= bt("add_files") %></span>
-
-        <% if obj.kind_of?(Mokio::BaseContent) %>
-        <%= f.hidden_field "base_content_id", :value => obj.id, name: "#{file_type.to_s.tableize.gsub('mokio/', '').singularize}[base_content_id]"  %>
-        <% else %>
        <%= f.hidden_field @obj_class.to_s.demodulize.downcase+"_id", :value => obj.id, name: "#{file_type.to_s.tableize.gsub('mokio/', '').singularize}[#{@obj_class.to_s.demodulize.downcase}_id]"  %>
-        
-        <% end %>
+
 
         <%= f.file_field :data_file, multiple:true, name: "#{file_type.to_s.tableize.gsub('mokio/', '').singularize}[data_file]" %>
       </span>

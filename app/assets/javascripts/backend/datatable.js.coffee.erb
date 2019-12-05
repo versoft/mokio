@@ -9,7 +9,8 @@ $ ->
       bProcessing: true
       bServerSide: true
       aoColumnDefs: [ { 'bSortable': false, 'aTargets': [ -1 ] } ] # disable sorting in column with actions
-      sAjaxSource: $('#dTable').data("source")
+      <%# sAjaxSource: $('#dTable').data("source") %>
+      ajax: {url: $('#dTable').data("source")}
       iDisplayLength: <%= Mokio.backend_default_per_page %> # pagination - per page
       oLanguage:
         sProcessing: "<%= I18n.t("backend.please_wait") %>"
