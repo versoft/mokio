@@ -1,4 +1,5 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Declare your gem's dependencies in mokio.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -15,7 +16,7 @@ gemspec
 
 
 #==================================================================================================
-gem 'mysql2', '0.3.18' # this is NOT required, someone may want to use different database
+gem 'mysql2', '0.4.4' # this is NOT required, someone may want to use different database
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -24,7 +25,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem "factory_girl_rails"
   gem "faker"
   # gem "capybara"
   # gem "capybara-webkit" # may be useful: apt-get install qtquick1-5-dev qtlocation5-dev qtsensors5-dev qtdeclarative5-dev
@@ -35,7 +35,9 @@ group :development, :test do
   gem "selenium-webdriver"
   gem 'simplecov'
   gem 'activerecord-import'
-  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # Annotate ActiveRecord models as a gem
+
+  # PROBLEM WITH DEPENDENCY RAKE 13.0.1
+  # gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git' # Annotate ActiveRecord models as a gem
   #gem 'quiet_assets' #turns off the Rails asset pipeline log
   gem 'rack-mini-profiler' # displays speed badge for every html page
   #gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
@@ -57,7 +59,12 @@ gem 'haml2slim'
 
 # assety sie nie wczytywaly
 gem 'rails_serve_static_assets'
-gem 'rails_stdout_logging'
-gem 'youtube_it', github: 'LiveWorld/youtube_it'
-
+# gem 'rails_stdout_logging'
+# NOT FOUND DEPENDENCY FOR THIS GEM IN RAILS 6
+# gem 'youtube_it', github: 'LiveWorld/youtube_it'
 gem 'ckeditor', '~> 4.3'
+
+# RAILS 6
+group :development, :test do
+  gem 'factory_bot'
+end

@@ -22,23 +22,6 @@ module Mokio
       end
     end
 
-    initializer 'mokio.helpers' do |app|
-      ActiveSupport.on_load :action_view do
-        ActionView::Base.send :include, Mokio::Backend::BackendHelper
-        ActionView::Base.send :include, Mokio::Backend::BreadcrumbsHelper
-        ActionView::Base.send :include, Mokio::Backend::CommonHelper
-        ActionView::Base.send :include, Mokio::Backend::JavascriptHelper
-        ActionView::Base.send :include, Mokio::Backend::MenuHelper
-        ActionView::Base.send :include, Mokio::Backend::UrlHelper
-
-        ActionView::Base.send :include, Mokio::FrontendHelpers::MenuHelper
-        ActionView::Base.send :include, Mokio::FrontendHelpers::StaticModulesHelper
-        ActionView::Base.send :include, Mokio::FrontendHelpers::ContentHelper
-        ActionView::Base.send :include, Mokio::FrontendHelpers::ExternalScriptsHelper
-        ActionView::Base.send :include, Mokio::FrontendHelpers::LangsHelper
-      end
-    end
-
     #
     # Precompile hook
     #
@@ -75,6 +58,13 @@ module Mokio
         frontend/*
         frontend/bg/*
         backend/head.js
+        backend/datatable.js
+        backend/favicon.ico
+        backend/menu/menu_dual_select.js
+        backend/help-engine/jquery.joyride-2.1.js
+        backend/help-engine/help-engine.js
+        backend/mokio-logo.svg
+
       )
     end
 

@@ -38,23 +38,15 @@ require "mokio/concerns/models/static_module"
 require "mokio/concerns/models/user"
 require "mokio/concerns/models/youtube"
 require "mokio/concerns/models/external_script"
-require "mokio/concerns/models/base_content"
-require "mokio/concerns/models/base_article"
-require "mokio/concerns/models/base_pic_gallery"
-require "mokio/concerns/models/base_mov_gallery"
-require "mokio/concerns/models/base_contact"
-
 #
 # CommonController extensions
 #
 require "mokio/concerns/common/controller_object"
 require "mokio/concerns/common/controller_functions"
 require "mokio/concerns/common/controller_translations"
-
 #
 # Controllers
 #
-require "mokio/concerns/controllers/base_contents"
 require "mokio/concerns/controllers/application"
 require "mokio/concerns/controllers/articles"
 require "mokio/concerns/controllers/base"
@@ -73,11 +65,6 @@ require "mokio/concerns/controllers/youtubes"
 require "mokio/concerns/controllers/external_scripts"
 require "mokio/concerns/controllers/module_positions"
 require "mokio/concerns/controllers/langs"
-require "mokio/concerns/controllers/base_contents"
-require "mokio/concerns/controllers/base_articles"
-require "mokio/concerns/controllers/base_pic_galleries"
-require "mokio/concerns/controllers/base_mov_galleries"
-require "mokio/concerns/controllers/base_contacts"
 require "mokio/concerns/controllers/main_pics"
 
 

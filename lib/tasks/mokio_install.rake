@@ -66,7 +66,11 @@ namespace :mokio do
       result = Rails::Generators.invoke("mokio:install")
       puts "\n\tCreated initializer(configuration file) in #{result}".green
     end
+
+    Rake::Task["webpacker:install"].execute
+
     puts "\nMokio is ready to start! Run 'rails server' and go to localhost:3000/backend to see your application in development mode"
+
   end
 
 
@@ -83,7 +87,7 @@ namespace :mokio do
       end
 
       Mokio::Lang.import langs
-      
+
       menus = build_menu(config['menus'], nil)
 
       menus.each do |me|
@@ -93,10 +97,10 @@ namespace :mokio do
 
   #recursively prepares Menu nodes based on given node list (menu_params)
 
-    def build_menu(menu_params, ancestry) 
+    def build_menu(menu_params, ancestry)
       menus = []
       menu_params.each do |m|
-        
+
         m["ancestry"] = ancestry
         new_menu = Mokio::Menu.new(m.except("children"))
         new_menu.build_meta

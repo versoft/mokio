@@ -3,7 +3,7 @@
     li.nav-heading
 .sidenav
   - cache :sidebar do
-    .sidebar-widget style="margin: -1px 0 0 0;" 
+    .sidebar-widget style="margin: -1px 0 0 0;"
       h5.title style="margin-bottom:0" = bt("sidebar_title", "backend.sidebar")
     .mainnav
       ul#sidebar-ul
@@ -21,18 +21,11 @@
               span.icon16.minia-icon-pencil-2
               = bts("content_management")
             ul.sub#add_content
-              -if Mokio.multi_lang_contents
-                = sidebar_btn Mokio::BaseContent, "icomoon-icon-list-view-2", bts("all"), false
-                = sidebar_btn Mokio::BaseArticle, "icomoon-icon-file"
-                = sidebar_btn Mokio::BasePicGallery, "icomoon-icon-picture"
-                = sidebar_btn Mokio::BaseMovGallery, "icomoon-icon-movie"
-                = sidebar_btn Mokio::BaseContact, "icomoon-icon-mail-3"
-              -else
-                = sidebar_btn Mokio::Content, "icomoon-icon-list-view-2", bts("all"), false
-                = sidebar_btn Mokio::Article, "icomoon-icon-file"
-                = sidebar_btn Mokio::PicGallery, "icomoon-icon-picture"
-                = sidebar_btn Mokio::MovGallery, "icomoon-icon-movie"
-                = sidebar_btn Mokio::Contact, "icomoon-icon-mail-3"
+              = sidebar_btn Mokio::Content, "icomoon-icon-list-view-2", bts("all"), false
+              = sidebar_btn Mokio::Article, "icomoon-icon-file"
+              = sidebar_btn Mokio::PicGallery, "icomoon-icon-picture"
+              = sidebar_btn Mokio::MovGallery, "icomoon-icon-movie"
+              = sidebar_btn Mokio::Contact, "icomoon-icon-mail-3"
 
         /  SITE ELEMENTS
         - if can_manage_site_elements?

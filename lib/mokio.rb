@@ -9,7 +9,7 @@ require "jquery-fileupload-rails"
 require 'amoeba'
 require 'fancybox2-rails'
 require "bootstrap-switch-rails"
-require 'youtube_it'
+# require 'youtube_it'
 require 'ancestry'
 require 'acts_as_list'
 require 'jquery-datatables-rails'
@@ -38,7 +38,7 @@ module Mokio
   #
   # Rails version supported by Mokio
   #
-  SUPPORTED_RAILS = 5
+  SUPPORTED_RAILS = 6
 
   #
   # Array of content types
@@ -228,9 +228,6 @@ module Mokio
 
   mattr_accessor :mokio_log_level
   self.mokio_log_level = Logger::DEBUG
-
-  mattr_accessor :multi_lang_contents
-  self.multi_lang_contents = false
 
   mattr_accessor :mokio_gems_parameters
   self.mokio_gems_parameters = {}

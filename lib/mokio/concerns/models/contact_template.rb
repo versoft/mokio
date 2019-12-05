@@ -8,10 +8,6 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
-
-          belongs_to :base_contact
-          accepts_nested_attributes_for :base_contact
-
           belongs_to :contact
           accepts_nested_attributes_for :contact
         end

@@ -313,7 +313,7 @@ module Mokio
             # Never trust parameters from the scary internet, only allow the white list through.
             #
             def photo_params #:doc:
-              params.require(:photo).permit(:name, :subtitle, :intro, :external_link, :thumb, :active, :content_id,:base_content_id, :data_file, :remote_data_file_url, :seq)
+              params.require(:photo).permit(:name, :subtitle, :intro, :external_link, :thumb, :active, :content_id,:data_file, :remote_data_file_url, :seq)
             end
 
             #
