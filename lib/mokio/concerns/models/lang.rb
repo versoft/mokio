@@ -87,7 +87,14 @@ module Mokio
           result = Mokio::Menu.all.fake_structure_unique
           result.each do |s|
             if s.depth == 1
-              @parent_menu = Mokio::Menu.new( name: s.name,ancestry:@menu.id, lang_id:self.id,fake:true,deletable:false,editable:false)
+              @parent_menu = Mokio::Menu.new(
+                name: s.name,
+                ancestry: @menu.id,
+                lang_id: self.id,
+                fake: true,
+                deletable:false,
+                editable:false
+              )
               @parent_menu.save
             end
           end
