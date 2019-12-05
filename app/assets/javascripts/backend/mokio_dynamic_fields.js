@@ -4,7 +4,6 @@ function backend_dynamic_fields(assoc) {
 
     var confirmation = confirm(message);
     if (confirmation) {
-      $(this).prev('input[type=hidden]').val('1');
       $(this).closest('.dynamic_fields_row').hide();
     }
     return event.preventDefault();
