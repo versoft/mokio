@@ -1,0 +1,6 @@
+=dynamic_fields_render_all(form_obj,:seo_tags,partial: "mokio/common/seo_tags/seo_tag_fields",table_view: true) do | form_obj |
+  tr.dynamic_fields_row
+    td = form_obj.input :tag_key,collection: obj.class.name.constantize.seo_tagable_columns,include_blank: false,label: false,wrapper: :input_without_label
+    td = form_obj.input :tag_value,input_html: {style: 'height:35px;  resize: none;'},wrapper: :input_without_label
+    td
+      =dynamic_fields_render_delete(form_obj)

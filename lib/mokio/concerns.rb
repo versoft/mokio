@@ -43,6 +43,8 @@ require "mokio/concerns/models/base_article"
 require "mokio/concerns/models/base_pic_gallery"
 require "mokio/concerns/models/base_mov_gallery"
 require "mokio/concerns/models/base_contact"
+require "mokio/concerns/models/seo_tag"
+
 
 #
 # CommonController extensions
@@ -50,7 +52,7 @@ require "mokio/concerns/models/base_contact"
 require "mokio/concerns/common/controller_object"
 require "mokio/concerns/common/controller_functions"
 require "mokio/concerns/common/controller_translations"
-
+require "mokio/concerns/common/seo_tags"
 #
 # Controllers
 #

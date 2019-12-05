@@ -117,6 +117,10 @@ pl:
     version: Wersja
     dashboard: Dashboard
     copy_suffix: (kopia)
+    dynamic_fields:
+      add_new_button: Dodaj
+      delete_row_button: Usuń
+      delete_row_button_message: Czy na pewno chcesz usunąć?
 
     sidebars:
       dashboard: Dashboard
@@ -525,6 +529,9 @@ pl:
     meta_facebook: Facebook meta tagi
     meta_facebook_desc: meta tagi wykorzystywane są przy udostępnianiu i wyświetlaniu witryny w Facebook
     auto_completed: Meta tagi zostały uzupełnione automatycznie.
+  seo_tags:
+    meta_seo: Seo meta tagi
+    meta_seo_desc: meta tagi mają wpływ na wyniki wyświetlania w google
 
   gmaps:
     gmap: Mapa google

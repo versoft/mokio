@@ -47,7 +47,7 @@ module Mokio
             parameters = {}
             parameters[:gmap_attributes] = Mokio::Gmap.gmap_attributes if @obj_class.has_gmap_enabled?
             parameters[:meta_attributes] = Mokio::Meta.meta_attributes if @obj_class.has_meta_enabled?
-
+            parameters[:seo_tags_attributes] = Mokio::SeoTag.seo_tag_attributes if @obj_class.has_seo_tagable_enabled?
             parameters
           end
 

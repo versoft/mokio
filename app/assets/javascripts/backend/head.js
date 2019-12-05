@@ -15,3 +15,4 @@
 // Ckeditor
 // require ckeditor/override
 //= require ckeditor/init
+//= require backend/mokio_dynamic_fields
