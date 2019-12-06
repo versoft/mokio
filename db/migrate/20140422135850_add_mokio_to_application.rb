@@ -46,6 +46,7 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
 
     create_table "mokio_contents" do |t|
       t.string   "title"
+      t.text     "subtitle"
       t.text     "intro"
       t.text     "content"
       t.string   "type"
@@ -57,10 +58,12 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
       t.string   "gallery_type"
       t.boolean  "editable",     default: true
       t.boolean  "deletable",    default: true
-      t.date     "display_from"
-      t.date     "display_to"
+      t.datetime "display_from"
+      t.datetime  "display_to"
       t.datetime "created_at"
+      t.integer  "created_by"
       t.datetime "updated_at"
+      t.integer  "updated_by"
       t.integer  "meta_id"
       t.integer  "gmap_id"
       t.string   "comment_type"
@@ -122,7 +125,9 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
     end
 
     create_table "mokio_menus" do |t|
+      t.string   "main_pic"
       t.string   "name"
+      t.text     "subtitle"
       t.boolean  "active",           default: true
       t.integer  "seq"
       t.string   "target"
@@ -140,8 +145,10 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
       t.boolean  "modules_editable", default: true
       t.boolean  "fake",             default: false
       t.integer  "meta_id"
-      t.boolean "follow"
+      t.boolean  "follow"
       t.string   "slug"
+      t.string   "css_class"
+      t.string   "css_body_class"
     end
 
     add_index "mokio_menus", ["ancestry"], name: "index_mokio_menus_on_ancestry", using: :btree
@@ -192,6 +199,7 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
     create_table "mokio_static_modules" do |t|
       t.integer  "available_modules_id"
       t.string   "title"
+      t.text     "subtitle"
       t.text     "content"
       t.string   "external_link"
       t.integer  "lang_id"
@@ -209,6 +217,8 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
 
     create_table "mokio_users" do |t|
       t.string   "email",                  default: "", null: false
+      t.string   "first_name"
+      t.string   "last_name"
       t.string   "encrypted_password",     default: "", null: false
       t.string   "reset_password_token"
       t.datetime "reset_password_sent_at"
@@ -225,5 +235,12 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
 
     add_index "mokio_users", ["email"], name: "index_mokio_users_on_email", unique: true, using: :btree
     add_index "mokio_users", ["reset_password_token"], name: "index_mokio_users_on_reset_password_token", unique: true, using: :btree
+
+    create_table :mokio_external_scripts do |t|
+      t.string "name"
+      t.text "script"
+      t.boolean "editable",default: true
+      t.boolean "deletable",default: true
+    end
   end
 end
