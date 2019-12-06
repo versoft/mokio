@@ -3,6 +3,15 @@ require 'mokio'
 require 'rails/generators'
 
 namespace :mokio do
+  desc "Reset pg columns sequence"
+
+  task reset_pg_sequence: :environment do
+    ActiveRecord::Base.connection.tables.each do |t|
+      ActiveRecord::Base.connection.reset_pk_sequence!(t)
+    end
+  end
+
+
   desc "Create database, running migrations and creating some default data for Mokio application"
 
   task :install, [:email, :password] => :environment do |t, args|
@@ -67,6 +76,9 @@ namespace :mokio do
       puts "\n\tCreated initializer(configuration file) in #{result}".green
     end
 
+    if(ActiveRecord::Base.configurations[Rails.env]['adapter']) == "postgresql"
+      Rake::Task["mokio:reset_pg_sequence"].execute
+    end
     Rake::Task["webpacker:install"].execute
 
     puts "\nMokio is ready to start! Run 'rails server' and go to localhost:3000/backend to see your application in development mode"

@@ -64,7 +64,7 @@ module Mokio
         backend/help-engine/jquery.joyride-2.1.js
         backend/help-engine/help-engine.js
         backend/mokio-logo.svg
-
+        backend/menu/jquery.ui.nestedSortable.js
       )
     end
 
