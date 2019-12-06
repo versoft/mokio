@@ -181,8 +181,8 @@ module Mokio
           end
 
           respond_to do |format|
-            format.html { render :nothing => true }
-            format.js   { render :nothing => true }
+            format.html { head :ok }
+            format.js { head :ok }
           end
         end
 
