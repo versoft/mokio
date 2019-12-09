@@ -11,7 +11,7 @@ module Mokio
           extend FriendlyId
 
           friendly_id :slug_candidates, use: :slugged
-          validates_uniqueness_of :slug
+          validates_uniqueness_of :slug,case_sensitive: true
           belongs_to :contents, :touch => true
 
           mount_uploader :data_file, Mokio::DataFileUploader
