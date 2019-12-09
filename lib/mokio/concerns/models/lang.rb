@@ -84,19 +84,18 @@ module Mokio
         if(@menu.save)
           self.menu_id = @menu.id
           self.save(:validate => false)
-          result = Mokio::Menu.all.fake_structure_unique
+          result = Mokio::Menu.all.fake_structure_unique.where.not(ancestry: nil).select(:name).distinct
+
           result.each do |s|
-            if s.depth == 1
-              @parent_menu = Mokio::Menu.new(
-                name: s.name,
-                ancestry: @menu.id,
-                lang_id: self.id,
-                fake: true,
-                deletable:false,
-                editable:false
-              )
-              @parent_menu.save
-            end
+            @parent_menu = Mokio::Menu.new(
+              name: s.name,
+              ancestry: @menu.id,
+              lang_id: self.id,
+              fake: true,
+              deletable:false,
+              editable:false
+            )
+            @parent_menu.save
           end
         end
       end

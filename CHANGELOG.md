@@ -388,3 +388,12 @@
 ### Mokio 10.12.2019 v2.0.3
 <br/>
   1. Update datatable API
+
+### Mokio 11.12.2019 v2.0.4
+<br />
+  1. 'Uniqueness validator will no longer enforce case sensitive comparison'
+    Added: `case_sensitive: true` to :slug in
+    - Mokio::Menu
+    - Mokio::DataFile
+  2. Updated: fake menu generation
+  3. Fixed: Mokio::Menu belongs_to Mokio::Meta // optional: true
