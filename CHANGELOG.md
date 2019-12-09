@@ -363,3 +363,24 @@
   1. Fix `redirect_to :back` to `redirect_to url`
   2. Add default sorting in datatable `def self.default_datatable_sorting`
   3. Override search columns when using datatable `def self.override_column_sort`
+
+### Mokio 05.12.2019 v2.0.0
+<br/>
+  1. Upgrade to rails 6.0.1
+  2. Removed old unused resources - base content
+  3. Fix group_by for postgres database in fake menu
+
+### Mokio 06.12.2019 v2.0.1
+<br/>
+  1. Migrations combined into one: add_mokio_to_application
+  2. Fixed update active switch in backend datatable
+  3. Added: pg sequence reset rake
+  4. Updated: mokio install rake
+  5. Changed default dummy app directory
+  6. Added: webpacker gem to gemfile
+  7. Updated: javascript precompile list
+
+### Mokio 09.12.2019 v2.0.2
+<br/>
+  1. Updated: mokio_install rake
+  2. Added: mokio_install_routes rake
