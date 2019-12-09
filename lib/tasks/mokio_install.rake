@@ -11,6 +11,18 @@ namespace :mokio do
     end
   end
 
+  desc "Add mokio routing to routes.rb"
+
+  task :install_routes => :environment do |t|
+    path = "#{Rails.root}/config/routes.rb"
+    text = File.read(path)
+
+    if !Rails.application.routes.url_helpers.method_defined?(:mokio_url)
+      File.open(path, "w") do |file|
+        file.puts text.gsub(/Rails.application.routes.draw do/, "Rails.application.routes.draw do \n  mount Mokio::Engine => '/backend'")
+      end
+    end
+  end
 
   desc "Create database, running migrations and creating some default data for Mokio application"
 
@@ -64,11 +76,13 @@ namespace :mokio do
     })
     puts "\n\tCreated default user '#{args[:email]}' with password '#{args[:password]}'".green if user.save(:validate => false)
 
-    text = File.read("#{Rails.root}/config/routes.rb")
+    Rake::Task["mokio:install_routes"].execute
 
-    File.open("#{Rails.root}/config/routes.rb", "w") do |file|
-      file.puts text.gsub(/# The priority is based upon order of creation: first created \-\> highest priority\./, "mount Mokio::Engine => '/backend'")
-    end
+    # text = File.read("#{Rails.root}/config/routes.rb")
+
+    # File.open("#{Rails.root}/config/routes.rb", "w") do |file|
+    #   file.puts text.gsub(/# The priority is based upon order of creation: first created \-\> highest priority\./, "mount Mokio::Engine => '/backend'")
+    # end
 
     unless File.exist?("#{Rails.root}/config/initializers/mokio.rb")
       puts "\n"
