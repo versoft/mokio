@@ -97,12 +97,17 @@ private
           columns << ' LIKE :kw'
           first_col = false
         end
-        collection = @obj_class.order("#{sort_column} #{sort_direction}").where("#{columns}",:kw=>"%#{params[:search][:value]}%")
+        collection = @obj_class
+          .order("#{sort_column} #{sort_direction}")
+          .where("#{columns}", :kw=>"%#{params[:search][:value]}%")
         collection = collection.page(page).per_page(per_page)
       end
 
     elsif params[:only_loose].present?
-      collection = @obj_class.includes(:menus).where(:mokio_content_links => {:content_id => nil}).order("#{sort_column} #{sort_direction}")
+      collection = @obj_class
+        .includes(:menus)
+        .where(:mokio_content_links => {:content_id => nil})
+        .order("#{sort_column} #{sort_direction}")
       collection = collection.page(page).per_page(per_page)
     else
       collection = @obj_class.order("#{sort_column} #{sort_direction}")
@@ -112,15 +117,15 @@ private
   end
 
   def page
-    params[:iDisplayStart].to_i/per_page + 1
+    params[:start].to_i/per_page + 1
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : Mokio.backend_default_per_page
+    params[:length].to_i > 0 ? params[:length].to_i : Mokio.backend_default_per_page
   end
 
   def sort_column
-    param_column = @obj_class.columns_for_table[params[:iSortCol_0].to_i]
+    param_column = @obj_class.columns_for_table[sort_column_index]
     column_name = nil
     if @obj_class.respond_to? :override_column_sort
       column_name = @obj_class.override_column_sort[param_column.to_sym]
@@ -128,7 +133,22 @@ private
     column_name ? column_name : param_column
   end
 
+  def sort_column_index
+    sort_data[:column]
+  end
+
   def sort_direction
-    params[:sSortDir_0] == "desc" ? "desc" : "asc"
+    sort_data[:direction]
+  end
+
+  def sort_data
+    if params[:order]
+      if params[:order]["0"]
+        index = params[:order]["0"]["column"].to_i
+        dir = params[:order]["0"]["dir"]
+        return {column: index, direction: dir}
+      end
+    end
+    return {column: 0, direction: "asc"}
   end
 end
