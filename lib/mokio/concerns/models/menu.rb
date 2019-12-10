@@ -9,6 +9,8 @@ module Mokio
 
         included do
           include Mokio::Concerns::Models::Common
+          include Mokio::Concerns::Common::SeoTags
+
           extend FriendlyId
 
           friendly_id :slug_candidates, use: :slugged

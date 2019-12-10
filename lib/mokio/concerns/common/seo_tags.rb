@@ -15,7 +15,9 @@ module Mokio
           end
 
           def seo_tagable_columns
-            Mokio::SeoTag.seo_tags_list_keys - self.seo_tagable_custom_columns
+            columns =  Mokio::SeoTag.seo_tags_list_keys
+            columns - self.seo_tagable_custom_columns if self.respond_to?("seo_tagable_custom_columns")
+            columns
           end
 
         end

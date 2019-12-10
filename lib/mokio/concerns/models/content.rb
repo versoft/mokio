@@ -9,6 +9,7 @@ module Mokio
 
         included do
           include Mokio::Concerns::Models::Common
+          include Mokio::Concerns::Common::SeoTags
 
           has_many :content_links, :dependent => :destroy
           has_many :data_files, :dependent => :destroy
