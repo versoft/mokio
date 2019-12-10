@@ -12,9 +12,8 @@
 //= require backend/plugins/misc/search/tipuesearch
 
 // Table plugins
-// require backend/plugins/tables/dataTables/jquery.dataTables
 // require backend/plugins/tables/responsive-tables/responsive-tables
-// 
+//
 //= require dataTables/jquery.dataTables
 
 // Form plugins # required by main.js

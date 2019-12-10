@@ -384,3 +384,7 @@
 <br/>
   1. Updated: mokio_install rake
   2. Added: mokio_install_routes rake
+
+### Mokio 10.12.2019 v2.0.3
+<br/>
+  1. Update datatable API
