@@ -1,35 +1,35 @@
 $ ->
   if $("table").hasClass("dynamicTable")
     $(".dynamicTable").dataTable
-      sPaginationType: "full_numbers"
-      bJQueryUI: false,
-      aaSorting: default_sorting,
-      bAutoWidth: false
-      bLengthChange: false
-      bProcessing: true
-      bServerSide: true
-      aoColumnDefs: [ { 'bSortable': false, 'aTargets': [ -1 ] } ] # disable sorting in column with actions
-      <%# sAjaxSource: $('#dTable').data("source") %>
+      pagingType: "full_numbers"
+      jQueryUI: false,
+      order: default_sorting,
+      autoWidth: false
+      lengthChange: false
+      processing: true
+      serverSide: true
+      columnDefs: [ { 'orderable': false, 'targets': [ -1 ] } ] # disable sorting in column with actions
+      <%# ajax: $('#dTable').data("source") %>
       ajax: {url: $('#dTable').data("source")}
-      iDisplayLength: <%= Mokio.backend_default_per_page %> # pagination - per page
-      oLanguage:
-        sProcessing: "<%= I18n.t("backend.please_wait") %>"
-        sLengthMenu: "<%= I18n.t("backend.show") %>" + " _MENU_ " + "<%= I18n.t("backend.table_positions") %>"
-        sZeroRecords: "<%= I18n.t("backend.no_matching_indexes") %>"
-        sInfo: "<%= I18n.t("backend.table_positions_from") %>" + " _START_ " + "<%= I18n.t("backend.table_to") %> "+ " _END_  - " + "<%= I18n.t("backend.table_all") %>" + " _TOTAL_"
-        sInfoEmpty: "<%= I18n.t("backend.table_no_records") %>"
-        sInfoFiltered: "<%= I18n.t("backend.table_filtring_from") %>" + " _MAX_ " + "<%= I18n.t("backend.table_available_positions") %>"
-        sInfoPostFix: ""
-        sSearch: "<%= I18n.t("backend.search") %>"
-        sUrl: ""
-        oPaginate:
-          sFirst: "<%= I18n.t("backend.table_first") %>"
-          sPrevious: "<%= I18n.t("backend.table_previous") %>"
-          sNext: "<%= I18n.t("backend.table_next") %>"
-          sLast: "<%= I18n.t("backend.table_last") %>"
-      fnInitComplete: (oSettings, json) ->
+      pageLength: <%= Mokio.backend_default_per_page %> # pagination - per page
+      language:
+        processing: "<%= I18n.t("backend.please_wait") %>"
+        lengthMenu: "<%= I18n.t("backend.show") %>" + " _MENU_ " + "<%= I18n.t("backend.table_positions") %>"
+        zeroRecords: "<%= I18n.t("backend.no_matching_indexes") %>"
+        info: "<%= I18n.t("backend.table_positions_from") %>" + " _START_ " + "<%= I18n.t("backend.table_to") %> "+ " _END_  - " + "<%= I18n.t("backend.table_all") %>" + " _TOTAL_"
+        infoEmpty: "<%= I18n.t("backend.table_no_records") %>"
+        infoFiltered: "<%= I18n.t("backend.table_filtring_from") %>" + " _MAX_ " + "<%= I18n.t("backend.table_available_positions") %>"
+        infoPostFix: ""
+        search: "<%= I18n.t("backend.search") %>"
+        url: ""
+        paginate:
+          first: "<%= I18n.t("backend.table_first") %>"
+          previous: "<%= I18n.t("backend.table_previous") %>"
+          next: "<%= I18n.t("backend.table_next") %>"
+          last: "<%= I18n.t("backend.table_last") %>"
+      initComplete: (oSettings, json) ->
         $(".dataTables_filter>label>input").attr "id", "search"
-      fnDrawCallback: (oSettings) ->
+      drawCallback: (oSettings) ->
         $(".activebtn").bootstrapSwitch()
         $(".activebtn").on "switch-change", (e, data) ->
           row_id = $(this).parents("tr").attr("id")
