@@ -368,3 +368,8 @@
 <br/>
   1. Changed `protect_from_forgery with: :exception` to `protect_from_forgery prepend: true`
   2. Fixed admin password changing by add set_obj to prevent nil object exception
+
+### Mokio 08.01.2020 v0.1.7
+<br/>
+  1. Added: sitemap service and mokio config options
+  2. Added: frontend initializer for set default_url_options // ENV['APP_HOST']

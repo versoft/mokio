@@ -9,6 +9,7 @@ module Mokio
 
         included do
           include Mokio::Concerns::Models::Common
+          include Mokio::Concerns::Common::Services::Sitemap::Model
 
           has_many :content_links, :dependent => :destroy
           has_many :data_files, :dependent => :destroy
@@ -53,6 +54,14 @@ module Mokio
           def columns_for_table
             %w(title active type updated_at lang_id)
           end
+        end
+
+        def sitemap_url_strategy
+          {loc: "#{self.title}",priority: 1,lastmod: self.updated_at }
+        end
+
+        def can_add_to_sitemap?
+          true
         end
 
         def author_name
