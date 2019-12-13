@@ -64,7 +64,6 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
       t.integer  "created_by"
       t.datetime "updated_at"
       t.integer  "updated_by"
-      t.integer  "meta_id"
       t.integer  "gmap_id"
       t.string   "comment_type"
       t.datetime "etag"
@@ -72,7 +71,6 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
     end
 
     add_index "mokio_contents", ["gmap_id"], name: "index_mokio_contents_on_gmap_id", using: :btree
-    add_index "mokio_contents", ["meta_id"], name: "index_mokio_contents_on_meta_id", using: :btree
 
     create_table "mokio_data_files" do |t|
       t.string   "name"
@@ -144,7 +142,6 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
       t.boolean  "content_editable", default: true
       t.boolean  "modules_editable", default: true
       t.boolean  "fake",             default: false
-      t.integer  "meta_id"
       t.boolean  "follow"
       t.string   "slug"
       t.string   "css_class"
@@ -152,24 +149,7 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
     end
 
     add_index "mokio_menus", ["ancestry"], name: "index_mokio_menus_on_ancestry", using: :btree
-    add_index "mokio_menus", ["meta_id"], name: "index_mokio_menus_on_meta_id", using: :btree
     add_index "mokio_menus", ["slug"], name: "index_mokio_menus_on_slug", unique: true, using: :btree
-
-    create_table "mokio_meta" do |t|
-      t.string   "g_title"
-      t.string   "g_desc"
-      t.string   "g_keywords"
-      t.string   "g_author"
-      t.string   "g_copyright"
-      t.string   "g_application_name"
-      t.string   "f_title"
-      t.string   "f_type"
-      t.string   "f_image"
-      t.string   "f_url"
-      t.string   "f_desc"
-      t.datetime "created_at"
-      t.datetime "updated_at"
-    end
 
     create_table "mokio_module_positions" do |t|
       t.string   "name"
@@ -242,5 +222,6 @@ class AddMokioToApplication < ActiveRecord::Migration[5.0]
       t.boolean "editable",default: true
       t.boolean "deletable",default: true
     end
+
   end
 end

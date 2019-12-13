@@ -545,6 +545,13 @@ input.btn[type="submit"] {
   box-shadow: none;
 }
 
+.box-form4 {
+  position: absolute;
+  right: 335px;
+  top: -55px;
+  box-shadow: none;
+}
+
 .box-form-gmap {
   position: absolute;
   right: 318px;
@@ -690,4 +697,9 @@ select[multiple] {
 
 .delete-mainpic-button:hover {
   color: rgba(255, 255, 255, 1)
+}
+
+#seo_tags .form-actions {
+  margin: 0;
+  padding: 10px;
 }

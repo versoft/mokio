@@ -1,4 +1,4 @@
-module Mokio 
+module Mokio
   module Concerns
     module Controllers
       #
@@ -36,7 +36,7 @@ module Mokio
         def update
           @content_ids = params[:menu][:content_ids]
           @av_mod_ids = params[:menu][:available_module_ids]
-          super  
+          super
         end
 
         #
@@ -66,7 +66,7 @@ module Mokio
           if Mokio::Menu.update(@change.keys, @change.values)
             flash[:notice] = t("menus.sort_true")
           else
-            flash[:error]  = t("menus.sort_false") 
+            flash[:error]  = t("menus.sort_false")
           end
 
           render :nothing => true
@@ -98,7 +98,7 @@ module Mokio
           end
 
           #
-          # Transforms structure like: menu_id1 => parent_id1, menu_id2 => parent_id2 into 
+          # Transforms structure like: menu_id1 => parent_id1, menu_id2 => parent_id2 into
           # structure like: menu_id => {:parent_id => parent_id, :seq => seq_number}
           #
            def transform(menu_tree_param, change) #:doc:
@@ -109,13 +109,13 @@ module Mokio
             menu_tree_param.each do |menu_id, parent_id|
               menu = menus.select{|m| m.id == menu_id.to_i}.first
               # parent_id = menu.lang_id if parent_id == 'null'
-               
+
               if parent_id == "null"
                 parent_id = menu.ancestor_ids.select{|ar| root_ids.include?(ar)}.first
               end
 
               seq[parent_id] = seq[parent_id].nil? ? 1 : seq[parent_id].to_i + 1
-              change[menu_id] = {:parent_id => parent_id, :seq => seq[parent_id]} 
+              change[menu_id] = {:parent_id => parent_id, :seq => seq[parent_id]}
             end
 
             change
@@ -165,13 +165,12 @@ module Mokio
               @menu.save
             end
           end
-          
+
           #
           # Never trust parameters from the scary internet, only allow the white list through.
           #
           def menu_params #:doc:
-            params[:menu].permit(extended_parameters,mokio_gems_parameters, :name, :subtitle, :seq, :target, :external_link, :css_class, :css_body_class, :main_pic, :follow, :parent_id, :active, :visible, :description, :lang_id, :fake, :content_ids => [],:available_module_ids => [],
-              :meta_attributes => Mokio::Meta.meta_attributes)
+            params[:menu].permit(extended_parameters,mokio_gems_parameters, :name, :subtitle, :seq, :target, :external_link, :css_class, :css_body_class, :main_pic, :follow, :parent_id, :active, :visible, :description, :lang_id, :fake, :content_ids => [],:available_module_ids => [])
           end
       end
     end

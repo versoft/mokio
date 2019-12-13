@@ -16,7 +16,7 @@ gemspec
 
 
 #==================================================================================================
-gem 'mysql2', '0.4.4' # this is NOT required, someone may want to use different database
+gem 'mysql2', '0.5.3' # this is NOT required, someone may want to use different database
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

@@ -117,6 +117,10 @@ pl:
     version: Wersja
     dashboard: Dashboard
     copy_suffix: (kopia)
+    dynamic_fields:
+      add_new_button: Dodaj
+      delete_row_button: Usuń
+      delete_row_button_message: Czy na pewno chcesz usunąć?
 
     sidebars:
       dashboard: Dashboard
@@ -519,12 +523,9 @@ pl:
     subtitle: Podtytuł
     movie_url_desc: "Podaj url do filmu z Youtube, Vimeo lub DailyMotion"
 
-  meta:
-    meta_google: Google meta tagi
-    meta_google_desc: meta tagi mają wpływ na wyniki wyświetlania w google
-    meta_facebook: Facebook meta tagi
-    meta_facebook_desc: meta tagi wykorzystywane są przy udostępnianiu i wyświetlaniu witryny w Facebook
-    auto_completed: Meta tagi zostały uzupełnione automatycznie.
+  seo_tags:
+    seo_tags: Seo meta tagi
+    seo_tags_desc: meta tagi mają wpływ na wyniki wyświetlania w google
 
   gmaps:
     gmap: Mapa google
@@ -628,6 +629,10 @@ pl:
           attributes:
             title:
               blank: "Tytuł nie może być pusty"
+        mokio/seo_tag:
+          attributes:
+            tag_key:
+              taken: "Znacznik meta nie może się powtarzać"
         mokio/menu:
           attributes:
             name:
@@ -818,20 +823,6 @@ pl:
         thumb: Miniaturka
         add_own_thumb: Dodaj własną miniaturkę
         subtitle: Podtytuł
-
-      mokio/meta:
-        g_title: Tytuł
-        g_desc: Opis
-        g_keywords: Słowa kluczowe
-        g_author: Autor
-        g_copyright: Prawa autorskie
-        g_application_name: Nazwa aplikacji
-        f_title: Tytuł
-        f_type: Typ strony
-        f_image: Zdjęcie
-        f_url: Url strony
-        f_desc: Opis
-
       mokio/user:
         password: Hasło
         remember_me: Zapamiętaj mnie

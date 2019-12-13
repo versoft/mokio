@@ -9,13 +9,13 @@ module Mokio
 
         included do
           include Mokio::Concerns::Models::Common
+          include Mokio::Concerns::Common::SeoTags
 
           has_many :content_links, :dependent => :destroy
           has_many :data_files, :dependent => :destroy
           has_many :menus, :through => :content_links
 
           belongs_to :gmap, :dependent => :destroy,optional: true # Relation with gmap isn't necessary !
-          belongs_to :meta, :dependent => :destroy
 
           belongs_to :author, :class_name => 'Mokio::User', :foreign_key => :created_by
           belongs_to :editor, :class_name => 'Mokio::User', :foreign_key => :updated_by
@@ -24,7 +24,6 @@ module Mokio
           mount_uploader :main_pic, Mokio::MainPicUploader
 
           accepts_nested_attributes_for :menus
-          accepts_nested_attributes_for :meta,       :allow_destroy => true
           accepts_nested_attributes_for :gmap,       :allow_destroy => true, :reject_if => lambda { |g| g[:full_address].blank? }
           accepts_nested_attributes_for :data_files, :allow_destroy => true, :reject_if => lambda { |d| d[:data_file].blank? }
 
