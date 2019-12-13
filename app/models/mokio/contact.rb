@@ -20,7 +20,6 @@
 #  display_to   :date
 #  created_at   :datetime
 #  updated_at   :datetime
-#  meta_id      :integer
 #  gmap_id      :integer
 #
 module Mokio

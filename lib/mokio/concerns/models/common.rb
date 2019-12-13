@@ -14,13 +14,12 @@ module Mokio
         DATE_ATTRIBUTES = %w(display_from display_to updated_at created_at)
 
         included do
-          attr_accessor :empty_meta
 
           scope :active,        -> { where(active: true) }
           scope :order_default, -> { order("seq asc")    }
 
           before_destroy :deletable
-          before_save :complete_meta
+
 
           validate  :some_editable , on: :update
 
@@ -45,13 +44,6 @@ module Mokio
           #
           def has_gmap_enabled?
             Mokio.backend_gmap_enabled.include?(self.name)
-          end
-
-          #
-          # Returns boolean value depends on included model names in Mokio.backend_meta_enabled
-          #
-          def has_meta_enabled?
-            Mokio.backend_meta_enabled.include?(self.name)
           end
         end
 
@@ -117,26 +109,6 @@ module Mokio
         #
         def cloneable?
           true
-        end
-
-        #
-        # Method for autocomplete meta tags
-        #
-        def complete_meta
-          if self.class.has_meta_enabled?
-            self.empty_meta = true if self.meta.present? && (self.meta.g_title.blank? || self.meta.f_title.blank? || self.meta.g_application_name.blank?)
-
-            application_name = Rails.application.class.to_s.split("::").first
-            self.meta.g_title            = self.title       if self.meta.present? && self.meta.g_title.blank?
-            self.meta.f_title            = self.title       if self.meta.present? && self.meta.f_title.blank?
-            self.meta.g_application_name = application_name if self.meta.present? && self.meta.g_application_name.blank?
-
-            if self.respond_to?(:intro) && self.intro.present?
-              intro = ActionController::Base.helpers.strip_tags(self.intro).truncate(160).gsub!(/\s+/, ' ')
-              self.meta.g_desc = intro if self.meta.present? && self.meta.g_desc.blank?
-              self.meta.f_desc = intro if self.meta.present? && self.meta.f_desc.blank?
-            end
-          end
         end
       end
     end

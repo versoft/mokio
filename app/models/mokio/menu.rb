@@ -20,7 +20,6 @@
 #  content_editable :boolean          default(TRUE)
 #  modules_editable :boolean          default(TRUE)
 #  fake             :boolean          default(FALSE)
-#  meta_id          :integer
 #  slug             :string(255)
 # css_class :string
 # css_body_class :string

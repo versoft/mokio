@@ -9,6 +9,7 @@ module Mokio
 
         included do
           include Mokio::Concerns::Models::Common
+          include Mokio::Concerns::Common::SeoTags
           extend FriendlyId
 
           friendly_id :slug_candidates, use: :slugged
@@ -30,7 +31,6 @@ module Mokio
           has_many :available_modules, -> {order('mokio_selected_modules.seq')}, :through => :selected_modules
 
           accepts_nested_attributes_for :contents, :available_modules
-          accepts_nested_attributes_for :meta
 
           before_save :seq_and_lang_update
 

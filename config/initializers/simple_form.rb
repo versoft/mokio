@@ -6,6 +6,15 @@ SimpleForm.setup do |config|
   # stack. The options given below are used to wrap the
   # whole input.
   # =========================================================================================== #
+  config.wrappers :input_without_label, :tag => 'div', :class => 'control-group', :error_class => 'error' do |b|
+    b.use :html5
+    b.wrapper :tag => 'div', :class => 'controls' do |ba|
+      ba.use :input
+      ba.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
+      ba.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
+    end
+  end
+
   config.wrappers :default, class: :input,
     hint_class: :field_with_hint, error_class: :field_with_errors do |b|
     ## Extensions enabled by default

@@ -27,7 +27,6 @@ require "mokio/concerns/models/data_file"
 require "mokio/concerns/models/gmap"
 require "mokio/concerns/models/lang"
 require "mokio/concerns/models/mailer"
-require "mokio/concerns/models/meta"
 require "mokio/concerns/models/module_position"
 require "mokio/concerns/models/mov_gallery"
 require "mokio/concerns/models/photo"
@@ -38,12 +37,16 @@ require "mokio/concerns/models/static_module"
 require "mokio/concerns/models/user"
 require "mokio/concerns/models/youtube"
 require "mokio/concerns/models/external_script"
+require "mokio/concerns/models/seo_tag"
+
 #
 # CommonController extensions
 #
 require "mokio/concerns/common/controller_object"
 require "mokio/concerns/common/controller_functions"
 require "mokio/concerns/common/controller_translations"
+require "mokio/concerns/common/seo_tags"
+
 #
 # Controllers
 #
