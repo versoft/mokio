@@ -8,22 +8,10 @@ module Mokio
         extend ActiveSupport::Concern
 
         included do
-
           after_action :back_to_edit, only: [:create, :update]
-          after_action :meta_info, only: [:create, :update]
-
         end
 
          private
-          #
-          # <b>after_action</b>, Info message about autocompleted meta tags
-          #
-          def meta_info #:doc:
-            if flash[:notice].present?
-              flash[:notice] += " #{t("meta.auto_completed")}" if obj.respond_to?(:empty_meta) && obj.empty_meta && obj.id
-            end
-          end
-
           #
           # <b>after_action</b>, Info message about possible back to edit
           #
@@ -35,7 +23,6 @@ module Mokio
 
           def build_enabled(obj)
             obj.build_gmap if obj.class.has_gmap_enabled?
-            obj.build_meta if obj.class.has_meta_enabled?
           end
 
           # @TODO - move here data_files_attributes ?
@@ -46,8 +33,7 @@ module Mokio
           def extended_parameters #:doc:
             parameters = {}
             parameters[:gmap_attributes] = Mokio::Gmap.gmap_attributes if @obj_class.has_gmap_enabled?
-            parameters[:meta_attributes] = Mokio::Meta.meta_attributes if @obj_class.has_meta_enabled?
-
+            parameters[:seo_tags_attributes] = Mokio::SeoTag.seo_tag_attributes if @obj_class.has_seo_tagable_enabled?
             parameters
           end
 

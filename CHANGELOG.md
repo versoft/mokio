@@ -403,3 +403,9 @@
   1. Changed `protect_from_forgery with: :exception` to `protect_from_forgery prepend: true`
   2. Fixed admin password changing by add set_obj to prevent nil object exception
   3. Datatables fix acive button class
+
+### Mokio 18.12.2019 v2.0.6
+<br/>
+  1. Added Mokio SeoTags
+  2. Added: mokio_dynamic_fields
+  3. Removed: mokio_meta && multilang form

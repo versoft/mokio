@@ -13,7 +13,7 @@ module Mokio
       def data_file_model(obj)
         obj.respond_to?("data_file_type") ? obj.data_file_type.to_s.demodulize.tableize : "data_files"
       end
-     
+
       def responsive_dynamic_table(&block)
         content_tag :table, :data => {:source => datatable_source_url}, :class => "responsive dynamicTable display table table-bordered", :border => 0, :cellpadding => 0, :cellspacing => 0, :width => "100%", :id =>"dTable" do
           capture(&block)
@@ -40,7 +40,7 @@ module Mokio
           content_tag :h4 do
             if name
               tag :span
-              concat(name) 
+              concat(name)
             end
             capture(&block) unless name
           end
@@ -66,7 +66,7 @@ module Mokio
       def table_controls_copy_btn(link)
         content_tag :a, :class => "tip", :href => link, "data-hasqtip" => true, "aria-describedby" => "qtip-2", :title => bt("copy") do
           tag :span, :class => "icon12 icomoon-icon-copy-2"
-        end 
+        end
       end
 
       #
@@ -106,7 +106,12 @@ module Mokio
         content_tag :div, :class => "activebutton" do
           tag :input, :type => "checkbox", :checked => ("checked" if arg)
         end
-      end 
+      end
+
+      def backend_modal_render(type,form_object)
+        return "" unless ['google','facebook','seo_tags'].include?(type)
+        render("mokio/common/modals/modal_#{type}",f: form_object)
+      end
     end
   end
 end

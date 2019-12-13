@@ -62,7 +62,6 @@ namespace :mokio do
       parent: menu,
       slug: "top"
     })
-    top_menu.build_meta
     puts "\n\tCreated default initial menu 'top'".green if top_menu.save(:validate => false)
 
 
@@ -129,7 +128,6 @@ namespace :mokio do
 
         m["ancestry"] = ancestry
         new_menu = Mokio::Menu.new(m.except("children"))
-        new_menu.build_meta
         menus << new_menu
 
         unless m["children"].nil?

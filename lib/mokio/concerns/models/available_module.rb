@@ -11,17 +11,17 @@ module Mokio
           belongs_to :static_module
           belongs_to :module_position
 
-          scope :not_selected_for_menu, -> (menu_id = -1) { 
+          scope :not_selected_for_menu, -> (menu_id = -1) {
               ids = Mokio::SelectedModule.where(:menu_id => menu_id).pluck(:available_module_id)
               joins("join mokio_static_modules on mokio_available_modules.static_module_id = mokio_static_modules.id").
-              where('mokio_available_modules.id not in (?) and always_displayed = 0', ids.empty? ? '-1' : ids)
+              where('mokio_available_modules.id not in (?) and always_displayed = false', ids.empty? ? '-1' : ids)
           }
           scope :always_displayed, -> {joins("join mokio_static_modules on mokio_available_modules.static_module_id = mokio_static_modules.id").where('mokio_static_modules.always_displayed = ?', true)}
           scope :for_lang, -> (lang_id = 0) {joins("join mokio_static_modules on mokio_available_modules.static_module_id = mokio_static_modules.id").where('mokio_static_modules.lang_id = ? or mokio_static_modules.lang_id is null', lang_id)}
 
           # acts_as_list :column => :seq, :scope => :module_position
           #
-          # scope :selected_for_menu, -> (menu_id = -1) { 
+          # scope :selected_for_menu, -> (menu_id = -1) {
           #     ids = SelectedModule.where(:menu_id => menu_id).pluck(:available_module_id)
           #     joins("join static_modules on available_modules.static_module_id = static_modules.id").
           #     where('available_modules.id in (?) or always_displayed = 1', ids.empty? ? '-1' : ids)

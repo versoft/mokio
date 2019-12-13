@@ -89,7 +89,7 @@ en:
     english: english
     polish: polish
     all: all
-    size: Size 
+    size: Size
     wait: Please wait
     content_not_in_menu: "Content not assigned to any menu"
     all_dashboard: "All:"
@@ -116,6 +116,10 @@ en:
     version: Version
     dashboard: Dashboard
     copy_suffix: (copy)
+    dynamic_fields:
+      add_new_button: Add new
+      delete_row_button: Delete
+      delete_row_button_message: Do you really want to delete this item?
 
     sidebars:
       dashboard: Dashboard
@@ -348,7 +352,7 @@ en:
     content: content
     display_from: "displayed from"
     display_to: "displayed to"
-    new_title: "New photo gallery" 
+    new_title: "New photo gallery"
     edit_title: "Edit photo gallery"
     update_active_true: "Gallery <strong>'%{title}'</strong> is active"
     update_active_false: "Gallery <strong>'%{title}'</strong> is not active"
@@ -420,7 +424,7 @@ en:
     deleted: "Content <strong>'%{title}'</strong> has been deleted"
     not_created: "Content <strong>'%{title}'</strong> has NOT been created"
     not_updated: "Content <strong>'%{title}'</strong> has NOT been updated"
-    not_deleted: "Content <strong>'%{title}'</strong> has NOT been deleted" 
+    not_deleted: "Content <strong>'%{title}'</strong> has NOT been deleted"
     add_external_link: "Add external photo"
     active: Active
     intro: Introduction
@@ -502,13 +506,9 @@ en:
     subtitle: Subtitle
     movie_url_desc: "Url for a movie from Youtube, Vimeo or DailyMotion"
 
-  meta:
-    meta_google: Google meta tags
-    meta_google_desc: meta tags influence Google search results
-    meta_facebook: Facebook meta tags
-    meta_facebook_desc: meta tags are used when sharing or displaying the site on Facebook
-    auto_completed: Meta tags were automatically filed in.
-
+  seo_tags:
+    seo_tags: Seo meta tags
+    seo_tags_desc: meta tags influence Google search results
   gmaps:
     gmap: Google map
   users:
@@ -603,11 +603,15 @@ en:
     messages:
       unauthorized: You are not authorized to perform this action
 
-# ============================================ Activerecord ============================================================= #    
+# ============================================ Activerecord ============================================================= #
 
   activerecord:
     errors:
       models:
+        mokio/seo_tag:
+          attributes:
+            tag_key:
+              taken: "The key is taken"
         mokio/contact:
           attributes:
             title:
@@ -675,7 +679,7 @@ en:
       editable:
         not_permitted: Edit not allowed
       messages:
-        record_invalid: Incorrect record 
+        record_invalid: Incorrect record
 
     attributes:
       mokio/contents:
@@ -794,20 +798,6 @@ en:
         thumb: Thumb
         add_own_thumb: Add your own thumb
         subtitle: Subtitle
-
-      mokio/meta:
-        g_title: Title
-        g_desc: Description
-        g_keywords: Keywords
-        g_author: Author 
-        g_copyright: Copyright
-        g_application_name: Application name
-        f_title: Title
-        f_type: Page type
-        f_image: Image
-        f_url: Page url
-        f_desc: Description
-
       mokio/user:
         password: Password
         remember_me: Remember me

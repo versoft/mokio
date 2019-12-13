@@ -109,12 +109,6 @@ module Mokio
   self.backend_gmap_enabled = ["Mokio::Contact"]
 
   #
-  # Enable adding meta tags for listed models
-  #
-  mattr_accessor :backend_meta_enabled
-  self.backend_meta_enabled = ["Mokio::Menu"] + Mokio::CONTENT_TYPES
-
-  #
   # Language CMS
   #
   mattr_accessor :cms_locale

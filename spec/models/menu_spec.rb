@@ -20,7 +20,6 @@
 #  content_editable :boolean          default(TRUE)
 #  modules_editable :boolean          default(TRUE)
 #  fake             :boolean          default(FALSE)
-#  meta_id          :integer
 #  slug             :string(255)
 #
 
@@ -43,7 +42,7 @@ describe Menu do
 
 
   it "has one record" do
-    
+
     expect {FactoryGirl.create(:menu)}.to change(Menu, :count).by(1)
   end
 
@@ -74,7 +73,7 @@ describe Menu do
     rescue
     end
     @menu.errors.should_not be_empty
-   
+
   end
 
   it "new menu gets next available sequence number" do
@@ -107,7 +106,7 @@ describe Menu do
   end
 
   describe 'has and belongs to many contents' do
-    
+
     it 'reflect on association' do
       menu = Menu.reflect_on_association(:contents)
       menu.macro.should == :has_many
@@ -196,7 +195,7 @@ describe Menu do
       @content = FactoryGirl.create(:article_non_active)
       @menu = FactoryGirl.create(:menu, :content_ids => [@content.id])
       @menu.invisible_content.should be_true
-      
+
     end
 
     it "true when any non-active content is assigned to menu - more that one element on the list element only" do
@@ -233,7 +232,7 @@ describe Menu do
       @menu.attributes.keys.each do |attribute|
         expect(@menu.display_editable_field?(attribute)).to be_true
       end
-    end 
+    end
 
     it 'not editable menu returns true for always_displayed fields and false otherwise' do
       @menu = FactoryGirl.create(:menu)
@@ -242,7 +241,7 @@ describe Menu do
       @menu.attributes.keys.each do |attribute|
         expect(@menu.display_editable_field?(attribute)).to eq(@menu.always_editable_fields.include?(attribute))
       end
-    end 
+    end
   end
 
   describe 'some_editable' do
@@ -266,7 +265,7 @@ describe Menu do
       @menu.name = 'aaa'
       expect(@menu).not_to be_valid
     end
-  end 
+  end
 
   describe 'lang' do
 
@@ -318,6 +317,6 @@ describe Menu do
       expect(@menu1.available_modules_by_pos[@mod_pos.id].include?(@av_module_all)).to be_true
     end
 
-  end 
+  end
 end
 end
