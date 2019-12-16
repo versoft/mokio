@@ -402,3 +402,4 @@
 <br />
   1. Changed `protect_from_forgery with: :exception` to `protect_from_forgery prepend: true`
   2. Fixed admin password changing by add set_obj to prevent nil object exception
+  3. Datatables fix acive button class
