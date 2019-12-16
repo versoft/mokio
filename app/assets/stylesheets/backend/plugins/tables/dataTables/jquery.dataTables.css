@@ -394,7 +394,7 @@ td.details {
 }
 
 .paging_full_numbers a.paginate_button,
- 	.paging_full_numbers a.paginate_active {
+ 	.paging_full_numbers a.paginate_button.current {
 	border: 1px solid #aaa;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -437,7 +437,7 @@ td.details {
 	background: #e8e6e6;
 }
 
-.paging_full_numbers a.paginate_active {
+.paging_full_numbers a.paginate_button.current {
 	color: #f2f2f2;
 	box-shadow:0 1px 0 #eaeaea ,0 1px 0 #67c3da inset;
 	border-color: #5098aa;
