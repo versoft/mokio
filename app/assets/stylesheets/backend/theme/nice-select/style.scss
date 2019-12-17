@@ -1,0 +1,20 @@
+$gray_dark: #445870;
+$gray: #90a1b5;
+$gray_light: #e0e7ee;
+$gray_lighter: #f6f7f9;
+$blue: #55a1fb;
+$blue_light: #88bfff;
+$primary: $blue;
+$primary_light: $blue_light;
+
+@import 'nice-select';
+
+@mixin clearfix() {
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}

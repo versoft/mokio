@@ -9,7 +9,7 @@
 
           .row-fluid
             = f.hidden_field :fake, :value => true
-            = f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.id]},  include_blank: false, disabled: !@menu.display_editable_field?('lang_id')
+            = render_backend_input_lang_id(f)
             = f.input :name
 
 

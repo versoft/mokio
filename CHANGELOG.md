@@ -409,3 +409,15 @@
   1. Added Mokio SeoTags
   2. Added: mokio_dynamic_fields
   3. Removed: mokio_meta && multilang form
+
+### Mokio 20.12.2019 v2.0.7
+<br />
+  1. Changed: backend menu form from haml to slim
+  2. Changed: dual select func in menu edit + controller
+  3. Updated: Select2 js lib.
+  4. Added: Select2 in backend forms
+  5. Added: helpers in backend - form inputs
+  6. Removed: Old backend haml views
+  7. Added: theme custom css
+  8. Removed: old select2 lib
+  9. Added: select2 ajax data retrieve
