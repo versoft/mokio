@@ -21,11 +21,11 @@ body {
 /*Switcher styles (Remove it in production site)*/
 #switcher {
   display: none;
-  position: fixed; 
-  right:0; top:160px; 
-  width: 120px; 
-  height: auto; 
-  z-index: 9999; 
+  position: fixed;
+  right:0; top:160px;
+  width: 120px;
+  height: auto;
+  z-index: 9999;
   padding:5px;
   padding-left: 10px;
   border: 2px solid #c4c4c4;
@@ -56,10 +56,10 @@ body {
   }
   #swithcher img {width: 20px !important; height: 20px !important;}
 #switchBtn {
-  position: fixed; 
+  position: fixed;
   right:-2px; top:160px;
   padding: 10px 5px;
-  z-index: 99999; 
+  z-index: 99999;
   border: 2px solid #c4c4c4;
   border-right: 1px solid transparent;
   -moz-border-radius: 2px;
@@ -225,7 +225,7 @@ div.centerContent {margin: 0;display: block;}
 a,.btn {outline: none !important;}
 
 
-/* Typography 
+/* Typography
 -------------------------------------------------- */
 
 li {margin-bottom:7px;}
@@ -239,12 +239,12 @@ a:hover {
 }
 
 body {
-  font-family: 'Open Sans', 
-  Helvetica, Arial, sans-serif; 
-  color:#353535; 
+  font-family: 'Open Sans',
+  Helvetica, Arial, sans-serif;
+  color:#353535;
   font-size: 13px;
   -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
-  -webkit-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%;
   font-size-adjust: 100%;
   font-weight: 400;
   /*-webkit-text-stroke: 100%;*/
@@ -295,14 +295,14 @@ h6 {font-size: 11px;color: #999999;text-transform: uppercase;}
 /*Change here if you want to use other fonts*/
 #top-nav a, h1,h2,h3,h4,h5,h6 {font-family: 'Open Sans', sans-serif;}
 body, p {font-family: 'Open Sans', Helvetica, Arial, sans-serif;}
- 
+
 /* Boostrap override (make it pretty :)
 ================================================== */
 
 /*Page header*/
 .page-header {
-  padding-bottom: 0; 
-  margin-top:9px; 
+  padding-bottom: 0;
+  margin-top:9px;
   border-color: #c4c4c4;
   -moz-box-shadow:0 1px 0px rgba(255, 255, 255, 1);
   -webkit-box-shadow: 0 1px 0px rgba(255, 255, 255, 1);
@@ -459,7 +459,7 @@ select {width: 150px;}
 .badge {padding-top: 2px; padding-bottom: 2px;}
 
 .tab-content {
-  background-color: #fff; 
+  background-color: #fff;
   padding:15px;
   border-left:1px solid #c4c4c4;
   border-bottom:1px solid #c4c4c4;
@@ -472,7 +472,7 @@ select {width: 150px;}
   -webkit-border-bottom-right-radius: 2px;
 }
 .nav-tabs {
-  margin-bottom: 0; 
+  margin-bottom: 0;
   border-color: #c4c4c4;
   background: #fff;
   border-top:1px solid #c4c4c4;
@@ -509,18 +509,18 @@ select {width: 150px;}
   border-top: 1px solid transparent;
 }
 .nav-tabs > li > a {
-  margin-left:-1px; 
-  margin-right: -1px; 
+  margin-left:-1px;
+  margin-right: -1px;
   border-right: 1px solid #c4c4c4;
   border-left: 1px solid transparent;
-  border-radius: 0; 
-  -moz-border-radius:0; 
+  border-radius: 0;
+  -moz-border-radius:0;
   -webkit-border-radius:0;
 }
-.nav-tabs > li > a:hover { 
+.nav-tabs > li > a:hover {
   border-color: transparent #c4c4c4 transparent #c4c4c4;
-  border-radius: 0; 
-  -moz-border-radius:0; 
+  border-radius: 0;
+  -moz-border-radius:0;
   -webkit-border-radius:0;
 }
 
@@ -560,7 +560,7 @@ select {width: 150px;}
   -webkit-border-radius: 0 0 2px 2px;
   -moz-border-radius: 0 0 2px 2px;
   border-radius: 0 0 2px 2px;
-  
+
 }
 .tabs-below > .nav-tabs > li  {margin-bottom:-1px;}
 .tabs-below > .nav-tabs > li > a:hover { border-color: #c4c4c4 #c4c4c4 #c4c4c4 #c4c4c4;}
@@ -607,8 +607,8 @@ select {width: 150px;}
 }
 .tabs-left > .nav-tabs > li.active:first-child a {border-top: 1px solid transparent;}
 
-.tabs-right > .nav-tabs { 
-  margin-left: -1px; 
+.tabs-right > .nav-tabs {
+  margin-left: -1px;
   border-left: 1px solid #c4c4c4;
   -webkit-border-radius: 0 2px 2px 0;
   -moz-border-radius: 0 2px 2px 0;
@@ -685,7 +685,7 @@ select {width: 150px;}
 
 /*Accordion style*/
 .accordion .accordion-group {
-  margin-bottom: 0px; 
+  margin-bottom: 0px;
   border: 1px solid #c4c4c4;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -741,7 +741,7 @@ select {width: 150px;}
 
   .progress .bar {
     z-index: 2;
-    height:13px; 
+    height:13px;
     border: 1px solid #439db8;
     box-shadow: 0 1px 0 #55cbee inset;
     -moz-border-radius: 6px;
@@ -864,7 +864,7 @@ select {width: 150px;}
   }
 
   .pagination li>span {
-    margin: 0px 8px 0 7px !important; 
+    margin: 0px 8px 0 7px !important;
     padding:0 5px 0 5px !important;
     float:left !important;
     display: inline-block !important;
@@ -1207,9 +1207,9 @@ select {width: 150px;}
   .dropdown-menu .menu .notif li.view-all {line-height: 28px; padding-top: 5px !important; padding-bottom: 5px !important;}
   .dropdown-menu .menu ul li a .icon {margin-bottom: 0px;}
   .dropdown-menu .icon.avatar {padding: 2px 1px 9px 2px;}
-  .dropdown-menu .name {float: left;width:168px;} 
+  .dropdown-menu .name {float: left;width:168px;}
   .dropdown-menu .messages {min-width: 210px;}
-  .dropdown-menu .messages a {padding: 0;}  
+  .dropdown-menu .messages a {padding: 0;}
   .dropdown-menu .messages .time {
     font-size:8px; text-transform: uppercase;
     float:right;
@@ -1220,7 +1220,7 @@ select {width: 150px;}
     width:190px;
     clear: both;
     color:#6e6e6e;
-  }   
+  }
   .dropdown-menu .view-all {width:100%; text-align:center; padding-bottom: 8px !important; padding-top: 8px !important;}
   .dropdown-menu .header {font-size:13px;}
 
@@ -1255,7 +1255,7 @@ select {width: 150px;}
 
 /*Red style*/
 .notification {
-  padding:0px 7px 0px 7px; 
+  padding:0px 7px 0px 7px;
   color:#fff;
   background: #ed7a53;
   border-radius:2px;
@@ -1537,7 +1537,7 @@ select {width: 150px;}
   position: relative;
 }
 
-  .search { 
+  .search {
     float: right;
     position: relative;
   }
@@ -1547,9 +1547,10 @@ select {width: 150px;}
   }
   .search .top-search {
     width:75%;
-    margin: 10px;
+    margin: 7px;
     border-color: #d9d7d7;
     padding-left:25px;
+    height: 35px;
   }
   .search .search-btn {
     background: image-url('backend/search.png') no-repeat;
@@ -1701,7 +1702,7 @@ select {width: 150px;}
       height: 20px;
       background: none;
     }
-    
+
   .mainnav ul li .sub li a:nth-child(2) span {
     width: 20px;
     height:20px;
@@ -1784,8 +1785,8 @@ select {width: 150px;}
     h4 .label {float: right; margin-right: 40px;}
     h4 .badge {float: right; margin-right: 40px;}
 
-    .box .title span[class*=" icon-"], .box .title span[class*=" brocco-icon-"], .box .title span[class*=" cut-icon-"], 
-    .box .title span[class*=" entypo-icon-"], .box .title span[class*=" icomoon-icon-"], .box .title span[class*=" minia-icon-"], 
+    .box .title span[class*=" icon-"], .box .title span[class*=" brocco-icon-"], .box .title span[class*=" cut-icon-"],
+    .box .title span[class*=" entypo-icon-"], .box .title span[class*=" icomoon-icon-"], .box .title span[class*=" minia-icon-"],
     .box .title span[class*=" iconic-icon-"], .box .title span[class*=" meteo-icon-"], .box .title span[class*=" silk-icon-"],
     .box .title span[class*=" typ-icon-"], .box .title span[class*=" wpzoom-"], .box .title span[class*=" eco-"]
     {
@@ -1874,7 +1875,7 @@ select {width: 150px;}
     margin-left: -1px;
     margin-right: -1px;
   }
-  .box.boxMargin {margin-bottom: 27px;} 
+  .box.boxMargin {margin-bottom: 27px;}
 
   .sortable-placeholder {border: 4px dashed #C4C4C4; margin-bottom: 25px;}
 
@@ -1883,7 +1884,7 @@ select {width: 150px;}
   height:49px;
   background: #2a3644;
   color: #aeb2b7;
-  z-index:1;
+  z-index: 9999;
   float: left;
   width: auto;
   min-width: 100%;
@@ -1972,7 +1973,7 @@ select {width: 150px;}
     }
     .bigBtnIcon li a .icon { font-size: 26px; width: 100%; margin: 8px 0 12px 0; display: inline-block;}
     .bigBtnIcon li a .txt {line-height: 12px; text-align: center; font-size: 12px;}
-    .bigBtnIcon li a .notification {padding: 0 6px 1px 6px; z-index: 999} 
+    .bigBtnIcon li a .notification {padding: 0 6px 1px 6px; z-index: 999}
 
 /*Circle stats*/
 .circle-stats {text-align: center; margin-top:-5px; position: relative;}
@@ -2067,9 +2068,9 @@ h4 .icon span:hover {color: #3F3F3F;}
     .sparkStats li span:first-child {margin-right:15px;}
   .sparkStats h4 {
     position: relative;
-    border-bottom: 1px solid #c4c4c4; 
-    padding-bottom: 0px; 
-    margin-bottom: 10px; 
+    border-bottom: 1px solid #c4c4c4;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
     line-height: 37px;
     -moz-box-shadow:0 1px 0px rgba(255, 255, 255, 1);
     -webkit-box-shadow: 0 1px 0px rgba(255, 255, 255, 1);
@@ -2086,7 +2087,7 @@ h4 .icon span:hover {color: #3F3F3F;}
   text-align: center;
 }
   .chartShortcuts li {
-    display: inline-block; 
+    display: inline-block;
     margin: 0 5px 5px 0;
     border: 1px solid #C4C4C4;
     border-radius: 2px;
@@ -2104,7 +2105,7 @@ h4 .icon span:hover {color: #3F3F3F;}
   }
   .chartShortcuts a:hover {
     background-position: 85% center;
-    color:#444444; 
+    color:#444444;
     -webkit-transition: background 0.3s ease;
     -moz-transition: background 0.3s ease;
         -ms-transition: background 0.3s ease;
@@ -2117,9 +2118,9 @@ h4 .icon span:hover {color: #3F3F3F;}
 /*To Do List*/
 .todo {position: relative; margin-bottom: 27px;}
 .todo h4 {
-  border-bottom: 1px solid #c4c4c4; 
-  padding-bottom: 0px; 
-  margin-bottom: 10px; 
+  border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
   line-height: 37px;
   -moz-box-shadow:0 1px 0px rgba(255, 255, 255, 1);
   -webkit-box-shadow: 0 1px 0px rgba(255, 255, 255, 1);
@@ -2236,7 +2237,7 @@ h4 .icon span:hover {color: #3F3F3F;}
 .searchBox { overflow: hidden; }
 .searchBox input { width: 186px; margin: 0; }
 .searchBox > span { float: left; display: block; margin-top: 8px; }
-.searchBox button { 
+.searchBox button {
   padding-left: 7px;
 
   padding-right: 7px;
@@ -2245,7 +2246,7 @@ h4 .icon span:hover {color: #3F3F3F;}
 .count { margin-top: 10px; display: block; float: left; }
 #box1Clear span, #box2Clear span {
   display: inline-block;
-  margin-right: 0;  
+  margin-right: 0;
 }
 .slider {margin-top:8px;}
 
@@ -2272,7 +2273,7 @@ h4 .icon span:hover {color: #3F3F3F;}
 
 .galleryView>li .actionBtn, .movieGalleryView>li .actionBtn {position: absolute; bottom:10px; width: 100%;}
 .galleryView>li .actionBtn a, .movieGalleryView>li .actionBtn a  {
-  padding:3px; 
+  padding:3px;
   background: #000;
   -webkit-border-radius:2px;
   -moz-border-radius:2px;
@@ -2304,9 +2305,9 @@ h4 .icon span:hover {color: #3F3F3F;}
 
 .recent-users {position: relative; list-style:none; padding-top: 15px; margin-left:0; padding-bottom: 0;}
 .recent-users li {border-bottom: 1px solid #c4c4c4; padding: 10px 0 15px 0; width: 100%;}
-.recent-users .avatar { 
-  margin-left:15px; 
-  width:40px; 
+.recent-users .avatar {
+  margin-left:15px;
+  width:40px;
   height: 40px;
   border:1px solid #e3e2e2;
   -webkit-border-radius:2px;
@@ -2381,7 +2382,7 @@ h4 .icon span:hover {color: #3F3F3F;}
     width: 10px;
     height: 17px;
     background: image-url('backend/icons/arrow-right.png') no-repeat;
-  }   
+  }
 
 /*loader*/
 .loadstate, .loadstate body {overflow:hidden}
@@ -2471,7 +2472,7 @@ h4 .icon span:hover {color: #3F3F3F;}
     -ms-transition: background 0.5s ease-in-out;
     -o-transition: background 0.5s ease-in-out;
     transition: background 0.5s ease-in-out;
-  } 
+  }
   .invoice .you {float: left; margin-bottom: 15px;}
   .invoice .client {float: right;}
   .invoice .payment {float: left;}
@@ -2489,7 +2490,7 @@ h4 .icon span:hover {color: #3F3F3F;}
   .invoice-footer p {margin-left: 20px; margin-top: 10px;}
 
 form .image {
-  padding: 5px; 
+  padding: 5px;
   border-radius: 2px;
   -webkit-border-radius: 2px;
   -moz-border-radius:2px;
@@ -2563,7 +2564,7 @@ form input.valid {border: 1px solid #9FC569 !important;}
 }
 .email-header {margin-bottom: 20px;}
 .email-header .btn-group > .dropdown-toggle, .email-header .btn-group .check {
-  padding: 2px 10px; 
+  padding: 2px 10px;
   font-size: 12px;
   -moz-border-radius: 2px 2px 2px 2px !important;
   -webkit-border-radius: 2px 2px 2px 2px !important;
@@ -2890,7 +2891,7 @@ form input.valid {border: 1px solid #9FC569 !important;}
   #header .dropdown-menu li span.time {margin-top:-18px;}
   #header .dropdown-menu li.view-all a {text-indent: 0; padding: 5px 0 5px 5px; width: auto;}
   #header .dropdown-menu li.view-all a span.icon16 {text-indent: 0;}
-  #header .dropdown-menu li.menu a {text-indent: 0;} 
+  #header .dropdown-menu li.menu a {text-indent: 0;}
   #header .dropdown-menu li.menu a span {text-indent: 0 !important;margin-left: 0 !important;}
   #header .dropdown-menu .messages {padding-top:0;}
   #header .dropdown-menu span.icon span {margin-left:5px !important;}
@@ -2905,7 +2906,7 @@ form input.valid {border: 1px solid #9FC569 !important;}
   .resBtn.offCanvas {left: 80px; top: 15px;}
   .navbar .nav {margin-left: 25px;}
   .collapseBtn {display: none;}
-  
+
   #sidebar{
     display: none;
     position: absolute;
@@ -2926,7 +2927,7 @@ form input.valid {border: 1px solid #9FC569 !important;}
 
 @media only screen and (max-width: 767px) {
   body {padding-left:0; padding-right: 0;}
-  
+
   .heading .breadcrumb {margin-right: 80px;}
   .resBtnSearch {
     display: block;
@@ -2959,26 +2960,26 @@ form input.valid {border: 1px solid #9FC569 !important;}
 
   .form-row .form-label {text-align: left;}
   input[class*="span"], select[class*="span"], textarea[class*="span"], .uneditable-input[class*="span"], .row-fluid input[class*="span"], .row-fluid select[class*="span"], .row-fluid textarea[class*="span"], .row-fluid .uneditable-input[class*="span"] {width: 98%;}
-  .input-prepend input[class*="span"], .input-append input[class*="span"] {width: auto;} 
+  .input-prepend input[class*="span"], .input-append input[class*="span"] {width: auto;}
 
 
   /*Responsive tables*/
   table.responsive { margin-bottom: 0; }
-  
-  .pinned { position: absolute; left: 0; top: 0;width: 35%; 
+
+  .pinned { position: absolute; left: 0; top: 0;width: 35%;
     overflow: hidden; /*overflow-x: scroll;*/ border-right: 1px solid #c4c4c4;/* border-left: 1px solid #ccc;*/ }
   .pinned table { border-right: none; border-left: none; width: 100%;}
   .box .pinned table { border-right: none; border-left: none; width: 100%; margin-bottom: 1px;margin-bottom: 5px;}
   .pinned table th, .pinned table td { white-space: nowrap; }
   .pinned td:last-child { border-bottom: 0; }
-  
+
   div.table-wrapper { position: relative; margin-bottom: 20px; overflow: hidden; border-right: 1px solid #ccc; }
   .box div.table-wrapper { position: relative; margin-bottom: 20px; overflow: hidden; border-right:none; }
   div.table-wrapper div.scrollable table { margin-left: 35%; }
-  div.table-wrapper div.scrollable { overflow: scroll; overflow-y: hidden; }  
-  
+  div.table-wrapper div.scrollable { overflow: scroll; overflow-y: hidden; }
+
   table.responsive td, table.responsive th { position: relative; white-space: nowrap; overflow: hidden; }
-  table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, 
+  table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child,
   table.responsive.pinned td { display: none; }
 
   .dataTables_filter {position: absolute; top:15px;}
@@ -3041,7 +3042,7 @@ form input.valid {border: 1px solid #9FC569 !important;}
   .elfinder-navbar {width : 120px !important;}
   .search .search-btn {top:18px;}
   .search {padding-top: 1px;}
-} 
+}
 
 @media only screen and (max-width: 400px) {
   .resBtn {top:15px; left:15px}
@@ -3155,7 +3156,7 @@ form input.valid {border: 1px solid #9FC569 !important;}
 }
 
 .mask-date { text-align: center; }
-.ckeditor { 
+.ckeditor {
   margin-bottom: 5px;
   margin-top: 9px;
 }
@@ -3174,7 +3175,7 @@ form input.valid {border: 1px solid #9FC569 !important;}
   display: block;
   width: 170px;
   text-align: center;
-  
+
   img { width: auto; height: 60px;}
 }
 

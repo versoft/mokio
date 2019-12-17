@@ -9,6 +9,17 @@ SimpleForm.setup do |config|
   # whole input.
 
  # =========================================================================================== #
+  config.wrappers :select2, :tag => 'div', :class => 'row-fluid', :error_class => 'error' do |b|
+    b.use :html5
+      b.wrapper :tag => 'label', :class => 'form-label span2' do |bb|
+        bb.use :label_text
+      end
+      b.wrapper :tag => 'div', :class => 'span10' do |bb|
+        bb.use :input, :class => 'mokio-select2'
+      end
+      b.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
+      b.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
+  end
 
   config.wrappers :custom, :tag => 'div', :class => 'row-fluid', :error_class => 'error' do |b|
     b.use :html5

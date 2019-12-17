@@ -56,6 +56,9 @@ module Mokio
 
         end
 
+        def ajax_collection
+          render json: []
+        end
         #
         # Index action renders <b>json</b> with parameters to jquery.datatables
         #
