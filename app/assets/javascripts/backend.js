@@ -54,3 +54,7 @@
 
 // Photo box
 //= require fancybox
+
+// Select2
+//= require backend/vendors/select2/select2.min.js
+

@@ -128,6 +128,24 @@ module Mokio
         end
       end
 
+      # COMMON INPUTS HELPERS
+
+      def render_backend_input_lang_id(f)
+        f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.id]},include_blank: bt('all'), disabled: !obj.display_editable_field?('lang_id'),wrapper: :select2
+      end
+
+      def render_backend_input_active(f)
+        render_backend_input_active_checkbox(f,'active')
+      end
+
+      def render_backend_input_home_page(f)
+        render_backend_input_active_checkbox(f,'home_page')
+      end
+
+      def render_backend_input_active_checkbox(f,name)
+        f.input name.to_sym,:wrapper => :active_checkbox, disabled: !obj.display_editable_field?("#{name}")
+      end
+
     end
   end
 end

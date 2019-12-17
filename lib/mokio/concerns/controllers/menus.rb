@@ -89,14 +89,13 @@ module Mokio
           #
           # Method to initialize menu's dual select boxes
           #
-          def init_dual_select #:doc:
-            @dual_select_str = ""
+            def init_dual_select #:doc:
+            @dual_select_arr = []
 
             Mokio::ModulePosition.all.each do |mp|
-              @dual_select_str += " dualSelectInit('_#{mp.id}', false);"
+              @dual_select_arr << mp.id
             end
           end
-
           #
           # Transforms structure like: menu_id1 => parent_id1, menu_id2 => parent_id2 into
           # structure like: menu_id => {:parent_id => parent_id, :seq => seq_number}

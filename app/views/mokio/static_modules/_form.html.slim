@@ -1,4 +1,5 @@
-= f.input :lang_id, collection: Mokio::Lang.all.collect{|lang| [bt(lang.name), lang.id]},  include_blank: bt('all'), disabled: !obj.display_editable_field?('lang_id')
+= render_backend_input_lang_id(f)
+= render_backend_input_active(f)
 = f.input :active, :wrapper => :active_checkbox, disabled: !@static_module.display_editable_field?('active')
 = f.input :title, disabled: !@static_module.display_editable_field?('title')
 = f.input :subtitle, disabled: !@static_module.display_editable_field?('subtitle'), :as => :string
