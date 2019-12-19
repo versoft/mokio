@@ -11,11 +11,13 @@ module Mokio
         end
 
         def childrens
-          self.structure.children
+          return nil if self.structure.nil?
+          self.structure.children.includes(:structurable).map(&:structurable)
         end
 
         def parent
-          self.structure.parent.structurable
+          return nil if self.structure.parent.nil?
+          return self.structure.parent.structurable
         end
 
         private
