@@ -38,6 +38,8 @@ require "mokio/concerns/models/user"
 require "mokio/concerns/models/youtube"
 require "mokio/concerns/models/external_script"
 require "mokio/concerns/models/seo_tag"
+require "mokio/concerns/models/structure"
+require "mokio/concerns/models/structurable_model"
 
 #
 # CommonController extensions
