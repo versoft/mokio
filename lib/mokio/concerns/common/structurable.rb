@@ -20,6 +20,12 @@ module Mokio
           return self.structure.parent.structurable
         end
 
+        module ClassMethods
+          def structurable_columns
+            (self.respond_to?("structurable_custom_columns")) ? self.structurable_custom_columns :  %w(id)
+          end
+        end
+
         private
 
         # build relation structure
