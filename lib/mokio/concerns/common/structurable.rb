@@ -21,6 +21,10 @@ module Mokio
         end
 
         module ClassMethods
+          def has_structurable_enabled?
+            true
+          end
+
           def structurable_columns
             (self.respond_to?("structurable_custom_columns")) ? self.structurable_custom_columns :  %w(id)
           end

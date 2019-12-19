@@ -6,18 +6,20 @@
       span= bt("index_title", @obj_class)
       = btn_new( bt("index_add_new", @obj_class), new_url(@obj_class) )
       = @_controller.render_additional_index_buttons
-
     .content.noPad.clearfix
-      = responsive_dynamic_table do # see in CommonHelper
-        thead
-          tr
-            / Remember to override columns_for_table in your Model
-            - @obj_class.columns_for_table.each do |t|
-              th= bt(t, @obj_class)
-            th= bt("actions")
-        tbody
-          - cache obj do
-            = render partial: "mokio/common/obj", collection: obj
+      -if backend_has_module_enabled?("has_structurable_enabled?",@obj_class)
+        = render "mokio/common/structurable/tree"
+      -else
+        = responsive_dynamic_table do # see in CommonHelper
+          thead
+            tr
+              / Remember to override columns_for_table in your Model
+              - @obj_class.columns_for_table.each do |t|
+                th= bt(t, @obj_class)
+              th= bt("actions")
+          tbody
+            - cache obj do
+              = render partial: "mokio/common/obj", collection: obj
 
 - content_for :js do
   javascript:

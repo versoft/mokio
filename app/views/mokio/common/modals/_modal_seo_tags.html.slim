@@ -1,4 +1,4 @@
--if obj.class.respond_to?('has_seo_tagable_enabled?') && obj.class.has_seo_tagable_enabled?
+-if backend_has_module_enabled?('has_seo_tagable_enabled?',obj.class)
   a data-toggle="modal" href=("#seo_tags" )
     button.btn.btn-warning.btn-mini.box-form2.right
       span.icon16.icomoon-icon-google-plus.white

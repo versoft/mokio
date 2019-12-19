@@ -112,6 +112,14 @@ module Mokio
         return "" unless ['google','facebook','seo_tags'].include?(type)
         render("mokio/common/modals/modal_#{type}",f: form_object)
       end
+
+      def backend_has_module_enabled?(name,object_class = nil)
+        object = (object_class.present?) ? object_class : @obj_class
+        return false if object.nil?
+        object.respond_to?("#{name}") && object.send("#{name}")
+      end
+
+
     end
   end
 end
