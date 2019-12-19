@@ -39,7 +39,6 @@ require "mokio/concerns/models/youtube"
 require "mokio/concerns/models/external_script"
 require "mokio/concerns/models/seo_tag"
 require "mokio/concerns/models/structure"
-require "mokio/concerns/models/structurable_model"
 
 #
 # CommonController extensions
@@ -48,6 +47,7 @@ require "mokio/concerns/common/controller_object"
 require "mokio/concerns/common/controller_functions"
 require "mokio/concerns/common/controller_translations"
 require "mokio/concerns/common/seo_tags"
+require "mokio/concerns/common/structurable"
 
 #
 # Controllers
