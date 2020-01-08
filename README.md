@@ -2,6 +2,9 @@
 
 ### DOCS:
 - [SeoTags](docs/seo_tags.md)
+- [Generate sitemap.xml](docs/sitemap_generator.md)
+- [Select2 helper](docs/select2.md)
+- [Backend input helpers](docs/backend_inputs_helpers.md)
 
 ---
 ### Gems and sample_app:
