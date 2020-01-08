@@ -24,6 +24,3 @@
 
     backend_input_custom_switch_input(f)
   ```
-
-
-
