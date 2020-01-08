@@ -421,3 +421,8 @@
   7. Added: theme custom css
   8. Removed: old select2 lib
   9. Added: select2 ajax data retrieve
+
+### Mokio 08.01.2020 v2.0.8
+<br/>
+  1. Added: sitemap service and mokio config options
+  2. Added: frontend initializer for set default_url_options // ENV['APP_HOST']

@@ -232,6 +232,36 @@ module Mokio
   mattr_accessor :after_sign_out_path
   self.after_sign_out_path = {:user => {}}
 
+  # Enable/disable sitemap generation
+  # include Mokio::Concerns::Common::Services::Sitemap::Model
+  mattr_accessor :mokio_sitemap_generator_enable
+  self.mokio_sitemap_generator_enable = true
+
+  # List of static routes it should be included in sitemap
+  # -------------------------------------------------
+  # loc: url  (required)
+  # lastmod: last modification date ( can be nil )
+  # priority: ( can be nil ) ( default 1.0 )
+  # -------------------------
+  # example  self.mokio_sitemap_generator_static =
+  # [{loc: "www.exmaple.loc",lastmod: "YYYY-MM-DD HH-MM-SS+0000",priority: "1.0"}]
+  # -------------------------------------------------
+
+  mattr_accessor :mokio_sitemap_generator_static
+  self.mokio_sitemap_generator_static = []
+
+  # sitemap.xml path ( filename or subfolder path)
+  # example: www.example.loc/location/sitemap_custom.xml
+  # self.mokio_sitemap_generator_path = "location/sitemap_custom"
+
+  mattr_accessor :mokio_sitemap_generator_path
+  self.mokio_sitemap_generator_path = ""
+
+  # Enabled models list
+  # self.mokio_sitemap_enabled_models = ["Mokio::Content"]
+  mattr_accessor :mokio_sitemap_enabled_models
+  self.mokio_sitemap_enabled_models = ["Mokio::Content"]
+
   #
   # Default way to configure Mokio
   #
