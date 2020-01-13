@@ -16,6 +16,15 @@ class CommonsDatatable
   def initialize(view, obj_class)
     @view = view
     @obj_class = obj_class
+
+    #setup collection data
+    @overwrite_collection = nil
+    if @view.controller.respond_to? "current_records"
+      @overwrite_collection = @view.controller.current_records
+      if !@overwrite_collection.nil?
+        @overwrite_collection = @overwrite_collection.page(page).per_page(per_page)
+      end
+    end
   end
 
   def as_json(options = {})
@@ -70,14 +79,15 @@ private
   end
 
   def collection
-    if @view.controller.respond_to? "current_records"
-      @collection = @view.controller.current_records
-      @collection = @collection.page(page).per_page(per_page) if !@collection.nil?
-    end
     @collection ||= fetch_commons
   end
 
   def fetch_commons
+    if @overwrite_collection.nil?
+      start_collection = @obj_class
+    else
+      start_collection = @overwrite_collection
+    end
 
     if params[:sSearch].present?
       # TODO Check Solr Server Running
@@ -91,25 +101,33 @@ private
         columns = ''
         first_col = true
         @obj_class.columns.each do |c|
-          next unless [:string, :text].include? c.type
+          next unless can_use_column_to_search? c
           columns << " OR " unless first_col
           columns << c.name
           columns << ' LIKE :kw'
           first_col = false
         end
-        collection = @obj_class.order("#{sort_column} #{sort_direction}").where("#{columns}",:kw=>"%#{params[:sSearch]}%")
+        collection = start_collection.order("#{sort_column} #{sort_direction}").where("#{columns}",:kw=>"%#{params[:sSearch]}%")
         collection = collection.page(page).per_page(per_page)
       end
 
     elsif params[:only_loose].present?
-      collection = @obj_class.includes(:menus).where(:mokio_content_links => {:content_id => nil}).order("#{sort_column} #{sort_direction}")
+      collection = start_collection.includes(:menus).where(:mokio_content_links => {:content_id => nil}).order("#{sort_column} #{sort_direction}")
       collection = collection.page(page).per_page(per_page)
     else
-      collection = @obj_class.order("#{sort_column} #{sort_direction}")
+      collection = start_collection.order("#{sort_column} #{sort_direction}")
       collection = collection.page(page).per_page(per_page)
     end
-
     collection
+  end
+
+  def can_use_column_to_search?(column)
+    type_check = [:string, :text].include? column.type
+    allowed_search = true
+    if @obj_class.respond_to? :allowed_search_columns
+      allowed_search = @obj_class.allowed_search_columns.include? column.name
+    end
+    type_check && allowed_search
   end
 
   def page
