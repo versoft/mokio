@@ -373,3 +373,8 @@
 <br/>
   1. Added: sitemap service and mokio config options
   2. Added: frontend initializer for set default_url_options // ENV['APP_HOST']
+
+### Mokio 13.01.2020 v0.1.8
+<br/>
+  1. Improve fetching data with current_records method.
+  2. Added method allowed_search_columns to filter columns during search
