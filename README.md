@@ -1,10 +1,25 @@
 # Mokio CMS
 
+## In short:
+MOKIO is open source CMS compatible with rails 6.0.1 and ruby 2.6.5.
+
+## Instalation:
+1. Add `gem mokio` to `Gemfile` in your project
+2. Run `bundle install`
+3. Run `rake mokio:install`
+4. Ensure is add the following line added to `config/routes.rb`
+  ```mount Mokio::Engine => "/backend"```
+5. Start rails server `rails s` and open `http://localhost:3000/backend`
+6. Your login is `admin@admin.com`, password `admin`
+7. Remember to change this sample credentials!
+
 ### DOCS:
-- [SeoTags](docs/seo_tags.md)
-- [Generate sitemap.xml](docs/sitemap_generator.md)
-- [Select2 helper](docs/select2.md)
-- [Backend input helpers](docs/backend_inputs_helpers.md)
+- [Custom model and controller](docs/custom_models_and_controllers.md) - How to create own model and controller in CMS
+- [SeoTags](docs/seo_tags.md) - How to add meta tags to your own models
+- [Generate sitemap.xml](docs/sitemap_generator.md) - How to generate automatic sitemap.xml for dynamic and static content
+- [Select2 helper](docs/select2.md) - How to use select inputs with autosearch
+- [Backend input helpers](docs/backend_inputs_helpers.md) - Describes some input helpers
+More docs soon!
 
 ---
 ### Gems and sample_app:
