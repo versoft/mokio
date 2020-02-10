@@ -426,3 +426,9 @@
 <br/>
   1. Added: sitemap service and mokio config options
   2. Added: frontend initializer for set default_url_options // ENV['APP_HOST']
+
+### Mokio 10.02.2020 v2.0.9
+<br/>
+  1. Fix import paths in backend.scss
+  2. Fix multiple file upload by jquery-fileupload
+  3. Replace `render nothing: true` to `render body: nil`

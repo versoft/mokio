@@ -24,14 +24,18 @@ module Mokio
          #
          def create
             @photo = photo_model.new(photo_params)
-
+            content = Mokio::Content.find(photo_params[:content_id])
+            @photo.content = content
             respond_to do |format|
               if @photo.save
+                content.touch(:etag)
+
                 flash[:notice] = t("photos.created", title: @photo.name)
                 format.js { render :template => "mokio/photos/create"}
               else
                 flash[:error] = t("photos.not_created", title: @photo.name)
-                format.html { render nothing: true }
+                format.js { render body: nil}
+                format.html { render body: nil }
               end
             end
           end
@@ -129,7 +133,7 @@ module Mokio
             end
 
             respond_to do |format|
-              format.html { render nothing: true }
+              format.html { render body: nil }
             end
           end
 

@@ -62,173 +62,6 @@ a,button {
   }
 }
 
-#lead-editor,
-#content-editor {
-  max-width: 765px;
-  padding: 20px;
-
-  p,ul,ol {
-    font-size: 19px;
-    line-height: 160%;
-    margin: 0 0 15px;
-  }
-
-  ul,ol {
-    margin-left: 30px;
-
-    li {
-      line-height: 150%;
-    }
-  }
-
-  ul {
-    &.list-link {
-      p {
-        margin: 0;
-      }
-    }
-  }
-}
-
-.news__brief-desc {
-  padding: 0 20px;
-}
-
-
-//widgets
-.info {
-  align-items: end;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 45px 0 50px;
-}
-
-.info__label {
-  align-items: center;
-  font-size: 12px;
-  font-weight: 600;
-  margin: 0 0 7px;
-  text-transform: uppercase;
-}
-
-.info__image {
-  margin: 0;
-  text-align: center;
-  width: 55px;
-
-  img {
-    max-width: 75px;
-    width: 100%;
-  }
-}
-
-.info__content {
-  width: calc(100% - 70px);
-
-  p:not([class]) {
-    margin: 0;
-  }
-
-  p:not([class]),
-  ul {
-    font-size: 14px;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  .info {
-    align-items: center;
-  }
-
-  .info__image {
-    width: 120px;
-  }
-
-  .info__content {
-    width: calc(100% - 120px);
-  }
-}
-
-.highlight {
-  background: image-url('bg/highlight.svg') repeat 0 0/cover;
-  padding: 6px 3px 2px;
-}
-
-//icons
-.ic {
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  display: inline-block;
-  height: 17px;
-  width: 17px;
-}
-
-.ic--research {
-  background-image: image-url('icons/research.svg');
-  color: transparent;
-}
-
-.ic--sheet {
-  background-image: image-url('icons/sheet.svg');
-  color: transparent;
-}
-
-.anno {
-  border: 0!important;
-  font-weight: 600;
-
-  &.research {
-    color: $primary-color;
-  }
-}
-
-hr {
-  background: image-url('bg/line.svg') repeat 0 0;
-  border: 0;
-  height: 4px;
-  margin: 50px 0;
-
-  &:nth-of-type(2) {
-    background-position: 200px 0;
-  }
-
-  &:nth-of-type(3) {
-    background-position: 400px 0;
-  }
-
-  &:nth-of-type(3) {
-    background-position: 600px 0;
-  }
-
-  &.border {
-    background: none;
-    border-bottom: 1px solid $gray-light;
-    height: 0;
-  }
-}
-
-//backend
-
-#content-editor {
-  table {
-    td,th {
-      font-size: 12px;
-      padding: 5px;
-      vertical-align: top;
-    }
-
-    td {
-      p {
-        font-family: 'Poppins', sans-serif;
-        font-size: 15px;
-        line-height: 120%;
-        margin: 0;
-      }
-    }
-  }
-}
-
 .table thead th,
 .table tbody td {
   text-align: left!important;
@@ -247,9 +80,6 @@ hr {
   }
 }
 
-.table thead th:first-child {
-  width: 30px;
-}
 .table thead th:last-child {
   text-align: center!important;
   width: 80px;
@@ -266,48 +96,6 @@ hr {
       td {
         background: #109bff1a;
       }
-    }
-  }
-}
-
-
-
-.remove_fields {
-  border: 1px solid #d00;
-  border-radius: 5px;
-  display: inline-block;
-  margin-top: 6px;
-  padding: 4px 10px;
-
-  span {
-    color: #d00;
-    font-size: 13px;
-
-    &::before {
-      margin-right: 5px;
-    }
-  }
-}
-
-#lead-editor {
-  min-height: 200px;
-}
-
-#content-editor {
-  min-height: 500px;
-}
-
-.cke_editable {
-  &:focus {
-    outline: none;
-  }
-
-  a {
-    color: #555;
-    border-bottom: 2px dotted $primary-color;
-
-    &:hover {
-      color: $primary-color;
     }
   }
 }
@@ -351,51 +139,6 @@ input[type="color"],
   }
 }
 
-form#new_article_product,
-form[id^="edit_article_product"] {
-  .tab-content {
-    padding-bottom: 70px;
-  }
-
-  .form-actions {
-    bottom: 0;
-    border: 1px solid #c4c4c4;
-    height: 50px;
-    margin: 0;
-    padding-top: 35px;
-    position: fixed;
-    right: 35px;
-    width: calc(100% - 82px);
-    z-index: 10000;
-
-    @media only screen and (min-width: 481px) {
-      width: calc(100% - 92px);
-    }
-
-    @media only screen and (min-width: 981px) {
-      width: calc(100% - 334px);
-    }
-  }
-}
-
-.mainnav {
-  .contents_nav {
-    > .hasUl {
-      pointer-events: none;
-    }
-
-    #add_content {
-      display: block!important;
-    }
-  }
-}
-
-
-.row-fluid.article_product_product span.select2.select2-container{
-  width: 100%!important;
-}
-
-
 .select2-selection--single {
   border-radius:0 !important;
   height: 42px !important;
@@ -407,6 +150,7 @@ form[id^="edit_article_product"] {
 .select2-container {
   width:100%;
 }
+
 .select2-selection--multiple {
   border-radius:0 !important;
   border-color: #9d9d9d !important;
