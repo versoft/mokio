@@ -66,7 +66,7 @@ module Mokio
           @data_file.destroy
 
           respond_to do |format|
-            format.html { render nothing: true }
+            format.html { render body: nil }
           end
         end
 
@@ -85,7 +85,7 @@ module Mokio
 
           flash[:notice] = t('data_files.sorted')
 
-          render nothing: true
+          render body: nil
         end
 
         private

@@ -12,7 +12,7 @@ module Mokio
 
           friendly_id :slug_candidates, use: :slugged
           validates_uniqueness_of :slug,case_sensitive: true
-          belongs_to :contents, :touch => true
+          belongs_to :content, :touch => true
 
           mount_uploader :data_file, Mokio::DataFileUploader
           mount_uploader :thumb,     Mokio::ThumbUploader

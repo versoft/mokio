@@ -10,12 +10,6 @@
 
         <%= f.file_field :data_file, multiple:true, name: "#{file_type.to_s.tableize.gsub('mokio/', '').singularize}[data_file]" %>
       </span>
-      <button type="submit" class="btn btn-primary start">
-        <span><%= bt("start_upload") %></span>
-      </button>
-      <button type="reset" class="btn btn-warning cancel">
-        <span><%= bt("cancel_upload") %></span>
-      </button>
     </div>
     <!-- The loading indicator is shown during image processing -->
     <div class="fileupload-loading"></div>
