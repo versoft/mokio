@@ -5,7 +5,6 @@ require 'simple_form'
 require "ckeditor"
 require "bootstrap-wysihtml5-rails"
 require "carrierwave"
-require "jquery-fileupload-rails"
 require 'amoeba'
 require 'fancybox2-rails'
 require "bootstrap-switch-rails"

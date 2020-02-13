@@ -34,7 +34,15 @@
 //= require backend/plugins/forms/maskedinput/jquery.maskedinput-1.3.1
 
 // Core fileupload plugin
-//= require jquery-fileupload
+//= require backend/fileupload/tpl.min
+//= require backend/fileupload/load.image
+//= require backend/fileupload/canvas.to.blob
+//= require backend/fileupload/jquery.iframe-transport
+//= require backend/fileupload/jquery.fileupload
+//= require backend/fileupload/jquery.fileupload-process
+//= require backend/fileupload/jquery.fileupload-image
+//= require backend/fileupload/jquery.fileupload-ui
+
 
 // For toggle buttons
 //= require bootstrap-switch

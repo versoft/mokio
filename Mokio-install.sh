@@ -67,27 +67,26 @@ case $1 in
 
         'jquery-rails',                '>= 3.1.0'
         'jquery-ui-rails',             '>= 4.2.1'
-        'jquery-fileupload-rails',     '>= 0.4.1'
         'jquery-datatables-rails',     '>= 1.12.2'
 
         'bootstrap-wysihtml5-rails',   '~> 0.3.1.23'
         'bootstrap-switch-rails',      '2.0.0' # TODO problems with > 2.0.0
 
         'uglifier',                    '>= 1.3.0'
-        'cancancan',                   '~> 1.7'  
+        'cancancan',                   '~> 1.7'
         'simple_form',                 '>= 3.0.2'
         'ckeditor',                    '>= 4.0.8'
         'carrierwave',                 '>= 0.10.0'
         'rmagick',                     '>= 2.13.2'
         'mini_magick',                 '>= 3.7.0'
-        'amoeba',                      '>= 2.0.0'           
+        'amoeba',                      '>= 2.0.0'
         'youtube_it',                  '>= 2.1.4'
         'ancestry',                    '>= 2.1.0'
         'acts_as_list',                '>= 0.4.0'
         'will_paginate',               '>= 3.0.5'
         'faraday',                     '>= 0.7.6'
         'validates',                   '>= 0.0.8'
-        'friendly_id',                 '>= 5.0.3'            
+        'friendly_id',                 '>= 5.0.3'
         'video_info',                  '>= 2.3.1'
         'disqus',                      '>= 1.0.4'
         'devise',                      '>= 3.2.4'
@@ -230,7 +229,7 @@ esac
     local libs=$@
     local missing_libs=$(chose_libs_to_install $libs)
 
-    apt_get_update   
+    apt_get_update
 
     if [[ ! -z $missing_libs ]]; then
       sudo apt-get install $missing_libs
@@ -248,7 +247,7 @@ esac
       if [[ $(apt_get_package_status $i) != "installed" ]]; then
         not_installed_libs+="$i "
       fi
-    done 
+    done
 
     echo ${not_installed_libs[@]}
   }
@@ -388,7 +387,7 @@ esac
       echo -e "\ngem 'mokio', :git => 'git@kura.goodone.pl:ruby/mokio.git'" >> $GEMFILE
     else
       echo -e "\ngem 'mokio'" >> $GEMFILE
-    fi 
+    fi
   }
 
   function add_gem() {
@@ -418,7 +417,7 @@ esac
         echo 'Wrong value choose another adapter'
         read DATABASE
       fi
-    done   
+    done
   }
 
   function create_db_config() {
@@ -438,7 +437,7 @@ esac
   }
 #
 # ======================= Mysql2 ==============================================
-# 
+#
   function check_msql2_server() {
     apt_get_install_mysql_server
   }

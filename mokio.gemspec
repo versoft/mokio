@@ -63,7 +63,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'sunspot_rails',               '~> 2.5.0'  #-----OLD: '~> 2.2','>= 2.1.0'
   s.add_dependency 'jquery-ui-rails',             '~> 4.2.1'  #-----NEW: '~> 6.0.1' PROBLEMS: cant find dependency in js
   s.add_dependency 'jquery-rails',                '~> 4.3.5'  #-----OLD: '~> 4.1'
-  s.add_dependency 'jquery-fileupload-rails',     '~> 1.0.0'  #-----OLD: '0.4.1' # TODO problems with > 0.4.1
   s.add_dependency 'jquery-datatables-rails',     '~> 3.4.0'  #-----OLD: '~> 1.12','>= 1.12.2'
   s.add_dependency 'uglifier',                    '~> 4.2.0'  #-----OLD: '~> 2.7','>= 1.3.0'
   s.add_dependency 'cancancan',                   '~> 3.0.1'  #-----OLD: '~> 1.7'

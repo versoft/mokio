@@ -55,11 +55,11 @@ describe Mokio do
     it "requires jquery-ui-rails" do
       require 'jquery-ui-rails'
     end
-    
+
     it "requires haml-rails" do
       require 'haml-rails'
     end
-    
+
     it "requires simple_form" do
       require 'simple_form'
     end
@@ -67,17 +67,13 @@ describe Mokio do
     it "requires ckeditor" do
       require "ckeditor"
     end
-    
+
     it "requires bootstrap-wysihtml5-rails" do
       require "bootstrap-wysihtml5-rails"
     end
 
     it "requires carrierwave" do
       require "carrierwave"
-    end
-
-    it "requires jquery-fileupload-rails" do
-      require "jquery-fileupload-rails"
     end
 
     it "requires amoeba" do
@@ -103,7 +99,7 @@ describe Mokio do
     it "requires acts_as_list" do
       require 'acts_as_list'
     end
-     
+
     it "requires jquery-datatables-rails" do
       require 'jquery-datatables-rails'
     end
