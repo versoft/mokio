@@ -436,3 +436,8 @@
 ### Mokio 13.02.2020 v2.0.10
 <br/>
   1. Remove gem jquery-fileupload-rails and add jquery libs instead
+
+### Mokio 14.02.2020 v2.0.11
+<br/>
+  1. Change z-index to 1 in .heading
+  2. Fix problem with upload photos in gallery - multiple params name

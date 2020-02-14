@@ -23,13 +23,23 @@ module Mokio
          # Standard create action
          #
          def create
-            @photo = photo_model.new(photo_params)
-            content = Mokio::Content.find(photo_params[:content_id])
+            @photo = photo_model.new(
+              name: photo_params[:name],
+              subtitle: photo_params[:subtitle],
+              intro: photo_params[:intro],
+              external_link: photo_params[:external_link],
+              thumb: photo_params[:thumb],
+              active: photo_params[:active],
+              content_id: photo_params[:content_id],
+              data_file: photo_params[:data_file],
+              remote_data_file_url: photo_params[:remote_data_file_url],
+              seq: photo_params[:seq]
+            )
+            content = get_content_by_params
             @photo.content = content
             respond_to do |format|
               if @photo.save
                 content.touch(:etag)
-
                 flash[:notice] = t("photos.created", title: @photo.name)
                 format.js { render :template => "mokio/photos/create"}
               else
@@ -317,7 +327,33 @@ module Mokio
             # Never trust parameters from the scary internet, only allow the white list through.
             #
             def photo_params #:doc:
-              params.require(:photo).permit(:name, :subtitle, :intro, :external_link, :thumb, :active, :content_id,:data_file, :remote_data_file_url, :seq)
+              params.require(:photo).permit(
+                :name,
+                :subtitle,
+                :intro,
+                :external_link,
+                :thumb,
+                :active,
+                :content_id,
+                :data_file,
+                :remote_data_file_url,
+                :seq,
+                :picgallery_id
+              )
+            end
+
+            def get_content_by_params
+              if photo_params.has_key?(:content_id)
+                id = photo_params[:content_id]
+              elsif photo_params.has_key?(:picgallery_id)
+                id = photo_params[:picgallery_id]
+              end
+
+              if id
+                Mokio::Content.find(id)
+              else
+                raise "content not found"
+              end
             end
 
             #
