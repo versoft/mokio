@@ -33,7 +33,9 @@ module Mokio
           def extended_parameters #:doc:
             parameters = {}
             parameters[:gmap_attributes] = Mokio::Gmap.gmap_attributes if @obj_class.has_gmap_enabled?
-            parameters[:seo_tags_attributes] = Mokio::SeoTag.seo_tag_attributes if @obj_class.has_seo_tagable_enabled?
+            if @obj_class.respond_to?(:has_seo_tagable_enabled?) && @obj_class.has_seo_tagable_enabled?
+              parameters[:seo_tags_attributes] = Mokio::SeoTag.seo_tag_attributes
+            end
             parameters
           end
 
