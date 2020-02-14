@@ -432,3 +432,7 @@
   1. Fix import paths in backend.scss
   2. Fix multiple file upload by jquery-fileupload
   3. Replace `render nothing: true` to `render body: nil`
+
+### Mokio 13.02.2020 v2.0.10
+<br/>
+  1. Remove gem jquery-fileupload-rails and add jquery libs instead

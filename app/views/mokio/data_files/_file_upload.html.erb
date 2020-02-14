@@ -5,21 +5,24 @@
         <!-- The fileinput-button span is used to style the file input field as button -->
       <span class="btn btn-success fileinput-button">
         <span><%= bt("add_files") %></span>
-       <%= f.hidden_field @obj_class.to_s.demodulize.downcase+"_id", :value => obj.id, name: "#{file_type.to_s.tableize.gsub('mokio/', '').singularize}[#{@obj_class.to_s.demodulize.downcase}_id]"  %>
-
-
+        <%= f.hidden_field @obj_class.to_s.demodulize.downcase+"_id", :value => obj.id, name: "#{file_type.to_s.tableize.gsub('mokio/', '').singularize}[#{@obj_class.to_s.demodulize.downcase}_id]"  %>
         <%= f.file_field :data_file, multiple:true, name: "#{file_type.to_s.tableize.gsub('mokio/', '').singularize}[data_file]" %>
       </span>
+      <button type="submit" class="btn btn-primary start">
+        <span><%= bt("start_upload") %></span>
+      </button>
+      <button type="reset" class="btn btn-warning cancel">
+        <span><%= bt("cancel_upload") %></span>
+      </button>
     </div>
     <!-- The loading indicator is shown during image processing -->
     <div class="fileupload-loading"></div>
     <br>
     <!-- The table listing the files available for upload/download -->
-    <table class="table table-striped"><tbody class="files" ></tbody>
+    <table class="table table-striped"><tbody class="files"></tbody>
     </table>
   <% end %>
 <% end %>
-
 
 <script>
   var fileUploadErrors = {
@@ -35,30 +38,41 @@
 <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">
   {% for (var i=0, file; file=o.files[i]; i++) { %}
-  <tr class="template-upload fade">
-    <td class="preview"><span class="fade"></span></td>
-    <td class="name"><span>{%=file.name%}</span></td>
-    <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-    {% if (file.error) { %}
-    <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
-    {% } else if (o.files.valid && !i) { %}
-    <td>
-      <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
-    </td>
-    <td class="start">{% if (!o.options.autoUpload) { %}
-      <button class="btn btn-primary">
-        <span>{%=locale.fileupload.start%}</span>
-      </button>
-      {% } %}</td>
-    {% } else { %}
-    <td colspan="2"></td>
-    {% } %}
-    <td class="cancel">{% if (!i) { %}
-      <button class="btn btn-warning">
-        <span>{%=locale.fileupload.cancel%}</span>
-      </button>
-      {% } %}</td>
-  </tr>
+    <tr class="template-upload fade">
+      <td>
+        <span class="preview"></span>
+      </td>
+      <td>
+        {% if (window.innerWidth > 480 || !o.options.loadImageFileTypes.test(file.type)) { %}
+          <p class="name">{%=file.name%}</p>
+        {% } %}
+        <strong class="error text-danger"></strong>
+      </td>
+      <td>
+        <p class="size">Processing...</p>
+        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+      </td>
+      <td>
+        {% if (!o.options.autoUpload && o.options.edit && o.options.loadImageFileTypes.test(file.type)) { %}
+          <button class="btn btn-success edit" data-index="{%=i%}" disabled>
+            <i class="glyphicon glyphicon-edit"></i>
+            <span>Edit</span>
+          </button>
+        {% } %}
+        {% if (!i && !o.options.autoUpload) { %}
+          <button class="btn btn-primary start" disabled>
+            <i class="glyphicon glyphicon-upload"></i>
+              <span>Start</span>
+          </button>
+        {% } %}
+        {% if (!i) { %}
+          <button class="btn btn-warning cancel">
+            <i class="glyphicon glyphicon-ban-circle"></i>
+              <span>Cancel</span>
+          </button>
+        {% } %}
+      </td>
+    </tr>
   {% } %}
 </script>
 
