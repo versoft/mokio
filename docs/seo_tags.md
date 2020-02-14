@@ -28,3 +28,6 @@ To render meta tags in fronted use helper:
 
 
 If you get error "Method not found" include helper: `helper Mokio::FrontendHelpers::SeoTagHelper`.
+
+### Migrating from Mokio < 2.0
+To generate `Mokio::Seotags` from `Mokio::Menu` data run `rails seotags:generate_from_meta` task in terminal.
