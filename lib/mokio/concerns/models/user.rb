@@ -30,8 +30,7 @@ module Mokio
           validates_presence_of     :password, if: :password_required?
           validates_confirmation_of :password, if: :password_required?
           validates_length_of       :password, within: password_length, allow_blank: true
-
-
+          validate                  :password_complexity, if: :password_required?
 
           # optionally set the integer attribute to store the roles in,
           # :roles_mask is the default
@@ -128,6 +127,12 @@ module Mokio
           def last_one?
             errors.add(:base, "Cannot delete last user") if Mokio::User.count == 1
             errors.blank?
+          end
+
+          def password_complexity
+            return if /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,128}$/.match(password)
+
+            errors.add :password, :weak_password
           end
       end
     end

@@ -687,6 +687,7 @@ pl:
             password:
               too_short: Hasło za krótkie ( min 8 znaków ).
               blank: Nie podano hasła
+              weak_password: Hasło musi mieć małą i dużą literę, cyfrę i znak specjalny
             password_confirmation:
               confirmation: Hasła się nie zgadzają
             email:
