@@ -847,4 +847,9 @@ pl:
         description: Opis
         parent_id: Element nadrzędny
         target: Okno docelowe
+        
+  devise:
+    failure:
+      last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie zablokowane.
+      locked: Twoje konto jest zablokowane. Możliwość ponownego zalogowania zostanie odblokowana za 1 godzinę.
 
