@@ -7,12 +7,30 @@ module Mokio
       def render_seo_meta_tags(model_obj)
         result = ""
         return result unless model_obj.class.has_seo_tagable_enabled?
+
         collection = model_obj.seo_tags
+        processed_tags = []
         if collection.any?
-          seo_hash =  {}
-          Mokio::SeoTag.seo_tags_list.map{|a| seo_hash[a[:key].to_sym] = a[:type]}
-          collection.each do |el|
-            result << render_seo_meta_build_tag_helper(el,seo_hash)
+          collection.each do |seo_tag|
+            processed_tags << seo_tag.tag_key.downcase
+            result << render_seo_meta_build_tag_helper(seo_tag)
+          end
+        end
+
+        if model_obj.respond_to?(:default_seo_tags)
+          model_obj.default_seo_tags.each do |dst|
+            #dst = {key: "og:title", value: "value"}
+            #check is already used:
+            unless processed_tags.include?(dst[:key].downcase)
+              founded_key = Mokio::SeoTag.find_key_in_seo_list(dst[:key])
+              next if founded_key.nil?
+              new_seo_tag = Mokio::SeoTag.new(
+                tag_value: dst[:value],
+                tag_key: founded_key
+              )
+              result << render_seo_meta_build_tag_helper(new_seo_tag)
+            end
+
           end
         end
         result
@@ -20,12 +38,14 @@ module Mokio
 
       private
 
-      def render_seo_meta_build_tag_helper(el, seo_hash)
-        return nil unless el.present? && seo_hash.present?
-        if el.is_title?
-          content_tag(:title, el.tag_value)
+      def render_seo_meta_build_tag_helper(seo_tag)
+        seo_hash =  {}
+        Mokio::SeoTag.seo_tags_list.map{|a| seo_hash[a[:key].to_sym] = a[:type]}
+        return nil unless seo_tag.present? && seo_hash.present?
+        if seo_tag.is_title?
+          content_tag(:title, seo_tag.tag_value)
         else
-          tag(:meta, "#{seo_hash[el.tag_key.to_sym]}" => ("#{el.tag_key}"), :content => ("#{el.tag_value}"))
+          tag(:meta, "#{seo_hash[seo_tag.tag_key.to_sym]}" => ("#{seo_tag.tag_key}"), :content => ("#{seo_tag.tag_value}"))
         end
       end
     end

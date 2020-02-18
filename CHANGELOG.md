@@ -441,3 +441,7 @@
 <br/>
   1. Change z-index to 1 in .heading
   2. Fix problem with upload photos in gallery - multiple params name
+
+### Mokio 19.02.2020 v2.0.12
+<br/>
+  1. Add two ways for setup default SeoTags: `default_seo_tags` and `auto_create_meta_tags`.

@@ -16,6 +16,16 @@ module Mokio
         end
 
         module ClassMethods
+
+          def find_key_in_seo_list(default_key)
+            selected_tag = Mokio::SeoTag.seo_tags_list.select { |t| t[:key].downcase == default_key.downcase }
+            if(selected_tag.any?)
+              selected_tag.first[:key]
+            else
+              nil
+            end
+          end
+
           def seo_tag_attributes
             [:tag_key, :tag_value, :id, :_destroy]
           end
@@ -51,23 +61,6 @@ module Mokio
               { type: "name", key: "distribution"},
               { type: "name", key: "rating"},
               { type: "name", key: "revisit-after"},
-              { type: "name", key: "og:title"},
-              { type: "name", key: "og:type"},
-              { type: "name", key: "og:url"},
-              { type: "name", key: "og:image"},
-              { type: "name", key: "og:site_name"},
-              { type: "name", key: "og:description"},
-              { type: "name", key: "fb:page_id"},
-              { type: "name", key: "og:email"},
-              { type: "name", key: "og:phone_number"},
-              { type: "name", key: "og:fax_number"},
-              { type: "name", key: "og:latitude"},
-              { type: "name", key: "og:longitude"},
-              { type: "name", key: "og:street-address"},
-              { type: "name", key: "og:locality"},
-              { type: "name", key: "og:region"},
-              { type: "name", key: "og:postal-code"},
-              { type: "name", key: "og:country-name"},
               { type: "name", key: "microid"},
               { type: "name", key: "apple-mobile-web-app-capable"},
               { type: "name", key: "apple-touch-fullscreen"},
@@ -86,6 +79,22 @@ module Mokio
               { type: "name", key: "format-detection"},
               { type: "name", key: "viewport"},
 
+              { type: "property", key: "og:title"},
+              { type: "property", key: "og:url"},
+              { type: "property", key: "og:image"},
+              { type: "property", key: "og:site_name"},
+              { type: "property", key: "og:description"},
+              { type: "property", key: "fb:page_id"},
+              { type: "property", key: "og:email"},
+              { type: "property", key: "og:phone_number"},
+              { type: "property", key: "og:fax_number"},
+              { type: "property", key: "og:latitude"},
+              { type: "property", key: "og:longitude"},
+              { type: "property", key: "og:street-address"},
+              { type: "property", key: "og:locality"},
+              { type: "property", key: "og:region"},
+              { type: "property", key: "og:postal-code"},
+              { type: "property", key: "og:country-name"},
               { type: "property", key: "og:type" },
               { type: "property", key: "og:points" },
               { type: "property", key: "og:video" },
