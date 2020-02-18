@@ -436,3 +436,10 @@
 ### Mokio 13.02.2020 v2.0.10
 <br/>
   1. Remove gem jquery-fileupload-rails and add jquery libs instead
+
+### Mokio 18.02.2020 v2.0.11
+<br/>
+  1. Disable caching in admin panel
+  2. Invalidate session cookie after logging out
+  3. Increase password complexity requirement for Mokio::Users
+  4. Add Devise :lockable to Mokio::Users
