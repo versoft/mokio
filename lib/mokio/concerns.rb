@@ -47,6 +47,10 @@ require "mokio/concerns/common/controller_functions"
 require "mokio/concerns/common/controller_translations"
 require "mokio/concerns/common/seo_tags"
 require "mokio/concerns/common/services/sitemap_service"
+
+#Helpers:
+require "mokio/headers_helper"
+
 #
 # Controllers
 #
