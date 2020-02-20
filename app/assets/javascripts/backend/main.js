@@ -85,6 +85,12 @@ $(document).find(mokioSelect2).each(function() {
 
 });
 
+$(".form-actions a.add_fields[data-form='seo_tags']").click(function () {
+  window.setTimeout(function () {
+    $('.mokio-select2').select2();
+  }, 200);
+});
+
 	//------------- Switcher code ( Remove it in production site ) -------------//
 	// (function(){
 	// 	supr_switcher = {

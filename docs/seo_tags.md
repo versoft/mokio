@@ -14,12 +14,43 @@ If you want override some columns in SeoTags use:
 example:
 ```
 def seo_tagable_custom_columns
-	%w(some_key some_key2)
+  %w(some_key some_key2)
 end
 ```
 List of all keys is here: `lib/mokio/concerns/models/seo_tag.rb` in method `seo_tags_list`. Look on `key`.
 
 Remeber to add `:seo_tags_attributes: [:id, :tag_key, :tag_value, :_destroy]` in your controller's params.
+
+### Default meta tags
+There are two ways to setup default meta tags:
+1. Add meta tags to render if is not created relation with SeoTag.
+In your model add method:
+```
+def default_seo_tags
+  [{
+    key: 'title',
+    value: self.name
+  },
+  {
+    key: 'og:type',
+    value: "some type"
+  }]
+end
+```
+2. Auto create relation after create object model.
+```
+def auto_create_meta_tags
+  [{
+    key: 'title',
+    value: self.name
+  },
+  {
+    key: 'og:type',
+    value: "some type"
+  }]
+end
+```
+**Important! the `key` have to match to key used in `seo_tags_list` method.**
 
 
 ### Render meta tags

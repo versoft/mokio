@@ -437,7 +437,16 @@
 <br/>
   1. Remove gem jquery-fileupload-rails and add jquery libs instead
 
-### Mokio 18.02.2020 v2.0.11
+### Mokio 14.02.2020 v2.0.11
+<br/>
+  1. Change z-index to 1 in .heading
+  2. Fix problem with upload photos in gallery - multiple params name
+
+### Mokio 19.02.2020 v2.0.12
+<br/>
+  1. Add two ways for setup default SeoTags: `default_seo_tags` and `auto_create_meta_tags`.
+
+## Mokio 20.02.2020 v2.0.13
 <br/>
   1. Disable caching in admin panel
   2. Invalidate session cookie after logging out
