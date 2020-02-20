@@ -22,6 +22,14 @@ module Mokio
   class User < ActiveRecord::Base
     include Mokio::Concerns::Models::User
 
+    def authenticatable_salt
+      "#{super}#{session_token}"
+    end
+  
+    def invalidate_all_sessions!
+      self.update_attribute(:session_token, SecureRandom.hex)
+    end  
+
     # def admin_view
     #   html = ""
     #   if has_role? :admin

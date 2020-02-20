@@ -687,6 +687,7 @@ pl:
             password:
               too_short: Hasło za krótkie ( min 8 znaków ).
               blank: Nie podano hasła
+              weak_password: Hasło musi mieć małą i dużą literę, cyfrę i znak specjalny
             password_confirmation:
               confirmation: Hasła się nie zgadzają
             email:
@@ -846,4 +847,9 @@ pl:
         description: Opis
         parent_id: Element nadrzędny
         target: Okno docelowe
+        
+  devise:
+    failure:
+      last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie zablokowane.
+      locked: Twoje konto jest zablokowane. Możliwość ponownego zalogowania zostanie odblokowana za 1 godzinę.
 

@@ -445,3 +445,10 @@
 ### Mokio 19.02.2020 v2.0.12
 <br/>
   1. Add two ways for setup default SeoTags: `default_seo_tags` and `auto_create_meta_tags`.
+
+## Mokio 20.02.2020 v2.0.13
+<br/>
+  1. Disable caching in admin panel
+  2. Invalidate session cookie after logging out
+  3. Increase password complexity requirement for Mokio::Users
+  4. Add Devise :lockable to Mokio::Users
