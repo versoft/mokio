@@ -4,7 +4,7 @@ Rails.configuration.to_prepare do
 
     private
       def invalidate_current_user_session
-        current_user.invalidate_all_sessions!
+        current_user.invalidate_all_sessions! if current_user.present?
       end  
   end
 end
