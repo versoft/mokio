@@ -2,7 +2,8 @@
 @import "backend/bootstrap/bootstrap";
 @import "backend/bootstrap/bootstrap-responsive";
 @import "backend/bootstrap/bootstrap2-switch";
-@import "backend/supr-theme/jquery.ui.supr";
+// @import "backend/supr-theme/jquery.ui.supr";
+@import "backend/jquery-ui";
 @import "backend/icons";
 
 
@@ -18,8 +19,8 @@
 @import "backend/plugins/gallery/pretty-photo/prettyPhoto";
 @import "backend/plugins/gallery/jpages/jPages";
 @import "backend/plugins/misc/pnotify/jquery.pnotify.default";
-@import "backend/supr-theme/jquery.ui.theme";
-@import "backend/supr-theme/jquery.ui.datepicker";
+// @import "backend/supr-theme/jquery.ui.theme";
+// @import "backend/supr-theme/jquery.ui.datepicker";
 @import "fancybox";
 
 // For tables layout
@@ -35,7 +36,7 @@
 @import "backend/comments";
 
 @import "backend/bootstrap/bootstrap-wysihtml5-0.0.2";
-@import "backend/supr-theme/jquery-ui-timepicker-addon";
+// @import "backend/supr-theme/jquery-ui-timepicker-addon";
 @import "backend/plugins/forms/select2/select2";
 
 @import "backend/bootstrap/joyride-2.1";

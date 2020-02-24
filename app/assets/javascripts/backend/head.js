@@ -1,7 +1,7 @@
 // ! Important plugins put in all pages
-//= require jquery2
+//= require jquery3
 // require jquery.turbolinks
-//= require jquery.ui.all
+//= require backend/jquery-ui.min
 //= require jquery_ujs
 
 // Jquery migrate adds methods removed in newest jquery but still used by plugins
@@ -16,3 +16,5 @@
 // require ckeditor/override
 //= require ckeditor/init
 //= require backend/mokio_dynamic_fields
+
+jQuery.fn.load = function(callback){$(window).on("load", callback)};
