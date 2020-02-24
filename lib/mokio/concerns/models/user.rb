@@ -14,12 +14,14 @@ module Mokio
           before_destroy :last_one?
 
           attr_accessor :only_password
+          attr_accessor :current_user
+          attr_accessor :confirm_delete
 
           #
           # Table of roles for user
           #
 
-          ROLES = ["admin", "content_editor", "menu_editor", "static_module_editor", "user_editor", "comment_approver", "reader"]
+          ROLES = ["admin", "content_editor", "menu_editor", "static_module_editor", "user_editor", "comment_approver", "reader", "super_admin"]
 
           devise :database_authenticatable, :rememberable, :recoverable, :trackable, 
             :lockable, :timeoutable
@@ -32,6 +34,7 @@ module Mokio
           validates_confirmation_of :password, if: :password_required?
           validates_length_of       :password, within: password_length, allow_blank: true
           validate                  :password_complexity, if: :password_required?
+          validate                  :only_one_super_admin
 
           # optionally set the integer attribute to store the roles in,
           # :roles_mask is the default
@@ -40,7 +43,7 @@ module Mokio
 
           # declare the valid roles -- do not change the order if you add more
           # roles later, always append them at the end!
-          roles :admin, :content_editor, :menu_editor, :static_module_editor, :user_editor, :comment_approver, :reader
+          roles :admin, :content_editor, :menu_editor, :static_module_editor, :user_editor, :comment_approver, :reader, :super_admin
 
           # before_validation :add_default_role
           # belongs_to :market
@@ -58,6 +61,19 @@ module Mokio
             super
           end
 
+          def cloneable?
+            false
+          end
+
+          def only_one_super_admin
+            # check amount of super_admins if update is by super_admin (current_user)
+            if (self.id != self.current_user.id) && self.is_super_admin?
+                if Mokio::User.where(roles_mask: Mokio::User.roles_mask_by_role(:super_admin)).size > 0
+                  errors.add(:email, "can't be multiple users with super_admin role")
+                end
+            end
+          end
+
         end
 
         module ClassMethods
@@ -65,7 +81,11 @@ module Mokio
           # Columns for table in CommonController#index view
           #
           def columns_for_table
-            ["email", "name_view", "roles"]
+            ["email", "name_view", "roles_view"]
+          end
+
+          def roles_mask_by_role(role)
+            2**self::ROLES.index(role.to_s)
           end
         end
 
@@ -73,7 +93,24 @@ module Mokio
         # Output for <b>roles</b> parameter, used in CommonController#index
         #
         def roles_view
-          self.roles.to_a.map{|m| I18n.t("users.role_name." + m.to_s)}.join(', ')
+          results = []
+          self.roles.to_a.each do |role|
+            trans = I18n.t("users.role_name." + role.to_s)
+            if role == :super_admin
+              results << "<b class='superadmin'>#{trans}</b>"
+            else
+              results << trans
+            end
+          end
+          results.join(', ')
+        end
+
+        def is_super_admin?
+          self.has_role? :super_admin
+        end
+
+        def disable_autocomplete_in_forms
+          true
         end
 
         def editable #:nodoc:
@@ -81,7 +118,7 @@ module Mokio
         end
 
         def deletable #:nodoc:
-          true
+          false
         end
 
         def name_view

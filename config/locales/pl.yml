@@ -530,6 +530,7 @@ pl:
   gmaps:
     gmap: Mapa google
   users:
+    super_admin_desc: 'Nie może zostać usunięty, może istnieć tylko jeden Super admin.'
     index_add_new: Dodaj nowego administratora
     index_title: Administratorzy
     new_title: Nowy administrator
@@ -554,10 +555,12 @@ pl:
       static_module_editor: Zarządzanie blokami
       user_editor: Zarządzanie administratorami
       comment_approver: Obsługa komentarzy (moderowanie)
-      reader: Dosŧęp do odczytu
+      reader: Dostęp do odczytu
+      super_admin: Super admin
     edit_password: Zmiana hasła
     password_updated: Hasło zostało zmienione
     password_not_updated: Nie udało się zmienic hasła
+    password_not_match_remove_failed: 'Hasło jest niepoprawne'
 
   support:
     support_title: Wsparcie
@@ -847,7 +850,7 @@ pl:
         description: Opis
         parent_id: Element nadrzędny
         target: Okno docelowe
-        
+
   devise:
     failure:
       last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie zablokowane.

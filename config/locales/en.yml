@@ -512,6 +512,7 @@ en:
   gmaps:
     gmap: Google map
   users:
+    super_admin_desc: 'Cannot be deleted, can only be one super admin.'
     index_add_new: Add new admin
     index_title: Admins
     new_title: New admin
@@ -537,9 +538,11 @@ en:
       user_editor: Admins management
       comment_approver: Comment approve
       reader: Reader
+      super_admin: Super admin
     edit_password: Change password
     password_updated: Password has been updated
     password_not_updated: Password has NOT been updated
+    password_not_match_remove_failed: 'Password is not correct'
 
   support:
     support_title: Support

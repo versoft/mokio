@@ -1,0 +1,33 @@
+.span12
+  - unless obj.is_super_admin?
+    div.confirm-pass-holder
+      a.confirm-pass-link data-toggle="modal" href=("#confirm_pass")
+        button.btn.btn-danger
+          span.icon16.icomoon-icon-remove-2.white
+          span = t('backend.delete')
+      #confirm_pass.modal.fade role="dialog" aria-hidden="true" style="display:none;" aria-labelledby="meta_g_ModalLabel"
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h3.modal-title.modal-photo id="meta_g_ModalLabel"
+                span.icon24.icomoon-icon-remove-2
+                span.head = "Usuwanie użytkownika: #{obj.email}"
+
+            .modal-body
+              = simple_form_for obj, method: :delete do |df|
+                p.center style='margin: 0' Potwierdź operację swoim hasłem logowania:
+
+                = df.password_field :confirm_delete, class: 'pass user-form', autocomplete: 'off'
+                - if current_user == obj
+                  p.alert-confirm
+                    span.icon24.icomoon-icon-warning.red
+                    = "Uwaga! usuwasz własne konto! Po zatwierdzeniu nastąpi wylogowanie!"
+                = df.button :submit, 'Usuń', class: 'btn btn-primary remove'
+            .modal-footer
+              button.btn.btn-primary type="button" data-dismiss="modal" = bt("close")
+
+  = render :partial => "mokio/common/notice"
+  .box
+    = box_title do
+      = bt("edit_title", obj.respond_to?(:type) ? obj.type : @obj_class)
+    = render :partial => "mokio/common/form_content", locals: {obj: obj}

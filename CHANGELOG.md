@@ -456,3 +456,9 @@
 ## Mokio 20.02.2020 v2.0.14
 <br/>
   1. Add Devise :timeoutable to Mokio::Users
+
+## Mokio 02.03.2020 v2.1.0
+<br/>
+  1. Add super admin role
+  2. Confirm delete user using password
+  3. Add `rake mokio:change_user_to_super_admin['email@sample.com']`

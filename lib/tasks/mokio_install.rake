@@ -71,7 +71,7 @@ namespace :mokio do
       email: args[:email],
       password: args[:password],
       password_confirmation: args[:password],
-      roles_mask: 1
+      roles: [:super_admin]
     })
     puts "\n\tCreated default user '#{args[:email]}' with password '#{args[:password]}'".green if user.save(:validate => false)
 

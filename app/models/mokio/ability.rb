@@ -29,20 +29,29 @@ module Mokio
     # See the wiki for details:
     # https://github.com/bryanrite/cancancan/wiki/Defining-Abilities
     def initialize(user)
+      if user.has_role? :super_admin
+        can :manage, :all
+      end
       if user.has_role? :admin
         can :manage, :all
+        cannot :manage, Mokio::User do |u|
+          u.roles.include?(:super_admin)
+        end
       end
       if user.has_role? :content_editor
         can :manage, [Mokio::Content]
       end
       if user.has_role? :menu_editor
-        can :manage, [Mokio::Menu]  
+        can :manage, [Mokio::Menu]
       end
       if user.has_role? :static_module_editor
-        can :manage, [Mokio::StaticModule]  
+        can :manage, [Mokio::StaticModule]
       end
       if user.has_role? :user_editor
         can :manage, [Mokio::User]
+        cannot :manage, Mokio::User do |u|
+          u.roles.include?(:super_admin)
+        end
       end
       if user.has_role? :reader
         can :read, :all

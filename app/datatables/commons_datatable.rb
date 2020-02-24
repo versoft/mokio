@@ -66,7 +66,7 @@ private
   end
 
   def row_cloneable?(row)
-    (row.respond_to? "cloneable?") ? row.cloneable? : true
+    row.respond_to?(:cloneable?) ? row.cloneable? : true
   end
 
   def collection

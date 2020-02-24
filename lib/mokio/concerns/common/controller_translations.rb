@@ -38,6 +38,10 @@ module Mokio
             I18n.t("#{update_active_translation(obj)}.update_active_false", title: obj_title(obj))
           end
 
+          def self.password_not_match(obj)
+            I18n.t("#{class_name(obj)}.password_not_match_remove_failed", title: obj_title(obj))
+          end
+
           private
 
             def self.obj_title(obj)
