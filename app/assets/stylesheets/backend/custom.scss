@@ -707,3 +707,64 @@ select[multiple] {
 .meta-key-select {
   width: 265px!important;
 }
+
+p.super_admin {
+  text-align: center;
+  padding: 20px 20px 5px 20px;
+  font-size: 18px;
+}
+
+p.super_admin_desc {
+  text-align: center;
+  color: gray;
+}
+
+.superadmin {
+  color: #dd112a;
+}
+
+.confirm-pass-holder {
+  position: relative;
+  // z-index: 9999;
+}
+
+.confirm-pass-holder input {
+  width: 90%;
+}
+
+.confirm-pass-holder label {
+  height: 42px;
+  line-height: 42px;
+  text-align: right;
+}
+
+a.confirm-pass-link {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+
+.modal-content span.head {
+  font-size: 17px;
+}
+
+.confirm-pass-holder p.alert-confirm {
+  font-size: 13px;
+  text-align: center;
+  color: red;
+}
+
+.confirm-pass-holder input.remove {
+  display: block;
+  margin: 0 auto;
+}
+
+.confirm-pass-holder input.pass {
+  display: block;
+  margin: 10px auto;
+  width: 70%;
+}
+
+.user-form .has-switch{
+  margin-right: 5px;
+}

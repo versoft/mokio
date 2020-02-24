@@ -10,6 +10,7 @@ module Mokio
         include Mokio::Concerns::Common::Translations
 
         included do
+          load_and_authorize_resource
         end
 
         #
@@ -20,16 +21,37 @@ module Mokio
         end
 
         #
+        # Overwritten new from CommonController#create (Mokio::Concerns::Controllers::Common)
+        #
+        def create
+          create_obj( @obj_class.new(obj_params) )
+          obj.current_user = current_user
+          respond_to do |format|
+            if obj.save
+              if !params[:save_and_new].blank?
+                format.html { redirect_to obj_new_url(@obj_class.new), notice: CommonTranslation.created(obj) }
+                format.json { render action: 'new', status: :created, location: obj }
+              else
+                format.html { redirect_to obj_index_url, notice: CommonTranslation.created(obj) }
+                format.json { render action: 'index', status: :created, location: obj }
+              end
+            else
+              format.html { render "new", notice: CommonTranslation.not_created(obj) }
+              format.json { render json: @obj.errors, status: :unprocessable_entity }
+            end
+          end
+        end
+
+        #
         # Overwritten new from CommonController#update (Mokio::Concerns::Controllers::Common)
         #
         def update
-
-          # raise current_user.inspect
           @current = current_user
-
+          obj.current_user = current_user
           respond_to do |format|
             if obj.update(obj_params)
-              if obj.id == @current.id      #only when password os changed for current user, sign in (with updated password) is required
+              #only when password os changed for current user, sign in (with updated password) is required
+              if obj.id == @current.id
                 sign_in(obj, :bypass => true)
               end
               if !params[:save_and_new].blank?
@@ -76,6 +98,20 @@ module Mokio
           end
         end
 
+        def destroy
+          respond_to do |format|
+            if can_remove_user?
+              if obj.destroy
+                redirect_back(format, obj_index_url, CommonTranslation.deleted(obj))
+              else
+                redirect_back(format, obj_index_url, CommonTranslation.not_deleted(obj))
+              end
+            else
+              redirect_back(format, obj_edit_url(obj), CommonTranslation.password_not_match(obj))
+            end
+          end
+        end
+
         def set_breadcrumbs_prefix
           @breadcrumbs_prefix = "settings"
           @breadcrumbs_prefix_link = ""
@@ -87,6 +123,16 @@ module Mokio
           #
           def user_params #:doc:
             params[:user].permit(:first_name, :last_name, :email, :password, :password_confirmation, :market_id, :roles => [])
+          end
+
+          def remove_params
+            params[:user].permit(:confirm_delete)
+          end
+
+          def can_remove_user?
+            # if password is correct and user is NOT super admin - allow remove
+            current_user.valid_password?(remove_params[:confirm_delete]) &&
+            !obj.is_super_admin?
           end
       end
     end

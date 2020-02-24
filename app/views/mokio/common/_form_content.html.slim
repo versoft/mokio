@@ -2,9 +2,10 @@
 / TODO: Do it smarter way, too much logic in view
 /
 .content
+
   = common_form do
     .row-fluid
-      = simple_form_for obj, :html => { :class => 'form-horizontal' } do |f|
+      = simple_form_for obj, :html => { :class => 'form-horizontal', autocomplete: 'off' } do |f|
         = render :partial => "mokio/common/gmap", locals: {obj: obj, f: f} if obj.class.has_gmap_enabled?
         = backend_modal_render('seo_tags',f)
 

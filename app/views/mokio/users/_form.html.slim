@@ -1,13 +1,29 @@
-.form-inputs
+.form-inputs.user-form
   - unless @password_only
-    = f.input :email, required: true, :wrapper => :input_span
-    = f.input :first_name, :wrapper => :input_span
-    = f.input :last_name, :wrapper => :input_span
-  = f.input :password, :wrapper => :input_span
-  = f.input :password_confirmation, :wrapper => :input_span
+    = f.input :email, required: true, :wrapper => :input_span, readonly: true
+    = f.input :first_name, :wrapper => :input_span, readonly: true
+    = f.input :last_name, :wrapper => :input_span, readonly: true
+  = f.input :password, :wrapper => :input_span, readonly: true
+  = f.input :password_confirmation, :wrapper => :input_span, readonly: true
   - unless @password_only
-    - for role in Mokio::User::ROLES
-      = check_box_tag "user[roles][#{role}]", role, @user.has_role?(role), {:name => "user[roles][]"}
-      = label_tag "user_roles_#{role}", bt("role_name." + role, Mokio::User)
-      br/
-    = hidden_field_tag "user[roles][]", ""
+    - if obj.is_super_admin?
+      p.super_admin.superadmin SUPER ADMIN
+      p.super_admin_desc = t('users.super_admin_desc')
+    - else
+      - for role in Mokio::User::ROLES
+        - next if role == "super_admin"
+        = check_box_tag "user[roles][#{role}]", role, @user.has_role?(role), {:name => "user[roles][]"}
+        = label_tag "user_roles_#{role}", bt("role_name." + role, Mokio::User)
+        br/
+      - if obj.is_super_admin?
+        = hidden_field_tag "user[roles][]", "super_admin", id: 'user_roles_super_admin'
+      = hidden_field_tag "user[roles][]", ""
+
+//prevent autocomplete in form
+- content_for :js do
+  javascript:
+    $(document).ready(function () {
+      window.setTimeout(function () {
+        $('.user-form input').removeAttr('readonly');
+      }, 200);
+    });
