@@ -32,6 +32,16 @@ This task will create `custom.js` file in under `assets/javascripts/backend` fol
 More docs soon!
 
 ---
+### Secure login with Google reCAPTCHA v3
+To turn on login with reCAPTCHA go to config/mokio.rb and update configs:
+```
+  config.mokio_login_with_recaptcha = true
+  config.mokio_login_recaptcha_site_key = 'KEY'
+  config.mokio_login_recaptcha_secret_key = 'KEY'
+  config.mokio_login_recaptcha_score = 0.9
+```
+More info: [reCAPTCHA v3](https://developers.google.com/recaptcha/docs/v3)
+
 ### Gems and sample_app:
 
 ##### Sample app using Mokio CMS

@@ -235,6 +235,19 @@ module Mokio
   mattr_accessor :mokio_sitemap_generator_enable
   self.mokio_sitemap_generator_enable = true
 
+  ### Google reCAPTCHA configs ###
+  mattr_accessor :mokio_login_with_recaptcha
+  self.mokio_login_with_recaptcha = false
+
+  mattr_accessor :mokio_login_recaptcha_site_key
+  self.mokio_login_recaptcha_site_key = ''
+
+  mattr_accessor :mokio_login_recaptcha_secret_key
+  self.mokio_login_recaptcha_secret_key = ''
+
+  mattr_accessor :mokio_login_recaptcha_score
+  self.mokio_login_recaptcha_score = 0.9
+
   # List of static routes it should be included in sitemap
   # -------------------------------------------------
   # loc: url  (required)

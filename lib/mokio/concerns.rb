@@ -52,6 +52,11 @@ require "mokio/concerns/common/services/sitemap_service"
 require "mokio/headers_helper"
 
 #
+# Services
+require "mokio/services/recaptcha_service"
+#
+
+#
 # Controllers
 #
 require "mokio/concerns/controllers/application"
@@ -73,5 +78,6 @@ require "mokio/concerns/controllers/external_scripts"
 require "mokio/concerns/controllers/module_positions"
 require "mokio/concerns/controllers/langs"
 require "mokio/concerns/controllers/main_pics"
+require "mokio/concerns/controllers/sessions"
 
 

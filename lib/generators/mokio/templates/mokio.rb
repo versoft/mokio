@@ -7,48 +7,48 @@ Mokio.setup do |config|
 
   # Here you can change the behaviour of Mokio application
 
-  # Default language shortname for backend. 
-  # Set to the shortname of the Lang record with the ID specified in :backend_default_lang_id. 
+  # Default language shortname for backend.
+  # Set to the shortname of the Lang record with the ID specified in :backend_default_lang_id.
   # If you wish to change it for example to english, you need to do the following:
-  # 
+  #
   # 1. Create Lang for english (with shortname en - shortname needs to be unique)
   # 2. Set backend_default_lang to "en"
   #
   # config.backend_default_lang = "pl"
 
   #
-  # How many records are displayed per page. 
-  # Whenever there is a need to display a list of elements in a table (contents, static modules, users) this value 
-  # is used for pagination. Change this is you wish to display more or less records pew page. 
+  # How many records are displayed per page.
+  # Whenever there is a need to display a list of elements in a table (contents, static modules, users) this value
+  # is used for pagination. Change this is you wish to display more or less records pew page.
   # Please be careful, performance may decrease after increasing this value.
   #
   # config.backend_default_per_page = 10
 
   #
-  # Enable adding google maps for listed content types. 
+  # Enable adding google maps for listed content types.
   # Mentioned content types will have option to choose location. This can be displayed in frontend using Google Maps API.
   #
   # config.backend_gmap_enabled = ["Contact"]
- 
+
   #
   # Enable adding meta tags for listed models.
-  # For mentioned classes it will be possible to set META tags (Facebook and Google ones). 
+  # For mentioned classes it will be possible to set META tags (Facebook and Google ones).
   # By default it is set for menu and all connent types. Menu meta tags are more important than content meta tags if both are defined.
   #
   # config.backend_meta_enabled = ["Menu"] + Mokio::CONTENT_TYPES
 
   #
-  # How much records are listed in dashboard boxes. 
+  # How much records are listed in dashboard boxes.
   #
   # config.dashboard_size = 5
 
   # ************************************************
-  # Once a photo is uploaded, four copies of this photo are created - using below values for width and height. Photo is scaled to match these dimensions. 
-  # 
-  # Default photo width for whole application (in px). 
-  # Uploaded photo will be scaled to have the following width. 
+  # Once a photo is uploaded, four copies of this photo are created - using below values for width and height. Photo is scaled to match these dimensions.
+  #
+  # Default photo width for whole application (in px).
+  # Uploaded photo will be scaled to have the following width.
   # Photos will also be displayed with this width in the backend (when a photo in gallery is clicked - big view) and in frontend.
-  # Please note that after you change it, you need to upload you photos again. 
+  # Please note that after you change it, you need to upload you photos again.
   # Otherwise uploaded photo will have previous width, only view will be scaled accordingly, what may affect photo quality.
   #
   # config.default_width = 500
@@ -61,9 +61,9 @@ Mokio.setup do |config|
 
   #
   # Width for photos thumb (in px).
-  # Photo thumb (either automatically scaled from original photo or manuallu changed to different image) will be scaled to have the following width. 
+  # Photo thumb (either automatically scaled from original photo or manuallu changed to different image) will be scaled to have the following width.
   # Photos will also be displayed with this width in the backend (when a list of photos is displayed, when the thumb is displayed) and in frontend.
-  # Please note that after you change it, you need to upload your photos again. 
+  # Please note that after you change it, you need to upload your photos again.
   # Otherwise uploaded photo thumb will have previous width, only view will be scaled accordingly, what may affect photo thumb quality.
   #
   # config.photo_thumb_width = 100
@@ -113,12 +113,12 @@ Mokio.setup do |config|
   #
   # Default lang for frontend
   #
-  # Set to the shortname of the default frontend language 
+  # Set to the shortname of the default frontend language
   # If you wish to change it for example to english, you need to do the following:
-  # 
+  #
   # 1. Create Lang for english (with shortname en - shortname needs to be unique) - unless already created
   # 2. Set frontend_default_lang to "en"
-  # 
+  #
   # 4. Create Initial menu structure for this language (unless already created)
   #    4a. Create Menu element for lang node: en (fake: true, parent: nil, lang_id - ID of the record from point 1)
   #    4b. Create Menu element for menu position: top (fake: true, parent - element from point 4a, lang_id - ID of the record from point 1 )
@@ -133,8 +133,8 @@ Mokio.setup do |config|
   # config.frontend_initial_pl = 1
 
   #
-  # Facebook app id to use in frontend. 
-  # If you would like to have facebook comments enabled for your application 
+  # Facebook app id to use in frontend.
+  # If you would like to have facebook comments enabled for your application
   # you need to provide Facebook App ID - you can get it from https://developers.facebook.com/apps
   #
   # config.frontend_facebook_app_id = ''
@@ -172,4 +172,11 @@ Mokio.setup do |config|
 
   # Default time to log out unactive user
   # config.devise_timeout_after = 15.minutes
+
+  ### Google reCAPTCHA v3 ###
+  # config.mokio_login_with_recaptcha = false
+  # config.mokio_login_recaptcha_site_key = 'KEY'
+  # config.mokio_login_recaptcha_secret_key = 'KEY'
+  # config.mokio_login_recaptcha_score = 0.9
+
 end
