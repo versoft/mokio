@@ -11,6 +11,8 @@
     = stylesheet_link_tag 'backend'
     = csrf_meta_tags
     = favicon_link_tag 'backend/favicon.ico'
+    - if Mokio.mokio_login_with_recaptcha
+      %script(src="https://www.google.com/recaptcha/api.js?render=#{Mokio.mokio_login_recaptcha_site_key}")
 
   %body.loginPage
     .container-fluid
@@ -28,6 +30,7 @@
           .form-row.row-fluid
             = f.input :email, required: false, autofocus: true, :wrapper => :label_newline
             = f.input :password, required: false, :wrapper => :label_newline
+            = hidden_field_tag 'recaptcha_token'
           %br
           -# = link_to bt("sign_up"), new_registration_path(resource_name)
           = f.button :submit, bt("sign_in"), class: 'btn btn-info', id: 'loginBtn'
@@ -37,3 +40,11 @@
                 = flash[:alert]
         %br
         = link_to t("devise.link.forgot_password"), new_password_path(resource_name)
+
+    - if Mokio.mokio_login_with_recaptcha
+      :javascript
+        grecaptcha.ready(function() {
+          grecaptcha.execute("#{Mokio.mokio_login_recaptcha_site_key}", {action: 'login'}).then(function(token) {
+            document.getElementById('recaptcha_token').value = token;
+          });
+        });

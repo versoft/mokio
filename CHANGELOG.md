@@ -472,7 +472,7 @@
   1. Remove unused files
   2. Remove password reminder link (since it doesn't work)
   3. Cleanup routing
-  
+
 ## Mokio 06.03.2020 v2.1.3
 <br/>
   1. Add custom.js file
@@ -480,3 +480,7 @@
 ## Mokio 08.03.2020 v2.1.4
 <br/>
   1. Fix password reminder
+
+## Mokio 09.03.2020 v2.2.0
+<br/>
+  1. Add Google reCAPTCHA v3 during log in

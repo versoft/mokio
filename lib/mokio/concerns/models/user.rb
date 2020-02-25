@@ -16,6 +16,7 @@ module Mokio
           attr_accessor :only_password
           attr_accessor :current_user
           attr_accessor :confirm_delete
+          attr_accessor :recaptcha_token
 
           #
           # Table of roles for user
@@ -23,7 +24,7 @@ module Mokio
 
           ROLES = ["admin", "content_editor", "menu_editor", "static_module_editor", "user_editor", "comment_approver", "reader", "super_admin"]
 
-          devise :database_authenticatable, :rememberable, :recoverable, :trackable, 
+          devise :database_authenticatable, :rememberable, :recoverable, :trackable,
             :lockable, :timeoutable
 
           validates_presence_of   :email
