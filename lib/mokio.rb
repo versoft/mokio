@@ -19,7 +19,6 @@ require 'validates'
 require 'friendly_id'
 require 'video_info'
 require 'disqus'
-require 'devise'
 require 'cancancan'
 require 'role_model'
 require 'sass-rails'
@@ -261,6 +260,10 @@ module Mokio
   mattr_accessor :mokio_sitemap_enabled_models
   self.mokio_sitemap_enabled_models = ["Mokio::Content"]
 
+  # Default time to log out unactive user
+  mattr_accessor :devise_timeout_after
+  self.devise_timeout_after = 15.minutes
+
   #
   # Default way to configure Mokio
   #
@@ -277,6 +280,7 @@ module Mokio
   end
 end
 
+require 'devise'
 require "mokio/core_extension"
 require "mokio/engine"
 require "mokio/exceptions"

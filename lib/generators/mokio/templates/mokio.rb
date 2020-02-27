@@ -168,7 +168,8 @@ Mokio.setup do |config|
   # config.after_sign_in_path = {:user => {:roles => {:admin =>{:path => "/path_for_admin"}}}}
   # config.after_sign_in_path = {:user => {:roles => {:admin =>{:method => :method_name_for_admin}}}} => returns: controller.method_name_for_admin
 
-  #config.after_sign_in_path = {:user => {}}
+  # config.after_sign_in_path = {:user => {}}
 
-
+  # Default time to log out unactive user
+  # config.devise_timeout_after = 15.minutes
 end

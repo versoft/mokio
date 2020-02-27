@@ -21,7 +21,8 @@ module Mokio
 
           ROLES = ["admin", "content_editor", "menu_editor", "static_module_editor", "user_editor", "comment_approver", "reader"]
 
-          devise :database_authenticatable, :rememberable, :recoverable, :trackable, :lockable
+          devise :database_authenticatable, :rememberable, :recoverable, :trackable, 
+            :lockable, :timeoutable
 
           validates_presence_of   :email
           validates_uniqueness_of :email, allow_blank: true, if: :email_changed?

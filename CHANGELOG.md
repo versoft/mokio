@@ -452,3 +452,7 @@
   2. Invalidate session cookie after logging out
   3. Increase password complexity requirement for Mokio::Users
   4. Add Devise :lockable to Mokio::Users
+
+## Mokio 20.02.2020 v2.0.14
+<br/>
+  1. Add Devise :timeoutable to Mokio::Users
