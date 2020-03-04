@@ -11,6 +11,7 @@ module Mokio
           include Mokio::Concerns::Models::Common
           include Mokio::Concerns::Common::SeoTags
           include Mokio::Concerns::Common::Services::Sitemap::Model
+          include Mokio::Concerns::Common::History::Model
 
           has_many :content_links, :dependent => :destroy
           has_many :data_files, as: :imageable, dependent: :destroy

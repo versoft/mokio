@@ -52,6 +52,8 @@ end
 - [Generate sitemap.xml](docs/sitemap_generator.md) - How to generate automatic sitemap.xml for dynamic and static content
 - [Select2 helper](docs/select2.md) - How to use select inputs with autosearch
 - [Backend input helpers](docs/backend_inputs_helpers.md) - Describes some input helpers
+- [History](docs/history.md) - Model history tracking
+
 More docs soon!
 
 ---

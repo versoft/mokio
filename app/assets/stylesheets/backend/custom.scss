@@ -835,3 +835,70 @@ a.confirm-pass-link {
   background: lightgray;
   opacity: 0.3;
 }
+
+
+#histories {
+  margin-top: 80px;
+  min-height:60vh !important;
+  width: 80vw !important;
+  top: 0 !important;
+  left: 10% !important;
+  margin-left:0px !important;
+
+  .input_title {
+    background:rgba(255,255,255,0.5);
+    padding:10px 0 10px 0;
+    margin: 0 auto 0 auto;
+    width:100%;
+    text-align:center;
+
+  }
+
+  table td  {
+    border:1px dotted silver;
+    padding:0px;
+    padding:20px;
+  }
+
+  .input_content  {
+    padding: 10px;
+    max-height: 300px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    position: relative;
+
+  }
+
+  .value {
+    text-align:center !important;
+    .show_more {
+      display:none;
+      padding:10px;
+      background: white;
+      color:black;
+      border:1px solid silver
+    }
+
+  }
+
+  .value_title_center{
+    width:80px;
+    padding:10px;
+    background: white;
+  }
+
+  .title_date {
+    font-size:14px;
+    text-align:center;
+  }
+
+  .value_before {
+    width:40%;
+    background:#fef1f1;
+  }
+
+  .value_after {
+    width:40%;
+    background: #f4fff4;
+  }
+}

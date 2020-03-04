@@ -38,6 +38,7 @@ require "mokio/concerns/models/user"
 require "mokio/concerns/models/youtube"
 require "mokio/concerns/models/external_script"
 require "mokio/concerns/models/seo_tag"
+require "mokio/concerns/models/history"
 
 #
 # CommonController extensions
@@ -47,6 +48,7 @@ require "mokio/concerns/common/controller_functions"
 require "mokio/concerns/common/controller_translations"
 require "mokio/concerns/common/seo_tags"
 require "mokio/concerns/common/services/sitemap_service"
+require "mokio/concerns/common/history"
 
 #Helpers:
 require "mokio/headers_helper"
