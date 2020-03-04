@@ -20,6 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  mokio_content_types: &mokio_content_types
+    Mokio::PicGallery: Photo Gallery
+    Mokio::Article: Article
+    Mokio::MovGallery: Movie Gallery
+    Mokio::Contact: Contact page
   time:
     formats:
       default: "%d-%m-%Y"
@@ -444,11 +449,10 @@ en:
     tags: Tags
     copy_title: Copy content
     comma_separated: "comma separated"
+    subtitle: "Subtitle"
+    home_page: Home page
     types:
-      Mokio::PicGallery: Photo Gallery
-      Mokio::Article: Article
-      Mokio::MovGallery: Movie Gallery
-      Mokio::Contact: Contact page
+      <<: *mokio_content_types
 
   data_files:
     larger_image: larger
@@ -510,6 +514,11 @@ en:
   seo_tags:
     seo_tags: Seo meta tags
     seo_tags_desc: meta tags influence Google search results
+  histories:
+    histories: Change history
+    histories_desc: Change history
+    show_more: Show more
+
   gmaps:
     gmap: Google map
   users:
@@ -699,6 +708,8 @@ en:
         lang_id: Language
         home_page: Home page
         tag_list: Tags (sepparated by commas)
+        subtitle: "Subtitle"
+        home_page: Home page
       mokio/pic_gallery:
         active: Active
         intro: Introduction

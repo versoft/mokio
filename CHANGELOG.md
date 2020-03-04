@@ -497,3 +497,6 @@
   4. Fix external photos uploading
   5. Change uploaded photos to be active by default
 
+## Mokio 20.03.2020 v2.4.0
+<br/>
+  1. Add model history tracking

@@ -1,0 +1,33 @@
+-if history_helper_display(obj)
+  a data-toggle="modal" href=("#histories" )
+    button.btn.btn-success.btn-mini.box-form3.right
+      span.icon16.icomoon-icon-history.white
+      = bt("histories", Mokio::History)
+      = " [#{obj.history_collection.size}]"
+  #histories.modal.fade role="dialog" aria-hidden="true" style="display:none;" aria-labelledby="meta_g_ModalLabel"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h3.modal-title.modal-photo id="meta_g_ModalLabel"
+            span.icon24.icomoon-icon-google-plus
+            = bt("histories", Mokio::History)
+            small = " #{bt(obj.class,'mokio_content_types')}"
+        .modal-body
+          -obj.history_collection.each do |value,history_grouped|
+            h4.title_date = history_helper_header(value,history_grouped)
+            table.table
+              -history_grouped.each do |history|
+                tr
+                  td.value.value_before
+                    .input_content
+                      =history_helper_input(history.field,history.before_value)
+                    =history_helper_show_more();
+                  td.value_title_center
+                    .input_title
+                      =history_helper_label(history)
+                  td.value.value_after
+                    .input_content
+                      =history_helper_input(history.field,history.current_value)
+                    =history_helper_show_more();
+        .modal-footer
+          button.btn.btn-primary type="button" data-dismiss="modal" = bt("close")

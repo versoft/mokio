@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 pl:
+  mokio_content_types: &mokio_content_types
+    Mokio::PicGallery: Galeria zdjęć
+    Mokio::Article: Artykuł
+    Mokio::MovGallery: Galeria filmów
+    Mokio::Contact: Strona kontaktowa
+
   time:
     formats:
       default: "%d-%m-%Y"
@@ -462,12 +468,10 @@ pl:
     tags: Tagi
     copy_title: Kopiuj treść
     comma_separated: "oddzielone przecinkami"
+    subtitle: "Podtytuł"
+    home_page: Strona Główna
     types:
-      Mokio::PicGallery: Galeria zdjęć
-      Mokio::Article: Artykuł
-      Mokio::MovGallery: Galeria filmów
-      Mokio::Contact: Strona kontaktowa
-
+      <<: *mokio_content_types
   data_files:
     larger_image: powiększ
     sorted: Kolejność została poprawnie edytowana.
@@ -528,7 +532,10 @@ pl:
   seo_tags:
     seo_tags: Seo meta tagi
     seo_tags_desc: meta tagi mają wpływ na wyniki wyświetlania w google
-
+  histories:
+    histories: Historia zmian
+    histories_desc: Historia zmian
+    show_more: Pokaż więcej
   gmaps:
     gmap: Mapa google
   users:
@@ -724,6 +731,8 @@ pl:
         lang_id: Język
         home_page: Strona Główna
         tag_list: Tagi (oddzielone przecinkami)
+        subtitle: "Podtytuł"
+        home_page: Strona Główna
 
       mokio/pic_gallery:
         active: Włączona

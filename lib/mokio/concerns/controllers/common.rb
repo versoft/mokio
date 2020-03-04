@@ -48,6 +48,7 @@ module Mokio
         included do
           include Mokio::Concerns::Common::ControllerObject
           include Mokio::Concerns::Common::ControllerFunctions
+          include Mokio::Concerns::Common::History::Controller
 
           before_action :authorize_actions
           def authorize_actions
@@ -110,7 +111,7 @@ module Mokio
         # Standard update action. Update params object for specified class in database
         #
         def update
-
+          history_mark(obj)
           respond_to do |format|
             if obj.update(obj_params)
               if !params[:save_and_new].blank?

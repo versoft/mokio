@@ -109,7 +109,7 @@ module Mokio
       end
 
       def backend_modal_render(type,form_object)
-        return "" unless ['google','facebook','seo_tags'].include?(type)
+        return "" unless ['google','facebook','seo_tags','histories'].include?(type)
         render("mokio/common/modals/modal_#{type}",f: form_object)
       end
     end

@@ -8,6 +8,7 @@
       = simple_form_for obj, :html => { :class => 'form-horizontal', autocomplete: 'off' } do |f|
         = render :partial => "mokio/common/gmap", locals: {obj: obj, f: f} if obj.class.has_gmap_enabled?
         = backend_modal_render('seo_tags',f)
+        = backend_modal_render('histories',f)
 
         = render :partial => "#{obj.class.to_s.tableize}/form", :locals => {f: f, obj: obj}
 
