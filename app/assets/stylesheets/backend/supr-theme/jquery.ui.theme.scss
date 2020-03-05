@@ -3,7 +3,7 @@
 .ui-widget { font-family: 'Droid Sans', Helvetica, Arial, sans-serif; font-size: 12px; }
 .ui-widget .ui-widget { font-size: 1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: 'Droid Sans', Helvetica, Arial, sans-serif; font-size: 1em; }
-.ui-widget-content { border: 1px solid #c4c4c4; background: #ffffff image-url('backend/ui-bg_flat_75_ffffff_40x100.png') 50% 50% repeat-x; color: #353535; }
+.ui-widget-content { border: 1px solid #c4c4c4; background: #ffffff 50% 50% repeat-x; color: #353535; }
 .ui-widget-content a { color: #353535; }
 .ui-widget-header { border: 1px solid #c4c4c4; background: #f4f4f4 image-url('backend/patterns/2-1.png') 50% 50% repeat; color: #353535; font-weight: bold; }
 .ui-widget-header a { color: #353535; }
@@ -47,7 +47,7 @@
 	border-radius: 2px;
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
-	background: #9fc569 image-url('ui-bg_glass_55_9fc569_1x400.png') 50% 50% repeat-x;
+	background: #9fc569 50% 50% repeat-x;
 	color: #363636; 
 
 }
