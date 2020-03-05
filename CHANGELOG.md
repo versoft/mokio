@@ -466,3 +466,9 @@
 ## Mokio 05.03.2020 v2.1.1
 <br/>
   1. Add missing assets to mokio:precompile
+
+## Mokio 05.03.2020 v2.1.2
+<br/>
+  1. Remove unused files
+  2. Remove password reminder link (since it doesn't work)
+  3. Cleanup routing
