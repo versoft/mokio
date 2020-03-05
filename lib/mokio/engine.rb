@@ -65,6 +65,11 @@ module Mokio
         backend/help-engine/help-engine.js
         backend/mokio-logo.svg
         backend/menu/jquery.ui.nestedSortable.js
+        backend/photo_gallery/functions.js
+        backend/photo_gallery/photoEditForm.js
+        backend/photo_gallery/photo_gallery.js
+        backend/galleries.js
+        backend/movie_gallery.js
       )
     end
 

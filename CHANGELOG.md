@@ -462,3 +462,7 @@
   1. Add super admin role
   2. Confirm delete user using password
   3. Add `rake mokio:change_user_to_super_admin['email@sample.com']`
+
+## Mokio 05.03.2020 v2.1.1
+<br/>
+  1. Add missing assets to mokio:precompile
