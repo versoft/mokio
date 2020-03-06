@@ -13,7 +13,17 @@ MOKIO is open source CMS compatible with rails 6.0.1 and ruby 2.6.5.
 6. Your login is `admin@admin.com`, password `admin`
 7. Remember to change this sample credentials!
 
-### DOCS:
+## Usage:
+### Overriding Mokio js
+In case you need to add some custom logic to Mokio panel's javascript, run:
+
+`rails mokio:add_custom_js`
+
+in your project's folder.
+
+This task will create `custom.js` file in under `assets/javascripts/backend` folder, which will be imported in the panel.
+
+## More docs:
 - [Custom model and controller](docs/custom_models_and_controllers.md) - How to create own model and controller in CMS
 - [SeoTags](docs/seo_tags.md) - How to add meta tags to your own models
 - [Generate sitemap.xml](docs/sitemap_generator.md) - How to generate automatic sitemap.xml for dynamic and static content
