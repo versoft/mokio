@@ -67,13 +67,16 @@ module Mokio
 
           def only_one_super_admin
             # check amount of super_admins if update is by super_admin (current_user)
-            if (self.id != self.current_user.id) && self.is_super_admin?
+            if is_user_logged_in? && (self.id != self.current_user.id) && self.is_super_admin?
                 if Mokio::User.where(roles_mask: Mokio::User.roles_mask_by_role(:super_admin)).size > 0
                   errors.add(:email, "can't be multiple users with super_admin role")
                 end
             end
           end
 
+          def is_user_logged_in?
+            self.current_user.present?
+          end
         end
 
         module ClassMethods

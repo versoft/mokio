@@ -19,6 +19,7 @@ pl:
     mailer:
       hello: "Witaj"
       reset_password_first_paragraph: "Wysłano prośbę o zresetowanie hasła. Aby zresetować hasło kliknij w poniższy link."
+      change_password: "Zmień hasło"
       reset_password_second_paragraph: "Jeśli nie Ty wysłałeś tę prośbę, prosimy o zignorowanie tego maila."
       reset_password_third_paragraph: "Twoje hasło nie zmieni się dopóki nie ustawisz nowego."
       confirmation_instructions:
@@ -36,6 +37,7 @@ pl:
       send_paranoid_instructions: Jeśli Twój adres e-mail istnieje w naszej bazie, otrzymasz zaraz wiadomość z instrukcjami odzyskiwania hasła.
       updated: Hasło zmienione poprawnie. Zostałeś automatycznie zalogowany.
       updated_not_active: Hasło zmienione poprawnie.
+      change_password: Zmień hasło
     registrations:
       destroyed: Konto zostało usunięte.
       signed_up: Witaj! Rejestracja zakończyła się sukcesem.

@@ -1,0 +1,26 @@
+title MOKIO - CMS Open Source
+= stylesheet_link_tag 'backend'
+= csrf_meta_tags
+= favicon_link_tag 'backend/favicon.ico'
+
+body.loginPage
+  .container-fluid
+    #header
+      .row-fluid
+        .navbar
+          .navbar-inner
+            .container-fluid
+              a#logo.brand href="http://www.bloomnet.eu" target="_blank" title="MOKIO - CMS Open Source" 
+                = image_tag "backend/mokio-logo.svg", alt: "Logo MOKIO"
+  .container-fluid
+    .loginContainer
+      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-horizontal", id: "loginForm" }) do |f|
+        = f.hidden_field :reset_password_token
+        .form-row.row-fluid
+          = f.input :password, autofocus: true, autocomplete: "new-password", wrapper: :label_newline
+        .form-row.row-fluid
+          = f.input :password_confirmation, autofocus: true, autocomplete: "new-password", wrapper: :label_newline
+        br
+        = f.button :submit, t('devise.passwords.change_password'), class: 'btn btn-info', id: 'loginBtn'
+      br
+      = link_to bt('sign_in_passwords'), new_session_path(resource_name)

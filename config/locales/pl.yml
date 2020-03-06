@@ -112,8 +112,10 @@ pl:
     back_to_edit: "<a href='%{url}'>Wróć do edycji.</a>"
     sign_up: Zarejestruj się
     sign_in: Zaloguj
+    sign_in_passwords: Zaloguj się
     logout: Wyloguj
     change_password: Zmień hasło
+    send_reset_instructions: Wyślij mi link do zmiany hasła
     version: Wersja
     dashboard: Dashboard
     copy_suffix: (kopia)

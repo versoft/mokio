@@ -476,3 +476,7 @@
 ## Mokio 06.03.2020 v2.1.3
 <br/>
   1. Add custom.js file
+
+## Mokio 08.03.2020 v2.1.4
+<br/>
+  1. Fix password reminder

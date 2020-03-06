@@ -113,6 +113,7 @@ en:
     sign_in: Sign in
     logout: Logout
     change_password: Change Password
+    send_reset_instructions: Send me reset password instructions
     version: Version
     dashboard: Dashboard
     copy_suffix: (copy)
@@ -673,6 +674,7 @@ en:
             password:
               too_short: Password too short (min 8 characters).
               blank: The password is not given
+              weak_password: Password must be 8 characters including an uppercase letter, an lowercase letter, a number and a special character
             password_confirmation:
               confirmation: Passwords do not match
             email:
