@@ -472,3 +472,7 @@
   1. Remove unused files
   2. Remove password reminder link (since it doesn't work)
   3. Cleanup routing
+  
+## Mokio 06.03.2020 v2.1.3
+<br/>
+  1. Add custom.js file
