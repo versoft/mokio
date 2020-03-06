@@ -23,6 +23,7 @@
                   = image_tag "backend/mokio-logo.svg", alt:"Logo MOKIO"
     .container-fluid
       .loginContainer
+        = flash[:password_change_info]
         = simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: "form-horizontal", id:"loginForm"}) do |f|
           .form-row.row-fluid
             = f.input :email, required: false, autofocus: true, :wrapper => :label_newline
@@ -34,5 +35,5 @@
             %div
               %label.error
                 = flash[:alert]
-        -# %br
-        -# = link_to t("devise.link.forgot_password"), new_password_path(resource_name)
+        %br
+        = link_to t("devise.link.forgot_password"), new_password_path(resource_name)
