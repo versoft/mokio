@@ -484,3 +484,7 @@
 ## Mokio 09.03.2020 v2.2.0
 <br/>
   1. Add Google reCAPTCHA v3 during log in
+
+## Mokio 06.03.2020 v2.2.1
+<br/>
+  1. Refactor mokio:install rake
