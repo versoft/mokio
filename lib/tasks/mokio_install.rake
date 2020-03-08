@@ -5,102 +5,37 @@ require 'mokio'
 require 'rails/generators'
 
 namespace :mokio do
-  desc 'Reset pg columns sequence'
-  task reset_pg_sequence: :environment do
-    ActiveRecord::Base.connection.tables.each do |t|
-      ActiveRecord::Base.connection.reset_pk_sequence!(t)
-    end
-  end
-
-  desc 'Add mokio routing to routes.rb'
-  task install_routes: :environment do |_t|
-    path = "#{Rails.root}/config/routes.rb"
-    text = File.read(path)
-
-    unless Rails.application.routes.url_helpers.method_defined?(:mokio_url)
-      File.open(path, 'w') do |file|
-        file.puts text.gsub(/Rails.application.routes.draw do/, "Rails.application.routes.draw do \n  mount Mokio::Engine => '/backend'")
-      end
-    end
-  end
-
   desc 'Create database, running migrations and creating some default data for Mokio application'
   task :install, %i[email password] => :environment do |_t, args|
     args.with_defaults(email: 'admin@admin.com', password: 'admin')
 
-    puts "\nRunning task: 'rake:db:create'...".green
+    puts "Running task: 'rake:db:create'...".cyan
     Rake::Task['db:create'].execute
 
-    puts "\nRunning task: 'rake:db:migrate'...".green
+    puts "\nRunning task: 'rake:db:migrate'...".cyan
     Rake::Task['db:migrate'].execute
 
-    puts "\nCreating initial data...".green
+    puts "\nCreating initial data...".cyan
+    Rake::Task['mokio_install:create_langs'].execute
+    Rake::Task['mokio_install:create_menus'].execute
+    Rake::Task['mokio_install:create_module_positions'].execute
+    Rake::Task['mokio_install:create_default_user'].execute(args)
 
-    default_lang = Mokio::Lang.new({
-                                     name: Mokio.frontend_default_lang,
-                                     shortname: Mokio.frontend_default_lang,
-                                     active: true,
-                                     menu_id: Mokio.frontend_initial_pl,
-                                     id: 1
-                                   })
+    puts "\nInstalling Mokio routes...".cyan
+    Rake::Task['mokio_install:install_routes'].execute
 
-    if default_lang.save
-      puts "\n\tCreated default lang '#{default_lang.name}'".green
-    end
-    menu = Mokio::Menu.find_by_name(default_lang.shortname)
-    unless menu.nil?
-      puts "\n\tCreated default initial menu '#{menu.name}'".green
-    end
-
-    top_menu = Mokio::Menu.new({
-                                 name: 'top',
-                                 seq: 1,
-                                 deletable: false,
-                                 editable: false,
-                                 lang_id: 1,
-                                 id: 2,
-                                 content_editable: false,
-                                 modules_editable: false,
-                                 fake: true,
-                                 parent: menu,
-                                 slug: 'top'
-                               })
-    if top_menu.save(validate: false)
-      puts "\n\tCreated default initial menu 'top'".green
-    end
-
-    Mokio::ModulePosition.create!(name: 'footer')
-    puts "\n\tCreated default module position 'footer'".green
-    user = Mokio::User.new({
-                             email: args[:email],
-                             password: args[:password],
-                             password_confirmation: args[:password],
-                             roles: [:super_admin]
-                           })
-    if user.save(validate: false)
-      puts "\n\tCreated default user '#{args[:email]}' with password '#{args[:password]}'".green
-    end
-
-    Rake::Task['mokio:install_routes'].execute
-
-    # text = File.read("#{Rails.root}/config/routes.rb")
-
-    # File.open("#{Rails.root}/config/routes.rb", "w") do |file|
-    #   file.puts text.gsub(/# The priority is based upon order of creation: first created \-\> highest priority\./, "mount Mokio::Engine => '/backend'")
-    # end
-
-    unless File.exist?("#{Rails.root}/config/initializers/mokio.rb")
-      puts "\n"
-      result = Rails::Generators.invoke('mokio:install')
-      puts "\n\tCreated initializer(configuration file) in #{result}".green
-    end
+    puts "\nCreating Mokio initializer file...".cyan
+    Rake::Task['mokio_install:create_configuration_file'].execute
 
     if (ActiveRecord::Base.configurations[Rails.env]['adapter']) == 'postgresql'
-      Rake::Task['mokio:reset_pg_sequence'].execute
+      puts "\nResetting pg sequence...".cyan
+      Rake::Task['mokio_install:reset_pg_sequence'].execute
     end
-    Rake::Task['webpacker:install'].execute
 
-    puts "\nMokio is ready to start! Run 'rails server' and go to localhost:3000/backend to see your application in development mode"
+    puts "\nInstalling webpack..".cyan
+    Rake::Task['mokio_install:install_webpack'].execute
+
+    puts "\nMokio is ready to start! Run 'rails server' and go to localhost:3000/backend to see your application in development mode".green
   end
 
   namespace :menu do
@@ -136,23 +71,6 @@ namespace :mokio do
         end
       end
       menus
-    end
-  end
-
-  desc 'Creates custom.js file in project, for easy js alterations inside gem'
-  task add_custom_js: :environment do
-    puts 'Creating custom.js file...'.blue
-    file = 'app/assets/javascripts/backend/custom.js'
-
-    unless File.exist?(file)
-      content = "// Add your js for backend here\n"
-
-      touch file
-      File.write(file, content)
-
-      puts "Created new file at #{file}".green
-    else
-      puts 'File already exists'.red
     end
   end
 end
