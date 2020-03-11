@@ -70,7 +70,6 @@ ul#itemContainer {
 
 ul#itemContainer li {
 	display: inline-block;
-	margin: 5px;
 	zoom: 1;
 	position: relative;
 }

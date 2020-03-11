@@ -159,12 +159,12 @@ input.btn[type="submit"] {
   margin-right: 15px;
 }
 
-
-
 .ui-state-highlight {
+  margin-top: 5px;
+  min-width: 100px;
+  min-height: 100px;
   background-color: #F5F5F5 !important;
-  border: 1px solid #E5E5E5 !important;
-  box-shadow: 0 1px 0 rgba(229, 229, 229, 0.1) !important;
+  border: 1px dashed #E5E5E5 !important;
 }
 
 // 20.02.2015 mz
@@ -174,8 +174,6 @@ input.btn[type="submit"] {
   background-color: #F5F5F5 !important;
   border: 1px dashed #E5E5E5 !important;
   box-shadow: 0 1px 0 rgba(229,229,229,0.1) !important;
-
-
 }
 
 #FlashInfo {
@@ -767,4 +765,73 @@ a.confirm-pass-link {
 
 .user-form .has-switch{
   margin-right: 5px;
+}
+
+// todo: fix buttons
+.there_is_a_gallery {
+  top: -23px;
+  right: 30px;
+}
+
+.there_is_a_gallery_seo {
+  top: -23px;
+  right: 150px;
+}
+
+#gallery_title {
+  margin-top: 20px;
+}
+
+.main-mokio-tabs > li{
+  float:none;
+  display:inline-block;
+  zoom:1;
+  min-width: 100px;
+}
+
+.main-mokio-tabs {
+  text-align: center;
+  border-left: none;
+  border-right: none;
+  border-top:none;
+  background: none;
+  border-bottom: 1px solid #cccccc;
+}
+
+.main-mokio-tabs > li > a{
+  font-size: 15px;
+  color: #2a3644;
+}
+
+.main-mokio-tabs > li.active > a {
+  font-weight: bold;
+}
+
+.zi50 {
+  z-index: 50;
+}
+
+.photo_fields {
+  label {
+    padding: 10px;
+  }
+
+  label.checkbox {
+    padding-left: 15px;
+    padding-top: 5px;
+  }
+
+  input {
+    margin-bottom: 5px;
+    width: 450px;
+  }
+
+  textarea {
+    width: 450px;
+  }
+}
+
+.photo_not_active {
+  background: lightgray;
+  opacity: 0.3;
 }

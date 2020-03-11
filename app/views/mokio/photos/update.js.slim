@@ -1,0 +1,4 @@
+- if @photo.active
+  | $("#photo_#{@photo.id}").removeClass('photo_not_active');
+- else
+  | $("#photo_#{@photo.id}").addClass('photo_not_active');

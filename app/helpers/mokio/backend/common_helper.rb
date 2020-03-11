@@ -35,9 +35,9 @@ module Mokio
         end
       end
 
-      def box_title(name = nil, &block)
+      def box_title(name = nil, h4class = "", &block)
         content_tag :div, :class => "title" do
-          content_tag :h4 do
+          content_tag :h4, class: h4class do
             if name
               tag :span
               concat(name)
@@ -52,19 +52,19 @@ module Mokio
       # controls buttons
       #
       def table_controls_edit_btn(link, from_commons_datatable = false)
-        content_tag :a, :class => "tip", :href => link, "data-hasqtip" => true, "aria-describedby" => "qtip-2", :title => bt("edit") do
+        content_tag :a, :class => "tip edit", :href => link, "data-hasqtip" => true, "aria-describedby" => "qtip-2", :title => bt("edit") do
           tag :span, :class => "icon12 icomoon-icon-pencil"
         end
       end
 
       def table_controls_delete_btn(link, confirm = bt("confirm"))
-        content_tag :a, :rel => "nofollow", :href => link, :data => { :method => "delete", :confirm => confirm, :hasqtip => true }, :class => "tip", :title => bt("delete") do
+        content_tag :a, :rel => "nofollow", :href => link, :data => { :method => "delete", :confirm => confirm, :hasqtip => true }, :class => "tip delete", :title => bt("delete") do
           tag :span, :class => "icon12 icomoon-icon-remove"
         end
       end
 
       def table_controls_copy_btn(link)
-        content_tag :a, :class => "tip", :href => link, "data-hasqtip" => true, "aria-describedby" => "qtip-2", :title => bt("copy") do
+        content_tag :a, :class => "tip copy", :href => link, "data-hasqtip" => true, "aria-describedby" => "qtip-2", :title => bt("copy") do
           tag :span, :class => "icon12 icomoon-icon-copy-2"
         end
       end

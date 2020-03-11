@@ -6,7 +6,7 @@
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/u-WUoqrET9fUeobQW7jkRT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+  src: local('Open Sans'), local('OpenSans'), url(https://themes.googleusercontent.com/static/fonts/opensans/v8/u-WUoqrET9fUeobQW7jkRT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
 
 html {height: 100%;}
@@ -232,6 +232,16 @@ li {margin-bottom:7px;}
 a {
   color: #ff4057;
   text-decoration: none;
+
+  &.edit span:hover {
+    color: #60c060;
+  }
+  &.delete span:hover {
+    color: #dd122a;
+  }
+  &.copy span:hover {
+    color: orange;
+  }
 }
 a:hover {
   color: #ee1a33;
@@ -471,6 +481,13 @@ select {width: 150px;}
   -moz-border-radius-bottomright: 2px;
   -webkit-border-bottom-right-radius: 2px;
 }
+
+.tab-content-main {
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+}
+
 .nav-tabs {
   margin-bottom: 0;
   border-color: #c4c4c4;
@@ -1617,16 +1634,14 @@ select {width: 150px;}
     background: #35404d;
     color: #fff;
   }
-  .mainnav li a.current span, {
+  .mainnav li a.current span {
     color: #ff4057;
   }
 
-  .mainnav li a:hover span, {
+  .mainnav li a:hover span {
     color: #ff4057;
   }
-  #sidebar-right .mainnav li a.current, #sidebar-right .mainnav li a.current:hover {
 
-  }
   .mainnav li a span[class*=" icon-"], .mainnav li a span[class*=" brocco-icon-"], .mainnav li a span[class*=" cut-icon-"], .mainnav li a span[class*=" entypo-icon-"], .mainnav li a span[class*=" icomoon-icon-"],.mainnav li a span[class*=" minia-icon-"],.mainnav li a span[class*=" iconic-icon-"],.mainnav li a span[class*=" meteo-icon-"],.mainnav li a span[class*=" silk-icon-"],.mainnav li a span[class*=" typ-icon-"],.mainnav li a span[class*=" wpzoom-"],.mainnav li a span[class*=" eco-"]  {
     padding-left:10px;
     padding-right:10px;
@@ -1758,6 +1773,7 @@ select {width: 150px;}
   .box .title {
     height:auto;
     position: relative;
+    z-index: 30;
   }
   .box.drag .title:hover {
     cursor: move;
@@ -1780,7 +1796,14 @@ select {width: 150px;}
       margin-bottom: 0;
       padding-top: 9px;
       padding-bottom: 9px;
+
+      &.tab-header {
+        margin-left: 10px;
+        position: absolute;
+        padding: 15px;
+      }
     }
+
 
     h4 .label {float: right; margin-right: 40px;}
     h4 .badge {float: right; margin-right: 40px;}

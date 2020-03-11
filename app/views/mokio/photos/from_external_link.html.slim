@@ -1,7 +1,7 @@
 - cache [:from_external_link, obj] do
   span.btn.btn-info.add_external_link data-toggle="modal" data-target="#modal_external_link" 
     span.icomoon-icon-plus.white
-    = bt('add_external_link', @obj_class)
+    = bt('add_external_link')
 
   #modal_external_link.modal.fade role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true" style=("display: none;") 
     .modal-dialog
@@ -12,7 +12,8 @@
             small= bt("links_upload_info", @obj_class)
         = simple_form_for obj.default_data_file.new, :html => {:multipart => true}, :remote => true, :url => { :action => "upload_external_links", :controller => "#{obj.default_data_file.to_s.tableize}" } do |f|
           .modal-body
-            = f.input :content_id, :as => :hidden, :input_html => { :value => obj.id }
+            = f.input :imageable_id, :as => :hidden, :input_html => { :value => obj.id }
+            = f.input :imageable_type, :as => :hidden, :input_html => { :value => obj.class }
             = f.input :remote_data_file_url, :as => :text
             
           .modal-footer

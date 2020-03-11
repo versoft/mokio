@@ -1,6 +1,6 @@
 button.btn.btn-info.uploader data-toggle="modal" data-target="#modalupload" 
   span.icomoon-icon-plus.white
-  = bt("add_#{obj.default_data_file.to_s.tableize}", @obj_class)
+  = bt("add_#{obj.default_data_file.to_s.tableize}")
 
 = render :template => "mokio/photos/from_external_link", locals: {obj: obj} if (obj.default_data_file == Mokio::Photo)
 
