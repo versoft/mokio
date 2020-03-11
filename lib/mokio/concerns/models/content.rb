@@ -13,7 +13,7 @@ module Mokio
           include Mokio::Concerns::Common::Services::Sitemap::Model
 
           has_many :content_links, :dependent => :destroy
-          has_many :data_files, :dependent => :destroy
+          has_many :data_files, as: :imageable, dependent: :destroy
           has_many :menus, :through => :content_links
 
           belongs_to :gmap, :dependent => :destroy,optional: true # Relation with gmap isn't necessary !

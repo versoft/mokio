@@ -488,3 +488,12 @@
 ## Mokio 06.03.2020 v2.2.1
 <br/>
   1. Refactor mokio:install rake
+
+## Mokio 18.03.2020 v2.3.0
+<br/>
+  1. Refactor galleries, so they can be used in custom models
+  2. Add cosmetic changes; new css and missing translations
+  3. Fix bootstrapSwitch is not a function bug
+  4. Fix external photos uploading
+  5. Change uploaded photos to be active by default
+

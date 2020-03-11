@@ -1,6 +1,6 @@
 - cache :gmap_button do
   a data-toggle="modal" href=("#gmap_modal" ) 
-    button.btn.btn-danger.btn-mini.box-form-gmap.right
+    button.btn.btn-danger.btn-mini.box-form-gmap.right class=('there_is_a_gallery' if has_data_files?(obj))
       span.icon16.iconic-icon-map-pin-fill.white
       = bt("gmap", Mokio::Gmap)
       

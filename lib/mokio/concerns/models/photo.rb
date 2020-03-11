@@ -18,7 +18,7 @@ module Mokio
         # Update seq field <b>before_create</b>
         #
         def add_seq
-          photo = Mokio::Photo.where(content_id: self.content_id)
+          photo = Mokio::Photo.where(imageable_id: self.imageable_id)
           if !photo.blank?
             lastseq = photo.order_default.last.seq
             self.seq = lastseq.to_i + 1

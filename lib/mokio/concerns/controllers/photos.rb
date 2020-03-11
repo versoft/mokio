@@ -29,17 +29,17 @@ module Mokio
               intro: photo_params[:intro],
               external_link: photo_params[:external_link],
               thumb: photo_params[:thumb],
-              active: photo_params[:active],
-              content_id: photo_params[:content_id],
+              active: true,
+              imageable_id: photo_params[:imageable_id],
               data_file: photo_params[:data_file],
               remote_data_file_url: photo_params[:remote_data_file_url],
               seq: photo_params[:seq]
             )
-            content = get_content_by_params
-            @photo.content = content
+            imageable = get_imageable_by_params
+            @photo.imageable = imageable
             respond_to do |format|
               if @photo.save
-                content.touch(:etag)
+                imageable.touch(:etag) if imageable.try(:etag)
                 flash[:notice] = t("photos.created", title: @photo.name)
                 format.js { render :template => "mokio/photos/create"}
               else
@@ -80,6 +80,10 @@ module Mokio
                   #
                   if Faraday.head(url).status == 200
                     photo = create_external_photo url
+                    imageable_id = params[:photo][:imageable_id]
+                    imageable_type = params[:photo][:imageable_type]
+                    imageable = imageable_type.constantize.find(imageable_id)
+                    photo.imageable = imageable
 
                     if photo.save # !!!
                       @photos << photo
@@ -144,6 +148,7 @@ module Mokio
 
             respond_to do |format|
               format.html { render body: nil }
+              format.js { render template: "mokio/photos/update" }
             end
           end
 
@@ -334,7 +339,8 @@ module Mokio
                 :external_link,
                 :thumb,
                 :active,
-                :content_id,
+                :imageable_id,
+                :imageable_type,
                 :data_file,
                 :remote_data_file_url,
                 :seq,
@@ -342,18 +348,11 @@ module Mokio
               )
             end
 
-            def get_content_by_params
-              if photo_params.has_key?(:content_id)
-                id = photo_params[:content_id]
-              elsif photo_params.has_key?(:picgallery_id)
-                id = photo_params[:picgallery_id]
-              end
+            def get_imageable_by_params
+              id = photo_params[:imageable_id]
+              type = photo_params[:imageable_type]
 
-              if id
-                Mokio::Content.find(id)
-              else
-                raise "content not found"
-              end
+              type.constantize.find(id)
             end
 
             #
@@ -387,7 +386,7 @@ module Mokio
 
             protected
               def create_external_photo (url)
-                photo_model.new(:remote_data_file_url => url, :content_id => params[:photo][:content_id]) # remote_data_file_url is Carrierwave parameter for adding file from url
+                photo_model.new(:remote_data_file_url => url) # remote_data_file_url is Carrierwave parameter for adding file from url
               end
 
       end

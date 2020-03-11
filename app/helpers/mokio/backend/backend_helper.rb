@@ -146,6 +146,9 @@ module Mokio
         f.input name.to_sym,:wrapper => :active_checkbox, disabled: !obj.display_editable_field?("#{name}")
       end
 
+      def gallery_title(obj)
+        obj.try(:gallery_title) || obj.try(:title) || bt('gallery', obj.class)
+      end
     end
   end
 end

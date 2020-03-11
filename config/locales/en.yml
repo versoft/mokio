@@ -121,6 +121,9 @@ en:
       add_new_button: Add new
       delete_row_button: Delete
       delete_row_button_message: Do you really want to delete this item?
+    add_external_link: "Add external photo"
+    add_mokio/photos: Add photos
+    add_mokio/youtubes: Add movies
 
     sidebars:
       dashboard: Dashboard
@@ -418,15 +421,12 @@ en:
   contents:
     edit_gallery_content: Edit content
     edit_title: Edit
-    add_photos: Add photos
-    add_youtubes: Add movies
     created: "Content <strong>'%{title}'</strong> has been created"
     updated: "Content <strong>'%{title}'</strong> has been saved"
     deleted: "Content <strong>'%{title}'</strong> has been deleted"
     not_created: "Content <strong>'%{title}'</strong> has NOT been created"
     not_updated: "Content <strong>'%{title}'</strong> has NOT been updated"
     not_deleted: "Content <strong>'%{title}'</strong> has NOT been deleted"
-    add_external_link: "Add external photo"
     active: Active
     intro: Introduction
     content: Content

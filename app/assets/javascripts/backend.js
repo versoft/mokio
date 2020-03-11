@@ -43,10 +43,6 @@
 //= require backend/fileupload/jquery.fileupload-image
 //= require backend/fileupload/jquery.fileupload-ui
 
-
-// For toggle buttons
-//= require bootstrap-switch
-
 // Needed for dual multiselect form
 //= require backend/plugins/forms/dualselect/jquery.dualListBox-1.3.min
 //= require backend/jquery.livequery

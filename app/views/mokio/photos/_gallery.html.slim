@@ -1,11 +1,11 @@
 #gallery_header.page-header
   h4#gallery_title
-    = bt("gallery",@obj_class)
-    small
-      = obj.title
+    = gallery_title(obj)
 ul#itemContainer.galleryView.sortable
   - obj.data_files.order_default.each do |photo|
     = render :template => 'mokio/photos/photo', :locals => {photo: photo}
+- obj.data_files.order_default.each do |photo|
+  = render :template => 'mokio/photos/photo_modal', :locals => {photo: photo}
 
 - cache :photo_gallery do
   #edit-photo-form.modal.fade role="dialog" aria-hidden="true" style="display:none;" aria-labelledby="EditPhotoModalLabel"

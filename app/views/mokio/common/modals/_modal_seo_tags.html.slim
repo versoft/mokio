@@ -1,6 +1,6 @@
 -if obj.class.respond_to?('has_seo_tagable_enabled?') && obj.class.has_seo_tagable_enabled?
   a data-toggle="modal" href=("#seo_tags" )
-    button.btn.btn-warning.btn-mini.box-form2.right
+    button.btn.btn-warning.btn-mini.box-form2.right.zi50 class=('there_is_a_gallery_seo' if has_data_files?(obj))
       span.icon16.icomoon-icon-google-plus.white
       = bt("seo_tags", Mokio::SeoTag)
       = " [#{obj.seo_tags.size}]"

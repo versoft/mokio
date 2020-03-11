@@ -123,6 +123,9 @@ pl:
       add_new_button: Dodaj
       delete_row_button: Usuń
       delete_row_button_message: Czy na pewno chcesz usunąć?
+    add_external_link: "Dodaj zdjęcia przez link"
+    add_mokio/photos: Dodaj Zdjęcia
+    add_mokio/youtubes: Dodaj Film
 
     sidebars:
       dashboard: Dashboard
@@ -436,15 +439,12 @@ pl:
   contents:
     edit_gallery_content: Edytuj treść
     edit_title: Edycja
-    add_photos: Dodaj Zdjęcia
-    add_youtubes: Dodaj Film
     created: "Treść <strong>'%{title}'</strong> została utworzona"
     updated: "Treść <strong>'%{title}'</strong> została poprawnie zapisana"
     deleted: "Treść <strong>'%{title}'</strong> została usunięta"
     not_created: "Treść <strong>'%{title}'</strong> nie została utworzona"
     not_updated: "Treść <strong>'%{title}'</strong> nie została poprawnie zapisana"
     not_deleted: "Treść <strong>'%{title}'</strong> nie została usunięta"
-    add_external_link: "Dodaj zdjęcia przez link"
     active: Włączony
     intro: Wstęp
     content: Treść

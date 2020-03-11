@@ -12,6 +12,9 @@
 //= require backend/head/jquery.mousewheel
 // !
 
+// For toggle buttons
+//= require bootstrap-switch
+
 // Ckeditor
 // require ckeditor/override
 //= require ckeditor/init
