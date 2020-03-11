@@ -2,7 +2,7 @@
   h4#gallery_title
     = bt("gallery",@obj_class)
     small
-      = obj.title
+      = obj.try(:title)
 ul#itemContainer.galleryView.sortable
   - obj.data_files.order_default.each do |photo|
     = render :template => 'mokio/photos/photo', :locals => {photo: photo}

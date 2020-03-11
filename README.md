@@ -23,6 +23,29 @@ in your project's folder.
 
 This task will create `custom.js` file in under `assets/javascripts/backend` folder, which will be imported in the panel.
 
+### Adding gallery to your custom model
+#### In your model:
+Add relation with Mokio::DataFiles
+```
+has_many :data_files, class_name: "Mokio::DataFile", as: :imageable, dependent: :destroy
+```
+
+Specify DataFile type
+```
+def default_data_file
+  # Available options:
+  # Mokio::Photo 
+  # Mokio::Youtube
+end
+```
+
+Optionaly specify gallery title
+```
+def title
+  "Gallery title"
+end
+```
+
 ## More docs:
 - [Custom model and controller](docs/custom_models_and_controllers.md) - How to create own model and controller in CMS
 - [SeoTags](docs/seo_tags.md) - How to add meta tags to your own models

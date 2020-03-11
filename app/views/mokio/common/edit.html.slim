@@ -3,4 +3,7 @@
   .box
     = box_title do
       = bt("edit_title", obj.respond_to?(:type) ? obj.type : @obj_class)
-    = render :partial => "mokio/common/form_content", locals: {obj: obj}
+    - if has_data_files?(obj)
+      = render :partial => "mokio/common/form_content_tabbed", locals: {obj: obj}
+    - else
+      = render :partial => "mokio/common/form_content", locals: {obj: obj}

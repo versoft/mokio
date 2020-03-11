@@ -12,7 +12,7 @@ module Mokio
 
           friendly_id :slug_candidates, use: :slugged
           validates_uniqueness_of :slug,case_sensitive: true
-          belongs_to :content, :touch => true
+          belongs_to :imageable, polymorphic: true, touch: true
 
           mount_uploader :data_file, Mokio::DataFileUploader
           mount_uploader :thumb,     Mokio::ThumbUploader
@@ -60,7 +60,7 @@ module Mokio
         # For some reason touch => true does not work for DataFile :(
         #
         def touch_content
-          Mokio::Content.find(self.content_id).touch(:etag)
+          self.imageable.touch(:etag) if self.imageable.try(:etag)
         end
 
         def slide?

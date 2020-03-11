@@ -480,3 +480,7 @@
 ## Mokio 08.03.2020 v2.1.4
 <br/>
   1. Fix password reminder
+
+## Mokio 17.03.2020 v2.2.0
+<br/>
+  1. Refactor galleries, so they can be used in custom models

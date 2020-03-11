@@ -1,0 +1,46 @@
+.content
+  .tabs.mb18
+  ul#myTab.nav.nav-tabs
+    li class="active"
+      = link_to "Treść", "#content_tab", :"data-toggle" => "tab"
+    li
+      = link_to "Galeria", "#gallery_tab", :"data-toggle" => "tab"
+
+  #galleries_tab.tab-content
+    #content_tab.tab-pane.active.in
+      = common_form do
+        .row-fluid
+          = simple_form_for obj, :html => { :class => 'form-horizontal', autocomplete: 'off' } do |f|
+            = render :partial => "mokio/common/gmap", locals: {obj: obj, f: f} if obj.class.has_gmap_enabled?
+            = backend_modal_render('seo_tags',f)
+
+            = render :partial => "#{obj.class.to_s.tableize}/form", :locals => {f: f, obj: obj}
+
+            - cache [:form_buttons, obj] do
+              .form-actions
+                = btn_submit bt("save")
+                = btn_submit bt("save_and_create_new"), true
+                = btn_cancel "#{engine_root}#{obj.class.to_s.tableize.gsub("mokio/", "")}"
+
+    #gallery_tab.tab-pane
+      .row-fluid
+        - if has_data_files?(obj) && params[:action] == "edit" && obj.default_data_file != Mokio::Youtube
+          = render :template => "mokio/data_files/uploader"
+        - if has_data_files?(obj) && obj.default_data_file == Mokio::Youtube && params[:action] == "edit"
+          = render :template => "mokio/youtubes/uploader"
+        - if has_data_files?(obj) && params[:action] == "edit"
+          = render :partial => "#{obj.default_data_file.to_s.tableize}/gallery", :locals => {videos: @videos}
+        - if params[:action] == "new"
+          = "Dodawanie do galerii będzie mozliwe po zapisaniu"
+
+= render :partial => "mokio/common/datepicker_settings"
+
+- content_for :js do
+  = javascript_include_tag 'backend/forms'
+
+  - if has_data_files?(obj) && params[:action] == "edit"
+    = javascript_include_tag "backend/galleries"
+
+  - if params[:action] == "new" && has_data_files?(obj)
+    = flash_message(bt("cannot_add_files_now", @obj_class))
+

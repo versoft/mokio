@@ -1,8 +1,13 @@
 - cache :gmap_button do
   a data-toggle="modal" href=("#gmap_modal" ) 
-    button.btn.btn-danger.btn-mini.box-form-gmap.right
-      span.icon16.iconic-icon-map-pin-fill.white
-      = bt("gmap", Mokio::Gmap)
+    - if has_data_files?(obj)
+      button.btn.btn-danger.btn-mini.box-form-gmap.right.there_is_a_gallery
+        span.icon16.iconic-icon-map-pin-fill.white
+        = bt("gmap", Mokio::Gmap)
+    - else
+      button.btn.btn-danger.btn-mini.box-form-gmap.right
+        span.icon16.iconic-icon-map-pin-fill.white
+        = bt("gmap", Mokio::Gmap)
       
 - cache [:gmap_form, obj.gmap] do
   #gmap_modal.modal.fade role="dialog" aria-hidden="true" style="display:none;" aria-labelledby="gmap_ModalLabel" 

@@ -30,16 +30,16 @@ module Mokio
               external_link: photo_params[:external_link],
               thumb: photo_params[:thumb],
               active: photo_params[:active],
-              content_id: photo_params[:content_id],
+              imageable_id: photo_params[:imageable_id],
               data_file: photo_params[:data_file],
               remote_data_file_url: photo_params[:remote_data_file_url],
               seq: photo_params[:seq]
             )
-            content = get_content_by_params
-            @photo.content = content
+            imageable = get_imageable_by_params
+            @photo.imageable = imageable
             respond_to do |format|
               if @photo.save
-                content.touch(:etag)
+                imageable.touch(:etag) if imageable.try(:etag)
                 flash[:notice] = t("photos.created", title: @photo.name)
                 format.js { render :template => "mokio/photos/create"}
               else
@@ -334,7 +334,8 @@ module Mokio
                 :external_link,
                 :thumb,
                 :active,
-                :content_id,
+                :imageable_id,
+                :imageable_type,
                 :data_file,
                 :remote_data_file_url,
                 :seq,
@@ -342,18 +343,11 @@ module Mokio
               )
             end
 
-            def get_content_by_params
-              if photo_params.has_key?(:content_id)
-                id = photo_params[:content_id]
-              elsif photo_params.has_key?(:picgallery_id)
-                id = photo_params[:picgallery_id]
-              end
+            def get_imageable_by_params
+              id = photo_params[:imageable_id]
+              type = photo_params[:imageable_type]
 
-              if id
-                Mokio::Content.find(id)
-              else
-                raise "content not found"
-              end
+              type.constantize.find(id)
             end
 
             #
@@ -387,7 +381,7 @@ module Mokio
 
             protected
               def create_external_photo (url)
-                photo_model.new(:remote_data_file_url => url, :content_id => params[:photo][:content_id]) # remote_data_file_url is Carrierwave parameter for adding file from url
+                photo_model.new(:remote_data_file_url => url, :imageable_id => params[:photo][:imageable_id]) # remote_data_file_url is Carrierwave parameter for adding file from url
               end
 
       end
