@@ -1,30 +1,30 @@
 require 'faker'
 
-FactoryGirl.define do
+FactoryBot.define do
   trait :not_editable do
-    editable false
-    deletable false
+    editable { false }
+    deletable { false }
   end
 
   trait :not_deletable do
-    deletable false
+    deletable { false }
   end
 
   trait :with_intro_and_content do
-    intro Faker::Lorem.paragraph(3)
-    content Faker::Lorem.paragraph(20)
+    intro { Faker::Lorem.paragraph(sentence_count: 3) }
+    content { Faker::Lorem.paragraph(sentence_count: 20) }
   end
 
   trait :pl do
-    lang_id 1
+    lang_id { 1 }
   end
 
   trait :en do
-    lang_id 2
+    lang_id { 2 }
   end
 
   trait :all_lang do
-    lang_id nil
+    lang_id { nil }
   end
 
 end

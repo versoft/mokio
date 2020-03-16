@@ -20,7 +20,7 @@ require 'spec_helper'
 
 module Mokio
 
-  describe Mokio::ContentsController do
+  describe Mokio::ContentsController, type: :controller do
 
     before :each do
       @routes = Mokio::Engine.routes
@@ -38,10 +38,13 @@ module Mokio
     let(:valid_session) { {} }
 
     describe "GET index" do
-      it "assigns all contents as @contents" do
+      it "check standard request have not @contents" do
         content = Content.create! valid_attributes
-        get :index, {}, valid_session
-        assigns(:contents).should eq([content])
+        get :index
+        assigns(:contents).should eq(nil)
+      end
+
+      it "pending json request return valid data" do
       end
     end
 

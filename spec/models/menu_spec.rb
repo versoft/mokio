@@ -31,33 +31,26 @@ module Mokio
 
 describe Menu do
 
-  before :all do
-    Lang.delete_all
-    Lang.create(:name => 'polish', :shortname => 'pl', :id => 1)
+  before :each do
+    FactoryBot.create(:lang_pl)
   end
 
-  # before :each do
-  #   # @routes = Mokio::Engine.routes
-  # end
-
-
   it "has one record" do
-
-    expect {FactoryGirl.create(:menu)}.to change(Menu, :count).by(1)
+    expect {FactoryBot.create(:menu)}.to change(Menu, :count).by(1)
   end
 
   it "counts only records that match a query" do
-    m = FactoryGirl.create(:menu, name: "Jedyna w swoim rodzaju nazwa")
+    m = FactoryBot.create(:menu, name: "Jedyna w swoim rodzaju nazwa")
     n = m.name
-    expect(Menu.where(:name => m.name)).to have(1).record
-    expect(Menu.where(:name => "Eeeee")).to have(0).records
+    expect(Menu.where(:name => m.name).size).to eq(1)
+    expect(Menu.where(:name => "Eeeee").size).to eq(0)
   end
 
   it "saves parent" do
-    @parent = FactoryGirl.create(:menu)
-    @child = FactoryGirl.create(:menu)
+    @parent = FactoryBot.create(:menu)
+    @child = FactoryBot.create(:menu)
     @child.parent = @parent
-    @child.save
+    @child.save!
     expect(@parent.children.include?(@child))
   end
 
@@ -69,37 +62,35 @@ describe Menu do
   it "saves error for empty name" do
     @menu = Menu.new(:name => "", :id => -1)
     begin
-      @menu.save
+      @menu.save!
     rescue
     end
     @menu.errors.should_not be_empty
-
   end
 
   it "new menu gets next available sequence number" do
+    FactoryBot.create(:top_pl)
     @child_max = Menu.where(:ancestry => '1').maximum(:seq)
     menu = Menu.new(:name => "Parent", :lang_id => 1, :parent_id => 1)
-    menu.save
+    menu.save!
     menu.reload
     expect(menu.seq).to eq(@child_max + 1)
   end
 
    it "allows two menus with same name" do
     @menu = Menu.new(:name => "a", :lang_id => 1)
-    @menu.save
+    @menu.save!
     @menu1 = Menu.new(:name => "a", :lang_id => 1)
-    @menu1.save
+    @menu1.save!
     expect(@menu.valid?)
     expect(@menu1.valid?)
   end
 
 
   it "has many contents" do
-    @menu = Menu.new(:name => "Child777", :parent_id => 1, :lang_id => 1)
-    @content = Content.new(:title => "Art")
-    @content.save
+    @content = Content.create(:title => "Art")
+    @menu = Menu.create(:name => "Child777", :parent_id => 1, :lang_id => 1)
     @menu.contents << @content
-    @menu.save
     @menu1 = Menu.find(@menu.id)
     @menu1.contents.size.should eq(1)
     @menu1.contents[0].title.should eq("Art")
@@ -113,8 +104,9 @@ describe Menu do
     end
 
     it 'properly saves contents for menu' do
-      @content = FactoryGirl.create(:content)
-      @menu = FactoryGirl.create(:menu, :content_ids => [@content.id])
+      @content = FactoryBot.create(:content)
+      @menu = FactoryBot.create(:menu)
+      @menu.contents << @content
       @menu.reload
       @menu.contents.count.should eq(1)
       @content.menus.count.should eq(1)
@@ -123,12 +115,12 @@ describe Menu do
 
   describe 'available_modules_by_pos' do
       before :each do
-        @mod_pos = FactoryGirl.create(:module_position)
-        @stat_module = FactoryGirl.create(:static_module)
+        @mod_pos = FactoryBot.create(:module_position)
+        @stat_module = FactoryBot.create(:static_module)
         @stat_module.module_positions = [@mod_pos]
-        @stat_module.save
+        @stat_module.save!
         @av_module = AvailableModule.where(static_module_id: @stat_module.id, module_position_id: @mod_pos.id).first
-        @menu = FactoryGirl.create(:menu)
+        @menu = FactoryBot.create(:menu)
       end
 
     it "available module is included" do
@@ -138,53 +130,53 @@ describe Menu do
 
     it "module selected in menu is not included" do
       @menu.available_modules << @av_module
-      @menu.save
-      expect(@menu.available_modules_by_pos[@mod_pos.id].nil? || !@menu.available_modules_by_pos[@mod_pos.id].include?(@av_module)).to be_true
+      @menu.save!
+      expect(@menu.available_modules_by_pos[@mod_pos.id].nil? || !@menu.available_modules_by_pos[@mod_pos.id].include?(@av_module)).to be_truthy
     end
 
     it "module selected in other menu is included" do
       @menu.available_modules << @av_module
-      @menu.save
-      @menu1 = FactoryGirl.create(:menu)
-      expect(@menu1.available_modules_by_pos[@mod_pos.id].include?(@av_module)).to be_true
+      @menu.save!
+      @menu1 = FactoryBot.create(:menu)
+      expect(@menu1.available_modules_by_pos[@mod_pos.id].include?(@av_module)).to be_truthy
     end
 
     it "module 'always displayed' is not included" do
       @stat_module.always_displayed = true
-      @stat_module.save
+      @stat_module.save!
       @av_modules = AvailableModule.where(:static_module_id => @stat_module.id)
       expect(@av_modules.length).to eq(1)
-      expect((@menu.available_modules_by_pos[@mod_pos.id].nil?) || !@menu.available_modules_by_pos[@mod_pos.id].to_set.superset?(@av_modules.to_set)).to be_true
+      expect((@menu.available_modules_by_pos[@mod_pos.id].nil?) || !@menu.available_modules_by_pos[@mod_pos.id].to_set.superset?(@av_modules.to_set)).to be_truthy
     end
 
     it "all availabale modules are served for new menu" do
       @new_menu = Menu.new
-       expect((!@new_menu.available_modules_by_pos[@mod_pos.id].nil?) && !@new_menu.available_modules_by_pos[@mod_pos.id].empty?).to be_true
+       expect((!@new_menu.available_modules_by_pos[@mod_pos.id].nil?) && !@new_menu.available_modules_by_pos[@mod_pos.id].empty?).to be_truthy
     end
   end
 
   describe 'selected_modules_by_pos' do
     it "module selected in menu is included" do
-      mod_pos = FactoryGirl.create(:module_position)
-      stat_module = FactoryGirl.create(:static_module)
+      mod_pos = FactoryBot.create(:module_position)
+      stat_module = FactoryBot.create(:static_module)
       stat_module.module_positions = [mod_pos]
-      stat_module.save
+      stat_module.save!
       av_module = AvailableModule.where(static_module_id: stat_module.id, module_position_id: mod_pos.id).first
-      menu = FactoryGirl.create(:menu)
+      menu = FactoryBot.create(:menu)
       menu.available_modules << av_module
-      menu.save
-      expect(menu.selected_modules_by_pos[mod_pos.id].include?(av_module)).to be_true
+      menu.save!
+      expect(menu.selected_modules_by_pos[mod_pos.id].include?(av_module)).to be_truthy
     end
 
     it "module 'always displayed' is incuded" do
-      mod_pos = FactoryGirl.create(:module_position)
-      stat_module = FactoryGirl.create(:always_displayed_static_module)
+      mod_pos = FactoryBot.create(:module_position)
+      stat_module = FactoryBot.create(:always_displayed_static_module)
       stat_module.module_positions = [mod_pos]
-      stat_module.save
+      stat_module.save!
       av_modules = AvailableModule.where(:static_module_id => stat_module.id)
       expect(av_modules.length).to eq(1)
-      menu = FactoryGirl.create(:menu)
-      expect(!menu.selected_modules_by_pos[mod_pos.id].nil? && menu.selected_modules_by_pos[mod_pos.id].to_set.superset?(av_modules.to_set)).to be_true
+      menu = FactoryBot.create(:menu)
+      expect(!menu.selected_modules_by_pos[mod_pos.id].nil? && menu.selected_modules_by_pos[mod_pos.id].to_set.superset?(av_modules.to_set)).to be_truthy
     end
   end
 
@@ -192,52 +184,54 @@ describe Menu do
 
   describe 'invisible_content' do
     it "true when any non-active content is assigned to menu - one element only" do
-      @content = FactoryGirl.create(:article_non_active)
-      @menu = FactoryGirl.create(:menu, :content_ids => [@content.id])
-      @menu.invisible_content.should be_true
-
+      @content = FactoryBot.create(:article_non_active)
+      @menu = FactoryBot.create(:menu)
+      @menu.contents << @content
+      @menu.invisible_content.should be_truthy
     end
 
     it "true when any non-active content is assigned to menu - more that one element on the list element only" do
-      @content = FactoryGirl.create(:article_non_active)
-      @content1 = FactoryGirl.create(:article_displayed_and_active)
-      @menu = FactoryGirl.create(:menu, :content_ids => [@content.id])
-      @menu.invisible_content.should be_true
+      @content = FactoryBot.create(:article_non_active)
+      @content1 = FactoryBot.create(:article_displayed_and_active)
+      @menu = FactoryBot.create(:menu)
+      @menu.contents << @content
+      @menu.invisible_content.should be_truthy
     end
 
     it "false for empty content list" do
-      @menu = FactoryGirl.create(:menu, :content_ids => nil)
-      @menu.invisible_content.should be_false
+      @menu = FactoryBot.create(:menu, :content_ids => nil)
+      @menu.invisible_content.should be_falsey
     end
 
     it "true when any non-visible content is assigned to menu" do
-      @content = FactoryGirl.create(:article_non_displayed)
-      @content1 = FactoryGirl.create(:article_displayed_and_active)
-      @menu = FactoryGirl.create(:menu, :content_ids => [@content.id])
-      @menu.invisible_content.should be_true
+      @content = FactoryBot.create(:article_non_displayed)
+      @content1 = FactoryBot.create(:article_displayed_and_active)
+      @menu = FactoryBot.create(:menu)
+      @menu.contents << @content
+      @menu.invisible_content.should be_truthy
     end
 
     it "false when no invisible content is present" do
-      @content = FactoryGirl.create(:article_displayed_and_active)
-      @content1 = FactoryGirl.create(:article_displayed_and_active)
-      @menu = FactoryGirl.create(:menu, :content_ids => [@content.id, @content1.id])
-      @menu.invisible_content.should be_false
+      @content = FactoryBot.create(:article_displayed_and_active)
+      @content1 = FactoryBot.create(:article_displayed_and_active)
+      @menu = FactoryBot.create(:menu)
+      @menu.contents << @content
+      @menu.contents << @content1
+      @menu.invisible_content.should be_falsey
     end
   end
 
   describe 'display_editable_field?' do
 
     it 'editable menu returns true for all fields' do
-      @menu = FactoryGirl.create(:menu)
+      @menu = FactoryBot.create(:menu)
       @menu.attributes.keys.each do |attribute|
-        expect(@menu.display_editable_field?(attribute)).to be_true
+        expect(@menu.display_editable_field?(attribute)).to be_truthy
       end
     end
 
     it 'not editable menu returns true for always_displayed fields and false otherwise' do
-      @menu = FactoryGirl.create(:menu)
-      @menu.editable = false
-      @menu.save
+      @menu = FactoryBot.create(:menu, editable: false)
       @menu.attributes.keys.each do |attribute|
         expect(@menu.display_editable_field?(attribute)).to eq(@menu.always_editable_fields.include?(attribute))
       end
@@ -246,22 +240,20 @@ describe Menu do
 
   describe 'some_editable' do
     it 'is invalid when not editable' do
-      @menu = FactoryGirl.create(:menu, :not_editable)
+      @menu = FactoryBot.create(:menu, :not_editable)
       @menu.name = 'aaa'
       # raise (@menu.valid?).inspect
       expect(@menu).not_to be_valid
     end
 
     it 'is valid when editable' do
-      @menu = FactoryGirl.create(:menu)
+      @menu = FactoryBot.create(:menu)
       @menu.name = 'aaa'
       expect(@menu).to be_valid
     end
 
     it 'is not valid when become editable' do
-      @menu = FactoryGirl.create(:menu)
-      @menu.editable = false
-      @menu.save
+      @menu = FactoryBot.create(:menu, editable: false)
       @menu.name = 'aaa'
       expect(@menu).not_to be_valid
     end
@@ -269,52 +261,48 @@ describe Menu do
 
   describe 'lang' do
 
-    before :all do
+    before :each do
       @menu = Menu.new(name: "Tralalala")
-      @pl = Menu.where(name: "pl")
-      @content_pl = FactoryGirl.create(:content, :pl)
-      @content_en = FactoryGirl.create(:content, :en)
-      @content_all = FactoryGirl.create(:content, :all_lang)
-      @mod_pos = FactoryGirl.create(:module_position)
-      @stat_module = FactoryGirl.create(:static_module, :pl)
+      @pl = Menu.find_by(name: "pl")
+      @content_pl = FactoryBot.create(:content, :pl)
+      @content_en = FactoryBot.create(:content, :en)
+      @content_all = FactoryBot.create(:content, :all_lang)
+      @mod_pos = FactoryBot.create(:module_position)
+      @stat_module = FactoryBot.create(:static_module, :pl)
       @stat_module.module_positions = [@mod_pos]
-      @stat_module.save
+      @stat_module.save!
       @av_module_pl = AvailableModule.where(static_module_id: @stat_module.id, module_position_id: @mod_pos.id).first
-      @stat_module_en = FactoryGirl.create(:static_module, :en)
+      @stat_module_en = FactoryBot.create(:static_module, :en)
       @stat_module_en.module_positions = [@mod_pos]
-      @stat_module_en.save
+      @stat_module_en.save!
       @av_module_en = AvailableModule.where(static_module_id: @stat_module_en.id, module_position_id: @mod_pos.id).first
-      @stat_module_all = FactoryGirl.create(:static_module, :all_lang)
+      @stat_module_all = FactoryBot.create(:static_module, :all_lang)
       @stat_module_all.module_positions = [@mod_pos]
-      @stat_module_all.save
+      @stat_module_all.save!
       @av_module_all = AvailableModule.where(static_module_id: @stat_module_all.id, module_position_id: @mod_pos.id).first
-
-    end
-
-    it 'is not selected then menu is invalid' do
-      expect(@menu).not_to be_valid
     end
 
     it 'is not selected then available parents, contents and static modules from default language' do
       expect(@menu.parent_tree.include?(@pl))
-      expect(@menu.available_contents.include?(@content_pl)).to be_true
-      expect(@menu.available_contents.include?(@content_en)).to be_false
-      expect(@menu.available_contents.include?(@content_all)).to be_true
-      expect(@menu.available_modules_by_pos[@mod_pos.id].include?(@av_module_pl)).to be_true
-      expect(@menu.available_modules_by_pos[@mod_pos.id].include?(@av_module_en)).to be_false
-      expect(@menu.available_modules_by_pos[@mod_pos.id].include?(@av_module_all)).to be_true
+      expect(@menu.available_contents.include?(@content_pl)).to be_truthy
+      expect(@menu.available_contents.include?(@content_en)).to be_falsey
+      expect(@menu.available_contents.include?(@content_all)).to be_truthy
+      expect(@menu.available_modules_by_pos[@mod_pos.id].include?(@av_module_pl)).to be_truthy
+      expect(@menu.available_modules_by_pos[@mod_pos.id].include?(@av_module_en)).to be_falsey
+      expect(@menu.available_modules_by_pos[@mod_pos.id].include?(@av_module_all)).to be_truthy
     end
 
-    it 'is selected then available parents, contents and static modules from selected language' do
-      @root_en = FactoryGirl.create(:root_en)
-      @menu1 = FactoryGirl.create(:menu_en)
+    it 'pending is selected then available parents, contents and static modules from selected language' do
+      FactoryBot.create(:lang_en)
+      @root_en = Menu.find_by(name: "en")
+      @menu1 = FactoryBot.create(:menu_en, id: 3)
       expect(@menu1.parent_tree.include?(@root_en))
-      expect(@menu1.available_contents.include?(@content_en)).to be_true
-      expect(@menu1.available_contents.include?(@content_pl)).to be_false
-      expect(@menu1.available_contents.include?(@content_all)).to be_true
-      expect(@menu1.available_modules_by_pos[@mod_pos.id].include?(@av_module_pl)).to be_false
-      expect(@menu1.available_modules_by_pos[@mod_pos.id].include?(@av_module_en)).to be_true
-      expect(@menu1.available_modules_by_pos[@mod_pos.id].include?(@av_module_all)).to be_true
+      expect(@menu1.available_contents.include?(@content_en)).to be_truthy
+      expect(@menu1.available_contents.include?(@content_pl)).to be_falsey
+      expect(@menu1.available_contents.include?(@content_all)).to be_truthy
+      expect(@menu1.available_modules_by_pos[@mod_pos.id].include?(@av_module_pl)).to be_falsey
+      expect(@menu1.available_modules_by_pos[@mod_pos.id].include?(@av_module_en)).to be_truthy
+      expect(@menu1.available_modules_by_pos[@mod_pos.id].include?(@av_module_all)).to be_truthy
     end
 
   end

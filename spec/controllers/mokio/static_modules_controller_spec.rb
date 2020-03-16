@@ -22,7 +22,7 @@ require 'spec_helper'
 
 module Mokio
 
-  describe Mokio::StaticModulesController do
+  describe Mokio::StaticModulesController, type: :controller do
 
     before(:each) do
       @routes = Mokio::Engine.routes
@@ -53,7 +53,7 @@ module Mokio
 
     describe "GET new" do
       it "assigns a new static_module as @static_module" do
-        get :new, {}, valid_session
+        get :new, params: {}
         assigns(:static_module).should be_a_new(StaticModule)
       end
     end
@@ -61,7 +61,7 @@ module Mokio
     describe "GET edit" do
       it "assigns the requested static_module as @static_module" do
         static_module = StaticModule.create! valid_attributes
-        get :edit, {:id => static_module.to_param}, valid_session
+        get :edit, params: {:id => static_module.to_param}
         assigns(:static_module).should eq(static_module)
       end
     end
@@ -70,18 +70,18 @@ module Mokio
       describe "with valid params" do
         it "creates a new StaticModule" do
           expect {
-            post :create, {:static_module => valid_attributes, :save_and_new => 1}, valid_session
+            post :create, params: {:static_module => valid_attributes, :save_and_new => 1}
           }.to change(StaticModule, :count).by(1)
         end
 
         it "assigns a newly created static_module as @static_module" do
-          post :create, {:static_module => valid_attributes, :save_and_new => 1}, valid_session
+          post :create, params: {:static_module => valid_attributes, :save_and_new => 1}
           assigns(:static_module).should be_a(StaticModule)
           assigns(:static_module).should be_persisted
         end
 
         it "redirects to index" do
-          post :create, {:static_module => valid_attributes}, valid_session
+          post :create, params: {:static_module => valid_attributes}
           response.should redirect_to(static_modules_url)
         end
       end
@@ -90,14 +90,14 @@ module Mokio
         it "assigns a newly created but unsaved static_module as @static_module" do
           # Trigger the behavior that occurs when invalid params are submitted
           StaticModule.any_instance.stub(:save).and_return(false)
-          post :create, {:static_module => {  }, :save_and_new => 1}, valid_session
+          post :create, params: {:static_module => {title: nil}, :save_and_new => 1}
           assigns(:static_module).should be_a_new(StaticModule)
         end
 
         it "re-renders the 'new' template" do
           # Trigger the behavior that occurs when invalid params are submitted
           StaticModule.any_instance.stub(:save).and_return(false)
-          post :create, {:static_module => {  }, :save_and_new => 1}, valid_session
+          post :create, params: {:static_module => {title: nil}, :save_and_new => 1}
           response.should render_template("new")
         end
       end
@@ -112,18 +112,18 @@ module Mokio
           # receives the :update_attributes message with whatever params are
           # submitted in the request.
           StaticModule.any_instance.should_receive(:update).with(valid_session)
-          put :update, {:id => static_module.to_param, :static_module => valid_session, :save_and_new => 1}, valid_session
+          put :update, params: {:id => static_module.to_param, :static_module => valid_session, :save_and_new => 1}
         end
 
         it "assigns the requested static_module as @static_module" do
           static_module = StaticModule.create! valid_attributes
-          put :update, {:id => static_module.to_param, :static_module => valid_attributes, :save_and_new => 1}, valid_session
+          put :update, params: {:id => static_module.to_param, :static_module => valid_attributes, :save_and_new => 1}
           assigns(:static_module).should eq(static_module)
         end
 
         it "redirects to index" do
           static_module = StaticModule.create! valid_attributes
-          put :update, {:id => static_module.to_param, :static_module => valid_attributes}, valid_session
+          put :update, params: {:id => static_module.to_param, :static_module => valid_attributes}
           response.should redirect_to(static_modules_url)
         end
       end
@@ -133,7 +133,7 @@ module Mokio
           static_module = StaticModule.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
           StaticModule.any_instance.stub(:save).and_return(false)
-          put :update, {:id => static_module.to_param, :static_module => {  }, :save_and_new => 1}, valid_session
+          put :update, params: {:id => static_module.to_param, :static_module => {title: nil}, :save_and_new => 1}
           assigns(:static_module).should eq(static_module)
         end
 
@@ -141,7 +141,7 @@ module Mokio
           static_module = StaticModule.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
           StaticModule.any_instance.stub(:save).and_return(false)
-          put :update, {:id => static_module.to_param, :static_module => {  }, :save_and_new => 1}, valid_session
+          put :update, params: {:id => static_module.to_param, :static_module => {title: nil}, :save_and_new => 1}
           response.should render_template("edit")
         end
       end
@@ -151,13 +151,13 @@ module Mokio
       it "destroys the requested static_module" do
         static_module = StaticModule.create! valid_attributes
         expect {
-          delete :destroy, {:id => static_module.to_param}, valid_session
+          delete :destroy, params: {:id => static_module.to_param}
         }.to change(StaticModule, :count).by(-1)
       end
 
       it "redirects to the static_modules list" do
         static_module = StaticModule.create! valid_attributes
-        delete :destroy, {:id => static_module.to_param}, valid_session
+        delete :destroy, params: {:id => static_module.to_param}
         response.should redirect_to(static_modules_url)
       end
     end

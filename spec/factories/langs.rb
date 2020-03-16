@@ -11,9 +11,18 @@
 #  updated_at :datetime
 #
 
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# Read about factories at https://github.com/thoughtbot/factory_bot
 
-FactoryGirl.define do
-  factory :lang, :class => Mokio::Lang do
+FactoryBot.define do
+  factory :lang_en, :class => Mokio::Lang do
+    id { 2 }
+    name { 'en' }
+    shortname { 'en' }
+  end
+
+  factory :lang_pl, :class => Mokio::Lang do
+    id { 1 }
+    name { 'pl' }
+    shortname { 'pl' }
   end
 end

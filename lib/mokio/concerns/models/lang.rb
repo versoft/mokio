@@ -12,7 +12,7 @@ module Mokio
         include Mokio::Concerns::Models::Common
 
         validates :name, presence: true
-        validates :shortname, presence: true ,uniqueness: true
+        validates :shortname, presence: true, uniqueness: { case_sensitive: true }
         has_many :menu
         has_many :contents
         after_update :update_menu_name

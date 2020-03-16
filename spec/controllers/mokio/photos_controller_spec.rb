@@ -2,27 +2,67 @@ require 'spec_helper'
 
 module Mokio
 
-  describe Mokio::PhotosController do
+  describe Mokio::PhotosController, type: :controller do
 
     before(:each) do
       @routes = Mokio::Engine.routes
+      FactoryBot.create(:content_id1)
+      FactoryBot.create(:content_id2)
     end
 
-    # let(:valid_attributes) { { :data_file => fixture_file_upload('/files/sample_image.jpg', "image/jpg"), :active => true, :content_id => 1 } }
-     let(:valid_attributes) { { :data_file => Rack::Test::UploadedFile.new(File.join(ActionController::TestCase.fixture_path, '/files/sample_image.jpg'), "image/jpg"), :active => true, :content_id => 1 } }
+    let(:valid_attributes) {
+      { :data_file =>
+        Rack::Test::UploadedFile.new(
+          file_fixture('sample_image.jpg'),
+          "image/jpg"
+        ),
+        :active => true,
+        :imageable_type => 'Mokio::Content',
+        :imageable_id => 1
+      }
+    }
 
-    let(:with_seq) { { :data_file => Rack::Test::UploadedFile.new(File.join(ActionController::TestCase.fixture_path,'/files/sample_image.jpg'), "image/jpg"), :active => true, :seq => 1, :content_id => 1} }
-    let(:with_content_id2) { { :data_file => Rack::Test::UploadedFile.new(File.join(ActionController::TestCase.fixture_path,'/files/sample_image.jpg'), "image/jpg"), :active => true, :seq => 1, :content_id => 2} }
-    let(:with_thumb) { { :data_file => Rack::Test::UploadedFile.new(File.join(ActionController::TestCase.fixture_path,'/files/sample_image.jpg'), "image/jpg"), :active => true, :seq => 1, :content_id => 1,
-     :thumb => Rack::Test::UploadedFile.new(File.join(ActionController::TestCase.fixture_path,'/files/sample_image.jpg'), "image/jpg")} }
-
-   let(:valid_session) { {} }
-
-    before :all do
-      Content.delete_all
-      FactoryGirl.create(:content_id1)
-      FactoryGirl.create(:content_id2)
-    end
+    let(:with_seq) {
+      { :data_file =>
+        Rack::Test::UploadedFile.new(
+          file_fixture('sample_image.jpg'),
+          "image/jpg"
+        ),
+        :active => true,
+        :seq => 1,
+        :imageable_type => 'Mokio::Content',
+        :imageable_id => 1,
+      }
+    }
+    let(:with_content_id2) {
+      { :data_file =>
+        Rack::Test::UploadedFile.new(
+          file_fixture('sample_image.jpg'),
+          "image/jpg"
+        ),
+        :active => true,
+        :seq => 1,
+        :imageable_type => 'Mokio::Content',
+        :imageable_id => 2
+      }
+    }
+    let(:with_thumb) {
+      { :data_file =>
+        Rack::Test::UploadedFile.new(
+          file_fixture('sample_image.jpg'),
+          "image/jpg"
+        ),
+        :active => true,
+        :seq => 1,
+        :imageable_type => 'Mokio::Content',
+        :imageable_id => 1,
+        :thumb =>
+          Rack::Test::UploadedFile.new(
+            file_fixture('sample_image.jpg'),
+            "image/jpg"
+          )
+      }
+    }
 
     #
     # create
@@ -36,7 +76,7 @@ module Mokio
 
       context "flash notices" do
         before(:each) do
-          xhr :post, :create, {:photo => valid_attributes}
+          post :create, xhr: true, params: {:photo => valid_attributes}
         end
 
         it 'has flash notice' do
@@ -50,18 +90,18 @@ module Mokio
 
       it "creates a new Photo" do
         expect {
-          xhr :post, :create, {:photo => valid_attributes}
+          post :create, xhr: true, params: {:photo => valid_attributes}
         }.to change(Photo, :count).by(1)
       end
 
       it "assigns photo to @photo" do
-        xhr :post, :create, {:photo => valid_attributes}
+        post :create, xhr: true, params: {:photo => valid_attributes}
         assigns(:photo).should be_a(Photo)
         assigns(:photo).should be_persisted
       end
 
       it "has name = filename" do
-        xhr :post, :create, {:photo => valid_attributes}
+        post :create, xhr: true, params: {:photo => valid_attributes}
 
         name_from_model_method = File.basename(assigns(:photo).data_file.filename, '.*').titleize
         name_from_fixture_file = File.basename(Rails.root + '/files/sample_image.jpg', '.*').titleize
@@ -72,21 +112,19 @@ module Mokio
 
       context "sequence" do
         it "has seq 1" do
-          xhr :post, :create, {:photo => valid_attributes}
+          post :create, xhr: true, params: {:photo => valid_attributes}
           assigns(:photo).seq.should be(1)
         end
 
         it "has seq 2" do
           Photo.create(with_seq)
-
-          xhr :post, :create, {:photo => valid_attributes}
+          post :create, xhr: true, params: {:photo => valid_attributes}
           assigns(:photo).seq.should be(2)
         end
 
         it "should change seq to specific content id" do
           Photo.create(with_content_id2)
-
-          xhr :post, :create, {:photo => valid_attributes}
+          post :create, xhr: true, params: {:photo => valid_attributes}
           assigns(:photo).seq.should be(1)
         end
       end
@@ -105,7 +143,7 @@ module Mokio
       context "flash notices" do
         before(:each) do
           photo = Photo.create! valid_attributes
-          xhr :put, :update, {:id => photo.to_param, :photo => valid_attributes}
+          put :update, xhr: true, params: {:id => photo.to_param, :photo => valid_attributes}
         end
 
         it 'has flash notice' do
@@ -120,7 +158,7 @@ module Mokio
       context "update method" do
         before(:each) do
           photo = Photo.create! valid_attributes
-          xhr :put, :update, {:id => photo.to_param, :photo => valid_attributes}
+          put :update, xhr: true, params: {:id => photo.to_param, :photo => valid_attributes}
         end
 
         it "assigns photo to @photo" do
@@ -141,14 +179,14 @@ module Mokio
       it "destroys the requested photo" do
         photo = Photo.create! valid_attributes
         expect {
-          xhr :delete, :destroy, {:id => photo.to_param}, valid_session
+          delete :destroy, xhr: true, params: {:id => photo.to_param}
         }.to change(Photo, :count).by(-1)
       end
 
       context "assigns" do
         before(:each) do
           @photo = Photo.create! valid_attributes
-          xhr :delete, :destroy, {:id => @photo.to_param}, valid_session
+          delete :destroy, xhr: true, params: {:id => @photo.to_param}
         end
 
         it "assigns photo to @photo" do
@@ -163,7 +201,7 @@ module Mokio
       context "flash notices" do
         before(:each) do
           photo = Photo.create! valid_attributes
-          xhr :delete, :destroy, {:id => photo.to_param}, valid_session
+          delete :destroy, xhr: true, params: {:id => photo.to_param}
         end
 
         it 'has flash notice' do
@@ -182,14 +220,14 @@ module Mokio
     describe "GET get_thumb" do
       it "assigns photo to @edited_photo" do
         photo = Photo.create! valid_attributes
-        xhr :get, :get_thumb, {:id => photo.to_param}
+        get :get_thumb, xhr: true, params: {:id => photo.to_param}
         assigns(:edited_photo).should be_a(Photo)
         assigns(:edited_photo).should be_persisted
       end
 
       it "has no flash notice" do
         photo = Photo.create! valid_attributes
-        xhr :get, :get_thumb, {:id => photo.to_param}
+        get :get_thumb, xhr: true, params: {:id => photo.to_param}
         flash[:notice].should be_nil
       end
     end
@@ -200,14 +238,14 @@ module Mokio
     describe "GET get_photo" do
       it "assigns photo to @edited_photo" do
         photo = Photo.create! valid_attributes
-        xhr :get, :get_photo, {:id => photo.to_param}
+        get :get_photo, xhr: true, params: {:id => photo.to_param}
         assigns(:edited_photo).should be_a(Photo)
         assigns(:edited_photo).should be_persisted
       end
 
       it "has no flash notice" do
         photo = Photo.create! valid_attributes
-        xhr :get, :get_photo, {:id => photo.to_param}
+        get :get_photo, xhr: true, params: {:id => photo.to_param}
         flash[:notice].should be_nil
       end
     end
@@ -224,21 +262,21 @@ module Mokio
 
       it "assigns photo to @edited_photo" do
         photo = Photo.create! with_thumb
-        xhr :patch, :update_thumb, {:id => photo.to_param, :photo => with_thumb}
+        patch :update_thumb, xhr: true, params: {:id => photo.to_param, :photo => with_thumb}
         assigns(:edited_photo).should be_a(Photo)
         assigns(:edited_photo).should be_persisted
       end
 
       it 'has thumb' do
         photo = Photo.create! with_thumb
-        xhr :patch, :update_thumb, {:id => photo.to_param, :photo => with_thumb}
+        patch :update_thumb, xhr: true, params: {:id => photo.to_param, :photo => with_thumb}
         assigns(:edited_photo).thumb.blank?.should eq(false)
       end
 
       context "flash notices" do
         before(:each) do
           photo = Photo.create! with_thumb
-          xhr :patch, :update_thumb, {:id => photo.to_param, :photo => with_thumb}
+          patch :update_thumb, xhr: true, params: {:id => photo.to_param, :photo => with_thumb}
         end
 
         it 'has flash notice' do
@@ -264,7 +302,7 @@ module Mokio
       context "flash notices" do
         before(:each) do
           photo = Photo.create! valid_attributes
-          xhr :delete, :remove_thumb, {:id => photo.to_param, :photo => valid_attributes}
+          delete :remove_thumb, xhr: true, params: {:id => photo.to_param, :photo => valid_attributes}
         end
 
         it 'has flash notice' do
@@ -278,14 +316,14 @@ module Mokio
 
       it "assigns photo to @edited_photo" do
         photo = Photo.create! valid_attributes
-        xhr :delete, :remove_thumb, {:id => photo.to_param, :photo => valid_attributes}
+        delete :remove_thumb, xhr: true, params: {:id => photo.to_param, :photo => valid_attributes}
         assigns(:edited_photo).should be_a(Photo)
         assigns(:edited_photo).should be_persisted
       end
 
       it "removes thumb" do
         photo = Photo.create! valid_attributes
-        xhr :delete, :remove_thumb, {:id => photo.to_param, :photo => valid_attributes}
+        delete :remove_thumb, xhr: true, params: {:id => photo.to_param, :photo => valid_attributes}
         assigns(:edited_photo).thumb.should be_blank
       end
     end
@@ -303,7 +341,7 @@ module Mokio
       it "assigns photo to @edited_photo" do
         photo = Photo.create! with_thumb
         controller.stub(:thumb_path).and_return( photo.thumb.url )
-        xhr :post, :crop_thumb, {:id => photo.to_param, :w => 100, :h => 100, :x => 100, :y => 100}
+        post :crop_thumb, xhr: true, params: {:id => photo.to_param, :w => 100, :h => 100, :x => 100, :y => 100}
         assigns(:edited_photo).should be_a(Photo)
         assigns(:edited_photo).should be_persisted
       end
@@ -322,7 +360,7 @@ module Mokio
       it "assigns photo to @edited_photo" do
         photo = Photo.create! with_thumb
         controller.stub(:thumb_path).and_return( photo.thumb.url )
-        xhr :get, :rotate_thumb, {:id => photo.to_param}
+        get :rotate_thumb, xhr: true, params: {:id => photo.to_param}
         assigns(:edited_photo).should be_a(Photo)
         assigns(:edited_photo).should be_persisted
       end
@@ -341,7 +379,7 @@ module Mokio
       it "assigns photo to @edited_photo" do
         photo = Photo.create! valid_attributes
         controller.stub(:edited_photo_path).and_return( photo.data_file.url(:normal) )
-        xhr :post, :crop_photo, {:id => photo.to_param, :w => 100, :h => 100, :x => 100, :y => 100}
+        post :crop_photo, xhr: true, params: {:id => photo.to_param, :w => 100, :h => 100, :x => 100, :y => 100}
         assigns(:edited_photo).should be_a(Photo)
         assigns(:edited_photo).should be_persisted
       end

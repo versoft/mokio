@@ -12,6 +12,8 @@ spec/dummy/public/assets
 spec/dummy/config/initializers/mokio.rb
 spec/dummy/db/schema.rb
 spec/dummy/db/migrate/*
+spec/dummy/node_modules
+Gemfile.lock
 .ruby-version*
 .ruby-gemset*
 .gitignore~

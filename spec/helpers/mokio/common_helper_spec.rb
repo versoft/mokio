@@ -1,14 +1,9 @@
 require 'spec_helper'
+include Mokio::Backend::BackendHelper
 
 module Mokio
 
-  describe Mokio::Backend::CommonHelper do
-    before(:each) do
-      helper.extend Haml
-      helper.extend Haml::Helpers
-      helper.send :init_haml_helpers
-      @routes = Mokio::Engine.routes
-    end
+  describe Mokio::Backend::CommonHelper, type: :helper do
 
     describe "buttons" do
       describe 'table_controls_edit_btn' do
@@ -26,7 +21,7 @@ module Mokio
         end
 
         it 'creates button' do
-          @btn.should =~ /<a aria-describedby="qtip-2" class="tip" data-hasqtip="true" href="link" title="Edytuj"><span class="icon12 icomoon-icon-pencil" \/><\/a>/
+          @btn.should =~ /<a class="tip edit" href="link" data-hasqtip="true" aria-describedby="qtip-2" title="Edytuj"><span class="icon12 icomoon-icon-pencil" \/><\/a>/
         end
       end
 
@@ -45,7 +40,7 @@ module Mokio
         end
 
         it 'creates button' do
-          @btn.should =~ /<a class="tip" data-confirm=".*" data-hasqtip="true" data-method="delete" href="link" rel="nofollow" title=".*"><span class="icon12 icomoon-icon-remove" \/><\/a>/
+          @btn.should =~ /<a rel="nofollow" href="link" data-method="delete" data-confirm=".*" data-hasqtip="true" class="tip delete" title=".*"><span class="icon12 icomoon-icon-remove" \/><\/a>/
         end
       end
 
@@ -64,7 +59,7 @@ module Mokio
         end
 
         it 'creates button' do
-          @btn.should =~ /<a aria-describedby="qtip-2" class="tip" data-hasqtip="true" href="link" title=".*"><span class="icon12 icomoon-icon-copy-2" \/><\/a>/
+          @btn.should =~ /<a class="tip copy" href="link" data-hasqtip="true" aria-describedby="qtip-2" title="Kopiuj"><span class="icon12 icomoon-icon-copy-2" \/><\/a>/
         end
       end
 

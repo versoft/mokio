@@ -10,12 +10,12 @@
 #  contact_id :integer
 #
 
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# Read about factories at https://github.com/thoughtbot/factory_bot
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :recipient, :class => Mokio::Recipient do
-    email "MyString"
-    active false
-    contact_id 1
+    email { "MyString" }
+    active { false }
+    contact_id { 1 }
   end
 end

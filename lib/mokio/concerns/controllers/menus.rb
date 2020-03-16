@@ -69,7 +69,7 @@ module Mokio
             flash[:error]  = t("menus.sort_false")
           end
 
-          render :nothing => true
+          render body: nil
         end
 
         # Renders form for creating menu position (fake menu - direct child of a lang root)

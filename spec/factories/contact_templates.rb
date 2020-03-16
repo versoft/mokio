@@ -9,10 +9,10 @@
 #  contact_id :integer
 #
 
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# Read about factories at https://github.com/thoughtbot/factory_bot
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :contact_template, class: "Mokio::ContactTemplate" do
-    tpl "MyText"
+    tpl { "MyText" }
   end
 end

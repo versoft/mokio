@@ -11,19 +11,29 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-# To use debugger
-# gem 'debugger'
-
-
-#==================================================================================================
 gem 'mysql2', '0.5.3' # this is NOT required, someone may want to use different database
+
+gem 'puma', '~> 4.1'
+gem 'haml2slim'
+
+# assety sie nie wczytywaly
+gem 'rails_serve_static_assets'
+# gem 'rails_stdout_logging'
+# NOT FOUND DEPENDENCY FOR THIS GEM IN RAILS 6
+# gem 'youtube_it', github: 'LiveWorld/youtube_it'
+gem 'ckeditor', '~> 4.3'
+gem "webpacker"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-activemodel-mocks'
+  gem 'rspec-rails', '~> 4.0.0.rc1'
+  gem 'rails-controller-testing'
+  gem 'rubocop-faker'
   gem "faker"
   # gem "capybara"
   # gem "capybara-webkit" # may be useful: apt-get install qtquick1-5-dev qtlocation5-dev qtsensors5-dev qtdeclarative5-dev
@@ -42,30 +52,21 @@ group :development, :test do
   #gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
   gem 'progress_bar' # optional - for solr
 
+  gem "factory_bot_rails"
+  gem 'factory_bot'
+
   # Debuger:
-    gem 'pry'
-    gem 'pry-remote'
-    gem 'pry-nav'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-nav'
 
   # Better errors
-    gem 'better_errors'
-    gem 'binding_of_caller'
-    gem 'meta_request' # To use rails_panel extension
-    gem 'deface'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request' # To use rails_panel extension
+  gem 'deface'
 end
 
-gem 'haml2slim'
-
-# assety sie nie wczytywaly
-gem 'rails_serve_static_assets'
-# gem 'rails_stdout_logging'
-# NOT FOUND DEPENDENCY FOR THIS GEM IN RAILS 6
-# gem 'youtube_it', github: 'LiveWorld/youtube_it'
-gem 'ckeditor', '~> 4.3'
-
-# RAILS 6
-group :development, :test do
-  gem 'factory_bot'
+group :test do
+  gem 'database_cleaner-active_record'
 end
-
-gem "webpacker"

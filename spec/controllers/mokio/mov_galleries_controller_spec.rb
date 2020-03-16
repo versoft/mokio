@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Mokio
 
-  describe Mokio::MovGalleriesController do
+  describe Mokio::MovGalleriesController, type: :controller do
 
     # This should return the minimal set of attributes required to create a valid
     # Article. As you add validations to Article, be sure to
@@ -40,23 +40,23 @@ module Mokio
       describe "with valid params" do
         it "creates a new MovGallery" do
           expect {
-            post :create, {:mov_gallery => valid_attributes}, valid_session
+            post :create, params: {:mov_gallery => valid_attributes}
           }.to change(MovGallery, :count).by(1)
         end
 
         it "assigns a newly created mov_gallery as @mov_gallery" do
-          post :create, {:mov_gallery => valid_attributes}, valid_session
+          post :create, params: {:mov_gallery => valid_attributes}
           assigns(:mov_gallery).should be_a(MovGallery)
           assigns(:mov_gallery).should be_persisted
         end
 
         it "redirects to the index" do
-          post :create, {:mov_gallery => valid_attributes}, valid_session
+          post :create, params: {:mov_gallery => valid_attributes}
           response.should redirect_to(edit_content_path(assigns(:mov_gallery).id))
         end
 
         it "has type param = 'MovGallery'" do
-          post :create, {:mov_gallery => valid_attributes }, valid_session
+          post :create, params: {:mov_gallery => valid_attributes }
           assigns(:mov_gallery).type.should == "Mokio::MovGallery"
         end
       end
@@ -65,14 +65,14 @@ module Mokio
         it "assigns a newly created but unsaved article as @mov_gallery" do
           # Trigger the behavior that occurs when invalid params are submitted
           Article.any_instance.stub(:save).and_return(false)
-          post :create, {:mov_gallery => { "title" => "" }}, valid_session
+          post :create, params: {:mov_gallery => { "title" => "" }}
           assigns(:mov_gallery).should be_a_new(MovGallery)
         end
 
         it "re-renders the 'new' template" do
           # Trigger the behavior that occurs when invalid params are submitted
           Article.any_instance.stub(:save).and_return(false)
-          post :create, {:mov_gallery => { "title" => "" }}, valid_session
+          post :create, params: {:mov_gallery => { "title" => "" }}
           response.should render_template("new")
         end
       end
@@ -87,18 +87,18 @@ module Mokio
           # receives the :update_attributes message with whatever params are
           # submitted in the request.
           MovGallery.any_instance.should_receive(:update).with({ "title" => "MyString" })
-          put :update, {:id => gallery.to_param, :mov_gallery => { "title" => "MyString" }}, valid_session
+          put :update, params: {:id => gallery.to_param, :mov_gallery => { "title" => "MyString" }}
         end
 
         it "assigns the requested article as @article" do
           gallery = MovGallery.create! valid_attributes
-          put :update, {:id => gallery.to_param, :mov_gallery => valid_attributes}, valid_session
+          put :update, params: {:id => gallery.to_param, :mov_gallery => valid_attributes}
           assigns(:mov_gallery).should eq(gallery)
         end
 
         it "redirects to the index" do
           gallery = MovGallery.create! valid_attributes
-          put :update, {:id => gallery.to_param, :mov_gallery => valid_attributes}, valid_session
+          put :update, params: {:id => gallery.to_param, :mov_gallery => valid_attributes}
           response.should redirect_to(mov_galleries_path)
         end
       end
@@ -108,7 +108,7 @@ module Mokio
           gallery = MovGallery.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
           MovGallery.any_instance.stub(:save).and_return(false)
-          put :update, {:id => gallery.to_param, :mov_gallery => { "title" => "" }}, valid_session
+          put :update, params: {:id => gallery.to_param, :mov_gallery => { "title" => "" }}
           assigns(:mov_gallery).should eq(gallery)
         end
 
@@ -116,7 +116,7 @@ module Mokio
           gallery = MovGallery.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
           MovGallery.any_instance.stub(:save).and_return(false)
-          put :update, {:id => gallery.to_param, :mov_gallery => { "title" => "" }}, valid_session
+          put :update, params: {:id => gallery.to_param, :mov_gallery => { "title" => "" }}
           response.should render_template("edit")
         end
       end

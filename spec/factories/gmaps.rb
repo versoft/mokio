@@ -19,21 +19,21 @@
 #  updated_at                  :datetime
 #
 
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# Read about factories at https://github.com/thoughtbot/factory_bot
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :gmap, :class => Mokio::Gmap do
-    full_address "MyString"
-    street_number "MyString"
-    route "MyString"
-    locality "MyString"
-    postal_code "MyString"
-    country "MyString"
-    administrative_area_level_2 "MyString"
-    administrative_area_level_1 "MyString"
-    type ""
-    lat "9.99"
-    lng "9.99"
-    zoom 1
+    full_address { "MyString" }
+    street_number { "MyString" }
+    route { "MyString" }
+    locality { "MyString" }
+    postal_code { "MyString" }
+    country { "MyString" }
+    administrative_area_level_2 { "MyString" }
+    administrative_area_level_1 { "MyString" }
+    type { "" }
+    lat { "9.99" }
+    lng { "9.99" }
+    zoom { 1 }
   end
 end

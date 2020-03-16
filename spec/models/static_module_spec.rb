@@ -33,16 +33,16 @@ module Mokio
     end
 
     it 'has valid factory' do
-      FactoryGirl.create(:static_module).should be_valid
+      FactoryBot.create(:static_module).should be_valid
     end
 
     it 'is invalid without title' do
-      FactoryGirl.build(:static_module_without_title).should_not be_valid
+      FactoryBot.build(:static_module_without_title).should_not be_valid
     end
 
     describe 'default values' do
       before(:each) do
-        @static_module = FactoryGirl.build(:static_module)
+        @static_module = FactoryBot.build(:static_module)
       end
 
       it 'is editable' do
@@ -61,25 +61,25 @@ module Mokio
     describe 'has and belongs to many module positions' do
       it 'reflect on association' do
         static_module = StaticModule.reflect_on_association(:module_positions)
-        static_module.macro.should == :has_many
+        static_module.macro.should == :has_and_belongs_to_many
       end
 
       describe 'without module position in database' do
         it 'is invalid' do
-          expect { FactoryGirl.create(:with_module_position).data_files }.to raise_error ActiveRecord::RecordNotFound
+          expect { FactoryBot.create(:with_module_position).data_files }.to raise_error ActiveRecord::RecordNotFound
         end
       end
 
       it 'does not save through available_modules without module position' do
-        static_module = FactoryGirl.create(:static_module)
+        static_module = FactoryBot.create(:static_module)
         static_module.save!
-        expect(AvailableModule).to have(0).records
+        expect(AvailableModule.count).to eq(0)
       end
 
       describe 'with module position in database' do
         before(:each) do
-          position = FactoryGirl.create(:module_position)
-          @static_module = FactoryGirl.create(:static_module, :module_position_ids => [position.id])
+          position = FactoryBot.create(:module_position)
+          @static_module = FactoryBot.create(:static_module, :module_position_ids => [position.id])
         end
 
         it 'is valid' do
@@ -88,7 +88,7 @@ module Mokio
 
         it 'saves through available_modules' do
           @static_module.save!
-          expect(AvailableModule).to have(1).records
+          expect(AvailableModule.count).to eq(1)
         end
       end
     end

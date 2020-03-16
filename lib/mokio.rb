@@ -8,7 +8,6 @@ require "carrierwave"
 require 'amoeba'
 require 'fancybox2-rails'
 require "bootstrap-switch-rails"
-# require 'youtube_it'
 require 'ancestry'
 require 'acts_as_list'
 require 'jquery-datatables-rails'
@@ -233,7 +232,7 @@ module Mokio
   # Enable/disable sitemap generation
   # include Mokio::Concerns::Common::Services::Sitemap::Model
   mattr_accessor :mokio_sitemap_generator_enable
-  self.mokio_sitemap_generator_enable = true
+  self.mokio_sitemap_generator_enable = false
 
   ### Google reCAPTCHA configs ###
   mattr_accessor :mokio_login_with_recaptcha

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Mokio
 
-  describe Mokio::PicGalleriesController do
+  describe Mokio::PicGalleriesController, type: :controller do
 
     before(:each) do
       @routes = Mokio::Engine.routes
@@ -12,11 +12,6 @@ module Mokio
     # Article. As you add validations to Article, be sure to
     # adjust the attributes here as well.
     let(:valid_attributes) { { :title => "MyString"} }
-
-    # This should return the minimal set of values that should be in the session
-    # in order to pass any filters (e.g. authentication) defined in
-    # ArticlesController. Be sure to keep this updated too.
-    let(:valid_session) { { } }
 
     # describe "GET index" do
     #   it "assigns all articles as @article" do
@@ -40,23 +35,23 @@ module Mokio
       describe "with valid params" do
         it "creates a new PicGallery" do
           expect {
-            post :create, {:pic_gallery => valid_attributes, :save_and_new => 1}, valid_session
+            post :create, params: {:pic_gallery => valid_attributes, :save_and_new => 1}
           }.to change(PicGallery, :count).by(1)
         end
 
         it "assigns a newly created pic_gallery as @pic_gallery" do
-          post :create, {:pic_gallery => valid_attributes, :save_and_new => 1}, valid_session
+          post :create, params: {:pic_gallery => valid_attributes, :save_and_new => 1}
           assigns(:pic_gallery).should be_a(PicGallery)
           assigns(:pic_gallery).should be_persisted
         end
 
         it "redirects to the index" do
-          post :create, {:pic_gallery => valid_attributes}, valid_session
+          post :create, params: {:pic_gallery => valid_attributes}
           response.should redirect_to(edit_content_path(assigns(:pic_gallery).id))
         end
 
         it "has type param = 'PicGallery'" do
-          post :create, {:pic_gallery => valid_attributes, :save_and_new => 1 }, valid_session
+          post :create, params: {:pic_gallery => valid_attributes, :save_and_new => 1 }
           assigns(:pic_gallery).type.should == "Mokio::PicGallery"
         end
       end
@@ -65,14 +60,14 @@ module Mokio
         it "assigns a newly created but unsaved article as @pic_gallery" do
           # Trigger the behavior that occurs when invalid params are submitted
           Article.any_instance.stub(:save).and_return(false)
-          post :create, {:pic_gallery => { "title" => "" }, :save_and_new => 1}, valid_session
+          post :create, params: {:pic_gallery => { "title" => "" }, :save_and_new => 1}
           assigns(:pic_gallery).should be_a_new(PicGallery)
         end
 
         it "re-renders the 'new' template" do
           # Trigger the behavior that occurs when invalid params are submitted
           Article.any_instance.stub(:save).and_return(false)
-          post :create, {:pic_gallery => { "title" => "" }, :save_and_new => 1}, valid_session
+          post :create, params: {:pic_gallery => { "title" => "" }, :save_and_new => 1}
           response.should render_template("new")
         end
       end
@@ -87,18 +82,18 @@ module Mokio
           # receives the :update_attributes message with whatever params are
           # submitted in the request.
           PicGallery.any_instance.should_receive(:update).with({ "title" => "MyString" })
-          put :update, {:id => gallery.to_param, :pic_gallery => { "title" => "MyString" }, :save_and_new => 1}, valid_session
+          put :update, params: {:id => gallery.to_param, :pic_gallery => { "title" => "MyString" }, :save_and_new => 1}
         end
 
         it "assigns the requested article as @article" do
           gallery = PicGallery.create! valid_attributes
-          put :update, {:id => gallery.to_param, :pic_gallery => valid_attributes, :save_and_new => 1}, valid_session
+          put :update, params: {:id => gallery.to_param, :pic_gallery => valid_attributes, :save_and_new => 1}
           assigns(:pic_gallery).should eq(gallery)
         end
 
         it "redirects to the index" do
           gallery = PicGallery.create! valid_attributes
-          put :update, {:id => gallery.to_param, :pic_gallery => valid_attributes}, valid_session
+          put :update, params: {:id => gallery.to_param, :pic_gallery => valid_attributes}
           response.should redirect_to(pic_galleries_path)
         end
       end
@@ -108,7 +103,7 @@ module Mokio
           gallery = PicGallery.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
           PicGallery.any_instance.stub(:save).and_return(false)
-          put :update, {:id => gallery.to_param, :pic_gallery => { "title" => "" }, :save_and_new => 1}, valid_session
+          put :update, params: {:id => gallery.to_param, :pic_gallery => { "title" => "" }, :save_and_new => 1}
           assigns(:pic_gallery).should eq(gallery)
         end
 
@@ -116,7 +111,7 @@ module Mokio
           gallery = PicGallery.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
           PicGallery.any_instance.stub(:save).and_return(false)
-          put :update, {:id => gallery.to_param, :pic_gallery => { "title" => "" }, :save_and_new => 1}, valid_session
+          put :update, params: {:id => gallery.to_param, :pic_gallery => { "title" => "" }, :save_and_new => 1}
           response.should render_template("edit")
         end
       end

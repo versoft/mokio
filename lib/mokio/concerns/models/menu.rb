@@ -17,11 +17,11 @@ module Mokio
           has_ancestry :orphan_strategy => :adopt
 
           validates :name, presence: true
-          validates :lang_id, presence: true
-          validates_uniqueness_of :slug,case_sensitive: true
+          validates :lang_id, presence: false
+          validates_uniqueness_of :slug, case_sensitive: true
 
-          belongs_to :lang
-          belongs_to :meta, :dependent => :destroy,optional: true
+          belongs_to :lang, optional: true
+          belongs_to :meta, :dependent => :destroy, optional: true
 
           mount_uploader :main_pic, Mokio::MainPicUploader
 
