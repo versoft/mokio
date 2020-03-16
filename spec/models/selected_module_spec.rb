@@ -16,17 +16,19 @@ module Mokio
 
   describe SelectedModule do
 
-     before(:each) do
-      @menu = FactoryGirl.create(:menu)
-      @position = FactoryGirl.create(:module_position)
-      @static_module = FactoryGirl.create(:static_module, :module_position_ids => [@position.id])
+    before(:each) do
+      FactoryBot.create(:lang_pl)
+      @menu = Mokio::Menu.first
+      # raise @menu.inspect
+      @position = FactoryBot.create(:module_position)
+      @static_module = FactoryBot.create(:static_module, :module_position_ids => [@position.id])
     end
 
     it "adds properly new selected module to men" do
       av_mod = AvailableModule.first #?
       @menu.available_modules << av_mod
       @menu.save
-      expect(SelectedModule).to have(1).records
+      expect(SelectedModule.count).to eq(1)
       expect(@menu.available_modules.size).to eq(1)
     end
 
@@ -34,20 +36,20 @@ module Mokio
       av_mod = AvailableModule.first
       @menu.available_modules.delete(av_mod)
       @menu.save
-      expect(SelectedModule).to have(0).records
+      expect(SelectedModule.count).to eq(0)
       expect(@menu.available_modules.size).to eq(0)
     end
 
 
     it "counts only records that match a query" do
-      FactoryGirl.create(:menu, :name => "Uuups")
-      expect(Menu.where(:name => "Uuups")).to have(1).record
-      expect(Menu.where(:name => "Eeeee")).to have(0).records
+      FactoryBot.create(:menu, :name => "Uuups")
+      expect(Menu.where(:name => "Uuups").size).to eq(1)
+      expect(Menu.where(:name => "Eeeee").size).to eq(0)
     end
 
     it "saves parent" do
-      @parent = FactoryGirl.create(:menu, :name => "Parent")
-      FactoryGirl.create(:menu, :name => "Child", :parent => @parent)
+      @parent = FactoryBot.create(:menu, :name => "Parent")
+      FactoryBot.create(:menu, :name => "Child", :parent => @parent)
       @parent = Menu.where(:name => "Parent").first
       @child = Menu.where(:name => "Child").first
       expect(@parent.children.include?(@child))
@@ -68,11 +70,9 @@ module Mokio
     end
 
     it "has many contents" do
-      @menu = Menu.new(:name => "Child777", :parent_id => 1, :lang_id => 1)
-      @content = Content.new(:title => "Art")
-      @content.save
+      @content = Content.create!(:title => "Art")
+      @menu = Menu.create!(:name => "Child777", :parent_id => 1, :lang_id => 1)
       @menu.contents << @content
-      @menu.save
       @menu1 = Menu.find(@menu.id)
       @menu1.contents.size.should eq(1)
       @menu1.contents[0].title.should eq("Art")
@@ -86,8 +86,8 @@ module Mokio
     #   end
 
     #   it 'properly saves contents for menu' do
-    #       @content = FactoryGirl.create(:content)
-    #       @menu = FactoryGirl.create(:menu, :content_ids => [@content.id])
+    #       @content = FactoryBot.create(:content)
+    #       @menu = FactoryBot.create(:menu, :content_ids => [@content.id])
     #       @menu.reload
     #       @menu.contents.count.should eq(1)
     #       @content.menus.count.should eq(1)

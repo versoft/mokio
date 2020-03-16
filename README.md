@@ -13,6 +13,11 @@ MOKIO is open source CMS compatible with rails 6.0.1 and ruby 2.6.5.
 6. Your login is `admin@admin.com`, password `admin`
 7. Remember to change this sample credentials!
 
+## Test by RSpec
+Run all tests in main directory using command: `rspec`
+To suppress warnings use: `rspec --deprecation-out /dev/null`
+[Details for configure Spec Dummy App for properly working tests.](spec/dummy/README.md)
+
 ## Usage:
 ### Overriding Mokio js
 In case you need to add some custom logic to Mokio panel's javascript, run:
@@ -34,7 +39,7 @@ Change DataFile type if needed (Mokio::Photo is set by default)
 ```
 def default_data_file
   # Available options:
-  # Mokio::Photo 
+  # Mokio::Photo
   # Mokio::Youtube
 end
 ```

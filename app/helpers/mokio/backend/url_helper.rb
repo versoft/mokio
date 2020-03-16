@@ -10,7 +10,7 @@ module Mokio
       end
 
       def edit_url(class_name, obj)
-        "#{engine_root}#{class_link(class_name)}/#{obj.id}/edit" 
+        "#{engine_root}#{class_link(class_name)}/#{obj.id}/edit"
       end
 
       def obj_url(class_name, obj)
@@ -18,7 +18,7 @@ module Mokio
       end
 
       def copy_url(class_name, obj)
-        "#{engine_root}#{class_link(class_name)}/#{obj.id}/copy" 
+        "#{engine_root}#{class_link(class_name)}/#{obj.id}/copy"
       end
 
       def class_link(class_name)

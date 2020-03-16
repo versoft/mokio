@@ -13,13 +13,13 @@ require 'spec_helper'
 module Mokio
   describe ModulePosition do
     it 'has valid factory' do
-      FactoryGirl.create(:module_position).should be_valid
+      FactoryBot.create(:module_position).should be_valid
     end
 
     describe 'has and belongs to many static modules' do
       it 'reflect on association' do
         module_position = ModulePosition.reflect_on_association(:static_modules)
-        module_position.macro.should == :has_many
+        module_position.macro.should == :has_and_belongs_to_many
       end
     end
   end

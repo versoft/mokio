@@ -16,9 +16,9 @@ module Mokio
   describe AvailableModule do
 
     before(:each) do
-      @menu = FactoryGirl.create(:menu)
-      @position = FactoryGirl.create(:module_position)
-      @static_module = FactoryGirl.create(:static_module, :module_position_ids => [@position.id])
+      FactoryBot.create(:lang_pl)
+      @position = FactoryBot.create(:module_position)
+      @static_module = FactoryBot.create(:static_module, :module_position_ids => [@position.id])
     end
 
     it "module_title returns title of related static module" do

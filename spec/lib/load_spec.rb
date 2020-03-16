@@ -88,10 +88,6 @@ describe Mokio do
       require "bootstrap-switch-rails"
     end
 
-    it "requires youtube_it" do
-      require 'youtube_it'
-    end
-
     it "requires ancestry" do
       require 'ancestry'
     end

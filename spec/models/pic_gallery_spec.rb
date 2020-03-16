@@ -92,13 +92,13 @@ module Mokio
         gallery = PicGallery.new(:title => "test")
         gallery.data_files.build(data_file: "test.png", name: "Test")
         gallery.save!
-        expect(DataFile).to have(1).records
+        expect(DataFile.count).to eq(1)
       end
 
       it 'does not save association without data_file' do
         content = PicGallery.new(:title => "test")
         content.save!
-        expect(DataFile).to have(0).records
+        expect(DataFile.count).to eq(0)
       end
     end
   end

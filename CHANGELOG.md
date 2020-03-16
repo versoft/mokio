@@ -500,3 +500,10 @@
 ## Mokio 20.03.2020 v2.4.0
 <br/>
   1. Add model history tracking
+
+## Mokio 25.03.2020 v2.4.1
+<br/>
+  1. Fix RSpec tests
+  2. Update Spec Dummy App
+  3. Dont allow remove object when deletable: false
+  4. Change Mokio::Menu lang to optional

@@ -1,17 +1,19 @@
 require 'spec_helper'
+include Mokio::Backend::BackendHelper
+include Mokio::Backend::CommonHelper
+include Mokio::Backend::UrlHelper
 
 module Mokio
 
-  describe Mokio::Backend::MenuHelper do
+  describe Mokio::Backend::MenuHelper, type: :helper do
 
     before(:each) do
       @routes = Mokio::Engine.routes
-      @menu = stub_model Menu, :name =>"Testtttt"
+      @menu = stub_model Menu, :name => "Testtttt"
       @menu1 = stub_model Menu, :parent => @menu, :name => "Ala"
-      helper.extend Haml
-      helper.extend Haml::Helpers
-      helper.send :init_haml_helpers
-
+      # helper.extend Haml
+      # helper.extend Haml::Helpers
+      # helper.send :init_haml_helpers
     end
 
     describe "tree_menu" do
@@ -28,7 +30,7 @@ module Mokio
 
       it "generates menu with ol and li elements" do
         @tree = tree_menu({@menu => {@menu1 => {}}}, true)
-        expect(@tree).to include('<li class="sortable_true"')
+        expect(@tree).to include('class="sortable_true"')
         @tree.should match(/<li.*<div.*Testtttt.*<\/div>.*<ol>.*<\/ol>.*<\/li>.*/xm)
       end
     end
@@ -37,27 +39,28 @@ module Mokio
 
       it "generates empty list for new menu" do
         @menu2 = Menu.new
-        expect(tree_menu_breadcrumps(@menu2)).to eql("")
+        expect(tree_menu_breadcrumbs(@menu2)).to eql("")
       end
 
       # it "generates menu with -> and two names" do
-      #   @menu = FactoryGirl.create(:menu, :name => "Tralalala")
-      #   @menu1 = FactoryGirl.create(:menu, :name => "Tralalala1", :parent => @menu)
-      #   @tree = tree_menu_breadcrumps(@menu1)
+      #   @menu = FactoryBot.create(:menu, :name => "Tralalala")
+      #   @menu1 = FactoryBot.create(:menu, :name => "Tralalala1", :parent => @menu)
+      #   @tree = tree_menu_breadcrumbs(@menu1)
       #   expect(@tree).to match(/<a href=.*\/a> -&gt; <a href=.*\/a>/)
       # end
     end
 
     describe "dual_select_box" do
        it "selected_modules are properly renedered by helper" do
-        mod_pos = FactoryGirl.create(:module_position)
-        stat_module = FactoryGirl.create(:static_module)
+        mod_pos = FactoryBot.create(:module_position)
+        stat_module = FactoryBot.create(:static_module)
         stat_module.module_positions = [mod_pos]
         stat_module.save
-        stat_module = FactoryGirl.create(:static_module)
+        stat_module = FactoryBot.create(:static_module)
         stat_module.module_positions = [mod_pos]
         stat_module.save
         av_module = AvailableModule.first
+        FactoryBot.create(:lang_pl)
         menu = Menu.new(:name => "Menu777", :parent_id => 1, :lang_id => 1)
         menu.available_modules << av_module
         menu.save

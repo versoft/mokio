@@ -132,6 +132,13 @@ module Mokio
         # Standard destroy action. Remove object for specified class from database
         #
         def destroy
+          # check object can be removed by "deletable"
+          if obj.respond_to?(:deletable) && obj.deletable == false
+            respond_to do |format|
+              redirect_back(format, obj_index_url, CommonTranslation.not_deleted(obj))
+            end and return
+          end
+
           respond_to do |format|
             if obj.destroy
               redirect_back(format, obj_index_url, CommonTranslation.deleted(obj))
