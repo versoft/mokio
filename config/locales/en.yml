@@ -119,6 +119,7 @@ en:
     logout: Logout
     change_password: Change Password
     send_reset_instructions: Send me reset password instructions
+    send_reset_instructions_manually: Send reset password instructions
     version: Version
     dashboard: Dashboard
     copy_suffix: (copy)
@@ -129,6 +130,7 @@ en:
     add_external_link: "Add external photo"
     add_mokio/photos: Add photos
     add_mokio/youtubes: Add movies
+    reset_password: Reset password
 
     sidebars:
       dashboard: Dashboard
@@ -684,6 +686,9 @@ en:
               too_short: Password too short (min 8 characters).
               blank: The password is not given
               weak_password: Password must be 8 characters including an uppercase letter, an lowercase letter, a number and a special character
+            current_password:
+              blank: Type your password
+              invalid: Wrong password
             password_confirmation:
               confirmation: Passwords do not match
             email:
@@ -815,7 +820,8 @@ en:
         add_own_thumb: Add your own thumb
         subtitle: Subtitle
       mokio/user:
-        password: Password
+        current_password: Current password
+        password: New password
         remember_me: Remember me
         email: E-mail
         password_confirmation: Confirm password

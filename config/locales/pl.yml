@@ -122,6 +122,7 @@ pl:
     logout: Wyloguj
     change_password: Zmień hasło
     send_reset_instructions: Wyślij mi link do zmiany hasła
+    send_reset_instructions_manually: Wyślij link do zmiany hasła
     version: Wersja
     dashboard: Dashboard
     copy_suffix: (kopia)
@@ -132,6 +133,7 @@ pl:
     add_external_link: "Dodaj zdjęcia przez link"
     add_mokio/photos: Dodaj Zdjęcia
     add_mokio/youtubes: Dodaj Film
+    reset_password: Reset hasła
 
     sidebars:
       dashboard: Dashboard
@@ -700,6 +702,9 @@ pl:
               too_short: Hasło za krótkie ( min 8 znaków ).
               blank: Nie podano hasła
               weak_password: Hasło musi mieć małą i dużą literę, cyfrę i znak specjalny
+            current_password:
+              blank: Podaj swoje obecne hasło
+              invalid: Błędne hasło
             password_confirmation:
               confirmation: Hasła się nie zgadzają
             email:
@@ -839,7 +844,8 @@ pl:
         add_own_thumb: Dodaj własną miniaturkę
         subtitle: Podtytuł
       mokio/user:
-        password: Hasło
+        current_password: Obecne hasło
+        password: Nowe hasło
         remember_me: Zapamiętaj mnie
         email: E-mail
         password_confirmation: Potwierdź hasło

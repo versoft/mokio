@@ -1,0 +1,4 @@
+= simple_form_for(obj, as: :user, method: :post, url: send_pass_change_link_path) do |f|
+  = f.input :email, as: :hidden
+  label.form-label.span4 = bt('reset_password')
+  = f.button :submit, bt('send_reset_instructions_manually'), class: 'btn btn-info', id: 'send_reset_instructions_manually'

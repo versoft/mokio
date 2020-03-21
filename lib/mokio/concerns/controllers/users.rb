@@ -85,10 +85,10 @@ module Mokio
           set_obj
           @user.only_password = true
           respond_to do |format|
-            if @user.update(user_params)
+            if @user.update_with_password(user_params)
               sign_in(@user, :bypass => true)
 
-              format.html { redirect_to session[:return_to] ,notice: I18n.t("users.password_updated") }
+              format.html { redirect_to root_path, notice: I18n.t("users.password_updated") }
               # format.json { render action: 'edit_password', status: :updated}
             else
               @password_only = true
@@ -122,7 +122,7 @@ module Mokio
           # Never trust parameters from the scary internet, only allow the white list through.
           #
           def user_params #:doc:
-            params[:user].permit(:first_name, :last_name, :email, :password, :password_confirmation, :market_id, :roles => [])
+            params[:user].permit(:first_name, :last_name, :email, :current_password, :password, :password_confirmation, :market_id, :roles => [])
           end
 
           def remove_params

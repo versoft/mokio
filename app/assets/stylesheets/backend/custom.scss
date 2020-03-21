@@ -851,7 +851,6 @@ a.confirm-pass-link {
     margin: 0 auto 0 auto;
     width:100%;
     text-align:center;
-
   }
 
   table td  {
@@ -866,7 +865,6 @@ a.confirm-pass-link {
     overflow: hidden;
     margin-bottom: 15px;
     position: relative;
-
   }
 
   .value {
@@ -878,7 +876,6 @@ a.confirm-pass-link {
       color:black;
       border:1px solid silver
     }
-
   }
 
   .value_title_center{
@@ -901,4 +898,8 @@ a.confirm-pass-link {
     width:40%;
     background: #f4fff4;
   }
+}
+  
+#send_reset_instructions_manually {
+  width: auto;
 }

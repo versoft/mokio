@@ -5,6 +5,8 @@
 
   = common_form do
     .row-fluid
+      - if can_generate_pass_change_link?(obj)
+        = render :partial => "mokio/users/generate_pass_change_link", locals: {obj: obj}
       = simple_form_for obj, :html => { :class => 'form-horizontal', autocomplete: 'off' } do |f|
         = render :partial => "mokio/common/gmap", locals: {obj: obj, f: f} if obj.class.has_gmap_enabled?
         = backend_modal_render('seo_tags',f)
