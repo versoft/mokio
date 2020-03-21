@@ -78,6 +78,20 @@ module Mokio
           def is_user_logged_in?
             self.current_user.present?
           end
+
+          def set_random_password
+            generated_password = SecureRandom.base64(94)
+            self.password = generated_password
+            self.password_confirmation = generated_password
+          end
+
+          def set_pass_creation_token
+            raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
+            self.reset_password_token = enc
+            self.reset_password_sent_at = Time.now.utc
+            save(validate: false)
+            raw
+          end
         end
 
         module ClassMethods
@@ -172,7 +186,7 @@ module Mokio
           end
 
           def password_complexity
-            return if /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,128}$/.match(password)
+            return if /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-=\/\\]).{8,128}$/.match(password)
 
             errors.add :password, :weak_password
           end

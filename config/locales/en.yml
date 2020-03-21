@@ -119,6 +119,7 @@ en:
     logout: Logout
     change_password: Change Password
     send_reset_instructions: Send me reset password instructions
+    send_reset_instructions_manually: Send reset password instructions
     version: Version
     dashboard: Dashboard
     copy_suffix: (copy)
@@ -129,6 +130,9 @@ en:
     add_external_link: "Add external photo"
     add_mokio/photos: Add photos
     add_mokio/youtubes: Add movies
+    reset_password: Reset password
+    new_user_pass_info: After save, new user will receive an e-mail with 
+      creating password instructions
 
     sidebars:
       dashboard: Dashboard
@@ -681,9 +685,13 @@ en:
         mokio/user:
           attributes:
             password:
-              too_short: Password too short (min 8 characters).
+              too_short: Password is too short (min 8 characters)
+              too_long: Password is too long (max 128 characters)
               blank: The password is not given
               weak_password: Password must be 8 characters including an uppercase letter, an lowercase letter, a number and a special character
+            current_password:
+              blank: Type your password
+              invalid: Wrong password
             password_confirmation:
               confirmation: Passwords do not match
             email:
@@ -815,7 +823,8 @@ en:
         add_own_thumb: Add your own thumb
         subtitle: Subtitle
       mokio/user:
-        password: Password
+        current_password: Current password
+        password: New password
         remember_me: Remember me
         email: E-mail
         password_confirmation: Confirm password
@@ -837,3 +846,9 @@ en:
         description: Description
         parent_id: Parent element
         target: Target
+
+  registration_mailer:
+    title: Password setup
+    pass_setup_instruction_1: "Hello '%{email}'!"
+    pass_setup_instruction_2: 'Your Mokio account has been created. To log in, set up your password:'
+    pass_setup_instruction_3: 'Set up password'

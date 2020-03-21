@@ -26,15 +26,20 @@ module Mokio
         def create
           create_obj( @obj_class.new(obj_params) )
           obj.current_user = current_user
+          obj.set_random_password
+
           respond_to do |format|
             if obj.save
               if !params[:save_and_new].blank?
-                format.html { redirect_to obj_new_url(@obj_class.new), notice: CommonTranslation.created(obj) }
+                format.html { redirect_to obj_new_url(@obj_class.new) }
                 format.json { render action: 'new', status: :created, location: obj }
               else
-                format.html { redirect_to obj_index_url, notice: CommonTranslation.created(obj) }
+                format.html { redirect_to obj_index_url }
                 format.json { render action: 'index', status: :created, location: obj }
               end
+              flash[:notice] = CommonTranslation.created(obj)
+              token = obj.set_pass_creation_token
+              RegistrationMailer.send_pass_setup_instruction(obj, token).deliver
             else
               format.html { render "new", notice: CommonTranslation.not_created(obj) }
               format.json { render json: @obj.errors, status: :unprocessable_entity }
@@ -85,10 +90,10 @@ module Mokio
           set_obj
           @user.only_password = true
           respond_to do |format|
-            if @user.update(user_params)
+            if @user.update_with_password(user_params)
               sign_in(@user, :bypass => true)
 
-              format.html { redirect_to session[:return_to] ,notice: I18n.t("users.password_updated") }
+              format.html { redirect_to root_path, notice: I18n.t("users.password_updated") }
               # format.json { render action: 'edit_password', status: :updated}
             else
               @password_only = true
@@ -122,7 +127,7 @@ module Mokio
           # Never trust parameters from the scary internet, only allow the white list through.
           #
           def user_params #:doc:
-            params[:user].permit(:first_name, :last_name, :email, :password, :password_confirmation, :market_id, :roles => [])
+            params[:user].permit(:first_name, :last_name, :email, :current_password, :password, :password_confirmation, :market_id, :roles => [])
           end
 
           def remove_params

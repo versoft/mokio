@@ -1,0 +1,3 @@
+p = I18n.t('registration_mailer.pass_setup_instruction_1', email: @email)
+p = I18n.t('registration_mailer.pass_setup_instruction_2')
+p = link_to I18n.t('registration_mailer.pass_setup_instruction_3'), edit_password_url(@obj, reset_password_token: @token)

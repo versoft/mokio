@@ -122,6 +122,7 @@ pl:
     logout: Wyloguj
     change_password: Zmień hasło
     send_reset_instructions: Wyślij mi link do zmiany hasła
+    send_reset_instructions_manually: Wyślij link do zmiany hasła
     version: Wersja
     dashboard: Dashboard
     copy_suffix: (kopia)
@@ -132,6 +133,9 @@ pl:
     add_external_link: "Dodaj zdjęcia przez link"
     add_mokio/photos: Dodaj Zdjęcia
     add_mokio/youtubes: Dodaj Film
+    reset_password: Reset hasła
+    new_user_pass_info: Po kliknięciu przycisku "Zapisz" do uzytkownika zostanie 
+      wysłana wiadomość z linkiem do ustawienia hasła
 
     sidebars:
       dashboard: Dashboard
@@ -697,9 +701,13 @@ pl:
         mokio/user:
           attributes:
             password:
-              too_short: Hasło za krótkie ( min 8 znaków ).
+              too_short: Hasło za krótkie (min 8 znaków)
+              too_long: Hasło za długie (max 128 znaków)
               blank: Nie podano hasła
               weak_password: Hasło musi mieć małą i dużą literę, cyfrę i znak specjalny
+            current_password:
+              blank: Podaj swoje obecne hasło
+              invalid: Błędne hasło
             password_confirmation:
               confirmation: Hasła się nie zgadzają
             email:
@@ -839,7 +847,8 @@ pl:
         add_own_thumb: Dodaj własną miniaturkę
         subtitle: Podtytuł
       mokio/user:
-        password: Hasło
+        current_password: Obecne hasło
+        password: Nowe hasło
         remember_me: Zapamiętaj mnie
         email: E-mail
         password_confirmation: Potwierdź hasło
@@ -866,4 +875,10 @@ pl:
     failure:
       last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie zablokowane.
       locked: Twoje konto jest zablokowane. Możliwość ponownego zalogowania zostanie odblokowana za 1 godzinę.
+
+  registration_mailer:
+    title: Instrukcja ustawienia hasła
+    pass_setup_instruction_1: "Witaj '%{email}'!"
+    pass_setup_instruction_2: 'Twoje konto w systemie Mokio zostało utworzone. Aby móc się zalogować ustaw hasło, klikając link poniżej:'
+    pass_setup_instruction_3: 'Ustaw hasło'
 

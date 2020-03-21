@@ -34,7 +34,7 @@ pl:
     passwords:
       no_token: Do tej strony możesz dostać się tylko poprzez wiadomość e-mail resetującą hasło. Jeśli to z niej tu trafiłeś, upewnij się, że użyłeś pełnego adresu.
       send_instructions: Instrukcja zmiany hasła zostanie wysłana na podany adres e-mail.
-      send_paranoid_instructions: Jeśli Twój adres e-mail istnieje w naszej bazie, otrzymasz zaraz wiadomość z instrukcjami odzyskiwania hasła.
+      send_paranoid_instructions: Instrukcja odzyskiwania hasła zostanie przesłana na podany adres e-mail.
       updated: Hasło zmienione poprawnie. Zostałeś automatycznie zalogowany.
       updated_not_active: Hasło zmienione poprawnie.
       change_password: Zmień hasło

@@ -512,3 +512,7 @@
 <br/>
   1. Add CircleCI config
   2. Update Spec Dummy App database.yml file to works with .env config
+  
+## Mokio 20.03.2020 v2.5.0
+<br/>
+  1. Refactor Mokio::Users data editing

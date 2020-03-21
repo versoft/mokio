@@ -3,7 +3,11 @@
 Mokio::Engine.routes.draw do
   root to: 'dashboard#show'
 
-  devise_for :users, class_name: 'Mokio::User', module: :devise, controllers: { passwords: 'users/passwords', :sessions => "mokio/sessions" }
+  devise_for :users, class_name: 'Mokio::User', module: :devise, controllers: { passwords: 'mokio/passwords', :sessions => "mokio/sessions" }
+  
+  devise_scope :user do
+    post '/users/send_pass_change_link' => "passwords#send_pass_change_link", as: 'send_pass_change_link'
+  end
 
   resources :menus do
     member do

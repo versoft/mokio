@@ -16,6 +16,7 @@ body.loginPage
     .loginContainer
       = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-horizontal", id: "loginForm" }) do |f|
         = f.hidden_field :reset_password_token
+        = show_reset_password_token_errors
         .form-row.row-fluid
           = f.input :password, autofocus: true, autocomplete: "new-password", wrapper: :label_newline
         .form-row.row-fluid

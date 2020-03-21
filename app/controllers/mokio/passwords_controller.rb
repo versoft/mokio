@@ -1,4 +1,6 @@
-class Users::PasswordsController < Devise::PasswordsController
+class Mokio::PasswordsController < Devise::PasswordsController
+  prepend_before_action :require_no_authentication, except: [:send_pass_change_link]
+
   # GET /resource/password/new
   # def new
   #   super
@@ -19,6 +21,17 @@ class Users::PasswordsController < Devise::PasswordsController
   # def update
   #   super
   # end
+
+  def send_pass_change_link
+    self.resource = resource_class.send_reset_password_instructions(resource_params)
+    yield resource if block_given?
+
+    if successfully_sent?(resource)
+      respond_with({}, location: users_path)
+    else
+      respond_with({}, location: edit_user_path(resource))
+    end
+  end
 
   # protected
 

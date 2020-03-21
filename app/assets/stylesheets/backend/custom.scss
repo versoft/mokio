@@ -723,7 +723,6 @@ p.super_admin_desc {
 
 .confirm-pass-holder {
   position: relative;
-  // z-index: 9999;
 }
 
 .confirm-pass-holder input {
@@ -739,7 +738,7 @@ p.super_admin_desc {
 a.confirm-pass-link {
   position: absolute;
   right: 0;
-  z-index: 2;
+  z-index: 1000 !important;
 }
 
 .modal-content span.head {
@@ -851,7 +850,6 @@ a.confirm-pass-link {
     margin: 0 auto 0 auto;
     width:100%;
     text-align:center;
-
   }
 
   table td  {
@@ -866,7 +864,6 @@ a.confirm-pass-link {
     overflow: hidden;
     margin-bottom: 15px;
     position: relative;
-
   }
 
   .value {
@@ -878,7 +875,6 @@ a.confirm-pass-link {
       color:black;
       border:1px solid silver
     }
-
   }
 
   .value_title_center{
@@ -901,4 +897,12 @@ a.confirm-pass-link {
     width:40%;
     background: #f4fff4;
   }
+}
+  
+#send_reset_instructions_manually {
+  width: auto;
+}
+
+#user_registration_info {
+  text-align: center;
 }
