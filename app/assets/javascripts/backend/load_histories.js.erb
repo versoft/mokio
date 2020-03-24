@@ -1,0 +1,22 @@
+$(window).scroll(function() {
+  if ($("#history_tab").hasClass("active")) {
+    if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+      var last_loaded_date = $(".title_date").last().data("historyDate");
+      var obj_id = $("#histories").last().data("objId");
+      var obj_type = $("#histories").last().data("objType");
+
+      $.ajax({
+        url: "/backend/histories/get_n_more",
+        type: "POST",
+        data: {
+          "last_loaded_date": last_loaded_date, 
+          "obj_id": obj_id, 
+          "obj_type": obj_type
+        },
+        error: function() {
+          alert("Błąd pobierania historii");
+        }
+      });
+    };
+  };
+});

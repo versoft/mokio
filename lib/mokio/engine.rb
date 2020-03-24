@@ -71,6 +71,8 @@ module Mokio
         backend/galleries.js
         backend/movie_gallery.js
         backend/category/category_dual_select.js
+        backend/custom_tabs.js
+        backend/load_histories.js
       )
     end
 

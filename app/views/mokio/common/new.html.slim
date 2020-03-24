@@ -4,7 +4,7 @@
     - h4class = has_data_files?(obj) ? 'tab-header' : nil
     = box_title nil, h4class do
       = bt("new_title", @obj_class)
-    - if has_data_files?(obj)
+    - if show_tabbed_form?(obj)
       = render :partial => "mokio/common/form_content_tabbed", locals: {obj: obj}
     - else
       = render :partial => "mokio/common/form_content", locals: {obj: obj}

@@ -14,5 +14,11 @@ module Mokio
     def gallery_title
       nil
     end
+
+    module ClassMethods
+      def has_gallery_enabled?
+        true
+      end
+    end
   end
 end

@@ -1,0 +1,17 @@
+- @histories.each do |value, history_grouped|
+  h4.title_date data-history-date="#{value}"
+    = history_helper_header(value, history_grouped)
+  table.table
+    - history_grouped.each do |history|
+      tr
+        td.value.value_before
+          .input_content
+            = history_helper_input(history.field, history.before_value)
+          = history_helper_show_more();
+        td.value_title_center
+          .input_title
+            = history_helper_label(history)
+        td.value.value_after
+          .input_content
+            = history_helper_input(history.field, history.current_value)
+          = history_helper_show_more();

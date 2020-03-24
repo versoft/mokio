@@ -81,5 +81,6 @@ require "mokio/concerns/controllers/module_positions"
 require "mokio/concerns/controllers/langs"
 require "mokio/concerns/controllers/main_pics"
 require "mokio/concerns/controllers/sessions"
+require "mokio/concerns/controllers/histories"
 
 

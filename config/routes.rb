@@ -179,6 +179,8 @@ Mokio::Engine.routes.draw do
   end
 
   resources :support, only: :index
+
+  post '/histories/get_n_more' => 'histories#get_n_more'
 end
 
 Rails.application.routes.draw do

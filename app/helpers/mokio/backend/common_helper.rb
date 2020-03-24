@@ -112,6 +112,33 @@ module Mokio
         return "" unless ['google','facebook','seo_tags','histories'].include?(type)
         render("mokio/common/modals/modal_#{type}",f: form_object)
       end
+
+      def tab_seo_header
+        "#{bt('tabs.seotags')} (#{obj.seo_tags.size})"
+      end
+
+      def tab_gallery_header
+        "#{bt('tabs.gallery')} (#{obj.data_files.size})"
+      end
+
+      def tab_histories_header
+        "#{bt('tabs.histories')} (#{obj.history_collection.size})"
+      end
+
+      def tab_gmap_header
+        bt('tabs.gmap')
+      end
+
+      def tab_content_header
+        bt('tabs.content')
+      end
+
+      def show_tabbed_form?(obj)
+        obj.class.try(:has_seo_tagable_enabled?) || 
+        obj.class.try(:has_historable_enabled?) || 
+        obj.class.try(:has_gmap_enabled?) || 
+        obj.class.try(:has_gallery_enabled?)
+      end
     end
   end
 end
