@@ -36,6 +36,17 @@ module Mokio
         result
       end
 
+      def render_seo_meta_tags_array(model_obj)
+        splited = []
+        tags = render_seo_meta_tags(model_obj).split(/(?<=\/>)/)
+        tags.each do |t|
+          t.split(/(?<=\/title>)/).each do |s|
+            splited << s
+          end
+        end
+        splited
+      end
+
       private
 
       def render_seo_meta_build_tag_helper(seo_tag)

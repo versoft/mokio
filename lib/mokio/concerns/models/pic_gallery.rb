@@ -16,6 +16,12 @@ module Mokio
         def default_data_file
           Mokio::Photo
         end
+
+        module ClassMethods
+          def has_gallery_enabled?
+            true
+          end
+        end
       end
     end
   end

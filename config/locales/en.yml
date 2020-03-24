@@ -133,6 +133,12 @@ en:
     reset_password: Reset password
     new_user_pass_info: After save, new user will receive an e-mail with 
       creating password instructions
+    tabs:
+      content: Content
+      gallery: Gallery
+      gmap: Map
+      seotags: Meta tags
+      histories: Change history
 
     sidebars:
       dashboard: Dashboard

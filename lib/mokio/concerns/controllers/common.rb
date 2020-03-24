@@ -49,6 +49,8 @@ module Mokio
           include Mokio::Concerns::Common::ControllerObject
           include Mokio::Concerns::Common::ControllerFunctions
           include Mokio::Concerns::Common::History::Controller
+          
+          helper Mokio::FrontendHelpers::SeoTagHelper
 
           before_action :authorize_actions
           def authorize_actions

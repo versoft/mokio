@@ -31,6 +31,14 @@ module Mokio
               self.histories.order(changed_at: :desc).group_by { |x| x.changed_at.strftime("%c") }
             end
 
+            def get_first_n_histories(n)
+              self.history_collection.first(n)
+            end
+
+            def get_next_n_histories(date, n)
+              self.history_collection.select{|k, v| k < date}.first(n)
+            end
+
             def history_inputs_exclude
               %w(updated_at)
             end

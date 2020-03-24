@@ -136,6 +136,12 @@ pl:
     reset_password: Reset hasła
     new_user_pass_info: Po kliknięciu przycisku "Zapisz" do uzytkownika zostanie 
       wysłana wiadomość z linkiem do ustawienia hasła
+    tabs:
+      content: Treść
+      gallery: Galeria
+      gmap: Mapa
+      seotags: Meta tagi
+      histories: Historia zmian
 
     sidebars:
       dashboard: Dashboard

@@ -9,8 +9,8 @@
         = render :partial => "mokio/users/generate_pass_change_link", locals: {obj: obj}
       = simple_form_for obj, :html => { :class => 'form-horizontal', autocomplete: 'off' } do |f|
         = render :partial => "mokio/common/gmap", locals: {obj: obj, f: f} if obj.class.has_gmap_enabled?
-        = backend_modal_render('seo_tags',f)
-        = backend_modal_render('histories',f)
+        = backend_modal_render('seo_tags', f) if obj.class.try(:has_seo_tagable_enabled?)
+        = backend_modal_render('histories', f) if obj.class.try(:has_historable_enabled?)
 
         = render :partial => "#{obj.class.to_s.tableize}/form", :locals => {f: f, obj: obj}
 

@@ -516,3 +516,7 @@
 ## Mokio 20.03.2020 v2.5.0
 <br/>
   1. Refactor Mokio::Users data editing
+
+## Mokio 20.03.2020 v2.6.0
+<br/>
+  1. Move content in common form to separate tabs
