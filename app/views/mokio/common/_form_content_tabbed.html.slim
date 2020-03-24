@@ -1,37 +1,58 @@
 .content.pull-up
   .tabs.mb18
-  ul.nav.nav-tabs.main-mokio-tabs
-    li class="active"
-      = link_to "Treść", "#content_tab", :"data-toggle" => "tab"
-    li
-      = link_to "Galeria", "#gallery_tab", :"data-toggle" => "tab"
+  ul.nav.nav-tabs.main-mokio-tabs.custom_tabs_nav
+    li.custom_tab_link.active
+      = link_to "Treść", "#main_form_tab", :"data-toggle" => "tab"
+    - if obj.class.try(:has_gallery_enabled?)
+      li.custom_tab_link
+        = link_to "Galeria", "#gallery_tab", :"data-toggle" => "tab"
+    - if obj.class.try(:has_seo_tagable_enabled?)
+      li.custom_tab_link
+        = link_to "SeoTags", "#seotags_tab", :"data-toggle" => "tab"
+    - if obj.class.try(:has_historable_enabled?)
+      li.custom_tab_link
+        = link_to "Historia zmian (#{obj.history_collection.size})", "#history_tab", :"data-toggle" => "tab"
+    - if obj.class.try(:has_gmap_enabled?)
+      li.custom_tab_link
+        = link_to "Gmap", "#gmap_tab", :"data-toggle" => "tab"
 
-  #galleries_tab.tab-content.tab-content-main
-    #content_tab.tab-pane.active.in
-      = common_form do
-        .row-fluid
-          = simple_form_for obj, :html => { :class => 'form-horizontal', autocomplete: 'off' } do |f|
-            = render :partial => "mokio/common/gmap", locals: {obj: obj, f: f} if obj.class.has_gmap_enabled?
-            = backend_modal_render('seo_tags',f)
-
+  = common_form do
+    .row-fluid
+      .custom_tabs
+        = simple_form_for obj, :html => { class: 'form-horizontal main_form', autocomplete: 'off'} do |f|
+          #main_form_tab.single_tab.active
             = render :partial => "#{obj.class.to_s.tableize}/form", :locals => {f: f, obj: obj}
 
-            - cache [:form_buttons, obj] do
-              .form-actions
-                = btn_submit bt("save")
-                = btn_submit bt("save_and_create_new"), true
+          - if obj.class.try(:has_seo_tagable_enabled?)
+            #seotags_tab.single_tab
+              = backend_modal_render('seo_tags', f)
+
+          - if obj.class.try(:has_historable_enabled?)   
+            #history_tab.single_tab
+              = backend_modal_render('histories', f)
+
+          - if obj.class.try(:has_gmap_enabled?)
+            #gmap_tab.single_tab
+              = render :partial => "mokio/common/gmap", locals: {obj: obj, f: f}
+
+          - cache [:form_buttons, obj] do
+            .form-actions#form_buttons
+              = btn_submit bt("save")
+              = btn_submit bt("save_and_create_new"), true
                 = btn_cancel "#{engine_root}#{obj.class.to_s.tableize.gsub("mokio/", "")}"
 
-    #gallery_tab.tab-pane
-      .row-fluid
-        - if has_data_files?(obj) && params[:action] == "edit" && obj.default_data_file != Mokio::Youtube
-          = render :template => "mokio/data_files/uploader"
-        - if has_data_files?(obj) && obj.default_data_file == Mokio::Youtube && params[:action] == "edit"
-          = render :template => "mokio/youtubes/uploader"
-        - if has_data_files?(obj) && params[:action] == "edit"
-          = render :partial => "#{obj.default_data_file.to_s.tableize}/gallery", :locals => {videos: @videos}
-        - if params[:action] == "new"
-          = "Dodawanie do galerii będzie mozliwe po zapisaniu"
+        - if obj.class.try(:has_gallery_enabled?)
+          #gallery_tab.single_tab
+            .row-fluid
+              - if has_data_files?(obj) && params[:action] == "edit" && obj.default_data_file != Mokio::Youtube
+                = render :template => "mokio/data_files/uploader"
+              - if has_data_files?(obj) && obj.default_data_file == Mokio::Youtube && params[:action] == "edit"
+                = render :template => "mokio/youtubes/uploader"
+              - if has_data_files?(obj) && params[:action] == "edit"
+                = render :partial => "#{obj.default_data_file.to_s.tableize}/gallery", :locals => {videos: @videos}
+              - if params[:action] == "new"
+                p.alert-center.alert 
+                  = "Dodawanie do galerii będzie mozliwe po zapisaniu"
 
 = render :partial => "mokio/common/datepicker_settings"
 
@@ -44,3 +65,4 @@
   - if params[:action] == "new" && has_data_files?(obj)
     = flash_message(bt("cannot_add_files_now", @obj_class))
 
+= javascript_include_tag 'backend/custom_tabs'

@@ -562,7 +562,7 @@ input.btn[type="submit"] {
   .hidden_elements { display: none !important;}
   #map {
     width: 100%;
-    height: 350px;
+    height: 500px;
     img { max-width: none; height: auto; }
   }
 }
@@ -702,6 +702,12 @@ select[multiple] {
   padding: 10px;
 }
 
+#seo_tags {
+  tr td {
+    border-top: none !important;
+  }
+}
+
 .meta-key-select {
   width: 265px!important;
 }
@@ -779,6 +785,7 @@ a.confirm-pass-link {
 
 #gallery_title {
   margin-top: 20px;
+  padding: 0 0 5px 15px;
 }
 
 .main-mokio-tabs > li{
@@ -837,9 +844,8 @@ a.confirm-pass-link {
 
 
 #histories {
-  margin-top: 80px;
+  margin-top: 10px;
   min-height:60vh !important;
-  width: 80vw !important;
   top: 0 !important;
   left: 10% !important;
   margin-left:0px !important;
@@ -904,5 +910,19 @@ a.confirm-pass-link {
 }
 
 #user_registration_info {
+  text-align: center;
+}
+
+.custom_tabs {
+  .single_tab {
+    display: none;
+  }
+
+  .single_tab.active {
+    display: block;
+  }
+}
+
+.alert-center {
   text-align: center;
 }

@@ -1,29 +1,12 @@
--if obj.class.respond_to?('has_seo_tagable_enabled?') && obj.class.has_seo_tagable_enabled?
-  a data-toggle="modal" href=("#seo_tags" )
-    button.btn.btn-warning.btn-mini.box-form2.right.zi50 class=('there_is_a_gallery_seo' if has_data_files?(obj))
-      span.icon16.icomoon-icon-google-plus.white
-      = bt("seo_tags", Mokio::SeoTag)
-      = " [#{obj.seo_tags.size}]"
-  #seo_tags.modal.fade role="dialog" aria-hidden="true" style="display:none;" aria-labelledby="meta_g_ModalLabel"
-    .modal-dialog
-      .modal-content
-        .modal-header
-          h3.modal-title.modal-photo id="meta_g_ModalLabel"
-            span.icon24.icomoon-icon-google-plus
-            = bt("seo_tags", Mokio::SeoTag)
-            small = " #{bt("seo_tags_desc", Mokio::SeoTag)}"
-        .modal-body
-          = dynamic_fields_render_all(f, :seo_tags, table_view: true) do | form_obj |
-            tr.dynamic_fields_row
-              td = form_obj.input :tag_key, input_html: {style: "width: 300px", class: 'mokio-select2 meta-key-select'}, collection: obj.class.name.constantize.seo_tagable_columns.sort, include_blank: false, wrapper: :input_without_label, label_method: ->(el){ obj.class.name.constantize.render_label(el) }
-
-              td = form_obj.input :tag_value, input_html: {style: 'height:42px;  resize: none;'}, wrapper: :input_without_label
-              td = dynamic_fields_render_delete(form_obj)
-        .modal-footer
-          button.btn.btn-primary type="button" data-dismiss="modal" = bt("close")
+#seo_tags
+  = dynamic_fields_render_all(f, :seo_tags, table_view: true) do | form_obj |
+    tr.dynamic_fields_row
+      td = form_obj.input :tag_key, input_html: {style: "width: 300px", class: 'mokio-select2 meta-key-select'}, collection: obj.class.name.constantize.seo_tagable_columns.sort, include_blank: false, wrapper: :input_without_label, label_method: ->(el){ obj.class.name.constantize.render_label(el) }
+      td = form_obj.input :tag_value, input_html: {style: 'height:42px;  resize: none;'}, wrapper: :input_without_label
+      td = dynamic_fields_render_delete(form_obj)
 
 javascript:
-  $('#seo_tags').on('hide.bs.modal', function (e) {
+  $(document).on('submit', 'form.main_form', function(e) {
     var error_message = "#{I18n.t('activerecord.errors.models.mokio/seo_tag.attributes.tag_key.taken')}";
     var validForm = true;
     var inputArr = [];
@@ -32,14 +15,14 @@ javascript:
       if($(this).is(":visible")) {
         inputValue = $(this).val();
         inputArr.push(inputValue);
-      }
+      };
     });
 
     var inputArrUniq = inputArr.filter(function(elem, index, self) {
       return index === self.indexOf(elem);
     });
 
-    if(inputArrUniq.length != inputArr.length) {
+    if (inputArrUniq.length != inputArr.length) {
       validForm = false;
       e.preventDefault();
       e.stopPropagation();
