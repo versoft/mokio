@@ -3,7 +3,7 @@
     = f.input :email, required: true, :wrapper => :input_span, readonly: true
     = f.input :first_name, :wrapper => :input_span, readonly: true
     = f.input :last_name, :wrapper => :input_span, readonly: true
-    - if can_edit_password_without_confirmation?(obj)
+    - if can_edit_password_without_confirmation?(obj) || !obj.persisted?
       = f.input :password, :wrapper => :input_span, readonly: true
       = f.input :password_confirmation, :wrapper => :input_span, readonly: true
   - else
