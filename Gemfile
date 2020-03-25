@@ -16,6 +16,7 @@ gem 'mysql2', '0.5.3' # this is NOT required, someone may want to use different 
 gem 'puma', '~> 4.1'
 gem 'haml2slim'
 
+gem 'dotenv-rails'
 # assety sie nie wczytywaly
 gem 'rails_serve_static_assets'
 # gem 'rails_stdout_logging'

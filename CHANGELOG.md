@@ -507,3 +507,8 @@
   2. Update Spec Dummy App
   3. Dont allow remove object when deletable: false
   4. Change Mokio::Menu lang to optional
+
+## Mokio 26.03.2020 v2.4.2
+<br/>
+  1. Add CircleCI config
+  2. Update Spec Dummy App database.yml file to works with .env config

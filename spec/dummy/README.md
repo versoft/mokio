@@ -2,8 +2,8 @@
 App used for testing and run Mokio gem.
 
 ### How to configure:
-1. Copy `spec/dummy/config/database.yml.example` to `spec/dummy/config/database.yml`
-2. Update `spec/dummy/config/database.yml` - "development" and "test" database should be different.
+1. Copy `spec/dummy/.sample.env` to `spec/dummy/.env`
+2. Update `spec/dummy/.env` - "development" and "test" database should be different.
 3. Run commands to create database, run migrations and seed data in `spec/dummy`:
 ```
 bundle install
