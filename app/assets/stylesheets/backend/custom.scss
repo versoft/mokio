@@ -723,7 +723,6 @@ p.super_admin_desc {
 
 .confirm-pass-holder {
   position: relative;
-  // z-index: 9999;
 }
 
 .confirm-pass-holder input {
@@ -739,7 +738,7 @@ p.super_admin_desc {
 a.confirm-pass-link {
   position: absolute;
   right: 0;
-  z-index: 2;
+  z-index: 1000 !important;
 }
 
 .modal-content span.head {
