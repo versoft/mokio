@@ -11,6 +11,8 @@ module Mokio
 
         included do
           load_and_authorize_resource
+
+          after_action :send_email_with_password, :only => [:create]
         end
 
         #
@@ -26,6 +28,7 @@ module Mokio
         def create
           create_obj( @obj_class.new(obj_params) )
           obj.current_user = current_user
+          obj.set_random_password
           respond_to do |format|
             if obj.save
               if !params[:save_and_new].blank?
@@ -133,6 +136,10 @@ module Mokio
             # if password is correct and user is NOT super admin - allow remove
             current_user.valid_password?(remove_params[:confirm_delete]) &&
             !obj.is_super_admin?
+          end
+
+          def send_email_with_password
+            
           end
       end
     end

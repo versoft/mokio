@@ -78,6 +78,12 @@ module Mokio
           def is_user_logged_in?
             self.current_user.present?
           end
+
+          def set_random_password
+            generated_password = SecureRandom.base64(94)
+            self.password = generated_password
+            self.password_confirmation = generated_password
+          end
         end
 
         module ClassMethods
@@ -172,7 +178,7 @@ module Mokio
           end
 
           def password_complexity
-            return if /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,128}$/.match(password)
+            return if /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-=\/\\]).{8,128}$/.match(password)
 
             errors.add :password, :weak_password
           end

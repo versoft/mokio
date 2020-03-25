@@ -131,6 +131,8 @@ en:
     add_mokio/photos: Add photos
     add_mokio/youtubes: Add movies
     reset_password: Reset password
+    new_user_pass_info: After save, new user will receive an e-mail with 
+      creating password instructions
 
     sidebars:
       dashboard: Dashboard
@@ -683,7 +685,8 @@ en:
         mokio/user:
           attributes:
             password:
-              too_short: Password too short (min 8 characters).
+              too_short: Password is too short (min 8 characters)
+              too_long: Password is too long (max 128 characters)
               blank: The password is not given
               weak_password: Password must be 8 characters including an uppercase letter, an lowercase letter, a number and a special character
             current_password:
