@@ -1,4 +1,5 @@
-# Mokio CMS
+# Mokio CMS [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=shield)](https://app.circleci.com/pipelines/github/versoft/mokio)
+
 
 ## In short:
 MOKIO is open source CMS compatible with rails 6.0.1 and ruby 2.6.5.
