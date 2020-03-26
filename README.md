@@ -1,4 +1,4 @@
-# Mokio CMS [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=shield)](https://app.circleci.com/pipelines/github/versoft/mokio)
+# Mokio CMS [![<Versoft>](https://circleci.com/gh/versoft/mokio.svg?style=shield)](<https://app.circleci.com/pipelines/github/versoft/mokio>)
 
 
 ## In short:
