@@ -1,0 +1,13 @@
+- if mokio_filters_enabled?(obj)
+  = form_with(method: :get, class: 'mokio-filter-form', local: true)
+    p Filtry:
+    - obj.filter_index_config.each do |key, data|
+      - if data[:field_type] == "select"
+        = render partial: "mokio/common/filters/select", \
+        locals: {field: key, data: data, obj: obj}
+      - elsif data[:field_type] == "date"
+        = render partial: "mokio/common/filters/date", \
+        locals: {field: key, data: data, obj: obj}
+      - elsif data[:field_type] == "text"
+        = render partial: "mokio/common/filters/text", \
+        locals: {field: key, data: data, obj: obj}

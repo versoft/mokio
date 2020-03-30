@@ -1,0 +1,7 @@
+div.holder
+  - value_text = params[:mokio_filters] ? params[:mokio_filters][field] : nil
+  = label(:mokio_filters, field, t(object_attribute_trans_key(obj, field)))
+  = text_field_tag( \
+    "mokio_filters[#{field}]", \
+    value_text \
+  )

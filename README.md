@@ -59,6 +59,7 @@ end
 - [Select2 helper](docs/select2.md) - How to use select inputs with autosearch
 - [Backend input helpers](docs/backend_inputs_helpers.md) - Describes some input helpers
 - [History](docs/history.md) - Model history tracking
+- [Filters in index views](docs/filters_in_index_views.md) - How to configure filters in indexes
 
 More docs soon!
 

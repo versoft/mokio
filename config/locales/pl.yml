@@ -807,6 +807,7 @@ pl:
         subtitle: "Podtytuł"
         type: Typ
         updated_at: Ostatnio edytowany
+        created_at: Utworzony
         lang_id: Język
         home_page: Strona Główna
         main_pic: Zdjęcie Główne

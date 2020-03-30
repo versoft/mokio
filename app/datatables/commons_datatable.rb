@@ -78,7 +78,6 @@ private
   end
 
   def fetch_commons
-
     if params[:search].present? && params[:search][:value].present?
       # TODO Check Solr Server Running
       if Mokio.solr_enabled
@@ -97,9 +96,9 @@ private
           columns << ' LIKE :kw'
           first_col = false
         end
-        collection = @obj_class
-          .order("#{sort_column} #{sort_direction}")
-          .where("#{columns}", :kw=>"%#{params[:search][:value]}%")
+        collection = @obj_class.order("#{sort_column} #{sort_direction}")
+        collection = collection.where("#{columns}", :kw=>"%#{params[:search][:value]}%")
+        collection = filtered_collection(collection)
         collection = collection.page(page).per_page(per_page)
       end
 
@@ -111,6 +110,7 @@ private
       collection = collection.page(page).per_page(per_page)
     else
       collection = @obj_class.order("#{sort_column} #{sort_direction}")
+      collection = filtered_collection(collection)
       collection = collection.page(page).per_page(per_page)
     end
     collection
@@ -118,6 +118,35 @@ private
 
   def page
     params[:start].to_i/per_page + 1
+  end
+
+  def filtered_collection(collection)
+    if params[:mokio_filters]
+      params[:mokio_filters].each do |field_name, value|
+        next if value.blank?
+
+        type = find_filtered_column_type(field_name, value)
+        case type
+        when :boolean, :integer
+          collection = collection.where("#{field_name} = #{value}")
+        when :datetime
+          collection = collection.where("DATE(#{field_name}) = '#{value}'")
+        when :string
+          collection = collection.where("#{field_name} LIKE '%#{value}%'")
+        else
+          raise "dont found type: #{type}"
+        end
+      end
+      collection
+    else
+      collection
+    end
+  end
+
+  def find_filtered_column_type(field_name, value)
+    column_data = @obj_class.columns_hash[field_name]
+    raise "Field '#{field_name}' is not defined" if column_data.nil?
+    column_data.type
   end
 
   def per_page

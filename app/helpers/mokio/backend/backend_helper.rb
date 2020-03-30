@@ -183,6 +183,19 @@ module Mokio
       </div>"
       .html_safe
       end
+
+      def mokio_filters_enabled?(obj_class)
+        obj_class.respond_to?(:filter_index_config) &&
+        !obj_class.filter_index_config.blank?
+      end
+
+      def object_attribute_trans_key(obj, field_sym)
+        [
+          'activerecord.attributes',
+          obj.name.tableize.singularize,
+          field_sym.to_s
+        ].join('.')
+      end
     end
   end
 end

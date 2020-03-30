@@ -904,7 +904,33 @@ a.confirm-pass-link {
     background: #f4fff4;
   }
 }
-  
+
+.mokio-filter-form {
+  border-bottom: 1px solid #a2a2a2;
+  margin-bottom: 0px;
+  padding-bottom: 15px;
+  background-image: linear-gradient(#f5f6f8, #ececec);
+  p {
+    display: inline-block;
+    font-size: 15px;
+    margin-right: 15px;
+    margin-left: 30px;
+    position: relative;
+    top: -5px;
+  }
+  .holder {
+    display: inline-block;
+    margin-right: 30px;
+  }
+  label {
+    display: block;
+    text-align: center;
+  }
+  input {
+    height: 43px;
+  }
+}
+
 #send_reset_instructions_manually {
   width: auto;
 }
