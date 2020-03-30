@@ -56,6 +56,8 @@
 // Search in backend
 //= require backend/search
 
+//= require backend/index_filter_fields.js
+
 // Photo box
 //= require fancybox
 

@@ -551,4 +551,7 @@
 ## Mokio 09.04.2020 v2.7.4
 <br/>
   1. Fix gallery upload
-  
+
+## Mokio 13.05.2020 v2.7.5
+<br/>
+  1. Add basic filters in index views through config method "filter_index_config".

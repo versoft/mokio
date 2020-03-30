@@ -786,6 +786,7 @@ en:
         subtitle: "Subtitle"
         type: Type
         updated_at: Updated at
+        created_at: Created at
         lang_id: Language
         home_page: Home page
         main_pic: Main Photo

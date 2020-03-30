@@ -1,0 +1,9 @@
+div.holder
+  - selected_value = params[:mokio_filters] ? params[:mokio_filters][field] : nil
+  = label(:mokio_filters, field, t(object_attribute_trans_key(obj, field)))
+  = select( \
+    :mokio_filters, \
+    field, \
+    options_for_select(data[:values], selected_value), \
+    include_blank: true \
+  )

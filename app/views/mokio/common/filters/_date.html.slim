@@ -1,0 +1,8 @@
+  div.holder
+    - value = params[:mokio_filters] ? params[:mokio_filters][field] : nil
+    = label(:mokio_filters, field, t(object_attribute_trans_key(obj, field)))
+    = date_field( \
+      :mokio_filters, \
+      field, \
+      value: value \
+    )
