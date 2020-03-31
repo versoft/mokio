@@ -70,6 +70,7 @@ module Mokio
         backend/photo_gallery/photo_gallery.js
         backend/galleries.js
         backend/movie_gallery.js
+        backend/category/category_dual_select.js
       )
     end
 
