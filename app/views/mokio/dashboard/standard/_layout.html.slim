@@ -1,0 +1,28 @@
+.row-fluid
+  - unless @loose_content.empty?
+    = render :template => "mokio/dashboard/standard/tbl_content", \
+      locals: { collection: @loose_content, \
+                title_msg: bt('content_not_in_menu'), \
+                label_msg: bt("all_dashboard"), \
+                more: @more_loose_content, \
+                more_link: only_loose_contents_path }
+
+  - unless @empty_menu.empty?
+    = render :template => "mokio/dashboard/standard/tbl_content", \
+      locals: { collection: @empty_menu, \
+                title_msg: bt('menu_with_invisible'), \
+                label_msg: bt("all_dashboard"), \
+                more: @more_empty_menu, \
+                more_link: only_loose_contents_path }
+
+.row-fluid
+  = render :template => "mokio/dashboard/standard/tbl_content", \
+    locals: { collection: @last_updated, \
+              title_msg: bt('last_updated_content'), \
+              label_msg: bt("last_updated"), \
+              more: @last_updated.any? ? @last_updated.first.updated_at.strftime("%d-%m-%Y") : "" }
+  = render :template => "mokio/dashboard/standard/tbl_content", \
+    locals: { collection: @last_created, \
+              title_msg: bt('last_created_content'), \
+              label_msg: bt("last_created"), \
+              more: @last_created.any? ? @last_created.first.updated_at.strftime("%d-%m-%Y") : "" }

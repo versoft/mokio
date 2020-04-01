@@ -280,8 +280,24 @@ module Mokio
   mattr_accessor :backend_search_enabled
   self.backend_search_enabled = ["Mokio::PicGallery","Mokio::MovGallery","Mokio::Article","Mokio::Contact","Mokio::Menu"]
 
-  mattr_accessor :backend_search_nested_enabled
-  self.backend_search_nested_enabled= []
+  # Enable standard or advanced dashboard
+  mattr_accessor :mokio_advanced_dashboard_enabled
+  self.mokio_advanced_dashboard_enabled = false
+
+  # mattr_accessor :mokio_advanced_dashboard_models
+  # self.mokio_advanced_dashboard_models ={
+    # "Mokio::PicGallery" => {
+    #   "columns" => ['intro','active'],
+    #   'actions' => true,
+    #   'translations' => {
+    #     "title_msg" => "Title",
+    #     "label_msg" => "Label",
+    #     "more" => "More"
+    #   }
+    # }
+
+  mattr_accessor :mokio_advanced_dashboard_models
+  self.mokio_advanced_dashboard_models = {}
 
   #
   # Default way to configure Mokio

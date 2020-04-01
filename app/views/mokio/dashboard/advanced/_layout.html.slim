@@ -1,0 +1,8 @@
+-@advanced_dashboard.each_slice(2) do |sliced_collection|
+  .row-fluid
+    -sliced_collection.each do |item|
+      = render partial: "mokio/dashboard/advanced/content",:locals => { item: item}
+
+
+
+

@@ -183,6 +183,16 @@ module Mokio
       </div>"
       .html_safe
       end
+
+      def render_action_buttons_helper(obj,base_class = true)
+        obj_class = (base_class) ? obj.class.base_class : obj.class
+        html = ""
+        html << table_controls_edit_btn( edit_url(obj_class, obj) )
+        html <<  table_controls_delete_btn( obj_url(obj_class, obj) ) if obj.deletable
+        html <<  table_controls_copy_btn( copy_url(obj_class, obj) ) if obj.deletable
+        html.html_safe
+      end
+
     end
   end
 end

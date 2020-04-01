@@ -1,0 +1,8 @@
+= render :template => "mokio/dashboard/advanced/tbl_content", \
+  locals: { collection: item[:collection], \
+    item_columns: item[:columns], \
+    item_actions: item[:actions], \
+    title_msg: item[:translations]["title_msg"] || bt('menu_with_invisible'), \
+    label_msg: item[:translations]["label_msg"] || bt("all_dashboard"), \
+    more: @more_empty_menu, \
+    more_link: item[:more_path]}

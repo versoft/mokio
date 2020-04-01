@@ -1,0 +1,8 @@
+- cache [:dashboard_content, content] do
+  tr
+    td
+      a href=edit_url(content.class.base_class, content)
+        = content.title
+    td
+      .controls.center
+        =render_action_buttons_helper(content)

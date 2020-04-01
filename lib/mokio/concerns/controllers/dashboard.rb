@@ -34,6 +34,41 @@ module Mokio
           @last_created  = Mokio::Content.limit(Mokio.dashboard_size.to_i).order('created_at desc')
           @last_updated  = Mokio::Content.limit(Mokio.dashboard_size.to_i).order('updated_at desc')
           @static_module = Mokio::StaticModule.includes(:positions).where('positions.id IS NULL').references(:contents)
+
+          # advanced dashboard
+
+          @advanced_dashboard = collect_advanced_dashboard
+        end
+
+        private
+
+        def collect_advanced_dashboard
+          return [] unless Mokio.mokio_advanced_dashboard_enabled
+
+          collected = []
+          config_models = Mokio.mokio_advanced_dashboard_models
+          config_models.each do |key,val|
+
+            begin
+              model = key.classify.constantize
+            rescue => e
+              raise "Advanced dashboard model error: #{e.inspect}"
+              return []
+            end
+
+            begin
+              item = {}
+
+              names = %w(actions columns translations)
+              names.map{|a| item[a.to_sym] = val["#{a}"]}
+
+              item[:collection] = model.all.order(id: :desc).limit(5)
+              collected << item
+            rescue => e
+              puts "Advanced dashboard collect records error: #{e.inspect}"
+            end
+          end
+          return collected
         end
       end
     end

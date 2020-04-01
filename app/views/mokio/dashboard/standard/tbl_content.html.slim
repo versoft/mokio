@@ -12,13 +12,13 @@
               th= bt("name")
               th= bt("actions")
           tbody
-            = render partial: "content", collection: collection
+            = render partial: "mokio/dashboard/standard/content", collection: collection
         - else
           tbody
             p= bt('no_records_found')
 
       - if local_assigns[:more_link]
-        a href=(more_link ) 
+        a href=(more_link )
           span.btn.btn-info.btn-mini.btn-more
             = bt("more")
             span.icomoon-icon-arrow-right-4.white
