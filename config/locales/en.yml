@@ -638,7 +638,9 @@ en:
             name:
               blank: "Name cannot be blank"
             lang:
-              not_match_parent: "Chosen parent element doesn't match chosern language"
+              not_match_parent: "Chosen parent element doesn't match chosen language"
+            category:
+              required: Category cannot be blank
         mokio/static_module:
           attributes:
             title:
