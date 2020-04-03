@@ -535,3 +535,7 @@
   9. Added default search input value based on query parameter
   10. Added content types in mokio settings (default)
   11. Removed base contents routing
+
+## Mokio 03.04.2020 v2.7.1
+<br/>
+  1. Remove excessive Mokio::SiteHelper cookies

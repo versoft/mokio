@@ -149,5 +149,9 @@ module Mokio
     def self.setup
       yield self
     end
+
+    def self.is_helper_available?(path)
+      self.config[path].present?
+    end
   end
 end
