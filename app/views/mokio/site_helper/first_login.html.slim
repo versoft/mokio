@@ -1,6 +1,6 @@
-- path = request.original_fullpath
+- path = request.original_fullpath&.chomp('/')
 
-- if cookies[path].blank? || Mokio::SiteHelper.debug || Mokio.debug_all && Mokio.enable_site_helper
+- if Mokio::SiteHelper.is_helper_available?(path) && (cookies[path].blank? || Mokio::SiteHelper.debug || Mokio.debug_all && Mokio.enable_site_helper)
   - cookies[path] = { :value => path, expires: 1.year.from_now }
 
   ol#joyRideTipContent
