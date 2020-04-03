@@ -2,7 +2,4 @@
   locals: { collection: item[:collection], \
     item_columns: item[:columns], \
     item_actions: item[:actions], \
-    title_msg: item[:translations]["title_msg"] || bt('menu_with_invisible'), \
-    label_msg: item[:translations]["label_msg"] || bt("all_dashboard"), \
-    more: @more_empty_menu, \
-    more_link: item[:more_path]}
+    more_link:backend_url_helper_generate_obj_index_url(item[:model])}

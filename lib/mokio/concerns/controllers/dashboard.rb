@@ -63,6 +63,7 @@ module Mokio
               names.map{|a| item[a.to_sym] = val["#{a}"]}
 
               item[:collection] = model.all.order(id: :desc).limit(5)
+              item[:model] = model
               collected << item
             rescue => e
               puts "Advanced dashboard collect records error: #{e.inspect}"

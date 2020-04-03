@@ -193,6 +193,17 @@ module Mokio
         html.html_safe
       end
 
+      def backend_url_helper_generate_obj_path(obj_class)
+        path = obj_class.name
+        path = path.gsub("Mokio::","") if path.include? "Mokio::"
+        path = path.tableize.gsub("/","_")
+        path
+      end
+
+      def backend_url_helper_generate_obj_index_url(obj_class)
+        backend_url_helper_generate_obj_path(obj_class)
+      end
+
     end
   end
 end
