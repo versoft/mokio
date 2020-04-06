@@ -27,6 +27,7 @@ module Mokio
     #
     initializer "mokio.precompile", group: :all do |app|
       app.config.assets.precompile += %w( *.eot *.svg *.woff *.ttf
+        mokio_manifest.js
         html5.js
         mokio.js
         backend.js
