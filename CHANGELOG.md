@@ -547,3 +547,8 @@
 ## Mokio 10.04.2020 v2.7.3
 <br/>
   1. Fix etag update
+
+## Mokio 09.04.2020 v2.7.4
+<br/>
+  1. Fix gallery upload
+  

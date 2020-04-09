@@ -1,4 +1,7 @@
 - @photos.each do |photo|
   | $("#itemContainer").append("#{j render :template => 'mokio/photos/photo', :locals => {photo: photo} }");
   | activeButtonForPhoto(#{photo.id});
+  | $("#gallery_content").append("#{j render template: 'mokio/photos/photo_modal', locals: {photo: photo}}");
+  | var photoCount = parseInt($("#photoCount").text()) + 1;
+  | $('#photoCount').text(photoCount);
 | $("#myModalLabel2 .loader").remove();
