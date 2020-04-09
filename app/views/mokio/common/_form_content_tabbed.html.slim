@@ -43,7 +43,7 @@
 
         - if obj.class.try(:has_gallery_enabled?)
           #gallery_tab.single_tab
-            .row-fluid
+            .row-fluid#gallery_content
               - if has_data_files?(obj) && params[:action] == "edit" && obj.default_data_file != Mokio::Youtube
                 = render :template => "mokio/data_files/uploader"
               - if has_data_files?(obj) && obj.default_data_file == Mokio::Youtube && params[:action] == "edit"

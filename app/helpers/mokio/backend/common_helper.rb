@@ -119,7 +119,8 @@ module Mokio
       end
 
       def tab_gallery_header
-        "#{bt('tabs.gallery')} (#{obj.data_files.size})"
+        gallery_header = "#{bt('tabs.gallery')} (<span id='photoCount'>#{obj.data_files.size}</span>)"
+        gallery_header.html_safe
       end
 
       def tab_histories_header
