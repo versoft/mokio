@@ -1,7 +1,7 @@
 .span12
   = render :partial => "mokio/common/notice"
   .box
-    - h4class = has_data_files?(obj) ? 'tab-header' : nil
+    - h4class = show_tabbed_form?(obj) ? 'tab-header' : nil
     = box_title nil, h4class do
       = bt("new_title", @obj_class)
     - if show_tabbed_form?(obj)

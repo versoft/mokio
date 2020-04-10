@@ -539,3 +539,7 @@
 ## Mokio 03.04.2020 v2.7.1
 <br/>
   1. Remove excessive Mokio::SiteHelper cookies
+
+## Mokio 10.04.2020 v2.7.2
+<br/>
+  1. Fix tabbed form headers
