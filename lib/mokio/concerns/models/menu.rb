@@ -242,9 +242,7 @@ module Mokio
         # Update etag for Content records after updating menu
         #
         def touch_content
-          Mokio::Content.all.each do |c|
-            c.touch(:etag)
-          end
+          Mokio::Content.update_all(etag: Time.now)
         end
 
         def one_content?

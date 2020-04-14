@@ -543,3 +543,7 @@
 ## Mokio 10.04.2020 v2.7.2
 <br/>
   1. Fix tabbed form headers
+
+## Mokio 10.04.2020 v2.7.3
+<br/>
+  1. Fix etag update
