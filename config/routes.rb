@@ -109,6 +109,8 @@ Mokio::Engine.routes.draw do
     end
   end
 
+  resources :attachments
+
   resources :external_scripts do
     member do
       post :update_active

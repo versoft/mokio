@@ -40,7 +40,7 @@ require "mokio/concerns/models/external_script"
 require "mokio/concerns/models/seo_tag"
 require "mokio/concerns/models/history"
 require "mokio/concerns/models/backend_search"
-
+require "mokio/concerns/models/attachment"
 
 #
 # CommonController extensions

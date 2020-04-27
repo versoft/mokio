@@ -6,7 +6,7 @@ module Mokio
       has_many :data_files, class_name: "Mokio::DataFile", as: :imageable, dependent: :destroy
     end
 
-    # Available options: Mokio::Photo, Mokio::Youtube
+    # Available options: Mokio::Photo, Mokio::Youtube, Mokio::Attachment
     def default_data_file
       Mokio::Photo
     end
