@@ -70,7 +70,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'ckeditor',                    '~> 4.3.0'  #-----OLD: '~> 4.2'
   s.add_dependency 'carrierwave',                 '~> 1.3.1'  #-----OLD:  '~> 0.10',  '>= 0.10.0'
   s.add_dependency 'rmagick',                     '~> 4.0.0'  #-----OLD:  '~> 2.13',  '>= 2.13.2'
-  s.add_dependency 'mini_magick',                 '~> 4.9.5'  #-----OLD:  '~> 3.7',   '>= 3.7.0'
+  s.add_dependency 'mini_magick',                 '~> 4.10.1'  #-----OLD:  '~> 3.7',   '>= 3.7.0'
   s.add_dependency 'amoeba',                      '~> 3.1.0'  #-----OLD:  '~> 3.0'
   s.add_dependency 'ancestry',                    '~> 3.0.7'  #-----OLD:  '~> 2.1',   '>= 2.1.0'
   s.add_dependency 'acts_as_list',                '~> 1.0.0'  #-----OLD:  '~> 0.4',   '>= 0.4.0'
