@@ -1,1 +1,4 @@
 --color
+
+# Comment it out if you prefer dotted test output
+--format documentation
