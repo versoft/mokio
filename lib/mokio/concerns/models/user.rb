@@ -186,7 +186,7 @@ module Mokio
           end
 
           def password_complexity
-            return if /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-=\/\\]).{8,128}$/.match(password)
+            return if /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-\/\\=]).{8,128}$/.match(password)
 
             errors.add :password, :weak_password
           end
