@@ -1,27 +1,43 @@
-# == Schema Information
-#
-# Table name: gmaps
-#
-#  id                          :integer          not null, primary key
-#  full_address                :string(255)
-#  street_number               :string(255)
-#  route                       :string(255)
-#  locality                    :string(255)
-#  postal_code                 :string(255)
-#  country                     :string(255)
-#  administrative_area_level_2 :string(255)
-#  administrative_area_level_1 :string(255)
-#  gtype                       :string(255)
-#  lat                         :decimal(10, 6)
-#  lng                         :decimal(10, 6)
-#  zoom                        :integer          default(15)
-#  created_at                  :datetime
-#  updated_at                  :datetime
-#
+# frozen_string_literal: true
 
 require 'spec_helper'
+
 module Mokio
-  describe Gmap do
-    pending "add some examples to (or delete) #{__FILE__}"
+  RSpec.describe Gmap, type: :model do
+    before do
+      @gmap = Gmap.new(
+        full_address: 'Plaża Miejska Olsztyn',
+        lat: 53.7767345,
+        lng: 20.4456407
+      )
+    end
+
+    it 'is valid with address, latitude and longitude' do
+      expect(@gmap).to be_valid
+    end
+
+    it 'is invalid without address' do
+      @gmap.full_address = nil
+      @gmap.valid?
+      expect(@gmap.errors[:full_address]).to(
+        include 'Adres nie może byc pusty'
+      )
+    end
+
+    it 'is invalid without latitude' do
+      @gmap.lat = nil
+      @gmap.valid?
+      expect(@gmap.errors[:lat]).to(
+        include 'Szerokość geograficzna nie może byc pusta'
+      )
+    end
+
+    it 'is invalid without longitude' do
+      @gmap.lng = nil
+      @gmap.valid?
+      expect(@gmap.errors[:lng]).to(
+        include 'Długość geograficzna nie może byc pusta'
+      )
+    end
   end
 end

@@ -745,6 +745,14 @@ pl:
           attributes:
             title:
               blank: "Tytuł nie może być pusty"
+        mokio/gmap:
+          attributes:
+            full_address:
+              blank: Adres nie może byc pusty
+            lat:
+              blank: Szerokość geograficzna nie może byc pusta
+            lng:
+              blank: Długość geograficzna nie może byc pusta
 
       editable:
         not_permitted: Edycja niedozwolona

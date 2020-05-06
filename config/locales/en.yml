@@ -726,6 +726,14 @@ en:
               taken: Given e-mail address is taken
               blank: Email cannot be empty
               invalid: Provided an incorrect e-mail address
+        mokio/gmap:
+          attributes:
+            full_address:
+              blank: Address can't be blank
+            lat:
+              blank: Latitude can't be blank
+            lng:
+              blank: Longitude can't be blank
       editable:
         not_permitted: Edit not allowed
       messages:
