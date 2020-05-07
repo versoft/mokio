@@ -3,6 +3,7 @@ namespace :mokio_install do
   task create_menus: :environment do
     unless Mokio::Menu.any? 
       # todo: find where menus are actually generated
+      default_lang_name = Mokio.frontend_default_lang
       menu = Mokio::Menu.find_by_name(default_lang_name)
       puts "Created default initial menu '#{menu.name}'".green unless menu.nil?
 
