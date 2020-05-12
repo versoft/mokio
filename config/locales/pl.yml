@@ -753,6 +753,10 @@ pl:
               blank: Szerokość geograficzna nie może byc pusta
             lng:
               blank: Długość geograficzna nie może byc pusta
+        mokio/recipient:
+          attributes:
+            email:
+              email: Proszę podać adres e-mail w poprawnym formacie
 
       editable:
         not_permitted: Edycja niedozwolona

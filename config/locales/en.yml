@@ -734,6 +734,11 @@ en:
               blank: Latitude can't be blank
             lng:
               blank: Longitude can't be blank
+        mokio/recipient:
+          attributes:
+            email:
+              email: E-mail in wrong format
+
       editable:
         not_permitted: Edit not allowed
       messages:
