@@ -28,7 +28,7 @@ module Mokio
             :lockable, :timeoutable
 
           validates_presence_of   :email
-          validates_uniqueness_of :email, case_sensitive: true, allow_blank: true, if: :email_changed?
+          validates_uniqueness_of :email, case_sensitive: false, allow_blank: true, if: :email_changed?
           validates_format_of     :email, with: email_regexp, allow_blank: true, if: :email_changed?
 
           validates_presence_of     :password, if: :password_required?

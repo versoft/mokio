@@ -115,7 +115,7 @@ module Mokio
           expect(@user).to be_valid
         end
 
-        it 'is case sensitive' do
+        it 'is case insensitive' do
           @user.save
           other_user = User.new(
             email: 'ADMIN@ADMIN.COM',
