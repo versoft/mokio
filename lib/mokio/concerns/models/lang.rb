@@ -12,7 +12,10 @@ module Mokio
         include Mokio::Concerns::Models::Common
 
         validates :name, presence: true
-        validates :shortname, presence: true, uniqueness: { case_sensitive: true }
+
+        validates :shortname, presence: true
+        validates_uniqueness_of :shortname, case_sensitive: false
+
         has_many :menu
         has_many :contents
         after_update :update_menu_name
@@ -71,9 +74,9 @@ module Mokio
       private
 
       def destroy_all_dependand
-        Mokio::StaticModule.where(:lang_id => id).update_all(:lang_id => nil)
-        Mokio::ContentLink.delete_all(:menu_id => menu.pluck(:id))
-        Mokio::Menu.delete_all(:lang_id => id)
+        Mokio::StaticModule.where(lang_id: id).update_all(lang_id: nil)
+        Mokio::ContentLink.where(menu_id: menu.pluck(:id))&.delete_all
+        Mokio::Menu.where(lang_id: id)&.delete_all
       end
 
       def add_fake_menu
