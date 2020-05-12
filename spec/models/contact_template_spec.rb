@@ -1,18 +1,21 @@
-# == Schema Information
-#
-# Table name: contact_templates
-#
-#  id         :integer          not null, primary key
-#  tpl        :text
-#  created_at :datetime
-#  updated_at :datetime
-#  contact_id :integer
-#
+# frozen_string_literal: true
 
 require 'spec_helper'
 
 module Mokio
-  describe ContactTemplate do
-    pending "add some examples to (or delete) #{__FILE__}"
+  RSpec.describe ContactTemplate, type: :model do
+    it 'is valid with a contact' do
+      contact = Contact.create!(title: 'test contact')
+      contact_template = ContactTemplate.new(
+        contact_id: contact.id
+      )
+      contact_template.valid?
+      expect(contact_template).to be_valid
+    end
+
+    it 'returns an array of attributes' do
+      attributes = ContactTemplate.contact_template_attributes
+      expect(attributes).to eq([:tpl])
+    end
   end
 end

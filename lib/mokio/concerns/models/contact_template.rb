@@ -17,7 +17,7 @@ module Mokio
           # Table of contact_template_attributes
           #
           def contact_template_attributes
-            [ :tpl ]
+            [:tpl]
           end
         end
       end
