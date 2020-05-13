@@ -14,8 +14,9 @@
           tr
             / Remember to override columns_for_table in your Model
             - @obj_class.columns_for_table.each do |t|
-              th= bt(t, @obj_class)
-            th= bt("actions")
+              th = bt(t, @obj_class)
+            - if show_index_table_actions(@obj_class)
+              th = bt("actions")
         tbody
           - cache obj do
             = render partial: "mokio/common/obj", collection: obj

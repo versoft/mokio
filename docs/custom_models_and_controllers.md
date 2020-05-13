@@ -13,6 +13,7 @@ Suppose you want add new model called Product to CMS.
       - name - string
       - content - text
       (I skipped creating migrations)
+
 2. Configure index view (a list with product columns)
     - columns in index view
     Suppose you want columns with ID, active info and name of a product.
@@ -68,6 +69,12 @@ Suppose you want add new model called Product to CMS.
 
       #can clone
       def cloneable?
+        false
+      end
+      ```
+    - You can hide action button column in index view by adding `show_index_table_actions?` class method set to `false` in your model:
+      ```
+      def self.show_index_table_actions?
         false
       end
       ```

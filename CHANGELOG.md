@@ -555,3 +555,9 @@
 ## Mokio 13.05.2020 v2.7.5
 <br/>
   1. Add basic filters in index views through config method "filter_index_config".
+
+## Mokio 13.05.2020 v2.7.6
+<br/>
+  1. Add action button column hiding method in index view for each model
+  2. Remove target=_"blank" from logo
+  
