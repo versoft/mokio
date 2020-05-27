@@ -378,3 +378,7 @@
 <br/>
   1. Improve fetching data with current_records method.
   2. Added method allowed_search_columns to filter columns during search
+
+### Mokio 27.05.2020 v0.1.8.1
+<br/>
+  1. Remove excessive Mokio::SiteHelper cookies
