@@ -560,4 +560,7 @@
 <br/>
   1. Add action button column hiding method in index view for each model
   2. Remove target=_"blank" from logo
-  
+
+## Mokio 12.08.2020 v2.7.7
+<br/>
+  1. Change login

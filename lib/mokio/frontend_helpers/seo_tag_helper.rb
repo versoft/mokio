@@ -6,21 +6,31 @@ module Mokio
     module SeoTagHelper
       def render_seo_meta_tags(model_obj)
         result = ""
-        return result unless model_obj.class.has_seo_tagable_enabled?
-
-        collection = model_obj.seo_tags
+        default_seo_tags = nil
         processed_tags = []
-        if collection.any?
-          collection.each do |seo_tag|
-            processed_tags << seo_tag.tag_key.downcase
-            result << render_seo_meta_build_tag_helper(seo_tag)
+
+        unless model_obj.instance_of?(Array)
+          return result unless model_obj.class.has_seo_tagable_enabled?
+
+          collection = model_obj.seo_tags
+          if collection.any?
+            collection.each do |seo_tag|
+              processed_tags << seo_tag.tag_key.downcase
+              result << render_seo_meta_build_tag_helper(seo_tag)
+            end
           end
+
+          if model_obj.respond_to?(:default_seo_tags)
+            default_seo_tags = model_obj.default_seo_tags
+          end
+        else
+          default_seo_tags = model_obj
         end
 
-        if model_obj.respond_to?(:default_seo_tags)
-          model_obj.default_seo_tags.each do |dst|
-            #dst = {key: "og:title", value: "value"}
-            #check is already used:
+        if default_seo_tags
+          default_seo_tags.each do |dst|
+            # dst = {key: "og:title", value: "value"}
+            # check is already used:
             unless processed_tags.include?(dst[:key].downcase)
               founded_key = Mokio::SeoTag.find_key_in_seo_list(dst[:key])
               next if founded_key.nil?
