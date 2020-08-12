@@ -2,5 +2,5 @@ module Mokio
   #
   # Actual Mokio version
   #
-  VERSION = "2.7.6"
+  VERSION = "2.7.7"
 end
