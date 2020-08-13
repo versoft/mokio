@@ -54,6 +54,7 @@ require "mokio/concerns/common/history"
 
 #Helpers:
 require "mokio/headers_helper"
+require "mokio/sluglize"
 
 #
 # Services

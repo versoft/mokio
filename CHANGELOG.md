@@ -563,4 +563,9 @@
 
 ## Mokio 12.08.2020 v2.7.7
 <br/>
-  1. Change login
+  1. Update method render_seo_meta_tags to accept array
+
+## Mokio 13.08.2020 v2.7.8
+<br/>
+  1. Add Mokio::Sluglize and use it in Mokio::Content
+  2. Fix saving recipients in contact pages

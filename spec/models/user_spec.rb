@@ -179,9 +179,9 @@ module Mokio
       end
 
       context 'when there is only a first name present' do
-        it 'returns a string with a first name with a trailing space' do
+        it 'returns a string with a first name' do
           @user.first_name = 'Andrzej'
-          expect(@user.name_view).to eq 'Andrzej '
+          expect(@user.name_view).to eq 'Andrzej'
         end
       end
     end

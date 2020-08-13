@@ -2,6 +2,7 @@
 = render_backend_input_active(f)
 = render_backend_input_home_page(f)
 = f.input :title, disabled: !obj.display_editable_field?('title')
+= f.input :slug, disabled: !obj.display_editable_field?('slug')
 = f.input :subtitle, disabled: !obj.display_editable_field?('subtitle'), :as => :string
 = f.input :intro,    :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 150, :language => I18n.locale} }, disabled: !obj.display_editable_field?('intro')
 = f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400, :language => I18n.locale} }, disabled: !obj.display_editable_field?('content')
