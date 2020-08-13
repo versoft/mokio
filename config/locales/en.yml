@@ -755,6 +755,7 @@ en:
         title: Title
         subtitle: "Subtitle"
         type: Type
+        slug: 'URL'
         updated_at: Updated at
         lang_id: Language
         home_page: Home page
@@ -772,6 +773,7 @@ en:
         type: Type
         updated_at: Updated at
         lang_id: Language
+        slug: 'URL'
         home_page: Home page
         author_name: "Created by"
         editor_name: "Updated by"
@@ -784,6 +786,7 @@ en:
         display_to: Displayed to
         title: Title
         subtitle: "Subtitle"
+        slug: 'URL'
         type: Type
         updated_at: Updated at
         created_at: Created at
@@ -810,6 +813,7 @@ en:
         type: Type
         updated_at: Updated at
         lang_id: Language
+        slug: 'URL'
         recipient_emails: Recipients
         home_page: Home Page
         author_name: "Created by"

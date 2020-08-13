@@ -54,7 +54,24 @@ module Mokio
           # Never trust parameters from the scary internet, only allow the white list through.
           #
           def pic_gallery_params #:doc:
-            params.require(:pic_gallery).permit(mokio_gems_parameters,:title, :subtitle, :type, :active,:home_page, :intro, :content, :display_from, :display_to, :lang_id, :main_pic, :tag_list, :menu_ids => [], :data_file => [])
+            params.require(:pic_gallery).permit(
+              mokio_gems_parameters,
+              :title,
+              :subtitle,
+              :type,
+              :active,
+              :slug,
+              :home_page,
+              :intro,
+              :content,
+              :display_from,
+              :display_to,
+              :lang_id,
+              :main_pic,
+              :tag_list,
+              :menu_ids => [],
+              :data_file => []
+            )
           end
       end
     end

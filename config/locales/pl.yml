@@ -776,6 +776,7 @@ pl:
         title: Tytuł
         subtitle: "Podtytuł"
         type: Typ
+        slug: "Adres URL"
         updated_at: Ostatnio edytowany
         lang_id: Język
         home_page: Strona Główna
@@ -791,6 +792,7 @@ pl:
         title: Tytuł
         subtitle: "Podtytuł"
         type: Typ
+        slug: "Adres URL"
         updated_at: Ostatnio edytowany
         lang_id: Język
         home_page: Strona Główna
@@ -805,6 +807,7 @@ pl:
         display_to: Wyświetlany do
         title: Tytuł
         subtitle: "Podtytuł"
+        slug: "Adres URL"
         type: Typ
         updated_at: Ostatnio edytowany
         created_at: Utworzony
@@ -829,6 +832,7 @@ pl:
         title: Tytuł
         subtitle: "Podtytuł"
         type: Typ
+        slug: "Adres URL"
         updated_at: Ostatnio edytowany
         lang_id: Język
         recipient_emails: Adresaci

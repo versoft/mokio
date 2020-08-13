@@ -12,6 +12,7 @@ module Mokio
           include Mokio::Concerns::Common::SeoTags
           include Mokio::Concerns::Common::Services::Sitemap::Model
           include Mokio::Concerns::Common::History::Model
+          include Mokio::Sluglize
 
           has_many :content_links, :dependent => :destroy
           has_many :data_files, as: :imageable, dependent: :destroy
@@ -61,8 +62,16 @@ module Mokio
 
         end
 
+        def slug_by_value
+          self.title
+        end
+
         def sitemap_url_strategy
-          {loc: "#{self.title}",priority: 1,lastmod: self.updated_at }
+          {
+            loc: "#{self.slug}",
+            priority: 1,
+            lastmod: self.updated_at
+          }
         end
 
         def can_add_to_sitemap?

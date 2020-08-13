@@ -13,7 +13,7 @@ module Mokio
 
           accepts_nested_attributes_for :recipients
           accepts_nested_attributes_for :contact_template
-          
+
           # delegate :tpl, to: :contact_template
         end
 
@@ -21,7 +21,12 @@ module Mokio
         # Get recipient_id's for given email
         #
         def recipient_emails=(emails)
-          self.recipients = emails.delete(' ').split(',').map {|m| Mokio::Recipient.new(email: m) }
+          unless emails.blank?
+            emails = emails.reject { |c| c.blank? }
+            unless emails.empty?
+              self.recipients = emails.map { |m| Mokio::Recipient.new(email: m) }
+            end
+          end
         end
 
         #

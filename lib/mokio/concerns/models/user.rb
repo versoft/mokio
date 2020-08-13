@@ -140,7 +140,10 @@ module Mokio
         end
 
         def name_view
-          "#{first_name}#{' '  unless first_name.blank?}#{last_name}"
+          result = [first_name, last_name].reject { |c| c.blank? }
+          result = result.join(' ')
+          result = email if result.blank?
+          result
         end
 
         def name #:nodoc:
