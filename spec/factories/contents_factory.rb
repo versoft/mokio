@@ -3,7 +3,9 @@ require 'faker'
 FactoryBot.define do
 
   factory :content, traits: [:with_intro_and_content], :class=> Mokio::Content do
-    title { Faker::Lorem.word }
+    test_title =  Faker::Lorem.word
+    title { test_title }
+    slug { "#{test_title.parameterize}-#{SecureRandom.hex(5)}" }
     display_from { '2013-12-02' }
     display_to { '2013-12-31' }
 

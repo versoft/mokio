@@ -569,3 +569,7 @@
 <br/>
   1. Add Mokio::Sluglize and use it in Mokio::Content
   2. Fix saving recipients in contact pages
+
+## Mokio 14.08.2020 v2.7.9
+<br/>
+  1. Add creating slug in contents_factory.rb
