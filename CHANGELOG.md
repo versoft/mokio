@@ -573,3 +573,7 @@
 ## Mokio 14.08.2020 v2.7.9
 <br/>
   1. Add creating slug in contents_factory.rb
+
+## Mokio 14.08.2020 v2.7.10
+<br/>
+  1. Add :custom_settings_defaults in settings

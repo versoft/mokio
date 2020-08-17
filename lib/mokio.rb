@@ -283,6 +283,17 @@ module Mokio
   mattr_accessor :backend_search_nested_enabled
   self.backend_search_nested_enabled= []
 
+  mattr_accessor :custom_settings_defaults
+  self.custom_settings_defaults = [
+    {
+      name: 'default_user',
+      value: 'admin@admin.com',
+      description: '...',
+      deletable: 'true',
+      group: 'Defaults'
+    }
+  ]
+
   #
   # Default way to configure Mokio
   #
