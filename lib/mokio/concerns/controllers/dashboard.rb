@@ -33,7 +33,7 @@ module Mokio
 
           @last_created  = Mokio::Content.limit(Mokio.dashboard_size.to_i).order('created_at desc')
           @last_updated  = Mokio::Content.limit(Mokio.dashboard_size.to_i).order('updated_at desc')
-          @static_module = Mokio::StaticModule.includes(:positions).where('positions.id IS NULL').references(:contents)
+          @static_module = Mokio::StaticModule.includes(:module_positions).where('mokio_module_positions.id IS NULL').references(:contents)
         end
       end
     end

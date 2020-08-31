@@ -275,7 +275,7 @@ module Mokio
 
   # Default time to log out unactive user
   mattr_accessor :devise_timeout_after
-  self.devise_timeout_after = 15.minutes
+  self.devise_timeout_after = 24.hours
 
   mattr_accessor :backend_search_enabled
   self.backend_search_enabled = ["Mokio::PicGallery","Mokio::MovGallery","Mokio::Article","Mokio::Contact","Mokio::Menu"]

@@ -1,7 +1,10 @@
 - path = request.original_fullpath&.chomp('/')
 
-- if Mokio::SiteHelper.is_helper_available?(path) && (cookies[path].blank? || Mokio::SiteHelper.debug || Mokio.debug_all && Mokio.enable_site_helper)
-  - cookies[path] = { :value => path, expires: 1.year.from_now }
+/ - if Mokio::SiteHelper.is_helper_available?(path) && (cookies[path].blank? || Mokio::SiteHelper.debug || Mokio.debug_all && Mokio.enable_site_helper)
+/   - cookies[path] = { :value => path, expires: 1.year.from_now }
+
+- unless cookies[:backend_modal_seen]
+  - cookies[:backend_modal_seen] = { :value => true, expires: 1.year.from_now }
 
   ol#joyRideTipContent
     - Mokio::SiteHelper.steps_for_url(path).each do |step, options|
@@ -9,6 +12,6 @@
         h2= t( options[:title] )
         p=  t( options[:text]  )
 
-- content_for :js do
-  = javascript_include_tag "backend/help-engine/jquery.joyride-2.1"
-  = javascript_include_tag "backend/help-engine/help-engine"
+  - content_for :js do
+    = javascript_include_tag "backend/help-engine/jquery.joyride-2.1"
+    = javascript_include_tag "backend/help-engine/help-engine"

@@ -577,3 +577,8 @@
 ## Mokio 14.08.2020 v2.7.10
 <br/>
   1. Add :custom_settings_defaults in settings
+
+## Mokio 31.08.2020 v2.7.11
+<br/>
+  1. Change Devise timeout to 2h
+  2. Fix Mokio::SiteHelper rendering
