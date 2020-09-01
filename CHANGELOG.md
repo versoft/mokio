@@ -582,3 +582,7 @@
 <br/>
   1. Change Devise timeout to 2h
   2. Fix Mokio::SiteHelper rendering
+
+## Mokio 31.08.2020 v2.7.12
+<br/>
+  1. Fix CKEditor photo upload

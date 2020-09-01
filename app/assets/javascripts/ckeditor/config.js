@@ -85,6 +85,8 @@ config.toolbar_Default =
   
   // The location of a script that handles file uploads.
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
+
+  config.filebrowserUploadMethod  = "form";
   
   // Rails CSRF token
   config.filebrowserParams = function(){
