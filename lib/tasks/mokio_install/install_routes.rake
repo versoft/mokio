@@ -5,7 +5,7 @@ namespace :mokio_install do
     text = File.read(path)
     unless Rails.application.routes.url_helpers.method_defined?(:mokio_url)
       File.open(path, 'w') do |file|
-        file.puts text.gsub(/Rails.application.routes.draw do/, "Rails.application.routes.draw do \n  mount Mokio::Engine => '/backend'")
+        file.puts text.gsub(/Rails.application.routes.draw do/, "Rails.application.routes.draw do \n  mount Mokio::Engine => '/backend' \n mount Ckeditor::Engine => '/ckeditor'")
       end
     end
   end

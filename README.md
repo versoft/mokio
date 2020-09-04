@@ -96,6 +96,10 @@ To use Mokio::MovGallery you have to add this to your Gemfile:
 
 because original version of `youtube_it` gem is not maintained anymore and uncompatibile with Rails 5.
 
+### Migrating your app to Mokio >= 2.7.14
+
+Please add `mount Ckeditor::Engine => '/ckeditor'` to `Rails.application.routes` 
+block, since Ckeditor mount has been moved to mokio:install task.
 
 ### Description
 

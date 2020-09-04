@@ -590,3 +590,7 @@
 ## Mokio 31.08.2020 v2.7.13
 <br/>
   1. Add missing time formats
+
+## Mokio 04.09.2020 v2.7.14
+<br/>
+  1. Move Ckeditor mount from Gemfile to mokio:install

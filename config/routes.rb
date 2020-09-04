@@ -134,7 +134,3 @@ Mokio::Engine.routes.draw do
 
   post '/histories/get_n_more' => 'histories#get_n_more'
 end
-
-Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
-end
