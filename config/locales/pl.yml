@@ -32,6 +32,8 @@ pl:
     formats:
       default: "%d-%m-%Y"
       datepicker: "%d-%m-%Y %H:%M"
+      long: "%d-%m-%Y %H:%M:%S"
+      short: "%d-%m %H:%M"
   date:
     formats:
       default: "%d-%m-%Y"

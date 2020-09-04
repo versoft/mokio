@@ -586,3 +586,7 @@
 ## Mokio 31.08.2020 v2.7.12
 <br/>
   1. Fix CKEditor photo upload
+
+## Mokio 31.08.2020 v2.7.13
+<br/>
+  1. Add missing time formats
