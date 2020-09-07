@@ -60,6 +60,13 @@ module Mokio
             %w(title content)
           end
 
+          def has_historable_enabled?
+            true
+          end
+        end
+
+        def has_historable_enabled?
+          true
         end
 
         def slug_by_value

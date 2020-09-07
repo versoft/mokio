@@ -7,7 +7,7 @@ module Mokio
           extend ActiveSupport::Concern
           private
             def history_mark(obj)
-              obj.logged_editor = current_user
+              obj.logged_editor = current_user if obj.respond_to?('has_historable_enabled?') && obj.class.has_historable_enabled?
             end
         end
 
