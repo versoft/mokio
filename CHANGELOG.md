@@ -594,3 +594,7 @@
 ## Mokio 04.09.2020 v2.7.14
 <br/>
   1. Move Ckeditor mount from Gemfile to mokio:install
+
+## Mokio 07.09.2020 v2.7.15
+<br/>
+  1. Add change author to histories

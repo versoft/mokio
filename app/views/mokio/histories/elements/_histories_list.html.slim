@@ -11,6 +11,8 @@
         td.value_title_center
           .input_title
             = history_helper_label(history)
+            .input_author
+              = history.user_email
         td.value.value_after
           .input_content
             = history_helper_input(history.field, history.current_value)

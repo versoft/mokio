@@ -856,6 +856,11 @@ a.confirm-pass-link {
     margin: 0 auto 0 auto;
     width:100%;
     text-align:center;
+
+    .input_author {
+      font-size: 12px !important;
+      color: gray !important;
+    }  
   }
 
   table td  {
