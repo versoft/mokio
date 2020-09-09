@@ -707,6 +707,8 @@ pl:
               blank: "Tytuł nie może być pusty"
             display_from:
               invalid: Przekracza datę do której ma być wyświetlany
+            slug:
+              taken: Ten slug jest juz zajęty
         mokio/external_script:
           attributes:
             name:

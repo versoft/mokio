@@ -19,3 +19,4 @@
 // require ckeditor/override
 //= require ckeditor/init
 //= require backend/mokio_dynamic_fields
+//= require backend/lodash/lodash

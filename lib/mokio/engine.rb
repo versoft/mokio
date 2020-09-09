@@ -73,6 +73,8 @@ module Mokio
         backend/category/category_dual_select.js
         backend/custom_tabs.js
         backend/load_histories.js
+        backend/form_helpers/slug_generator.js
+        backend/lodash/lodash.js
       )
     end
 

@@ -598,3 +598,7 @@
 ## Mokio 07.09.2020 v2.7.15
 <br/>
   1. Add change author to histories
+
+## Mokio 09.09.2020 v2.7.16
+<br/>
+  1. Add slug generator to Mokio::Articles and Mokio::PicGalleries

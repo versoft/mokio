@@ -3,8 +3,8 @@
 = render_backend_input_lang_id(f)
 = render_backend_input_active(f)
 = render_backend_input_home_page(f)
-= f.input :title, disabled: !obj.display_editable_field?('title')
-= f.input :slug, disabled: !obj.display_editable_field?('slug')
+= f.input :title, disabled: !obj.display_editable_field?('title'), input_html: {id: 'title', onkeyup: 'updateSlug()', onfocusout: 'removeTracingDashes()'}
+= f.input :slug, disabled: !obj.display_editable_field?('slug'), input_html: {id: 'slug', onkeyup: 'slugHooks()', onfocusout: 'removeTracingDashes()'}
 = f.input :subtitle, disabled: !obj.display_editable_field?('subtitle'), :as => :string
 = f.input :intro,   :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 150, :language => I18n.locale} }, disabled: !obj.display_editable_field?('intro')
 = f.input :content, :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 300, :language => I18n.locale} }, disabled: !obj.display_editable_field?('content')
@@ -16,3 +16,5 @@
     = t('menus.content_assoc')
   .span10
     =collection_select(:pic_gallery, :menu_ids,menu_select_grouped(Mokio::Menu.all.includes(:content_links).arrange(:order => :seq)),:id,:name, {disabled: lambda{|s| s.fake.present? },selected:obj.menus.map {|j| j.id} },:multiple => true)
+
+= javascript_include_tag 'backend/form_helpers/slug_generator'
