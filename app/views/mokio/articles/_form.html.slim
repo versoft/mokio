@@ -3,8 +3,8 @@
 = render_backend_input_lang_id(f)
 = render_backend_input_active(f)
 = render_backend_input_home_page(f)
-= f.input :title, disabled: !obj.display_editable_field?('title')
-= f.input :slug, disabled: !obj.display_editable_field?('slug')
+= f.input :title, disabled: !obj.display_editable_field?('title'), input_html: {id: 'title', onkeyup: 'updateSlug()', onfocusout: 'removeTracingDashes()'}
+= f.input :slug, disabled: !obj.display_editable_field?('slug'), input_html: {id: 'slug', onkeyup: 'slugHooks()', onfocusout: 'removeTracingDashes()'}
 = f.input :subtitle, disabled: !obj.display_editable_field?('subtitle'), :as => :string
 = f.input :intro,    :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 150, :language => I18n.locale} }, disabled: !obj.display_editable_field?('intro')
 = f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400, :language => I18n.locale} }, disabled: !obj.display_editable_field?('content')
@@ -18,3 +18,5 @@
 
 / #TODO - in all similar views
 / DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): "coalesce(`mokio_menus`.`ancestry`, ''), seq". Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from __home_matt_projects_bloomnet_mokio_git_mokio_app_views_mokio_articles__form_html_slim___906233159799876300_69966117229420 at /home/matt/projects/bloomnet/mokio-git/mokio/app/views/mokio/articles/_form.html.slim:16)
+
+= javascript_include_tag 'backend/form_helpers/slug_generator'
