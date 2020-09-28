@@ -25,6 +25,8 @@
               = sidebar_btn Mokio::Article, "icomoon-icon-file"
               = sidebar_btn Mokio::PicGallery, "icomoon-icon-picture"
               = sidebar_btn Mokio::MovGallery, "icomoon-icon-movie"
+              - unless Mokio.hide_static_pages_in_sidebar
+                = sidebar_btn Mokio::StaticPage, "entypo-icon-documents"
               = sidebar_btn Mokio::Contact, "icomoon-icon-mail-3"
 
         /  SITE ELEMENTS

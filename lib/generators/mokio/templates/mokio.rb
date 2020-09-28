@@ -173,6 +173,10 @@ Mokio.setup do |config|
   # Default time to log out unactive user
   # config.devise_timeout_after = 15.minutes
 
+  # Hide Static Pages in sidebar
+  # mattr_accessor :hide_static_pages_in_sidebar
+  # self.hide_static_pages_in_sidebar = false
+
   ### Google reCAPTCHA v3 ###
   # config.mokio_login_with_recaptcha = false
   # config.mokio_login_recaptcha_site_key = 'KEY'

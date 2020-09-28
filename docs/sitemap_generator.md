@@ -21,7 +21,7 @@
   Remeber to check if new directory exists.
   - add dynamic created content by setting models name in config:
 	```
-	config.mokio_sitemap_enabled_models = ["Mokio::Content", "Category"]
+	config.mokio_sitemap_enabled_models = ["Mokio::Content", "Category", "Mokio::StaticPage"]
 	```
 
 2. Create `ENV['APP_HOST']`. It will be used for prefix in generated URLS. For example:

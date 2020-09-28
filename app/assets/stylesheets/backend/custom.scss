@@ -161,8 +161,6 @@ input.btn[type="submit"] {
 
 .ui-state-highlight {
   margin-top: 5px;
-  min-width: 100px;
-  min-height: 100px;
   background-color: #F5F5F5 !important;
   border: 1px dashed #E5E5E5 !important;
 }
@@ -860,7 +858,7 @@ a.confirm-pass-link {
     .input_author {
       font-size: 12px !important;
       color: gray !important;
-    }  
+    }
   }
 
   table td  {

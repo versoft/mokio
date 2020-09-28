@@ -57,6 +57,8 @@ Mokio::Engine.routes.draw do
     end
   end
 
+  resources :static_pages
+
   resources :pic_galleries do
     member do
       get  :copy
