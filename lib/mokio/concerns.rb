@@ -40,6 +40,7 @@ require "mokio/concerns/models/external_script"
 require "mokio/concerns/models/seo_tag"
 require "mokio/concerns/models/history"
 require "mokio/concerns/models/backend_search"
+require "mokio/concerns/models/static_page"
 
 
 #
@@ -86,3 +87,4 @@ require "mokio/concerns/controllers/main_pics"
 require "mokio/concerns/controllers/sessions"
 require "mokio/concerns/controllers/histories"
 require "mokio/concerns/controllers/backend_search"
+require "mokio/concerns/controllers/static_pages"

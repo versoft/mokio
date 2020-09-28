@@ -271,7 +271,7 @@ module Mokio
   # Enabled models list
   # self.mokio_sitemap_enabled_models = ["Mokio::Content"]
   mattr_accessor :mokio_sitemap_enabled_models
-  self.mokio_sitemap_enabled_models = ["Mokio::Content"]
+  self.mokio_sitemap_enabled_models = ["Mokio::Content", "Mokio::StaticPage"]
 
   # Default time to log out unactive user
   mattr_accessor :devise_timeout_after
@@ -294,6 +294,8 @@ module Mokio
     }
   ]
 
+  mattr_accessor :hide_static_pages_in_sidebar
+  self.hide_static_pages_in_sidebar = false
   #
   # Default way to configure Mokio
   #

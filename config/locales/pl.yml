@@ -166,6 +166,7 @@ pl:
       site_elements: Elementy strony
       settings: Ustawienia
       support: Pomoc
+      static_page: Strony statyczne
 
     breadcrumbs:
       only_loose: Treści nie podpięte pod menu
@@ -231,6 +232,7 @@ pl:
       base_contacts: Strony kontaktowe
       base_content: Zarządzanie treścią
       backend_search: Szukaj w backendzie
+      static_pages: Strony statyczne
 
 
   static_modules:
@@ -252,6 +254,19 @@ pl:
     update_active_true: "Blok <strong>'%{title}'</strong> jest teraz aktywny."
     update_active_false: "Blok <strong>'%{title}'</strong> jest teraz nieaktywny."
     copy_title: Kopiuj blok
+
+  static_pages:
+    index_title: Lista stron statycznych
+    pathname: Nazwa adresu
+    path: Adres
+    deleted_label: Status
+    labels:
+      deleted: Usunięto
+      active: Aktywna
+    deleted: Strona została usunięta
+    updated: Strona została zaktualizowana.
+    edit_title: Edycja strony
+    system_name: 'Nazwa systemowa'
 
   external_scripts:
     name: Nazwa / id
@@ -904,6 +919,20 @@ pl:
         description: Opis
         parent_id: Element nadrzędny
         target: Okno docelowe
+
+      mokio/static_page:
+        pathname: Nazwa adresu
+        path: Adres
+        deleted_label: Status
+        author_name: Utworzone przez
+        editor_name: Edytowane przez
+        sitemap_date: Data wpisu w sitemap.xml
+        automatic_date_update: Automatyczna aktualizacja wpisu w sitemap.xml
+        custom_field_1: 'Dodatkowe pole 1'
+        custom_field_2: 'Dodatkowe pole 2'
+        custom_field_3: 'Dodatkowe pole 3'
+        custom_field_4: 'Dodatkowe pole 4'
+        custom_field_5: 'Dodatkowe pole 5'
 
   devise:
     failure:
