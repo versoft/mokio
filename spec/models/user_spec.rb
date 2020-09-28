@@ -6,7 +6,7 @@ module Mokio
   RSpec.describe User, type: :model do
     before do
       @user = User.new(
-        email: 'admin@admin.com',
+        email: 'admin@bloomnet.eu',
         password: 'ValidPassword!1',
         password_confirmation: 'ValidPassword!1'
       )
@@ -118,7 +118,7 @@ module Mokio
         it 'is case sensitive' do
           @user.save
           other_user = User.new(
-            email: 'ADMIN@ADMIN.COM',
+            email: 'ADMIN@BLOOMNET.EU',
             password: 'ValidPassword!1',
             password_confirmation: 'ValidPassword!1'
           )
@@ -131,7 +131,7 @@ module Mokio
         it 'has to be unique' do
           @user.save
           other_user = User.new(
-            email: 'admin@admin.com',
+            email: 'admin@bloomnet.eu',
             password: 'ValidPassword!1',
             password_confirmation: 'ValidPassword!1'
           )

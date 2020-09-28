@@ -11,7 +11,7 @@ MOKIO is open source CMS compatible with rails 6.0.1 and ruby 2.6.5.
 4. Ensure is add the following line added to `config/routes.rb`
   ```mount Mokio::Engine => "/backend"```
 5. Start rails server `rails s` and open `http://localhost:3000/backend`
-6. Your login is `admin@admin.com`, password `admin`
+6. Your login is `admin@bloomnet.eu`, password `admin`
 7. Remember to change this sample credentials!
 
 ## Test by RSpec
@@ -98,7 +98,7 @@ because original version of `youtube_it` gem is not maintained anymore and uncom
 
 ### Migrating your app to Mokio >= 2.7.14
 
-Please add `mount Ckeditor::Engine => '/ckeditor'` to `Rails.application.routes` 
+Please add `mount Ckeditor::Engine => '/ckeditor'` to `Rails.application.routes`
 block, since Ckeditor mount has been moved to mokio:install task.
 
 ### Description
