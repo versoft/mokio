@@ -602,3 +602,9 @@
 ## Mokio 09.09.2020 v2.7.16
 <br/>
   1. Add slug generator to Mokio::Articles and Mokio::PicGalleries
+
+## Mokio 28.09.2020 v2.8.0
+<br/>
+  1. Add Static Pages feature
+  2. Change default admin email
+  3. Add label with prefix for slug field
