@@ -65,6 +65,11 @@ module Mokio
           end
         end
 
+        # add prefix box in CMS
+        # def slug_prefix_in_form
+        #   '/'
+        # end
+
         def has_historable_enabled?
           true
         end
