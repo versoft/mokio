@@ -7,7 +7,7 @@ require 'rails/generators'
 namespace :mokio do
   desc 'Create database, running migrations and creating some default data for Mokio application'
   task :install, %i[email password] => :environment do |_t, args|
-    args.with_defaults(email: 'admin@admin.com', password: 'admin')
+    args.with_defaults(email: 'admin@bloomnet.eu', password: 'admin')
 
     puts "Running task: 'rake:db:create'...".cyan
     Rake::Task['db:create'].execute

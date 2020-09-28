@@ -287,7 +287,7 @@ module Mokio
   self.custom_settings_defaults = [
     {
       name: 'default_user',
-      value: 'admin@admin.com',
+      value: 'admin@bloomnet.eu',
       description: '...',
       deletable: 'true',
       group: 'Defaults'
