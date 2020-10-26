@@ -132,7 +132,7 @@ module Mokio
             self.meta.g_application_name = application_name if self.meta.present? && self.meta.g_application_name.blank?
 
             if self.respond_to?(:intro) && self.intro.present?
-              intro = ActionController::Base.helpers.strip_tags(self.intro).truncate(160).gsub!(/\s+/, ' ')
+              intro = ActionController::Base.helpers.strip_tags(self.intro).truncate(160).dup.gsub!(/\s+/, ' ')
               self.meta.g_desc = intro if self.meta.present? && self.meta.g_desc.blank?
               self.meta.f_desc = intro if self.meta.present? && self.meta.f_desc.blank?
             end

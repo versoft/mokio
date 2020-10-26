@@ -382,3 +382,7 @@
 ### Mokio 27.05.2020 v0.1.8.1
 <br/>
   1. Remove excessive Mokio::SiteHelper cookies
+
+### Mokio 26.10.2020 v0.1.8.2
+<br/>
+  1. Fix complete_meta in Mokio::Concerns::Models::Common
