@@ -1,3 +1,5 @@
+div.static-pages-link
+  a href="#{obj.path}" target="_blank" = t('static_pages.move_to_page')
 = render :partial => "mokio/contents/common", locals: {f:f}
 = f.input :pathname, disabled: true
 = f.input :path, disabled: true

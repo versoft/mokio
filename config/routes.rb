@@ -9,7 +9,7 @@ Mokio::Engine.routes.draw do
     post '/users/send_pass_change_link' => "passwords#send_pass_change_link", as: 'send_pass_change_link'
   end
 
-  resources :backend_search,only: [:index]
+  resources :backend_search, only: [:index]
 
   resources :menus do
     member do
@@ -23,6 +23,8 @@ Mokio::Engine.routes.draw do
       post :create_menu_position
     end
   end
+
+  resources :editable_blocks, only: [:create, :update]
 
   resources :static_modules do
     member do

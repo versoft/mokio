@@ -608,3 +608,8 @@
   1. Add Static Pages feature
   2. Change default admin email
   3. Add label with prefix for slug field
+
+## Mokio 19.04.2021 v2.9.0
+<br/>
+  1. Add frontend content editor
+  2. Add link to preview static pages

@@ -41,7 +41,7 @@ require "mokio/concerns/models/seo_tag"
 require "mokio/concerns/models/history"
 require "mokio/concerns/models/backend_search"
 require "mokio/concerns/models/static_page"
-
+require "mokio/concerns/models/editable_block"
 
 #
 # CommonController extensions
@@ -61,6 +61,9 @@ require "mokio/sluglize"
 # Services
 require "mokio/services/recaptcha_service"
 #
+
+require "mokio/frontend_editor/editor_panel"
+require "mokio/frontend_editor/editor_field"
 
 #
 # Controllers
@@ -88,3 +91,4 @@ require "mokio/concerns/controllers/sessions"
 require "mokio/concerns/controllers/histories"
 require "mokio/concerns/controllers/backend_search"
 require "mokio/concerns/controllers/static_pages"
+require "mokio/concerns/controllers/editable_blocks"

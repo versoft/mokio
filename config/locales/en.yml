@@ -252,6 +252,7 @@ en:
     updated: The static page has been saved
     edit_title: Edit static page
     system_name: System name
+    move_to_page: Move to page
 
   external_scripts:
     name: Name / Id
