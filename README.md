@@ -60,6 +60,7 @@ end
 - [Backend input helpers](docs/backend_inputs_helpers.md) - Describes some input helpers
 - [History](docs/history.md) - Model history tracking
 - [Filters in index views](docs/filters_in_index_views.md) - How to configure filters in indexes
+- [Fronted content editor](docs/frontend_content_editor.md) - How to use frontend content editor
 
 More docs soon!
 

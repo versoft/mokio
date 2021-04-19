@@ -1,0 +1,11 @@
+<div
+  id="mokio-frontend-editor"
+  data-locale="<%= I18n.locale.to_s %>"
+  data-location="<%= Mokio::FrontendEditor::EditorPanel.location(request.path) %>"
+>
+  <p style="margin-top: 10px; font-size:13px; color: white; text-align:center;">
+    Edycja treści jako <span style="font-weight: bold"><%= @user.name_view %></span>
+  </p>
+</div>
+
+<%= javascript_include_tag 'frontend_editor/editor.js' %>

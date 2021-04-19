@@ -267,6 +267,7 @@ pl:
     updated: Strona została zaktualizowana.
     edit_title: Edycja strony
     system_name: 'Nazwa systemowa'
+    move_to_page: 'Przejdź do strony'
 
   external_scripts:
     name: Nazwa / id
