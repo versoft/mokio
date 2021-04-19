@@ -18,6 +18,7 @@ module Mokio
           attr_accessor :confirm_delete
           attr_accessor :recaptcha_token
 
+          delegate :can?, :cannot?, to: :ability
           #
           # Table of roles for user
           #
@@ -48,6 +49,10 @@ module Mokio
 
           # before_validation :add_default_role
           # belongs_to :market
+
+          def ability
+            @ability ||= Mokio::Ability.new(self)
+          end
 
           if Mokio.solr_enabled
             searchable do
