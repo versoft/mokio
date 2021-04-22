@@ -25,6 +25,8 @@ module Mokio
       private
 
       def can_edit?
+        return false unless @current_user
+
         @current_user.can? :manage, Mokio::Content
       end
 
