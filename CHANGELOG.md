@@ -613,3 +613,7 @@
 <br/>
   1. Add frontend content editor
   2. Add link to preview static pages
+
+## Mokio 10.08.2021 v2.9.1
+<br/>
+  1. Fix translation bug in Menu index
