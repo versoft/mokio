@@ -1,5 +1,9 @@
 ## Custom models and controllers
 
+You can generate new model/controller pair either by doing it yourself or using a generator.
+
+#### Step-by-step version for ambitious people
+
 Suppose you want add new model called Product to CMS.
 1. Create standard model in `app/models/product.rb`,
     ```
@@ -110,3 +114,17 @@ Suppose you want add new model called Product to CMS.
 6. Update sidebar. To do it you have to overwrite it.
   Create file `app/views/mokio/layout/sidebar.html.slim` and copy content from Mokio sidebar [https://github.com/versoft/mokio/blob/master/app/views/mokio/layout/sidebar.html.slim](https://github.com/versoft/mokio/blob/master/app/views/mokio/layout/sidebar.html.slim)
   Now you can customize it to your needs
+
+#### Content generator
+You can use a provided generator to create a new model/controller easily:
+`bundle exec rails g mokio:contents cat`
+
+The generator will create the following files for you:
+```
+      create  app/models/mokio/cat.rb
+      create  app/controllers/mokio/cats_controller.rb
+      create  app/views/mokio/cats/_form.html.slim
+      create  app/views/mokio/overrides/cat_sidebar_btn.html.slim
+      create  config/locales/en_backend_cat.yml
+      create  config/cat_views_template.yml.example
+```
