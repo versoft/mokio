@@ -186,7 +186,7 @@ module Mokio
           elsif contents.length == 1
             I18n.t(contents[0].type.underscore).titleize
           elsif !external_link.blank?
-            I18n.t('external_link', Menu).titleize
+            I18n.t('external_link').titleize
           else
             ''
           end
