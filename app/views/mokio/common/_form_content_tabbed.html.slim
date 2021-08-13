@@ -19,6 +19,7 @@
   = common_form do
     .row-fluid
       .custom_tabs
+        = generate_preview_link(obj)
         = simple_form_for obj, :html => { class: 'form-horizontal main_form', autocomplete: 'off'} do |f|
           #main_form_tab.single_tab.active
             = render :partial => "#{obj.class.to_s.tableize}/form", :locals => {f: f, obj: obj}
@@ -27,7 +28,7 @@
             #seotags_tab.single_tab
               = backend_modal_render('seo_tags', f)
 
-          - if obj.class.try(:has_historable_enabled?)   
+          - if obj.class.try(:has_historable_enabled?)
             #history_tab.single_tab
               = backend_modal_render('histories', f)
 
@@ -51,7 +52,7 @@
               - if has_data_files?(obj) && params[:action] == "edit"
                 = render :partial => "#{obj.default_data_file.to_s.tableize}/gallery", :locals => {videos: @videos}
               - if params[:action] == "new"
-                p.alert-center.alert 
+                p.alert-center.alert
                   = "Dodawanie do galerii będzie mozliwe po zapisaniu"
 
 = render :partial => "mokio/common/datepicker_settings"

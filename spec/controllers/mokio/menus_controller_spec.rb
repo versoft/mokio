@@ -105,9 +105,11 @@ describe Mokio::MenusController, type: :controller do
         assigns(:menu).should be_persisted
       end
 
-      it "redirects to the created backend_menu" do
+      it "redirects to the created edit view" do
         post :create, params: {:menu => valid_attributes}
-        response.should redirect_to(menus_path)
+        menu = Menu.find_by(name: 'Tralalala')
+        edit_path = edit_menu_path(menu.id)
+        response.should redirect_to(edit_path)
       end
     end
 
@@ -152,10 +154,11 @@ describe Mokio::MenusController, type: :controller do
         assigns(:menu).should eq(menu)
       end
 
-      it "redirects to the backend_menu" do
+      it "redirects to the edit backend menu" do
         menu = Mokio::Menu.create! valid_attributes
         put :update, params: {:id => menu.to_param, :menu => valid_attributes}
-        response.should redirect_to(menus_path)
+        edit_path = edit_menu_path(menu.id)
+        response.should redirect_to(edit_path)
       end
     end
 

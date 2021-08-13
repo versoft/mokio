@@ -7,19 +7,7 @@ module Mokio
       module ControllerFunctions
         extend ActiveSupport::Concern
 
-        included do
-          after_action :back_to_edit, only: [:create, :update]
-        end
-
          private
-          #
-          # <b>after_action</b>, Info message about possible back to edit
-          #
-          def back_to_edit #:doc:
-            if flash[:notice].present?
-              flash[:notice] += " #{t("backend.back_to_edit", url: obj_edit_url(obj))}" if obj.id
-            end
-          end
 
           def build_enabled(obj)
             obj.build_gmap if obj.class.has_gmap_enabled?

@@ -59,6 +59,12 @@ Suppose you want add new model called Product to CMS.
         [[0, 'desc'], [1, 'asc']]
       end
       ```
+    - To add preview link to frontend use method `mokio_preview_link_in_edit_page`:
+      ```
+      def mokio_preview_link_in_edit_page
+        Rails.application.routes.url_helpers.show_news_path(slug)
+      end
+      ```
     - other options:
       ```
       # can edit

@@ -14,7 +14,7 @@
   end
 ```
 2. In layout add before body close:
-```<%= Mokio::FrontendEditor::EditorPanel.new(current_user).render_editor_panel %>```
+```<%= Mokio::FrontendEditor::EditorPanel.new(current_user, request.path).render_editor_panel %>```
 3. In your template create `editable_block` like this:
 ```
 <%= editable_block({id: 'blockTextId'}) do %>

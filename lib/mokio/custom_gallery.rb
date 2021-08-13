@@ -10,7 +10,7 @@ module Mokio
     def default_data_file
       Mokio::Photo
     end
-    
+
     def gallery_title
       nil
     end

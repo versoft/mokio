@@ -91,10 +91,10 @@ module Mokio
           assigns(:pic_gallery).should eq(gallery)
         end
 
-        it "redirects to the index" do
+        it "redirects to the edit view" do
           gallery = PicGallery.create! valid_attributes
           put :update, params: {:id => gallery.to_param, :pic_gallery => valid_attributes}
-          response.should redirect_to(pic_galleries_path)
+          response.should redirect_to(edit_content_path(gallery.id))
         end
       end
 
