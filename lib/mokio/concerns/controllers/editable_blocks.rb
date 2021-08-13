@@ -19,6 +19,7 @@ module Mokio
           end
           editable_block.content = editable_block_params[:content]
           new_location = editable_block_params[:location]
+
           unless new_location.blank?
             location = editable_block.location
             location ||= ''
@@ -26,6 +27,7 @@ module Mokio
               editable_block.location = "#{location} #{new_location}".strip
             end
           end
+
           respond_to do |format|
             if editable_block.save!
               format.html {}

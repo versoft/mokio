@@ -34,7 +34,7 @@ module Mokio
                 format.html { redirect_to obj_new_url(@obj_class.new) }
                 format.json { render action: 'new', status: :created, location: obj }
               else
-                format.html { redirect_to obj_index_url }
+                format.html { redirect_to obj_edit_url(obj) }
                 format.json { render action: 'index', status: :created, location: obj }
               end
               flash[:notice] = CommonTranslation.created(obj)
@@ -63,7 +63,7 @@ module Mokio
                 format.html { redirect_to obj_new_url(@obj_class.new), notice: CommonTranslation.updated(obj) }
                 format.json { head :no_content }
               else
-                format.html { redirect_to obj_index_url, notice: CommonTranslation.updated(obj) }
+                format.html { redirect_to obj_edit_url(obj), notice: CommonTranslation.updated(obj) }
                 format.json { render action: 'index', status: :created, location: obj }
               end
             else

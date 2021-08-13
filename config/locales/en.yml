@@ -45,6 +45,7 @@ en:
   mokio/contact: Contact
   external_link: Url
   backend:
+    preview_link: Go to page
     no_data: No data
     go_back: Go back
     site_preview: Your Site

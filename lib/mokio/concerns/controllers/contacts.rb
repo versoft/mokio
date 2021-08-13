@@ -24,7 +24,7 @@ module Mokio
                 format.html { redirect_to obj_new_url(@obj_class.new), notice: Mokio::Concerns::Common::Translations::CommonTranslation.created(obj) }
                 format.json { render action: 'new', status: :created, location: obj }
               else
-                format.html { redirect_to obj_index_url, notice: Mokio::Concerns::Common::Translations::CommonTranslation.created(obj) }
+                format.html { redirect_to obj_edit_url(obj), notice: Mokio::Concerns::Common::Translations::CommonTranslation.created(obj) }
                 format.json { render action: 'index', status: :created, location: obj }
               end
             else

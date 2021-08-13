@@ -609,11 +609,9 @@
   2. Change default admin email
   3. Add label with prefix for slug field
 
-## Mokio 19.04.2021 v2.9.0
+## Mokio 13.08.2021 v2.9.0
 <br/>
   1. Add frontend content editor
-  2. Add link to preview static pages
-
-## Mokio 10.08.2021 v2.9.1
-<br/>
-  1. Fix translation bug in Menu index
+  2. Fix translation bug in Menu index
+  3. Change redirect after save/create to the edit view not index
+  4. Add preview frontend link and method 'mokio_preview_link_in_edit_page'

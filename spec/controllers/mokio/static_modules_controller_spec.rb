@@ -31,7 +31,7 @@ module Mokio
     # This should return the minimal set of attributes required to create a valid
     # StaticModule. As you add validations to StaticModule, be sure to
     # adjust the attributes here as well.
-    let(:valid_attributes) { { :title => "tytuł" } }
+    let(:valid_attributes) { { :title => "Tytuł modułu" } }
 
     # This should return the minimal set of values that should be in the session
     # in order to pass any filters (e.g. authentication) defined in
@@ -80,9 +80,10 @@ module Mokio
           assigns(:static_module).should be_persisted
         end
 
-        it "redirects to index" do
+        it "redirects to the edit view" do
           post :create, params: {:static_module => valid_attributes}
-          response.should redirect_to(static_modules_url)
+          sm = Mokio::StaticModule.find_by(title: 'Tytuł modułu')
+          response.should redirect_to(edit_static_module_path(sm.id))
         end
       end
 
@@ -121,10 +122,10 @@ module Mokio
           assigns(:static_module).should eq(static_module)
         end
 
-        it "redirects to index" do
+        it "redirects to the edit view" do
           static_module = StaticModule.create! valid_attributes
           put :update, params: {:id => static_module.to_param, :static_module => valid_attributes}
-          response.should redirect_to(static_modules_url)
+          response.should redirect_to(edit_static_module_path(static_module.id))
         end
       end
 

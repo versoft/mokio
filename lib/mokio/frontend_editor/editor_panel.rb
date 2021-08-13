@@ -8,8 +8,9 @@ module Mokio
         "#{data[:controller]}##{data[:action]}"
       end
 
-      def initialize(current_user)
+      def initialize(current_user, path)
         @current_user = current_user
+        @path = path
       end
 
       def render_editor_panel
@@ -17,7 +18,7 @@ module Mokio
 
         template = ApplicationController.render(
           template: 'mokio/editor_panel/panel',
-          assigns: { user: @current_user }
+          assigns: { user: @current_user, path: @path }
         )
         template.html_safe
       end

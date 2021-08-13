@@ -6,6 +6,20 @@ module Mokio
         obj.respond_to?("data_files") && obj.respond_to?("default_data_file")
       end
 
+      def generate_preview_link(obj)
+        return unless obj.persisted?
+
+        if obj.try(:mokio_preview_link_in_edit_page)
+          link = obj.mokio_preview_link_in_edit_page
+          content_tag :a, :href => link, target: '_blank', class: 'preview-link' do
+            content_tag :button, :class => 'btn btn-primary btn-mini' do
+              tag :span, :class => 'icomoon-icon-plus white'
+              concat(t('backend.preview_link'))
+            end
+          end
+        end
+      end
+
       #
       # returns which table stores data files for object
       # default: data_files
@@ -136,9 +150,9 @@ module Mokio
       end
 
       def show_tabbed_form?(obj)
-        obj.class.try(:has_seo_tagable_enabled?) || 
-        obj.class.try(:has_historable_enabled?) || 
-        obj.class.try(:has_gmap_enabled?) || 
+        obj.class.try(:has_seo_tagable_enabled?) ||
+        obj.class.try(:has_historable_enabled?) ||
+        obj.class.try(:has_gmap_enabled?) ||
         obj.class.try(:has_gallery_enabled?)
       end
     end

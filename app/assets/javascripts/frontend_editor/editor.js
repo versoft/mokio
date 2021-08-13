@@ -93,7 +93,7 @@ function MokioFrontendEditor() {
         z-index:99999;
         border-radius: 5px;
         padding: 2px;
-        background-color: #e0d5d5;
+        background-color: #f1f1f1;
         border: 1px solid #716d6d;
       }
       *[data-editableblock] {
@@ -101,12 +101,16 @@ function MokioFrontendEditor() {
       }
       .mfe-default {
         border: 1px dashed #afadad;
+        outline: none;
       }
       .mfe-unsaved {
         border: 1px dashed #ff9234;
       }
-      img.toolbar-action { border: 0;  cursor: pointer; }
-      img.toolbar-action:hover { border: 1px solid black; }
+      img.toolbar-action {
+        border: 0;  cursor: pointer;
+        border: 1px solid #f1f1f1;
+      }
+      img.toolbar-action:hover { border: 1px solid #dcdcdc; }
     `;
     $('<style>').text(editorStyles).appendTo(document.head);
     const toolbarHtml = `

@@ -26,9 +26,9 @@
   ```
   ### Slug helper
   Mokio comes with a slug generator for inputs. You can use it to create a text field that automatically converts its contents into a slug-like format. For example typed-in string `Hello WORLD 123 !!!` will be converted into `hello-world-123`.
-  
+
   There are two options to use slug generator.
-  
+
   #### Simple slug field
   Please pay attention to `input_html` hash. All of the parameters should be set with the values presented below. Also, please remember to include the js file.
 ```
@@ -42,6 +42,21 @@
     = f.input :slug, input_html: {id: 'slug', onkeyup: 'slugHooks()', onfocusout: 'removeTracingDashes()'}
     = javascript_include_tag 'backend/form_helpers/slug_generator'
 ```
+  If you want add nice, html prefix to the slug field use method in model:
+```
+  def slug_prefix_in_form
+    '/news/'
+  end
+```
+  and in the form add:
+```
+  - prefix = obj.respond_to?(:slug_prefix_in_form) ? obj.slug_prefix_in_form : ''
+  javascript:
+    $(document).ready(function() {
+      slugPrefix("#{prefix}");
+    });
+```
+
 
 ### Adding CKEditor to your text field
 To change the CKEditor toolbar size set the parameter to either `small`, `medium`, or `full`.

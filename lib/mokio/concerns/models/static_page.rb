@@ -67,6 +67,10 @@ module Mokio
         #   Mokio::Photo
         # end
 
+        def mokio_preview_link_in_edit_page
+          self.path
+        end
+
         def has_historable_enabled?
           true
         end
