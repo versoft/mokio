@@ -47,43 +47,38 @@ module Mokio
             end
 
             def self.generate_sitemap
-              puts "Sitemap service: call"
               generate_xml
             end
 
             def self.generate_static_sitemap(xml)
-              puts "Sitemap service: Generate static sitemap: start"
               return xml_static_collection(xml)
               return nil
             end
 
             def self.generate_dynamic_sitemap(xml)
-
-              puts "Sitemap service: Generate dynamic sitemap: start"
               data = []
 
               @sitemap_generator_enabled_models.each do |model_name|
                 model = model_name.classify.constantize
                 model.all.each do |rec|
-                  if rec.can_add_to_sitemap?
+                  if rec.can_add_to_sitemap? && rec.disable_sitemap_generator != true
                     data << rec.sitemap_url_strategy_default
                   end
                 end
               end
 
-              puts "Sitemap service: empty collection" if data.nil?
               return xml_dynamic_collection(data,xml) if data.present?
               return nil
             end
 
             def self.generate_xml
               puts "Sitemap service: Generate new xml file"
-
               begin
                 xml = Nokogiri::XML::Builder.new { |xml|
                   xml.urlset('xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9") do
                     generate_static_sitemap(xml)
                     generate_dynamic_sitemap(xml)
+                    generate_sitemap_using_methods(xml)
                   end
                 }.to_xml
 
@@ -94,6 +89,8 @@ module Mokio
                 file.close
                 return true
               rescue StandardError => e
+                raise e if Rails.env.development?
+
                 Rails.logger.error "Sitemap service: error"
                 Rails.logger.error "Rescued: #{e.inspect}"
               end
@@ -120,14 +117,29 @@ module Mokio
 
             def self.xml_static_collection(xml)
               @sitemap_generator_static_routes.each do |item|
-                path = item[:loc]
-                date = item[:lastmod] || @default_date
-                if path.present?
-                  xml.url do
-                    xml.loc parse_url(path)
-                    xml.priority item[:priority] || @static_content_priority
-                    xml.lastmod date
-                  end
+                xml_item_parse(xml, item)
+              end
+            end
+
+            def self.generate_sitemap_using_methods(xml)
+              if defined?(SitemapExternalLogic) == 'constant' && SitemapExternalLogic.class == Class
+                data = SitemapExternalLogic.data_for_xml
+                return if data.nil?
+
+                data.each do |item|
+                  xml_item_parse(xml, item)
+                end
+              end
+            end
+
+            def self.xml_item_parse(xml, item)
+              path = item[:loc]
+              date = item[:lastmod] || @default_date
+              if path.present?
+                xml.url do
+                  xml.loc parse_url(path)
+                  xml.priority item[:priority] || @static_content_priority
+                  xml.lastmod date
                 end
               end
             end
@@ -149,6 +161,7 @@ module Mokio
             included do
               after_save :regenerate_sitemap
               after_destroy :regenerate_sitemap
+              attr_accessor :disable_sitemap_generator
             end
 
             def regenerate_sitemap

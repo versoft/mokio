@@ -615,3 +615,7 @@
   2. Fix translation bug in Menu index
   3. Change redirect after save/create to the edit view not index
   4. Add preview frontend link and method 'mokio_preview_link_in_edit_page'
+
+## Mokio 21.09.2021 v2.9.1
+<br/>
+  1. Add attr :disable_sitemap_generator and SitemapExternalLogic to sitemap generator service
