@@ -75,6 +75,7 @@ module Mokio
         backend/load_histories.js
         backend/form_helpers/slug_generator.js
         backend/lodash/lodash.js
+        backend/vendors/select2/select2.min.js
       )
     end
 

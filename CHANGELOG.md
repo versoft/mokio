@@ -619,3 +619,7 @@
 ## Mokio 21.09.2021 v2.9.1
 <br/>
   1. Add attr :disable_sitemap_generator and SitemapExternalLogic to sitemap generator service
+
+## Mokio 14.10.2021 v2.9.2
+<br/>
+  1. Add missing js file to asset pipeline
