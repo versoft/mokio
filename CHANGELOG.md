@@ -623,3 +623,8 @@
 ## Mokio 14.10.2021 v2.9.2
 <br/>
   1. Add missing js file to asset pipeline
+
+## Mokio 18.10.2021 v2.9.3
+<br/>
+  1. Add task 'rake mokio:refresh_static_pages'
+  2. Add optional 'default_value' for selects filters

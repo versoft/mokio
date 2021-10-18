@@ -1,6 +1,6 @@
 - if mokio_filters_enabled?(obj)
   = form_with(method: :get, class: 'mokio-filter-form', local: true)
-    p Filtry:
+    p Filtruj:
     - obj.filter_index_config.each do |key, data|
       - if data[:field_type] == "select"
         = render partial: "mokio/common/filters/select", \

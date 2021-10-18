@@ -9,6 +9,7 @@ def self.filter_index_config
   {
     # generate <select>
     active: {
+      default_value: ['custom text', nil], #optional
       field_type: 'select',
       values: [['Aktywny', true], ['Nieaktywny', false]]
     },
@@ -33,6 +34,7 @@ def self.filter_index_config
   }
 end
 ```
+The key `default_value` for field_type "select" is optional.
 
 2. To use it in Mokio modules use:
 ```

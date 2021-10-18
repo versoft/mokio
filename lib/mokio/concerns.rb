@@ -60,6 +60,7 @@ require "mokio/sluglize"
 #
 # Services
 require "mokio/services/recaptcha_service"
+require "mokio/services/static_page_service"
 #
 
 require "mokio/frontend_editor/editor_panel"

@@ -132,6 +132,7 @@ pl:
     version: Wersja
     dashboard: Dashboard
     copy_suffix: (kopia)
+    default_filter_select_value: '--wszystkie--'
     dynamic_fields:
       add_new_button: Dodaj
       delete_row_button: Usuń

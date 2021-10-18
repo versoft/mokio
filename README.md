@@ -19,6 +19,11 @@ Run all tests in main directory using command: `rspec`
 To suppress warnings use: `rspec --deprecation-out /dev/null`
 [Details for configure Spec Dummy App for properly working tests.](spec/dummy/README.md)
 
+
+## Useful tasks:
+1. Regenerate static pages based on route.rb
+`rake mokio:refresh_static_pages`
+
 ## Usage:
 ### Overriding Mokio js
 In case you need to add some custom logic to Mokio panel's javascript, run:

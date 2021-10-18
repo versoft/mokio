@@ -131,6 +131,7 @@ en:
     version: Version
     dashboard: Dashboard
     copy_suffix: (copy)
+    default_filter_select_value: '--all--'
     dynamic_fields:
       add_new_button: Add new
       delete_row_button: Delete
