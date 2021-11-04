@@ -6,9 +6,8 @@
 = f.input :title, disabled: !obj.display_editable_field?('title'), input_html: {id: 'title', onkeyup: 'updateSlug()', onfocusout: 'removeTracingDashes()'}
 = f.input :slug, disabled: !obj.display_editable_field?('slug'), input_html: {id: 'slug', onkeyup: 'slugHooks()', onfocusout: 'removeTracingDashes()'}
 = f.input :subtitle, disabled: !obj.display_editable_field?('subtitle'), :as => :string
-= f.input :intro,   :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 150, :language => I18n.locale} }, disabled: !obj.display_editable_field?('intro')
-= f.input :content, :wrapper => :ckeditor,  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 300, :language => I18n.locale} }, disabled: !obj.display_editable_field?('content')
-
+= render_ckeditor_field(f, { input_name: :intro, ckeditor_name: 'Full', ckeditor_height: 150, disabled: !obj.display_editable_field?('intro') })
+= render_ckeditor_field(f, { input_name: :content, ckeditor_name: 'Full', ckeditor_height: 300, disabled: !obj.display_editable_field?('content') })
 = f.input :display_from, :wrapper => :date, :as => :string,   :input_html => { :class => "mask-date display_from", :value => (localize(f.object.display_from, :format => :datepicker) if f.object.display_from) },  disabled: !obj.display_editable_field?('display_from')
 = f.input :display_to, :wrapper => :date, :as => :string,   :input_html => { :class => "mask-date display_to", :value => (localize(f.object.display_to, :format => :datepicker) if f.object.display_to) },  disabled: !obj.display_editable_field?('display_to')
 .row-fluid

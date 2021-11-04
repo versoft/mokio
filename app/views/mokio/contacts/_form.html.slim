@@ -4,8 +4,8 @@
 = f.input :title, disabled: !obj.display_editable_field?('title')
 = f.input :slug, disabled: !obj.display_editable_field?('slug')
 = f.input :subtitle, disabled: !obj.display_editable_field?('subtitle'), :as => :string
-= f.input :intro,    :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 150, :language => I18n.locale} }, disabled: !obj.display_editable_field?('intro')
-= f.input :content,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400, :language => I18n.locale} }, disabled: !obj.display_editable_field?('content')
+= render_ckeditor_field(f, { input_name: :intro, ckeditor_name: 'Full', ckeditor_height: 150, disabled: !obj.display_editable_field?('intro') })
+= render_ckeditor_field(f, { input_name: :content, ckeditor_name: 'Full', ckeditor_height: 400, disabled: !obj.display_editable_field?('content') })
 = f.input :recipient_emails, collection: [],:input_html => { :class => "recipients span10",multiple: true }, disabled: !obj.display_editable_field?('recipient_emails')
 
 .row-fluid
@@ -40,7 +40,7 @@
               span.icon16.icomoon-icon-arrow-right-2
               = "%content% - #{t('contacts.form_content')}"
 
-      = t.input :tpl, :label => "",  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Medium', :height => 300} }
+      = render_ckeditor_field(f, { input_name: :tpl, ckeditor_name: 'Medium', ckeditor_height: 300 })
 
 
 = f.hidden_field :contact, value: true

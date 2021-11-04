@@ -14,6 +14,13 @@
     = javascript_include_tag 'mokio'
     = javascript_include_tag 'html5'
     = javascript_include_tag 'backend/head'
+    - if Mokio.use_ckeditor5
+      -# %script(src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js")
+      -# %script(src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js")
+      = javascript_include_tag 'backend/ckeditor_build'
+      = javascript_include_tag 'backend/ckeditor5.js'
+    - else
+      = javascript_include_tag 'backend/ckeditor4'
 
     = yield :head
 
@@ -74,4 +81,4 @@
     = yield :js
 
     :javascript
-      CKEDITOR.config.entities = false;
+      if (typeof CKEDITOR !== 'undefined') { CKEDITOR.config.entities = false; }

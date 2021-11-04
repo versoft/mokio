@@ -51,11 +51,15 @@ require "mokio/concerns/common/controller_functions"
 require "mokio/concerns/common/controller_translations"
 require "mokio/concerns/common/seo_tags"
 require "mokio/concerns/common/services/sitemap_service"
+require "mokio/concerns/common/services/get_cke_files"
 require "mokio/concerns/common/history"
 
 #Helpers:
 require "mokio/headers_helper"
 require "mokio/sluglize"
+
+# Uploader
+require "mokio/uploader/cke_uploader"
 
 #
 # Services
@@ -93,3 +97,4 @@ require "mokio/concerns/controllers/histories"
 require "mokio/concerns/controllers/backend_search"
 require "mokio/concerns/controllers/static_pages"
 require "mokio/concerns/controllers/editable_blocks"
+require "mokio/concerns/controllers/cke_file_browser"

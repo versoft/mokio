@@ -296,6 +296,15 @@ module Mokio
 
   mattr_accessor :hide_static_pages_in_sidebar
   self.hide_static_pages_in_sidebar = false
+
+  # It's path for store files uploaded by MokioFileBrowser in CKEditor 5
+  mattr_accessor :cke_root_images_path
+  self.cke_root_images_path = nil
+
+  # Set to `true` if you want using CKEditor 5
+  mattr_accessor :use_ckeditor5
+  self.use_ckeditor5 = false
+
   #
   # Default way to configure Mokio
   #

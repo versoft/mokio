@@ -140,6 +140,53 @@ module Mokio
         )
       end
 
+      def render_ckeditor_field(f, params)
+        params[:ckeditor_height] = 400 unless params[:ckeditor_height]
+        params[:disabled] = false unless params[:disabled]
+        if Mokio.use_ckeditor5
+          ### CKEDITOR 5 ###
+          params[:ckeditor_name] = 'mini' unless params[:ckeditor_name]
+          form_hash = {
+            input_html: {
+              data: {
+                ckeditor5: params[:ckeditor_name],
+                height: params[:ckeditor_height]
+              }
+            },
+            disabled: params[:disabled]
+          }
+          form_hash[:label] = params[:label] if params[:label]
+          form_hash[:input_html][:value] = params[:value] if params[:value]
+          f.input(
+            params[:input_name],
+            form_hash
+          )
+        else
+          ### CKEDITOR 4 ###
+          params[:ckeditor_name] = 'Mini' unless params[:ckeditor_name]
+          form_hash =  {
+            wrapper: :ckeditor,
+            as: :ckeditor,
+            input_html: {
+              ckeditor: {
+                toolbar: params[:ckeditor_name].capitalize,
+                height: params[:ckeditor_height],
+                language: I18n.locale
+              }
+            },
+            disabled: params[:disabled]
+          }
+
+          form_hash[:label] = params[:label] if params[:label]
+          form_hash[:value] = params[:value] if params[:value]
+
+          f.input(
+            params[:input_name],
+            form_hash
+          )
+        end
+      end
+
       def render_backend_input_active(f)
         render_backend_input_active_checkbox(f,'active')
       end

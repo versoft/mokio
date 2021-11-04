@@ -58,6 +58,7 @@ end
 ```
 
 ## More docs:
+- [CKEditor 5](docs/ckeditor5.md) - CKEditor 5
 - [Custom model and controller](docs/custom_models_and_controllers.md) - How to create own model and controller in CMS
 - [SeoTags](docs/seo_tags.md) - How to add meta tags to your own models
 - [Generate sitemap.xml](docs/sitemap_generator.md) - How to generate automatic sitemap.xml for dynamic and static content
