@@ -68,7 +68,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'cancancan',                   '~> 3.0.1'  #-----OLD: '~> 1.7'
   s.add_dependency 'simple_form',                 '>= 5.0.1'  #-----OLD: '>= 3.4'
   s.add_dependency 'ckeditor',                    '~> 4.3.0'  #-----OLD: '~> 4.2'
-  s.add_dependency 'carrierwave',                 '~> 1.3.1'  #-----OLD:  '~> 0.10',  '>= 0.10.0'
+  s.add_dependency 'carrierwave',                 '~> 2.2.2'  #-----OLD:  '~> 0.10',  '>= 0.10.0'
   s.add_dependency 'rmagick',                     '~> 4.0.0'  #-----OLD:  '~> 2.13',  '>= 2.13.2'
   s.add_dependency 'mini_magick',                 '~> 4.10.1'  #-----OLD:  '~> 3.7',   '>= 3.7.0'
   s.add_dependency 'amoeba',                      '~> 3.1.0'  #-----OLD:  '~> 3.0'

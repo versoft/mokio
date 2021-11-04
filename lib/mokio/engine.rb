@@ -58,6 +58,9 @@ module Mokio
         frontend/*
         frontend/bg/*
         backend/head.js
+        backend/ckeditor4.js
+        backend/ckeditor5.js
+        backend/ckeditor_build.js
         backend/datatable.js
         backend/favicon.ico
         backend/menu/menu_dual_select.js

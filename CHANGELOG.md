@@ -632,3 +632,11 @@
 ## Mokio 23.11.2021 v2.9.4
 <br/>
   1. Fix passing current_user to service StaticPageService
+
+## Mokio 28.01.2022 v2.10.0
+<br/>
+  1. Add optional support for CKEditor5:
+    - added configs in mokio.rb: `cke_root_images_path`, `use_ckeditor5`
+    - helper for render CKEditor5 and CKEditor4 `render_ckeditor_field`
+  2. Overwrite app/assets/stylesheets/ckeditor/skins/moono-lisa/editor.css and remove !important from icons background
+  (on rails 6 icons started load with /icons.png instead of icons.png)

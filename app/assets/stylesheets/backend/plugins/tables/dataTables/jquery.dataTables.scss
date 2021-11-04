@@ -68,7 +68,10 @@
 	float: left;
 	text-align: left;
 }
-	.dataTables_filter input {margin-left:10px; background: image-url('backend/plugins/data_tables/search.png') no-repeat 98% center;}
+	.dataTables_filter input {
+		margin-left: 10px;
+		background: image-url('backend/plugins/data_tables/search.png') no-repeat 98% center;
+	}
 .box .dataTables_filter {margin-left:15px;}
 .dataTables_info {
 	width: auto;

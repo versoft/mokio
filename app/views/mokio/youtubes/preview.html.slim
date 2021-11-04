@@ -13,7 +13,7 @@
                 = f.input :subtitle
                 = f.input :movie_url, :as => :hidden, :input_html => { :value => @video.embed_url }
                 = f.input :content_id, :as => :hidden, :input_html => { :value => @edited_gallery.id }
-                = f.input :intro, :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Mini', :height => 150}, :value => @video.description }
+                = render_ckeditor_field(f, { input_name: :intro, value: @video.description, ckeditor_name: 'Mini', ckeditor_height: 150 })
                 br
                 = f.label :thumb, :class => "form-label span2"
                 #thumbnail-container
@@ -28,7 +28,7 @@
                 br
                 .video_frame
                   = @video.embed_code.html_safe
-                
+
 
             .modal-footer
               = f.submit bt('save'), :class => "btn btn-primary edit_modal_submit", remote: true

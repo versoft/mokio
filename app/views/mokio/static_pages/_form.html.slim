@@ -4,10 +4,3 @@
 = f.input :system_name, disabled: true
 = f.input :sitemap_date, :wrapper => :date, :as => :string, :input_html => { :class => "mask-date display_from", :value => (localize(f.object.sitemap_date, :format => :datepicker) if f.object.sitemap_date) }
 = f.input :automatic_date_update
-
-/ f.input :custom_field_1,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400, :language => I18n.locale} }
-/ f.input :custom_field_2,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400, :language => I18n.locale} }
-/ f.input :custom_field_3,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400, :language => I18n.locale} }
-/ f.input :custom_field_4,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400, :language => I18n.locale} }
-/ f.input :custom_field_5,  :wrapper => :ckeditor, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400, :language => I18n.locale} }
-

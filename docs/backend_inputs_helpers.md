@@ -60,6 +60,10 @@
 
 ### Adding CKEditor to your text field
 To change the CKEditor toolbar size set the parameter to either `small`, `medium`, or `full`.
+Support only CKEditor4:
+```= f.input :intro, :wrapper => :ckeditor, :as => :ckeditor, :input_html => {:ckeditor => {:toolbar => 'Full', :height => 150, :language => I18n.locale} }
 ```
-= f.input :intro, :wrapper => :ckeditor, :as => :ckeditor, :input_html => {:ckeditor => {:toolbar => 'Full', :height => 150, :language => I18n.locale} }
+Support CKEditor4 and CKEditor5:
+```
+= render_ckeditor_field(f, { input_name: :intro, ckeditor_name: 'Full', ckeditor_height: 150, disabled: !obj.display_editable_field?('intro') })
 ```
