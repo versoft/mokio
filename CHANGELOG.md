@@ -628,3 +628,7 @@
 <br/>
   1. Add task 'rake mokio:refresh_static_pages'
   2. Add optional 'default_value' for selects filters
+
+## Mokio 23.11.2021 v2.9.4
+<br/>
+  1. Fix passing current_user to service StaticPageService

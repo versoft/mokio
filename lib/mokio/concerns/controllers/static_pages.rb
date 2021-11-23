@@ -14,7 +14,7 @@ module Mokio
 
         def index
           # create and update static pages
-          Mokio::Services::StaticPageService.new.call
+          Mokio::Services::StaticPageService.new({user: current_user}).call
           super
         end
 

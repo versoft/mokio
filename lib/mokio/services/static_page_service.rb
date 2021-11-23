@@ -4,6 +4,7 @@ module Mokio
 
       def initialize(params = {})
         @disable_sitemap_regenerate = params[:disable_sitemap_regenerate] || false
+        @user = params[:user] || nil
         @using_paths = []
       end
 
@@ -42,7 +43,7 @@ module Mokio
         static_page = Mokio::StaticPage.find_by(system_name: system_name)
         unless static_page
           static_page = Mokio::StaticPage.new({ system_name: system_name })
-          static_page.author = current_user
+          static_page.author = @user
           static_page.sitemap_date = Time.now
         end
         static_page.pathname = pathname
