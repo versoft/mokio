@@ -1,6 +1,6 @@
 module Mokio
-  module Concerns 
-    module Controllers 
+  module Concerns
+    module Controllers
       #
       # Concern for ApplicationController
       #
@@ -24,7 +24,7 @@ module Mokio
           # <b>before_filter</b> in ApplicationController using <b>gem devise</b>
           #
           def configure_permitted_parameters
-            devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:email, :password, :password_confirmation, roles: [])}
+            devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation])
           end
 
           #

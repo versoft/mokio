@@ -82,7 +82,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id',                 '~> 5.0',   '>= 5.0.3'
   s.add_dependency 'video_info',                  '~> 2.3',   '>= 2.3.1'
   s.add_dependency 'disqus',                      '~> 1.0',   '>= 1.0.4'
-  s.add_dependency 'devise',                      '~> 3.2',   '>= 3.2.4'
+  s.add_dependency 'devise',                      '~> 4.1'
   s.add_dependency 'role_model',                  '~> 0.8',   '>= 0.8.1'
   s.add_dependency 'deface',                      '~> 1.0',   '>= 1.0.0'
   s.add_dependency 'slim-rails',                  '~> 3.0.1'
