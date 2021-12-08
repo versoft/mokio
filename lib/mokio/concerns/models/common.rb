@@ -59,6 +59,9 @@ module Mokio
         # Output for <b>active</b> parameter, used in CommonController#index
         #
         def active_view
+          obj_class = self.class
+          obj_path = ((obj_class.to_s.include? "Mokio::") ? obj_class.to_s.gsub("Mokio::","") : obj_class.to_s).tableize
+
           "<div class=\"activebutton\">
             <input type=\"checkbox\"
               #{"checked=\"checked\"" if self.active}
@@ -67,6 +70,7 @@ module Mokio
               data-off=\"danger\"
               data-on-label=\"<i class='icomoon-icon-checkmark white'></i>\"
               data-off-label=\"<i class='icomoon-icon-cancel-3 white'></i>\"
+              #{"data-object-class='" + obj_path + "'"}
             >
           </div>"
           .html_safe

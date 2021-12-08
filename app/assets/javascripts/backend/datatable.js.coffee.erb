@@ -1,5 +1,4 @@
 $ ->
-  console.log(obj_class);
   if $("table").hasClass("dynamicTable")
     $(".dynamicTable").dataTable
       sPaginationType: "full_numbers"
@@ -31,10 +30,11 @@ $ ->
       fnDrawCallback: (oSettings) ->
         $(".activebtn").bootstrapSwitch()
         $(".activebtn").on "switch-change", (e, data) ->
+          data_obj_class = $(this).attr("data-object-class");
           row_id = $(this).parents("tr").attr("id")
           url = '/' + Mokio.engine_root() + '/comments/' + row_id + '/update_accepted' if $(this).parents('.activebutton').hasClass('comment')
           # url = '/' + Mokio.engine_root() + '/' + obj_table + '/' + row_id + '/update_active'  if !$(this).parents('.activebutton').hasClass('comment')
-          url = '/' + Mokio.engine_root() + '/' + obj_class + '/' + row_id + '/update_active'  if !$(this).parents('.activebutton').hasClass('comment')
+          url = '/' + Mokio.engine_root() + '/' + data_obj_class + '/' + row_id + '/update_active'  if !$(this).parents('.activebutton').hasClass('comment')
           $.post url
         # console.log( <%= Mokio.backend_default_per_page %> )
         if oSettings.fnRecordsTotal() <= <%= Mokio.backend_default_per_page %>

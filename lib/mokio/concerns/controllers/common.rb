@@ -79,7 +79,9 @@ module Mokio
         # Standard edit action.
         #
         def edit
-          obj.build_gmap if obj.class.has_gmap_enabled? && obj.gmap.nil? # build gmap if it hasn't created before. Relation with gmap isn't nessesary !
+          if obj
+            obj.build_gmap if obj.class.has_gmap_enabled? && obj.gmap.nil? # build gmap if it hasn't created before. Relation with gmap isn't nessesary !
+          end
         end
 
         #
