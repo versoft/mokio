@@ -203,19 +203,6 @@ module Mokio
         end
 
         #
-        # Renders additional buttons in index view
-        #
-        def render_additional_index_buttons
-          template = self.additional_index_buttons
-          if !template.nil?
-              result = render_to_string :partial => template
-            result.html_safe
-          else
-            ""
-          end
-        end
-
-        #
         # Renders additional action buttons in datatable row in index view
         # ==== Attributes
         # * +obj+ - record object from database

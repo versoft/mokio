@@ -65,6 +65,7 @@ end
 - [Select2 helper](docs/select2.md) - How to use select inputs with autosearch
 - [Backend input helpers](docs/backend_inputs_helpers.md) - Describes some input helpers
 - [History](docs/history.md) - Model history tracking
+- [Partials in index views](docs/partials_in_index_views.md) - How to manage some additional partials in index views
 - [Filters in index views](docs/filters_in_index_views.md) - How to configure filters in indexes
 - [Fronted content editor](docs/frontend_content_editor.md) - How to use frontend content editor
 

@@ -640,3 +640,8 @@
     - helper for render CKEditor5 and CKEditor4 `render_ckeditor_field`
   2. Overwrite app/assets/stylesheets/ckeditor/skins/moono-lisa/editor.css and remove !important from icons background
   (on rails 6 icons started load with /icons.png instead of icons.png)
+
+## Mokio 23.01.2021 v2.10.1
+<br />
+  1. Remove method 'render_additional_index_buttons'
+  2. Add optional partials: '_index_buttons.html.slim', '_index_desc.html.slim' in index view

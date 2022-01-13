@@ -6,9 +6,12 @@
       span = bt("index_title", @obj_class)
       - unless (@obj_class.respond_to?(:hide_index_add_button) && @obj_class.hide_index_add_button)
         = btn_new( bt("index_add_new", @obj_class), new_url(@obj_class) )
-      = @_controller.render_additional_index_buttons
+      - if lookup_context.exists?('index_buttons', [params[:controller]], true)
+        = render partial: 'index_buttons'
 
     .content.noPad.clearfix
+      - if lookup_context.exists?('index_desc', [params[:controller]], true)
+        = render partial: 'index_desc'
       = render partial: "mokio/common/mokio_filters", locals: {obj: @obj_class}
       = responsive_dynamic_table do # see in CommonHelper
         thead
