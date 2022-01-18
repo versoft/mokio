@@ -68,7 +68,7 @@ end
 - [Partials in index views](docs/partials_in_index_views.md) - How to manage some additional partials in index views
 - [Filters in index views](docs/filters_in_index_views.md) - How to configure filters in indexes
 - [Fronted content editor](docs/frontend_content_editor.md) - How to use frontend content editor
-
+- [Application setttings](docs/application_settings.md) - How to use application settings
 More docs soon!
 
 ---

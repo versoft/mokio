@@ -283,8 +283,20 @@ module Mokio
   mattr_accessor :backend_search_nested_enabled
   self.backend_search_nested_enabled= []
 
+  # to provide compatibility with gem mokio_custom_settings
   mattr_accessor :custom_settings_defaults
   self.custom_settings_defaults = [
+    {
+      name: 'default_user',
+      value: 'admin@bloomnet.eu',
+      description: '...',
+      deletable: 'true',
+      group: 'Defaults'
+    }
+  ]
+
+  mattr_accessor :application_settings_defaults
+  self.application_settings_defaults = [
     {
       name: 'default_user',
       value: 'admin@bloomnet.eu',

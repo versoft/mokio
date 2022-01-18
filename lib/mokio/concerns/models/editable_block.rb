@@ -1,9 +1,6 @@
 module Mokio
   module Concerns
     module Models
-      #
-      # Concern for Gmap model
-      #
       module EditableBlock
         extend ActiveSupport::Concern
         included do

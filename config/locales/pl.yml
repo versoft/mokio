@@ -169,6 +169,7 @@ pl:
       settings: Ustawienia
       support: Pomoc
       static_page: Strony statyczne
+      application_setting: Własne ustawienia
 
     breadcrumbs:
       only_loose: Treści nie podpięte pod menu
@@ -235,7 +236,8 @@ pl:
       base_content: Zarządzanie treścią
       backend_search: Szukaj w backendzie
       static_pages: Strony statyczne
-
+      application_settings: Własne ustawienia
+      application_settings_groups: Grupy parametrów
 
   static_modules:
     actions: Akcje
@@ -256,6 +258,32 @@ pl:
     update_active_true: "Blok <strong>'%{title}'</strong> jest teraz aktywny."
     update_active_false: "Blok <strong>'%{title}'</strong> jest teraz nieaktywny."
     copy_title: Kopiuj blok
+
+  application_settings:
+    created: Utworzono parametr
+    updated: Zaktualizowano parametr
+    deleted: Usunięto parametr
+    edit_title: Edycja parametru
+    index_title: Lista parametrów
+    index_add_new: Dodaj nowy parametr
+    new_title: Nowy parametr
+    name: Nazwa
+    value: Wartość
+    description: Opis
+    deletable: Mozna usunac?
+    group: Grupa
+    actions: Akcje
+
+  application_settings_groups:
+    created: Utworzono grupę parametrów
+    updated: Zaktualizowano grupę parametrów
+    deleted: Usunięto grupę parametrów
+    edit_title: Edycja grupy parametrów
+    index_title: Grupy parametrów
+    index_add_new: Dodaj nową grupę parametrów
+    new_title: Nowa grupa parametrów
+    name: Nazwa
+    actions: Akcje
 
   static_pages:
     index_title: Lista stron statycznych
@@ -684,6 +712,18 @@ pl:
   activerecord:
     errors:
       models:
+        mokio/application_setting:
+          attributes:
+            name:
+              blank: Nazwa parametru nie może być pusta
+              taken: Nazwa parametru jest już zajęta
+            value:
+              blank: Wartość parametru nie może być pusta
+        mokio/application_settings_group:
+          attributes:
+            name:
+              blank: Nazwa grupy nie może być pusta
+              taken: Nazwa grupy jest już zajęta
         mokio/contact:
           attributes:
             title:
@@ -774,6 +814,16 @@ pl:
         record_invalid: Niepoprawny rekord w bazie danych
 
     attributes:
+      mokio/application_setting:
+        name: Nazwa parametru
+        value: Wartość parametru
+        description: Opis
+        deletable: Możliwość usunięcia
+        mokio_application_settings_group_id: Grupa parametrów
+
+      mokio/application_settings_group:
+        name: Nazwa grupy
+
       mokio/contents:
         active: Włączony
         intro: Wstęp

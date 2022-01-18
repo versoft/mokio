@@ -42,6 +42,8 @@ require "mokio/concerns/models/history"
 require "mokio/concerns/models/backend_search"
 require "mokio/concerns/models/static_page"
 require "mokio/concerns/models/editable_block"
+require "mokio/concerns/models/application_setting"
+require "mokio/concerns/models/application_settings_group"
 
 #
 # CommonController extensions
@@ -65,6 +67,7 @@ require "mokio/uploader/cke_uploader"
 # Services
 require "mokio/services/recaptcha_service"
 require "mokio/services/static_page_service"
+require "mokio/services/find_app_setting"
 #
 
 require "mokio/frontend_editor/editor_panel"
