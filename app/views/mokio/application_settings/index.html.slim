@@ -1,0 +1,32 @@
+.span12
+  = render :partial => "mokio/common/notice"
+
+  .box.gradient
+    = box_title do
+      span= bt("index_title", @obj_class)
+      = btn_new( bt("index_add_new", @obj_class), new_url(@obj_class) )
+      = btn_new( bt("index_add_new", Mokio::ApplicationSettingsGroup), new_url(Mokio::ApplicationSettingsGroup) )
+      = btn_new( bt("index_title", Mokio::ApplicationSettingsGroup), index_url(Mokio::ApplicationSettingsGroup) )
+      - if lookup_context.exists?('index_buttons', [params[:controller]], true)
+        = render partial: 'index_buttons'
+
+    .content.noPad.clearfix
+      - if lookup_context.exists?('index_desc', [params[:controller]], true)
+        = render partial: 'index_desc'
+      = responsive_dynamic_table do # see in CommonHelper
+        thead
+          tr
+            / Remember to override columns_for_table in your Model
+            - @obj_class.columns_for_table.each do |t|
+              th= bt(t, @obj_class)
+            th= bt("actions")
+        tbody
+          - cache obj do
+            = render partial: "mokio/common/obj", collection: obj
+
+  - content_for :js do
+    javascript:
+      var tmp = "#{set_sorting_param(@obj_class)}";
+      tmp = tmp.replace(/&quot;/g, '"');
+      var default_sorting = JSON.parse(tmp);
+    = javascript_include_tag "backend/datatable"

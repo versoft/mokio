@@ -1,0 +1,13 @@
+= f.input :name, disabled: !obj.editable_name
+- if obj.field_type == 'ckeditor'
+  = f.input :value, as: :ckeditor, input_html: {ckeditor: {toolbar: 'Mini', height: 150}}
+- elsif obj.field_type == 'string'
+  = f.input :value, as: :string
+- else
+  = f.input :value
+= f.input :description
+= f.input :deletable
+= f.input :mokio_application_settings_group_id, \
+  collection: Mokio::ApplicationSettingsGroup.all.collect{|group| [bt(group.name),group.id]}, \
+  include_blank: bt(''), \
+  disabled: !obj.display_editable_field?('mokio_application_settings_group_id')

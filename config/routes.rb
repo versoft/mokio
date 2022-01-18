@@ -138,6 +138,18 @@ Mokio::Engine.routes.draw do
     end
   end
 
+  resources :application_settings do
+    member do
+      get :copy
+    end
+  end
+
+  resources :application_settings_groups do
+    member do
+      get :copy
+    end
+  end
+
   resources :support, only: :index
 
   post '/histories/get_n_more' => 'histories#get_n_more'

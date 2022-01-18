@@ -48,6 +48,7 @@
             ul.sub#settings
               = sidebar_btn Mokio::User, "entypo-icon-users"
               = sidebar_btn Mokio::Lang, "brocco-icon-earth"
+              = sidebar_btn Mokio::ApplicationSetting, "icomoon-icon-cogs"
         /= render :template => "mokio/layout/sidebar_support"
   - if @obj_class == Mokio::Content && params[:action] == "index"
     = render :partial => "mokio/contents/content_info_widget"

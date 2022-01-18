@@ -645,3 +645,9 @@
 <br />
   1. Remove method 'render_additional_index_buttons'
   2. Add optional partials: '_index_buttons.html.slim', '_index_desc.html.slim' in index view
+
+## Mokio 17.02.2022 v2.11.0
+<br/>
+  1. Move gem mokio_custom_settings inside Mokio as ApplicationSetting
+  2. Add service `Mokio::Services::FindAppSetting`
+  3. Restore method `render_additional_index_buttons` for compatibility with gems

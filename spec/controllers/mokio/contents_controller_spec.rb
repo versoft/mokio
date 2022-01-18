@@ -50,7 +50,7 @@ module Mokio
 
     describe "GET new" do
       it "redirects to Article controller" do
-        get :new, valid_session
+        get :new
         expect(response).to redirect_to (new_article_path)
       end
 
