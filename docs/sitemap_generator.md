@@ -9,7 +9,7 @@
   - if you want you can add static routes like:
 	```
     config.mokio_sitemap_generator_static = [
-	    {loc: '/address', lastmod: '2019-11-21T11:03:04+00:00', priority: 1},
+	    {loc: '/address', lastmod: '2019-11-21T11:03:04+00:00', priority: 1, changefreq: 'monthly'},
 	    {loc: '/address-another'}
     ]
 	```
@@ -36,7 +36,7 @@ Method `self.data_for_xml` executes automatically. DO NOT change this method's n
     class SitemapExternalLogic
       def self.data_for_xml
         [
-          { loc: 'url', lastmod: date, priority: 1 },
+          { loc: 'url', lastmod: date, priority: 1, changefreq: 'monthly'  },
           ...
         ]
       end
@@ -55,7 +55,8 @@ include Mokio::Concerns::Common::Services::Sitemap::Model
     {
       loc: Rails.application.routes.url_helpers.category_path(self.slug),
       priority: 1,
-      lastmod: self.updated_at
+      lastmod: self.updated_at,
+      changefreq: 'monthly'
     }
   end
   ```
@@ -71,3 +72,6 @@ include Mokio::Concerns::Common::Services::Sitemap::Model
   obj.save
   ```
 4. Sitemap will generate automatically after save or destroy model.
+
+Manually recreate sitemap.xml by command:
+`rake mokio:recreate_sitemap`

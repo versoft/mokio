@@ -651,3 +651,8 @@
   1. Move gem mokio_custom_settings inside Mokio as ApplicationSetting
   2. Add service `Mokio::Services::FindAppSetting`
   3. Restore method `render_additional_index_buttons` for compatibility with gems
+
+## Mokio 28.04.2022 v2.11.1
+1. Update sitemap docs
+2. Add `rake mokio:recreate_sitemap` to recreate sitemap.xml
+3. Minor fixes in SitemapService

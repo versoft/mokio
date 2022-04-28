@@ -61,13 +61,19 @@ module Mokio
               @sitemap_generator_enabled_models.each do |model_name|
                 model = model_name.classify.constantize
                 model.all.each do |rec|
-                  if rec.can_add_to_sitemap? && rec.disable_sitemap_generator != true
+                  if rec.respond_to?('can_add_to_sitemap?')
+                    can_add = rec.can_add_to_sitemap?
+                  else
+                    can_add = true
+                  end
+
+                  if can_add && rec.disable_sitemap_generator != true
                     data << rec.sitemap_url_strategy_default
                   end
                 end
               end
 
-              return xml_dynamic_collection(data,xml) if data.present?
+              return xml_dynamic_collection(data, xml) if data.present?
               return nil
             end
 
@@ -109,7 +115,8 @@ module Mokio
                   xml.url do
                     xml.loc parse_url(path)
                     xml.lastmod date
-                    xml.priority @dynamic_content_priority
+                    xml.priority item[:priority] || @dynamic_content_priority
+                    xml.changefreq item[:changefreq] if item[:changefreq]
                   end
                 end
               end
@@ -140,6 +147,7 @@ module Mokio
                   xml.loc parse_url(path)
                   xml.priority item[:priority] || @static_content_priority
                   xml.lastmod date
+                  xml.changefreq item[:changefreq] if item[:changefreq]
                 end
               end
             end
@@ -166,10 +174,6 @@ module Mokio
 
             def regenerate_sitemap
               Service.regenerate_sitemap
-            end
-
-            def can_add_to_sitemap?
-              true
             end
 
             def sitemap_url_strategy_default

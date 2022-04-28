@@ -111,7 +111,7 @@ module Mokio
         end
 
         def can_add_to_sitemap?
-          true
+          self.deleted_at.nil?
         end
 
         def title
