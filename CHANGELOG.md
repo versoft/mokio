@@ -656,3 +656,6 @@
 1. Update sitemap docs
 2. Add `rake mokio:recreate_sitemap` to recreate sitemap.xml
 3. Minor fixes in SitemapService
+
+## Mokio 07.09.2022 v2.11.2
+1. Fix filtering data when using method `current_records` in a controller

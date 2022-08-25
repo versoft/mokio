@@ -71,13 +71,20 @@ private
 
   def collection
     if @view.controller.respond_to? "current_records"
-      @collection = @view.controller.current_records
-      @collection = @collection.page(page).per_page(per_page) if !@collection.nil?
+      collection = @view.controller.current_records
+      collection = collection.page(page).per_page(per_page) if !collection.nil?
     end
-    @collection ||= fetch_commons
+    @collection = fetch_commons(collection)
   end
 
-  def fetch_commons
+  def fetch_commons(current_collection = nil)
+
+    if(current_collection.nil?)
+      default_collection = @obj_class
+    else
+      default_collection = current_collection
+    end
+
     if params[:search].present? && params[:search][:value].present?
       # TODO Check Solr Server Running
       if Mokio.solr_enabled
@@ -96,25 +103,26 @@ private
           columns << ' LIKE :kw'
           first_col = false
         end
-        collection = @obj_class.order("#{sort_column} #{sort_direction}")
+        collection = default_collection.order("#{sort_column} #{sort_direction}")
         collection = collection.where("#{columns}", :kw=>"%#{params[:search][:value]}%")
         collection = filtered_collection(collection)
         collection = collection.page(page).per_page(per_page)
       end
 
     elsif params[:only_loose].present?
-      collection = @obj_class
+      collection = default_collection
         .includes(:menus)
         .where(:mokio_content_links => {:content_id => nil})
         .order("#{sort_column} #{sort_direction}")
       collection = collection.page(page).per_page(per_page)
     else
-      collection = @obj_class.order("#{sort_column} #{sort_direction}")
+      collection = default_collection.order("#{sort_column} #{sort_direction}")
       collection = filtered_collection(collection)
       collection = collection.page(page).per_page(per_page)
     end
     collection
   end
+
 
   def page
     params[:start].to_i/per_page + 1
