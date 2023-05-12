@@ -659,3 +659,9 @@
 
 ## Mokio 07.09.2022 v2.11.2
 1. Fix filtering data when using method `current_records` in a controller
+
+## Mokio 12.05.2023 v2.12.0
+1. Upgrade frontend inline editor. Use Trumbowyg WYSIWYG editor instead of 'contenteditable' and 'execCommand'.
+2. Add option "restore" to the editor => remove editable_block and refresh page. After remove editable_block is
+generated content from template.
+3. Rake task mokio:editable_blocks_ids now generate hexes 12 length instead of 9.

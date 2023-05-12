@@ -4,6 +4,9 @@ module Mokio
       module EditableBlocks
 
         extend ActiveSupport::Concern
+        included do
+          before_action :set_obj, only: [:update]
+        end
 
         def create
           raise 'unauthorize' unless current_user.can? :manage, Mokio::Content
@@ -17,7 +20,7 @@ module Mokio
           else
             editable_block.author = current_user
           end
-          editable_block.content = editable_block_params[:content]
+          editable_block.content = editable_block_params[:content].strip
           new_location = editable_block_params[:location]
 
           unless new_location.blank?
@@ -36,6 +39,17 @@ module Mokio
               format.html {}
               format.json { render json: editable_block.errors, status: :unprocessable_entity }
             end
+          end
+        end
+
+        def destroy
+          editable_block = Mokio::EditableBlock.find_by!(
+            hash_id: editable_block_params[:hash_id],
+            lang: editable_block_params[:lang]
+          )
+          editable_block.destroy!
+          respond_to do |format|
+            format.json { render json: { msg: 'ok' } }
           end
         end
 

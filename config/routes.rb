@@ -28,7 +28,7 @@ Mokio::Engine.routes.draw do
   post '/cke-create' => 'cke_file_browser#create', as: :cke_browser_create
   post '/cke-destroy' => 'cke_file_browser#destroy', as: :cke_browser_destroy
 
-  resources :editable_blocks, only: [:create, :update]
+  resources :editable_blocks, only: [:create, :update, :destroy]
 
   resources :static_modules do
     member do
