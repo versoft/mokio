@@ -2,13 +2,11 @@ module Mokio
   module FrontendEditor
     class EditorField
       include CanCan::Ability
-      # include ActionView::Helpers::TagHelper
-      # include ActionView::Context
-      # include ActionView::Helpers::OutputSafetyHelper
 
       def initialize(current_user, block_params, html_block, locale)
         @current_user = current_user
         @block_params = block_params
+        @editor_mode = (@block_params[:editor] || :standard).to_s
         @section_id = block_params[:id]
         @blocks = block_params[:blocks]
         @path = block_params[:path]
@@ -56,12 +54,21 @@ module Mokio
 
       def prepare_editor_html(text)
         obj = Nokogiri::HTML.fragment(text)
-        root = obj.children.first
-        root.set_attribute('data-editableblock', @section_id)
-        root.set_attribute('contenteditable', 'true')
-        css_class = root.attribute('class')
-        root.set_attribute('class', "#{css_class} mokio-editor-editableblock")
-        obj.to_html.html_safe
+        # first_element = obj.children.first
+        # editor_mode = "p"
+        # if ['a', 'span', 'button'].include?(first_element.name)
+        #   editor_mode = "br"
+        # end
+        html = <<-HT
+          <div
+            class='mokio-editor-editableblock'
+            data-editableblock='#{@section_id}'
+            data-editor-mode='#{@editor_mode}'
+          >
+            #{obj.to_html}
+          </div>
+        HT
+        html.html_safe
       end
 
       def can_edit?

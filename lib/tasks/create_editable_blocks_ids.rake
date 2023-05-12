@@ -3,7 +3,7 @@ namespace :mokio do
 
   task editable_blocks_ids: :environment do |t, args|
     40.times do
-      puts SecureRandom.hex(9)
+      puts SecureRandom.hex(12)
     end
   end
 

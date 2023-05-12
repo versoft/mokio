@@ -1,3 +1,4 @@
+
 <div
   id="mokio-frontend-editor"
   data-locale="<%= I18n.locale.to_s %>"
@@ -8,4 +9,9 @@
   </p>
 </div>
 
+<script>
+  var mFrontendEditorIconPath = '<%= asset_path "backend/editor_icons.svg" %>';
+</script>
+
 <%= javascript_include_tag 'frontend_editor/editor.js' %>
+<%= javascript_include_tag 'frontend_editor/frontend_editor.js' %>
