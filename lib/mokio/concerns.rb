@@ -71,6 +71,7 @@ require "mokio/services/find_app_setting"
 #
 
 require "mokio/frontend_editor/editor_panel"
+require "mokio/frontend_editor/edit_panel"
 require "mokio/frontend_editor/editor_field"
 
 #

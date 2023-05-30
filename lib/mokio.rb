@@ -317,6 +317,12 @@ module Mokio
   mattr_accessor :use_ckeditor5
   self.use_ckeditor5 = false
 
+  # Set models compatible with frontend panel with edit link to CMS
+  mattr_accessor :frontend_edit_panel_models
+  self.frontend_edit_panel_models = [
+    'Mokio::Article', 'Mokio::PicGallery', 'Mokio::Contact', 'Mokio::MovGallery'
+  ]
+
   #
   # Default way to configure Mokio
   #

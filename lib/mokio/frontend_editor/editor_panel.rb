@@ -18,7 +18,7 @@ module Mokio
 
         template = ApplicationController.render(
           template: 'mokio/editor_panel/panel',
-          assigns: { user: @current_user, path: @path }
+          locals: { user: @current_user, path: @path }
         )
         template.html_safe
       end

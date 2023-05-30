@@ -17,7 +17,10 @@
 2. In layout add before `</body>` close:
 ```<%= Mokio::FrontendEditor::EditorPanel.new(current_user, request.path).render_editor_panel %>```
 Before close `</head>` add style:
-```<%= stylesheet_link_tag 'backend/frontend_editor.min.css', media: 'all' %>```
+```
+<%= stylesheet_link_tag 'backend/frontend_editor.min.css', media: 'all' %>
+<%= yield :stylesheets %>
+```
 
 3. In file `app/assets/config/manifest.js` add assets:
 ```
