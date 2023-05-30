@@ -183,4 +183,8 @@ Mokio.setup do |config|
   # config.mokio_login_recaptcha_secret_key = 'KEY'
   # config.mokio_login_recaptcha_score = 0.9
 
+  # config.frontend_edit_panel_models = [
+  #  'Mokio::Article', 'Mokio::PicGallery', 'Mokio::Contact', 'Mokio::MovGallery'
+  # ]
+
 end

@@ -69,6 +69,7 @@ function MokioFrontendEditor() {
         width: 400px;
         height: 40px;
         left: 50%;
+        z-index: 200;
         margin-left:-200px;
       }
 
@@ -86,7 +87,6 @@ function MokioFrontendEditor() {
         min-height:20px;
       }
       .mfe-default {
-        border: 1px dashed #afadad!important;;
         outline: none;
       }
       .mfe-unsaved {
@@ -95,6 +95,9 @@ function MokioFrontendEditor() {
       img.toolbar-action {
         border: 0;  cursor: pointer;
         border: 1px solid #f1f1f1;
+      }
+      .trumbowyg-box {
+        border: 1px dashed #AFADAD!important;
       }
       img.toolbar-action:hover { border: 1px solid #dcdcdc; }
     `;

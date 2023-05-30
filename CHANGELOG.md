@@ -665,3 +665,6 @@
 2. Add option "restore" to the editor => remove editable_block and refresh page. After remove editable_block is
 generated content from template.
 3. Rake task mokio:editable_blocks_ids now generate hexes 12 length instead of 9.
+
+## Mokio 14.06.2023 v2.13.0
+1. Add frontend panel with link to CMS's edit page
