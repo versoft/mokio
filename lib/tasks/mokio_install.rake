@@ -27,7 +27,7 @@ namespace :mokio do
     puts "\nCreating Mokio initializer file...".cyan
     Rake::Task['mokio_install:create_configuration_file'].execute
 
-    if (ActiveRecord::Base.configurations[Rails.env]['adapter']) == 'postgresql'
+    if ActiveRecord::Base.connection_db_config.configuration_hash['adapter'] == 'postgresql'
       puts "\nResetting pg sequence...".cyan
       Rake::Task['mokio_install:reset_pg_sequence'].execute
     end

@@ -5,7 +5,7 @@
 = f.input :subtitle, disabled: !@static_module.display_editable_field?('subtitle'), :as => :string
 = render_ckeditor_field(f, { input_name: :intro, ckeditor_name: 'Full', ckeditor_height: 150, disabled: !obj.display_editable_field?('intro') })
 = render_ckeditor_field(f, { input_name: :content, ckeditor_name: 'Medium', ckeditor_height: 400, disabled: !obj.display_editable_field?('content') })
-= f.association :module_positions, :wrapper => :checkbox, :as => :check_boxes, disabled: !@static_module.display_editable_field?('module_positions')
+= f.association :module_positions,  :as => :check_boxes, boolean_style: :inline, disabled: !@static_module.display_editable_field?('module_positions')
 = f.input :always_displayed, :wrapper => :active_checkbox, disabled: !@static_module.display_editable_field?('always_displayed')
 = f.input :display_from, :wrapper => :date, :as => :string, :input_html => { :class => "mask-date display_from", :value => (localize(f.object.display_from) if f.object.display_from) }, disabled: !@static_module.display_editable_field?('display_from')
 = f.input :display_to, :wrapper => :date, :as => :string, :input_html => { :class => "mask-date display_to", :value => (localize(f.object.display_to) if f.object.display_to) }, disabled: !@static_module.display_editable_field?('display_to')

@@ -57,11 +57,11 @@ $(document).ready(function() {
     $(this).parent().find('.mask-date').focus();
   });
 
-  // $('.check_boxes').attr('class', 'activebtn')
-  //                  .attr('data-on-label', '<i class="icomoon-icon-checkmark white"></i>')
-  //                  .attr('data-off-label', '<i class="icomoon-icon-cancel-3 white"></i>');
+  $('input.check_boxes').attr('class', 'activebtn')
+                   .attr('data-on-label', '<i class="icomoon-icon-checkmark white"></i>')
+                    .attr('data-off-label', '<i class="icomoon-icon-cancel-3 white"></i>');
 
-  // $('.check_boxes').bootstrapSwitch();
+  $('input.check_boxes').bootstrapSwitch();
 
 
   $('input[type=checkbox]').attr('class', 'activebtn')

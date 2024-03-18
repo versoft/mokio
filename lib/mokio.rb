@@ -7,7 +7,7 @@ require "bootstrap-wysihtml5-rails"
 require "carrierwave"
 require 'amoeba'
 require 'fancybox2-rails'
-require "bootstrap-switch-rails"
+# require "bootstrap-switch-rails"
 require 'ancestry'
 require 'acts_as_list'
 require 'jquery-datatables-rails'
@@ -36,7 +36,7 @@ module Mokio
   #
   # Rails version supported by Mokio
   #
-  SUPPORTED_RAILS = 6
+  SUPPORTED_RAILS = 7
 
   #
   # Array of content types
