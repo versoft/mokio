@@ -6,6 +6,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # development dependencies will be added by default to the :development group.
 gemspec
 
+ruby "3.1.2"
+
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
@@ -13,7 +15,7 @@ gemspec
 
 gem 'mysql2', '0.5.3' # this is NOT required, someone may want to use different database
 
-gem 'puma', '~> 4.1'
+# gem 'puma', '~> 4.1'
 gem 'haml2slim'
 
 gem 'dotenv-rails'
@@ -22,7 +24,7 @@ gem 'rails_serve_static_assets'
 # gem 'rails_stdout_logging'
 # NOT FOUND DEPENDENCY FOR THIS GEM IN RAILS 6
 # gem 'youtube_it', github: 'LiveWorld/youtube_it'
-gem 'ckeditor', '~> 4.3'
+gem 'ckeditor', '~> 5.1.1'
 gem "webpacker"
 
 group :doc do
@@ -54,7 +56,7 @@ group :development, :test do
   gem 'progress_bar' # optional - for solr
 
   gem "factory_bot_rails"
-  gem 'factory_bot'
+  # gem 'factory_bot'
 
   # Debuger:
   gem 'pry'
@@ -70,4 +72,27 @@ end
 
 group :test do
   gem 'database_cleaner-active_record'
+  gem "capybara"
+  gem "selenium-webdriver"
 end
+
+# UPDATE GEMS
+
+# Use the Puma web server [https://github.com/puma/puma]
+gem "puma", ">= 5.0"
+
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem "importmap-rails"
+
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "turbo-rails"
+
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "stimulus-rails"
+
+# Reduces boot times through caching; required in config/boot.rb
+gem "bootsnap", require: false
+
+
+# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+gem "jbuilder"
