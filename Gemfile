@@ -24,8 +24,7 @@ gem 'rails_serve_static_assets'
 # gem 'rails_stdout_logging'
 # NOT FOUND DEPENDENCY FOR THIS GEM IN RAILS 6
 # gem 'youtube_it', github: 'LiveWorld/youtube_it'
-gem 'ckeditor', '~> 5.1.1'
-gem "webpacker"
+# gem "webpacker"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -96,3 +95,5 @@ gem "bootsnap", require: false
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+
+
