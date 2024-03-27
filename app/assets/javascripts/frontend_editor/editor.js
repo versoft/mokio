@@ -2,6 +2,8 @@ function MokioFrontendEditor() {
   var blockSave = false;
 
   this.init = function () {
+    $.noConflict();
+
     this.addStylesToEditableSections();
     var _this = this;
     var tinyButtons = [['strong', 'em', 'del'], ['link']];
