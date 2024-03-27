@@ -668,3 +668,7 @@ generated content from template.
 
 ## Mokio 14.06.2023 v2.13.0
 1. Add frontend panel with link to CMS's edit page
+
+## Mokio 27.03.2024 v2.14.0
+1. Update to rails 7
+2. Fix issues after update
