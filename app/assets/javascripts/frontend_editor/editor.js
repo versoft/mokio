@@ -1,7 +1,17 @@
 function MokioFrontendEditor() {
   var blockSave = false;
+  var editorPopupBlockExists = false;
+  var editorPopupOverlay = null;
+  var openedPopupId = null;
 
   this.init = function () {
+
+    $('body').append('<div id="popups_container"></div>');
+    
+    $('.mokio-editor-popup').each(function() {
+      $(this).prependTo('#popups_container');
+    });
+
     this.addStylesToEditableSections();
     var _this = this;
     var tinyButtons = [['strong', 'em', 'del'], ['link']];
@@ -20,9 +30,19 @@ function MokioFrontendEditor() {
       // ['fullscreen']
     ];
 
+
+
     $('.mokio-editor-editableblock').each(function (e) {
       var editorObj = $(this);
       var dEditormode = $(this).attr("data-editor-mode");
+      var dEditorpopup = $(this).attr("data-editor-popup");
+      var isPopup = false;
+
+      if(dEditorpopup === 'true') {
+          editorPopupBlockExists = true;
+          isPopup = true;
+      }
+
       var contentIsChange = false;
 
       var e = editorObj.trumbowyg({
@@ -31,20 +51,25 @@ function MokioFrontendEditor() {
       })
         .on('tbwfocus', function () {
           contentIsChange = false;
-          editorObj.closest('.trumbowyg-box').find('.trumbowyg-button-pane').fadeIn();
+          _this.trumboPaneShow(editorObj, true);
+      
         })
         .on('tbwblur', function () {
-          editorObj.closest('.trumbowyg-box').find('.trumbowyg-button-pane').hide();
+          _this.trumboPaneHide(editorObj);
+
           if (contentIsChange) {
             var html = editorObj.trumbowyg('html');
             _this.save(editorObj, html);
           }
         })
         .on('tbwinit', function () {
-          editorObj.closest('.trumbowyg-box').find('.trumbowyg-button-pane').hide();
+          if(isPopup === false) {
+            _this.trumboPaneHide(editorObj);
+          }
+
           var textArea = editorObj.closest('.trumbowyg-box').find('.trumbowyg-textarea');
           textArea.on("focus", function () {
-            editorObj.closest('.trumbowyg-box').find('.trumbowyg-button-pane').show();
+              _this.trumboPaneShow(editorObj, false);
           })
         })
         .on('tbwchange', function () {
@@ -54,7 +79,135 @@ function MokioFrontendEditor() {
 
       _this.setDefaultBorder(editorObj);
     })
+
+    this.initEditorPopup();
   }
+
+  this.trumboPaneShow = function (editorObj, fade = false) {
+      if(fade === true) {
+          editorObj.closest('.trumbowyg-box').find('.trumbowyg-button-pane').fadeIn();
+      }else{
+          editorObj.closest('.trumbowyg-box').find('.trumbowyg-button-pane').show();
+      }
+  }
+
+  this.trumboPaneHide = function (editorObj) {
+      if(this.isPopupOpened() === false) {
+        editorObj.closest('.trumbowyg-box').find('.trumbowyg-button-pane').hide();
+      }
+  }
+
+  this.initEditorPopup = function () {
+      let _this = this;
+
+      if(editorPopupBlockExists) {
+          $('body').append('<div class="mokio-editor-overlay"></div>');
+          editorPopupOverlay = $('.mokio-editor-overlay');
+          this.addStylesToEditorPopup();
+      }
+
+
+      $('[data-editableblock-section]').each(function() {
+          var section_id = $(this).attr('data-editableblock-section');
+
+          $(this).on('click', function(event) {
+              event.preventDefault();
+              _this.openEditorPopup(this, section_id);
+          });
+      });
+
+      $('.mokio-editor-overlay').on('click', function(event) {
+          event.preventDefault();
+          _this.closeEditorPopup( openedPopupId);
+      });
+
+      $('.mokio-editor-popup-close-btn').on('click', function(event) {
+          event.preventDefault();
+          _this.closeEditorPopup( openedPopupId);
+      });
+
+ 
+      
+  }
+
+  this.isPopupOpened = function() {
+      if(openedPopupId === null) {
+          return false;
+      }
+
+      return true;
+  }
+
+  this.openEditorPopup = function(element, section_id) {
+      let popup = $('[data-editableblock-popup="' + section_id +'"]');
+      popup.show();
+      editorPopupOverlay.show();
+      openedPopupId = section_id;
+  }
+
+  this.closeEditorPopup = function(section_id) {
+      let popup = $('[data-editableblock-popup="' + section_id +'"]');
+      popup.hide();
+      editorPopupOverlay.hide();
+      openedPopupId = null;
+  }
+
+  this.addStylesToEditorPopup = function () {
+      var _this = this;
+      const editorStyles = `
+          
+          .mokio-editor-overlay {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.5);
+              z-index: 99;
+              display: none; /* Hidden by default */
+          }
+
+          .mokio-editor-popup {
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background-color: #fff;
+              padding: 40px 50px 40px 50px;
+              border-radius: 8px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+              z-index: 100; /* Above the overlay */
+              display: none; /* Hidden by default */
+
+              display: flex;
+              justify-content: flex-start;
+              align-content: center;
+              flex-flow: column;
+
+              min-height: 150px;
+          }
+
+          .mokio-editor-popup-close-btn {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              background: none;
+              border: none;
+              font-size: 24px;
+              cursor: pointer;
+              color: black;
+              line-height: 24px;
+          }          
+          [data-editableblock-section] > :first-child {
+              cursor: pointer;
+          }
+
+          .mokio-editor-popup .mokio-editor-editableblock * {
+             
+          }
+      `;
+      $('<style>').text(editorStyles).appendTo(document.head);
+    }
 
   this.addStylesToEditableSections = function () {
     var _this = this;
@@ -135,6 +288,7 @@ function MokioFrontendEditor() {
       data: JSON.stringify(params),
       success: function (msg) {
         _this.setDefaultBorder(editorElement);
+        $('[data-editableblock-section="'+ hashId +'"]').html(html);
       },
       error: function (msg) {
         console.error("error", msg)

@@ -7,6 +7,8 @@ module Mokio
         @current_user = current_user
         @block_params = block_params
         @editor_mode = (@block_params[:editor] || :standard).to_s
+        @editor_popup = !!@block_params[:popup] || false
+        
         @section_id = block_params[:id]
         @blocks = block_params[:blocks]
         @path = block_params[:path]
@@ -59,24 +61,50 @@ module Mokio
         # if ['a', 'span', 'button'].include?(first_element.name)
         #   editor_mode = "br"
         # end
-        html = <<-HT
-          <div
+
+        if @editor_popup == true
+          html = <<-HT
+          <div class="mokio-editor-popup" data-editableblock-popup='#{@section_id}' style="display:none;">
+              <button class="mokio-editor-popup-close-btn">&times;</button>
+
+              <div
+              class='mokio-editor-editableblock'
+              data-editableblock='#{@section_id}'
+              data-editor-mode='#{@editor_mode}'
+              data-editor-popup='#{@editor_popup}'
+
+              >
+              #{obj.to_html}
+              </div>
+          </div>
+
+          <div data-editableblock-section='#{@section_id}'>
+          #{obj.to_html}
+          </div>
+          HT
+        else
+          html = <<-HT
+            <div
             class='mokio-editor-editableblock'
             data-editableblock='#{@section_id}'
             data-editor-mode='#{@editor_mode}'
-          >
+            data-editor-popup='#{@editor_popup}'
+
+            >
             #{obj.to_html}
-          </div>
-        HT
+            </div>
+          HT
+        end
+        
         html.html_safe
-      end
+
+      end 
 
       def can_edit?
         return false unless @current_user
 
         @current_user.can? :manage, Mokio::Content
       end
-
     end
   end
 end
