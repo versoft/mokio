@@ -355,6 +355,7 @@ function MokioFrontendEditor() {
           }          
           [data-editableblock-section] > :first-child {
               cursor: pointer;
+              border: 2px dashed #de1329 !important;
           }
 
           .mokio-editor-popup .mokio-editor-editableblock * {
