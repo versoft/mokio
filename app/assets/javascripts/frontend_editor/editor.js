@@ -4,6 +4,8 @@ function MokioFrontendEditor() {
   var editorPopupOverlay = null;
   var openedPopupId = null;
 
+  var isScrolling = false;
+
   this.init = function () {
 
     $('body').append('<div id="popups_container"></div>');
@@ -81,6 +83,8 @@ function MokioFrontendEditor() {
     })
 
     this.initEditorPopup();
+    this.initEditorInspector();
+
   }
 
   this.trumboPaneShow = function (editorObj, fade = false) {
@@ -95,6 +99,155 @@ function MokioFrontendEditor() {
       if(this.isPopupOpened() === false) {
         editorObj.closest('.trumbowyg-box').find('.trumbowyg-button-pane').hide();
       }
+  }
+
+  this.scrollToSection = function (sectionId) {
+
+    if(isScrolling === true) {
+      return;
+    }
+
+    isScrolling = true;
+    // Find the element with the given data attribute
+    var target = $(`[data-editable-block-rendered="${sectionId}"]`);
+
+    if (target.length) {
+        // Calculate the position to scroll to
+        var targetPosition = target.offset().top;
+
+        // Get the total document height
+        var documentHeight = $(document).height();
+
+        // Get the window height
+        var windowHeight = $(window).height();
+
+        // Adjust target position if it exceeds the maximum scrollable position
+        if (targetPosition + windowHeight > documentHeight) {
+            targetPosition = documentHeight - windowHeight;
+        }
+
+        targetPosition = targetPosition - 100;
+        // Animate the scroll to the target position
+        $('html, body').animate({
+            scrollTop: targetPosition
+        }, 1000, function() {
+          isScrolling = false;
+      });
+    }
+
+  }
+
+  this.initEditorInspector = function() {
+
+    let _this = this;
+
+    var inspectorHTML = `
+      <div id="mokio-editor-inspector">
+          <ul id="mokio-editor-inspector-element-list">
+          </ul>
+      </div>
+    `;
+
+    // Append the inspector HTML to the body
+    $('body').append(inspectorHTML);
+
+    $('[data-editable-block-rendered]').each(function(index) {
+      let id = $(this).attr('data-editable-block-rendered');
+      // Create the list item with the section name
+      var listItem = `<li data-editable-block-id="`+ id +`">Sekcja ${index + 1}</li>`;
+      // Append the list item to the inspector's list
+      $('#mokio-editor-inspector-element-list').append(listItem);
+    });
+
+    $('#mokio-editor-inspector-element-list').on('click', 'li', function() {
+      let id = $(this).attr('data-editable-block-id');
+      // Scroll to the target section
+      _this.scrollToSection(id);
+    });
+
+    $('#mokio-editor-inspector-element-list').on('mouseenter', 'li', function() {
+      // Get the ID from the data attribute of the hovered <li> element
+      var id = $(this).data('editable-block-id');
+      
+      // Find the corresponding <div> using the data attribute
+      var targetDiv = $(`[data-editable-block-rendered="${id}"]`);
+      
+      targetDiv.addClass('mokio-editor-section-show'); 
+    });
+    
+    $('#mokio-editor-inspector-element-list').on('mouseleave', 'li', function() {
+        // Get the ID from the data attribute of the hovered <li> element
+        var id = $(this).data('editable-block-id');
+        
+        // Find the corresponding <div> using the data attribute
+        var targetDiv = $(`[data-editable-block-rendered="${id}"]`);
+        
+        targetDiv.removeClass('mokio-editor-section-show');
+    });      
+
+    this.addStylesToEditorInspector();
+
+  }
+
+  this.addStylesToEditorInspector = function () {
+    var _this = this;
+    const editorStyles = `
+
+      .mokio-editor-section-show {
+        background: #ccc;
+      }
+      #mokio-editor-inspector {
+          width: 200px;
+          background-color: #f5f5f5;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          padding: 10px;
+          position: absolute;
+          bottom: 50px;
+          right: 50px;
+          position: fixed;
+          z-index: 80;
+
+          max-height: 400px;
+          overflow: scroll;         
+      }
+
+      #mokio-editor-inspector-header {
+          cursor: move;
+          padding: 5px;
+          border-radius: 3px;
+          display: flex;
+          justify-content: center;
+          align-content: center;            
+      }
+
+      #mokio-editor-inspector-header h2 {
+        margin:0;
+        font-size: 14px;
+      }
+
+      #mokio-editor-inspector-element-list {
+        list-style-type: none;
+        padding: 0;
+
+        margin: 0;
+        padding: 0px;
+        text-align: center;            
+      }
+
+      #mokio-editor-inspector-element-list li {
+          padding: 5px;
+          border-bottom: 1px solid #ccc;
+          font-size:12px;
+      }
+       
+      #mokio-editor-inspector-element-list li:hover {
+        background: white;
+        cursor: pointer;
+      }
+               
+    `;
+    $('<style>').text(editorStyles).appendTo(document.head);
   }
 
   this.initEditorPopup = function () {
@@ -152,6 +305,8 @@ function MokioFrontendEditor() {
       openedPopupId = null;
   }
 
+
+
   this.addStylesToEditorPopup = function () {
       var _this = this;
       const editorStyles = `
@@ -207,7 +362,7 @@ function MokioFrontendEditor() {
           }
       `;
       $('<style>').text(editorStyles).appendTo(document.head);
-    }
+  }
 
   this.addStylesToEditableSections = function () {
     var _this = this;

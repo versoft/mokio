@@ -78,7 +78,7 @@ module Mokio
               </div>
           </div>
 
-          <div data-editableblock-section='#{@section_id}'>
+          <div data-editableblock-section='#{@section_id}' data-editable-block-rendered='#{@section_id}'>
           #{obj.to_html}
           </div>
           HT
@@ -89,10 +89,11 @@ module Mokio
             data-editableblock='#{@section_id}'
             data-editor-mode='#{@editor_mode}'
             data-editor-popup='#{@editor_popup}'
-
+            data-editable-block-rendered='#{@section_id}'
             >
             #{obj.to_html}
             </div>
+           
           HT
         end
         
