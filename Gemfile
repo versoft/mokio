@@ -6,17 +6,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # development dependencies will be added by default to the :development group.
 gemspec
 
-ruby "3.1.2"
+ruby "3.2.0"
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-gem 'mysql2', '0.5.3' # this is NOT required, someone may want to use different database
+# gem 'mysql2', '0.5.3' # this is NOT required, someone may want to use different database
 
 # gem 'puma', '~> 4.1'
-gem 'haml2slim'
+gem 'haml2slim', '0.4.7'
 
 gem 'dotenv-rails'
 # assety sie nie wczytywaly
@@ -37,8 +37,6 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rubocop-faker'
   gem "faker"
-  # gem "capybara"
-  # gem "capybara-webkit" # may be useful: apt-get install qtquick1-5-dev qtlocation5-dev qtsensors5-dev qtdeclarative5-dev
 
   #
   # or #sudo apt-get install qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
@@ -66,12 +64,17 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request' # To use rails_panel extension
-  gem 'deface'
+  #CM gem 'deface'
+  gem 'deface', '~> 1.9.0'  #-----OLD:  '~> 1.0',   '>= 1.0.0'
+
 end
 
 group :test do
   gem 'database_cleaner-active_record'
-  gem "capybara"
+  #CM gem "capybara"
+  gem 'capybara', '~> 3.40.0' #-----OLD:  '~> 2.18.0'
+
+
   gem "selenium-webdriver"
 end
 
