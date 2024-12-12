@@ -65,3 +65,4 @@
 //= require backend/vendors/select2/select2.min.js
 
 //= require backend/custom.js
+//= require ckeditor/fix_ckeditor.js
