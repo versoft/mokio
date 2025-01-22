@@ -93,6 +93,7 @@ module Mokio
         #
         def seq_and_lang_update
           self.seq = sequence_number
+
           if self.lang_id.nil?
             self.lang_id = root.lang_id
           else
@@ -158,7 +159,9 @@ module Mokio
         def sequence_number
           if seq.nil?
             if parent.nil?
-              Mokio::Menu.where('ancestry is null').count +1
+              count_of_menu =  Mokio::Menu.where('ancestry is null').count
+              count_of_menu = count_of_menu.to_i
+              return count_of_menu +1
             else
               max = parent.children.maximum(:seq)
               max.nil? ? 1 : max + 1
