@@ -81,6 +81,9 @@ module Mokio
         backend/lodash/lodash.js
         backend/vendors/select2/select2.min.js
       )
+
+      app.config.assets.precompile += %w[mokio_manifest]
+
     end
 
     initializer "mokio.fonts", group: :all do |app|
