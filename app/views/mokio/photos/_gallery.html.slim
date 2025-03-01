@@ -22,6 +22,6 @@ ul#itemContainer.galleryView.sortable
 
 - content_for :js do
   = render :partial => "mokio/photos/data_file_info"
-  = javascript_include_tag 'backend/photo_gallery/functions', :async => true
-  = javascript_include_tag 'backend/photo_gallery/photoEditForm', :async => true
-  = javascript_include_tag 'backend/photo_gallery/photo_gallery', :async => true
+  = javascript_include_tag 'backend/photo_gallery/functions'
+  = javascript_include_tag 'backend/photo_gallery/photoEditForm'
+  = javascript_include_tag 'backend/photo_gallery/photo_gallery'
